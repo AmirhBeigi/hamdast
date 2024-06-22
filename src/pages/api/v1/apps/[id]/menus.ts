@@ -10,7 +10,9 @@ export default async function handler(
 ) {
   const cookieStore = req.cookies;
   const { id } = req.query;
-  const token = (cookieStore["token"] as string) || "";
+  const token =
+    (cookieStore["token"] as string) ||
+    req.headers.authorization?.replace("Bearer", "");
   await pb.admins.authWithPassword(
     publicRuntimeConfig.POCKETBASE_USER_NAME,
     publicRuntimeConfig.POCKETBASE_PASSWORD

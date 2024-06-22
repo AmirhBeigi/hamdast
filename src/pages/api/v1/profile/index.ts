@@ -9,7 +9,9 @@ export default async function handler(
   res: NextApiResponse<any>
 ) {
   const cookieStore = req.cookies;
-  const token = (cookieStore["token"] as string) || "";
+  const token =
+    (cookieStore["token"] as string) ||
+    req.headers.authorization?.replace("Bearer", "");
   await pb.admins.authWithPassword(
     publicRuntimeConfig.POCKETBASE_USER_NAME,
     publicRuntimeConfig.POCKETBASE_PASSWORD
