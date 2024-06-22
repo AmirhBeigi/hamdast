@@ -15,6 +15,7 @@
     "@plasmicapp/host": "^1.0.196",
     "@plasmicapp/react-web": "^0.2.337",
     "@plasmicpkgs/plasmic-basic-components": "^0.0.218",
+    "@plasmicpkgs/plasmic-query": "^0.0.216",
     "@plasmicpkgs/radix-ui": "^0.0.53",
     "@plasmicpkgs/react-awesome-reveal": "^3.8.199",
     "@radix-ui/react-popover": "^1.0.7",
