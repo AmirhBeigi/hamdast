@@ -21,6 +21,7 @@
     "axios": "^1.7.2",
     "jalali-moment": "^3.3.11",
     "next": "14.2.3",
+    "pocketbase": "^0.21.3",
     "react": "^18",
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
