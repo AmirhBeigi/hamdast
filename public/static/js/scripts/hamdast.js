@@ -1,13 +1,11 @@
 (function () {
   var head = document.getElementsByTagName("head")[0];
   var script = document.createElement("script");
-  script.type = "text/javascript";
   script.async = true;
   script.src =
     "https://cdn.jsdelivr.net/npm/@rrweb/record@latest/dist/record.umd.min.cjs";
   head.appendChild(script);
   var packScript = document.createElement("script");
-  packScript.type = "text/javascript";
   packScript.async = true;
   packScript.src =
     "https://cdn.jsdelivr.net/npm/@rrweb/packer@2.0.0-alpha.15/dist/pack.umd.min.cjs";
