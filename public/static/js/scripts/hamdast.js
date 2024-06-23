@@ -3,12 +3,12 @@
   var script = document.createElement("script");
   script.async = true;
   script.src =
-    "https://cdn.jsdelivr.net/npm/@rrweb/record@latest/dist/record.umd.min.cjs";
+    "https://cdn.jsdelivr.net/npm/@rrweb/record@latest/dist/record.min.js";
   head.appendChild(script);
   var packScript = document.createElement("script");
   packScript.async = true;
   packScript.src =
-    "https://cdn.jsdelivr.net/npm/@rrweb/packer@2.0.0-alpha.15/dist/pack.umd.min.cjs";
+    "https://cdn.jsdelivr.net/npm/@rrweb/packer@2.0.0-alpha.15/dist/pack.min.js";
   head.appendChild(packScript);
 })();
 
