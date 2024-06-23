@@ -7,19 +7,22 @@
   head.appendChild(script);
 })();
 
-function portalCommunication({ clientKey, event }) {
+function portalCommunication({ clientKey, event, data }) {
   const message = JSON.stringify({
     clientKey,
     event,
+    data,
   });
   window.parent.postMessage(message, "*");
 }
 
 window.hamdast = {
   initialize(clientKey) {
+    window.hamdast.clientKey = clientKey;
     portalCommunication({ clientKey, event: "INITIALIZE" });
     window.hamdast?.replay?.record();
   },
+  clientKey: null,
   replay: {
     record() {
       rrweb.record({
@@ -35,13 +38,14 @@ window.hamdast = {
       });
 
       // save events every 10 seconds
-      setInterval(windiw.hamdast?.replay?.save, 10 * 1000);
+      setInterval(window.hamdast?.replay?.save, 10 * 1000);
     },
     save() {
-      function save() {
-        const body = JSON.stringify({ events: window.hamdast?.replay?.events });
-        console.log("save");
-      }
+      portalCommunication({
+        clientKey: window.hamdast.clientKey,
+        event: "REPLAY_SAVE",
+        data: { events: window.hamdast?.replay?.events },
+      });
     },
     events: [],
   },
