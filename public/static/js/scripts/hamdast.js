@@ -8,18 +8,18 @@
 })();
 
 function portalCommunication({ clientKey, event, data }) {
-  const message = JSON.stringify({
+  const message = {
     clientKey,
     event,
     data,
-  });
+  };
   window.parent.postMessage(message, "*");
 }
 
 window.hamdast = {
   initialize(clientKey) {
     window.hamdast.clientKey = clientKey;
-    portalCommunication({ clientKey, event: "INITIALIZE" });
+    portalCommunication({ clientKey, event: "HAMDAST_INITIALIZE" });
     window.hamdast?.replay?.record();
   },
   clientKey: null,
@@ -43,7 +43,7 @@ window.hamdast = {
     save() {
       portalCommunication({
         clientKey: window.hamdast.clientKey,
-        event: "REPLAY_SAVE",
+        event: "HAMDAST_REPLAY_SAVE",
         data: { events: window.hamdast?.replay?.events },
       });
     },
