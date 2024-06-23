@@ -1,6 +1,6 @@
 import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { pb } from "../../../../../../pocketbase";
+import { pb } from "../../../../../../../pocketbase";
 import config from "next/config";
 const { publicRuntimeConfig } = config();
 
@@ -9,7 +9,7 @@ export default async function handler(
   res: NextApiResponse<any>
 ) {
   const cookieStore = req.cookies;
-  const { id } = req.query;
+  const { app_id } = req.query;
   const token =
     (cookieStore["token"] as string) ||
     req.headers.authorization?.replace("Bearer", "");
@@ -34,7 +34,7 @@ export default async function handler(
     });
 
   const menus = await pb.collection("menus").getFullList({
-    filter: `app="${id}"`,
+    filter: `app="${app_id}"`,
   });
 
   res.status(200).json(
