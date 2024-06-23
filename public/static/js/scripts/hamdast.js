@@ -3,13 +3,8 @@
   var script = document.createElement("script");
   script.async = true;
   script.src =
-    "https://cdn.jsdelivr.net/npm/@rrweb/record@latest/dist/record.min.js";
+    "https://cdn.jsdelivr.net/npm/rrweb@latest/dist/rrweb-all.min.js";
   head.appendChild(script);
-  var packScript = document.createElement("script");
-  packScript.async = true;
-  packScript.src =
-    "https://cdn.jsdelivr.net/npm/@rrweb/packer@2.0.0-alpha.15/dist/pack.min.js";
-  head.appendChild(packScript);
 })();
 
 function portalCommunication({ clientKey, event }) {
@@ -31,7 +26,7 @@ window.hamdast = {
         emit(event) {
           window.hamdast?.replay?.events?.push?.(event);
         },
-        packFn: pack,
+        packFn: rrweb.pack,
         sampling: {
           input: "last",
           scroll: 150,
