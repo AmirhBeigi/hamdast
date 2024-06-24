@@ -3,11 +3,18 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { pb } from "../../../../../../../../../pocketbase";
 import config from "next/config";
 const { publicRuntimeConfig } = config();
+import NextCors from "nextjs-cors";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
+  await NextCors(req, res, {
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    origin: "*",
+    optionsSuccessStatus: 200,
+  });
+
   if (req.method === "POST") {
     const { app_id, menu_id, replay_id } = req.query;
     const { browser, device, user, events } = req.body;
