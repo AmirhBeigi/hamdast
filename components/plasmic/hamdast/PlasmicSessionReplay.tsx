@@ -912,6 +912,54 @@ function PlasmicSessionReplay__RenderFunc(props: {
                                 "__wab_instance",
                                 sty.recordCard
                               )}
+                              date={(() => {
+                                try {
+                                  return (() => {
+                                    const months = [
+                                      "فروردین",
+                                      "اردیبهشت",
+                                      "خرداد",
+                                      "تیر",
+                                      "مرداد",
+                                      "شهریور",
+                                      "مهر",
+                                      "آبان",
+                                      "آذر",
+                                      "دی",
+                                      "بهمن",
+                                      "اسفند"
+                                    ];
+                                    const date = new Date(
+                                      currentItem.updated_at
+                                    );
+                                    const shamsiDate = new Intl.DateTimeFormat(
+                                      "fa-IR",
+                                      {
+                                        day: "numeric",
+                                        month: "long",
+                                        hour: "2-digit",
+                                        minute: "2-digit"
+                                      }
+                                    ).format(date);
+                                    return shamsiDate.replace(
+                                      /(\d+)/g,
+                                      (_, p1) =>
+                                        String.fromCharCode(
+                                          p1.charCodeAt(0) + 1728
+                                        )
+                                    );
+                                  })();
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()}
                               events={(() => {
                                 try {
                                   return currentItem.events;
