@@ -7,6 +7,7 @@
   max-width: 100%;
   background: none;
   opacity: 0.9;
+  cursor: pointer;
   min-width: 0;
   border-radius: 10px;
   padding: 10px 14px 10px 8px;
@@ -87,6 +88,7 @@
 }
 .rootdisabled {
   opacity: 0.3;
+  cursor: default;
 }
 .rootactive_compact {
   background: #eef3f5;

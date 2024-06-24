@@ -661,14 +661,14 @@ function PlasmicSessionReplay__RenderFunc(props: {
                               <Menu
                                 active={(() => {
                                   try {
-                                    return currentIndex == 0;
+                                    return currentItem.id === $state.menu;
                                   } catch (e) {
                                     if (
                                       e instanceof TypeError ||
                                       e?.plasmicType ===
                                         "PlasmicUndefinedDataError"
                                     ) {
-                                      return "active";
+                                      return [];
                                     }
                                     throw e;
                                   }
@@ -695,6 +695,51 @@ function PlasmicSessionReplay__RenderFunc(props: {
                                     throw e;
                                   }
                                 })()}
+                                onClick={async () => {
+                                  const $steps = {};
+
+                                  $steps["updateMenu"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: ["menu"]
+                                          },
+                                          operation: 0,
+                                          value: currentItem.id
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["updateMenu"] != null &&
+                                    typeof $steps["updateMenu"] === "object" &&
+                                    typeof $steps["updateMenu"].then ===
+                                      "function"
+                                  ) {
+                                    $steps["updateMenu"] = await $steps[
+                                      "updateMenu"
+                                    ];
+                                  }
+                                }}
                               />
                             );
                           })}
