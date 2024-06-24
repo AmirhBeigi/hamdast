@@ -641,6 +641,19 @@
   font-size: 14px;
   min-width: 0;
 }
+.fetchData2:global(.__wab_instance) {
+  max-width: 100%;
+  position: relative;
+}
+.svg__ytUbp {
+  position: relative;
+  object-fit: cover;
+  max-width: 100%;
+  width: 35px;
+  height: 35px;
+  margin-top: 30px;
+  align-self: center;
+}
 .freeBox__swXMv {
   display: grid;
   position: relative;
