@@ -20,7 +20,9 @@ window.hamdast = {
   initialize(clientKey) {
     window.hamdast.clientKey = clientKey;
     portalCommunication({ clientKey, event: "HAMDAST_INITIALIZE" });
-    window.hamdast?.replay?.record();
+    if (typeof window?.rrweb !== "undefined") {
+      window.hamdast?.replay?.record();
+    }
   },
   clientKey: null,
   replay: {
