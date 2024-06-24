@@ -469,7 +469,8 @@ function PlasmicRecordCard__RenderFunc(props: {
                                               "#player-hamdast"
                                             ),
                                           props: {
-                                            events: rrweb.unpack($props.events)
+                                            events: $props.events,
+                                            unpackFn: rrweb.unpack
                                           }
                                         }
                                       );
