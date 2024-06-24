@@ -39,6 +39,8 @@ export default async function handler(
       device: item.device,
       browser: item.browser,
       events: item.events,
+      updated_at: item.updated,
+      created_at: item.created,
     }))
   );
 }
