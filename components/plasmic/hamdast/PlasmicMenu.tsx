@@ -89,12 +89,14 @@ export type PlasmicMenu__ArgsType = {
   iconWrapper?: React.ReactNode;
   name?: string;
   icon?: boolean;
+  onClick?: () => void;
 };
 type ArgPropType = keyof PlasmicMenu__ArgsType;
 export const PlasmicMenu__ArgProps = new Array<ArgPropType>(
   "iconWrapper",
   "name",
-  "icon"
+  "icon",
+  "onClick"
 );
 
 export type PlasmicMenu__OverridesType = {
@@ -106,6 +108,7 @@ export interface DefaultMenuProps {
   iconWrapper?: React.ReactNode;
   name?: string;
   icon?: boolean;
+  onClick?: () => void;
   active?: SingleBooleanChoiceArg<"active">;
   compact?: SingleBooleanChoiceArg<"compact">;
   disabled?: SingleBooleanChoiceArg<"disabled">;
@@ -205,6 +208,25 @@ function PlasmicMenu__RenderFunc(props: {
         }
       )}
       dir={"rtl"}
+      onClick={async event => {
+        const $steps = {};
+
+        $steps["runOnClick"] = true
+          ? (() => {
+              const actionArgs = { eventRef: $props["onClick"] };
+              return (({ eventRef, args }) => {
+                return eventRef?.(...(args ?? []));
+              })?.apply(null, [actionArgs]);
+            })()
+          : undefined;
+        if (
+          $steps["runOnClick"] != null &&
+          typeof $steps["runOnClick"] === "object" &&
+          typeof $steps["runOnClick"].then === "function"
+        ) {
+          $steps["runOnClick"] = await $steps["runOnClick"];
+        }
+      }}
     >
       {(() => {
         try {

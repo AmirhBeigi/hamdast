@@ -97,6 +97,7 @@ export type PlasmicSessionReplay__OverridesType = {
   select?: Flex__<typeof Select>;
   link?: Flex__<"a"> & Partial<LinkProps>;
   fetchData?: Flex__<typeof FetchData>;
+  fetchData2?: Flex__<typeof FetchData>;
   recordCard?: Flex__<typeof RecordCard>;
 };
 
@@ -175,6 +176,37 @@ function PlasmicSessionReplay__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "fetchData2.data",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "fetchData2.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "menu",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.fetchData?.data?.[0]?.id;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -291,10 +323,52 @@ function PlasmicSessionReplay__RenderFunc(props: {
                       color: "softCyan",
                       isDisabled: true,
                       name: ``,
-                      onChange: (...eventArgs) => {
-                        generateStateOnChangeProp($state, ["select", "value"])(
-                          eventArgs[0]
-                        );
+                      onChange: async (...eventArgs: any) => {
+                        ((...eventArgs) => {
+                          generateStateOnChangeProp($state, [
+                            "select",
+                            "value"
+                          ])(eventArgs[0]);
+                        }).apply(null, eventArgs);
+                        (async value => {
+                          const $steps = {};
+
+                          $steps["updateSelectValue"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["select", "value"]
+                                  },
+                                  operation: 0
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateSelectValue"] != null &&
+                            typeof $steps["updateSelectValue"] === "object" &&
+                            typeof $steps["updateSelectValue"].then ===
+                              "function"
+                          ) {
+                            $steps["updateSelectValue"] = await $steps[
+                              "updateSelectValue"
+                            ];
+                          }
+                        }).apply(null, eventArgs);
                       },
                       options: (() => {
                         try {
@@ -307,7 +381,7 @@ function PlasmicSessionReplay__RenderFunc(props: {
                             e instanceof TypeError ||
                             e?.plasmicType === "PlasmicUndefinedDataError"
                           ) {
-                            return [];
+                            return [{}];
                           }
                           throw e;
                         }
@@ -587,14 +661,14 @@ function PlasmicSessionReplay__RenderFunc(props: {
                               <Menu
                                 active={(() => {
                                   try {
-                                    return currentIndex == 0;
+                                    return currentItem.id === $state.menu;
                                   } catch (e) {
                                     if (
                                       e instanceof TypeError ||
                                       e?.plasmicType ===
                                         "PlasmicUndefinedDataError"
                                     ) {
-                                      return "active";
+                                      return [];
                                     }
                                     throw e;
                                   }
@@ -621,6 +695,51 @@ function PlasmicSessionReplay__RenderFunc(props: {
                                     throw e;
                                   }
                                 })()}
+                                onClick={async () => {
+                                  const $steps = {};
+
+                                  $steps["updateMenu"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: ["menu"]
+                                          },
+                                          operation: 0,
+                                          value: currentItem.id
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["updateMenu"] != null &&
+                                    typeof $steps["updateMenu"] === "object" &&
+                                    typeof $steps["updateMenu"].then ===
+                                      "function"
+                                  ) {
+                                    $steps["updateMenu"] = await $steps[
+                                      "updateMenu"
+                                    ];
+                                  }
+                                }}
                               />
                             );
                           })}
@@ -716,40 +835,147 @@ function PlasmicSessionReplay__RenderFunc(props: {
                         </div>
                       </Stack__>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__swXMv)}
-                    >
-                      {(_par =>
-                        !_par ? [] : Array.isArray(_par) ? _par : [_par])(
-                        (() => {
-                          try {
-                            return [2, 3, 4, 5];
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
+                    <FetchData
+                      data-plasmic-name={"fetchData2"}
+                      data-plasmic-override={overrides.fetchData2}
+                      className={classNames("__wab_instance", sty.fetchData2)}
+                      enabled={(() => {
+                        try {
+                          return $state.menu;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return false;
                           }
-                        })()
-                      ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                        const currentItem = __plasmic_item_0;
-                        const currentIndex = __plasmic_idx_0;
-                        return (
-                          <RecordCard
-                            data-plasmic-name={"recordCard"}
-                            data-plasmic-override={overrides.recordCard}
-                            className={classNames(
-                              "__wab_instance",
-                              sty.recordCard
-                            )}
-                            key={currentIndex}
-                          />
-                        );
-                      })}
-                    </div>
+                          throw e;
+                        }
+                      })()}
+                      loadingStatus={
+                        <Icon15Icon
+                          className={classNames(projectcss.all, sty.svg__ytUbp)}
+                          role={"img"}
+                        />
+                      }
+                      onDataChange={generateStateOnChangeProp($state, [
+                        "fetchData2",
+                        "data"
+                      ])}
+                      onLoadingChange={generateStateOnChangeProp($state, [
+                        "fetchData2",
+                        "loading"
+                      ])}
+                      url={(() => {
+                        try {
+                          return `https://hamdast.paziresh24.com/api/v1/apps/${$state.select.value}/menus/${$state.menu}/replay`;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__swXMv
+                        )}
+                      >
+                        {(_par =>
+                          !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                          (() => {
+                            try {
+                              return $state.fetchData2.data;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return [];
+                              }
+                              throw e;
+                            }
+                          })()
+                        ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                          const currentItem = __plasmic_item_0;
+                          const currentIndex = __plasmic_idx_0;
+                          return (
+                            <RecordCard
+                              data-plasmic-name={"recordCard"}
+                              data-plasmic-override={overrides.recordCard}
+                              className={classNames(
+                                "__wab_instance",
+                                sty.recordCard
+                              )}
+                              events={(() => {
+                                try {
+                                  return currentItem.events;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                              family={(() => {
+                                try {
+                                  return currentItem.user.family;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                              isDoctor={(() => {
+                                try {
+                                  return (
+                                    currentItem.user.job_title === "doctor"
+                                  );
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return false;
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                              key={currentIndex}
+                              name={(() => {
+                                try {
+                                  return currentItem.user.name;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            />
+                          );
+                        })}
+                      </div>
+                    </FetchData>
                   </Stack__>
                 </div>
               </div>
@@ -769,13 +995,22 @@ const PlasmicDescendants = {
     "select",
     "link",
     "fetchData",
+    "fetchData2",
     "recordCard"
   ],
   embedHtml: ["embedHtml"],
-  authProvider: ["authProvider", "select", "link", "fetchData", "recordCard"],
+  authProvider: [
+    "authProvider",
+    "select",
+    "link",
+    "fetchData",
+    "fetchData2",
+    "recordCard"
+  ],
   select: ["select"],
   link: ["link"],
   fetchData: ["fetchData"],
+  fetchData2: ["fetchData2", "recordCard"],
   recordCard: ["recordCard"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -788,6 +1023,7 @@ type NodeDefaultElementType = {
   select: typeof Select;
   link: "a";
   fetchData: typeof FetchData;
+  fetchData2: typeof FetchData;
   recordCard: typeof RecordCard;
 };
 
@@ -856,6 +1092,7 @@ export const PlasmicSessionReplay = Object.assign(
     select: makeNodeComponent("select"),
     link: makeNodeComponent("link"),
     fetchData: makeNodeComponent("fetchData"),
+    fetchData2: makeNodeComponent("fetchData2"),
     recordCard: makeNodeComponent("recordCard"),
 
     // Metadata about props expected for PlasmicSessionReplay

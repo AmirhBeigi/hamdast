@@ -79,6 +79,7 @@ export type PlasmicFetchData__ArgsType = {
   url?: string;
   onDataChange?: (val: string) => void;
   onLoadingChange?: (val: string) => void;
+  enabled?: boolean;
 };
 type ArgPropType = keyof PlasmicFetchData__ArgsType;
 export const PlasmicFetchData__ArgProps = new Array<ArgPropType>(
@@ -86,7 +87,8 @@ export const PlasmicFetchData__ArgProps = new Array<ArgPropType>(
   "loadingStatus",
   "url",
   "onDataChange",
-  "onLoadingChange"
+  "onLoadingChange",
+  "enabled"
 );
 
 export type PlasmicFetchData__OverridesType = {
@@ -100,6 +102,7 @@ export interface DefaultFetchDataProps {
   url?: string;
   onDataChange?: (val: string) => void;
   onLoadingChange?: (val: string) => void;
+  enabled?: boolean;
   className?: string;
 }
 
@@ -120,7 +123,16 @@ function PlasmicFetchData__RenderFunc(props: {
 }) {
   const { variants, overrides, forNode } = props;
 
-  const args = React.useMemo(() => Object.assign({}, props.args), [props.args]);
+  const args = React.useMemo(
+    () =>
+      Object.assign(
+        {
+          enabled: true
+        },
+        props.args
+      ),
+    [props.args]
+  );
 
   const $props = {
     ...args,
@@ -183,7 +195,7 @@ function PlasmicFetchData__RenderFunc(props: {
         className={classNames("__wab_instance", sty.sideEffect)}
         deps={(() => {
           try {
-            return [$props.url];
+            return [$props.url, $props.enabled];
           } catch (e) {
             if (
               e instanceof TypeError ||
@@ -226,31 +238,32 @@ function PlasmicFetchData__RenderFunc(props: {
             $steps["updateData2"] = await $steps["updateData2"];
           }
 
-          $steps["fetchData"] = $props.url
-            ? (() => {
-                const actionArgs = {
-                  args: [
-                    undefined,
-                    (() => {
-                      try {
-                        return $props.url;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return undefined;
+          $steps["fetchData"] =
+            $props.url && $props.enabled
+              ? (() => {
+                  const actionArgs = {
+                    args: [
+                      undefined,
+                      (() => {
+                        try {
+                          return $props.url;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
                         }
-                        throw e;
-                      }
-                    })()
-                  ]
-                };
-                return $globalActions["Fragment.apiRequest"]?.apply(null, [
-                  ...actionArgs.args
-                ]);
-              })()
-            : undefined;
+                      })()
+                    ]
+                  };
+                  return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                    ...actionArgs.args
+                  ]);
+                })()
+              : undefined;
           if (
             $steps["fetchData"] != null &&
             typeof $steps["fetchData"] === "object" &&
@@ -321,7 +334,7 @@ function PlasmicFetchData__RenderFunc(props: {
 
       {(() => {
         try {
-          return $state.loading;
+          return $state.loading || !$props.enabled;
         } catch (e) {
           if (
             e instanceof TypeError ||
@@ -339,7 +352,7 @@ function PlasmicFetchData__RenderFunc(props: {
         : null}
       {(() => {
         try {
-          return !$state.loading;
+          return !$state.loading && $props.enabled;
         } catch (e) {
           if (
             e instanceof TypeError ||
