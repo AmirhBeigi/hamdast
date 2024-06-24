@@ -31,7 +31,6 @@ window.hamdast = {
         emit(event) {
           window.hamdast?.replay?.events?.push?.(event);
         },
-        packFn: rrweb.pack,
         sampling: {
           input: "last",
           scroll: 150,
