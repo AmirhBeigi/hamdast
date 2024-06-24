@@ -262,7 +262,7 @@ function PlasmicSessionReplay__RenderFunc(props: {
             data-plasmic-override={overrides.embedHtml}
             className={classNames("__wab_instance", sty.embedHtml)}
             code={
-              '<script src="https://cdn.jsdelivr.net/npm/rrweb@latest/dist/rrweb-all.min.js"></script>\r\n<link\r\n  rel="stylesheet"\r\n  href="https://cdn.jsdelivr.net/npm/rrweb-player@latest/dist/style.css"\r\n/>'
+              '<link\r\n  rel="stylesheet"\r\n  href="https://cdn.jsdelivr.net/npm/rrweb-player@latest/dist/style.css"\r\n/>\r\n<script src="https://cdn.jsdelivr.net/npm/rrweb-player@latest/dist/index.js"></script>'
             }
           />
 
