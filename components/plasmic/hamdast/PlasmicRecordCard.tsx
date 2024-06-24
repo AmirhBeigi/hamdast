@@ -463,15 +463,12 @@ function PlasmicRecordCard__RenderFunc(props: {
                                   return setTimeout(() => {
                                     if (window.isReadyPlayer == null) {
                                       window.isReadyPlayer = new rrweb.Replayer(
+                                        $props.events,
                                         {
-                                          target:
-                                            document.querySelector(
-                                              "#player-hamdast"
-                                            ),
-                                          props: {
-                                            events: $props.events,
-                                            unpackFn: rrweb.unpack
-                                          }
+                                          root: document.querySelector(
+                                            "#player-hamdast"
+                                          ),
+                                          unpackFn: rrweb.unpack
                                         }
                                       );
                                     }
