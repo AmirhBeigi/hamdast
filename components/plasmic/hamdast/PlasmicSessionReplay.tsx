@@ -78,6 +78,7 @@ import Icon8Icon from "./icons/PlasmicIcon__Icon8"; // plasmic-import: lYMiBDxqu
 import Icon9Icon from "./icons/PlasmicIcon__Icon9"; // plasmic-import: ly5Yl8idG7m1/icon
 import Icon13Icon from "./icons/PlasmicIcon__Icon13"; // plasmic-import: SeV8a-Sb0Haa/icon
 import Icon15Icon from "./icons/PlasmicIcon__Icon15"; // plasmic-import: rQsx35tf_bcf/icon
+import Icon16Icon from "./icons/PlasmicIcon__Icon16"; // plasmic-import: zU9ql4OiZyfC/icon
 
 createPlasmicElementProxy;
 
@@ -880,162 +881,206 @@ function PlasmicSessionReplay__RenderFunc(props: {
                         }
                       })()}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__swXMv
-                        )}
-                      >
-                        {(() => {
-                          try {
-                            return Array.isArray($state.fetchData2?.data);
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return false;
-                            }
-                            throw e;
+                      {(() => {
+                        try {
+                          return Array.isArray($state.fetchData2?.data);
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
                           }
-                        })()
-                          ? (_par =>
-                              !_par ? [] : Array.isArray(_par) ? _par : [_par])(
-                              (() => {
-                                try {
-                                  return $state.fetchData2?.data;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return [];
-                                  }
-                                  throw e;
+                          throw e;
+                        }
+                      })() ? (
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__swXMv
+                          )}
+                        >
+                          {(_par =>
+                            !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                            (() => {
+                              try {
+                                return $state.fetchData2?.data;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return [];
                                 }
-                              })()
-                            ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                              const currentItem = __plasmic_item_0;
-                              const currentIndex = __plasmic_idx_0;
-                              return (
-                                <RecordCard
-                                  data-plasmic-name={"recordCard"}
-                                  data-plasmic-override={overrides.recordCard}
-                                  className={classNames(
-                                    "__wab_instance",
-                                    sty.recordCard
-                                  )}
-                                  date={(() => {
-                                    try {
-                                      return (() => {
-                                        const months = [
-                                          "فروردین",
-                                          "اردیبهشت",
-                                          "خرداد",
-                                          "تیر",
-                                          "مرداد",
-                                          "شهریور",
-                                          "مهر",
-                                          "آبان",
-                                          "آذر",
-                                          "دی",
-                                          "بهمن",
-                                          "اسفند"
-                                        ];
-                                        const date = new Date(
-                                          currentItem.updated_at
-                                        );
-                                        const shamsiDate =
-                                          new Intl.DateTimeFormat("fa-IR", {
-                                            day: "numeric",
-                                            month: "long",
-                                            hour: "2-digit",
-                                            minute: "2-digit"
-                                          }).format(date);
-                                        return shamsiDate.replace(
-                                          /(\d+)/g,
-                                          (_, p1) =>
-                                            String.fromCharCode(
-                                              p1.charCodeAt(0) + 1728
-                                            )
-                                        );
-                                      })();
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
-                                    }
-                                  })()}
-                                  events={(() => {
-                                    try {
-                                      return currentItem.events;
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
-                                    }
-                                  })()}
-                                  family={(() => {
-                                    try {
-                                      return currentItem.user.family;
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
-                                    }
-                                  })()}
-                                  isDoctor={(() => {
-                                    try {
-                                      return (
-                                        currentItem.user.job_title === "doctor"
+                                throw e;
+                              }
+                            })()
+                          ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                            const currentItem = __plasmic_item_0;
+                            const currentIndex = __plasmic_idx_0;
+                            return (
+                              <RecordCard
+                                data-plasmic-name={"recordCard"}
+                                data-plasmic-override={overrides.recordCard}
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.recordCard
+                                )}
+                                date={(() => {
+                                  try {
+                                    return (() => {
+                                      const months = [
+                                        "فروردین",
+                                        "اردیبهشت",
+                                        "خرداد",
+                                        "تیر",
+                                        "مرداد",
+                                        "شهریور",
+                                        "مهر",
+                                        "آبان",
+                                        "آذر",
+                                        "دی",
+                                        "بهمن",
+                                        "اسفند"
+                                      ];
+                                      const date = new Date(
+                                        currentItem.updated_at
                                       );
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return false;
-                                      }
-                                      throw e;
+                                      const shamsiDate =
+                                        new Intl.DateTimeFormat("fa-IR", {
+                                          day: "numeric",
+                                          month: "long",
+                                          hour: "2-digit",
+                                          minute: "2-digit"
+                                        }).format(date);
+                                      return shamsiDate.replace(
+                                        /(\d+)/g,
+                                        (_, p1) =>
+                                          String.fromCharCode(
+                                            p1.charCodeAt(0) + 1728
+                                          )
+                                      );
+                                    })();
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
                                     }
-                                  })()}
-                                  key={currentIndex}
-                                  name={(() => {
-                                    try {
-                                      return currentItem.user.name;
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
+                                    throw e;
+                                  }
+                                })()}
+                                events={(() => {
+                                  try {
+                                    return currentItem.events;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
                                     }
-                                  })()}
-                                />
-                              );
-                            })
-                          : null}
-                      </div>
+                                    throw e;
+                                  }
+                                })()}
+                                family={(() => {
+                                  try {
+                                    return currentItem.user.family;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                                isDoctor={(() => {
+                                  try {
+                                    return (
+                                      currentItem.user.job_title === "doctor"
+                                    );
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return false;
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                                key={currentIndex}
+                                name={(() => {
+                                  try {
+                                    return currentItem.user.name;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              />
+                            );
+                          })}
+                        </div>
+                      ) : null}
+                      {(() => {
+                        try {
+                          return (
+                            Array.isArray($state.fetchData2?.data) &&
+                            $state.fetchData2.data?.length == 0
+                          );
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <Stack__
+                          as={"div"}
+                          hasGap={true}
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox___7I6
+                          )}
+                        >
+                          <Icon16Icon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__heNuu
+                            )}
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text___7Vqkb
+                            )}
+                          >
+                            {
+                              "\u0648\u06cc\u062f\u06cc\u0648 \u0636\u0628\u0637 \u0634\u062f\u0647 \u0627\u06cc \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u062f \u06cc\u0627 \u062a\u0646\u0638\u06cc\u0645\u0627\u062a SDK \u0628\u0647\u200c\u062f\u0631\u0633\u062a\u06cc \u0628\u0631\u0627\u06cc \u0627\u06cc\u0646 \u0645\u0646\u0648 \u0627\u0639\u0645\u0627\u0644 \u0646\u0634\u062f\u0647 \u0627\u0633\u062a."
+                            }
+                          </div>
+                        </Stack__>
+                      ) : null}
                     </FetchData>
                   </Stack__>
                 </div>
