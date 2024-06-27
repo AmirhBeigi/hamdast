@@ -272,7 +272,7 @@ function PlasmicFetchData__RenderFunc(props: {
             $steps["fetchData"] = await $steps["fetchData"];
           }
 
-          $steps["updateData"] = !!$steps.fetchData
+          $steps["updateData"] = !!$steps.fetchData?.data
             ? (() => {
                 const actionArgs = {
                   variable: {
@@ -301,7 +301,7 @@ function PlasmicFetchData__RenderFunc(props: {
             $steps["updateData"] = await $steps["updateData"];
           }
 
-          $steps["updateData3"] = true
+          $steps["updateData3"] = $props.enabled
             ? (() => {
                 const actionArgs = {
                   variable: {

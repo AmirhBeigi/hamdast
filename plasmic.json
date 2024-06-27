@@ -490,6 +490,11 @@
           "id": "rQsx35tf_bcf",
           "name": "Icon15Icon",
           "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon15.tsx"
+        },
+        {
+          "id": "zU9ql4OiZyfC",
+          "name": "Icon16Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon16.tsx"
         }
       ],
       "images": [],
@@ -576,6 +581,28 @@
       ],
       "customFunctions": [],
       "jsBundleThemes": []
+    },
+    {
+      "projectId": "kS7YGZfVr6mU43XDQjXELc",
+      "projectApiToken": "ByNEUEKB7Hd9g2PkeOVot8RZTanYGn3rlmcjYTbULlTb9TEjfypxJ4uDH0HeEMQazKWvfHB4CFNXVgy8YmEyA",
+      "projectName": "react-chartjs-2",
+      "version": ">0.0.0",
+      "cssFilePath": "plasmic/react_chartjs_2/plasmic.module.css",
+      "components": [],
+      "icons": [],
+      "images": [],
+      "indirect": true,
+      "globalContextsFilePath": "",
+      "splitsProviderFilePath": "",
+      "codeComponents": [
+        {
+          "id": "0Qywk3bhW-8",
+          "name": "SimpleChart",
+          "displayName": "hostless-react-chartjs-2-simple-chart",
+          "componentImportPath": "@plasmicpkgs/react-chartjs-2"
+        }
+      ],
+      "customFunctions": []
     }
   ],
   "globalVariants": {

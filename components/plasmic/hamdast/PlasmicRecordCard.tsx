@@ -79,13 +79,15 @@ export type PlasmicRecordCard__ArgsType = {
   family?: string;
   isDoctor?: boolean;
   events?: any;
+  date?: string;
 };
 type ArgPropType = keyof PlasmicRecordCard__ArgsType;
 export const PlasmicRecordCard__ArgProps = new Array<ArgPropType>(
   "name",
   "family",
   "isDoctor",
-  "events"
+  "events",
+  "date"
 );
 
 export type PlasmicRecordCard__OverridesType = {
@@ -98,6 +100,7 @@ export interface DefaultRecordCardProps {
   family?: string;
   isDoctor?: boolean;
   events?: any;
+  date?: string;
   className?: string;
 }
 
@@ -271,60 +274,6 @@ function PlasmicRecordCard__RenderFunc(props: {
         <Stack__
           as={"div"}
           hasGap={true}
-          className={classNames(projectcss.all, sty.freeBox__jAWeR)}
-        >
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__w4EfD)}
-          >
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text___3QM8B
-              )}
-            >
-              {"\u0645\u062f\u062a \u0632\u0645\u0627\u0646:"}
-            </div>
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__dFkZ
-              )}
-            >
-              {"\u06f0\u06f1:\u06f2\u06f4"}
-            </div>
-          </Stack__>
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__yJi0J)}
-          >
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__gbLzN
-              )}
-            >
-              {"\u06a9\u0644\u06cc\u06a9:"}
-            </div>
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__xcKXv
-              )}
-            >
-              {"\u06f1\u06f0"}
-            </div>
-          </Stack__>
-        </Stack__>
-        <Stack__
-          as={"div"}
-          hasGap={true}
           className={classNames(projectcss.all, sty.freeBox__x5Bsa)}
         >
           <Stack__
@@ -339,9 +288,21 @@ function PlasmicRecordCard__RenderFunc(props: {
                 sty.text__uqS9C
               )}
             >
-              {
-                "\u06f3\u06f1 \u062e\u0631\u062f\u0627\u062f \u06f0\u06f4:\u06f2\u06f0 \u0628.\u0638"
-              }
+              <React.Fragment>
+                {(() => {
+                  try {
+                    return $props.date;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return "\u06f3\u06f1 \u062e\u0631\u062f\u0627\u062f \u06f0\u06f4:\u06f2\u06f0 \u0628.\u0638";
+                    }
+                    throw e;
+                  }
+                })()}
+              </React.Fragment>
             </div>
           </Stack__>
         </Stack__>
@@ -442,10 +403,6 @@ function PlasmicRecordCard__RenderFunc(props: {
               triggerOnce={true}
             >
               <div className={classNames(projectcss.all, sty.freeBox__duwmQ)}>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___26Npy)}
-                />
-
                 <div className={classNames(projectcss.all, sty.freeBox__dyKds)}>
                   <SideEffect
                     data-plasmic-name={"sideEffect"}

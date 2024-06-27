@@ -113,116 +113,6 @@
   border-radius: 6px;
   padding: 2px 6px;
 }
-.freeBox__jAWeR {
-  display: flex;
-  position: relative;
-  flex-direction: row;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
-}
-.freeBox__jAWeR > :global(.__wab_flex-container) {
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: flex-start;
-  min-width: 0;
-  margin-left: calc(0px - 13px);
-  width: calc(100% + 13px);
-}
-.freeBox__jAWeR > :global(.__wab_flex-container) > *,
-.freeBox__jAWeR > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.freeBox__jAWeR > :global(.__wab_flex-container) > picture > img,
-.freeBox__jAWeR
-  > :global(.__wab_flex-container)
-  > :global(.__wab_slot)
-  > picture
-  > img {
-  margin-left: 13px;
-}
-.freeBox__w4EfD {
-  display: flex;
-  position: relative;
-  flex-direction: row;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-}
-.freeBox__w4EfD > :global(.__wab_flex-container) {
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  margin-left: calc(0px - 5px);
-  width: calc(100% + 5px);
-}
-.freeBox__w4EfD > :global(.__wab_flex-container) > *,
-.freeBox__w4EfD > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.freeBox__w4EfD > :global(.__wab_flex-container) > picture > img,
-.freeBox__w4EfD
-  > :global(.__wab_flex-container)
-  > :global(.__wab_slot)
-  > picture
-  > img {
-  margin-left: 5px;
-}
-.text___3QM8B {
-  position: relative;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  font-weight: 500;
-  font-size: 12px;
-}
-.text__dFkZ {
-  position: relative;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  font-weight: 400;
-  font-size: 12px;
-}
-.freeBox__yJi0J {
-  display: flex;
-  position: relative;
-  flex-direction: row;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-}
-.freeBox__yJi0J > :global(.__wab_flex-container) {
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  margin-left: calc(0px - 5px);
-  width: calc(100% + 5px);
-}
-.freeBox__yJi0J > :global(.__wab_flex-container) > *,
-.freeBox__yJi0J > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.freeBox__yJi0J > :global(.__wab_flex-container) > picture > img,
-.freeBox__yJi0J
-  > :global(.__wab_flex-container)
-  > :global(.__wab_slot)
-  > picture
-  > img {
-  margin-left: 5px;
-}
-.text__gbLzN {
-  position: relative;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  font-weight: 500;
-  font-size: 12px;
-  padding-bottom: 0px;
-}
-.text__xcKXv {
-  position: relative;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  font-weight: 400;
-  font-size: 12px;
-}
 .freeBox__x5Bsa {
   display: flex;
   position: relative;
@@ -356,20 +246,6 @@
   border-top-left-radius: 20px;
   min-width: 0;
   min-height: 0;
-}
-.freeBox___26Npy {
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  width: 20rem;
-  height: auto;
-  max-width: 100%;
-  background: #c3d8df0d;
-  flex-shrink: 0;
-  padding: 8px;
-  border-left: 1px solid #e8eff2;
 }
 .freeBox__dyKds {
   display: flex;
