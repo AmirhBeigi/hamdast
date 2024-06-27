@@ -160,7 +160,20 @@ function PlasmicAuthProvider__RenderFunc(props: {
         path: "loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => true
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return typeof window !== "undefined" ? !window.data?.user : true;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return true;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -194,15 +207,15 @@ function PlasmicAuthProvider__RenderFunc(props: {
         onMount={async () => {
           const $steps = {};
 
-          $steps["loadingStart"] = true
+          $steps["getProfileInWindow"] = !!window.data?.user?.id
             ? (() => {
                 const actionArgs = {
                   variable: {
                     objRoot: $state,
-                    variablePath: ["loading"]
+                    variablePath: ["user"]
                   },
                   operation: 0,
-                  value: true
+                  value: window.data?.user
                 };
                 return (({ variable, value, startIndex, deleteCount }) => {
                   if (!variable) {
@@ -216,6 +229,66 @@ function PlasmicAuthProvider__RenderFunc(props: {
               })()
             : undefined;
           if (
+            $steps["getProfileInWindow"] != null &&
+            typeof $steps["getProfileInWindow"] === "object" &&
+            typeof $steps["getProfileInWindow"].then === "function"
+          ) {
+            $steps["getProfileInWindow"] = await $steps["getProfileInWindow"];
+          }
+
+          $steps["getAppsInWindow"] =
+            window?.data?.apps?.length > 0
+              ? (() => {
+                  const actionArgs = {
+                    variable: {
+                      objRoot: $state,
+                      variablePath: ["apps"]
+                    },
+                    operation: 0,
+                    value: window.data?.apps
+                  };
+                  return (({ variable, value, startIndex, deleteCount }) => {
+                    if (!variable) {
+                      return;
+                    }
+                    const { objRoot, variablePath } = variable;
+
+                    $stateSet(objRoot, variablePath, value);
+                    return value;
+                  })?.apply(null, [actionArgs]);
+                })()
+              : undefined;
+          if (
+            $steps["getAppsInWindow"] != null &&
+            typeof $steps["getAppsInWindow"] === "object" &&
+            typeof $steps["getAppsInWindow"].then === "function"
+          ) {
+            $steps["getAppsInWindow"] = await $steps["getAppsInWindow"];
+          }
+
+          $steps["loadingStart"] =
+            !$state.user && !$state.apps
+              ? (() => {
+                  const actionArgs = {
+                    variable: {
+                      objRoot: $state,
+                      variablePath: ["loading"]
+                    },
+                    operation: 0,
+                    value: true
+                  };
+                  return (({ variable, value, startIndex, deleteCount }) => {
+                    if (!variable) {
+                      return;
+                    }
+                    const { objRoot, variablePath } = variable;
+
+                    $stateSet(objRoot, variablePath, value);
+                    return value;
+                  })?.apply(null, [actionArgs]);
+                })()
+              : undefined;
+          if (
             $steps["loadingStart"] != null &&
             typeof $steps["loadingStart"] === "object" &&
             typeof $steps["loadingStart"].then === "function"
@@ -223,19 +296,20 @@ function PlasmicAuthProvider__RenderFunc(props: {
             $steps["loadingStart"] = await $steps["loadingStart"];
           }
 
-          $steps["getProfile"] = true
-            ? (() => {
-                const actionArgs = {
-                  args: [
-                    undefined,
-                    "https://hamdast.paziresh24.com/api/v1/profile"
-                  ]
-                };
-                return $globalActions["Fragment.apiRequest"]?.apply(null, [
-                  ...actionArgs.args
-                ]);
-              })()
-            : undefined;
+          $steps["getProfile"] =
+            !$state.user?.id && !$state.apps?.length > 0
+              ? (() => {
+                  const actionArgs = {
+                    args: [
+                      undefined,
+                      "https://hamdast.paziresh24.com/api/v1/profile"
+                    ]
+                  };
+                  return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                    ...actionArgs.args
+                  ]);
+                })()
+              : undefined;
           if (
             $steps["getProfile"] != null &&
             typeof $steps["getProfile"] === "object" &&
@@ -244,7 +318,7 @@ function PlasmicAuthProvider__RenderFunc(props: {
             $steps["getProfile"] = await $steps["getProfile"];
           }
 
-          $steps["updateUser"] = !!$steps.getProfile.data
+          $steps["updateUser"] = !!$steps.getProfile?.data
             ? (() => {
                 const actionArgs = {
                   variable: {
@@ -274,7 +348,9 @@ function PlasmicAuthProvider__RenderFunc(props: {
           }
 
           $steps["errorProfile"] =
-            $steps.getProfile.status != 200
+            $steps.getProfile?.status != 200 &&
+            !$state.user?.id &&
+            !$state.apps?.length > 0
               ? (() => {
                   const actionArgs = {
                     variable: {
@@ -303,7 +379,7 @@ function PlasmicAuthProvider__RenderFunc(props: {
             $steps["errorProfile"] = await $steps["errorProfile"];
           }
 
-          $steps["getApps"] = !!$steps.getProfile.data
+          $steps["getApps"] = !!$steps.getProfile?.data
             ? (() => {
                 const actionArgs = {
                   args: [
@@ -325,7 +401,7 @@ function PlasmicAuthProvider__RenderFunc(props: {
           }
 
           $steps["updateApps"] =
-            !!$steps.getProfile.data && !!$steps.getApps.data
+            !!$steps.getProfile?.data && !!$steps.getApps?.data
               ? (() => {
                   const actionArgs = {
                     variable: {
@@ -355,7 +431,7 @@ function PlasmicAuthProvider__RenderFunc(props: {
           }
 
           $steps["loadingStop2"] =
-            !!$steps.getProfile.data && !!$steps.getApps.data
+            !!$steps.getProfile?.data && !!$steps.getApps?.data
               ? (() => {
                   const actionArgs = {
                     variable: {
@@ -382,6 +458,30 @@ function PlasmicAuthProvider__RenderFunc(props: {
             typeof $steps["loadingStop2"].then === "function"
           ) {
             $steps["loadingStop2"] = await $steps["loadingStop2"];
+          }
+
+          $steps["setInWindow"] =
+            !!$steps.getProfile?.data && !!$steps.getApps?.data
+              ? (() => {
+                  const actionArgs = {
+                    customFunction: async () => {
+                      return (window.data = {
+                        user: $steps.getProfile.data,
+                        apps: $steps.getApps.data
+                      });
+                    }
+                  };
+                  return (({ customFunction }) => {
+                    return customFunction();
+                  })?.apply(null, [actionArgs]);
+                })()
+              : undefined;
+          if (
+            $steps["setInWindow"] != null &&
+            typeof $steps["setInWindow"] === "object" &&
+            typeof $steps["setInWindow"].then === "function"
+          ) {
+            $steps["setInWindow"] = await $steps["setInWindow"];
           }
         }}
       />

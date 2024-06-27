@@ -416,6 +416,20 @@
           "cssFilePath": "plasmic/hamdast/PlasmicFilter.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "nAbrCePpa8PZ",
+          "name": "Statistics",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicStatistics.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/app/[id]/statistics.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicStatistics.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/app/[id]/statistics"
         }
       ],
       "icons": [
@@ -508,6 +522,11 @@
           "id": "zU9ql4OiZyfC",
           "name": "Icon16Icon",
           "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon16.tsx"
+        },
+        {
+          "id": "t3gBl-ZhsAb2",
+          "name": "Icon17Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon17.tsx"
         }
       ],
       "images": [],
