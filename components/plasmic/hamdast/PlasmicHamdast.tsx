@@ -198,6 +198,7 @@ function PlasmicHamdast__RenderFunc(props: {
               const $steps = {};
 
               $steps["goToSessionReplay"] =
+                Array.isArray($state.authProvider.apps) &&
                 $state.authProvider.apps?.length > 0
                   ? (() => {
                       const actionArgs = {
