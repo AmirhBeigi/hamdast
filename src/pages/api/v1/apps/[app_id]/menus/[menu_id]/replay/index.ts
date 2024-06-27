@@ -4,11 +4,27 @@ import { pb } from "../../../../../../../../../pocketbase";
 import config from "next/config";
 const { publicRuntimeConfig } = config();
 
+function getDateDaysAgo(daysAgo: string) {
+  // Create a new Date object for the current date
+  const currentDate = new Date();
+
+  // Subtract the specified number of days from the current date
+  currentDate.setDate(currentDate.getDate() - +daysAgo);
+
+  // Get the day, month, and year
+  const day = String(currentDate.getDate()).padStart(2, "0");
+  const month = String(currentDate.getMonth() + 1).padStart(2, "0"); // Months are zero-based
+  const year = currentDate.getFullYear();
+
+  // Return the date in dd-mm-yyyy format
+  return `${year}-${month}-${day}`;
+}
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  const { app_id, menu_id } = req.query;
+  const { app_id, menu_id, days_ago } = req.query;
   const cookieStore = req.cookies;
   const token =
     (cookieStore["token"] as string) ||
@@ -29,7 +45,10 @@ export default async function handler(
   );
 
   const session = await pb.collection("replay").getFullList({
-    filter: `app="${app_id}" && menu="${menu_id}"`,
+    filter: `app="${app_id}" && menu="${menu_id}" && updated >= "${getDateDaysAgo(
+      days_ago as string
+    )} 00:00:00"`,
+    sort: "-updated",
   });
 
   res.status(200).json(
