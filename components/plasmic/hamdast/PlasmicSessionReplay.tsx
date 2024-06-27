@@ -64,6 +64,7 @@ import AuthProvider from "../../AuthProvider"; // plasmic-import: KTPu1eZupEdG/c
 import Select from "../../Select"; // plasmic-import: gnuET5DaB7nZ/component
 import Menu from "../../Menu"; // plasmic-import: 73TqujunaOu5/component
 import FetchData from "../../FetchData"; // plasmic-import: -UcPqMSXVAGv/component
+import Filter from "../../Filter"; // plasmic-import: YY41SIghQUgw/component
 import RecordCard from "../../RecordCard"; // plasmic-import: 07VZfuNk1JDL/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -98,6 +99,7 @@ export type PlasmicSessionReplay__OverridesType = {
   select?: Flex__<typeof Select>;
   link?: Flex__<"a"> & Partial<LinkProps>;
   fetchData?: Flex__<typeof FetchData>;
+  filter?: Flex__<typeof Filter>;
   fetchData2?: Flex__<typeof FetchData>;
   recordCard?: Flex__<typeof RecordCard>;
 };
@@ -208,6 +210,12 @@ function PlasmicSessionReplay__RenderFunc(props: {
               throw e;
             }
           })()
+      },
+      {
+        path: "day",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 1
       }
     ],
     [$props, $ctx, $refs]
@@ -699,6 +707,48 @@ function PlasmicSessionReplay__RenderFunc(props: {
                                 onClick={async () => {
                                   const $steps = {};
 
+                                  $steps["updateDay"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: ["day"]
+                                          },
+                                          operation: 0,
+                                          value: 1
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["updateDay"] != null &&
+                                    typeof $steps["updateDay"] === "object" &&
+                                    typeof $steps["updateDay"].then ===
+                                      "function"
+                                  ) {
+                                    $steps["updateDay"] = await $steps[
+                                      "updateDay"
+                                    ];
+                                  }
+
                                   $steps["updateMenu"] = true
                                     ? (() => {
                                         const actionArgs = {
@@ -764,76 +814,121 @@ function PlasmicSessionReplay__RenderFunc(props: {
                           sty.freeBox__qIInK
                         )}
                       >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__urikq
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__hlTnc
-                            )}
-                          >
-                            {"\u0627\u0645\u0631\u0648\u0632"}
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__m9Zj4
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__nD8L
-                            )}
-                          >
-                            {
-                              "\u06f3 \u0631\u0648\u0632 \u0627\u062e\u06cc\u0631"
+                        {(_par =>
+                          !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                          (() => {
+                            try {
+                              return [
+                                {
+                                  text: "امروز",
+                                  value: 1
+                                },
+                                {
+                                  text: "۳ روز اخیر",
+                                  value: 3
+                                },
+                                {
+                                  text: "۷ روز اخیر",
+                                  value: 7
+                                },
+                                {
+                                  text: "۳۰ روز اخیر",
+                                  value: 30
+                                }
+                              ];
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return [];
+                              }
+                              throw e;
                             }
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__s8I2M
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__lFhZ9
-                            )}
-                          >
-                            {
-                              "\u06f7 \u0631\u0648\u0632 \u0627\u062e\u06cc\u0631"
-                            }
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__uwSQs
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__pUaYf
-                            )}
-                          >
-                            {
-                              "\u06f3\u06f0 \u0631\u0648\u0632 \u0627\u062e\u06cc\u0631"
-                            }
-                          </div>
-                        </div>
+                          })()
+                        ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                          const currentItem = __plasmic_item_0;
+                          const currentIndex = __plasmic_idx_0;
+                          return (
+                            <Filter
+                              data-plasmic-name={"filter"}
+                              data-plasmic-override={overrides.filter}
+                              active={(() => {
+                                try {
+                                  return currentItem.value === $state.day;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return [];
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                              className={classNames(
+                                "__wab_instance",
+                                sty.filter
+                              )}
+                              key={currentIndex}
+                              onClick={async () => {
+                                const $steps = {};
+
+                                $steps["updateDay"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        variable: {
+                                          objRoot: $state,
+                                          variablePath: ["day"]
+                                        },
+                                        operation: 0,
+                                        value: currentItem.value
+                                      };
+                                      return (({
+                                        variable,
+                                        value,
+                                        startIndex,
+                                        deleteCount
+                                      }) => {
+                                        if (!variable) {
+                                          return;
+                                        }
+                                        const { objRoot, variablePath } =
+                                          variable;
+
+                                        $stateSet(objRoot, variablePath, value);
+                                        return value;
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["updateDay"] != null &&
+                                  typeof $steps["updateDay"] === "object" &&
+                                  typeof $steps["updateDay"].then === "function"
+                                ) {
+                                  $steps["updateDay"] = await $steps[
+                                    "updateDay"
+                                  ];
+                                }
+                              }}
+                              text={(() => {
+                                try {
+                                  return currentItem.text;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            />
+                          );
+                        })}
                       </Stack__>
                     </div>
                     <FetchData
@@ -869,7 +964,7 @@ function PlasmicSessionReplay__RenderFunc(props: {
                       ])}
                       url={(() => {
                         try {
-                          return `https://hamdast.paziresh24.com/api/v1/apps/${$state.select.value}/menus/${$state.menu}/replay`;
+                          return `https://hamdast.paziresh24.com/api/v1/apps/${$state.select.value}/menus/${$state.menu}/replay?days_ago=${$state.day}`;
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
@@ -1076,7 +1171,7 @@ function PlasmicSessionReplay__RenderFunc(props: {
                             )}
                           >
                             {
-                              "\u0648\u06cc\u062f\u06cc\u0648 \u0636\u0628\u0637 \u0634\u062f\u0647 \u0627\u06cc \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u062f \u06cc\u0627 \u062a\u0646\u0638\u06cc\u0645\u0627\u062a SDK \u0628\u0647\u200c\u062f\u0631\u0633\u062a\u06cc \u0628\u0631\u0627\u06cc \u0627\u06cc\u0646 \u0645\u0646\u0648 \u0627\u0639\u0645\u0627\u0644 \u0646\u0634\u062f\u0647 \u0627\u0633\u062a."
+                              "\u0648\u06cc\u062f\u06cc\u0648 \u0636\u0628\u0637 \u0634\u062f\u0647 \u0627\u06cc \u062f\u0631 \u0627\u06cc\u0646 \u062a\u0627\u0631\u06cc\u062e \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u062f \u06cc\u0627 \u062a\u0646\u0638\u06cc\u0645\u0627\u062a SDK \u0628\u0647\u200c\u062f\u0631\u0633\u062a\u06cc \u0628\u0631\u0627\u06cc \u0627\u06cc\u0646 \u0645\u0646\u0648 \u0627\u0639\u0645\u0627\u0644 \u0646\u0634\u062f\u0647 \u0627\u0633\u062a."
                             }
                           </div>
                         </Stack__>
@@ -1101,6 +1196,7 @@ const PlasmicDescendants = {
     "select",
     "link",
     "fetchData",
+    "filter",
     "fetchData2",
     "recordCard"
   ],
@@ -1110,12 +1206,14 @@ const PlasmicDescendants = {
     "select",
     "link",
     "fetchData",
+    "filter",
     "fetchData2",
     "recordCard"
   ],
   select: ["select"],
   link: ["link"],
   fetchData: ["fetchData"],
+  filter: ["filter"],
   fetchData2: ["fetchData2", "recordCard"],
   recordCard: ["recordCard"]
 } as const;
@@ -1129,6 +1227,7 @@ type NodeDefaultElementType = {
   select: typeof Select;
   link: "a";
   fetchData: typeof FetchData;
+  filter: typeof Filter;
   fetchData2: typeof FetchData;
   recordCard: typeof RecordCard;
 };
@@ -1198,6 +1297,7 @@ export const PlasmicSessionReplay = Object.assign(
     select: makeNodeComponent("select"),
     link: makeNodeComponent("link"),
     fetchData: makeNodeComponent("fetchData"),
+    filter: makeNodeComponent("filter"),
     fetchData2: makeNodeComponent("fetchData2"),
     recordCard: makeNodeComponent("recordCard"),
 

@@ -403,6 +403,19 @@
           "cssFilePath": "plasmic/hamdast/PlasmicMenu.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "YY41SIghQUgw",
+          "name": "Filter",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicFilter.tsx",
+          "importSpec": {
+            "modulePath": "Filter.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicFilter.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -602,7 +615,8 @@
           "componentImportPath": "@plasmicpkgs/react-chartjs-2"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     }
   ],
   "globalVariants": {
