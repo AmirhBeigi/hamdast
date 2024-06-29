@@ -6,6 +6,7 @@ ENV DOCKER_BUILDKIT 1
 ENV NEXT_TELEMETRY_DISABLED 1
 
 COPY package.json ./ 
+
 RUN npm config set fetch-retry-mintimeout 100000 && npm config set fetch-retry-maxtimeout 600000 
 RUN npm install --force && npm cache clean --force
 

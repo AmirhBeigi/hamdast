@@ -1,0 +1,36 @@
+.root {
+  display: inline-flex;
+  flex-direction: row;
+  position: relative;
+  width: auto;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 4px 12px;
+  border: 1px solid #eef3f5;
+}
+.rootactive {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  background: #eef3f5;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  border-radius: 8px;
+  padding: 4px 12px;
+  border: 1px solid #eef3f5;
+}
+.text {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-weight: 500;
+  font-size: 14px;
+  min-width: 0;
+}
