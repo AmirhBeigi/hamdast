@@ -202,7 +202,7 @@ function PlasmicHamdast__RenderFunc(props: {
                 $state.authProvider.apps?.length > 0
                   ? (() => {
                       const actionArgs = {
-                        destination: `/app/${(() => {
+                        destination: `/apps/${(() => {
                           try {
                             return $state.authProvider.apps[0].id;
                           } catch (e) {

@@ -494,7 +494,7 @@ function PlasmicStatistics__RenderFunc(props: {
                         $steps["goToSessionReplay"] = true
                           ? (() => {
                               const actionArgs = {
-                                destination: `/app/${(() => {
+                                destination: `/apps/${(() => {
                                   try {
                                     return $ctx.params.id;
                                   } catch (e) {

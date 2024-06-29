@@ -15,11 +15,9 @@ export interface GlobalContextsProviderProps {
   fragmentProps?: Partial<
     Omit<React.ComponentProps<typeof Fragment>, "children">
   >;
-
   growthBookProps?: Partial<
     Omit<React.ComponentProps<typeof GrowthBook>, "children">
   >;
-
   splunkProps?: Partial<Omit<React.ComponentProps<typeof Splunk>, "children">>;
 }
 
@@ -41,6 +39,7 @@ export default function GlobalContextsProvider(
           ? fragmentProps.previewApiConfig!
           : undefined
       }
+      rtl={fragmentProps && "rtl" in fragmentProps ? fragmentProps.rtl! : true}
     >
       <GrowthBook
         {...growthBookProps}

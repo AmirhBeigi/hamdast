@@ -344,7 +344,7 @@
           "projectId": "bE9NMB942w5e6uFrcCxfJN",
           "renderModuleFilePath": "plasmic/hamdast/PlasmicSessionReplay.tsx",
           "importSpec": {
-            "modulePath": "../src/pages/app/[id]/replay.tsx"
+            "modulePath": "../src/pages/apps/[id]/replay.tsx"
           },
           "cssFilePath": "plasmic/hamdast/PlasmicSessionReplay.module.css",
           "scheme": "blackbox",
@@ -424,12 +424,40 @@
           "projectId": "bE9NMB942w5e6uFrcCxfJN",
           "renderModuleFilePath": "plasmic/hamdast/PlasmicStatistics.tsx",
           "importSpec": {
-            "modulePath": "../src/pages/app/[id]/statistics.tsx"
+            "modulePath": "../src/pages/apps/[id]/statistics.tsx"
           },
           "cssFilePath": "plasmic/hamdast/PlasmicStatistics.module.css",
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/app/[id]/statistics"
+        },
+        {
+          "id": "IdTcu_EF7CVl",
+          "name": "NewApp",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicNewApp.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/apps/new.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicNewApp.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/apps/new"
+        },
+        {
+          "id": "uHyQ1YjItxHH",
+          "name": "NewPage",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicNewPage.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/new-page.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicNewPage.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/new-page"
         }
       ],
       "icons": [
@@ -581,6 +609,30 @@
           "name": "Splunk",
           "displayName": "Splunk",
           "componentImportPath": "@/fragment/splunk"
+        },
+        {
+          "id": "WnYiJcun2Nlj",
+          "name": "Select",
+          "displayName": "Select",
+          "componentImportPath": "@/fragment/components/select"
+        },
+        {
+          "id": "AWE69UKwmIyg",
+          "name": "Input",
+          "displayName": "Input",
+          "componentImportPath": "@/fragment/components/input"
+        },
+        {
+          "id": "Zc1MrGUtH5nc",
+          "name": "Switch",
+          "displayName": "Switch",
+          "componentImportPath": "@/fragment/components/switch"
+        },
+        {
+          "id": "WP6AANBbVJxr",
+          "name": "ApiRequest",
+          "displayName": "ApiRequest",
+          "componentImportPath": "@/fragment/components/api-request"
         }
       ],
       "customFunctions": []
