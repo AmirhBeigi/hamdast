@@ -2,12 +2,13 @@
   var head = document.getElementsByTagName("head")[0];
   var script = document.createElement("script");
   script.async = true;
+  script.id = "rrweb-hamdast-script";
   script.src =
     "https://hamdast.paziresh24.com/static/js/scripts/rrweb-all.min.js";
   head.appendChild(script);
 })();
 
-function hamdastCommunication({ clientKey, event, data, promise }) {
+function hamdastCommunication({ clientKey, event, data, promise = false }) {
   const message = {
     hamdast: {
       clientKey,
@@ -51,9 +52,13 @@ window.hamdast = {
   initialize({ clientKey }) {
     window.hamdast.clientKey = clientKey;
     hamdastCommunication({ clientKey, event: "HAMDAST_INITIALIZE" });
-    if (typeof window?.rrweb !== "undefined") {
-      window.hamdast?.replay?.record();
-    }
+    document
+      .getElementById("rrweb-hamdast-script")
+      .addEventListener("load", (event) => {
+        if (typeof window?.rrweb !== "undefined") {
+          window.hamdast?.replay?.record();
+        }
+      });
   },
   clientKey: null,
   getState(state) {
