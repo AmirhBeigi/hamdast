@@ -14,7 +14,6 @@ export const getState = {
           }
         );
         CACHE.user = userData.data?.users?.[0];
-        return userData.data?.users?.[0];
       }
       return CACHE.user;
     } catch (error) {
@@ -27,19 +26,18 @@ export const getState = {
   },
   async provider() {
     try {
-      if (!CACHE.user?.id && !CACHE.provider?.id) {
-        const user = await this.user();
+      if (!CACHE.provider?.id) {
+        await this.user();
         const providerData = await axios.get(
           "https://apigw.paziresh24.com/v1/providers",
           {
             params: {
-              user_id: user.id,
+              user_id: CACHE.user?.id,
             },
             withCredentials: true,
           }
         );
         CACHE.provider = providerData.data?.providers?.[0];
-        return providerData.data?.providers?.[0];
       }
       return CACHE.provider;
     } catch (error) {
