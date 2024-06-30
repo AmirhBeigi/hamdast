@@ -34,25 +34,27 @@ function Bridge() {
   };
 
   useEffect(() => {
-    window.addEventListener("message", (messageEvent) => {
-      if (messageEvent.data?.hamdast?.event === "HAMDAST_GET_STATE") {
-        sendEvent(messageEvent.data?.hamdast);
-      }
+    if (app && menu) {
+      window.addEventListener("message", (messageEvent) => {
+        if (messageEvent.data?.hamdast?.event === "HAMDAST_GET_STATE") {
+          sendEvent(messageEvent.data?.hamdast);
+        }
 
-      if (
-        messageEvent.data?.hamdast?.event === "HAMDAST_REPLAY_SAVE" &&
-        app &&
-        menu
-      ) {
-        saveReplay({
-          menu,
-          app,
-          uniqueId,
-          events: messageEvent.data?.hamdast?.data?.events,
-        });
-      }
-    });
-  }, []);
+        if (
+          messageEvent.data?.hamdast?.event === "HAMDAST_REPLAY_SAVE" &&
+          app &&
+          menu
+        ) {
+          saveReplay({
+            menu,
+            app,
+            uniqueId,
+            events: messageEvent.data?.hamdast?.data?.events,
+          });
+        }
+      });
+    }
+  }, [app, menu]);
 
   if (!embedSrc?.href) return null;
   return (

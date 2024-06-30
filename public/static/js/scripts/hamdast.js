@@ -52,13 +52,13 @@ window.hamdast = {
   initialize({ clientKey }) {
     window.hamdast.clientKey = clientKey;
     hamdastCommunication({ clientKey, event: "HAMDAST_INITIALIZE" });
-    document
-      .getElementById("rrweb-hamdast-script")
-      .addEventListener("load", (event) => {
-        if (typeof window?.rrweb !== "undefined") {
-          window.hamdast?.replay?.record();
-        }
-      });
+    // document
+    //   .getElementById("rrweb-hamdast-script")
+    //   .addEventListener("load", (event) => {
+    if (typeof window?.rrweb !== "undefined") {
+      window.hamdast?.replay?.record();
+    }
+    // });
   },
   clientKey: null,
   getState(state) {
