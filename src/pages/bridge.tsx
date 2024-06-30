@@ -48,7 +48,7 @@ function Bridge() {
           saveReplay({
             menu,
             app,
-            uniqueId,
+            uniqueId: uniqueId.current,
             events: messageEvent.data?.hamdast?.data?.events,
           });
         }
