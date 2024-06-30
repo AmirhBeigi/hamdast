@@ -1,4 +1,6 @@
 import { getState } from "@/lib/bridge/getState";
+import { saveReplay } from "@/lib/bridge/saveReplay";
+import { generateUniqueId } from "@/lib/utils";
 import { useRouter } from "next/router";
 import { LegacyRef, useEffect, useRef } from "react";
 
@@ -8,6 +10,7 @@ function Bridge() {
     isReady,
   } = useRouter();
   const iframe = useRef<HTMLIFrameElement | undefined>();
+  const uniqueId = useRef(generateUniqueId(15));
 
   let embedSrc: any;
   if (isReady && src) {
@@ -17,7 +20,7 @@ function Bridge() {
   }
 
   const sendEvent = async (event: any) => {
-    const data = await getState[event?.data?.state as "user"]();
+    const data = await getState[event?.data?.state as "user" | "provider"]();
     iframe.current?.contentWindow?.postMessage(
       {
         hamdast: {
@@ -34,6 +37,19 @@ function Bridge() {
     window.addEventListener("message", (messageEvent) => {
       if (messageEvent.data?.hamdast?.event === "HAMDAST_GET_STATE") {
         sendEvent(messageEvent.data?.hamdast);
+      }
+
+      if (
+        messageEvent.data?.hamdast?.event === "HAMDAST_REPLAY_SAVE" &&
+        app &&
+        menu
+      ) {
+        saveReplay({
+          menu,
+          app,
+          uniqueId,
+          events: messageEvent.data?.hamdast?.data?.events,
+        });
       }
     });
   }, []);
