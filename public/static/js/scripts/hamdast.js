@@ -29,7 +29,7 @@ function hamdastFireWhenReady(function1, callback) {
       callback();
     }
   } else {
-    setTimeout(hamdastFireWhenReady, 100);
+    setTimeout(() => hamdastFireWhenReady(function1, callback), 100);
   }
 }
 
@@ -62,7 +62,7 @@ window.hamdast = {
   initialize({ clientKey }) {
     window.hamdast.clientKey = clientKey;
     hamdastCommunication({ clientKey, event: "HAMDAST_INITIALIZE" });
-    hamdastFireWhenReady(window?.rrweb, window.hamdast?.replay?.record);
+    hamdastFireWhenReady(window?.rrweb?.record, window.hamdast?.replay?.record);
   },
   clientKey: null,
   getState(state) {
