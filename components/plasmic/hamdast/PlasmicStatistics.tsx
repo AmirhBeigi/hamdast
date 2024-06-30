@@ -79,6 +79,7 @@ import Icon9Icon from "./icons/PlasmicIcon__Icon9"; // plasmic-import: ly5Yl8idG
 import Icon13Icon from "./icons/PlasmicIcon__Icon13"; // plasmic-import: SeV8a-Sb0Haa/icon
 import Icon15Icon from "./icons/PlasmicIcon__Icon15"; // plasmic-import: rQsx35tf_bcf/icon
 import Icon17Icon from "./icons/PlasmicIcon__Icon17"; // plasmic-import: t3gBl-ZhsAb2/icon
+import Icon18Icon from "./icons/PlasmicIcon__Icon18"; // plasmic-import: 1FObiVFN1kNa/icon
 
 createPlasmicElementProxy;
 
@@ -1065,6 +1066,28 @@ function PlasmicStatistics__RenderFunc(props: {
                         })}
                       </Stack__>
                     </div>
+                    <Stack__
+                      as={"div"}
+                      hasGap={true}
+                      className={classNames(projectcss.all, sty.freeBox__t4Zgx)}
+                    >
+                      <Icon18Icon
+                        className={classNames(projectcss.all, sty.svg__hCh1A)}
+                        role={"img"}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__poXpJ
+                        )}
+                      >
+                        {
+                          "\u0622\u0645\u0627\u0631\u06cc \u062f\u0631 \u0627\u06cc\u0646 \u062a\u0627\u0631\u06cc\u062e \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u062f."
+                        }
+                      </div>
+                    </Stack__>
                   </Stack__>
                 </div>
               </div>

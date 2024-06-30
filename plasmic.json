@@ -444,20 +444,6 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/apps/new"
-        },
-        {
-          "id": "uHyQ1YjItxHH",
-          "name": "NewPage",
-          "type": "managed",
-          "projectId": "bE9NMB942w5e6uFrcCxfJN",
-          "renderModuleFilePath": "plasmic/hamdast/PlasmicNewPage.tsx",
-          "importSpec": {
-            "modulePath": "../src/pages/new-page.tsx"
-          },
-          "cssFilePath": "plasmic/hamdast/PlasmicNewPage.module.css",
-          "scheme": "blackbox",
-          "componentType": "page",
-          "path": "/new-page"
         }
       ],
       "icons": [
@@ -555,6 +541,11 @@
           "id": "t3gBl-ZhsAb2",
           "name": "Icon17Icon",
           "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon17.tsx"
+        },
+        {
+          "id": "1FObiVFN1kNa",
+          "name": "Icon18Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon18.tsx"
         }
       ],
       "images": [],
