@@ -237,6 +237,33 @@ function PlasmicHamdast__RenderFunc(props: {
               ) {
                 $steps["goToSessionReplay"] = await $steps["goToSessionReplay"];
               }
+
+              $steps["goToNewApp"] =
+                Array.isArray($state.authProvider.apps) &&
+                $state.authProvider.apps?.length == 0
+                  ? (() => {
+                      const actionArgs = { destination: `/apps/new` };
+                      return (({ destination }) => {
+                        if (
+                          typeof destination === "string" &&
+                          destination.startsWith("#")
+                        ) {
+                          document
+                            .getElementById(destination.substr(1))
+                            .scrollIntoView({ behavior: "smooth" });
+                        } else {
+                          __nextRouter?.push(destination);
+                        }
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["goToNewApp"] != null &&
+                typeof $steps["goToNewApp"] === "object" &&
+                typeof $steps["goToNewApp"].then === "function"
+              ) {
+                $steps["goToNewApp"] = await $steps["goToNewApp"];
+              }
             }}
           />
 
