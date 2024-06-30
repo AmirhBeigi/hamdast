@@ -89,7 +89,7 @@ window.hamdast = {
       });
 
       // save events every 10 seconds
-      setInterval(window.hamdast?.replay?.save, 10 * 1000);
+      setInterval(window.hamdast?.replay?.save, 20 * 1000);
     },
     save() {
       hamdastCommunication({
