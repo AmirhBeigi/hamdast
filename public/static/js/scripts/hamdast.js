@@ -3,7 +3,7 @@
   var script = document.createElement("script");
   script.async = true;
   script.src =
-    "https://cdn.jsdelivr.net/npm/rrweb@latest/dist/rrweb-all.min.js";
+    "https://hamdast.paziresh24.com/static/js/scripts/rrweb-all.min.js";
   head.appendChild(script);
 })();
 
