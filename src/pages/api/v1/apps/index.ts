@@ -43,6 +43,8 @@ export default async function handler(
       key: app.key,
       name_en: app.name_en,
       name_fa: app.name_fa,
+      client_key: app.client_key,
+      permissions: app.permissions,
     }))
   );
 }
