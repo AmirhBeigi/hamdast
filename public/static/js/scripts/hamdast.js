@@ -23,13 +23,23 @@ function hamdastCommunication({ clientKey, event, data, promise = false }) {
   window.parent.postMessage(message, "*");
 }
 
-function hamdastFireWhenReady(function1, callback) {
-  if (typeof function1 != "undefined") {
-    if (callback && typeof callback === "function") {
-      callback();
+function hamdastRrwebFireWhenReady() {
+  if (typeof window?.rrweb?.record != "undefined") {
+    if (
+      window.hamdast?.replay?.record &&
+      typeof window.hamdast?.replay?.record === "function"
+    ) {
+      window.hamdast?.replay?.record?.();
     }
   } else {
-    setTimeout(() => hamdastFireWhenReady(function1, callback), 100);
+    setTimeout(
+      () =>
+        hamdastRrwebFireWhenReady(
+          window?.rrweb?.record,
+          window.hamdast?.replay?.record
+        ),
+      100
+    );
   }
 }
 
@@ -62,7 +72,7 @@ window.hamdast = {
   initialize({ clientKey }) {
     window.hamdast.clientKey = clientKey;
     hamdastCommunication({ clientKey, event: "HAMDAST_INITIALIZE" });
-    hamdastFireWhenReady(window?.rrweb?.record, window.hamdast?.replay?.record);
+    hamdastRrwebFireWhenReady();
   },
   clientKey: null,
   getState(state) {
