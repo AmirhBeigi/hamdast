@@ -552,7 +552,6 @@ function PlasmicStatistics__RenderFunc(props: {
 
                     <Menu
                       className={classNames("__wab_instance", sty.menu__tfC34)}
-                      disabled={true}
                       iconWrapper={
                         <Icon9Icon
                           className={classNames(projectcss.all, sty.svg__bXnSp)}
@@ -562,6 +561,49 @@ function PlasmicStatistics__RenderFunc(props: {
                       name={
                         "\u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0627\u064e\u0628\u0632\u0627\u0631\u06a9"
                       }
+                      onClick={async () => {
+                        const $steps = {};
+
+                        $steps["goToSettting"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                destination: `/apps/${(() => {
+                                  try {
+                                    return $ctx.params.id;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()}/setting`
+                              };
+                              return (({ destination }) => {
+                                if (
+                                  typeof destination === "string" &&
+                                  destination.startsWith("#")
+                                ) {
+                                  document
+                                    .getElementById(destination.substr(1))
+                                    .scrollIntoView({ behavior: "smooth" });
+                                } else {
+                                  __nextRouter?.push(destination);
+                                }
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["goToSettting"] != null &&
+                          typeof $steps["goToSettting"] === "object" &&
+                          typeof $steps["goToSettting"].then === "function"
+                        ) {
+                          $steps["goToSettting"] = await $steps["goToSettting"];
+                        }
+                      }}
                     />
                   </Stack__>
                   <Stack__

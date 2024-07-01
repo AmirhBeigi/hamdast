@@ -204,6 +204,7 @@ function PlasmicAuthProvider__RenderFunc(props: {
         data-plasmic-name={"sideEffect"}
         data-plasmic-override={overrides.sideEffect}
         className={classNames("__wab_instance", sty.sideEffect)}
+        deps={[]}
         onMount={async () => {
           const $steps = {};
 
@@ -296,20 +297,19 @@ function PlasmicAuthProvider__RenderFunc(props: {
             $steps["loadingStart"] = await $steps["loadingStart"];
           }
 
-          $steps["getProfile"] =
-            !$state.user?.id && !$state.apps?.length > 0
-              ? (() => {
-                  const actionArgs = {
-                    args: [
-                      undefined,
-                      "https://hamdast.paziresh24.com/api/v1/profile"
-                    ]
-                  };
-                  return $globalActions["Fragment.apiRequest"]?.apply(null, [
-                    ...actionArgs.args
-                  ]);
-                })()
-              : undefined;
+          $steps["getProfile"] = !$state.user?.id
+            ? (() => {
+                const actionArgs = {
+                  args: [
+                    undefined,
+                    "https://hamdast.paziresh24.com/api/v1/profile"
+                  ]
+                };
+                return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                  ...actionArgs.args
+                ]);
+              })()
+            : undefined;
           if (
             $steps["getProfile"] != null &&
             typeof $steps["getProfile"] === "object" &&

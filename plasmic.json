@@ -444,6 +444,34 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/apps/new"
+        },
+        {
+          "id": "7ri-iU6uUwQF",
+          "name": "Settting",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicSettting.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/apps/[id]/setting.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicSettting.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/apps/[id]/setting"
+        },
+        {
+          "id": "_T6T2fNvkUfo",
+          "name": "Button",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicButton.tsx",
+          "importSpec": {
+            "modulePath": "Button.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicButton.module.css",
+          "scheme": "blackbox",
+          "componentType": "component",
+          "plumeType": "button"
         }
       ],
       "icons": [
@@ -546,6 +574,11 @@
           "id": "1FObiVFN1kNa",
           "name": "Icon18Icon",
           "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon18.tsx"
+        },
+        {
+          "id": "09kUgGvbipjq",
+          "name": "Icon19Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon19.tsx"
         }
       ],
       "images": [],
