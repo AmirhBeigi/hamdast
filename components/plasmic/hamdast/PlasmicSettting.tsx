@@ -752,57 +752,64 @@ function PlasmicSettting__RenderFunc(props: {
                           sty.freeBox__b9Y9Z
                         )}
                       >
-                        <Stack__
-                          as={"div"}
-                          hasGap={true}
+                        <div
                           className={classNames(
                             projectcss.all,
-                            sty.freeBox__siiZ
+                            sty.freeBox__a7HMj
                           )}
                         >
-                          <Icon19Icon
+                          <Stack__
+                            as={"div"}
+                            hasGap={true}
                             className={classNames(
                               projectcss.all,
-                              sty.svg__tKadL
+                              sty.freeBox__siiZ
                             )}
-                            role={"img"}
-                          />
+                          >
+                            <Icon19Icon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg__tKadL
+                              )}
+                              role={"img"}
+                            />
 
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__yu4Hk
+                              )}
+                            >
+                              <React.Fragment>
+                                <React.Fragment>
+                                  {
+                                    "\u0634\u0646\u0627\u0633\u0647 \u0639\u0645\u0648\u0645\u06cc "
+                                  }
+                                </React.Fragment>
+                                <span
+                                  className={
+                                    "plasmic_default__all plasmic_default__span"
+                                  }
+                                  style={{ color: "#0000002E" }}
+                                >
+                                  {"|"}
+                                </span>
+                                <React.Fragment>{" Client key"}</React.Fragment>
+                              </React.Fragment>
+                            </div>
+                          </Stack__>
                           <div
                             className={classNames(
                               projectcss.all,
                               projectcss.__wab_text,
-                              sty.text__yu4Hk
+                              sty.text__gvqWd
                             )}
                           >
-                            <React.Fragment>
-                              <React.Fragment>
-                                {
-                                  "\u0634\u0646\u0627\u0633\u0647 \u0639\u0645\u0648\u0645\u06cc "
-                                }
-                              </React.Fragment>
-                              <span
-                                className={
-                                  "plasmic_default__all plasmic_default__span"
-                                }
-                                style={{ color: "#0000002E" }}
-                              >
-                                {"|"}
-                              </span>
-                              <React.Fragment>{" Client key"}</React.Fragment>
-                            </React.Fragment>
+                            {
+                              "\u0634\u0646\u0627\u0633\u0647 Client \u0634\u0645\u0627 \u0634\u0646\u0627\u0633\u0647 \u0639\u0645\u0648\u0645\u06cc \u0628\u0631\u0646\u0627\u0645\u0647 \u0634\u0645\u0627 \u0627\u0633\u062a \u0648 \u0628\u0631\u0627\u06cc \u062a\u0639\u0627\u0645\u0644 \u0628\u0627 SDK \u0647\u0645\u200c\u062f\u0633\u062a \u0644\u0627\u0632\u0645 \u0627\u0633\u062a."
+                            }
                           </div>
-                        </Stack__>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__gvqWd
-                          )}
-                        >
-                          {
-                            "\u0634\u0646\u0627\u0633\u0647 Client \u0634\u0645\u0627 \u0634\u0646\u0627\u0633\u0647 \u0639\u0645\u0648\u0645\u06cc \u0628\u0631\u0646\u0627\u0645\u0647 \u0634\u0645\u0627 \u0627\u0633\u062a \u0648 \u0628\u0631\u0627\u06cc \u062a\u0639\u0627\u0645\u0644 \u0628\u0627 SDK \u0647\u0645\u200c\u062f\u0633\u062a \u0644\u0627\u0632\u0645 \u0627\u0633\u062a."
-                          }
                         </div>
                         {(() => {
                           const child$Props = {
@@ -901,13 +908,31 @@ function PlasmicSettting__RenderFunc(props: {
                           <div
                             className={classNames(
                               projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__b8CN
+                              sty.freeBox__sqZlm
                             )}
                           >
-                            {
-                              "\u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0627\u06cc\u0647 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646"
-                            }
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__b8CN
+                              )}
+                            >
+                              {
+                                "\u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0627\u06cc\u0647 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646"
+                              }
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__toxH0
+                              )}
+                            >
+                              {
+                                "\u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0627\u06cc\u0647 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646\u060c \u0645\u0627\u0646\u0646\u062f \u0646\u0627\u0645\u200c\u060c \u0646\u0627\u0645 \u062e\u0627\u0646\u0648\u062f\u0627\u06af\u06cc \u0648 \u0634\u0645\u0627\u0631\u0647 \u0645\u0648\u0628\u0627\u06cc\u0644"
+                              }
+                            </div>
                           </div>
                           <Button
                             className={classNames(
@@ -964,26 +989,6 @@ function PlasmicSettting__RenderFunc(props: {
                             </div>
                           </Button>
                         </div>
-                        <Stack__
-                          as={"div"}
-                          hasGap={true}
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox___2MjHs
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__toxH0
-                            )}
-                          >
-                            {
-                              "\u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0627\u06cc\u0647 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646\u060c \u0645\u0627\u0646\u0646\u062f \u0646\u0627\u0645\u200c\u060c \u0646\u0627\u0645 \u062e\u0627\u0646\u0648\u062f\u0627\u06af\u06cc \u0648 \u0634\u0645\u0627\u0631\u0647 \u0645\u0648\u0628\u0627\u06cc\u0644 \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u062f\u0647\u0646\u062f."
-                            }
-                          </div>
-                        </Stack__>
                       </Stack__>
                     </Stack__>
                     <Stack__
@@ -1008,13 +1013,31 @@ function PlasmicSettting__RenderFunc(props: {
                           <div
                             className={classNames(
                               projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___0Pwgm
+                              sty.freeBox__v4FPf
                             )}
                           >
-                            {
-                              "\u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0627\u06cc\u0647 \u067e\u0632\u0634\u06a9\u0627\u0646"
-                            }
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___0Pwgm
+                              )}
+                            >
+                              {
+                                "\u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0627\u06cc\u0647 \u067e\u0632\u0634\u06a9\u0627\u0646"
+                              }
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___8K5Ni
+                              )}
+                            >
+                              {
+                                "\u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0627\u06cc\u0647 \u067e\u0632\u0634\u06a9\u0627\u0646\u060c \u0645\u0627\u0646\u0646\u062f \u0627\u0633\u0644\u0627\u06af \u067e\u0631\u0648\u0641\u0627\u06cc\u0644\u060c \u06a9\u062f\u0646\u0638\u0627\u0645 \u067e\u0632\u0634\u06a9\u06cc\u060c \u0628\u06cc\u0648\u06af\u0631\u0627\u0641\u06cc"
+                              }
+                            </div>
                           </div>
                           <Button
                             className={classNames(
@@ -1071,26 +1094,6 @@ function PlasmicSettting__RenderFunc(props: {
                             </div>
                           </Button>
                         </div>
-                        <Stack__
-                          as={"div"}
-                          hasGap={true}
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__avKZx
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___8K5Ni
-                            )}
-                          >
-                            {
-                              "\u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0627\u06cc\u0647 \u067e\u0632\u0634\u06a9\u0627\u0646\u060c \u0645\u0627\u0646\u0646\u062f \u0627\u0633\u0644\u0627\u06af \u067e\u0631\u0648\u0641\u0627\u06cc\u0644\u060c \u06a9\u062f\u0646\u0638\u0627\u0645 \u067e\u0632\u0634\u06a9\u06cc\u060c \u0628\u06cc\u0648\u06af\u0631\u0627\u0641\u06cc"
-                            }
-                          </div>
-                        </Stack__>
                       </Stack__>
                     </Stack__>
                   </Stack__>
