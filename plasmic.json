@@ -472,6 +472,19 @@
           "scheme": "blackbox",
           "componentType": "component",
           "plumeType": "button"
+        },
+        {
+          "id": "ve2FygUyzJYe",
+          "name": "Layout",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicLayout.tsx",
+          "importSpec": {
+            "modulePath": "Layout.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicLayout.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
