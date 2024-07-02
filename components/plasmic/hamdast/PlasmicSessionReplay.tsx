@@ -531,19 +531,19 @@ function PlasmicSessionReplay__RenderFunc(props: {
                             return [
                               {
                                 text: "امروز",
-                                value: 1
+                                value: 0
                               },
                               {
                                 text: "۳ روز اخیر",
-                                value: 3
+                                value: 2
                               },
                               {
                                 text: "۷ روز اخیر",
-                                value: 7
+                                value: 6
                               },
                               {
                                 text: "۳۰ روز اخیر",
-                                value: 30
+                                value: 29
                               }
                             ];
                           } catch (e) {
