@@ -593,6 +593,7 @@ function PlasmicLayout__RenderFunc(props: {
                 }
               })()}
               className={classNames("__wab_instance", sty.menu__zOxdE)}
+              disabled={true}
               iconWrapper={
                 <Icon9Icon
                   className={classNames(projectcss.all, sty.svg__zn8Dl)}

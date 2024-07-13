@@ -175,7 +175,7 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "day",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 1
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
       }
     ],
     [$props, $ctx, $refs]
