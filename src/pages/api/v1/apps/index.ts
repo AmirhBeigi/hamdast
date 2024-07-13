@@ -8,6 +8,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
+  pb.autoCancellation(false);
   const cookieStore = req.cookies;
   const token =
     (cookieStore["token"] as string) ||

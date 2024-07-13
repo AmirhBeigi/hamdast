@@ -24,6 +24,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
+  pb.autoCancellation(false);
   const { app_id, menu_id, days_ago } = req.query;
   const cookieStore = req.cookies;
   const token =
