@@ -12,7 +12,8 @@ export default async function handler(
 ) {
   await NextCors(req, res, {
     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
-    origin: "**",
+    origin: new RegExp(".paziresh24."),
+    preflightContinue: true,
     optionsSuccessStatus: 200,
   });
 
