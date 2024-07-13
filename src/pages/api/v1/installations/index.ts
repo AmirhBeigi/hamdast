@@ -22,10 +22,7 @@ export default async function handler(
   const token =
     (cookieStore["token"] as string) ||
     req.headers.authorization?.replace("Bearer", "");
-  await pb.admins.authWithPassword(
-    publicRuntimeConfig.POCKETBASE_USER_NAME,
-    publicRuntimeConfig.POCKETBASE_PASSWORD
-  );
+
   const paziresh24User = await axios.get(
     "https://apigw.paziresh24.com/v1/auth/me",
     {
@@ -49,6 +46,11 @@ export default async function handler(
   if (provider?.job_title !== "doctor") {
     return res.status(200).json([]);
   }
+
+  await pb.admins.authWithPassword(
+    publicRuntimeConfig.POCKETBASE_USER_NAME,
+    publicRuntimeConfig.POCKETBASE_PASSWORD
+  );
 
   const growthbook = new GrowthBook({
     apiHost: "https://growthbook-api.paziresh24.com",
