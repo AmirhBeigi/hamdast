@@ -15,6 +15,7 @@ export default async function handler(
     origin: new RegExp(".paziresh24."),
     preflightContinue: true,
     optionsSuccessStatus: 200,
+    credentials: true,
   });
 
   const cookieStore = req.cookies;
