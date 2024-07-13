@@ -3,6 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { pb } from "../../../../../pocketbase";
 import config from "next/config";
 import NextCors from "nextjs-cors";
+import { GrowthBook } from "@growthbook/growthbook";
 const { publicRuntimeConfig } = config();
 
 export default async function handler(
@@ -47,6 +48,17 @@ export default async function handler(
     return res.status(200).json([]);
   }
 
+  const growthbook = new GrowthBook({
+    apiHost: "https://growthbook-api.paziresh24.com",
+    clientKey: "sdk-St1dBftdp07geqtD",
+  });
+
+  growthbook.setAttributes({
+    user_id: Number(user?.id),
+  });
+
+  await growthbook.init({ timeout: 1000, skipCache: true });
+
   const apps = await pb.collection("apps").getFullList({
     expand: "app",
   });
@@ -54,35 +66,50 @@ export default async function handler(
   const menus = await pb.collection("menus").getFullList({});
 
   res.status(200).json(
-    apps.map((app) => ({
-      id: app.id,
-      key: app.key,
-      client_key: app.client_key,
-      name: {
-        fa: app.name_fa,
-        en: app.name_en,
-      },
-      display_name: {
-        fa: app.display_name_fa,
-        en: app.display_name_en,
-      },
-      icon: app.icon,
-      fragments: [
-        {
-          type: "menu",
-          options: menus
-            .filter((menu) => menu.app === app.id)
-            .map((menu) => ({
-              id: menu.id,
-              key: menu.key,
-              embed_src: menu.embed_src,
-              name: {
-                fa: menu.name_fa,
-                en: menu.name_en,
-              },
-            })),
+    apps
+      .map((app) => ({
+        id: app.id,
+        key: app.key,
+        client_key: app.client_key,
+        name: {
+          fa: app.name_fa,
+          en: app.name_en,
         },
-      ],
-    }))
+        display_name: growthbook.getFeatureValue<any>(`hamdast::${app.key}`, {})
+          ?.display_name || {
+          fa: app.display_name_fa,
+          en: app.display_name_en,
+        },
+        icon:
+          growthbook.getFeatureValue<any>(`hamdast::${app.key}`, {})?.icon ||
+          app.icon,
+        fragments: [
+          {
+            type: "menu",
+            options: menus
+              .filter((menu) => menu.app === app.id)
+              .map((menu) => ({
+                id: menu.id,
+                key: menu.key,
+                name: growthbook.getFeatureValue<any>(
+                  `hamdast::${app.key}-${menu.key}`,
+                  {}
+                )?.name || {
+                  fa: menu.name_fa,
+                  en: menu.name_en,
+                },
+                embed_src:
+                  growthbook.getFeatureValue<any>(
+                    `hamdast::${app.key}-${menu.key}`,
+                    {}
+                  )?.embed_src || menu.embed_src,
+              })),
+          },
+        ],
+      }))
+      .filter(
+        (app) =>
+          !growthbook.getFeatureValue<any>(`hamdast::${app.key}`, {}).hide
+      )
   );
 }
