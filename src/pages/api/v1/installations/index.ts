@@ -77,8 +77,8 @@ export default async function handler(
               key: menu.key,
               embed_src: menu.embed_src,
               name: {
-                fa: app.name_fa,
-                en: app.name_en,
+                fa: menu.name_fa,
+                en: menu.name_en,
               },
             })),
         },
