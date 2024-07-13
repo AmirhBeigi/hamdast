@@ -59,7 +59,7 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import Select from "../../Select"; // plasmic-import: gnuET5DaB7nZ/component
+import { Select } from "@/fragment/components/select"; // plasmic-import: WnYiJcun2Nlj/codeComponent
 import Menu from "../../Menu"; // plasmic-import: 73TqujunaOu5/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -99,7 +99,7 @@ export const PlasmicLayout__ArgProps = new Array<ArgPropType>(
 
 export type PlasmicLayout__OverridesType = {
   root?: Flex__<"div">;
-  select?: Flex__<typeof Select>;
+  fragmentSelect?: Flex__<typeof Select>;
   link?: Flex__<"a"> & Partial<LinkProps>;
 };
 
@@ -163,7 +163,7 @@ function PlasmicLayout__RenderFunc(props: {
           })()
       },
       {
-        path: "select.value",
+        path: "fragmentSelect.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
@@ -180,6 +180,12 @@ function PlasmicLayout__RenderFunc(props: {
               throw e;
             }
           })()
+      },
+      {
+        path: "fragmentSelect.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -240,58 +246,76 @@ function PlasmicLayout__RenderFunc(props: {
           className={classNames(projectcss.all, sty.freeBox__e2Ntx)}
         >
           <Select
-            data-plasmic-name={"select"}
-            data-plasmic-override={overrides.select}
-            aria-label={``}
-            className={classNames("__wab_instance", sty.select)}
-            color={"softCyan"}
-            isDisabled={true}
-            name={``}
+            data-plasmic-name={"fragmentSelect"}
+            data-plasmic-override={overrides.fragmentSelect}
+            disabled={(() => {
+              try {
+                return $props.apps.length === 1;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return undefined;
+                }
+                throw e;
+              }
+            })()}
             onChange={async (...eventArgs: any) => {
-              ((...eventArgs) => {
-                generateStateOnChangeProp($state, ["select", "value"])(
-                  eventArgs[0]
-                );
-              }).apply(null, eventArgs);
+              generateStateOnChangeProp($state, [
+                "fragmentSelect",
+                "value"
+              ]).apply(null, eventArgs);
               (async value => {
                 const $steps = {};
 
-                $steps["updateSelectValue"] = true
+                $steps["goToSessionReplay"] = true
                   ? (() => {
                       const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["select", "value"]
-                        },
-                        operation: 0
+                        destination: `/apps/${(() => {
+                          try {
+                            return value;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()}/replay`
                       };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
+                      return (({ destination }) => {
+                        if (
+                          typeof destination === "string" &&
+                          destination.startsWith("#")
+                        ) {
+                          document
+                            .getElementById(destination.substr(1))
+                            .scrollIntoView({ behavior: "smooth" });
+                        } else {
+                          __nextRouter?.push(destination);
                         }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
                       })?.apply(null, [actionArgs]);
                     })()
                   : undefined;
                 if (
-                  $steps["updateSelectValue"] != null &&
-                  typeof $steps["updateSelectValue"] === "object" &&
-                  typeof $steps["updateSelectValue"].then === "function"
+                  $steps["goToSessionReplay"] != null &&
+                  typeof $steps["goToSessionReplay"] === "object" &&
+                  typeof $steps["goToSessionReplay"].then === "function"
                 ) {
-                  $steps["updateSelectValue"] = await $steps[
-                    "updateSelectValue"
+                  $steps["goToSessionReplay"] = await $steps[
+                    "goToSessionReplay"
                   ];
                 }
               }).apply(null, eventArgs);
             }}
+            onOpenChange={generateStateOnChangeProp($state, [
+              "fragmentSelect",
+              "open"
+            ])}
+            open={generateStateValueProp($state, ["fragmentSelect", "open"])}
             options={(() => {
               try {
                 return $props.apps.map(item => ({
@@ -303,12 +327,13 @@ function PlasmicLayout__RenderFunc(props: {
                   e instanceof TypeError ||
                   e?.plasmicType === "PlasmicUndefinedDataError"
                 ) {
-                  return [];
+                  return undefined;
                 }
                 throw e;
               }
             })()}
-            value={generateStateValueProp($state, ["select", "value"])}
+            triggerClassName={classNames("__wab_instance", sty.fragmentSelect)}
+            value={generateStateValueProp($state, ["fragmentSelect", "value"])}
           />
 
           <div className={classNames(projectcss.all, sty.freeBox__ll30Q)} />
@@ -724,8 +749,8 @@ function PlasmicLayout__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "select", "link"],
-  select: ["select"],
+  root: ["root", "fragmentSelect", "link"],
+  fragmentSelect: ["fragmentSelect"],
   link: ["link"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -733,7 +758,7 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  select: typeof Select;
+  fragmentSelect: typeof Select;
   link: "a";
 };
 
@@ -797,7 +822,7 @@ export const PlasmicLayout = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    select: makeNodeComponent("select"),
+    fragmentSelect: makeNodeComponent("fragmentSelect"),
     link: makeNodeComponent("link"),
 
     // Metadata about props expected for PlasmicLayout

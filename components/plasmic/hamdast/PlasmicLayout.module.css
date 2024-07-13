@@ -103,10 +103,13 @@
   > img {
   margin-left: 13px;
 }
-.select:global(.__wab_instance) {
-  max-width: 100%;
-  position: relative;
+.fragmentSelect:global(.__wab_instance) {
   width: 13rem;
+  max-width: 100%;
+  object-fit: cover;
+  position: relative;
+  color: #365e70;
+  font-weight: 600;
   flex-shrink: 0;
 }
 .freeBox__ll30Q {
