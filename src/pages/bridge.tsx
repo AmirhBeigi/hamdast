@@ -1,8 +1,10 @@
+import { activeUsersLog } from "@/lib/bridge/activeUsersLog";
 import { getState } from "@/lib/bridge/getState";
 import { saveReplay } from "@/lib/bridge/saveReplay";
+import { usersDurationLog } from "@/lib/bridge/usersDurationLog";
 import { generateUniqueId } from "@/lib/utils";
 import { useRouter } from "next/router";
-import { LegacyRef, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 function Bridge() {
   const {
@@ -11,6 +13,7 @@ function Bridge() {
   } = useRouter();
   const iframe = useRef<HTMLIFrameElement | undefined>();
   const uniqueId = useRef(generateUniqueId(15));
+  const startTime = useRef(0);
 
   let embedSrc: any;
   if (isReady && src) {
@@ -35,6 +38,8 @@ function Bridge() {
 
   useEffect(() => {
     if (app && menu) {
+      startTime.current = Date.now();
+      activeUsersLog({ app, menu });
       window.addEventListener("message", (messageEvent) => {
         if (messageEvent.data?.hamdast?.event === "HAMDAST_GET_STATE") {
           sendEvent(messageEvent.data?.hamdast);
@@ -54,6 +59,10 @@ function Bridge() {
         }
       });
     }
+
+    return () => {
+      usersDurationLog({ app, menu, duration: Date.now() - startTime.current });
+    };
   }, [app, menu]);
 
   if (!embedSrc?.href) return null;
