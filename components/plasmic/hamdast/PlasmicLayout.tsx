@@ -269,7 +269,7 @@ function PlasmicLayout__RenderFunc(props: {
               (async value => {
                 const $steps = {};
 
-                $steps["goToSessionReplay"] = true
+                $steps["goToStatistics"] = true
                   ? (() => {
                       const actionArgs = {
                         destination: `/apps/${(() => {
@@ -284,7 +284,7 @@ function PlasmicLayout__RenderFunc(props: {
                             }
                             throw e;
                           }
-                        })()}/replay`
+                        })()}/statistics`
                       };
                       return (({ destination }) => {
                         if (
@@ -301,13 +301,11 @@ function PlasmicLayout__RenderFunc(props: {
                     })()
                   : undefined;
                 if (
-                  $steps["goToSessionReplay"] != null &&
-                  typeof $steps["goToSessionReplay"] === "object" &&
-                  typeof $steps["goToSessionReplay"].then === "function"
+                  $steps["goToStatistics"] != null &&
+                  typeof $steps["goToStatistics"] === "object" &&
+                  typeof $steps["goToStatistics"].then === "function"
                 ) {
-                  $steps["goToSessionReplay"] = await $steps[
-                    "goToSessionReplay"
-                  ];
+                  $steps["goToStatistics"] = await $steps["goToStatistics"];
                 }
               }).apply(null, eventArgs);
             }}

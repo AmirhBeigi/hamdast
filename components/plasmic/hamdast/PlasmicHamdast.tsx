@@ -197,7 +197,7 @@ function PlasmicHamdast__RenderFunc(props: {
             onMount={async () => {
               const $steps = {};
 
-              $steps["goToSessionReplay"] =
+              $steps["goToStatistics"] =
                 Array.isArray($state.authProvider.apps) &&
                 $state.authProvider.apps?.length > 0
                   ? (() => {
@@ -214,7 +214,7 @@ function PlasmicHamdast__RenderFunc(props: {
                             }
                             throw e;
                           }
-                        })()}/replay`
+                        })()}/statistics`
                       };
                       return (({ destination }) => {
                         if (
@@ -231,11 +231,11 @@ function PlasmicHamdast__RenderFunc(props: {
                     })()
                   : undefined;
               if (
-                $steps["goToSessionReplay"] != null &&
-                typeof $steps["goToSessionReplay"] === "object" &&
-                typeof $steps["goToSessionReplay"].then === "function"
+                $steps["goToStatistics"] != null &&
+                typeof $steps["goToStatistics"] === "object" &&
+                typeof $steps["goToStatistics"].then === "function"
               ) {
-                $steps["goToSessionReplay"] = await $steps["goToSessionReplay"];
+                $steps["goToStatistics"] = await $steps["goToStatistics"];
               }
             }}
           />
