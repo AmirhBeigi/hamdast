@@ -57,7 +57,7 @@ export default async function handler(
           device,
           app: app_id,
           menu: menu_id,
-          user_id: user.id,
+          user_id: user.id?.toString(),
           job_title: provider?.job_title ?? "normal",
           duration,
         },
