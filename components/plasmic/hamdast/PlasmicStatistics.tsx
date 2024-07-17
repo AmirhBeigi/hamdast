@@ -65,6 +65,7 @@ import Layout from "../../Layout"; // plasmic-import: ve2FygUyzJYe/component
 import FetchData from "../../FetchData"; // plasmic-import: -UcPqMSXVAGv/component
 import Menu from "../../Menu"; // plasmic-import: 73TqujunaOu5/component
 import Filter from "../../Filter"; // plasmic-import: YY41SIghQUgw/component
+import { Chart } from "@/fragment/components/chart"; // plasmic-import: oU2v2at0brmo/codeComponent
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -805,7 +806,7 @@ function PlasmicStatistics__RenderFunc(props: {
                             e instanceof TypeError ||
                             e?.plasmicType === "PlasmicUndefinedDataError"
                           ) {
-                            return true;
+                            return false;
                           }
                           throw e;
                         }
@@ -813,144 +814,812 @@ function PlasmicStatistics__RenderFunc(props: {
                         <div
                           className={classNames(
                             projectcss.all,
-                            sty.freeBox__fc4Id
+                            sty.freeBox__tm7Ne
                           )}
                         >
-                          <Stack__
-                            as={"div"}
-                            hasGap={true}
+                          <div
                             className={classNames(
                               projectcss.all,
-                              sty.freeBox__aucTw
+                              sty.freeBox__fc4Id
                             )}
                           >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__yrZu2
-                              )}
-                            >
-                              {
-                                "\u0628\u0627\u0632\u062f\u06cc\u062f \u0627\u0632 \u0635\u0641\u062d\u0627\u062a"
-                              }
-                            </div>
                             <Stack__
                               as={"div"}
                               hasGap={true}
                               className={classNames(
                                 projectcss.all,
-                                sty.freeBox__qe5T8
+                                sty.freeBox__aucTw
                               )}
                             >
                               <div
                                 className={classNames(
                                   projectcss.all,
                                   projectcss.__wab_text,
-                                  sty.text__ygnJs
-                                )}
-                              >
-                                <React.Fragment>
-                                  {(() => {
-                                    try {
-                                      return new Intl.NumberFormat(
-                                        "fa-IR"
-                                      ).format($state.fetchData2.data?.length);
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return "\u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644";
-                                      }
-                                      throw e;
-                                    }
-                                  })()}
-                                </React.Fragment>
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__le6Vk
+                                  sty.text__yrZu2
                                 )}
                               >
                                 {
-                                  "\u0628\u0627\u0632\u062f\u06cc\u062f\u06a9\u0646\u0646\u062f\u0647"
+                                  "\u0628\u0627\u0632\u062f\u06cc\u062f \u0627\u0632 \u0635\u0641\u062d\u0627\u062a"
                                 }
                               </div>
+                              <Stack__
+                                as={"div"}
+                                hasGap={true}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__qe5T8
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__ygnJs
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return new Intl.NumberFormat(
+                                          "fa-IR"
+                                        ).format(
+                                          $state.fetchData2.data?.length
+                                        );
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "\u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__le6Vk
+                                  )}
+                                >
+                                  {
+                                    "\u0628\u0627\u0632\u062f\u06cc\u062f\u06a9\u0646\u0646\u062f\u0647"
+                                  }
+                                </div>
+                              </Stack__>
                             </Stack__>
-                          </Stack__>
-                          <Stack__
-                            as={"div"}
-                            hasGap={true}
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__miSvp
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___6S7HZ
-                              )}
-                            >
-                              {
-                                "\u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644"
-                              }
-                            </div>
                             <Stack__
                               as={"div"}
                               hasGap={true}
                               className={classNames(
                                 projectcss.all,
-                                sty.freeBox__tJfm
+                                sty.freeBox__miSvp
                               )}
                             >
                               <div
                                 className={classNames(
                                   projectcss.all,
                                   projectcss.__wab_text,
-                                  sty.text__kt3N0
+                                  sty.text___6S7HZ
                                 )}
                               >
-                                <React.Fragment>
-                                  {(() => {
-                                    try {
-                                      return $state.fetchData2.data
-                                        .filter(
-                                          (item, index, self) =>
-                                            self.findIndex(
-                                              t => t.user_id === item.user_id
-                                            ) === index
-                                        )
-                                        .length.toLocaleString("fa");
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return "\u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644";
-                                      }
-                                      throw e;
-                                    }
-                                  })()}
-                                </React.Fragment>
+                                {
+                                  "\u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644"
+                                }
                               </div>
-                              <div
+                              <Stack__
+                                as={"div"}
+                                hasGap={true}
                                 className={classNames(
                                   projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__ea9Iq
+                                  sty.freeBox__tJfm
                                 )}
                               >
-                                {"\u06a9\u0627\u0631\u0628\u0631"}
-                              </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__kt3N0
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return $state.fetchData2.data
+                                          .filter(
+                                            (item, index, self) =>
+                                              self.findIndex(
+                                                t => t.user_id === item.user_id
+                                              ) === index
+                                          )
+                                          .length.toLocaleString("fa");
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "\u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__ea9Iq
+                                  )}
+                                >
+                                  {"\u06a9\u0627\u0631\u0628\u0631"}
+                                </div>
+                              </Stack__>
                             </Stack__>
-                          </Stack__>
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox___8Yie6
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__sE5LK
+                              )}
+                            >
+                              <Chart
+                                cartesianGrid={["horizontal"]}
+                                chartConfig={(() => {
+                                  const __composite = [
+                                    {
+                                      color: null,
+                                      type: null,
+                                      dot: null,
+                                      key: null,
+                                      label: null
+                                    },
+                                    {
+                                      color: null,
+                                      type: "natural",
+                                      dot: false,
+                                      key: null,
+                                      label: null
+                                    }
+                                  ];
+                                  __composite["0"]["color"] = "#365E70";
+                                  __composite["0"]["type"] = "natural";
+                                  __composite["0"]["dot"] = true;
+                                  __composite["0"]["key"] = "visitors";
+                                  __composite["0"]["label"] =
+                                    "\u0628\u0627\u0632\u062f\u06cc\u062f \u06a9\u0646\u0646\u062f\u0647";
+                                  __composite["1"]["color"] = "#EEF3F5";
+                                  __composite["1"]["key"] = "active_users";
+                                  __composite["1"]["label"] =
+                                    "\u06a9\u0627\u0631\u0628\u0631";
+                                  return __composite;
+                                })()}
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.fragmentChart___5PUtz
+                                )}
+                                data={(() => {
+                                  try {
+                                    return (() => {
+                                      const groupByDateAndCountVisitors =
+                                        data => {
+                                          const groupedData = data.reduce(
+                                            (acc, entry) => {
+                                              const date = new Date(
+                                                entry.p_timestamp
+                                              ).toLocaleDateString("fa-IR", {
+                                                day: "2-digit",
+                                                month: "short"
+                                              });
+                                              if (!acc[date]) {
+                                                acc[date] = {
+                                                  visitors: 0,
+                                                  userIds: new Set()
+                                                };
+                                              }
+                                              acc[date].visitors++;
+                                              acc[date].userIds.add(
+                                                entry.user_id
+                                              );
+                                              return acc;
+                                            },
+                                            {}
+                                          );
+
+                                          const result = Object.keys(
+                                            groupedData
+                                          ).map(date => ({
+                                            visitors:
+                                              groupedData[date].visitors,
+                                            active_users:
+                                              groupedData[date].userIds.size,
+                                            date: date
+                                          }));
+
+                                          return result;
+                                        };
+                                      return groupByDateAndCountVisitors(
+                                        $state.fetchData2?.data ?? []
+                                      );
+                                    })();
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                                label={false}
+                                layout={"horizontal"}
+                                legend={true}
+                                tooltip={(() => {
+                                  const __composite = {
+                                    enabled: null,
+                                    indicator: null
+                                  };
+                                  __composite["enabled"] = true;
+                                  __composite["indicator"] = "dot";
+                                  return __composite;
+                                })()}
+                                type={"bar"}
+                                xAxis={(() => {
+                                  const __composite = {
+                                    enabled: null,
+                                    key: null,
+                                    type: null,
+                                    tickLine: null
+                                  };
+                                  __composite["enabled"] = true;
+                                  __composite["key"] = "date";
+                                  __composite["type"] = "category";
+                                  __composite["tickLine"] = false;
+                                  return __composite;
+                                })()}
+                                yAxis={(() => {
+                                  const __composite = {
+                                    enabled: null,
+                                    key: null,
+                                    type: null
+                                  };
+                                  __composite["enabled"] = true;
+                                  __composite["key"] = "visitors";
+                                  __composite["type"] = "number";
+                                  return __composite;
+                                })()}
+                              />
+
+                              <Chart
+                                cartesianGrid={["horizontal"]}
+                                chartConfig={(() => {
+                                  const __composite = [
+                                    {
+                                      color: null,
+                                      type: "natural",
+                                      dot: null,
+                                      key: null,
+                                      label: null
+                                    },
+                                    {
+                                      color: null,
+                                      type: "natural",
+                                      dot: false,
+                                      key: null,
+                                      label: null
+                                    }
+                                  ];
+                                  __composite["0"]["color"] = "#365E70";
+                                  __composite["0"]["dot"] = true;
+                                  __composite["0"]["key"] = "visitors";
+                                  __composite["0"]["label"] =
+                                    "\u0628\u0627\u0632\u062f\u06cc\u062f \u06a9\u0646\u0646\u062f\u0647";
+                                  __composite["1"]["color"] = "#EEF3F5";
+                                  __composite["1"]["key"] = "users";
+                                  __composite["1"]["label"] =
+                                    "\u06a9\u0627\u0631\u0628\u0631";
+                                  return __composite;
+                                })()}
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.fragmentChart__l2El
+                                )}
+                                data={(() => {
+                                  try {
+                                    return (() => {
+                                      function countVisitorsAndUsersByMenu(
+                                        data
+                                      ) {
+                                        const menuCount = {};
+
+                                        data.forEach(entry => {
+                                          const menu = entry.menu.toLowerCase();
+                                          if (!menuCount[menu]) {
+                                            menuCount[menu] = {
+                                              visitors: 0,
+                                              users: new Set()
+                                            };
+                                          }
+                                          menuCount[menu].visitors++;
+                                          menuCount[menu].users.add(
+                                            entry.user_id
+                                          );
+                                        });
+
+                                        return Object.keys(menuCount).map(
+                                          menu => {
+                                            return {
+                                              menu: $state.fetchData.data.find(
+                                                item => item.id === menu
+                                              ).name_fa,
+                                              visitors:
+                                                menuCount[menu].visitors,
+                                              users: menuCount[menu].users.size
+                                            };
+                                          }
+                                        );
+                                      }
+                                      return countVisitorsAndUsersByMenu(
+                                        $state.fetchData2?.data ?? []
+                                      );
+                                    })();
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                                label={false}
+                                layout={"horizontal"}
+                                legend={true}
+                                stack={false}
+                                tooltip={(() => {
+                                  const __composite = {
+                                    enabled: null,
+                                    indicator: null
+                                  };
+                                  __composite["enabled"] = true;
+                                  __composite["indicator"] = "dot";
+                                  return __composite;
+                                })()}
+                                type={"bar"}
+                                xAxis={(() => {
+                                  const __composite = {
+                                    enabled: null,
+                                    key: null,
+                                    type: null,
+                                    tickLine: null
+                                  };
+                                  __composite["enabled"] = true;
+                                  __composite["key"] = "menu";
+                                  __composite["type"] = "category";
+                                  __composite["tickLine"] = false;
+                                  return __composite;
+                                })()}
+                                yAxis={(() => {
+                                  const __composite = {
+                                    enabled: null,
+                                    key: null,
+                                    type: null
+                                  };
+                                  __composite["enabled"] = true;
+                                  __composite["key"] = "visitors";
+                                  __composite["type"] = "number";
+                                  return __composite;
+                                })()}
+                              />
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox___8A8L
+                              )}
+                            >
+                              <Chart
+                                cartesianGrid={["horizontal"]}
+                                chartConfig={(() => {
+                                  const __composite = [
+                                    {
+                                      color: null,
+                                      type: "natural",
+                                      dot: null,
+                                      key: null,
+                                      label: null
+                                    }
+                                  ];
+                                  __composite["0"]["color"] = "#2A9D90";
+                                  __composite["0"]["dot"] = true;
+                                  __composite["0"]["key"] = "doctor";
+                                  __composite["0"]["label"] =
+                                    "\u067e\u0632\u0634\u06a9";
+                                  return __composite;
+                                })()}
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.fragmentChart___68V5T
+                                )}
+                                data={(() => {
+                                  try {
+                                    return (() => {
+                                      function countVisitorsByBrowser(data) {
+                                        const browserCount = {};
+                                        data.forEach(entry => {
+                                          const browser =
+                                            entry.job_title.toLowerCase();
+                                          if (browserCount[browser]) {
+                                            browserCount[browser]++;
+                                          } else {
+                                            browserCount[browser] = 1;
+                                          }
+                                        });
+                                        return Object.keys(browserCount).map(
+                                          browser => {
+                                            return {
+                                              browser: browser,
+                                              visitor: browserCount[browser]
+                                            };
+                                          }
+                                        );
+                                      }
+                                      return countVisitorsByBrowser(
+                                        $state.fetchData2?.data ?? []
+                                      );
+                                    })();
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                                dataKey={(() => {
+                                  const __composite = {
+                                    key: null,
+                                    label: null
+                                  };
+                                  __composite["key"] = "visitor";
+                                  __composite["label"] =
+                                    "\u0646\u0648\u0639 \u06a9\u0627\u0631\u0628\u0631";
+                                  return __composite;
+                                })()}
+                                label={false}
+                                layout={"horizontal"}
+                                legend={true}
+                                nameKey={(() => {
+                                  const __composite = { key: null };
+                                  __composite["key"] = "browser";
+                                  return __composite;
+                                })()}
+                                tooltip={(() => {
+                                  const __composite = {
+                                    enabled: null,
+                                    indicator: null
+                                  };
+                                  __composite["enabled"] = true;
+                                  __composite["indicator"] = "line";
+                                  return __composite;
+                                })()}
+                                type={"pie"}
+                                xAxis={(() => {
+                                  const __composite = {
+                                    enabled: null,
+                                    key: null,
+                                    type: null,
+                                    tickLine: null
+                                  };
+                                  __composite["enabled"] = true;
+                                  __composite["key"] = "date";
+                                  __composite["type"] = "category";
+                                  __composite["tickLine"] = false;
+                                  return __composite;
+                                })()}
+                                yAxis={(() => {
+                                  const __composite = {
+                                    enabled: null,
+                                    key: null,
+                                    type: null
+                                  };
+                                  __composite["enabled"] = true;
+                                  __composite["key"] = "visitors";
+                                  __composite["type"] = "number";
+                                  return __composite;
+                                })()}
+                              />
+
+                              <Chart
+                                cartesianGrid={["horizontal"]}
+                                chartConfig={(() => {
+                                  const __composite = [
+                                    {
+                                      color: null,
+                                      type: "natural",
+                                      dot: false,
+                                      key: null,
+                                      label: null
+                                    },
+                                    {
+                                      color: null,
+                                      type: "natural",
+                                      dot: false,
+                                      key: null,
+                                      label: null
+                                    }
+                                  ];
+                                  __composite["0"]["color"] = "#E8C468";
+                                  __composite["0"]["key"] = "mobile";
+                                  __composite["0"]["label"] =
+                                    "\u0645\u0648\u0628\u0627\u06cc\u0644";
+                                  __composite["1"]["color"] = "#1B3E4C";
+                                  __composite["1"]["key"] = "desktop";
+                                  __composite["1"]["label"] =
+                                    "\u062f\u0633\u06a9\u062a\u0627\u067e";
+                                  return __composite;
+                                })()}
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.fragmentChart__oHdoe
+                                )}
+                                data={(() => {
+                                  try {
+                                    return (() => {
+                                      function countVisitorsByBrowser(data) {
+                                        const browserCount = {};
+                                        data.forEach(entry => {
+                                          const browser =
+                                            entry.device.toLowerCase();
+                                          if (browserCount[browser]) {
+                                            browserCount[browser]++;
+                                          } else {
+                                            browserCount[browser] = 1;
+                                          }
+                                        });
+                                        return Object.keys(browserCount).map(
+                                          browser => {
+                                            return {
+                                              browser: browser,
+                                              visitor: browserCount[browser]
+                                            };
+                                          }
+                                        );
+                                      }
+                                      return countVisitorsByBrowser(
+                                        $state.fetchData2?.data ?? []
+                                      );
+                                    })();
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                                dataKey={(() => {
+                                  const __composite = {
+                                    key: null,
+                                    label: null
+                                  };
+                                  __composite["key"] = "visitor";
+                                  __composite["label"] =
+                                    "\u062f\u0633\u062a\u06af\u0627\u0647";
+                                  return __composite;
+                                })()}
+                                label={false}
+                                layout={"horizontal"}
+                                legend={true}
+                                nameKey={(() => {
+                                  const __composite = { key: null };
+                                  __composite["key"] = "browser";
+                                  return __composite;
+                                })()}
+                                tooltip={(() => {
+                                  const __composite = {
+                                    enabled: null,
+                                    indicator: null
+                                  };
+                                  __composite["enabled"] = true;
+                                  __composite["indicator"] = "line";
+                                  return __composite;
+                                })()}
+                                type={"pie"}
+                                xAxis={(() => {
+                                  const __composite = {
+                                    enabled: null,
+                                    key: null,
+                                    type: null,
+                                    tickLine: null
+                                  };
+                                  __composite["enabled"] = true;
+                                  __composite["key"] = "date";
+                                  __composite["type"] = "category";
+                                  __composite["tickLine"] = false;
+                                  return __composite;
+                                })()}
+                                yAxis={(() => {
+                                  const __composite = {
+                                    enabled: null,
+                                    key: null,
+                                    type: null
+                                  };
+                                  __composite["enabled"] = true;
+                                  __composite["key"] = "visitors";
+                                  __composite["type"] = "number";
+                                  return __composite;
+                                })()}
+                              />
+
+                              <Chart
+                                cartesianGrid={["horizontal"]}
+                                chartConfig={(() => {
+                                  const __composite = [
+                                    {
+                                      color: null,
+                                      type: "natural",
+                                      dot: null,
+                                      key: null,
+                                      label: null
+                                    },
+                                    {
+                                      color: null,
+                                      type: "natural",
+                                      dot: false,
+                                      key: null,
+                                      label: null
+                                    },
+                                    {
+                                      color: null,
+                                      type: "natural",
+                                      dot: false,
+                                      key: null,
+                                      label: null
+                                    },
+                                    {
+                                      color: null,
+                                      type: "natural",
+                                      dot: false,
+                                      key: null,
+                                      label: null
+                                    }
+                                  ];
+                                  __composite["0"]["color"] = "#2A9D90";
+                                  __composite["0"]["dot"] = true;
+                                  __composite["0"]["key"] = "chrome";
+                                  __composite["0"]["label"] =
+                                    "\u06a9\u0631\u0648\u0645";
+                                  __composite["1"]["color"] = "#E76E50";
+                                  __composite["1"]["key"] = "safari";
+                                  __composite["1"]["label"] =
+                                    "\u0633\u0627\u0641\u0627\u0631\u06cc";
+                                  __composite["2"]["color"] = "#1B3E4C";
+                                  __composite["2"]["key"] = "firefox";
+                                  __composite["2"]["label"] =
+                                    "\u0641\u0627\u06cc\u0631\u0641\u0627\u06a9\u0633";
+                                  __composite["3"]["color"] = "#E8C468";
+                                  __composite["3"]["key"] = "microsoft edge";
+                                  __composite["3"]["label"] = "\u0627\u062c";
+                                  return __composite;
+                                })()}
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.fragmentChart__op3Vz
+                                )}
+                                data={(() => {
+                                  try {
+                                    return (() => {
+                                      function countVisitorsByBrowser(data) {
+                                        const browserCount = {};
+                                        data.forEach(entry => {
+                                          const browser =
+                                            entry.browser.toLowerCase();
+                                          if (browserCount[browser]) {
+                                            browserCount[browser]++;
+                                          } else {
+                                            browserCount[browser] = 1;
+                                          }
+                                        });
+                                        return Object.keys(browserCount).map(
+                                          browser => {
+                                            return {
+                                              browser: browser,
+                                              visitor: browserCount[browser]
+                                            };
+                                          }
+                                        );
+                                      }
+                                      return countVisitorsByBrowser(
+                                        $state.fetchData2?.data ?? []
+                                      );
+                                    })();
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                                dataKey={(() => {
+                                  const __composite = {
+                                    key: null,
+                                    label: null
+                                  };
+                                  __composite["key"] = "visitor";
+                                  __composite["label"] =
+                                    "\u0645\u0631\u0648\u0631\u06af\u0631";
+                                  return __composite;
+                                })()}
+                                label={false}
+                                layout={"horizontal"}
+                                legend={true}
+                                nameKey={(() => {
+                                  const __composite = { key: null };
+                                  __composite["key"] = "browser";
+                                  return __composite;
+                                })()}
+                                tooltip={(() => {
+                                  const __composite = {
+                                    enabled: null,
+                                    indicator: null
+                                  };
+                                  __composite["enabled"] = true;
+                                  __composite["indicator"] = "line";
+                                  return __composite;
+                                })()}
+                                type={"pie"}
+                                xAxis={(() => {
+                                  const __composite = {
+                                    enabled: null,
+                                    key: null,
+                                    type: null,
+                                    tickLine: null
+                                  };
+                                  __composite["enabled"] = true;
+                                  __composite["key"] = "date";
+                                  __composite["type"] = "category";
+                                  __composite["tickLine"] = false;
+                                  return __composite;
+                                })()}
+                                yAxis={(() => {
+                                  const __composite = {
+                                    enabled: null,
+                                    key: null,
+                                    type: null
+                                  };
+                                  __composite["enabled"] = true;
+                                  __composite["key"] = "visitors";
+                                  __composite["type"] = "number";
+                                  return __composite;
+                                })()}
+                              />
+                            </div>
+                          </div>
                         </div>
                       ) : null}
                       {(() => {

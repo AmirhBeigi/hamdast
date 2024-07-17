@@ -670,6 +670,18 @@
           "name": "ApiRequest",
           "displayName": "ApiRequest",
           "componentImportPath": "@/fragment/components/api-request"
+        },
+        {
+          "id": "1L-HZJn1S7kA",
+          "name": "Slider",
+          "displayName": "Slider",
+          "componentImportPath": "@/fragment/components/slider"
+        },
+        {
+          "id": "oU2v2at0brmo",
+          "name": "Chart",
+          "displayName": "Chart",
+          "componentImportPath": "@/fragment/components/chart"
         }
       ],
       "customFunctions": []
