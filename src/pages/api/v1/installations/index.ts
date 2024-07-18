@@ -19,6 +19,7 @@ export default async function handler(
     credentials: true,
     headers: [
       "X-CSRF-Token",
+      "x-xsrf-token",
       "X-Requested-With",
       "Accept",
       "Accept-Version",
