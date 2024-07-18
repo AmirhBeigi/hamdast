@@ -670,6 +670,18 @@
           "name": "ApiRequest",
           "displayName": "ApiRequest",
           "componentImportPath": "@/fragment/components/api-request"
+        },
+        {
+          "id": "1L-HZJn1S7kA",
+          "name": "Slider",
+          "displayName": "Slider",
+          "componentImportPath": "@/fragment/components/slider"
+        },
+        {
+          "id": "oU2v2at0brmo",
+          "name": "Chart",
+          "displayName": "Chart",
+          "componentImportPath": "@/fragment/components/chart"
         }
       ],
       "customFunctions": []
@@ -747,6 +759,6 @@
   "nextjsConfig": {
     "pagesDir": "../src/pages"
   },
-  "cliVersion": "0.1.330",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.330/dist/plasmic.schema.json"
+  "cliVersion": "0.1.331",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.331/dist/plasmic.schema.json"
 }
