@@ -190,7 +190,7 @@ function PlasmicSessionReplay__RenderFunc(props: {
         path: "day",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $ctx }) => 1
       }
     ],
     [$props, $ctx, $refs]
@@ -441,7 +441,7 @@ function PlasmicSessionReplay__RenderFunc(props: {
                                         variablePath: ["day"]
                                       },
                                       operation: 0,
-                                      value: 0
+                                      value: 1
                                     };
                                     return (({
                                       variable,
@@ -531,7 +531,7 @@ function PlasmicSessionReplay__RenderFunc(props: {
                             return [
                               {
                                 text: "امروز",
-                                value: 0
+                                value: 1
                               },
                               {
                                 text: "۳ روز اخیر",
