@@ -32,8 +32,8 @@ export default async function handler(
 
   const session = await pb.collection("replay").getFullList({
     filter: `app="${app_id}" && menu="${menu_id}" && updated >= "${moment()
-      .subtract(days_ago as string, "day")
-      .startOf("day")
+      .subtract(days_ago as string, "jDay")
+      .startOf("jDay")
       .toISOString()}"`,
     sort: "-updated",
     fields: "id,user,device,browser,updated,created",
