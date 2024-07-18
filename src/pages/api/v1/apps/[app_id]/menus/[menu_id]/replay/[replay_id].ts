@@ -4,6 +4,7 @@ import { pb } from "../../../../../../../../../pocketbase";
 import config from "next/config";
 const { publicRuntimeConfig } = config();
 import NextCors from "nextjs-cors";
+import { gzip } from "node-gzip";
 
 export default async function handler(
   req: NextApiRequest,
@@ -26,6 +27,8 @@ export default async function handler(
       publicRuntimeConfig.POCKETBASE_PASSWORD
     );
 
+    const compressed = await gzip(events);
+
     const session = await pb
       .collection("replay")
       .getOne(replay_id as string)
@@ -37,7 +40,7 @@ export default async function handler(
           browser: browser,
           device: device,
           user: user,
-          events: events,
+          events: compressed,
         };
         await pb.collection("replay").create(data);
         res.status(200).json({});
@@ -50,7 +53,7 @@ export default async function handler(
           browser: browser,
           device: device,
           user: user,
-          events: events,
+          events: compressed,
         };
         await pb.collection("replay").update(replay_id as string, data);
         res.status(200).json({});

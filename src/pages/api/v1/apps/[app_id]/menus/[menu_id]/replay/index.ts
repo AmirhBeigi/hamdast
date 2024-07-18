@@ -3,22 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { pb } from "../../../../../../../../../pocketbase";
 import config from "next/config";
 const { publicRuntimeConfig } = config();
-
-function getDateDaysAgo(daysAgo: string) {
-  // Create a new Date object for the current date
-  const currentDate = new Date();
-
-  // Subtract the specified number of days from the current date
-  currentDate.setDate(currentDate.getDate() - +daysAgo);
-
-  // Get the day, month, and year
-  const day = String(currentDate.getDate()).padStart(2, "0");
-  const month = String(currentDate.getMonth() + 1).padStart(2, "0"); // Months are zero-based
-  const year = currentDate.getFullYear();
-
-  // Return the date in dd-mm-yyyy format
-  return `${year}-${month}-${day}`;
-}
+import moment from "jalali-moment";
 
 export default async function handler(
   req: NextApiRequest,
@@ -46,21 +31,24 @@ export default async function handler(
   );
 
   const session = await pb.collection("replay").getFullList({
-    filter: `app="${app_id}" && menu="${menu_id}" && updated >= "${getDateDaysAgo(
-      days_ago as string
-    )} 00:00:00"`,
+    filter: `app="${app_id}" && menu="${menu_id}" && updated >= "${moment()
+      .subtract(days_ago as string, "day")
+      .startOf("day")
+      .toISOString()}"`,
     sort: "-updated",
+    fields: "id,user,device,browser,updated,created",
   });
 
-  res.status(200).json(
-    session.map((item) => ({
+  const items = session.map((item) => {
+    return {
       id: item.id,
       user: item.user,
       device: item.device,
       browser: item.browser,
-      events: item.events,
       updated_at: item.updated,
       created_at: item.created,
-    }))
-  );
+    };
+  });
+
+  res.status(200).json(items);
 }
