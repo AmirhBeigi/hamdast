@@ -12,11 +12,12 @@ export default async function handler(
 ) {
   pb.autoCancellation(false);
   await NextCors(req, res, {
-    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE", "OPTIONS"],
     origin: new RegExp(".paziresh24."),
     preflightContinue: true,
     optionsSuccessStatus: 200,
     credentials: true,
+    headers: ["x-xsrf-token"],
   });
 
   const cookieStore = req.cookies;
