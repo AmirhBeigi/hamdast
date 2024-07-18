@@ -17,11 +17,23 @@ export default async function handler(
     preflightContinue: true,
     optionsSuccessStatus: 200,
     credentials: true,
-    headers: ["x-xsrf-token"],
+    headers: [
+      "X-CSRF-Token",
+      "X-Requested-With",
+      "Accept",
+      "Accept-Version",
+      "Content-Length",
+      "Content-MD5",
+      "Content-Type",
+      "Date",
+      "X-Api-Version",
+      "token",
+      "Authorization",
+    ],
   });
 
   if (req.method === "OPTIONS") {
-    return res.status(200);
+    return res.status(200).end();
   }
 
   const cookieStore = req.cookies;
