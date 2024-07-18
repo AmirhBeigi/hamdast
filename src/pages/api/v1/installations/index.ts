@@ -20,6 +20,10 @@ export default async function handler(
     headers: ["x-xsrf-token"],
   });
 
+  if (req.method === "OPTIONS") {
+    return res.status(200);
+  }
+
   const cookieStore = req.cookies;
   const token =
     (cookieStore["token"] as string) ||
