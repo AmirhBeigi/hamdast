@@ -1102,129 +1102,146 @@ function PlasmicStatistics__RenderFunc(props: {
                                 })()}
                               />
 
-                              <Chart
-                                cartesianGrid={["horizontal"]}
-                                chartConfig={(() => {
-                                  const __composite = [
-                                    {
-                                      color: null,
-                                      type: "natural",
-                                      dot: null,
-                                      key: null,
-                                      label: null
-                                    },
-                                    {
-                                      color: null,
-                                      type: "natural",
-                                      dot: false,
-                                      key: null,
-                                      label: null
-                                    }
-                                  ];
-                                  __composite["0"]["color"] = "#365E70";
-                                  __composite["0"]["dot"] = true;
-                                  __composite["0"]["key"] = "visitors";
-                                  __composite["0"]["label"] =
-                                    "\u0628\u0627\u0632\u062f\u06cc\u062f \u06a9\u0646\u0646\u062f\u0647";
-                                  __composite["1"]["color"] = "#EEF3F5";
-                                  __composite["1"]["key"] = "users";
-                                  __composite["1"]["label"] =
-                                    "\u06a9\u0627\u0631\u0628\u0631";
-                                  return __composite;
-                                })()}
-                                className={classNames(
-                                  "__wab_instance",
-                                  sty.fragmentChart__l2El
-                                )}
-                                data={(() => {
-                                  try {
-                                    return (() => {
-                                      function countVisitorsAndUsersByMenu(
-                                        data
-                                      ) {
-                                        const menuCount = {};
-
-                                        data.forEach(entry => {
-                                          const menu = entry.menu.toLowerCase();
-                                          if (!menuCount[menu]) {
-                                            menuCount[menu] = {
-                                              visitors: 0,
-                                              users: new Set()
-                                            };
-                                          }
-                                          menuCount[menu].visitors++;
-                                          menuCount[menu].users.add(
-                                            entry.user_id
-                                          );
-                                        });
-
-                                        return Object.keys(menuCount).map(
-                                          menu => {
-                                            return {
-                                              menu: $state.fetchData.data.find(
-                                                item => item.id === menu
-                                              ).name_fa,
-                                              visitors:
-                                                menuCount[menu].visitors,
-                                              users: menuCount[menu].users.size
-                                            };
-                                          }
-                                        );
-                                      }
-                                      return countVisitorsAndUsersByMenu(
-                                        $state.fetchData2?.data ?? []
-                                      );
-                                    })();
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return undefined;
-                                    }
-                                    throw e;
+                              {(() => {
+                                try {
+                                  return $state.menu == -1;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return true;
                                   }
-                                })()}
-                                label={false}
-                                layout={"horizontal"}
-                                legend={true}
-                                stack={false}
-                                tooltip={(() => {
-                                  const __composite = {
-                                    enabled: null,
-                                    indicator: null
-                                  };
-                                  __composite["enabled"] = true;
-                                  __composite["indicator"] = "dot";
-                                  return __composite;
-                                })()}
-                                type={"bar"}
-                                xAxis={(() => {
-                                  const __composite = {
-                                    enabled: null,
-                                    key: null,
-                                    type: null,
-                                    tickLine: null
-                                  };
-                                  __composite["enabled"] = true;
-                                  __composite["key"] = "menu";
-                                  __composite["type"] = "category";
-                                  __composite["tickLine"] = false;
-                                  return __composite;
-                                })()}
-                                yAxis={(() => {
-                                  const __composite = {
-                                    enabled: null,
-                                    key: null,
-                                    type: null
-                                  };
-                                  __composite["enabled"] = true;
-                                  __composite["key"] = "visitors";
-                                  __composite["type"] = "number";
-                                  return __composite;
-                                })()}
-                              />
+                                  throw e;
+                                }
+                              })() ? (
+                                <Chart
+                                  cartesianGrid={["horizontal"]}
+                                  chartConfig={(() => {
+                                    const __composite = [
+                                      {
+                                        color: null,
+                                        type: "natural",
+                                        dot: null,
+                                        key: null,
+                                        label: null
+                                      },
+                                      {
+                                        color: null,
+                                        type: "natural",
+                                        dot: false,
+                                        key: null,
+                                        label: null
+                                      }
+                                    ];
+                                    __composite["0"]["color"] = "#365E70";
+                                    __composite["0"]["dot"] = true;
+                                    __composite["0"]["key"] = "visitors";
+                                    __composite["0"]["label"] =
+                                      "\u0628\u0627\u0632\u062f\u06cc\u062f \u06a9\u0646\u0646\u062f\u0647";
+                                    __composite["1"]["color"] = "#EEF3F5";
+                                    __composite["1"]["key"] = "users";
+                                    __composite["1"]["label"] =
+                                      "\u06a9\u0627\u0631\u0628\u0631";
+                                    return __composite;
+                                  })()}
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.fragmentChart__l2El
+                                  )}
+                                  data={(() => {
+                                    try {
+                                      return (() => {
+                                        function countVisitorsAndUsersByMenu(
+                                          data
+                                        ) {
+                                          const menuCount = {};
+
+                                          data.forEach(entry => {
+                                            const menu =
+                                              entry.menu.toLowerCase();
+                                            if (!menuCount[menu]) {
+                                              menuCount[menu] = {
+                                                visitors: 0,
+                                                users: new Set()
+                                              };
+                                            }
+                                            menuCount[menu].visitors++;
+                                            menuCount[menu].users.add(
+                                              entry.user_id
+                                            );
+                                          });
+
+                                          return Object.keys(menuCount).map(
+                                            menu => {
+                                              return {
+                                                menu: $state.fetchData.data.find(
+                                                  item => item.id === menu
+                                                ).name_fa,
+                                                visitors:
+                                                  menuCount[menu].visitors,
+                                                users:
+                                                  menuCount[menu].users.size
+                                              };
+                                            }
+                                          );
+                                        }
+                                        return countVisitorsAndUsersByMenu(
+                                          $state.fetchData2?.data ?? []
+                                        );
+                                      })();
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                  label={false}
+                                  layout={"horizontal"}
+                                  legend={true}
+                                  stack={false}
+                                  tooltip={(() => {
+                                    const __composite = {
+                                      enabled: null,
+                                      indicator: null
+                                    };
+                                    __composite["enabled"] = true;
+                                    __composite["indicator"] = "dot";
+                                    return __composite;
+                                  })()}
+                                  type={"bar"}
+                                  xAxis={(() => {
+                                    const __composite = {
+                                      enabled: null,
+                                      key: null,
+                                      type: null,
+                                      tickLine: null
+                                    };
+                                    __composite["enabled"] = true;
+                                    __composite["key"] = "menu";
+                                    __composite["type"] = "category";
+                                    __composite["tickLine"] = false;
+                                    return __composite;
+                                  })()}
+                                  yAxis={(() => {
+                                    const __composite = {
+                                      enabled: null,
+                                      key: null,
+                                      type: null
+                                    };
+                                    __composite["enabled"] = true;
+                                    __composite["key"] = "visitors";
+                                    __composite["type"] = "number";
+                                    return __composite;
+                                  })()}
+                                />
+                              ) : null}
                             </div>
                             <div
                               className={classNames(
