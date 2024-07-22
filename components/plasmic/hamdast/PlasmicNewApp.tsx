@@ -61,6 +61,7 @@ import {
 
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import AuthProvider from "../../AuthProvider"; // plasmic-import: KTPu1eZupEdG/component
+import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -85,6 +86,7 @@ export type PlasmicNewApp__OverridesType = {
   embedHtml?: Flex__<typeof Embed>;
   authProvider?: Flex__<typeof AuthProvider>;
   svg?: Flex__<"svg">;
+  fragmentApiRequest?: Flex__<typeof ApiRequest>;
 };
 
 export interface DefaultNewAppProps {}
@@ -156,6 +158,24 @@ function PlasmicNewApp__RenderFunc(props: {
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 1
+      },
+      {
+        path: "fragmentApiRequest.data",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "fragmentApiRequest.error",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "fragmentApiRequest.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -319,6 +339,50 @@ function PlasmicNewApp__RenderFunc(props: {
                   >
                     {"\u0628\u0632\u0648\u062f\u06cc ..."}
                   </div>
+                  <ApiRequest
+                    data-plasmic-name={"fragmentApiRequest"}
+                    data-plasmic-override={overrides.fragmentApiRequest}
+                    className={classNames(
+                      "__wab_instance",
+                      sty.fragmentApiRequest
+                    )}
+                    errorDisplay={
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___9AoA5
+                        )}
+                      >
+                        {"Error fetching data"}
+                      </div>
+                    }
+                    loadingDisplay={
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__y8K4F
+                        )}
+                      >
+                        {"Loading..."}
+                      </div>
+                    }
+                    method={"GET"}
+                    onError={generateStateOnChangeProp($state, [
+                      "fragmentApiRequest",
+                      "error"
+                    ])}
+                    onLoading={generateStateOnChangeProp($state, [
+                      "fragmentApiRequest",
+                      "loading"
+                    ])}
+                    onSuccess={generateStateOnChangeProp($state, [
+                      "fragmentApiRequest",
+                      "data"
+                    ])}
+                    url={"https://apigw.paziresh24.com/v1/auth/me"}
+                  />
                 </div>
               </div>
             </div>
@@ -330,10 +394,11 @@ function PlasmicNewApp__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "embedHtml", "authProvider", "svg"],
+  root: ["root", "embedHtml", "authProvider", "svg", "fragmentApiRequest"],
   embedHtml: ["embedHtml"],
-  authProvider: ["authProvider", "svg"],
-  svg: ["svg"]
+  authProvider: ["authProvider", "svg", "fragmentApiRequest"],
+  svg: ["svg"],
+  fragmentApiRequest: ["fragmentApiRequest"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -343,6 +408,7 @@ type NodeDefaultElementType = {
   embedHtml: typeof Embed;
   authProvider: typeof AuthProvider;
   svg: "svg";
+  fragmentApiRequest: typeof ApiRequest;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -408,6 +474,7 @@ export const PlasmicNewApp = Object.assign(
     embedHtml: makeNodeComponent("embedHtml"),
     authProvider: makeNodeComponent("authProvider"),
     svg: makeNodeComponent("svg"),
+    fragmentApiRequest: makeNodeComponent("fragmentApiRequest"),
 
     // Metadata about props expected for PlasmicNewApp
     internalVariantProps: PlasmicNewApp__VariantProps,

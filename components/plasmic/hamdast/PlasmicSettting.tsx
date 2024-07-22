@@ -857,22 +857,6 @@ function PlasmicSettting__RenderFunc(props: {
                               "__wab_instance",
                               sty.button__j2VYs
                             )}
-                            color={"softSand"}
-                            isDisabled={(() => {
-                              try {
-                                return $state.authProvider.apps
-                                  ?.find(item => item.id === $ctx?.params?.id)
-                                  .permissions?.includes("USER");
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return [];
-                                }
-                                throw e;
-                              }
-                            })()}
                             size={"compact"}
                           >
                             <div

@@ -337,12 +337,12 @@
         {
           "type": "renderModule",
           "assetId": "nAbrCePpa8PZ",
-          "checksum": "ef1d3922bdd031fec78b9e0446198874"
+          "checksum": "b062b17df83ee530dc8c92fb31421bc2"
         },
         {
           "type": "cssRules",
           "assetId": "nAbrCePpa8PZ",
-          "checksum": "ef1d3922bdd031fec78b9e0446198874"
+          "checksum": "b062b17df83ee530dc8c92fb31421bc2"
         },
         {
           "type": "icon",
@@ -352,12 +352,12 @@
         {
           "type": "renderModule",
           "assetId": "IdTcu_EF7CVl",
-          "checksum": "2a8e02e52fbcf231e8f26df985cd1d09"
+          "checksum": "211cedf019e7e196c5a348dc2990d427"
         },
         {
           "type": "cssRules",
           "assetId": "IdTcu_EF7CVl",
-          "checksum": "2a8e02e52fbcf231e8f26df985cd1d09"
+          "checksum": "211cedf019e7e196c5a348dc2990d427"
         },
         {
           "type": "icon",
@@ -367,12 +367,12 @@
         {
           "type": "renderModule",
           "assetId": "7ri-iU6uUwQF",
-          "checksum": "f87b3a65fcbb456155708a3d53d0e83f"
+          "checksum": "118c0f48232be912dd7f2493df65f74a"
         },
         {
           "type": "cssRules",
           "assetId": "7ri-iU6uUwQF",
-          "checksum": "f87b3a65fcbb456155708a3d53d0e83f"
+          "checksum": "118c0f48232be912dd7f2493df65f74a"
         },
         {
           "type": "renderModule",
@@ -392,12 +392,17 @@
         {
           "type": "renderModule",
           "assetId": "ve2FygUyzJYe",
-          "checksum": "6f24c3a9322ddff30e6c4a481a527c88"
+          "checksum": "f0698201146ab8359fffb679ba923eed"
         },
         {
           "type": "cssRules",
           "assetId": "ve2FygUyzJYe",
-          "checksum": "6f24c3a9322ddff30e6c4a481a527c88"
+          "checksum": "f0698201146ab8359fffb679ba923eed"
+        },
+        {
+          "type": "icon",
+          "assetId": "B2THoaAEIn8y",
+          "checksum": "f9f07ad26d08dd19d1cb0d1f0c12dcaf"
         },
         {
           "assetId": "bE9NMB942w5e6uFrcCxfJN",
