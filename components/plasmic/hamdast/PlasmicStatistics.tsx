@@ -647,7 +647,7 @@ function PlasmicStatistics__RenderFunc(props: {
                             try {
                               return [
                                 {
-                                  text: "امروز",
+                                  text: "امروز/دیروز",
                                   value: 1
                                 },
                                 {
