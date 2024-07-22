@@ -29,8 +29,8 @@ export default async function handler(
 
     const compressed = await gzip(events);
 
-    const session = await pb
-      .collection("replay")
+    await pb
+      .collection("replay_session")
       .getOne(replay_id as string)
       .catch(async () => {
         const data = {
@@ -40,7 +40,6 @@ export default async function handler(
           browser: browser,
           device: device,
           user: user,
-          events: compressed,
         };
         await pb.collection("replay").create(data);
         res.status(200).json({});
@@ -53,11 +52,27 @@ export default async function handler(
           browser: browser,
           device: device,
           user: user,
-          events: compressed,
         };
         await pb.collection("replay").update(replay_id as string, data);
         res.status(200).json({});
       });
+
+    const options = {
+      method: "POST",
+      url: `https://hamdast-logging.darkube.app/api/v1/logstream/replayevents`,
+      headers: {
+        Authorization: `Basic ${publicRuntimeConfig.HAMDAST_LOGGING_TOKEN}`,
+        "Content-Type": "application/json",
+      },
+      data: [
+        {
+          id: replay_id,
+          events: compressed,
+        },
+      ],
+    };
+
+    await axios.request(options);
 
     res.status(200).json({});
   }
