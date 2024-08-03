@@ -61,11 +61,16 @@ import {
 
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import AuthProvider from "../../AuthProvider"; // plasmic-import: KTPu1eZupEdG/component
+import { Reveal } from "@plasmicpkgs/react-awesome-reveal";
+import Button from "../../Button"; // plasmic-import: _T6T2fNvkUfo/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectcss
 import sty from "./PlasmicHamdast.module.css"; // plasmic-import: 95NoFP37q3yQ/css
+
+import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: CmW94FEF71d7/icon
+import Icon15Icon from "./icons/PlasmicIcon__Icon15"; // plasmic-import: rQsx35tf_bcf/icon
 
 createPlasmicElementProxy;
 
@@ -115,6 +120,8 @@ function PlasmicHamdast__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const $globalActions = useGlobalActions?.();
+
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
@@ -128,6 +135,30 @@ function PlasmicHamdast__RenderFunc(props: {
         type: "private",
         variableType: "array",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "showRules",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "hideWelcome",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "showWelcome",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => true
+      },
+      {
+        path: "hideRules",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -176,70 +207,72 @@ function PlasmicHamdast__RenderFunc(props: {
             projectcss.plasmic_tokens,
             sty.root
           )}
+          dir={"rtl"}
         >
-          <SideEffect
-            data-plasmic-name={"sideEffect"}
-            data-plasmic-override={overrides.sideEffect}
-            className={classNames("__wab_instance", sty.sideEffect)}
-            deps={(() => {
-              try {
-                return [$state.authProvider.apps];
-              } catch (e) {
-                if (
-                  e instanceof TypeError ||
-                  e?.plasmicType === "PlasmicUndefinedDataError"
-                ) {
-                  return undefined;
+          {false ? (
+            <SideEffect
+              data-plasmic-name={"sideEffect"}
+              data-plasmic-override={overrides.sideEffect}
+              className={classNames("__wab_instance", sty.sideEffect)}
+              deps={(() => {
+                try {
+                  return [$state.authProvider.apps];
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
                 }
-                throw e;
-              }
-            })()}
-            onMount={async () => {
-              const $steps = {};
+              })()}
+              onMount={async () => {
+                const $steps = {};
 
-              $steps["goToStatistics"] =
-                Array.isArray($state.authProvider.apps) &&
-                $state.authProvider.apps?.length > 0
-                  ? (() => {
-                      const actionArgs = {
-                        destination: `/apps/${(() => {
-                          try {
-                            return $state.authProvider.apps[0].id;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
+                $steps["goToStatistics"] =
+                  Array.isArray($state.authProvider.apps) &&
+                  $state.authProvider.apps?.length > 0
+                    ? (() => {
+                        const actionArgs = {
+                          destination: `/apps/${(() => {
+                            try {
+                              return $state.authProvider.apps[0].id;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
                             }
-                            throw e;
+                          })()}/statistics`
+                        };
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
                           }
-                        })()}/statistics`
-                      };
-                      return (({ destination }) => {
-                        if (
-                          typeof destination === "string" &&
-                          destination.startsWith("#")
-                        ) {
-                          document
-                            .getElementById(destination.substr(1))
-                            .scrollIntoView({ behavior: "smooth" });
-                        } else {
-                          __nextRouter?.push(destination);
-                        }
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-              if (
-                $steps["goToStatistics"] != null &&
-                typeof $steps["goToStatistics"] === "object" &&
-                typeof $steps["goToStatistics"].then === "function"
-              ) {
-                $steps["goToStatistics"] = await $steps["goToStatistics"];
-              }
-            }}
-          />
-
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                if (
+                  $steps["goToStatistics"] != null &&
+                  typeof $steps["goToStatistics"] === "object" &&
+                  typeof $steps["goToStatistics"].then === "function"
+                ) {
+                  $steps["goToStatistics"] = await $steps["goToStatistics"];
+                }
+              }}
+            />
+          ) : null}
           <AuthProvider
             data-plasmic-name={"authProvider"}
             data-plasmic-override={overrides.authProvider}
@@ -252,7 +285,642 @@ function PlasmicHamdast__RenderFunc(props: {
               "authProvider",
               "user"
             ])}
-          />
+          >
+            <div className={classNames(projectcss.all, sty.freeBox__znNnX)}>
+              {(() => {
+                try {
+                  return $state.showWelcome || $state.showRules;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return true;
+                  }
+                  throw e;
+                }
+              })() ? (
+                <div className={classNames(projectcss.all, sty.freeBox__fEHvf)}>
+                  {(() => {
+                    try {
+                      return $state.showWelcome;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })() ? (
+                    <Reveal
+                      big={false}
+                      cascade={false}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.reveal__omSrx
+                      )}
+                      direction={"up"}
+                      duration={700}
+                      reverse={(() => {
+                        try {
+                          return $state.hideWelcome;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return false;
+                          }
+                          throw e;
+                        }
+                      })()}
+                      triggerOnce={true}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__u4Dz7
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__mbrDp
+                          )}
+                        >
+                          {"\u0647\u0645\u200c\u062f\u0633\u062a"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__t3Eqb
+                          )}
+                        >
+                          {
+                            "\u062a\u0648\u0633\u0639\u0647 \u0627\u064e\u0628\u0632\u0627\u0631\u06a9 \u0628\u0631\u0627\u06cc \u067e\u0630\u06cc\u0631\u0634\u06f2\u06f4"
+                          }
+                        </div>
+                      </div>
+                      <Stack__
+                        as={"div"}
+                        hasGap={true}
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__bgrTr
+                        )}
+                      >
+                        <Button
+                          className={classNames(
+                            "__wab_instance",
+                            sty.button__teKai
+                          )}
+                          endIcon={null}
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["updateHideWelcome"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["hideWelcome"]
+                                    },
+                                    operation: 4
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    const oldValue = $stateGet(
+                                      objRoot,
+                                      variablePath
+                                    );
+                                    $stateSet(objRoot, variablePath, !oldValue);
+                                    return !oldValue;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateHideWelcome"] != null &&
+                              typeof $steps["updateHideWelcome"] === "object" &&
+                              typeof $steps["updateHideWelcome"].then ===
+                                "function"
+                            ) {
+                              $steps["updateHideWelcome"] = await $steps[
+                                "updateHideWelcome"
+                              ];
+                            }
+
+                            $steps["wait800"] = true
+                              ? (() => {
+                                  const actionArgs = { args: [800] };
+                                  return $globalActions["Fragment.wait"]?.apply(
+                                    null,
+                                    [...actionArgs.args]
+                                  );
+                                })()
+                              : undefined;
+                            if (
+                              $steps["wait800"] != null &&
+                              typeof $steps["wait800"] === "object" &&
+                              typeof $steps["wait800"].then === "function"
+                            ) {
+                              $steps["wait800"] = await $steps["wait800"];
+                            }
+
+                            $steps["updateShowWelcome"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["showWelcome"]
+                                    },
+                                    operation: 0,
+                                    value: false
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateShowWelcome"] != null &&
+                              typeof $steps["updateShowWelcome"] === "object" &&
+                              typeof $steps["updateShowWelcome"].then ===
+                                "function"
+                            ) {
+                              $steps["updateShowWelcome"] = await $steps[
+                                "updateShowWelcome"
+                              ];
+                            }
+
+                            $steps["updateShowRules"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["showRules"]
+                                    },
+                                    operation: 0,
+                                    value: true
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateShowRules"] != null &&
+                              typeof $steps["updateShowRules"] === "object" &&
+                              typeof $steps["updateShowRules"].then ===
+                                "function"
+                            ) {
+                              $steps["updateShowRules"] = await $steps[
+                                "updateShowRules"
+                              ];
+                            }
+                          }}
+                          shape={"rounded"}
+                          startIcon={
+                            <Icon2Icon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg___2GC8E
+                              )}
+                              role={"img"}
+                            />
+                          }
+                        >
+                          {
+                            "\u0633\u0627\u062e\u062a \u0627\u0648\u0644\u06cc\u0646 \u0627\u064e\u0628\u0632\u0627\u0631\u06a9"
+                          }
+                        </Button>
+                      </Stack__>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__lyyzq
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__mjOyb
+                          )}
+                        >
+                          {
+                            "\u0622\u06cc\u0627 \u0627\u0632 \u0642\u0628\u0644 \u0634\u0645\u0627 \u0627\u064e\u0628\u0632\u0627\u0631\u06a9 \u062f\u0627\u0634\u062a\u0647\u200c\u0627\u06cc\u062f\u061f"
+                          }
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__e9Tc
+                          )}
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["goToStatistics"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    destination: `/apps/${(() => {
+                                      try {
+                                        return $state.authProvider.apps[0].id;
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return undefined;
+                                        }
+                                        throw e;
+                                      }
+                                    })()}/statistics`
+                                  };
+                                  return (({ destination }) => {
+                                    if (
+                                      typeof destination === "string" &&
+                                      destination.startsWith("#")
+                                    ) {
+                                      document
+                                        .getElementById(destination.substr(1))
+                                        .scrollIntoView({ behavior: "smooth" });
+                                    } else {
+                                      __nextRouter?.push(destination);
+                                    }
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["goToStatistics"] != null &&
+                              typeof $steps["goToStatistics"] === "object" &&
+                              typeof $steps["goToStatistics"].then ===
+                                "function"
+                            ) {
+                              $steps["goToStatistics"] = await $steps[
+                                "goToStatistics"
+                              ];
+                            }
+                          }}
+                        >
+                          {
+                            "\u0645\u0634\u0627\u0647\u062f\u0647 \u0627\u064e\u0628\u0632\u0627\u0631\u06a9 \u0647\u0627 \u0645\u0646"
+                          }
+                        </div>
+                      </div>
+                    </Reveal>
+                  ) : null}
+                  {(() => {
+                    try {
+                      return $state.showRules;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })() ? (
+                    <Reveal
+                      big={false}
+                      cascade={true}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.reveal__rddub
+                      )}
+                      delay={0}
+                      direction={"up"}
+                      duration={700}
+                      reverse={(() => {
+                        try {
+                          return $state.hideRules;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()}
+                      triggerOnce={true}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__j80AO
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__nhGF
+                          )}
+                        >
+                          {
+                            "\u0642\u0648\u0627\u0646\u06cc\u0646 \u0648 \u0645\u0642\u0631\u0631\u0627\u062a \u0647\u0645\u200c\u062f\u0633\u062a"
+                          }
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__izaUd
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__jWpYo
+                          )}
+                        >
+                          {
+                            "\u0636\u0631\u0648\u0631\u06cc \u0627\u0633\u062a \u0646\u0648\u0628\u062a\u200c\u062f\u0647\u06cc \u0627\u06cc\u0646\u062a\u0631\u0646\u062a\u06cc \u0635\u0631\u0641\u0627 \u0628\u0627 \u0645\u0634\u062e\u0635\u0627\u062a \u0648 \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0628\u06cc\u0645\u0627\u0631 \u0627\u0646\u062c\u0627\u0645 \u0634\u0648\u062f \u0648 \u062f\u0631 \u0635\u0648\u0631\u062a \u0646\u06cc\u0627\u0632 \u0628\u0647 \u062f\u0631\u06cc\u0627\u0641\u062a \u0646\u0648\u0628\u062a \u0628\u0631\u0627\u06cc \u0627\u0641\u0631\u0627\u062f \u062f\u06cc\u06af\u0631\u060c \u0627\u0632 \u06af\u0632\u06cc\u0646\u0647 \u201c\u062b\u0628\u062a \u0646\u0648\u0628\u062a \u0628\u0631\u0627\u06cc \u062f\u06cc\u06af\u0631\u0627\u0646\u201d \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u06af\u0631\u062f\u062f. \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u062e\u0648\u0627\u0633\u062a\u0647 \u0634\u062f\u0647 \u062f\u0631 \u0628\u062e\u0634 \u062b\u0628\u062a\u200c\u0646\u0627\u0645 \u0646\u0638\u06cc\u0631 \u06a9\u062f\u0645\u0644\u06cc\u060c \u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0648\u2026 \u0627\u0644\u0632\u0627\u0645\u06cc \u0627\u0633\u062a \u0648 \u0635\u0631\u0641\u0627 \u0628\u0631\u0627\u06cc \u0627\u0645\u06a9\u0627\u0646 \u0627\u0631\u062a\u0628\u0627\u0637 \u0627\u062d\u062a\u0645\u0627\u0644\u06cc \u062f\u0631 \u0622\u06cc\u0646\u062f\u0647 \u0627\u0633\u062a \u0648 \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0628\u06cc\u0645\u0627\u0631\u0627\u0646 \u0648 \u067e\u0632\u0634\u06a9\u0627\u0646 \u062f\u0631 \u067e\u0630\u06cc\u0631\u063424 \u0645\u062d\u0641\u0648\u0638 \u0627\u0633\u062a.\n\u0627\u0645\u06a9\u0627\u0646 \u0644\u063a\u0648 \u0646\u0648\u0628\u062a \u0627\u062e\u0630 \u0634\u062f\u0647 \u0641\u0642\u0637 \u062a\u0627 24 \u0633\u0627\u0639\u062a \u0642\u0628\u0644 \u0627\u0632 \u0645\u0648\u0639\u062f \u0646\u0648\u0628\u062a \u0648\u062c\u0648\u062f \u062f\u0627\u0631\u062f \u0648 \u062f\u0631 \u0635\u0648\u0631\u062a \u062b\u0628\u062a \u0646\u0648\u0628\u062a \u0648 \u0639\u062f\u0645 \u062d\u0636\u0648\u0631 \u0628\u06cc\u0634 \u0627\u0632 \u062f\u0648 \u0645\u0631\u062a\u0628\u0647\u060c \u062d\u0633\u0627\u0628 \u06a9\u0627\u0631\u0628\u0631\u06cc \u0634\u0645\u0627 \u0645\u0633\u062f\u0648\u062f \u062e\u0648\u0627\u0647\u062f \u0634\u062f.\n\u0636\u0631\u0648\u0631\u06cc \u0627\u0633\u062a \u0642\u0628\u0644 \u0627\u0632 \u0645\u0631\u0627\u062c\u0639\u0647 \u0628\u0647 \u0645\u0631\u06a9\u0632 \u062f\u0631\u0645\u0627\u0646\u06cc\u060c \u0646\u0648\u0628\u062a \u062e\u0648\u062f \u0631\u0627 \u0645\u062c\u062f\u062f\u0627 \u0628\u0631\u0631\u0633\u06cc \u0646\u0645\u0627\u06cc\u06cc\u062f \u0648 \u062f\u0631 \u062a\u0627\u0631\u06cc\u062e \u0648 \u0633\u0627\u0639\u062a\u06cc \u062e\u0627\u0631\u062c \u0627\u0632 \u0646\u0648\u0628\u062a \u062e\u0648\u062f \u0628\u0647 \u067e\u0632\u0634\u06a9 \u06cc\u0627 \u0645\u0631\u06a9\u0632 \u062f\u0631\u0645\u0627\u0646\u06cc \u0645\u0631\u0627\u062c\u0639\u0647 \u0646\u0641\u0631\u0645\u0627\u06cc\u06cc\u062f. \n\u062f\u0631 \u0635\u0648\u0631\u062a \u0644\u063a\u0648 \u0646\u0648\u0628\u062a \u0627\u0632 \u0633\u0648\u06cc \u0645\u0631\u06a9\u0632 \u062f\u0631\u0645\u0627\u0646\u06cc \u06cc\u0627 \u067e\u0632\u0634\u06a9\u060c \u0628\u0647 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647 \u062b\u0628\u062a \u0634\u062f\u0647 \u062f\u0631 \u0647\u0646\u06af\u0627\u0645 \u0627\u062e\u0630 \u0646\u0648\u0628\u062a\u060c \u067e\u06cc\u0627\u0645 \u0644\u063a\u0648 \u0646\u0648\u0628\u062a \u0627\u0631\u0633\u0627\u0644 \u0645\u06cc\u200c\u0634\u0648\u062f.\n\u0647\u0646\u06af\u0627\u0645 \u0645\u0631\u0627\u062c\u0639\u0647 \u0628\u0647 \u0645\u0631\u06a9\u0632 \u062f\u0631\u0645\u0627\u0646\u06cc\u060c \u0645\u0633\u062a\u0642\u06cc\u0645\u0627 \u0628\u0647 \u0628\u062e\u0634 \u067e\u0630\u06cc\u0631\u0634 \u0645\u0631\u06a9\u0632 \u062f\u0631\u0645\u0627\u0646\u06cc \u0645\u0631\u0627\u062c\u0639\u0647 \u0646\u0645\u0648\u062f\u0647 \u0648 \u0631\u0633\u06cc\u062f \u0646\u0648\u0628\u062a \u062e\u0648\u062f \u0631\u0627 \u0628\u0647 \u062a\u0623\u06cc\u06cc\u062f \u0648\u0627\u062d\u062f \u067e\u0630\u06cc\u0631\u0634 \u0628\u0631\u0633\u0627\u0646\u06cc\u062f.\n\u067e\u0632\u0634\u06a9\u0627\u0646 \u0648 \u06a9\u0644\u06cc\u0647\u200c \u0645\u0631\u0627\u06a9\u0632 \u062f\u0631\u0645\u0627\u0646\u06cc \u06a9\u0647 \u0627\u0632 \u0633\u0631\u0648\u06cc\u0633 \u0633\u06cc\u0633\u062a\u0645 \u0646\u0648\u0628\u062a\u200c\u062f\u0647\u06cc \u067e\u0630\u06cc\u0631\u0634\u06f2\u06f4 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0645\u06cc\u200c\u06a9\u0646\u0646\u062f\u060c \u0645\u0648\u0638\u0641 \u0628\u0647 \u0633\u0631\u0648\u06cc\u0633\u200c\u062f\u0647\u06cc \u0628\u0647 \u0645\u0648\u0642\u0639 \u0648 \u0627\u0633\u062a\u0627\u0646\u062f\u0627\u0631\u062f \u062f\u0631 \u0632\u0645\u0627\u0646 \u0645\u0642\u0631\u0631 \u0628\u0647 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u067e\u0630\u06cc\u0631\u0634\u06f2\u06f4 \u0647\u0633\u062a\u0646\u062f \u0648 \u062f\u0631 \u0635\u0648\u0631\u062a \u0628\u0631\u0648\u0632 \u0647\u0631\u06af\u0648\u0646\u0647 \u062a\u0627\u062e\u06cc\u0631 \u062f\u0631 \u0646\u0648\u0628\u062a \u0648 \u06cc\u0627 \u0645\u0634\u06a9\u0644 \u062f\u0631 \u06a9\u06cc\u0641\u06cc\u062a \u062f\u0631\u0645\u0627\u0646\u060c \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u0633\u0627\u06cc\u062a 0212501515 \u062a\u0645\u0627\u0633 \u062d\u0627\u0635\u0644 \u0641\u0631\u0645\u0627\u06cc\u06cc\u062f. \u062f\u0631 \u0646\u0638\u0631 \u062f\u0627\u0634\u062a\u0647 \u0628\u0627\u0634\u06cc\u062f \u0646\u0648\u0628\u062a\u200c\u0647\u0627\u06cc\u06cc \u06a9\u0647 \u062f\u0631 \u0633\u06cc\u0633\u062a\u0645 \u062b\u0628\u062a \u0645\u06cc\u200c\u0634\u0648\u062f \u0628\u0647 \u0645\u0646\u0632\u0644\u0647 \u0632\u0645\u0627\u0646 \u067e\u0630\u06cc\u0631\u0634 \u0628\u06cc\u0645\u0627\u0631 \u0627\u0633\u062a \u0648 \u0645\u0645\u06a9\u0646 \u0627\u0633\u062a \u0632\u0645\u0627\u0646 \u067e\u0630\u06cc\u0631\u0634 \u0628\u0627 \u0632\u0645\u0627\u0646 \u0648\u06cc\u0632\u06cc\u062a \u0645\u062a\u0641\u0627\u0648\u062a \u0628\u0627\u0634\u062f.\n\u0636\u0631\u0648\u0631\u06cc \u0627\u0633\u062a \u06a9\u0647 \u0628\u06cc\u0645\u0627\u0631 \u0645\u062d\u062a\u0631\u0645 \u0631\u0623\u0633 \u0633\u0627\u0639\u062a \u062a\u0639\u06cc\u06cc\u0646 \u0634\u062f\u0647 \u062f\u0631 \u0645\u0637\u0628 \u062d\u0636\u0648\u0631 \u062f\u0627\u0634\u062a\u0647 \u0628\u0627\u0634\u062f.\n\u0645\u0633\u0626\u0648\u0644\u06cc\u062a \u0627\u0631\u0627\u0626\u0647 \u062e\u062f\u0645\u0627\u062a \u0633\u0644\u0627\u0645\u062a \u0628\u0627\u06a9\u06cc\u0641\u06cc\u062a \u0648 \u0645\u0637\u0644\u0648\u0628 \u06a9\u0647 \u0627\u0632 \u0637\u0631\u06cc\u0642 \u062f\u0631\u06af\u0627\u0647\u200c\u0647\u0627\u06cc \u067e\u0630\u06cc\u0631\u063424 \u0645\u0639\u0631\u0641\u06cc \u0634\u062f\u0647\u200c\u0627\u0646\u062f \u0628\u0647 \u0639\u0647\u062f\u0647 \u0633\u0631\u0648\u06cc\u0633\u200c\u062f\u0647\u0646\u062f\u0647 \u0633\u0644\u0627\u0645\u062a \u0645\u0648\u0631\u062f\u0646\u0638\u0631 (\u067e\u0632\u0634\u06a9\u060c \u0645\u0631\u06a9\u0632 \u062f\u0631\u0645\u0627\u0646\u06cc \u06cc\u0627 \u0633\u0627\u06cc\u0631 \u0627\u0631\u0627\u0626\u0647\u200c\u06a9\u0646\u0646\u062f\u06af\u0627\u0646 \u0633\u0644\u0627\u0645\u062a) \u0645\u06cc\u200c\u0628\u0627\u0634\u062f.\n\u062a\u06cc\u0645 \u067e\u0630\u06cc\u0631\u063424 \u0628\u0627 \u0628\u0647\u0631\u0647\u200c\u06af\u06cc\u0631\u06cc \u0627\u0632 \u0628\u0647\u062a\u0631\u06cc\u0646 \u0631\u0627\u0647\u06a9\u0627\u0631\u0647\u0627\u06cc \u0627\u0645\u0646\u06cc\u062a\u06cc \u0627\u0633\u062a\u0627\u0646\u062f\u0627\u0631\u062f \u0648 \u0628\u06cc\u0646\u200c\u0627\u0644\u0645\u0644\u0644\u06cc \u062f\u0631 \u0631\u0627\u0633\u062a\u0627\u06cc \u062d\u0641\u0638 \u0648 \u062a\u0627\u0645\u06cc\u0646 \u0627\u0645\u0646\u06cc\u062a \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0648 \u0631\u0639\u0627\u06cc\u062a \u0627\u0635\u0648\u0644 \u062d\u0631\u06cc\u0645 \u062e\u0635\u0648\u0635\u06cc \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u062f\u0631 \u06a9\u0644\u06cc\u0647 \u0633\u0631\u0648\u06cc\u0633\u200c\u0647\u0627\u06cc \u0627\u0631\u0627\u0626\u0647 \u0634\u062f\u0647\u060c \u0627\u0632 \u0647\u06cc\u0686 \u062a\u0644\u0627\u0634\u06cc \u062f\u0631\u06cc\u063a \u0646\u062e\u0648\u0627\u0647\u062f \u06a9\u0631\u062f. \n\u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0645\u06cc\u200c\u067e\u0630\u06cc\u0631\u0646\u062f \u06a9\u0647 \u0633\u0627\u06cc\u062a \u067e\u0630\u06cc\u0631\u0634\u06f2\u06f4 \u0627\u0632 \u0627\u0631\u0633\u0627\u0644 \u067e\u06cc\u0627\u0645\u06a9 (\u0627\u0632 \u0633\u0631\u0634\u0645\u0627\u0631\u0647\u200c\u0647\u0627\u06cc \u0645\u062e\u062a\u0644\u0641 \u0627\u0632 \u062c\u0645\u0644\u0647 \u0645\u0647\u0645\u200c\u062a\u0631\u06cc\u0646 \u0622\u0646\u200c\u0647\u0627\u060c \u0634\u0645\u0627\u0631\u0647 9982001024) \u06cc\u0627 \u0647\u0631\u06af\u0648\u0646\u0647 \u0631\u0648\u0634 \u0627\u0631\u062a\u0628\u0627\u0637\u06cc \u062f\u06cc\u06af\u0631\u06cc \u0628\u0631\u0627\u06cc \u0628\u0631\u0642\u0631\u0627\u0631\u06cc \u0627\u0631\u062a\u0628\u0627\u0637 \u0628\u0627 \u0622\u0646\u200c\u0647\u0627 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u06a9\u0646\u062f. \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u0646\u062f \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u06a9\u0646\u0646\u062f \u06a9\u0647 \u0627\u0631\u0633\u0627\u0644 \u0627\u06cc\u0646 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627 \u0642\u0637\u0639 \u0634\u0648\u062f\u060c \u0627\u0645\u0627 \u0628\u0627 \u0627\u0646\u0635\u0631\u0627\u0641 \u0627\u0632 \u062f\u0631\u06cc\u0627\u0641\u062a \u0627\u06cc\u0646 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627 \u062a\u0628\u0639\u0627\u062a \u0627\u062d\u062a\u0645\u0627\u0644\u06cc \u0646\u0627\u0634\u06cc \u0627\u0632 \u0642\u0637\u0639 \u0633\u0631\u0648\u06cc\u0633 \u0627\u0637\u0644\u0627\u0639\u200c\u0631\u0633\u0627\u0646\u06cc \u0631\u0627 \u0645\u06cc\u200c\u067e\u0630\u06cc\u0631\u0646\u062f.\n\u062a\u0648\u062c\u0647: \u0644\u0627\u0632\u0645 \u0628\u0647 \u0630\u06a9\u0631 \u0627\u0633\u062a \u062f\u0631 \u0635\u0648\u0631\u062a \u0627\u062d\u062a\u0645\u0627\u0644 \u0633\u0648\u0621 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0632 \u0633\u0627\u0645\u0627\u0646\u0647\u060c \u062d\u0642 \u0631\u0647\u06af\u06cc\u0631\u06cc \u0648 \u067e\u06cc\u06af\u06cc\u0631\u06cc \u0642\u0627\u0646\u0648\u0646\u06cc \u0645\u0637\u0627\u0628\u0642 \u0628\u0627 \u0642\u0648\u0627\u0646\u06cc\u0646 \u062c\u0627\u0631\u06cc \u062c\u0645\u0647\u0648\u0631\u06cc \u0627\u0633\u0644\u0627\u0645\u06cc \u0627\u06cc\u0631\u0627\u0646 \u0628\u0631\u0627\u06cc \u067e\u0630\u06cc\u0631\u063424 \u0645\u062d\u0641\u0648\u0638 \u0645\u06cc\u200c\u0628\u0627\u0634\u062f."
+                          }
+                        </div>
+                      </div>
+                      <Stack__
+                        as={"div"}
+                        hasGap={true}
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__wPh8B
+                        )}
+                      >
+                        <Button
+                          className={classNames(
+                            "__wab_instance",
+                            sty.button__kZmtY
+                          )}
+                          endIcon={null}
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["updateHideRules"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["hideRules"]
+                                    },
+                                    operation: 4
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    const oldValue = $stateGet(
+                                      objRoot,
+                                      variablePath
+                                    );
+                                    $stateSet(objRoot, variablePath, !oldValue);
+                                    return !oldValue;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateHideRules"] != null &&
+                              typeof $steps["updateHideRules"] === "object" &&
+                              typeof $steps["updateHideRules"].then ===
+                                "function"
+                            ) {
+                              $steps["updateHideRules"] = await $steps[
+                                "updateHideRules"
+                              ];
+                            }
+
+                            $steps["wait1000"] = true
+                              ? (() => {
+                                  const actionArgs = { args: [1000] };
+                                  return $globalActions["Fragment.wait"]?.apply(
+                                    null,
+                                    [...actionArgs.args]
+                                  );
+                                })()
+                              : undefined;
+                            if (
+                              $steps["wait1000"] != null &&
+                              typeof $steps["wait1000"] === "object" &&
+                              typeof $steps["wait1000"].then === "function"
+                            ) {
+                              $steps["wait1000"] = await $steps["wait1000"];
+                            }
+
+                            $steps["updateShowRules"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["showRules"]
+                                    },
+                                    operation: 0,
+                                    value: false
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateShowRules"] != null &&
+                              typeof $steps["updateShowRules"] === "object" &&
+                              typeof $steps["updateShowRules"].then ===
+                                "function"
+                            ) {
+                              $steps["updateShowRules"] = await $steps[
+                                "updateShowRules"
+                              ];
+                            }
+
+                            $steps["wait3000"] = true
+                              ? (() => {
+                                  const actionArgs = { args: [3000] };
+                                  return $globalActions["Fragment.wait"]?.apply(
+                                    null,
+                                    [...actionArgs.args]
+                                  );
+                                })()
+                              : undefined;
+                            if (
+                              $steps["wait3000"] != null &&
+                              typeof $steps["wait3000"] === "object" &&
+                              typeof $steps["wait3000"].then === "function"
+                            ) {
+                              $steps["wait3000"] = await $steps["wait3000"];
+                            }
+
+                            $steps["goToNewAppPage"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    destination: `/apps/new`
+                                  };
+                                  return (({ destination }) => {
+                                    if (
+                                      typeof destination === "string" &&
+                                      destination.startsWith("#")
+                                    ) {
+                                      document
+                                        .getElementById(destination.substr(1))
+                                        .scrollIntoView({ behavior: "smooth" });
+                                    } else {
+                                      __nextRouter?.push(destination);
+                                    }
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["goToNewAppPage"] != null &&
+                              typeof $steps["goToNewAppPage"] === "object" &&
+                              typeof $steps["goToNewAppPage"].then ===
+                                "function"
+                            ) {
+                              $steps["goToNewAppPage"] = await $steps[
+                                "goToNewAppPage"
+                              ];
+                            }
+                          }}
+                          shape={"rounded"}
+                          startIcon={
+                            <Icon2Icon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg__qiTtC
+                              )}
+                              role={"img"}
+                            />
+                          }
+                        >
+                          {
+                            "\u062e\u0648\u0627\u0646\u062f\u0645 \u0648 \u0645\u06cc\u200c\u067e\u0630\u06cc\u0631\u0645."
+                          }
+                        </Button>
+                      </Stack__>
+                    </Reveal>
+                  ) : null}
+                </div>
+              ) : null}
+              {(() => {
+                try {
+                  return $state.showWelcome || $state.showRules;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return true;
+                  }
+                  throw e;
+                }
+              })() ? (
+                <Reveal
+                  className={classNames("__wab_instance", sty.reveal__c6HzN)}
+                  direction={"left"}
+                  reverse={(() => {
+                    try {
+                      return $state.hideRules;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return false;
+                      }
+                      throw e;
+                    }
+                  })()}
+                  triggerOnce={true}
+                >
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox___3BvV0)}
+                  />
+                </Reveal>
+              ) : null}
+              <Reveal
+                className={classNames("__wab_instance", sty.reveal__zrjT4)}
+                direction={"up"}
+                duration={1000}
+                triggerOnce={true}
+              >
+                {(() => {
+                  try {
+                    return !$state.showWelcome && !$state.showRules;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })() ? (
+                  <Icon15Icon
+                    className={classNames(projectcss.all, sty.svg__mOzOz)}
+                    role={"img"}
+                  />
+                ) : null}
+              </Reveal>
+            </div>
+          </AuthProvider>
         </div>
       </div>
     </React.Fragment>

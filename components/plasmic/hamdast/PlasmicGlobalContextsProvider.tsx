@@ -15,11 +15,9 @@ export interface GlobalContextsProviderProps {
   fragmentProps?: Partial<
     Omit<React.ComponentProps<typeof Fragment>, "children">
   >;
-
   growthBookProps?: Partial<
     Omit<React.ComponentProps<typeof GrowthBook>, "children">
   >;
-
   splunkProps?: Partial<Omit<React.ComponentProps<typeof Splunk>, "children">>;
 }
 
@@ -40,6 +38,11 @@ export default function GlobalContextsProvider(
         fragmentProps && "previewApiConfig" in fragmentProps
           ? fragmentProps.previewApiConfig!
           : undefined
+      }
+      primaryColor={
+        fragmentProps && "primaryColor" in fragmentProps
+          ? fragmentProps.primaryColor!
+          : "#000000"
       }
       rtl={fragmentProps && "rtl" in fragmentProps ? fragmentProps.rtl! : true}
     >
