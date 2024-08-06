@@ -42,7 +42,7 @@ export default function GlobalContextsProvider(
       primaryColor={
         fragmentProps && "primaryColor" in fragmentProps
           ? fragmentProps.primaryColor!
-          : "#000000"
+          : "#365E70"
       }
       rtl={fragmentProps && "rtl" in fragmentProps ? fragmentProps.rtl! : true}
     >

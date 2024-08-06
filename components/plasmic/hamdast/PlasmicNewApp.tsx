@@ -61,6 +61,9 @@ import {
 
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import AuthProvider from "../../AuthProvider"; // plasmic-import: KTPu1eZupEdG/component
+import { Input } from "@/fragment/components/input"; // plasmic-import: AWE69UKwmIyg/codeComponent
+import AppType from "../../AppType"; // plasmic-import: N2XFsVyv799E/component
+import Button from "../../Button"; // plasmic-import: _T6T2fNvkUfo/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -68,6 +71,8 @@ import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6u
 import sty from "./PlasmicNewApp.module.css"; // plasmic-import: IdTcu_EF7CVl/css
 
 import Icon12Icon from "./icons/PlasmicIcon__Icon12"; // plasmic-import: uNpsRe8HBlEO/icon
+import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: VepSFu0Y3Pyk/icon
+import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: CmW94FEF71d7/icon
 
 createPlasmicElementProxy;
 
@@ -85,6 +90,9 @@ export type PlasmicNewApp__OverridesType = {
   embedHtml?: Flex__<typeof Embed>;
   authProvider?: Flex__<typeof AuthProvider>;
   svg?: Flex__<"svg">;
+  fragmentInput?: Flex__<typeof Input>;
+  fragmentInput2?: Flex__<typeof Input>;
+  button?: Flex__<typeof Button>;
 };
 
 export interface DefaultNewAppProps {}
@@ -133,26 +141,19 @@ function PlasmicNewApp__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "menu",
+        path: "fragmentInput.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          (() => {
-            try {
-              return $state.fetchData?.data?.[0]?.id;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return undefined;
-              }
-              throw e;
-            }
-          })()
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "day",
+        path: "fragmentInput2.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "type",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 1
@@ -309,9 +310,271 @@ function PlasmicNewApp__RenderFunc(props: {
                 </Stack__>
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__feser)}>
-                <div
+                <Stack__
+                  as={"div"}
+                  hasGap={true}
                   className={classNames(projectcss.all, sty.freeBox__rypiP)}
-                />
+                >
+                  <Stack__
+                    as={"div"}
+                    hasGap={true}
+                    className={classNames(projectcss.all, sty.freeBox__uc03N)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__m9PI
+                      )}
+                    >
+                      {
+                        "\u0646\u0627\u0645 \u0627\u0628\u0632\u0627\u0631\u06a9"
+                      }
+                    </div>
+                    <Input
+                      data-plasmic-name={"fragmentInput"}
+                      data-plasmic-override={overrides.fragmentInput}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.fragmentInput
+                      )}
+                      onChange={generateStateOnChangeProp($state, [
+                        "fragmentInput",
+                        "value"
+                      ])}
+                      placeholder={
+                        "\u0646\u0633\u062e\u0647 \u0646\u0648\u06cc\u0633\u06cc"
+                      }
+                      type={"text"}
+                      value={generateStateValueProp($state, [
+                        "fragmentInput",
+                        "value"
+                      ])}
+                    />
+                  </Stack__>
+                  <Stack__
+                    as={"div"}
+                    hasGap={true}
+                    className={classNames(projectcss.all, sty.freeBox__v1VoF)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__gIt73
+                      )}
+                    >
+                      {
+                        "\u062a\u0648\u0636\u06cc\u062d \u06a9\u0648\u062a\u0627\u0647"
+                      }
+                    </div>
+                    <Input
+                      data-plasmic-name={"fragmentInput2"}
+                      data-plasmic-override={overrides.fragmentInput2}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.fragmentInput2
+                      )}
+                      onChange={generateStateOnChangeProp($state, [
+                        "fragmentInput2",
+                        "value"
+                      ])}
+                      type={"text"}
+                      value={generateStateValueProp($state, [
+                        "fragmentInput2",
+                        "value"
+                      ])}
+                    />
+                  </Stack__>
+                  <Stack__
+                    as={"div"}
+                    hasGap={true}
+                    className={classNames(projectcss.all, sty.freeBox___5Ybnl)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__bHJir
+                      )}
+                    >
+                      {
+                        "\u0646\u0648\u0639 \u0627\u0628\u0632\u0627\u0631\u06a9"
+                      }
+                    </div>
+                    <AppType
+                      caption={
+                        "\u0627\u064e\u0628\u0632\u0627\u0631\u06a9 \u0647\u0627 \u0628\u0631\u0627\u06cc \u0647\u0645\u0647 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0646\u0645\u0627\u06cc\u0634 \u062f\u0627\u062f\u0647 \u062e\u0648\u0627\u0647\u062f \u0634\u062f."
+                      }
+                      className={classNames(
+                        "__wab_instance",
+                        sty.appType__jxe23
+                      )}
+                      name={
+                        "\u0647\u0645\u0647 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646"
+                      }
+                      onClick={async () => {
+                        const $steps = {};
+
+                        $steps["updateType"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["type"]
+                                },
+                                operation: 0,
+                                value: 1
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateType"] != null &&
+                          typeof $steps["updateType"] === "object" &&
+                          typeof $steps["updateType"].then === "function"
+                        ) {
+                          $steps["updateType"] = await $steps["updateType"];
+                        }
+                      }}
+                      selected={(() => {
+                        try {
+                          return $state.type == 1;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "selected";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    />
+
+                    <AppType
+                      caption={
+                        "\u0627\u064e\u0628\u0632\u0627\u0631\u06a9 \u0647\u0627 \u0641\u0642\u0637 \u0628\u0631\u0627\u06cc \u067e\u0632\u0634\u06a9\u0627\u0646 \u0646\u0645\u0627\u06cc\u0634 \u062f\u0627\u062f\u0647 \u062e\u0648\u0627\u0647\u062f \u0634\u062f."
+                      }
+                      className={classNames(
+                        "__wab_instance",
+                        sty.appType__k5Axu
+                      )}
+                      name={
+                        "\u0645\u062e\u0635\u0648\u0635 \u067e\u0632\u0634\u06a9\u0627\u0646"
+                      }
+                      onClick={async () => {
+                        const $steps = {};
+
+                        $steps["updateType"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["type"]
+                                },
+                                operation: 0,
+                                value: 2
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateType"] != null &&
+                          typeof $steps["updateType"] === "object" &&
+                          typeof $steps["updateType"].then === "function"
+                        ) {
+                          $steps["updateType"] = await $steps["updateType"];
+                        }
+                      }}
+                      selected={(() => {
+                        try {
+                          return $state.type == 2;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "selected";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    />
+
+                    <Stack__
+                      as={"div"}
+                      hasGap={true}
+                      className={classNames(projectcss.all, sty.freeBox__kqUl7)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__toko5
+                        )}
+                      >
+                        {
+                          "\u0645\u062f\u06cc\u0631\u0627\u0646 \u0645\u0631\u06a9\u0632\u062f\u0631\u0645\u0627\u0646\u06cc (\u0628\u0632\u0648\u062f\u06cc)"
+                        }
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__fjR2E
+                        )}
+                      >
+                        {
+                          "\u0627\u064e\u0628\u0632\u0627\u0631\u06a9 \u0647\u0627\u06cc \u062f\u0631 \u0627\u06cc\u0646 \u0646\u0648\u0639 \u0628\u0631\u0627\u06cc \u0645\u062f\u0627\u06cc\u0631\u0627\u0646 \u0645\u0631\u06a9\u0632 \u062f\u0631\u0645\u0627\u0646\u06cc \u0646\u0645\u0627\u06cc\u0634 \u062f\u0627\u062f\u0647 \u0645\u06cc\u200c\u0634\u0648\u062f."
+                        }
+                      </div>
+                    </Stack__>
+                  </Stack__>
+                  <Button
+                    data-plasmic-name={"button"}
+                    data-plasmic-override={overrides.button}
+                    className={classNames("__wab_instance", sty.button)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__niYrJ
+                      )}
+                    >
+                      {
+                        "\u0633\u0627\u062e\u062a \u0627\u064e\u0628\u0632\u0627\u0631\u06a9"
+                      }
+                    </div>
+                  </Button>
+                </Stack__>
               </div>
             </div>
           </AuthProvider>
@@ -322,10 +585,27 @@ function PlasmicNewApp__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "embedHtml", "authProvider", "svg"],
+  root: [
+    "root",
+    "embedHtml",
+    "authProvider",
+    "svg",
+    "fragmentInput",
+    "fragmentInput2",
+    "button"
+  ],
   embedHtml: ["embedHtml"],
-  authProvider: ["authProvider", "svg"],
-  svg: ["svg"]
+  authProvider: [
+    "authProvider",
+    "svg",
+    "fragmentInput",
+    "fragmentInput2",
+    "button"
+  ],
+  svg: ["svg"],
+  fragmentInput: ["fragmentInput"],
+  fragmentInput2: ["fragmentInput2"],
+  button: ["button"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -335,6 +615,9 @@ type NodeDefaultElementType = {
   embedHtml: typeof Embed;
   authProvider: typeof AuthProvider;
   svg: "svg";
+  fragmentInput: typeof Input;
+  fragmentInput2: typeof Input;
+  button: typeof Button;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -400,6 +683,9 @@ export const PlasmicNewApp = Object.assign(
     embedHtml: makeNodeComponent("embedHtml"),
     authProvider: makeNodeComponent("authProvider"),
     svg: makeNodeComponent("svg"),
+    fragmentInput: makeNodeComponent("fragmentInput"),
+    fragmentInput2: makeNodeComponent("fragmentInput2"),
+    button: makeNodeComponent("button"),
 
     // Metadata about props expected for PlasmicNewApp
     internalVariantProps: PlasmicNewApp__VariantProps,

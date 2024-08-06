@@ -485,6 +485,19 @@
           "cssFilePath": "plasmic/hamdast/PlasmicLayout.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "N2XFsVyv799E",
+          "name": "AppType",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicAppType.tsx",
+          "importSpec": {
+            "modulePath": "AppType.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicAppType.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
