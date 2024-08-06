@@ -34,10 +34,15 @@ export default async function handler(
     });
 
   if (req.method === "GET") {
-    const app = await pb.collection("apps").getFirstListItem(`key = '${key}'`);
-    if (app?.id) {
-      return res.status(400).json({});
+    try {
+      const app = await pb
+        .collection("apps")
+        .getFirstListItem(`key = '${key}'`);
+      if (app?.id) {
+        return res.status(400).json({});
+      }
+    } catch (error) {
+      return res.status(200).json({});
     }
-    return res.status(200).json({});
   }
 }
