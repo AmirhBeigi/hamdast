@@ -635,6 +635,7 @@ function PlasmicSettting__RenderFunc(props: {
                               "fragmentInput",
                               "value"
                             ]),
+                            type: "text",
                             value: generateStateValueProp($state, [
                               "fragmentInput",
                               "value"

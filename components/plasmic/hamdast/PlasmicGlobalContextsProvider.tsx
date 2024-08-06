@@ -41,6 +41,11 @@ export default function GlobalContextsProvider(
           ? fragmentProps.previewApiConfig!
           : undefined
       }
+      primaryColor={
+        fragmentProps && "primaryColor" in fragmentProps
+          ? fragmentProps.primaryColor!
+          : "#365E70"
+      }
       rtl={fragmentProps && "rtl" in fragmentProps ? fragmentProps.rtl! : true}
     >
       <GrowthBook

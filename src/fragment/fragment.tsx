@@ -12,6 +12,7 @@ type FragmentProps = React.PropsWithChildren<{
   previewApiConfig: Record<string, any>;
   apiConfig: Record<string, any>;
   rtl: boolean;
+  primaryColor: string;
 }>;
 
 export const Fragment = ({
@@ -19,7 +20,16 @@ export const Fragment = ({
   previewApiConfig,
   apiConfig,
   rtl,
+  primaryColor,
 }: FragmentProps) => {
+  useEffect(() => {
+    changeTheme(primaryColor);
+  }, [primaryColor]);
+
+  const changeTheme = (color: string) => {
+    document.documentElement.style.setProperty("--primary", color);
+  };
+
   const actions = useMemo(
     () => ({
       showToast: (
@@ -67,6 +77,9 @@ export const Fragment = ({
           }
         }
       },
+      wait: (duration: number = 1000) => {
+        return new Promise((resolve) => setTimeout(resolve, duration));
+      },
     }),
     []
   );
@@ -79,6 +92,7 @@ export const Fragment = ({
           apiConfig: apiConfig ?? {},
           previewApiConfig: previewApiConfig ?? {},
           rtl,
+          primaryColor,
         }}
         hidden
       >
@@ -113,6 +127,12 @@ export const fragmentMeta: GlobalContextMeta<FragmentProps> = {
       displayName: "RTL",
       type: "boolean",
       description: `Direction`,
+    },
+    primaryColor: {
+      displayName: "Primary Color",
+      type: "color",
+      defaultValue: "#000000",
+      defaultValueHint: "#000000",
     },
   },
   providesData: true,
@@ -156,6 +176,20 @@ export const fragmentMeta: GlobalContextMeta<FragmentProps> = {
           type: {
             type: "number",
             defaultValueHint: 3000,
+          },
+        },
+      ],
+    },
+    wait: {
+      displayName: "Wait",
+      parameters: [
+        {
+          name: "duration",
+          type: {
+            type: "number",
+            defaultValueHint: 1000,
+            defaultValue: 1000,
+            helpText: "executes after a specified delay (in milliseconds).",
           },
         },
       ],

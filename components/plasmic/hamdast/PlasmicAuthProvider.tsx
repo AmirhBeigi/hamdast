@@ -61,6 +61,8 @@ import {
 
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 
+import { useScreenVariants as useScreenVariantsb8YurXs4FhCe } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: b8yurXS4fhCE/globalVariant
+
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectcss
@@ -185,6 +187,10 @@ function PlasmicAuthProvider__RenderFunc(props: {
     $refs
   });
 
+  const globalVariants = ensureGlobalVariants({
+    screen: useScreenVariantsb8YurXs4FhCe()
+  });
+
   return (
     <div
       data-plasmic-name={"root"}
@@ -200,53 +206,24 @@ function PlasmicAuthProvider__RenderFunc(props: {
         sty.root
       )}
     >
-      <SideEffect
-        data-plasmic-name={"sideEffect"}
-        data-plasmic-override={overrides.sideEffect}
-        className={classNames("__wab_instance", sty.sideEffect)}
-        deps={[]}
-        onMount={async () => {
-          const $steps = {};
+      {(hasVariant(globalVariants, "screen", "mobileOnly") ? false : true) ? (
+        <SideEffect
+          data-plasmic-name={"sideEffect"}
+          data-plasmic-override={overrides.sideEffect}
+          className={classNames("__wab_instance", sty.sideEffect)}
+          deps={[]}
+          onMount={async () => {
+            const $steps = {};
 
-          $steps["getProfileInWindow"] = !!window.data?.user?.id
-            ? (() => {
-                const actionArgs = {
-                  variable: {
-                    objRoot: $state,
-                    variablePath: ["user"]
-                  },
-                  operation: 0,
-                  value: window.data?.user
-                };
-                return (({ variable, value, startIndex, deleteCount }) => {
-                  if (!variable) {
-                    return;
-                  }
-                  const { objRoot, variablePath } = variable;
-
-                  $stateSet(objRoot, variablePath, value);
-                  return value;
-                })?.apply(null, [actionArgs]);
-              })()
-            : undefined;
-          if (
-            $steps["getProfileInWindow"] != null &&
-            typeof $steps["getProfileInWindow"] === "object" &&
-            typeof $steps["getProfileInWindow"].then === "function"
-          ) {
-            $steps["getProfileInWindow"] = await $steps["getProfileInWindow"];
-          }
-
-          $steps["getAppsInWindow"] =
-            window?.data?.apps?.length > 0
+            $steps["getProfileInWindow"] = !!window.data?.user?.id
               ? (() => {
                   const actionArgs = {
                     variable: {
                       objRoot: $state,
-                      variablePath: ["apps"]
+                      variablePath: ["user"]
                     },
                     operation: 0,
-                    value: window.data?.apps
+                    value: window.data?.user
                   };
                   return (({ variable, value, startIndex, deleteCount }) => {
                     if (!variable) {
@@ -259,24 +236,104 @@ function PlasmicAuthProvider__RenderFunc(props: {
                   })?.apply(null, [actionArgs]);
                 })()
               : undefined;
-          if (
-            $steps["getAppsInWindow"] != null &&
-            typeof $steps["getAppsInWindow"] === "object" &&
-            typeof $steps["getAppsInWindow"].then === "function"
-          ) {
-            $steps["getAppsInWindow"] = await $steps["getAppsInWindow"];
-          }
+            if (
+              $steps["getProfileInWindow"] != null &&
+              typeof $steps["getProfileInWindow"] === "object" &&
+              typeof $steps["getProfileInWindow"].then === "function"
+            ) {
+              $steps["getProfileInWindow"] = await $steps["getProfileInWindow"];
+            }
 
-          $steps["loadingStart"] =
-            !$state.user && !$state.apps
+            $steps["getAppsInWindow"] =
+              window?.data?.apps?.length > 0
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["apps"]
+                      },
+                      operation: 0,
+                      value: window.data?.apps
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+            if (
+              $steps["getAppsInWindow"] != null &&
+              typeof $steps["getAppsInWindow"] === "object" &&
+              typeof $steps["getAppsInWindow"].then === "function"
+            ) {
+              $steps["getAppsInWindow"] = await $steps["getAppsInWindow"];
+            }
+
+            $steps["loadingStart"] =
+              !$state.user && !$state.apps
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["loading"]
+                      },
+                      operation: 0,
+                      value: true
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+            if (
+              $steps["loadingStart"] != null &&
+              typeof $steps["loadingStart"] === "object" &&
+              typeof $steps["loadingStart"].then === "function"
+            ) {
+              $steps["loadingStart"] = await $steps["loadingStart"];
+            }
+
+            $steps["getProfile"] = !$state.user?.id
+              ? (() => {
+                  const actionArgs = {
+                    args: [
+                      undefined,
+                      "https://hamdast.paziresh24.com/api/v1/profile"
+                    ]
+                  };
+                  return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                    ...actionArgs.args
+                  ]);
+                })()
+              : undefined;
+            if (
+              $steps["getProfile"] != null &&
+              typeof $steps["getProfile"] === "object" &&
+              typeof $steps["getProfile"].then === "function"
+            ) {
+              $steps["getProfile"] = await $steps["getProfile"];
+            }
+
+            $steps["updateUser"] = !!$steps.getProfile?.data
               ? (() => {
                   const actionArgs = {
                     variable: {
                       objRoot: $state,
-                      variablePath: ["loading"]
+                      variablePath: ["user"]
                     },
                     operation: 0,
-                    value: true
+                    value: $steps.getProfile?.data
                   };
                   return (({ variable, value, startIndex, deleteCount }) => {
                     if (!variable) {
@@ -289,203 +346,153 @@ function PlasmicAuthProvider__RenderFunc(props: {
                   })?.apply(null, [actionArgs]);
                 })()
               : undefined;
-          if (
-            $steps["loadingStart"] != null &&
-            typeof $steps["loadingStart"] === "object" &&
-            typeof $steps["loadingStart"].then === "function"
-          ) {
-            $steps["loadingStart"] = await $steps["loadingStart"];
-          }
+            if (
+              $steps["updateUser"] != null &&
+              typeof $steps["updateUser"] === "object" &&
+              typeof $steps["updateUser"].then === "function"
+            ) {
+              $steps["updateUser"] = await $steps["updateUser"];
+            }
 
-          $steps["getProfile"] = !$state.user?.id
-            ? (() => {
-                const actionArgs = {
-                  args: [
-                    undefined,
-                    "https://hamdast.paziresh24.com/api/v1/profile"
-                  ]
-                };
-                return $globalActions["Fragment.apiRequest"]?.apply(null, [
-                  ...actionArgs.args
-                ]);
-              })()
-            : undefined;
-          if (
-            $steps["getProfile"] != null &&
-            typeof $steps["getProfile"] === "object" &&
-            typeof $steps["getProfile"].then === "function"
-          ) {
-            $steps["getProfile"] = await $steps["getProfile"];
-          }
+            $steps["errorProfile"] =
+              $steps.getProfile?.status != 200 &&
+              !$state.user?.id &&
+              !$state.apps?.length > 0
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["error"]
+                      },
+                      operation: 0,
+                      value: true
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
 
-          $steps["updateUser"] = !!$steps.getProfile?.data
-            ? (() => {
-                const actionArgs = {
-                  variable: {
-                    objRoot: $state,
-                    variablePath: ["user"]
-                  },
-                  operation: 0,
-                  value: $steps.getProfile?.data
-                };
-                return (({ variable, value, startIndex, deleteCount }) => {
-                  if (!variable) {
-                    return;
-                  }
-                  const { objRoot, variablePath } = variable;
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+            if (
+              $steps["errorProfile"] != null &&
+              typeof $steps["errorProfile"] === "object" &&
+              typeof $steps["errorProfile"].then === "function"
+            ) {
+              $steps["errorProfile"] = await $steps["errorProfile"];
+            }
 
-                  $stateSet(objRoot, variablePath, value);
-                  return value;
-                })?.apply(null, [actionArgs]);
-              })()
-            : undefined;
-          if (
-            $steps["updateUser"] != null &&
-            typeof $steps["updateUser"] === "object" &&
-            typeof $steps["updateUser"].then === "function"
-          ) {
-            $steps["updateUser"] = await $steps["updateUser"];
-          }
-
-          $steps["errorProfile"] =
-            $steps.getProfile?.status != 200 &&
-            !$state.user?.id &&
-            !$state.apps?.length > 0
+            $steps["getApps"] = !!$steps.getProfile?.data
               ? (() => {
                   const actionArgs = {
-                    variable: {
-                      objRoot: $state,
-                      variablePath: ["error"]
-                    },
-                    operation: 0,
-                    value: true
+                    args: [
+                      undefined,
+                      "https://hamdast.paziresh24.com/api/v1/apps"
+                    ]
                   };
-                  return (({ variable, value, startIndex, deleteCount }) => {
-                    if (!variable) {
-                      return;
-                    }
-                    const { objRoot, variablePath } = variable;
-
-                    $stateSet(objRoot, variablePath, value);
-                    return value;
-                  })?.apply(null, [actionArgs]);
+                  return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                    ...actionArgs.args
+                  ]);
                 })()
               : undefined;
-          if (
-            $steps["errorProfile"] != null &&
-            typeof $steps["errorProfile"] === "object" &&
-            typeof $steps["errorProfile"].then === "function"
-          ) {
-            $steps["errorProfile"] = await $steps["errorProfile"];
-          }
+            if (
+              $steps["getApps"] != null &&
+              typeof $steps["getApps"] === "object" &&
+              typeof $steps["getApps"].then === "function"
+            ) {
+              $steps["getApps"] = await $steps["getApps"];
+            }
 
-          $steps["getApps"] = !!$steps.getProfile?.data
-            ? (() => {
-                const actionArgs = {
-                  args: [
-                    undefined,
-                    "https://hamdast.paziresh24.com/api/v1/apps"
-                  ]
-                };
-                return $globalActions["Fragment.apiRequest"]?.apply(null, [
-                  ...actionArgs.args
-                ]);
-              })()
-            : undefined;
-          if (
-            $steps["getApps"] != null &&
-            typeof $steps["getApps"] === "object" &&
-            typeof $steps["getApps"].then === "function"
-          ) {
-            $steps["getApps"] = await $steps["getApps"];
-          }
+            $steps["updateApps"] =
+              !!$steps.getProfile?.data && !!$steps.getApps?.data
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["apps"]
+                      },
+                      operation: 0,
+                      value: $steps.getApps.data
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
 
-          $steps["updateApps"] =
-            !!$steps.getProfile?.data && !!$steps.getApps?.data
-              ? (() => {
-                  const actionArgs = {
-                    variable: {
-                      objRoot: $state,
-                      variablePath: ["apps"]
-                    },
-                    operation: 0,
-                    value: $steps.getApps.data
-                  };
-                  return (({ variable, value, startIndex, deleteCount }) => {
-                    if (!variable) {
-                      return;
-                    }
-                    const { objRoot, variablePath } = variable;
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+            if (
+              $steps["updateApps"] != null &&
+              typeof $steps["updateApps"] === "object" &&
+              typeof $steps["updateApps"].then === "function"
+            ) {
+              $steps["updateApps"] = await $steps["updateApps"];
+            }
 
-                    $stateSet(objRoot, variablePath, value);
-                    return value;
-                  })?.apply(null, [actionArgs]);
-                })()
-              : undefined;
-          if (
-            $steps["updateApps"] != null &&
-            typeof $steps["updateApps"] === "object" &&
-            typeof $steps["updateApps"].then === "function"
-          ) {
-            $steps["updateApps"] = await $steps["updateApps"];
-          }
+            $steps["loadingStop2"] =
+              !!$steps.getProfile?.data && !!$steps.getApps?.data
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["loading"]
+                      },
+                      operation: 0,
+                      value: false
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
 
-          $steps["loadingStop2"] =
-            !!$steps.getProfile?.data && !!$steps.getApps?.data
-              ? (() => {
-                  const actionArgs = {
-                    variable: {
-                      objRoot: $state,
-                      variablePath: ["loading"]
-                    },
-                    operation: 0,
-                    value: false
-                  };
-                  return (({ variable, value, startIndex, deleteCount }) => {
-                    if (!variable) {
-                      return;
-                    }
-                    const { objRoot, variablePath } = variable;
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+            if (
+              $steps["loadingStop2"] != null &&
+              typeof $steps["loadingStop2"] === "object" &&
+              typeof $steps["loadingStop2"].then === "function"
+            ) {
+              $steps["loadingStop2"] = await $steps["loadingStop2"];
+            }
 
-                    $stateSet(objRoot, variablePath, value);
-                    return value;
-                  })?.apply(null, [actionArgs]);
-                })()
-              : undefined;
-          if (
-            $steps["loadingStop2"] != null &&
-            typeof $steps["loadingStop2"] === "object" &&
-            typeof $steps["loadingStop2"].then === "function"
-          ) {
-            $steps["loadingStop2"] = await $steps["loadingStop2"];
-          }
-
-          $steps["setInWindow"] =
-            !!$steps.getProfile?.data && !!$steps.getApps?.data
-              ? (() => {
-                  const actionArgs = {
-                    customFunction: async () => {
-                      return (window.data = {
-                        user: $steps.getProfile.data,
-                        apps: $steps.getApps.data
-                      });
-                    }
-                  };
-                  return (({ customFunction }) => {
-                    return customFunction();
-                  })?.apply(null, [actionArgs]);
-                })()
-              : undefined;
-          if (
-            $steps["setInWindow"] != null &&
-            typeof $steps["setInWindow"] === "object" &&
-            typeof $steps["setInWindow"].then === "function"
-          ) {
-            $steps["setInWindow"] = await $steps["setInWindow"];
-          }
-        }}
-      />
-
+            $steps["setInWindow"] =
+              !!$steps.getProfile?.data && !!$steps.getApps?.data
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (window.data = {
+                          user: $steps.getProfile.data,
+                          apps: $steps.getApps.data
+                        });
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+            if (
+              $steps["setInWindow"] != null &&
+              typeof $steps["setInWindow"] === "object" &&
+              typeof $steps["setInWindow"].then === "function"
+            ) {
+              $steps["setInWindow"] = await $steps["setInWindow"];
+            }
+          }}
+        />
+      ) : null}
       {(() => {
         try {
           return $state.loading || $state.error;
@@ -512,19 +519,23 @@ function PlasmicAuthProvider__RenderFunc(props: {
           />
         </div>
       ) : null}
-      {(() => {
-        try {
-          return !$state.loading && !$state.error;
-        } catch (e) {
-          if (
-            e instanceof TypeError ||
-            e?.plasmicType === "PlasmicUndefinedDataError"
-          ) {
-            return false;
-          }
-          throw e;
-        }
-      })()
+      {(
+        hasVariant(globalVariants, "screen", "mobileOnly")
+          ? false
+          : (() => {
+              try {
+                return !$state.loading && !$state.error;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return false;
+                }
+                throw e;
+              }
+            })()
+      )
         ? renderPlasmicSlot({
             defaultContents: null,
             value: args.children
