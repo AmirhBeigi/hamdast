@@ -63,7 +63,7 @@ import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import AuthProvider from "../../AuthProvider"; // plasmic-import: KTPu1eZupEdG/component
 import { Reveal } from "@plasmicpkgs/react-awesome-reveal";
 import { Input } from "@/fragment/components/input"; // plasmic-import: AWE69UKwmIyg/codeComponent
-import { Textarea } from "@/fragment/components/textarea"; // plasmic-import: L1esw-miSXdR/codeComponent
+import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
 import AppType from "../../AppType"; // plasmic-import: N2XFsVyv799E/component
 import Button from "../../Button"; // plasmic-import: _T6T2fNvkUfo/component
 
@@ -95,7 +95,8 @@ export type PlasmicNewApp__OverridesType = {
   img?: Flex__<typeof PlasmicImg__>;
   link?: Flex__<"a"> & Partial<LinkProps>;
   fragmentInput3?: Flex__<typeof Input>;
-  fragmentTextarea?: Flex__<typeof Textarea>;
+  fragmentInput4?: Flex__<typeof Input>;
+  fragmentApiRequest?: Flex__<typeof ApiRequest>;
   button?: Flex__<typeof Button>;
 };
 
@@ -130,6 +131,8 @@ function PlasmicNewApp__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const $globalActions = useGlobalActions?.();
+
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
@@ -157,10 +160,28 @@ function PlasmicNewApp__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "fragmentTextarea.value",
+        path: "fragmentInput4.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "fragmentApiRequest.data",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "fragmentApiRequest.error",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "fragmentApiRequest.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -536,25 +557,128 @@ function PlasmicNewApp__RenderFunc(props: {
                           )}
                         >
                           {
-                            "\u062a\u0648\u0636\u06cc\u062d \u06a9\u0648\u062a\u0627\u0647"
+                            "\u0634\u0646\u0627\u0633\u0647 \u06cc\u06a9\u062a\u0627"
                           }
                         </div>
-                        <Textarea
-                          data-plasmic-name={"fragmentTextarea"}
-                          data-plasmic-override={overrides.fragmentTextarea}
+                        <Input
+                          data-plasmic-name={"fragmentInput4"}
+                          data-plasmic-override={overrides.fragmentInput4}
                           className={classNames(
                             "__wab_instance",
-                            sty.fragmentTextarea
+                            sty.fragmentInput4
                           )}
                           onChange={generateStateOnChangeProp($state, [
-                            "fragmentTextarea",
+                            "fragmentInput4",
                             "value"
                           ])}
+                          type={"text"}
                           value={generateStateValueProp($state, [
-                            "fragmentTextarea",
+                            "fragmentInput4",
                             "value"
                           ])}
                         />
+
+                        {(() => {
+                          try {
+                            return !!$state.fragmentInput4.value;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
+                          }
+                        })() ? (
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__lmjdq
+                            )}
+                          >
+                            <ApiRequest
+                              data-plasmic-name={"fragmentApiRequest"}
+                              data-plasmic-override={
+                                overrides.fragmentApiRequest
+                              }
+                              className={classNames(
+                                "__wab_instance",
+                                sty.fragmentApiRequest
+                              )}
+                              errorDisplay={
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__i8Lb4
+                                  )}
+                                >
+                                  {
+                                    "\u0642\u0628\u0644\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0634\u062f\u0647 \u0627\u0633\u062a."
+                                  }
+                                </div>
+                              }
+                              loadingDisplay={
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__rtsds
+                                  )}
+                                >
+                                  {
+                                    "\u062f\u0631\u062d\u0627\u0644 \u0628\u0631\u0631\u0633\u06cc ..."
+                                  }
+                                </div>
+                              }
+                              method={"GET"}
+                              onError={generateStateOnChangeProp($state, [
+                                "fragmentApiRequest",
+                                "error"
+                              ])}
+                              onLoading={generateStateOnChangeProp($state, [
+                                "fragmentApiRequest",
+                                "loading"
+                              ])}
+                              onSuccess={generateStateOnChangeProp($state, [
+                                "fragmentApiRequest",
+                                "data"
+                              ])}
+                              params={(() => {
+                                try {
+                                  return {
+                                    key: $state.fragmentInput4.value
+                                  };
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                              url={
+                                "https://hamdast.paziresh24.com/api/v1/apps/key"
+                              }
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__bugyn
+                                )}
+                              >
+                                {
+                                  "\u0642\u0627\u0628\u0644 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0633\u062a."
+                                }
+                              </div>
+                            </ApiRequest>
+                          </div>
+                        ) : null}
                       </Stack__>
                       <Stack__
                         as={"div"}
@@ -737,6 +861,28 @@ function PlasmicNewApp__RenderFunc(props: {
                         data-plasmic-name={"button"}
                         data-plasmic-override={overrides.button}
                         className={classNames("__wab_instance", sty.button)}
+                        onClick={async event => {
+                          const $steps = {};
+
+                          $steps["invokeGlobalAction"] = true
+                            ? (() => {
+                                const actionArgs = { args: [] };
+                                return $globalActions[
+                                  "Fragment.apiRequest"
+                                ]?.apply(null, [...actionArgs.args]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["invokeGlobalAction"] != null &&
+                            typeof $steps["invokeGlobalAction"] === "object" &&
+                            typeof $steps["invokeGlobalAction"].then ===
+                              "function"
+                          ) {
+                            $steps["invokeGlobalAction"] = await $steps[
+                              "invokeGlobalAction"
+                            ];
+                          }
+                        }}
                       >
                         <div
                           className={classNames(
@@ -771,7 +917,8 @@ const PlasmicDescendants = {
     "img",
     "link",
     "fragmentInput3",
-    "fragmentTextarea",
+    "fragmentInput4",
+    "fragmentApiRequest",
     "button"
   ],
   embedHtml: ["embedHtml"],
@@ -781,14 +928,16 @@ const PlasmicDescendants = {
     "img",
     "link",
     "fragmentInput3",
-    "fragmentTextarea",
+    "fragmentInput4",
+    "fragmentApiRequest",
     "button"
   ],
   svg: ["svg"],
   img: ["img"],
   link: ["link"],
   fragmentInput3: ["fragmentInput3"],
-  fragmentTextarea: ["fragmentTextarea"],
+  fragmentInput4: ["fragmentInput4"],
+  fragmentApiRequest: ["fragmentApiRequest"],
   button: ["button"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -802,7 +951,8 @@ type NodeDefaultElementType = {
   img: typeof PlasmicImg__;
   link: "a";
   fragmentInput3: typeof Input;
-  fragmentTextarea: typeof Textarea;
+  fragmentInput4: typeof Input;
+  fragmentApiRequest: typeof ApiRequest;
   button: typeof Button;
 };
 
@@ -872,7 +1022,8 @@ export const PlasmicNewApp = Object.assign(
     img: makeNodeComponent("img"),
     link: makeNodeComponent("link"),
     fragmentInput3: makeNodeComponent("fragmentInput3"),
-    fragmentTextarea: makeNodeComponent("fragmentTextarea"),
+    fragmentInput4: makeNodeComponent("fragmentInput4"),
+    fragmentApiRequest: makeNodeComponent("fragmentApiRequest"),
     button: makeNodeComponent("button"),
 
     // Metadata about props expected for PlasmicNewApp
