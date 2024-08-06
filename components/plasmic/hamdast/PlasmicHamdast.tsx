@@ -159,6 +159,12 @@ function PlasmicHamdast__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "hideLoading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -791,9 +797,9 @@ function PlasmicHamdast__RenderFunc(props: {
                               ];
                             }
 
-                            $steps["wait3000"] = true
+                            $steps["wait2000"] = true
                               ? (() => {
-                                  const actionArgs = { args: [3000] };
+                                  const actionArgs = { args: [2000] };
                                   return $globalActions["Fragment.wait"]?.apply(
                                     null,
                                     [...actionArgs.args]
@@ -801,11 +807,65 @@ function PlasmicHamdast__RenderFunc(props: {
                                 })()
                               : undefined;
                             if (
-                              $steps["wait3000"] != null &&
-                              typeof $steps["wait3000"] === "object" &&
-                              typeof $steps["wait3000"].then === "function"
+                              $steps["wait2000"] != null &&
+                              typeof $steps["wait2000"] === "object" &&
+                              typeof $steps["wait2000"].then === "function"
                             ) {
-                              $steps["wait3000"] = await $steps["wait3000"];
+                              $steps["wait2000"] = await $steps["wait2000"];
+                            }
+
+                            $steps["updateHideLoading"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["hideLoading"]
+                                    },
+                                    operation: 0,
+                                    value: true
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateHideLoading"] != null &&
+                              typeof $steps["updateHideLoading"] === "object" &&
+                              typeof $steps["updateHideLoading"].then ===
+                                "function"
+                            ) {
+                              $steps["updateHideLoading"] = await $steps[
+                                "updateHideLoading"
+                              ];
+                            }
+
+                            $steps["wait1500"] = true
+                              ? (() => {
+                                  const actionArgs = { args: [1500] };
+                                  return $globalActions["Fragment.wait"]?.apply(
+                                    null,
+                                    [...actionArgs.args]
+                                  );
+                                })()
+                              : undefined;
+                            if (
+                              $steps["wait1500"] != null &&
+                              typeof $steps["wait1500"] === "object" &&
+                              typeof $steps["wait1500"].then === "function"
+                            ) {
+                              $steps["wait1500"] = await $steps["wait1500"];
                             }
 
                             $steps["goToNewAppPage"] = true
@@ -898,6 +958,19 @@ function PlasmicHamdast__RenderFunc(props: {
                 className={classNames("__wab_instance", sty.reveal__zrjT4)}
                 direction={"up"}
                 duration={1000}
+                reverse={(() => {
+                  try {
+                    return $state.hideLoading;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return undefined;
+                    }
+                    throw e;
+                  }
+                })()}
                 triggerOnce={true}
               >
                 {(() => {

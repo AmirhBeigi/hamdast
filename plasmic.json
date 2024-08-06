@@ -612,7 +612,13 @@
           "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon20.tsx"
         }
       ],
-      "images": [],
+      "images": [
+        {
+          "id": "8rIy3Z8cms8n",
+          "name": "party.png",
+          "filePath": "../public/plasmic/hamdast/images/partypng.png"
+        }
+      ],
       "indirect": false,
       "globalContextsFilePath": "plasmic/hamdast/PlasmicGlobalContextsProvider.tsx",
       "splitsProviderFilePath": "",
@@ -700,6 +706,12 @@
           "name": "Chart",
           "displayName": "Chart",
           "componentImportPath": "@/fragment/components/chart"
+        },
+        {
+          "id": "L1esw-miSXdR",
+          "name": "Textarea",
+          "displayName": "Textarea",
+          "componentImportPath": "@/fragment/components/textarea"
         }
       ],
       "customFunctions": []
