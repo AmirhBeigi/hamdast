@@ -84,6 +84,7 @@ export default async function handler(
 
   const apps = await pb.collection("apps").getFullList({
     expand: "app",
+    filter: "published = true",
   });
 
   const menus = await pb.collection("menus").getFullList({});
