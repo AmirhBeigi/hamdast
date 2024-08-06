@@ -52,6 +52,11 @@
   max-width: 100%;
   object-fit: cover;
   width: 100%;
+  background: #ffffff;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+  position: sticky;
   min-width: 0;
 }
 .freeBox__tp9 {
@@ -205,12 +210,13 @@
   display: flex;
   position: relative;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   width: 100%;
   height: 100%;
   max-width: 100%;
   padding-bottom: 100px;
+  padding-top: 90px;
   min-width: 0;
   min-height: 0;
 }
