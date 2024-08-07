@@ -44,6 +44,11 @@ export default async function handler(
         key: app.key,
         name_en: app.name_en,
         name_fa: app.name_fa,
+        display_name_fa: app.display_name_fa,
+        display_name_en: app.display_name_en,
+        type: app.type,
+        icon: app.icon,
+        published: app.published,
         client_key: app.client_key,
         permissions: app.permissions,
       }))
@@ -51,7 +56,7 @@ export default async function handler(
   }
 
   if (req.method === "POST") {
-    const { name_fa, key } = req.body;
+    const { name_fa, key, type } = req.body;
     if (!name_fa && !key) {
       return res.status(400).json({});
     }
@@ -59,6 +64,7 @@ export default async function handler(
       name_fa,
       collaborators: [record.id],
       key,
+      type,
     });
     return res.status(200).json({
       id: app.id,
