@@ -44,6 +44,11 @@ export default async function handler(
         publicRuntimeConfig.POCKETBASE_USER_NAME,
         publicRuntimeConfig.POCKETBASE_PASSWORD
       );
+      if (!user_id) {
+        return res.status(403).json({
+          message: "user_id not found",
+        });
+      }
       let subscribers: any[] = [];
       try {
         subscribers = await notificationPB
@@ -77,7 +82,7 @@ export default async function handler(
         });
       } catch (error) {
         if (axios.isAxiosError(error)) {
-          return res.status(error?.status ?? 500).json({
+          return res.status(error.response?.status ?? 500).json({
             ...(error?.response?.data ?? {}),
           });
         }
