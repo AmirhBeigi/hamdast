@@ -14,6 +14,8 @@ export default async function handler(
     });
   }
   pb.autoCancellation(false);
+  notificationPB.autoCancellation(false);
+
   const { app_id } = req.query;
   const apiKey = req.headers?.["x-api-key"];
   if (!apiKey) {
