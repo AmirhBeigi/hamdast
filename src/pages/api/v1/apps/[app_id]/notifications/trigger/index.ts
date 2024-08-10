@@ -15,7 +15,12 @@ export default async function handler(
   }
   pb.autoCancellation(false);
   const { app_id } = req.query;
-  const apiKey = req.headers.authorization?.replace("x-api-key", "");
+  const apiKey = req.headers?.["x-api-key"];
+  if (!apiKey) {
+    return res.status(401).json({
+      message: "Authentication credentials were not provided.",
+    });
+  }
   await pb.admins.authWithPassword(
     publicRuntimeConfig.POCKETBASE_USER_NAME,
     publicRuntimeConfig.POCKETBASE_PASSWORD
