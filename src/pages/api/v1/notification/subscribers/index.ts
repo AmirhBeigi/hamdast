@@ -53,7 +53,7 @@ export default async function handler(
   try {
     await notificationPB.collection("subscribers").create({
       subscriber_token,
-      paziresh24_user_id: user_id,
+      paziresh24_user_id: user_id.toString(),
     });
     return res.status(204).json({});
   } catch (error) {
