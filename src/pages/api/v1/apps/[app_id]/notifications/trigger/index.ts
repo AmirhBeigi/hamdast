@@ -2,6 +2,7 @@ import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { notificationPB, pb } from "../../../../../../../../pocketbase";
 import config from "next/config";
+import NextCors from "nextjs-cors";
 const { publicRuntimeConfig } = config();
 
 export default async function handler(
