@@ -1,6 +1,6 @@
 import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { pb } from "../../../../../../../../pocketbase";
+import { notificationPB, pb } from "../../../../../../../../pocketbase";
 import config from "next/config";
 const { publicRuntimeConfig } = config();
 
@@ -8,40 +8,56 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
+  if (req.method !== "POST") {
+    return res.status(405).json({
+      message: "use POST method",
+    });
+  }
   pb.autoCancellation(false);
-  const cookieStore = req.cookies;
   const { app_id } = req.query;
-  const token =
-    (cookieStore["token"] as string) ||
-    req.headers.authorization?.replace("Bearer", "");
+  const apiKey = req.headers.authorization?.replace("x-api-key", "");
   await pb.admins.authWithPassword(
     publicRuntimeConfig.POCKETBASE_USER_NAME,
     publicRuntimeConfig.POCKETBASE_PASSWORD
   );
   try {
-    const paziresh24User = await axios.get(
-      "https://apigw.paziresh24.com/v1/auth/me",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    const user = paziresh24User.data?.users[0];
     const record = await pb
       .collection("users")
-      .getFirstListItem(`paziresh24_user_id="${user.id}"`, {
+      .getFirstListItem(`api_key="${apiKey}"`, {
         expand: "role",
       });
 
+    if (!record) {
+      return res.status(401).json({
+        message: "Authentication credentials were not provided.",
+      });
+    }
+
     if (req.method === "POST") {
-      const { ...rest } = req.body;
+      const { user_id, subscriber_tokens, api_key, ...rest } = req.body;
+      await notificationPB.admins.authWithPassword(
+        publicRuntimeConfig.POCKETBASE_USER_NAME,
+        publicRuntimeConfig.POCKETBASE_PASSWORD
+      );
+      let subscribers: any[] = [];
+      try {
+        subscribers = await notificationPB
+          .collection("subscribers")
+          .getFullList({
+            filter: `paziresh24_user_id="${user_id}"`,
+          });
+      } catch (error) {
+        return res.status(403).json({
+          message: "user_id not found",
+        });
+      }
 
       try {
         const data = await axios.post(
           "https://app.najva.com/notification/api/v1/notifications/",
           {
-            api_key: publicRuntimeConfig.NAJVA_API_KEY,
+            api_key: api_key ? api_key : publicRuntimeConfig.NAJVA_API_KEY,
+            subscriber_tokens: subscribers.map((item) => item.subscriber_token),
             ...rest,
           },
           {
@@ -62,9 +78,6 @@ export default async function handler(
         }
       }
     }
-    return res.status(405).json({
-      message: "use POST method",
-    });
   } catch (error) {
     return res.status(401).json({
       message: "Authentication credentials were not provided.",
