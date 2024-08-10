@@ -18,17 +18,16 @@ export default async function handler(
     publicRuntimeConfig.POCKETBASE_USER_NAME,
     publicRuntimeConfig.POCKETBASE_PASSWORD
   );
-
-  const paziresh24User = await axios.get(
-    "https://apigw.paziresh24.com/v1/auth/me",
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
-  const user = paziresh24User.data?.users[0];
   try {
+    const paziresh24User = await axios.get(
+      "https://apigw.paziresh24.com/v1/auth/me",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    const user = paziresh24User.data?.users[0];
     const record = await pb
       .collection("users")
       .getFirstListItem(`paziresh24_user_id="${user.id}"`, {
