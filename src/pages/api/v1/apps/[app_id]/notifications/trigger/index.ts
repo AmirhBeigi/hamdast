@@ -8,6 +8,33 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
+  await NextCors(req, res, {
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE", "OPTIONS"],
+    origin: new RegExp(".paziresh24."),
+    preflightContinue: true,
+    optionsSuccessStatus: 200,
+    credentials: true,
+    headers: [
+      "X-CSRF-Token",
+      "x-xsrf-token",
+      "X-Requested-With",
+      "Accept",
+      "Accept-Version",
+      "Content-Length",
+      "Content-MD5",
+      "Content-Type",
+      "Date",
+      "X-Api-Version",
+      "token",
+      "Authorization",
+      "x-api-key",
+    ],
+  });
+
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
   if (req.method !== "POST") {
     return res.status(405).json({
       message: "use POST method",
