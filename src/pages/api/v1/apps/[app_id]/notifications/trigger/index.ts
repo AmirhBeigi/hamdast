@@ -62,6 +62,12 @@ export default async function handler(
         });
       }
 
+      if (subscribers?.length === 0) {
+        return res.status(403).json({
+          message: "user_id not found",
+        });
+      }
+
       try {
         const data = await axios.post(
           "https://app.najva.com/notification/api/v1/notifications/",
