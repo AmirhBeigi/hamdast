@@ -187,7 +187,7 @@ function PlasmicSettting__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
             try {
-              return $state.authProvider.apps[0].id;
+              return $state.authProvider.apps[0].key;
             } catch (e) {
               if (
                 e instanceof TypeError ||
