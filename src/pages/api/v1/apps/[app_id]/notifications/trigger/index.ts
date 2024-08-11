@@ -102,8 +102,13 @@ export default async function handler(
         const data = await axios.post(
           "https://app.najva.com/api/v2/notification/management/send-direct/",
           {
-            subscribers: subscribers.map((item) => item.subscriber_token),
+            icon: "https://www.paziresh24.com/img/pz24-icon.png",
+            buttons: [],
+            utm: {},
+            onclick_action: 0,
+            url: "https://www.paziresh24.com",
             ...rest,
+            subscribers: subscribers.map((item) => item.subscriber_token),
           },
           {
             headers: {
