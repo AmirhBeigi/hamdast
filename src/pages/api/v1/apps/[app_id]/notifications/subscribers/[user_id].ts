@@ -3,6 +3,8 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { notificationPB, pb } from "../../../../../../../../pocketbase";
 import config from "next/config";
 import NextCors from "nextjs-cors";
+import { RecordModel } from "pocketbase";
+import moment from "jalali-moment";
 const { publicRuntimeConfig } = config();
 
 export default async function handler(
@@ -73,12 +75,17 @@ export default async function handler(
         publicRuntimeConfig.POCKETBASE_USER_NAME,
         publicRuntimeConfig.POCKETBASE_PASSWORD
       );
-      let subscribers: any[] = [];
+      let subscribers: RecordModel[] = [];
       try {
         subscribers = await notificationPB
           .collection("subscribers")
           .getFullList({
-            filter: `paziresh24_user_id="${user_id}"`,
+            filter: `created <= "${moment()
+              .subtract(10, "hour")
+              .utc()
+              .format(
+                "YYYY-MM-DD HH:mm:ss"
+              )}" && paziresh24_user_id="${user_id}"`,
           });
       } catch (error) {
         return res.status(404).json({
