@@ -100,7 +100,7 @@ export default async function handler(
 
       try {
         const data = await axios.post(
-          "https://app.najva.com/api/v2/notification/management/send-direct",
+          "https://app.najva.com/api/v2/notification/management/send-direct/",
           {
             subscribers: subscribers.map((item) => item.subscriber_token),
             ...rest,
