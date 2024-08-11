@@ -69,6 +69,7 @@ import Button from "../../Button"; // plasmic-import: _T6T2fNvkUfo/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
+import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectcss
 import sty from "./PlasmicNewApp.module.css"; // plasmic-import: IdTcu_EF7CVl/css
 
@@ -94,8 +95,8 @@ export type PlasmicNewApp__OverridesType = {
   svg?: Flex__<"svg">;
   img?: Flex__<typeof PlasmicImg__>;
   link?: Flex__<"a"> & Partial<LinkProps>;
-  fragmentInput3?: Flex__<typeof Input>;
-  fragmentInput4?: Flex__<typeof Input>;
+  nameInput?: Flex__<typeof Input>;
+  keyInput?: Flex__<typeof Input>;
   fragmentApiRequest?: Flex__<typeof ApiRequest>;
   button?: Flex__<typeof Button>;
 };
@@ -154,13 +155,13 @@ function PlasmicNewApp__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => 1
       },
       {
-        path: "fragmentInput3.value",
+        path: "nameInput.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "fragmentInput4.value",
+        path: "keyInput.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
@@ -182,6 +183,12 @@ function PlasmicNewApp__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -228,6 +235,7 @@ function PlasmicNewApp__RenderFunc(props: {
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
             projectcss.plasmic_tokens,
+            plasmic_antd_5_hostless_css.plasmic_tokens,
             sty.root
           )}
           dir={"rtl"}
@@ -253,6 +261,7 @@ function PlasmicNewApp__RenderFunc(props: {
               "authProvider",
               "user"
             ])}
+            withOutUser={false}
           >
             <div className={classNames(projectcss.all, sty.freeBox__myAsb)}>
               <Reveal
@@ -441,7 +450,7 @@ function PlasmicNewApp__RenderFunc(props: {
                         )}
                       >
                         {
-                          "\u062b\u0628\u062a \u0646\u0627\u0645 \u0634\u0645\u0627 \u0628\u0647 \u0639\u0646\u0648\u0627\u0646 \u062a\u0648\u0633\u0639\u0647 \u062f\u0647\u0646\u062f\u0647 \u067e\u0630\u06cc\u0631\u0634\u06f2\u06f4 \u0627\u0646\u062c\u0627\u0645 \u0634\u062f\u061b \u0628\u06cc\u0627 \u0628\u0627 \u06f3 \u0645\u0631\u062d\u0644\u0647 \u0627\u064e\u0628\u0632\u0627\u0631\u06a9 \u062e\u0648\u062f\u062a\u0648 \u0628\u0633\u0627\u0632."
+                          "\u062b\u0628\u062a \u0646\u0627\u0645 \u0634\u0645\u0627 \u0628\u0647 \u0639\u0646\u0648\u0627\u0646 \u062a\u0648\u0633\u0639\u0647 \u062f\u0647\u0646\u062f\u0647 \u067e\u0630\u06cc\u0631\u0634\u06f2\u06f4 \u0627\u0646\u062c\u0627\u0645 \u0634\u062f\u061b \u0628\u0627 \u067e\u0631 \u06a9\u0631\u062f\u0646 \u0641\u0631\u0645 \u0631\u0648\u0628\u0647 \u0631\u0648 \u0627\u0648\u0644\u06cc\u0646 \u0627\u064e\u0628\u0632\u0627\u0631\u06a9 \u062e\u0648\u062f\u062a\u0648 \u0628\u0633\u0627\u0632."
                         }
                       </div>
                       <div
@@ -491,7 +500,7 @@ function PlasmicNewApp__RenderFunc(props: {
                             </PlasmicLink__>
                           }
                           <React.Fragment>
-                            {" \u0628\u062f\u0647."}
+                            {" \u067e\u06cc\u0627\u0645 \u0628\u062f\u0647."}
                           </React.Fragment>
                         </React.Fragment>
                       </div>
@@ -521,14 +530,14 @@ function PlasmicNewApp__RenderFunc(props: {
                           }
                         </div>
                         <Input
-                          data-plasmic-name={"fragmentInput3"}
-                          data-plasmic-override={overrides.fragmentInput3}
+                          data-plasmic-name={"nameInput"}
+                          data-plasmic-override={overrides.nameInput}
                           className={classNames(
                             "__wab_instance",
-                            sty.fragmentInput3
+                            sty.nameInput
                           )}
                           onChange={generateStateOnChangeProp($state, [
-                            "fragmentInput3",
+                            "nameInput",
                             "value"
                           ])}
                           placeholder={
@@ -536,7 +545,7 @@ function PlasmicNewApp__RenderFunc(props: {
                           }
                           type={"text"}
                           value={generateStateValueProp($state, [
-                            "fragmentInput3",
+                            "nameInput",
                             "value"
                           ])}
                         />
@@ -561,26 +570,27 @@ function PlasmicNewApp__RenderFunc(props: {
                           }
                         </div>
                         <Input
-                          data-plasmic-name={"fragmentInput4"}
-                          data-plasmic-override={overrides.fragmentInput4}
-                          className={classNames(
-                            "__wab_instance",
-                            sty.fragmentInput4
-                          )}
+                          data-plasmic-name={"keyInput"}
+                          data-plasmic-override={overrides.keyInput}
+                          className={classNames("__wab_instance", sty.keyInput)}
                           onChange={generateStateOnChangeProp($state, [
-                            "fragmentInput4",
+                            "keyInput",
                             "value"
                           ])}
                           type={"text"}
                           value={generateStateValueProp($state, [
-                            "fragmentInput4",
+                            "keyInput",
                             "value"
                           ])}
                         />
 
                         {(() => {
                           try {
-                            return !!$state.fragmentInput4.value;
+                            return (
+                              !!$state.keyInput.value &&
+                              !$state.keyInput.value.match(/[\u0600-\u06FF]/) &&
+                              $state.keyInput.value.length >= 4
+                            );
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
@@ -648,7 +658,7 @@ function PlasmicNewApp__RenderFunc(props: {
                               params={(() => {
                                 try {
                                   return {
-                                    key: $state.fragmentInput4.value
+                                    key: $state.keyInput.value
                                   };
                                 } catch (e) {
                                   if (
@@ -679,6 +689,71 @@ function PlasmicNewApp__RenderFunc(props: {
                             </ApiRequest>
                           </div>
                         ) : null}
+                        {(() => {
+                          try {
+                            return (
+                              !!$state.keyInput.value &&
+                              (!!$state.keyInput.value.match(
+                                /[\u0600-\u06FF]/
+                              ) ||
+                                $state.keyInput.value.length < 4)
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
+                          }
+                        })() ? (
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__mjWcn
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__enj3L
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return (() => {
+                                      const keyInputValue =
+                                        $state.keyInput.value;
+                                      const hasPersianCharacters =
+                                        keyInputValue.match(/[\u0600-\u06FF]/);
+                                      const isShort = keyInputValue.length < 4;
+
+                                      if (hasPersianCharacters) {
+                                        return "شناسه باید با حروف انگلیسی باشد.";
+                                      } else if (isShort) {
+                                        return "شناسه باید حداقل ۴ کاراکتر باشد.";
+                                      } else {
+                                        return "";
+                                      }
+                                    })();
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "\u0642\u0627\u0628\u0644 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0633\u062a.";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
+                          </div>
+                        ) : null}
                       </Stack__>
                       <Stack__
                         as={"div"}
@@ -701,7 +776,7 @@ function PlasmicNewApp__RenderFunc(props: {
                         </div>
                         <AppType
                           caption={
-                            "\u0627\u064e\u0628\u0632\u0627\u0631\u06a9 \u0647\u0627 \u0628\u0631\u0627\u06cc \u0647\u0645\u0647 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0646\u0645\u0627\u06cc\u0634 \u062f\u0627\u062f\u0647 \u062e\u0648\u0627\u0647\u062f \u0634\u062f."
+                            "\u0627\u0632 \u0627\u06cc\u0646 \u0627\u064e\u0628\u0632\u0627\u0631\u06a9 \u0647\u0645\u0647 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0645\u06cc \u06a9\u0646\u0646\u062f."
                           }
                           className={classNames(
                             "__wab_instance",
@@ -764,7 +839,7 @@ function PlasmicNewApp__RenderFunc(props: {
 
                         <AppType
                           caption={
-                            "\u0627\u064e\u0628\u0632\u0627\u0631\u06a9 \u0647\u0627 \u0641\u0642\u0637 \u0628\u0631\u0627\u06cc \u067e\u0632\u0634\u06a9\u0627\u0646 \u0646\u0645\u0627\u06cc\u0634 \u062f\u0627\u062f\u0647 \u062e\u0648\u0627\u0647\u062f \u0634\u062f."
+                            "\u0627\u0632 \u0627\u0645\u06a9\u0627\u0646\u0627\u062a \u0627\u06cc\u0646 \u0627\u064e\u0628\u0632\u0627\u0631\u06a9 \u0641\u0642\u0637 \u067e\u0632\u0634\u06a9\u0627\u0646 \u0645\u06cc\u200c\u0646\u0648\u0627\u0646\u0646\u062f \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u06a9\u0646\u0646\u062f."
                           }
                           className={classNames(
                             "__wab_instance",
@@ -861,17 +936,56 @@ function PlasmicNewApp__RenderFunc(props: {
                         data-plasmic-name={"button"}
                         data-plasmic-override={overrides.button}
                         className={classNames("__wab_instance", sty.button)}
+                        isDisabled={(() => {
+                          try {
+                            return $state.loading;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()}
                         onClick={async event => {
                           const $steps = {};
 
-                          $steps["invokeGlobalAction"] = true
-                            ? (() => {
-                                const actionArgs = { args: [] };
-                                return $globalActions[
-                                  "Fragment.apiRequest"
-                                ]?.apply(null, [...actionArgs.args]);
-                              })()
-                            : undefined;
+                          $steps["invokeGlobalAction"] =
+                            $state.nameInput.value === "" ||
+                            $state.keyInput.value === ""
+                              ? (() => {
+                                  const actionArgs = {
+                                    args: [
+                                      "error",
+                                      (() => {
+                                        try {
+                                          return $state.nameInput.value ===
+                                            "" && $state.keyInput.value === ""
+                                            ? "نام و کلید نمی تواند خالی باشد"
+                                            : $state.nameInput.value === ""
+                                            ? "نام نمی تواند خالی باشد"
+                                            : "شناسه یکتا نمی تواند خالی باشد";
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return undefined;
+                                          }
+                                          throw e;
+                                        }
+                                      })(),
+                                      "top-center"
+                                    ]
+                                  };
+                                  return $globalActions[
+                                    "Fragment.showToast"
+                                  ]?.apply(null, [...actionArgs.args]);
+                                })()
+                              : undefined;
                           if (
                             $steps["invokeGlobalAction"] != null &&
                             typeof $steps["invokeGlobalAction"] === "object" &&
@@ -882,6 +996,238 @@ function PlasmicNewApp__RenderFunc(props: {
                               "invokeGlobalAction"
                             ];
                           }
+
+                          $steps["invokeGlobalAction2"] =
+                            !!$state.nameInput.value &&
+                            !!$state.keyInput.value &&
+                            ($state.keyInput.value.length < 4 ||
+                              !/^[a-zA-Z0-9_]*$/.test($state.keyInput.value) ||
+                              !!$state.fragmentApiRequest.error)
+                              ? (() => {
+                                  const actionArgs = {
+                                    args: [
+                                      "error",
+                                      "\u0634\u0646\u0627\u0633\u0647 \u06cc\u06a9\u062a\u0627 \u0631\u0627 \u0628\u0647 \u062f\u0631\u0633\u062a\u06cc \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f.",
+                                      "top-center"
+                                    ]
+                                  };
+                                  return $globalActions[
+                                    "Fragment.showToast"
+                                  ]?.apply(null, [...actionArgs.args]);
+                                })()
+                              : undefined;
+                          if (
+                            $steps["invokeGlobalAction2"] != null &&
+                            typeof $steps["invokeGlobalAction2"] === "object" &&
+                            typeof $steps["invokeGlobalAction2"].then ===
+                              "function"
+                          ) {
+                            $steps["invokeGlobalAction2"] = await $steps[
+                              "invokeGlobalAction2"
+                            ];
+                          }
+
+                          $steps["updateLoading"] =
+                            !!$state.nameInput.value &&
+                            !!$state.keyInput.value &&
+                            $state.keyInput.value.length >= 4 &&
+                            /^[a-zA-Z0-9_]*$/.test($state.keyInput.value) &&
+                            !$state.fragmentApiRequest.error
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["loading"]
+                                    },
+                                    operation: 4
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    const oldValue = $stateGet(
+                                      objRoot,
+                                      variablePath
+                                    );
+                                    $stateSet(objRoot, variablePath, !oldValue);
+                                    return !oldValue;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                          if (
+                            $steps["updateLoading"] != null &&
+                            typeof $steps["updateLoading"] === "object" &&
+                            typeof $steps["updateLoading"].then === "function"
+                          ) {
+                            $steps["updateLoading"] = await $steps[
+                              "updateLoading"
+                            ];
+                          }
+
+                          $steps["createApp"] =
+                            !!$state.nameInput.value &&
+                            !!$state.keyInput.value &&
+                            $state.keyInput.value.length >= 4 &&
+                            /^[a-zA-Z0-9_]*$/.test($state.keyInput.value) &&
+                            !$state.fragmentApiRequest.error
+                              ? (() => {
+                                  const actionArgs = {
+                                    args: [
+                                      "POST",
+                                      "https://hamdast.paziresh24.com/api/v1/apps",
+                                      undefined,
+                                      (() => {
+                                        try {
+                                          return {
+                                            name_fa: $state.nameInput.value,
+                                            key: $state.keyInput.value,
+                                            type:
+                                              $state.type == 1
+                                                ? "users"
+                                                : "providers"
+                                          };
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return undefined;
+                                          }
+                                          throw e;
+                                        }
+                                      })()
+                                    ]
+                                  };
+                                  return $globalActions[
+                                    "Fragment.apiRequest"
+                                  ]?.apply(null, [...actionArgs.args]);
+                                })()
+                              : undefined;
+                          if (
+                            $steps["createApp"] != null &&
+                            typeof $steps["createApp"] === "object" &&
+                            typeof $steps["createApp"].then === "function"
+                          ) {
+                            $steps["createApp"] = await $steps["createApp"];
+                          }
+
+                          $steps["updateLoading2"] =
+                            !!$state.nameInput.value &&
+                            !!$state.keyInput.value &&
+                            $state.keyInput.value.length >= 4 &&
+                            /^[a-zA-Z0-9_]*$/.test($state.keyInput.value) &&
+                            !$state.fragmentApiRequest.error
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["loading"]
+                                    },
+                                    operation: 0
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                          if (
+                            $steps["updateLoading2"] != null &&
+                            typeof $steps["updateLoading2"] === "object" &&
+                            typeof $steps["updateLoading2"].then === "function"
+                          ) {
+                            $steps["updateLoading2"] = await $steps[
+                              "updateLoading2"
+                            ];
+                          }
+
+                          $steps["goToStatistics"] =
+                            !!$state.nameInput.value &&
+                            !!$state.keyInput.value &&
+                            $state.keyInput.value.length >= 4 &&
+                            /^[a-zA-Z0-9_]*$/.test($state.keyInput.value) &&
+                            !$state.fragmentApiRequest.error &&
+                            $steps.createApp?.status == 200
+                              ? (() => {
+                                  const actionArgs = {
+                                    destination: `/apps/${(() => {
+                                      try {
+                                        return $steps.createApp?.data?.id;
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return undefined;
+                                        }
+                                        throw e;
+                                      }
+                                    })()}/statistics`
+                                  };
+                                  return (({ destination }) => {
+                                    if (
+                                      typeof destination === "string" &&
+                                      destination.startsWith("#")
+                                    ) {
+                                      document
+                                        .getElementById(destination.substr(1))
+                                        .scrollIntoView({ behavior: "smooth" });
+                                    } else {
+                                      __nextRouter?.push(destination);
+                                    }
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                          if (
+                            $steps["goToStatistics"] != null &&
+                            typeof $steps["goToStatistics"] === "object" &&
+                            typeof $steps["goToStatistics"].then === "function"
+                          ) {
+                            $steps["goToStatistics"] = await $steps[
+                              "goToStatistics"
+                            ];
+                          }
+
+                          $steps["runCode"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  customFunction: async () => {
+                                    return (window.data.apps = [
+                                      $steps.createApp?.data
+                                    ]);
+                                  }
+                                };
+                                return (({ customFunction }) => {
+                                  return customFunction();
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["runCode"] != null &&
+                            typeof $steps["runCode"] === "object" &&
+                            typeof $steps["runCode"].then === "function"
+                          ) {
+                            $steps["runCode"] = await $steps["runCode"];
+                          }
                         }}
                       >
                         <div
@@ -891,9 +1237,23 @@ function PlasmicNewApp__RenderFunc(props: {
                             sty.text___3BTya
                           )}
                         >
-                          {
-                            "\u0633\u0627\u062e\u062a \u0627\u064e\u0628\u0632\u0627\u0631\u06a9"
-                          }
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return $state.loading
+                                  ? "صبر کنید..."
+                                  : "ساخت ابزارک";
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "\u0633\u0627\u062e\u062a \u0627\u064e\u0628\u0632\u0627\u0631\u06a9";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
                         </div>
                       </Button>
                     </Stack__>
@@ -916,8 +1276,8 @@ const PlasmicDescendants = {
     "svg",
     "img",
     "link",
-    "fragmentInput3",
-    "fragmentInput4",
+    "nameInput",
+    "keyInput",
     "fragmentApiRequest",
     "button"
   ],
@@ -927,16 +1287,16 @@ const PlasmicDescendants = {
     "svg",
     "img",
     "link",
-    "fragmentInput3",
-    "fragmentInput4",
+    "nameInput",
+    "keyInput",
     "fragmentApiRequest",
     "button"
   ],
   svg: ["svg"],
   img: ["img"],
   link: ["link"],
-  fragmentInput3: ["fragmentInput3"],
-  fragmentInput4: ["fragmentInput4"],
+  nameInput: ["nameInput"],
+  keyInput: ["keyInput"],
   fragmentApiRequest: ["fragmentApiRequest"],
   button: ["button"]
 } as const;
@@ -950,8 +1310,8 @@ type NodeDefaultElementType = {
   svg: "svg";
   img: typeof PlasmicImg__;
   link: "a";
-  fragmentInput3: typeof Input;
-  fragmentInput4: typeof Input;
+  nameInput: typeof Input;
+  keyInput: typeof Input;
   fragmentApiRequest: typeof ApiRequest;
   button: typeof Button;
 };
@@ -1021,8 +1381,8 @@ export const PlasmicNewApp = Object.assign(
     svg: makeNodeComponent("svg"),
     img: makeNodeComponent("img"),
     link: makeNodeComponent("link"),
-    fragmentInput3: makeNodeComponent("fragmentInput3"),
-    fragmentInput4: makeNodeComponent("fragmentInput4"),
+    nameInput: makeNodeComponent("nameInput"),
+    keyInput: makeNodeComponent("keyInput"),
     fragmentApiRequest: makeNodeComponent("fragmentApiRequest"),
     button: makeNodeComponent("button"),
 

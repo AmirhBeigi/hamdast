@@ -65,6 +65,7 @@ import { useScreenVariants as useScreenVariantsb8YurXs4FhCe } from "./PlasmicGlo
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
+import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectcss
 import sty from "./PlasmicAuthProvider.module.css"; // plasmic-import: KTPu1eZupEdG/css
 
@@ -81,12 +82,14 @@ export type PlasmicAuthProvider__ArgsType = {
   onUserChange?: (val: string) => void;
   onAppsChange?: (val: string) => void;
   children?: React.ReactNode;
+  withOutUser?: boolean;
 };
 type ArgPropType = keyof PlasmicAuthProvider__ArgsType;
 export const PlasmicAuthProvider__ArgProps = new Array<ArgPropType>(
   "onUserChange",
   "onAppsChange",
-  "children"
+  "children",
+  "withOutUser"
 );
 
 export type PlasmicAuthProvider__OverridesType = {
@@ -100,6 +103,7 @@ export interface DefaultAuthProviderProps {
   onUserChange?: (val: string) => void;
   onAppsChange?: (val: string) => void;
   children?: React.ReactNode;
+  withOutUser?: boolean;
   className?: string;
 }
 
@@ -120,7 +124,16 @@ function PlasmicAuthProvider__RenderFunc(props: {
 }) {
   const { variants, overrides, forNode } = props;
 
-  const args = React.useMemo(() => Object.assign({}, props.args), [props.args]);
+  const args = React.useMemo(
+    () =>
+      Object.assign(
+        {
+          withOutUser: false
+        },
+        props.args
+      ),
+    [props.args]
+  );
 
   const $props = {
     ...args,
@@ -203,6 +216,7 @@ function PlasmicAuthProvider__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         projectcss.plasmic_tokens,
+        plasmic_antd_5_hostless_css.plasmic_tokens,
         sty.root
       )}
     >
@@ -333,7 +347,9 @@ function PlasmicAuthProvider__RenderFunc(props: {
                       variablePath: ["user"]
                     },
                     operation: 0,
-                    value: $steps.getProfile?.data
+                    value:
+                      $steps.getProfile?.status == 200 &&
+                      $steps.getProfile?.data
                   };
                   return (({ variable, value, startIndex, deleteCount }) => {
                     if (!variable) {
@@ -355,26 +371,27 @@ function PlasmicAuthProvider__RenderFunc(props: {
             }
 
             $steps["errorProfile"] =
-              $steps.getProfile?.status != 200 &&
-              !$state.user?.id &&
-              !$state.apps?.length > 0
+              $steps.getProfile?.status != "200" && !$state.user?.id
                 ? (() => {
                     const actionArgs = {
-                      variable: {
-                        objRoot: $state,
-                        variablePath: ["error"]
-                      },
-                      operation: 0,
-                      value: true
-                    };
-                    return (({ variable, value, startIndex, deleteCount }) => {
-                      if (!variable) {
-                        return;
+                      customFunction: async () => {
+                        return (() => {
+                          if ($steps.getProfile?.status == "401") {
+                            return window.location.assign(
+                              "https://paziresh24.com/login?redirect_url=https://hamdast.paziresh24.com"
+                            );
+                          }
+                          if ($steps.getProfile?.status == "403") {
+                            if ($props.withOutUser) {
+                              return ($state.user = {});
+                            }
+                          }
+                          return $state.error == $steps.getProfile.data;
+                        })();
                       }
-                      const { objRoot, variablePath } = variable;
-
-                      $stateSet(objRoot, variablePath, value);
-                      return value;
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
                     })?.apply(null, [actionArgs]);
                   })()
                 : undefined;
@@ -437,28 +454,32 @@ function PlasmicAuthProvider__RenderFunc(props: {
               $steps["updateApps"] = await $steps["updateApps"];
             }
 
-            $steps["loadingStop2"] =
-              !!$steps.getProfile?.data && !!$steps.getApps?.data
-                ? (() => {
-                    const actionArgs = {
-                      variable: {
-                        objRoot: $state,
-                        variablePath: ["loading"]
-                      },
-                      operation: 0,
-                      value: false
-                    };
-                    return (({ variable, value, startIndex, deleteCount }) => {
-                      if (!variable) {
-                        return;
-                      }
-                      const { objRoot, variablePath } = variable;
+            $steps["loadingStop2"] = (() => {
+              if ($props.withOutUser) {
+                return true;
+              }
+              return !!$steps.getProfile?.data && !!$steps.getApps?.data;
+            })()
+              ? (() => {
+                  const actionArgs = {
+                    variable: {
+                      objRoot: $state,
+                      variablePath: ["loading"]
+                    },
+                    operation: 0,
+                    value: false
+                  };
+                  return (({ variable, value, startIndex, deleteCount }) => {
+                    if (!variable) {
+                      return;
+                    }
+                    const { objRoot, variablePath } = variable;
 
-                      $stateSet(objRoot, variablePath, value);
-                      return value;
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
+                    $stateSet(objRoot, variablePath, value);
+                    return value;
+                  })?.apply(null, [actionArgs]);
+                })()
+              : undefined;
             if (
               $steps["loadingStop2"] != null &&
               typeof $steps["loadingStop2"] === "object" &&

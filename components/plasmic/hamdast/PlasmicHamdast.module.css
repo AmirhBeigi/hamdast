@@ -142,37 +142,6 @@
   width: auto;
   height: 1em;
 }
-.freeBox__lyyzq {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  align-items: stretch;
-  justify-content: space-between;
-  width: 20rem;
-  height: auto;
-  max-width: 100%;
-  margin-top: 30px;
-}
-.text__mjOyb {
-  position: relative;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  text-align: center;
-  font-weight: 500;
-  font-size: 13px;
-}
-.text__e9Tc {
-  position: relative;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  text-align: center;
-  font-weight: 500;
-  font-size: 13px;
-  text-decoration-line: underline;
-  cursor: pointer;
-}
 .reveal__rddub:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;

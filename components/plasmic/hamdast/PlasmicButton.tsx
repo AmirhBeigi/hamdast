@@ -63,6 +63,7 @@ import * as pp from "@plasmicapp/react-web";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
+import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectcss
 import sty from "./PlasmicButton.module.css"; // plasmic-import: _T6T2fNvkUfo/css
 
@@ -271,6 +272,7 @@ function PlasmicButton__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         projectcss.plasmic_tokens,
+        plasmic_antd_5_hostless_css.plasmic_tokens,
         sty.root,
         {
           [sty.root___focusVisibleWithin]: triggers.focusVisibleWithin_root,
@@ -299,6 +301,13 @@ function PlasmicButton__RenderFunc(props: {
           [sty.rootshape_rounded_size_compact]:
             hasVariant($state, "size", "compact") &&
             hasVariant($state, "shape", "rounded"),
+          [sty.rootshape_rounded_size_minimal]:
+            hasVariant($state, "shape", "rounded") &&
+            hasVariant($state, "size", "minimal"),
+          [sty.rootshape_rounded_size_minimal_color_softSand]:
+            hasVariant($state, "shape", "rounded") &&
+            hasVariant($state, "size", "minimal") &&
+            hasVariant($state, "color", "softSand"),
           [sty.rootshape_sharp]: hasVariant($state, "shape", "sharp"),
           [sty.rootshowEndIcon]: hasVariant(
             $state,
@@ -327,7 +336,10 @@ function PlasmicButton__RenderFunc(props: {
           [sty.rootsize_minimal]: hasVariant($state, "size", "minimal"),
           [sty.rootsize_minimal_color_link]:
             hasVariant($state, "color", "link") &&
-            hasVariant($state, "size", "minimal")
+            hasVariant($state, "size", "minimal"),
+          [sty.rootsize_minimal_color_softSand]:
+            hasVariant($state, "size", "minimal") &&
+            hasVariant($state, "color", "softSand")
         }
       )}
       data-plasmic-trigger-props={[triggerRootFocusVisibleWithinProps]}
