@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { notificationPB, pb } from "../../../../../../pocketbase";
+import { notificationPB } from "../../../../../../pocketbase";
 import config from "next/config";
 import NextCors from "nextjs-cors";
 const { publicRuntimeConfig } = config();

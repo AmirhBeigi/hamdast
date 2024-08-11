@@ -100,15 +100,17 @@ export default async function handler(
 
       try {
         const data = await axios.post(
-          "https://app.najva.com/notification/api/v1/notifications/",
+          "https://app.najva.com/api/v2/notification/management/send-direct",
           {
-            api_key: api_key ? api_key : publicRuntimeConfig.NAJVA_API_KEY,
-            subscriber_tokens: subscribers.map((item) => item.subscriber_token),
+            subscribers: subscribers.map((item) => item.subscriber_token),
             ...rest,
           },
           {
             headers: {
               authorization: `Token ${publicRuntimeConfig.NAJVA_TOKEN}`,
+              "x-api-key": api_key
+                ? api_key
+                : publicRuntimeConfig.NAJVA_API_KEY,
             },
           }
         );
