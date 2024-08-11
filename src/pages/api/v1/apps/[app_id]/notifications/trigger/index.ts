@@ -111,6 +111,7 @@ export default async function handler(
               "x-api-key": api_key
                 ? api_key
                 : publicRuntimeConfig.NAJVA_API_KEY,
+              "Content-Type": "application/json",
             },
           }
         );
