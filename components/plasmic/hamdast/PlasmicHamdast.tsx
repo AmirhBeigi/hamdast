@@ -66,6 +66,7 @@ import Button from "../../Button"; // plasmic-import: _T6T2fNvkUfo/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
+import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectcss
 import sty from "./PlasmicHamdast.module.css"; // plasmic-import: 95NoFP37q3yQ/css
 
@@ -211,6 +212,7 @@ function PlasmicHamdast__RenderFunc(props: {
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
             projectcss.plasmic_tokens,
+            plasmic_antd_5_hostless_css.plasmic_tokens,
             sty.root
           )}
           dir={"rtl"}
@@ -291,6 +293,7 @@ function PlasmicHamdast__RenderFunc(props: {
               "authProvider",
               "user"
             ])}
+            withOutUser={true}
           >
             <div className={classNames(projectcss.all, sty.freeBox__znNnX)}>
               {(() => {
@@ -535,81 +538,6 @@ function PlasmicHamdast__RenderFunc(props: {
                           }
                         </Button>
                       </Stack__>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__lyyzq
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__mjOyb
-                          )}
-                        >
-                          {
-                            "\u0622\u06cc\u0627 \u0627\u0632 \u0642\u0628\u0644 \u0634\u0645\u0627 \u0627\u064e\u0628\u0632\u0627\u0631\u06a9 \u062f\u0627\u0634\u062a\u0647\u200c\u0627\u06cc\u062f\u061f"
-                          }
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__e9Tc
-                          )}
-                          onClick={async event => {
-                            const $steps = {};
-
-                            $steps["goToStatistics"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    destination: `/apps/${(() => {
-                                      try {
-                                        return $state.authProvider.apps[0].id;
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
-                                        }
-                                        throw e;
-                                      }
-                                    })()}/statistics`
-                                  };
-                                  return (({ destination }) => {
-                                    if (
-                                      typeof destination === "string" &&
-                                      destination.startsWith("#")
-                                    ) {
-                                      document
-                                        .getElementById(destination.substr(1))
-                                        .scrollIntoView({ behavior: "smooth" });
-                                    } else {
-                                      __nextRouter?.push(destination);
-                                    }
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["goToStatistics"] != null &&
-                              typeof $steps["goToStatistics"] === "object" &&
-                              typeof $steps["goToStatistics"].then ===
-                                "function"
-                            ) {
-                              $steps["goToStatistics"] = await $steps[
-                                "goToStatistics"
-                              ];
-                            }
-                          }}
-                        >
-                          {
-                            "\u0645\u0634\u0627\u0647\u062f\u0647 \u0627\u064e\u0628\u0632\u0627\u0631\u06a9 \u0647\u0627 \u0645\u0646"
-                          }
-                        </div>
-                      </div>
                     </Reveal>
                   ) : null}
                   {(() => {
@@ -794,6 +722,53 @@ function PlasmicHamdast__RenderFunc(props: {
                             ) {
                               $steps["updateShowRules"] = await $steps[
                                 "updateShowRules"
+                              ];
+                            }
+
+                            $steps["createProfile"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    args: [
+                                      "POST",
+                                      "https://hamdast.paziresh24.com/api/v1/profile"
+                                    ]
+                                  };
+                                  return $globalActions[
+                                    "Fragment.apiRequest"
+                                  ]?.apply(null, [...actionArgs.args]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["createProfile"] != null &&
+                              typeof $steps["createProfile"] === "object" &&
+                              typeof $steps["createProfile"].then === "function"
+                            ) {
+                              $steps["createProfile"] = await $steps[
+                                "createProfile"
+                              ];
+                            }
+
+                            $steps["updateUserWindow"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    customFunction: async () => {
+                                      return (window.data.user =
+                                        $steps.createProfile?.data);
+                                    }
+                                  };
+                                  return (({ customFunction }) => {
+                                    return customFunction();
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateUserWindow"] != null &&
+                              typeof $steps["updateUserWindow"] === "object" &&
+                              typeof $steps["updateUserWindow"].then ===
+                                "function"
+                            ) {
+                              $steps["updateUserWindow"] = await $steps[
+                                "updateUserWindow"
                               ];
                             }
 

@@ -68,10 +68,12 @@ import Button from "../../Button"; // plasmic-import: _T6T2fNvkUfo/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
+import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectcss
 import sty from "./PlasmicSettting.module.css"; // plasmic-import: 7ri-iU6uUwQF/css
 
 import Icon19Icon from "./icons/PlasmicIcon__Icon19"; // plasmic-import: 09kUgGvbipjq/icon
+import Icon16Icon from "./icons/PlasmicIcon__Icon16"; // plasmic-import: zU9ql4OiZyfC/icon
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: VepSFu0Y3Pyk/icon
 import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: CmW94FEF71d7/icon
 
@@ -91,8 +93,8 @@ export type PlasmicSettting__OverridesType = {
   embedHtml?: Flex__<typeof Embed>;
   authProvider?: Flex__<typeof AuthProvider>;
   layout?: Flex__<typeof Layout>;
-  svg?: Flex__<"svg">;
   fragmentInput?: Flex__<typeof Input>;
+  fragmentInput2?: Flex__<typeof Input>;
 };
 
 export interface DefaultSetttingProps {}
@@ -166,9 +168,26 @@ function PlasmicSettting__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
             try {
-              return $state.authProvider.apps?.find(
-                item => item.id === $ctx.params.id
-              )?.client_key;
+              return $state.authProvider.user.api_key;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return "";
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "fragmentInput2.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.authProvider.apps[0].key;
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -225,6 +244,7 @@ function PlasmicSettting__RenderFunc(props: {
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
             projectcss.plasmic_tokens,
+            plasmic_antd_5_hostless_css.plasmic_tokens,
             sty.root
           )}
           dir={"rtl"}
@@ -347,6 +367,7 @@ function PlasmicSettting__RenderFunc(props: {
                       })()}
                       className={classNames("__wab_instance", sty.menu__sm1Zy)}
                       compact={true}
+                      disabled={true}
                       icon={false}
                       iconWrapper={null}
                       name={
@@ -355,7 +376,7 @@ function PlasmicSettting__RenderFunc(props: {
                       onClick={async () => {
                         const $steps = {};
 
-                        $steps["updateMenu"] = true
+                        $steps["updateMenu"] = false
                           ? (() => {
                               const actionArgs = {
                                 variable: {
@@ -481,6 +502,7 @@ function PlasmicSettting__RenderFunc(props: {
                       })()}
                       className={classNames("__wab_instance", sty.menu__dJhv)}
                       compact={true}
+                      disabled={true}
                       icon={false}
                       iconWrapper={null}
                       name={
@@ -489,7 +511,7 @@ function PlasmicSettting__RenderFunc(props: {
                       onClick={async () => {
                         const $steps = {};
 
-                        $steps["updateMenu"] = true
+                        $steps["updateMenu"] = false
                           ? (() => {
                               const actionArgs = {
                                 variable: {
@@ -581,9 +603,10 @@ function PlasmicSettting__RenderFunc(props: {
                             )}
                           >
                             <Icon19Icon
-                              data-plasmic-name={"svg"}
-                              data-plasmic-override={overrides.svg}
-                              className={classNames(projectcss.all, sty.svg)}
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg__tKadL
+                              )}
                               role={"img"}
                             />
 
@@ -594,22 +617,7 @@ function PlasmicSettting__RenderFunc(props: {
                                 sty.text__yu4Hk
                               )}
                             >
-                              <React.Fragment>
-                                <React.Fragment>
-                                  {
-                                    "\u0634\u0646\u0627\u0633\u0647 \u0639\u0645\u0648\u0645\u06cc "
-                                  }
-                                </React.Fragment>
-                                <span
-                                  className={
-                                    "plasmic_default__all plasmic_default__span"
-                                  }
-                                  style={{ color: "#0000002E" }}
-                                >
-                                  {"|"}
-                                </span>
-                                <React.Fragment>{" Client key"}</React.Fragment>
-                              </React.Fragment>
+                              {"API Key"}
                             </div>
                           </Stack__>
                           <div
@@ -619,74 +627,125 @@ function PlasmicSettting__RenderFunc(props: {
                               sty.text__gvqWd
                             )}
                           >
+                            <React.Fragment>
+                              <React.Fragment>
+                                {
+                                  "\u0628\u0631\u0627\u06cc \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0632 \u0648\u0628 \u0633\u0631\u0648\u06cc\u0633\u200c\u0647\u0627\u06cc \u0647\u0645\u200c\u062f\u0633\u062a\u060c \u0627\u0632 API Key \u0628\u0647\u0631\u0647 \u0628\u06af\u06cc\u0631\u06cc\u062f. \u0644\u0637\u0641\u0627\u064b \u062f\u0631 \u062d\u0641\u0638 \u0648 \u0646\u06af\u0647\u062f\u0627\u0631\u06cc \u0622\u0646 \u062f\u0642\u062a \u06a9\u0646\u06cc\u062f\u060c \u0632\u06cc\u0631\u0627 \u0627\u06cc\u0646 \u06a9\u0644\u06cc\u062f "
+                                }
+                              </React.Fragment>
+                              <span
+                                className={
+                                  "plasmic_default__all plasmic_default__span"
+                                }
+                                style={{ color: "var(--token--ypw6enySR1T)" }}
+                              >
+                                {"\u0645\u062d\u0631\u0645\u0627\u0646\u0647"}
+                              </span>
+                              <React.Fragment>
+                                {" \u0627\u0633\u062a."}
+                              </React.Fragment>
+                            </React.Fragment>
+                          </div>
+                        </div>
+                        <Input
+                          data-plasmic-name={"fragmentInput"}
+                          data-plasmic-override={overrides.fragmentInput}
+                          attributes={{ dir: "ltr", readOnly: true }}
+                          className={classNames(
+                            "__wab_instance",
+                            sty.fragmentInput
+                          )}
+                          disabled={false}
+                          onChange={generateStateOnChangeProp($state, [
+                            "fragmentInput",
+                            "value"
+                          ])}
+                          type={"text"}
+                          value={generateStateValueProp($state, [
+                            "fragmentInput",
+                            "value"
+                          ])}
+                        />
+                      </Stack__>
+                    </Stack__>
+                    <Stack__
+                      as={"div"}
+                      hasGap={true}
+                      className={classNames(projectcss.all, sty.freeBox__gCdn)}
+                    >
+                      <Stack__
+                        as={"div"}
+                        hasGap={true}
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__qIbDj
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__qfruk
+                          )}
+                        >
+                          <Stack__
+                            as={"div"}
+                            hasGap={true}
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__n0Hb3
+                            )}
+                          >
+                            <Icon16Icon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg__h3U8R
+                              )}
+                              role={"img"}
+                            />
+
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___4USow
+                              )}
+                            >
+                              {
+                                "\u0634\u0646\u0627\u0633\u0647 \u0627\u0628\u0632\u0627\u0631\u06a9"
+                              }
+                            </div>
+                          </Stack__>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__dTs9H
+                            )}
+                          >
                             {
-                              "\u0634\u0646\u0627\u0633\u0647 Client \u0634\u0645\u0627 \u0634\u0646\u0627\u0633\u0647 \u0639\u0645\u0648\u0645\u06cc \u0628\u0631\u0646\u0627\u0645\u0647 \u0634\u0645\u0627 \u0627\u0633\u062a \u0648 \u0628\u0631\u0627\u06cc \u062a\u0639\u0627\u0645\u0644 \u0628\u0627 SDK \u0647\u0645\u200c\u062f\u0633\u062a \u0644\u0627\u0632\u0645 \u0627\u0633\u062a."
+                              "\u0627\u064e\u0628\u0632\u0627\u0631\u06a9 \u0634\u0645\u0627 \u0628\u0627 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0632 \u0627\u06cc\u0646 \u0634\u0646\u0627\u0633\u0647 \u0634\u0646\u0627\u0633\u0627\u06cc\u06cc \u0645\u06cc\u200c\u0634\u0648\u062f."
                             }
                           </div>
                         </div>
-                        {(() => {
-                          const child$Props = {
-                            className: classNames(
-                              "__wab_instance",
-                              sty.fragmentInput
-                            ),
-                            disabled: false,
-                            onChange: generateStateOnChangeProp($state, [
-                              "fragmentInput",
-                              "value"
-                            ]),
-                            type: "text",
-                            value: generateStateValueProp($state, [
-                              "fragmentInput",
-                              "value"
-                            ])
-                          };
-                          initializeCodeComponentStates(
-                            $state,
-                            [
-                              {
-                                name: "value",
-                                plasmicStateName: "fragmentInput.value"
-                              }
-                            ],
-                            [],
-                            undefined ?? {},
-                            child$Props
-                          );
-                          initializePlasmicStates(
-                            $state,
-                            [
-                              {
-                                name: "fragmentInput.value",
-                                initFunc: ({ $props, $state, $queries }) =>
-                                  (() => {
-                                    try {
-                                      return $state.authProvider.apps?.find(
-                                        item => item.id === $ctx.params.id
-                                      )?.client_key;
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return "";
-                                      }
-                                      throw e;
-                                    }
-                                  })()
-                              }
-                            ],
-                            []
-                          );
-                          return (
-                            <Input
-                              data-plasmic-name={"fragmentInput"}
-                              data-plasmic-override={overrides.fragmentInput}
-                              {...child$Props}
-                            />
-                          );
-                        })()}
+                        <Input
+                          data-plasmic-name={"fragmentInput2"}
+                          data-plasmic-override={overrides.fragmentInput2}
+                          attributes={{ dir: "ltr", readOnly: true }}
+                          className={classNames(
+                            "__wab_instance",
+                            sty.fragmentInput2
+                          )}
+                          disabled={false}
+                          onChange={generateStateOnChangeProp($state, [
+                            "fragmentInput2",
+                            "value"
+                          ])}
+                          type={"text"}
+                          value={generateStateValueProp($state, [
+                            "fragmentInput2",
+                            "value"
+                          ])}
+                        />
                       </Stack__>
                     </Stack__>
                     <div
@@ -906,12 +965,19 @@ function PlasmicSettting__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "embedHtml", "authProvider", "layout", "svg", "fragmentInput"],
+  root: [
+    "root",
+    "embedHtml",
+    "authProvider",
+    "layout",
+    "fragmentInput",
+    "fragmentInput2"
+  ],
   embedHtml: ["embedHtml"],
-  authProvider: ["authProvider", "layout", "svg", "fragmentInput"],
-  layout: ["layout", "svg", "fragmentInput"],
-  svg: ["svg"],
-  fragmentInput: ["fragmentInput"]
+  authProvider: ["authProvider", "layout", "fragmentInput", "fragmentInput2"],
+  layout: ["layout", "fragmentInput", "fragmentInput2"],
+  fragmentInput: ["fragmentInput"],
+  fragmentInput2: ["fragmentInput2"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -921,8 +987,8 @@ type NodeDefaultElementType = {
   embedHtml: typeof Embed;
   authProvider: typeof AuthProvider;
   layout: typeof Layout;
-  svg: "svg";
   fragmentInput: typeof Input;
+  fragmentInput2: typeof Input;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -988,8 +1054,8 @@ export const PlasmicSettting = Object.assign(
     embedHtml: makeNodeComponent("embedHtml"),
     authProvider: makeNodeComponent("authProvider"),
     layout: makeNodeComponent("layout"),
-    svg: makeNodeComponent("svg"),
     fragmentInput: makeNodeComponent("fragmentInput"),
+    fragmentInput2: makeNodeComponent("fragmentInput2"),
 
     // Metadata about props expected for PlasmicSettting
     internalVariantProps: PlasmicSettting__VariantProps,

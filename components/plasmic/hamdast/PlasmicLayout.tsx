@@ -64,13 +64,13 @@ import Menu from "../../Menu"; // plasmic-import: 73TqujunaOu5/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
+import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectcss
 import sty from "./PlasmicLayout.module.css"; // plasmic-import: ve2FygUyzJYe/css
 
 import Icon12Icon from "./icons/PlasmicIcon__Icon12"; // plasmic-import: uNpsRe8HBlEO/icon
 import Icon7Icon from "./icons/PlasmicIcon__Icon7"; // plasmic-import: 1XPNabWn6mUI/icon
 import Icon4Icon from "./icons/PlasmicIcon__Icon4"; // plasmic-import: 9cwvqG5olU4z/icon
-import Icon20Icon from "./icons/PlasmicIcon__Icon20"; // plasmic-import: B2THoaAEIn8y/icon
 import Icon8Icon from "./icons/PlasmicIcon__Icon8"; // plasmic-import: lYMiBDxqu5ly/icon
 import Icon9Icon from "./icons/PlasmicIcon__Icon9"; // plasmic-import: ly5Yl8idG7m1/icon
 import Icon13Icon from "./icons/PlasmicIcon__Icon13"; // plasmic-import: SeV8a-Sb0Haa/icon
@@ -210,6 +210,7 @@ function PlasmicLayout__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         projectcss.plasmic_tokens,
+        plasmic_antd_5_hostless_css.plasmic_tokens,
         sty.root
       )}
       dir={"rtl"}
@@ -589,18 +590,6 @@ function PlasmicLayout__RenderFunc(props: {
             />
 
             <Menu
-              className={classNames("__wab_instance", sty.menu___1BnF)}
-              disabled={true}
-              iconWrapper={
-                <Icon20Icon
-                  className={classNames(projectcss.all, sty.svg__np2Ys)}
-                  role={"img"}
-                />
-              }
-              name={"\u0648\u0628 \u0633\u0631\u0648\u06cc\u0633"}
-            />
-
-            <Menu
               className={classNames("__wab_instance", sty.menu__s5Ho)}
               disabled={true}
               iconWrapper={
@@ -629,7 +618,6 @@ function PlasmicLayout__RenderFunc(props: {
                 }
               })()}
               className={classNames("__wab_instance", sty.menu__zOxdE)}
-              disabled={true}
               iconWrapper={
                 <Icon9Icon
                   className={classNames(projectcss.all, sty.svg__zn8Dl)}

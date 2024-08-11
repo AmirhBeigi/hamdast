@@ -219,7 +219,7 @@
   min-width: 0;
   border-radius: 8px;
   padding: 13px;
-  border: 1px solid #c3d8df26;
+  border: 1px solid #c3d8df66;
 }
 .freeBox__sshHq > :global(.__wab_flex-container) {
   flex-direction: column;
@@ -305,7 +305,7 @@
   > img {
   margin-left: 5px;
 }
-.svg {
+.svg__tKadL {
   position: relative;
   object-fit: cover;
   max-width: 100%;
@@ -342,6 +342,141 @@
   position: relative;
   min-width: 0;
 }
+.freeBox__gCdn {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  background: none;
+  margin-bottom: 12px;
+  min-width: 0;
+  border-radius: 8px;
+  padding: 13px;
+  border: 1px solid #c3d8df66;
+}
+.freeBox__gCdn > :global(.__wab_flex-container) {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  margin-top: calc(0px - 20px);
+  height: calc(100% + 20px);
+}
+.freeBox__gCdn > :global(.__wab_flex-container) > *,
+.freeBox__gCdn > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.freeBox__gCdn > :global(.__wab_flex-container) > picture > img,
+.freeBox__gCdn
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-top: 20px;
+}
+.freeBox__qIbDj {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.freeBox__qIbDj > :global(.__wab_flex-container) {
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 0;
+  margin-left: calc(0px - 60px);
+  width: calc(100% + 60px);
+}
+.freeBox__qIbDj > :global(.__wab_flex-container) > *,
+.freeBox__qIbDj > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.freeBox__qIbDj > :global(.__wab_flex-container) > picture > img,
+.freeBox__qIbDj
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: 60px;
+}
+.freeBox__qfruk {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.freeBox__n0Hb3 {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  margin-bottom: 5px;
+  min-width: 0;
+}
+.freeBox__n0Hb3 > :global(.__wab_flex-container) {
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 0;
+  margin-left: calc(0px - 5px);
+  width: calc(100% + 5px);
+}
+.freeBox__n0Hb3 > :global(.__wab_flex-container) > *,
+.freeBox__n0Hb3 > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.freeBox__n0Hb3 > :global(.__wab_flex-container) > picture > img,
+.freeBox__n0Hb3
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: 5px;
+}
+.svg__h3U8R {
+  position: relative;
+  object-fit: cover;
+  max-width: 100%;
+  opacity: 1;
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+}
+.text___4USow {
+  position: relative;
+  height: auto;
+  max-width: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 1;
+  text-align: right;
+  margin-top: 2px;
+}
+.text__dTs9H {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.8;
+  text-align: right;
+  min-width: 0;
+}
+.fragmentInput2:global(.__wab_instance) {
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  position: relative;
+  min-width: 0;
+}
 .text___3MLvn {
   position: relative;
   width: 100%;
@@ -353,9 +488,9 @@
   margin-bottom: 12px;
   padding-right: 0px;
   min-width: 0;
+  display: none;
 }
 .freeBox__mmn3N {
-  display: flex;
   position: relative;
   flex-direction: column;
   width: 100%;
@@ -364,6 +499,7 @@
   background: none;
   margin-bottom: 12px;
   min-width: 0;
+  display: none;
   border-radius: 8px;
   border: 1px solid #c3d8df26;
 }
@@ -476,7 +612,6 @@
   height: 1em;
 }
 .freeBox__x792V {
-  display: flex;
   position: relative;
   flex-direction: column;
   width: 100%;
@@ -485,6 +620,7 @@
   background: none;
   margin-bottom: 12px;
   min-width: 0;
+  display: none;
   border-radius: 8px;
   border: 1px solid #c3d8df26;
 }

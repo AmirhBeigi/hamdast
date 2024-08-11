@@ -69,6 +69,7 @@ import RecordCard from "../../RecordCard"; // plasmic-import: 07VZfuNk1JDL/compo
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
+import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectcss
 import sty from "./PlasmicSessionReplay.module.css"; // plasmic-import: LDPTNOmbf3qw/css
 
@@ -174,7 +175,7 @@ function PlasmicSessionReplay__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
             try {
-              return $state.fetchData?.data?.[0]?.id;
+              return $state.fetchData?.data?.[0]?.id ?? -1;
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -237,6 +238,7 @@ function PlasmicSessionReplay__RenderFunc(props: {
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
             projectcss.plasmic_tokens,
+            plasmic_antd_5_hostless_css.plasmic_tokens,
             sty.root
           )}
           dir={"rtl"}
@@ -508,6 +510,31 @@ function PlasmicSessionReplay__RenderFunc(props: {
                           />
                         );
                       })}
+                      {(() => {
+                        try {
+                          return $state.fetchData.data.length == 0;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__jqubF
+                          )}
+                        >
+                          {
+                            "\u0645\u0646\u0648\u06cc\u06cc \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u062f."
+                          }
+                        </div>
+                      ) : null}
                     </Stack__>
                   </FetchData>
                 </Stack__>
@@ -646,7 +673,7 @@ function PlasmicSessionReplay__RenderFunc(props: {
                           e instanceof TypeError ||
                           e?.plasmicType === "PlasmicUndefinedDataError"
                         ) {
-                          return false;
+                          return true;
                         }
                         throw e;
                       }
@@ -836,49 +863,46 @@ function PlasmicSessionReplay__RenderFunc(props: {
                         })}
                       </div>
                     ) : null}
-                    {(() => {
-                      try {
-                        return (
-                          Array.isArray($state.fetchData2?.data) &&
-                          $state.fetchData2.data?.length == 0
-                        );
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return true;
-                        }
-                        throw e;
+                  </FetchData>
+                  {(() => {
+                    try {
+                      return (
+                        Array.isArray($state.fetchData2?.data) &&
+                        $state.fetchData2.data?.length == 0
+                      );
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
                       }
-                    })() ? (
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                      throw e;
+                    }
+                  })() ? (
+                    <Stack__
+                      as={"div"}
+                      hasGap={true}
+                      className={classNames(projectcss.all, sty.freeBox___7I6)}
+                    >
+                      <Icon16Icon
+                        className={classNames(projectcss.all, sty.svg__heNuu)}
+                        role={"img"}
+                      />
+
+                      <div
                         className={classNames(
                           projectcss.all,
-                          sty.freeBox___7I6
+                          projectcss.__wab_text,
+                          sty.text___7Vqkb
                         )}
                       >
-                        <Icon16Icon
-                          className={classNames(projectcss.all, sty.svg__heNuu)}
-                          role={"img"}
-                        />
-
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___7Vqkb
-                          )}
-                        >
-                          {
-                            "\u0648\u06cc\u062f\u06cc\u0648 \u0636\u0628\u0637 \u0634\u062f\u0647 \u0627\u06cc \u062f\u0631 \u0627\u06cc\u0646 \u062a\u0627\u0631\u06cc\u062e \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u062f \u06cc\u0627 \u062a\u0646\u0638\u06cc\u0645\u0627\u062a SDK \u0628\u0647\u200c\u062f\u0631\u0633\u062a\u06cc \u0628\u0631\u0627\u06cc \u0627\u06cc\u0646 \u0645\u0646\u0648 \u0627\u0639\u0645\u0627\u0644 \u0646\u0634\u062f\u0647 \u0627\u0633\u062a."
-                          }
-                        </div>
-                      </Stack__>
-                    ) : null}
-                  </FetchData>
+                        {
+                          "\u0648\u06cc\u062f\u06cc\u0648 \u0636\u0628\u0637 \u0634\u062f\u0647 \u0627\u06cc \u062f\u0631 \u0627\u06cc\u0646 \u062a\u0627\u0631\u06cc\u062e \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u062f \u06cc\u0627 \u062a\u0646\u0638\u06cc\u0645\u0627\u062a SDK \u0628\u0647\u200c\u062f\u0631\u0633\u062a\u06cc \u0628\u0631\u0627\u06cc \u0627\u06cc\u0646 \u0645\u0646\u0648 \u0627\u0639\u0645\u0627\u0644 \u0646\u0634\u062f\u0647 \u0627\u0633\u062a."
+                        }
+                      </div>
+                    </Stack__>
+                  ) : null}
                 </Stack__>
               </div>
             </Layout>
