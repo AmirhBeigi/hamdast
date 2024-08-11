@@ -20,6 +20,7 @@ function Bridge() {
     embedSrc = new URL(src ? (src as string) : "");
     embedSrc.searchParams.append("client_key", client_key as string);
     embedSrc.searchParams.append("hamdast_embedded", "1");
+    embedSrc.searchParams.append("user_id", user_id);
   }
 
   const sendEvent = async (event: any) => {
