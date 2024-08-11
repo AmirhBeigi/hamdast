@@ -81,13 +81,13 @@ export default async function handler(
             filter: `paziresh24_user_id="${user_id}"`,
           });
       } catch (error) {
-        return res.status(403).json({
+        return res.status(404).json({
           message: "user_id not found",
         });
       }
 
       if (subscribers?.length === 0) {
-        return res.status(403).json({
+        return res.status(404).json({
           message: "user_id not found",
         });
       }
