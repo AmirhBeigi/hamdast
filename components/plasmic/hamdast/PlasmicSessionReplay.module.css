@@ -95,7 +95,6 @@
 .fetchData:global(.__wab_instance) {
   max-width: 100%;
   position: relative;
-  opacity: 0.6;
 }
 .svg__n53Le {
   position: relative;
@@ -143,6 +142,7 @@
   max-width: 100%;
   font-size: 13px;
   text-align: center;
+  opacity: 0.6;
   min-width: 0;
 }
 .freeBox__mwIBa {
