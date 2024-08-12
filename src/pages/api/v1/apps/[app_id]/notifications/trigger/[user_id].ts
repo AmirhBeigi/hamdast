@@ -43,6 +43,7 @@ export default async function handler(
       message: "use POST method",
     });
   }
+
   pb.autoCancellation(false);
   notificationPB.autoCancellation(false);
 
@@ -53,15 +54,16 @@ export default async function handler(
       message: "Authentication credentials were not provided.",
     });
   }
-  await pb.admins.authWithPassword(
-    publicRuntimeConfig.POCKETBASE_USER_NAME,
-    publicRuntimeConfig.POCKETBASE_PASSWORD
-  );
+
   try {
     const record = await pb
       .collection("users")
       .getFirstListItem(`api_key="${apiKey}"`, {
         expand: "role",
+        cache: "force-cache",
+        headers: {
+          x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+        },
       });
 
     if (!record) {
@@ -72,10 +74,7 @@ export default async function handler(
 
     if (req.method === "POST") {
       const { subscriber_tokens, api_key, ...rest } = req.body;
-      await notificationPB.admins.authWithPassword(
-        publicRuntimeConfig.POCKETBASE_USER_NAME,
-        publicRuntimeConfig.POCKETBASE_PASSWORD
-      );
+
       let subscribers: RecordModel[] = [];
       try {
         subscribers = await notificationPB
@@ -87,6 +86,9 @@ export default async function handler(
               .format(
                 "YYYY-MM-DD HH:mm:ss"
               )}" && paziresh24_user_id="${user_id}"`,
+            headers: {
+              x_token: publicRuntimeConfig.NOTIFICATION_USERS_TOKEN,
+            },
           });
       } catch (error) {
         return res.status(404).json({

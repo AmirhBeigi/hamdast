@@ -42,34 +42,42 @@ export default async function handler(
     (cookieStore["token"] as string) ||
     req.headers.authorization?.replace("Bearer", "");
 
-  const paziresh24User = await axios.get(
-    "https://apigw.paziresh24.com/v1/auth/me",
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
-  const user = paziresh24User.data?.users[0];
-  const paziresh24Provider = await axios.get(
-    `https://apigw.paziresh24.com/v1/providers?user_id=${user.id}`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
+  if (!token) {
+    return res.status(401).json({
+      message: "Authentication credentials were not provided.",
+    });
+  }
 
-  const provider = paziresh24Provider.data?.providers[0];
+  let user = null;
+  let provider = null;
+  try {
+    const paziresh24User = await axios.get(
+      "https://apigw.paziresh24.com/v1/auth/me",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    user = paziresh24User.data?.users?.[0];
+    const paziresh24Provider = await axios.get(
+      `https://apigw.paziresh24.com/v1/providers?user_id=${user.id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    provider = paziresh24Provider.data?.providers?.[0];
+  } catch (error) {
+    return res.status(401).json({
+      message: "Authentication credentials were not provided.",
+    });
+  }
 
   if (provider?.job_title !== "doctor") {
     return res.status(200).json([]);
   }
-
-  await pb.admins.authWithPassword(
-    publicRuntimeConfig.POCKETBASE_USER_NAME,
-    publicRuntimeConfig.POCKETBASE_PASSWORD
-  );
 
   const growthbook = new GrowthBook({
     apiHost: "https://growthbook-api.paziresh24.com",
@@ -80,14 +88,21 @@ export default async function handler(
     user_id: Number(user?.id),
   });
 
-  await growthbook.init({ timeout: 1000, skipCache: true });
+  await growthbook.init({ timeout: 1000 });
 
   const apps = await pb.collection("apps").getFullList({
     expand: "app",
     filter: "published = true",
+    headers: {
+      x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+    },
   });
 
-  const menus = await pb.collection("menus").getFullList({});
+  const menus = await pb.collection("menus").getFullList({
+    headers: {
+      x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+    },
+  });
 
   res.status(200).json(
     apps

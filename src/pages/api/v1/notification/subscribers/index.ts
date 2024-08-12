@@ -41,22 +41,25 @@ export default async function handler(
   }
   notificationPB.autoCancellation(false);
   const { user_id, subscriber_token } = req.body;
-  await notificationPB.admins.authWithPassword(
-    publicRuntimeConfig.POCKETBASE_USER_NAME,
-    publicRuntimeConfig.POCKETBASE_PASSWORD
-  );
   if (!user_id || !subscriber_token) {
     return res.status(400).json({
       message: "user_id and subscriber_token!",
     });
   }
   try {
-    await notificationPB.collection("subscribers").create({
-      subscriber_token,
-      paziresh24_user_id: user_id.toString(),
-    });
+    await notificationPB.collection("subscribers").create(
+      {
+        subscriber_token,
+        paziresh24_user_id: user_id.toString(),
+      },
+      {
+        headers: {
+          x_token: publicRuntimeConfig.NOTIFICATION_USERS_TOKEN,
+        },
+      }
+    );
     return res.status(204).json({});
   } catch (error) {
-    return res.status(400).json({});
+    return res.status(204).json({});
   }
 }

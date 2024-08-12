@@ -10,6 +10,8 @@ const nextConfig = {
     HAMDAST_LOGGING_TOKEN: process.env.HAMDAST_LOGGING_TOKEN,
     NAJVA_API_KEY: process.env.NAJVA_API_KEY,
     NAJVA_TOKEN: process.env.NAJVA_TOKEN,
+    NOTIFICATION_USERS_TOKEN: process.env.NOTIFICATION_USERS_TOKEN,
+    HAMDAST_TOKEN: process.env.HAMDAST_TOKEN,
   },
 };
 
