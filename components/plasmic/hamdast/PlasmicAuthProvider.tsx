@@ -454,6 +454,40 @@ function PlasmicAuthProvider__RenderFunc(props: {
               $steps["updateApps"] = await $steps["updateApps"];
             }
 
+            $steps["updateUser2"] =
+              !!$steps.getProfile?.data && !!$steps.getApps?.data
+                ? (() => {
+                    const actionArgs = {
+                      eventRef: $props["onAppsChange"],
+                      args: [
+                        (() => {
+                          try {
+                            return $steps.getApps?.data;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                      ]
+                    };
+                    return (({ eventRef, args }) => {
+                      return eventRef?.(...(args ?? []));
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+            if (
+              $steps["updateUser2"] != null &&
+              typeof $steps["updateUser2"] === "object" &&
+              typeof $steps["updateUser2"].then === "function"
+            ) {
+              $steps["updateUser2"] = await $steps["updateUser2"];
+            }
+
             $steps["loadingStop2"] = (() => {
               if ($props.withOutUser) {
                 return true;

@@ -187,7 +187,9 @@ function PlasmicSettting__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
             try {
-              return $state.authProvider.apps[0].key;
+              return $state.authProvider.apps?.find(
+                item => item.id === $ctx.params.id
+              )?.key;
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -637,12 +639,24 @@ function PlasmicSettting__RenderFunc(props: {
                                 className={
                                   "plasmic_default__all plasmic_default__span"
                                 }
-                                style={{ color: "var(--token--ypw6enySR1T)" }}
+                                style={{
+                                  color: "var(--token-Bo2_tT25lwh4)",
+                                  fontWeight: 700
+                                }}
                               >
                                 {"\u0645\u062d\u0631\u0645\u0627\u0646\u0647"}
                               </span>
+                              <React.Fragment>{""}</React.Fragment>
+                              <span
+                                className={
+                                  "plasmic_default__all plasmic_default__span"
+                                }
+                                style={{ color: "var(--token-Bo2_tT25lwh4)" }}
+                              >
+                                {" "}
+                              </span>
                               <React.Fragment>
-                                {" \u0627\u0633\u062a."}
+                                {"\u0627\u0633\u062a."}
                               </React.Fragment>
                             </React.Fragment>
                           </div>
@@ -727,25 +741,70 @@ function PlasmicSettting__RenderFunc(props: {
                             }
                           </div>
                         </div>
-                        <Input
-                          data-plasmic-name={"fragmentInput2"}
-                          data-plasmic-override={overrides.fragmentInput2}
-                          attributes={{ dir: "ltr", readOnly: true }}
-                          className={classNames(
-                            "__wab_instance",
-                            sty.fragmentInput2
-                          )}
-                          disabled={false}
-                          onChange={generateStateOnChangeProp($state, [
-                            "fragmentInput2",
-                            "value"
-                          ])}
-                          type={"text"}
-                          value={generateStateValueProp($state, [
-                            "fragmentInput2",
-                            "value"
-                          ])}
-                        />
+                        {(() => {
+                          const child$Props = {
+                            attributes: { dir: "ltr", readOnly: true },
+                            className: classNames(
+                              "__wab_instance",
+                              sty.fragmentInput2
+                            ),
+                            disabled: false,
+                            onChange: generateStateOnChangeProp($state, [
+                              "fragmentInput2",
+                              "value"
+                            ]),
+                            type: "text",
+                            value: generateStateValueProp($state, [
+                              "fragmentInput2",
+                              "value"
+                            ])
+                          };
+                          initializeCodeComponentStates(
+                            $state,
+                            [
+                              {
+                                name: "value",
+                                plasmicStateName: "fragmentInput2.value"
+                              }
+                            ],
+                            [],
+                            undefined ?? {},
+                            child$Props
+                          );
+                          initializePlasmicStates(
+                            $state,
+                            [
+                              {
+                                name: "fragmentInput2.value",
+                                initFunc: ({ $props, $state, $queries }) =>
+                                  (() => {
+                                    try {
+                                      return $state.authProvider.apps?.find(
+                                        item => item.id === $ctx.params.id
+                                      )?.key;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "";
+                                      }
+                                      throw e;
+                                    }
+                                  })()
+                              }
+                            ],
+                            []
+                          );
+                          return (
+                            <Input
+                              data-plasmic-name={"fragmentInput2"}
+                              data-plasmic-override={overrides.fragmentInput2}
+                              {...child$Props}
+                            />
+                          );
+                        })()}
                       </Stack__>
                     </Stack__>
                     <div

@@ -217,70 +217,69 @@ function PlasmicHamdast__RenderFunc(props: {
           )}
           dir={"rtl"}
         >
-          {false ? (
-            <SideEffect
-              data-plasmic-name={"sideEffect"}
-              data-plasmic-override={overrides.sideEffect}
-              className={classNames("__wab_instance", sty.sideEffect)}
-              deps={(() => {
-                try {
-                  return [$state.authProvider.apps];
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return undefined;
-                  }
-                  throw e;
-                }
-              })()}
-              onMount={async () => {
-                const $steps = {};
-
-                $steps["goToStatistics"] =
-                  Array.isArray($state.authProvider.apps) &&
-                  $state.authProvider.apps?.length > 0
-                    ? (() => {
-                        const actionArgs = {
-                          destination: `/apps/${(() => {
-                            try {
-                              return $state.authProvider.apps[0].id;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
-                            }
-                          })()}/statistics`
-                        };
-                        return (({ destination }) => {
-                          if (
-                            typeof destination === "string" &&
-                            destination.startsWith("#")
-                          ) {
-                            document
-                              .getElementById(destination.substr(1))
-                              .scrollIntoView({ behavior: "smooth" });
-                          } else {
-                            __nextRouter?.push(destination);
-                          }
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
+          <SideEffect
+            data-plasmic-name={"sideEffect"}
+            data-plasmic-override={overrides.sideEffect}
+            className={classNames("__wab_instance", sty.sideEffect)}
+            deps={(() => {
+              try {
+                return [$state.authProvider.apps];
+              } catch (e) {
                 if (
-                  $steps["goToStatistics"] != null &&
-                  typeof $steps["goToStatistics"] === "object" &&
-                  typeof $steps["goToStatistics"].then === "function"
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
                 ) {
-                  $steps["goToStatistics"] = await $steps["goToStatistics"];
+                  return undefined;
                 }
-              }}
-            />
-          ) : null}
+                throw e;
+              }
+            })()}
+            onMount={async () => {
+              const $steps = {};
+
+              $steps["goToStatistics"] =
+                Array.isArray($state.authProvider.apps) &&
+                $state.authProvider.apps?.length > 0
+                  ? (() => {
+                      const actionArgs = {
+                        destination: `/apps/${(() => {
+                          try {
+                            return $state.authProvider.apps[0].id;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()}/statistics`
+                      };
+                      return (({ destination }) => {
+                        if (
+                          typeof destination === "string" &&
+                          destination.startsWith("#")
+                        ) {
+                          document
+                            .getElementById(destination.substr(1))
+                            .scrollIntoView({ behavior: "smooth" });
+                        } else {
+                          __nextRouter?.push(destination);
+                        }
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["goToStatistics"] != null &&
+                typeof $steps["goToStatistics"] === "object" &&
+                typeof $steps["goToStatistics"].then === "function"
+              ) {
+                $steps["goToStatistics"] = await $steps["goToStatistics"];
+              }
+            }}
+          />
+
           <AuthProvider
             data-plasmic-name={"authProvider"}
             data-plasmic-override={overrides.authProvider}

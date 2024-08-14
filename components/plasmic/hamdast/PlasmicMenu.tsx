@@ -259,6 +259,9 @@ function PlasmicMenu__RenderFunc(props: {
         data-plasmic-override={overrides.text}
         className={classNames(projectcss.all, projectcss.__wab_text, sty.text, {
           [sty.textactive]: hasVariant($state, "active", "active"),
+          [sty.textactive_compact]:
+            hasVariant($state, "active", "active") &&
+            hasVariant($state, "compact", "compact"),
           [sty.textcompact]: hasVariant($state, "compact", "compact")
         })}
       >

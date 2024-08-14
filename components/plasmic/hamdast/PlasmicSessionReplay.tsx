@@ -866,10 +866,11 @@ function PlasmicSessionReplay__RenderFunc(props: {
                   </FetchData>
                   {(() => {
                     try {
-                      return (
-                        Array.isArray($state.fetchData2?.data) &&
-                        $state.fetchData2.data?.length == 0
-                      );
+                      return Array.isArray($state.fetchData2?.data)
+                        ? $state.fetchData2.data?.length == 0
+                        : $state.fetchData2?.loading
+                        ? false
+                        : true;
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
