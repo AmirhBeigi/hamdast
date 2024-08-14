@@ -40,8 +40,8 @@ export default async function handler(
 
     return res
       .status(200)
-      .setHeader("paziresh24_user_id", record.paziresh24_user_id)
-      .setHeader("hamdast_id", record.id)
+      .setHeader("paziresh24-user-id", record.paziresh24_user_id)
+      .setHeader("hamdast-id", record.id)
       .json({});
   } catch (error) {
     return res.status(401).json({
