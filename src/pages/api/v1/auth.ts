@@ -42,7 +42,7 @@ export default async function handler(
       .status(200)
       .setHeader("paziresh24-user-id", record.paziresh24_user_id)
       .setHeader("hamdast-id", record.id)
-      .json({});
+      .json(record);
   } catch (error) {
     return res.status(401).json({
       message: "Authentication credentials were not provided.",
