@@ -1,6 +1,6 @@
 import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { pb } from "../../../../../pocketbase";
+import { pb } from "../../../../../../pocketbase";
 import config from "next/config";
 import NextCors from "nextjs-cors";
 import { GrowthBook } from "@growthbook/growthbook";
@@ -10,6 +10,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
+  const { app_key } = req.query;
   pb.autoCancellation(false);
   await NextCors(req, res, {
     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE", "OPTIONS"],
@@ -90,13 +91,23 @@ export default async function handler(
 
   await growthbook.init({ timeout: 1000 });
 
-  const apps = await pb.collection("apps").getFullList({
-    expand: "app",
-    filter: "published = true",
-    headers: {
-      x_token: publicRuntimeConfig.HAMDAST_TOKEN,
-    },
-  });
+  let app;
+  try {
+    app = await pb
+      .collection("apps")
+      .getFirstListItem(`published = true && key = "${app_key}"`, {
+        expand: "app",
+        headers: {
+          x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+        },
+      });
+  } catch (error) {
+    return res.status(404).json({});
+  }
+
+  if (!app) {
+    return res.status(404);
+  }
 
   const menus = await pb.collection("menus").getFullList({
     headers: {
@@ -111,7 +122,7 @@ export default async function handler(
   });
 
   res.status(200).json(
-    apps
+    [app]
       .map((app) => ({
         id: app.id,
         key: app.key,
@@ -178,6 +189,6 @@ export default async function handler(
       .filter(
         (app) =>
           !growthbook.getFeatureValue<any>(`hamdast::${app.key}`, {}).hide
-      )
+      )[0]
   );
 }
