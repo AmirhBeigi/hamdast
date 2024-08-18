@@ -655,6 +655,42 @@ function PlasmicSettting__RenderFunc(props: {
                         ) {
                           $steps["updateMenu"] = await $steps["updateMenu"];
                         }
+
+                        $steps["updateMenu2"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["pagesItems"]
+                                },
+                                operation: 0,
+                                value: $state.pagesItems?.filter(
+                                  item => item.id
+                                )
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateMenu2"] != null &&
+                          typeof $steps["updateMenu2"] === "object" &&
+                          typeof $steps["updateMenu2"].then === "function"
+                        ) {
+                          $steps["updateMenu2"] = await $steps["updateMenu2"];
+                        }
                       }}
                     />
                   </Stack__>
@@ -1299,7 +1335,7 @@ function PlasmicSettting__RenderFunc(props: {
                             isOpen={(() => {
                               try {
                                 return (
-                                  (currentItem?.id ?? currentIndex) ===
+                                  (currentItem?.id ?? currentIndex + 1) ===
                                   $state.itemOpenPage
                                 );
                               } catch (e) {
@@ -1342,7 +1378,8 @@ function PlasmicSettting__RenderFunc(props: {
                                         try {
                                           return $state.pagesItems?.findIndex(
                                             item =>
-                                              id === (item?.id ?? currentIndex)
+                                              id ===
+                                              (item?.id ?? currentIndex + 1)
                                           );
                                         } catch (e) {
                                           if (
@@ -1491,9 +1528,9 @@ function PlasmicSettting__RenderFunc(props: {
                                       },
                                       operation: 0,
                                       value:
-                                        (currentItem?.id ?? currentIndex) !=
+                                        (currentItem?.id ?? currentIndex + 1) !=
                                         $state.itemOpenPage
-                                          ? currentItem?.id ?? currentIndex
+                                          ? currentItem?.id ?? currentIndex + 1
                                           : ""
                                     };
                                     return (({
@@ -1527,7 +1564,7 @@ function PlasmicSettting__RenderFunc(props: {
                             }}
                             pageId={(() => {
                               try {
-                                return currentItem?.id ?? currentIndex;
+                                return currentItem?.id ?? currentIndex + 1;
                               } catch (e) {
                                 if (
                                   e instanceof TypeError ||
@@ -1558,8 +1595,10 @@ function PlasmicSettting__RenderFunc(props: {
                                   },
                                   operation: 5,
                                   value: {
-                                    name: `برگه ${$state.pagesItems?.length}`,
-                                    key: `page${$state.pagesItems?.length}`,
+                                    name: `برگه ${
+                                      $state.pagesItems?.length + 1
+                                    }`,
+                                    key: `page${$state.pagesItems?.length + 1}`,
                                     parameters: [],
                                     embed_src: "",
                                     layout: {
