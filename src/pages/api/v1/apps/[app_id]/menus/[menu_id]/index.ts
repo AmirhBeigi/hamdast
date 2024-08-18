@@ -1,6 +1,6 @@
 import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { pb } from "../../../../../../../pocketbase";
+import { pb } from "../../../../../../../../pocketbase";
 import config from "next/config";
 import { ClientResponseError } from "pocketbase";
 const { publicRuntimeConfig } = config();
@@ -11,7 +11,7 @@ export default async function handler(
 ) {
   pb.autoCancellation(false);
   const cookieStore = req.cookies;
-  const { app_id } = req.query;
+  const { app_id, menu_id } = req.query;
   const token =
     (cookieStore["token"] as string) ||
     req.headers.authorization?.replace("Bearer", "");
@@ -35,28 +35,11 @@ export default async function handler(
       expand: "role",
     });
 
-  if (req.method == "GET") {
-    const menus = await pb.collection("menus").getFullList({
-      filter: `app="${app_id}"`,
-    });
-
-    res.status(200).json(
-      menus.map((menu) => ({
-        id: menu.id,
-        key: menu.key,
-        name_en: menu.name_en,
-        name_fa: menu.name_fa,
-        embed_src: menu.embed_src,
-      }))
-    );
-  }
-
-  if (req.method == "POST") {
+  if (req.method == "PUT") {
     const { key, name_fa, embed_src } = req.body;
 
     try {
-      const menu = await pb.collection("menus").create({
-        key: key,
+      const menu = await pb.collection("menus").update(menu_id as string, {
         name_fa: name_fa,
         embed_src: embed_src,
         app: app_id,

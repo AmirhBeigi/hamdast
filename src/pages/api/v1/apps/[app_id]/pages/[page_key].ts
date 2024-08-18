@@ -4,6 +4,7 @@ import { pb } from "../../../../../../../pocketbase";
 import config from "next/config";
 import NextCors from "nextjs-cors";
 import { GrowthBook } from "@growthbook/growthbook";
+import { ClientResponseError } from "pocketbase";
 const { publicRuntimeConfig } = config();
 
 export default async function handler(
@@ -44,6 +45,7 @@ export default async function handler(
     req.headers.authorization?.replace("Bearer", "");
 
   let user = null;
+
   try {
     const paziresh24User = await axios.get(
       "https://apigw.paziresh24.com/v1/auth/me",
@@ -55,6 +57,42 @@ export default async function handler(
     );
     user = paziresh24User.data?.users?.[0];
   } catch (error) {}
+
+  if (req.method == "PUT") {
+    const { key, name_fa, embed_src, layout, parameters, is_protected_route } =
+      req.body;
+
+    const record = await pb
+      .collection("users")
+      .getFirstListItem(`paziresh24_user_id="${user.id}"`, {
+        expand: "role",
+      });
+
+    try {
+      const page = await pb.collection("pages").update(page_key as string, {
+        name_fa: name_fa,
+        embed_src: embed_src,
+        app: app_key,
+        layout,
+        parameters,
+        is_protected_route,
+      });
+      return res.status(200).json({
+        id: page.id,
+        key: page.key,
+        name_en: page.name_en,
+        name_fa: page.name_fa,
+        embed_src: page.embed_src,
+        layout: page?.layout,
+        parameters: page?.parameters,
+        is_protected_route: page?.is_protected_route,
+      });
+    } catch (error) {
+      const err = error as ClientResponseError;
+      res.status(err.status).json({ message: err.message });
+      return;
+    }
+  }
 
   const growthbook = new GrowthBook({
     apiHost: "https://growthbook-api.paziresh24.com",

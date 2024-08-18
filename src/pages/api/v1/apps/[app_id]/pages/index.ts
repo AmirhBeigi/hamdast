@@ -36,37 +36,47 @@ export default async function handler(
     });
 
   if (req.method == "GET") {
-    const menus = await pb.collection("menus").getFullList({
+    const pages = await pb.collection("pages").getFullList({
       filter: `app="${app_id}"`,
     });
 
     res.status(200).json(
-      menus.map((menu) => ({
-        id: menu.id,
-        key: menu.key,
-        name_en: menu.name_en,
-        name_fa: menu.name_fa,
-        embed_src: menu.embed_src,
+      pages.map((page) => ({
+        id: page.id,
+        key: page.key,
+        name_en: page.name_en,
+        name_fa: page.name_fa,
+        embed_src: page.embed_src,
+        layout: page?.layout,
+        parameters: page?.parameters,
+        is_protected_route: page?.is_protected_route,
       }))
     );
   }
 
   if (req.method == "POST") {
-    const { key, name_fa, embed_src } = req.body;
+    const { key, name_fa, embed_src, layout, parameters, is_protected_route } =
+      req.body;
 
     try {
-      const menu = await pb.collection("menus").create({
+      const page = await pb.collection("pages").create({
         key: key,
         name_fa: name_fa,
         embed_src: embed_src,
         app: app_id,
+        layout: layout,
+        parameters: parameters,
+        is_protected_route: is_protected_route,
       });
       res.status(200).json({
-        id: menu.id,
-        key: menu.key,
-        name_en: menu.name_en,
-        name_fa: menu.name_fa,
-        embed_src: menu.embed_src,
+        id: page.id,
+        key: page.key,
+        name_en: page.name_en,
+        name_fa: page.name_fa,
+        embed_src: page.embed_src,
+        layout: page?.layout,
+        parameters: page?.parameters,
+        is_protected_route: page?.is_protected_route,
       });
     } catch (error) {
       const err = error as ClientResponseError;
