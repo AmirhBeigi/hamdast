@@ -46,6 +46,10 @@ function Bridge() {
           sendEvent(messageEvent.data?.hamdast);
         }
 
+        if (messageEvent.data?.hamdast?.event === "HAMDAST_OPEN_LINK") {
+          window.parent.location.href = messageEvent.data?.hamdast?.data?.url;
+        }
+
         if (
           messageEvent.data?.hamdast?.event === "HAMDAST_REPLAY_SAVE" &&
           app &&
