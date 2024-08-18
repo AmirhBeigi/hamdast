@@ -500,6 +500,7 @@ function PlasmicLayout__RenderFunc(props: {
                 }
               })()}
               className={classNames("__wab_instance", sty.menu__n8Ij)}
+              disabled={true}
               iconWrapper={
                 <Icon4Icon
                   className={classNames(projectcss.all, sty.svg__d8RH)}
@@ -512,7 +513,7 @@ function PlasmicLayout__RenderFunc(props: {
               onClick={async () => {
                 const $steps = {};
 
-                $steps["goToSessionReplay"] = true
+                $steps["goToSessionReplay"] = false
                   ? (() => {
                       const actionArgs = {
                         destination: `/apps/${(() => {
@@ -553,7 +554,7 @@ function PlasmicLayout__RenderFunc(props: {
                   ];
                 }
 
-                $steps["updateMenu"] = true
+                $steps["updateMenu"] = false
                   ? (() => {
                       const actionArgs = {
                         variable: {

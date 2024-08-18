@@ -512,6 +512,19 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/apps/[id]/icon"
+        },
+        {
+          "id": "H16Cvh_Kg1CW",
+          "name": "PageItem",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicPageItem.tsx",
+          "importSpec": {
+            "modulePath": "PageItem.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicPageItem.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -624,6 +637,21 @@
           "id": "B2THoaAEIn8y",
           "name": "Icon20Icon",
           "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon20.tsx"
+        },
+        {
+          "id": "UuDHOUXMn1lI",
+          "name": "Icon21Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon21.tsx"
+        },
+        {
+          "id": "TGgY6td-PfjR",
+          "name": "Icon22Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon22.tsx"
+        },
+        {
+          "id": "WZWdkuuTy9hb",
+          "name": "Icon23Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon23.tsx"
         }
       ],
       "images": [
