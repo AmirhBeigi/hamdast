@@ -1645,7 +1645,7 @@ function PlasmicSettting__RenderFunc(props: {
                                     variablePath: ["itemOpenPage"]
                                   },
                                   operation: 0,
-                                  value: $state.pagesItems?.length - 1
+                                  value: $state.pagesItems?.length
                                 };
                                 return (({
                                   variable,
