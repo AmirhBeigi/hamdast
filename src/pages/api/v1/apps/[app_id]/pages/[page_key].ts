@@ -1,6 +1,6 @@
 import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { pb } from "../../../../../../pocketbase";
+import { pb } from "../../../../../../../pocketbase";
 import config from "next/config";
 import NextCors from "nextjs-cors";
 import { GrowthBook } from "@growthbook/growthbook";
@@ -10,7 +10,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  const { app_key } = req.query;
+  const { app_id: app_key, page_key } = req.query;
   pb.autoCancellation(false);
   await NextCors(req, res, {
     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE", "OPTIONS"],
@@ -43,14 +43,7 @@ export default async function handler(
     (cookieStore["token"] as string) ||
     req.headers.authorization?.replace("Bearer", "");
 
-  if (!token) {
-    return res.status(401).json({
-      message: "Authentication credentials were not provided.",
-    });
-  }
-
   let user = null;
-  let provider = null;
   try {
     const paziresh24User = await axios.get(
       "https://apigw.paziresh24.com/v1/auth/me",
@@ -61,34 +54,18 @@ export default async function handler(
       }
     );
     user = paziresh24User.data?.users?.[0];
-    const paziresh24Provider = await axios.get(
-      `https://apigw.paziresh24.com/v1/providers?user_id=${user.id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    provider = paziresh24Provider.data?.providers?.[0];
-  } catch (error) {
-    return res.status(401).json({
-      message: "Authentication credentials were not provided.",
-    });
-  }
-
-  if (provider?.job_title !== "doctor") {
-    return res.status(200).json([]);
-  }
+  } catch (error) {}
 
   const growthbook = new GrowthBook({
     apiHost: "https://growthbook-api.paziresh24.com",
     clientKey: "sdk-St1dBftdp07geqtD",
   });
 
-  growthbook.setAttributes({
-    user_id: Number(user?.id),
-  });
-
+  if (user?.id) {
+    growthbook.setAttributes({
+      user_id: Number(user?.id),
+    });
+  }
   await growthbook.init({ timeout: 1000 });
 
   let app;

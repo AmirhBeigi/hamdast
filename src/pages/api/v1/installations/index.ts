@@ -169,8 +169,21 @@ export default async function handler(
                     `hamdast::${app.key}-${page.key}`,
                     {}
                   )?.embed_src || page.embed_src,
-                layout: page.layout,
-                parameters: page.parameters,
+                layout:
+                  growthbook.getFeatureValue<any>(
+                    `hamdast::${app.key}-${page.key}`,
+                    {}
+                  )?.layout || page.layout,
+                parameters:
+                  growthbook.getFeatureValue<any>(
+                    `hamdast::${app.key}-${page.key}`,
+                    {}
+                  )?.parameters || page.parameters,
+                is_protected_route:
+                  growthbook.getFeatureValue<any>(
+                    `hamdast::${app.key}-${page.key}`,
+                    {}
+                  )?.is_protected_route || page.is_protected_route,
               })),
           },
         ].filter(Boolean),
