@@ -8,7 +8,7 @@ import { useEffect, useRef } from "react";
 
 function Bridge() {
   const {
-    query: { src, client_key, app, menu, user_id },
+    query: { src, client_key, app, menu, page, user_id },
     isReady,
   } = useRouter();
   const iframe = useRef<HTMLIFrameElement | undefined>();
@@ -38,9 +38,9 @@ function Bridge() {
   };
 
   useEffect(() => {
-    if (app && menu) {
+    if (app && (menu || page)) {
       startTime.current = Date.now();
-      activeUsersLog({ app, menu });
+      activeUsersLog({ app, menu, page });
       window.addEventListener("message", (messageEvent) => {
         if (messageEvent.data?.hamdast?.event === "HAMDAST_GET_STATE") {
           sendEvent(messageEvent.data?.hamdast);
@@ -53,10 +53,11 @@ function Bridge() {
         if (
           messageEvent.data?.hamdast?.event === "HAMDAST_REPLAY_SAVE" &&
           app &&
-          menu
+          (menu || page)
         ) {
           saveReplay({
             menu,
+            page,
             app,
             uniqueId: uniqueId.current,
             events: messageEvent.data?.hamdast?.data?.events,
@@ -68,7 +69,7 @@ function Bridge() {
     return () => {
       usersDurationLog({ app, menu, duration: Date.now() - startTime.current });
     };
-  }, [app, menu]);
+  }, [app, menu, page]);
 
   if (!embedSrc?.href) return null;
   return (

@@ -2,7 +2,15 @@ import axios from "axios";
 import { detectBrowser, detectDevice } from "../utils";
 import { getState } from "./getState";
 
-export const saveReplay = async ({ menu, app, uniqueId, events }: any) => {
+export const saveReplay = async ({
+  menu,
+  app,
+  page,
+  uniqueId,
+  events,
+}: any) => {
+  if (page) return;
+
   try {
     const user = await getState.user();
     const provider = await getState.provider();

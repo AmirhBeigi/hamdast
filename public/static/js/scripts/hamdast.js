@@ -114,7 +114,6 @@ window.hamdast = {
     if (window.self !== window.top) {
       return hamdastCommunication({
         clientKey: window.hamdast.clientKey,
-        promise: false,
         event: "HAMDAST_OPEN_LINK",
         data: {
           url,
