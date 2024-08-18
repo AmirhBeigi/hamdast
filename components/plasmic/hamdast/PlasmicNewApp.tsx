@@ -529,6 +529,17 @@ function PlasmicNewApp__RenderFunc(props: {
                             "\u0646\u0627\u0645 \u0627\u0628\u0632\u0627\u0631\u06a9"
                           }
                         </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___5Wrxb
+                          )}
+                        >
+                          {
+                            "\u06cc\u06a9 \u0646\u0627\u0645 \u0628\u0647 \u0641\u0627\u0631\u0633\u06cc \u0628\u0631\u0627\u06cc \u0627\u0628\u0632\u0627\u0631\u06a9 \u062e\u0648\u062f \u0628\u06af\u0630\u0627\u0631\u06cc\u062f\u060c \u0627\u06cc\u0646 \u0646\u0627\u0645 \u0628\u0647 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0646\u0645\u0627\u06cc\u0634 \u062f\u0627\u062f\u0647 \u0645\u06cc\u200c\u0634\u0648\u062f."
+                          }
+                        </div>
                         <Input
                           data-plasmic-name={"nameInput"}
                           data-plasmic-override={overrides.nameInput}
@@ -550,9 +561,7 @@ function PlasmicNewApp__RenderFunc(props: {
                           ])}
                         />
                       </Stack__>
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                      <div
                         className={classNames(
                           projectcss.all,
                           sty.freeBox__y28Qv
@@ -565,25 +574,57 @@ function PlasmicNewApp__RenderFunc(props: {
                             sty.text__cx5Lf
                           )}
                         >
+                          {"\u0634\u0646\u0627\u0633\u0647"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__dxc7W
+                          )}
+                        >
                           {
-                            "\u0634\u0646\u0627\u0633\u0647 \u06cc\u06a9\u062a\u0627"
+                            "\u06cc\u06a9 \u0634\u0646\u0627\u0633\u0647 \u0645\u0646\u062d\u0635\u0631 \u0628\u0647 \u0641\u0631\u062f \u0628\u0631\u0627\u06cc \u0627\u0628\u0632\u0627\u0631\u06a9 \u062e\u0648\u062f \u0628\u06af\u0630\u0627\u0631\u06cc\u062f."
                           }
                         </div>
-                        <Input
-                          data-plasmic-name={"keyInput"}
-                          data-plasmic-override={overrides.keyInput}
-                          className={classNames("__wab_instance", sty.keyInput)}
-                          onChange={generateStateOnChangeProp($state, [
-                            "keyInput",
-                            "value"
-                          ])}
-                          type={"text"}
-                          value={generateStateValueProp($state, [
-                            "keyInput",
-                            "value"
-                          ])}
-                        />
+                        <Stack__
+                          as={"div"}
+                          hasGap={true}
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__kKwDc
+                          )}
+                        >
+                          <Input
+                            data-plasmic-name={"keyInput"}
+                            data-plasmic-override={overrides.keyInput}
+                            attributes={{ dir: "ltr" }}
+                            className={classNames(
+                              "__wab_instance",
+                              sty.keyInput
+                            )}
+                            onChange={generateStateOnChangeProp($state, [
+                              "keyInput",
+                              "value"
+                            ])}
+                            type={"text"}
+                            value={generateStateValueProp($state, [
+                              "keyInput",
+                              "value"
+                            ])}
+                          />
 
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__blxR1
+                            )}
+                            dir={"ltr"}
+                          >
+                            {"https://www.paziresh24.com/_/"}
+                          </div>
+                        </Stack__>
                         {(() => {
                           try {
                             return (
@@ -754,7 +795,7 @@ function PlasmicNewApp__RenderFunc(props: {
                             </div>
                           </div>
                         ) : null}
-                      </Stack__>
+                      </div>
                       <Stack__
                         as={"div"}
                         hasGap={true}
