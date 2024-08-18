@@ -70,6 +70,7 @@ export default async function handler(
 
     try {
       const page = await pb.collection("pages").update(page_key as string, {
+        key: key,
         name_fa: name_fa,
         embed_src: embed_src,
         app: app_key,
@@ -87,6 +88,23 @@ export default async function handler(
         parameters: page?.parameters,
         is_protected_route: page?.is_protected_route,
       });
+    } catch (error) {
+      const err = error as ClientResponseError;
+      res.status(err.status).json({ message: err.message });
+      return;
+    }
+  }
+
+  if (req.method == "DELETE") {
+    const record = await pb
+      .collection("users")
+      .getFirstListItem(`paziresh24_user_id="${user.id}"`, {
+        expand: "role",
+      });
+
+    try {
+      const page = await pb.collection("pages").delete(page_key as string);
+      return res.status(202).json({});
     } catch (error) {
       const err = error as ClientResponseError;
       res.status(err.status).json({ message: err.message });
