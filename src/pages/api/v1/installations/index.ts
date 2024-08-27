@@ -75,10 +75,6 @@ export default async function handler(
     });
   }
 
-  if (provider?.job_title !== "doctor") {
-    return res.status(200).json([]);
-  }
-
   const growthbook = new GrowthBook({
     apiHost: "https://growthbook-api.paziresh24.com",
     clientKey: "sdk-St1dBftdp07geqtD",
@@ -86,13 +82,16 @@ export default async function handler(
 
   growthbook.setAttributes({
     user_id: Number(user?.id),
+    is_doctor: provider?.job_title === "doctor",
   });
 
   await growthbook.init({ timeout: 1000 });
 
   const apps = await pb.collection("apps").getFullList({
     expand: "app",
-    filter: "published = true",
+    filter: `published = true ${
+      provider?.job_title !== "doctor" ? `&& type = 'users'` : ""
+    }`,
     headers: {
       x_token: publicRuntimeConfig.HAMDAST_TOKEN,
     },
