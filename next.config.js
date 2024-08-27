@@ -12,6 +12,7 @@ const nextConfig = {
     NAJVA_TOKEN: process.env.NAJVA_TOKEN,
     NOTIFICATION_USERS_TOKEN: process.env.NOTIFICATION_USERS_TOKEN,
     HAMDAST_TOKEN: process.env.HAMDAST_TOKEN,
+    SIB_ZAMINI_API_KEY: process.env.SIB_ZAMINI_API_KEY,
   },
 };
 
