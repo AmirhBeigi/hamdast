@@ -126,8 +126,8 @@ export default async function handler(
         });
       }
 
-      try {
-        const data = await axios.post(
+      const sendNotification = (subscribers: string[]) => {
+        return axios.post(
           "https://app.najva.com/api/v2/notification/management/send-direct/",
           {
             icon: "https://www.paziresh24.com/img/pz24-icon.png",
@@ -136,7 +136,7 @@ export default async function handler(
             onclick_action: 0,
             url: "https://www.paziresh24.com",
             ...rest,
-            subscribers: subscribers.map((item) => item.subscriber_token),
+            subscribers: subscribers,
           },
           {
             headers: {
@@ -148,12 +148,48 @@ export default async function handler(
             },
           }
         );
+      };
+
+      try {
+        const data = await sendNotification(
+          subscribers.map((item) => item.subscriber_token)
+        );
 
         return res.status(200).json({
           ...data.data,
         });
       } catch (error) {
         if (axios.isAxiosError(error)) {
+          if (error.response?.status === 400) {
+            const invalidSubscriber = error?.response?.data?.subscribers
+              ?.replace("Invalid subscriber: ", "")
+              ?.split(", ");
+            if (
+              Array.isArray(invalidSubscriber) &&
+              invalidSubscriber?.length !== 0
+            ) {
+              try {
+                const data = await sendNotification(
+                  subscribers
+                    .filter(
+                      (item) =>
+                        !invalidSubscriber?.includes(item.subscriber_token)
+                    )
+                    .map((item) => item.subscriber_token)
+                );
+
+                return res.status(200).json({
+                  ...data.data,
+                });
+              } catch (error) {
+                if (axios.isAxiosError(error)) {
+                  return res.status(error.response?.status ?? 500).json({
+                    ...(error?.response?.data ?? {}),
+                  });
+                }
+              }
+            }
+          }
           return res.status(error.response?.status ?? 500).json({
             ...(error?.response?.data ?? {}),
           });
