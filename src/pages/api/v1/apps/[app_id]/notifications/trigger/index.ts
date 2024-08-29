@@ -160,13 +160,15 @@ export default async function handler(
         });
       } catch (error) {
         if (axios.isAxiosError(error)) {
-          if (error.response?.status === 400) {
-            const invalidSubscriber = error?.response?.data?.subscribers
-              ?.replace("Invalid subscriber: ", "")
-              ?.split(", ");
+          if (error.response?.status == 400) {
+            const invalidSubscriber =
+              error?.response?.data?.subscribers
+                ?.replace("Invalid subscriber: ", "")
+                ?.split(", ") ?? [];
+
             if (
               Array.isArray(invalidSubscriber) &&
-              invalidSubscriber?.length !== 0
+              invalidSubscriber?.length != 0
             ) {
               try {
                 const data = await sendNotification(
