@@ -169,7 +169,7 @@ export default async function handler(
         if (axios.isAxiosError(error)) {
           if (error.response?.status == 400) {
             const invalidSubscriber =
-              error?.response?.data?.subscribers
+              error?.response?.data?.subscribers?.[0]
                 ?.replace("Invalid subscriber: ", "")
                 ?.split(", ") ?? [];
 
