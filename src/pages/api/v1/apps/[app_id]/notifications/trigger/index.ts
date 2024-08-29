@@ -63,15 +63,22 @@ export default async function handler(
   }
 
   try {
-    const record = await pb
-      .collection("users")
-      .getFirstListItem(`api_key="${apiKey}"`, {
-        expand: "role",
-        cache: "force-cache",
-        headers: {
-          x_token: publicRuntimeConfig.HAMDAST_TOKEN,
-        },
+    let record;
+    try {
+      record = await pb
+        .collection("users")
+        .getFirstListItem(`api_key="${apiKey}"`, {
+          expand: "role",
+          cache: "force-cache",
+          headers: {
+            x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+          },
+        });
+    } catch (error) {
+      return res.status(401).json({
+        message: "Authentication credentials were not provided.",
       });
+    }
 
     if (!record) {
       return res.status(401).json({
@@ -199,8 +206,8 @@ export default async function handler(
       }
     }
   } catch (error) {
-    return res.status(401).json({
-      message: "Authentication credentials were not provided.",
+    return res.status(500).json({
+      error,
     });
   }
 }
