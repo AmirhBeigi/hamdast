@@ -147,7 +147,14 @@ export default async function handler(
                     `hamdast::${app.key}-${menu.key}`,
                     {}
                   )?.embed_src || menu.embed_src,
-              })),
+              }))
+              .filter(
+                (menu) =>
+                  !growthbook.getFeatureValue<any>(
+                    `hamdast::${app.key}-${menu.key}`,
+                    {}
+                  ).hide
+              ),
           },
           {
             type: "pages",
