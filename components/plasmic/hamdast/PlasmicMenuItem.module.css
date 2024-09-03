@@ -487,9 +487,9 @@
 }
 .link {
   text-decoration-line: underline;
-  color: #0070f3;
+  color: #000000;
 }
-.embedInput2:global(.__wab_instance) {
+.unreadInput:global(.__wab_instance) {
   width: 100%;
   max-width: 100%;
   object-fit: cover;

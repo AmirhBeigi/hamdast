@@ -113,7 +113,7 @@ export type PlasmicMenuItem__OverridesType = {
   keyInput?: Flex__<typeof Input>;
   embedInput?: Flex__<typeof Input>;
   link?: Flex__<"a"> & Partial<LinkProps>;
-  embedInput2?: Flex__<typeof Input>;
+  unreadInput?: Flex__<typeof Input>;
 };
 
 export interface DefaultMenuItemProps {
@@ -155,7 +155,8 @@ function PlasmicMenuItem__RenderFunc(props: {
           defaultValues: {
             name: "\u0645\u0646\u0648 1",
             key: "menu",
-            embed_src: ""
+            embed_src: "",
+            unread_endpoint: ""
           },
           notSave: true
         },
@@ -267,10 +268,23 @@ function PlasmicMenuItem__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
-        path: "embedInput2.value",
+        path: "unreadInput.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $props.defaultValues.unread_endpoint;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -772,17 +786,17 @@ function PlasmicMenuItem__RenderFunc(props: {
               </React.Fragment>
             </div>
             <Input
-              data-plasmic-name={"embedInput2"}
-              data-plasmic-override={overrides.embedInput2}
+              data-plasmic-name={"unreadInput"}
+              data-plasmic-override={overrides.unreadInput}
               attributes={{ dir: "ltr" }}
-              className={classNames("__wab_instance", sty.embedInput2)}
+              className={classNames("__wab_instance", sty.unreadInput)}
               onChange={generateStateOnChangeProp($state, [
-                "embedInput2",
+                "unreadInput",
                 "value"
               ])}
               placeholder={"https://..."}
               type={"text"}
-              value={generateStateValueProp($state, ["embedInput2", "value"])}
+              value={generateStateValueProp($state, ["unreadInput", "value"])}
             />
           </div>
           <Stack__
@@ -1039,7 +1053,8 @@ function PlasmicMenuItem__RenderFunc(props: {
                               return {
                                 key: $state.keyInput.value,
                                 name_fa: $state.nameInput.value,
-                                embed_src: $state.embedInput.value
+                                embed_src: $state.embedInput.value,
+                                unread_endpoint: $state.unreadInput.value
                               };
                             } catch (e) {
                               if (
@@ -1091,7 +1106,8 @@ function PlasmicMenuItem__RenderFunc(props: {
                               return {
                                 key: $state.keyInput.value,
                                 name_fa: $state.nameInput.value,
-                                embed_src: $state.embedInput.value
+                                embed_src: $state.embedInput.value,
+                                unread_endpoint: $state.unreadInput.value
                               };
                             } catch (e) {
                               if (
@@ -1144,7 +1160,8 @@ function PlasmicMenuItem__RenderFunc(props: {
                               return {
                                 key: $state.keyInput.value,
                                 name_fa: $state.nameInput.value,
-                                embed_src: $state.embedInput.value
+                                embed_src: $state.embedInput.value,
+                                unread_endpoint: $state.unreadInput.value
                               };
                             } catch (e) {
                               if (
@@ -1239,12 +1256,12 @@ function PlasmicMenuItem__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "nameInput", "keyInput", "embedInput", "link", "embedInput2"],
+  root: ["root", "nameInput", "keyInput", "embedInput", "link", "unreadInput"],
   nameInput: ["nameInput"],
   keyInput: ["keyInput"],
   embedInput: ["embedInput"],
   link: ["link"],
-  embedInput2: ["embedInput2"]
+  unreadInput: ["unreadInput"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1255,7 +1272,7 @@ type NodeDefaultElementType = {
   keyInput: typeof Input;
   embedInput: typeof Input;
   link: "a";
-  embedInput2: typeof Input;
+  unreadInput: typeof Input;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1322,7 +1339,7 @@ export const PlasmicMenuItem = Object.assign(
     keyInput: makeNodeComponent("keyInput"),
     embedInput: makeNodeComponent("embedInput"),
     link: makeNodeComponent("link"),
-    embedInput2: makeNodeComponent("embedInput2"),
+    unreadInput: makeNodeComponent("unreadInput"),
 
     // Metadata about props expected for PlasmicMenuItem
     internalVariantProps: PlasmicMenuItem__VariantProps,
