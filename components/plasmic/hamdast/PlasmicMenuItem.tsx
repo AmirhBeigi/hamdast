@@ -769,6 +769,7 @@ function PlasmicMenuItem__RenderFunc(props: {
                     component={Link}
                     href={"https://developers.paziresh24.com/apps/unread"}
                     platform={"nextjs"}
+                    target={"_blank"}
                   >
                     <React.Fragment>
                       <span
