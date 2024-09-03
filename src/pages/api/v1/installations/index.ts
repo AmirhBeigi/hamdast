@@ -147,6 +147,11 @@ export default async function handler(
                     `hamdast::${app.key}-${menu.key}`,
                     {}
                   )?.embed_src || menu.embed_src,
+                unread_endpoint:
+                  growthbook.getFeatureValue<any>(
+                    `hamdast::${app.key}-${menu.key}`,
+                    {}
+                  )?.unread_endpoint || menu.unread_endpoint,
               }))
               .filter(
                 (menu) =>

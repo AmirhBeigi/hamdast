@@ -47,18 +47,20 @@ export default async function handler(
         name_en: menu.name_en,
         name_fa: menu.name_fa,
         embed_src: menu.embed_src,
+        unread_endpoint: menu.unread_endpoint,
       }))
     );
   }
 
   if (req.method == "POST") {
-    const { key, name_fa, embed_src } = req.body;
+    const { key, name_fa, embed_src, unread_endpoint } = req.body;
 
     try {
       const menu = await pb.collection("menus").create({
         key: key,
         name_fa: name_fa,
         embed_src: embed_src,
+        unread_endpoint: unread_endpoint,
         app: app_id,
       });
       res.status(200).json({
@@ -67,6 +69,7 @@ export default async function handler(
         name_en: menu.name_en,
         name_fa: menu.name_fa,
         embed_src: menu.embed_src,
+        unread_endpoint: menu.unread_endpoint,
       });
     } catch (error) {
       const err = error as ClientResponseError;
