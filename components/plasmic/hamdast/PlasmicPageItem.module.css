@@ -56,7 +56,6 @@
   height: auto;
   max-width: 100%;
   font-weight: 600;
-  color: #365e70;
 }
 .svg__oi4OG {
   object-fit: cover;
@@ -495,7 +494,9 @@
 .svg___08O8Y {
   object-fit: cover;
   max-width: 100%;
-  height: 1em;
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
 }
 .text__xj2FA {
   position: relative;
@@ -503,9 +504,8 @@
   height: auto;
   max-width: 100%;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 13px;
   padding-right: 0px;
-  color: #365e70;
   user-select: none;
 }
 .freeBox__tu7Hq {
@@ -540,7 +540,9 @@
 .svg__bmhui {
   object-fit: cover;
   max-width: 100%;
-  height: 1em;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 .text__mwkue {
   position: relative;
@@ -548,9 +550,8 @@
   height: auto;
   max-width: 100%;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 13px;
   padding-right: 0px;
-  color: #365e70;
   user-select: none;
 }
 .freeBox__jjEJe {
@@ -708,7 +709,6 @@
   font-size: 12px;
   opacity: 1;
   font-weight: 400;
-  color: #365e70b3;
   margin-bottom: 3px;
   min-width: 0;
 }
@@ -1041,8 +1041,8 @@
   align-items: center;
   justify-content: flex-end;
   min-width: 0;
-  margin-left: calc(0px - 15px);
-  width: calc(100% + 15px);
+  margin-left: calc(0px - 8px);
+  width: calc(100% + 8px);
 }
 .freeBox___7Vpw > :global(.__wab_flex-container) > *,
 .freeBox___7Vpw > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
@@ -1052,7 +1052,7 @@
   > :global(.__wab_slot)
   > picture
   > img {
-  margin-left: 15px;
+  margin-left: 8px;
 }
 .button__eV5F:global(.__wab_instance) {
   align-self: flex-end;

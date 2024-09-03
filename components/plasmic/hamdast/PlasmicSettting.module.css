@@ -59,10 +59,10 @@
   width: 16rem;
   height: auto;
   max-width: 100%;
-  background: #c3d8df0d;
+  background: #dfdfdf0d;
   flex-shrink: 0;
   padding: 25px 1rem 8px;
-  border-left: 1.5px solid #e8eff2;
+  border-left: 1px solid #f1f1f1;
 }
 .freeBox__as44O > :global(.__wab_flex-container) {
   flex-direction: column;
@@ -223,7 +223,7 @@
   min-width: 0;
   border-radius: 8px;
   padding: 13px;
-  border: 1px solid #c3d8df66;
+  border: 1px solid #dfdfdfcc;
 }
 .freeBox__sshHq > :global(.__wab_flex-container) {
   flex-direction: column;
@@ -358,7 +358,7 @@
   min-width: 0;
   border-radius: 8px;
   padding: 13px;
-  border: 1px solid #c3d8df66;
+  border: 1px solid #dfdfdfcc;
 }
 .freeBox__gCdn > :global(.__wab_flex-container) {
   flex-direction: column;

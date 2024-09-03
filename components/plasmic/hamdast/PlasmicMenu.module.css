@@ -30,7 +30,7 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  background: #eef3f5;
+  background: #efefef;
   flex-direction: row;
   opacity: 1;
   min-width: 0;
@@ -91,7 +91,7 @@
   cursor: default;
 }
 .rootactive_compact {
-  background: #eef3f5;
+  background: #efefef;
 }
 .svg__a4Zd6 {
   position: relative;
@@ -109,7 +109,6 @@
   max-width: 100%;
   text-align: right;
   font-weight: 500;
-  color: #365e70;
 }
 .textcompact {
   width: 100%;
@@ -117,10 +116,6 @@
   max-width: 100%;
   font-size: 14px;
   font-weight: 500;
-  color: #365e70;
   text-align: right;
   min-width: 0;
-}
-.textactive_compact {
-  color: #365e70;
 }

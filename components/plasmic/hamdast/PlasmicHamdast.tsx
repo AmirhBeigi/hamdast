@@ -521,7 +521,6 @@ function PlasmicHamdast__RenderFunc(props: {
                               ];
                             }
                           }}
-                          shape={"rounded"}
                           startIcon={
                             <Icon2Icon
                               className={classNames(
@@ -872,7 +871,6 @@ function PlasmicHamdast__RenderFunc(props: {
                               ];
                             }
                           }}
-                          shape={"rounded"}
                           startIcon={
                             <Icon2Icon
                               className={classNames(

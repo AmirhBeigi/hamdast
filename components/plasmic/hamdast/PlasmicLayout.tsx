@@ -230,7 +230,7 @@ function PlasmicLayout__RenderFunc(props: {
           >
             {"\u0647\u0645\u200c\u062f\u0633\u062a"}
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__jYfD)} />
+          <div className={classNames(projectcss.all, sty.freeBox__slRrk)} />
 
           <div
             className={classNames(

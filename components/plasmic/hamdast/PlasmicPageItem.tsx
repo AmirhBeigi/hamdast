@@ -1633,7 +1633,6 @@ function PlasmicPageItem__RenderFunc(props: {
                   $steps["updateIsLoading2"] = await $steps["updateIsLoading2"];
                 }
               }}
-              shape={"rounded"}
               size={"compact"}
             >
               <div
@@ -1944,7 +1943,6 @@ function PlasmicPageItem__RenderFunc(props: {
                   $steps["updateIsLoading2"] = await $steps["updateIsLoading2"];
                 }
               }}
-              shape={"rounded"}
               size={"compact"}
             >
               <div

@@ -16,11 +16,9 @@ export interface GlobalContextsProviderProps {
   fragmentProps?: Partial<
     Omit<React.ComponentProps<typeof Fragment>, "children">
   >;
-
   growthBookProps?: Partial<
     Omit<React.ComponentProps<typeof GrowthBook>, "children">
   >;
-
   splunkProps?: Partial<Omit<React.ComponentProps<typeof Splunk>, "children">>;
   antdConfigProviderProps?: Partial<
     Omit<React.ComponentProps<typeof AntdConfigProvider>, "children">
@@ -54,7 +52,7 @@ export default function GlobalContextsProvider(
       primaryColor={
         fragmentProps && "primaryColor" in fragmentProps
           ? fragmentProps.primaryColor!
-          : "#365E70"
+          : "#000000"
       }
       rtl={fragmentProps && "rtl" in fragmentProps ? fragmentProps.rtl! : true}
     >
@@ -180,7 +178,7 @@ export default function GlobalContextsProvider(
                     fontSize: "16px",
                     fontWeight: "400",
                     lineHeight: "1.5",
-                    color: "#365E70",
+                    color: "#000000",
                     letterSpacing: "normal"
                   }
                 : undefined

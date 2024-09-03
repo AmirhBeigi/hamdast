@@ -887,9 +887,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                     sty.text__le6Vk
                                   )}
                                 >
-                                  {
-                                    "\u0628\u0627\u0632\u062f\u06cc\u062f\u06a9\u0646\u0646\u062f\u0647"
-                                  }
+                                  {"\u0628\u0627\u0632\u062f\u06cc\u062f"}
                                 </div>
                               </Stack__>
                             </Stack__>
@@ -994,13 +992,13 @@ function PlasmicStatistics__RenderFunc(props: {
                                       label: null
                                     }
                                   ];
-                                  __composite["0"]["color"] = "#365E70";
+                                  __composite["0"]["color"] = "#000000";
                                   __composite["0"]["type"] = "natural";
                                   __composite["0"]["dot"] = true;
                                   __composite["0"]["key"] = "visitors";
                                   __composite["0"]["label"] =
-                                    "\u0628\u0627\u0632\u062f\u06cc\u062f \u06a9\u0646\u0646\u062f\u0647";
-                                  __composite["1"]["color"] = "#EEF3F5";
+                                    "\u0628\u0627\u0632\u062f\u06cc\u062f";
+                                  __composite["1"]["color"] = "#5E5E5E";
                                   __composite["1"]["key"] = "active_users";
                                   __composite["1"]["label"] =
                                     "\u06a9\u0627\u0631\u0628\u0631";
@@ -1137,12 +1135,12 @@ function PlasmicStatistics__RenderFunc(props: {
                                         label: null
                                       }
                                     ];
-                                    __composite["0"]["color"] = "#365E70";
+                                    __composite["0"]["color"] = "#000000";
                                     __composite["0"]["dot"] = true;
                                     __composite["0"]["key"] = "visitors";
                                     __composite["0"]["label"] =
                                       "\u0628\u0627\u0632\u062f\u06cc\u062f \u06a9\u0646\u0646\u062f\u0647";
-                                    __composite["1"]["color"] = "#EEF3F5";
+                                    __composite["1"]["color"] = "#5E5E5E";
                                     __composite["1"]["key"] = "users";
                                     __composite["1"]["label"] =
                                       "\u06a9\u0627\u0631\u0628\u0631";
@@ -1261,9 +1259,15 @@ function PlasmicStatistics__RenderFunc(props: {
                                       dot: null,
                                       key: null,
                                       label: null
+                                    },
+                                    {
+                                      color: "#000000",
+                                      type: "natural",
+                                      dot: false
                                     }
                                   ];
-                                  __composite["0"]["color"] = "#2A9D90";
+                                  __composite["0"]["color"] =
+                                    "var(--token-EueuB3d74YKA)";
                                   __composite["0"]["dot"] = true;
                                   __composite["0"]["key"] = "doctor";
                                   __composite["0"]["label"] =
@@ -1385,11 +1389,13 @@ function PlasmicStatistics__RenderFunc(props: {
                                       label: null
                                     }
                                   ];
-                                  __composite["0"]["color"] = "#E8C468";
+                                  __composite["0"]["color"] =
+                                    "var(--token-u21Gzl9DygXI)";
                                   __composite["0"]["key"] = "mobile";
                                   __composite["0"]["label"] =
                                     "\u0645\u0648\u0628\u0627\u06cc\u0644";
-                                  __composite["1"]["color"] = "#1B3E4C";
+                                  __composite["1"]["color"] =
+                                    "var(--token-EueuB3d74YKA)";
                                   __composite["1"]["key"] = "desktop";
                                   __composite["1"]["label"] =
                                     "\u062f\u0633\u06a9\u062a\u0627\u067e";

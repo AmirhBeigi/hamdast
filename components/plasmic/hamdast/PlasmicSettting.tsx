@@ -1713,7 +1713,6 @@ function PlasmicSettting__RenderFunc(props: {
                             ];
                           }
                         }}
-                        shape={"rounded"}
                         showStartIcon={true}
                         startIcon={
                           <Icon21Icon
@@ -2241,7 +2240,6 @@ function PlasmicSettting__RenderFunc(props: {
                             ];
                           }
                         }}
-                        shape={"rounded"}
                         showStartIcon={true}
                         startIcon={
                           <Icon21Icon

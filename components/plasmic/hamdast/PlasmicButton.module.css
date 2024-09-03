@@ -2,7 +2,7 @@
   display: flex;
   position: relative;
   flex-direction: row;
-  background: #365e70;
+  background: #000000;
   cursor: pointer;
   transition-property: background;
   transition-duration: 0.1s;
@@ -10,7 +10,7 @@
   -webkit-transition-duration: 0.1s;
   border-radius: 6px;
   padding: 12px 20px;
-  border: 0px solid #365e70;
+  border: 0px solid #191919;
 }
 .root > :global(.__wab_flex-container) {
   flex-direction: row;
@@ -120,7 +120,8 @@
   padding: 6px;
 }
 .root:hover {
-  background: #274856;
+  background: #2b2b2b;
+  border-color: #2b2b2b;
 }
 .rootcolor_blue:hover {
   background: #369eff;
@@ -163,14 +164,19 @@
 }
 .root:focus-within {
   box-shadow: none;
+  background: #191919;
   outline: none;
+  border-color: #191919;
 }
 .root___focusVisibleWithin {
   box-shadow: none;
+  background: #191919;
   outline: none;
+  border-color: #191919;
 }
 .root:active {
-  background: #1c353f;
+  background: #191919;
+  border-color: #191919;
 }
 .rootcolor_blue:active {
   background: #52a9ff;

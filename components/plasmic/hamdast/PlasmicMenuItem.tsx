@@ -112,6 +112,7 @@ export type PlasmicMenuItem__OverridesType = {
   nameInput?: Flex__<typeof Input>;
   keyInput?: Flex__<typeof Input>;
   embedInput?: Flex__<typeof Input>;
+  link?: Flex__<"a"> & Partial<LinkProps>;
   embedInput2?: Flex__<typeof Input>;
 };
 
@@ -741,14 +742,19 @@ function PlasmicMenuItem__RenderFunc(props: {
                 </span>
                 <React.Fragment>{""}</React.Fragment>
                 {
-                  <span
+                  <PlasmicLink__
+                    data-plasmic-name={"link"}
+                    data-plasmic-override={overrides.link}
                     className={classNames(
                       projectcss.all,
-                      projectcss.span,
+                      projectcss.a,
                       projectcss.__wab_text,
                       projectcss.plasmic_default__inline,
-                      sty.span__aSxb1
+                      sty.link
                     )}
+                    component={Link}
+                    href={"https://developers.paziresh24.com/apps/unread"}
+                    platform={"nextjs"}
                   >
                     <React.Fragment>
                       <span
@@ -760,7 +766,7 @@ function PlasmicMenuItem__RenderFunc(props: {
                         }
                       </span>
                     </React.Fragment>
-                  </span>
+                  </PlasmicLink__>
                 }
                 <React.Fragment>{""}</React.Fragment>
               </React.Fragment>
@@ -931,7 +937,6 @@ function PlasmicMenuItem__RenderFunc(props: {
                   ];
                 }
               }}
-              shape={"rounded"}
               size={"compact"}
             >
               <div
@@ -1200,7 +1205,6 @@ function PlasmicMenuItem__RenderFunc(props: {
                   $steps["updateIsLoading2"] = await $steps["updateIsLoading2"];
                 }
               }}
-              shape={"rounded"}
               size={"compact"}
             >
               <div
@@ -1235,10 +1239,11 @@ function PlasmicMenuItem__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "nameInput", "keyInput", "embedInput", "embedInput2"],
+  root: ["root", "nameInput", "keyInput", "embedInput", "link", "embedInput2"],
   nameInput: ["nameInput"],
   keyInput: ["keyInput"],
   embedInput: ["embedInput"],
+  link: ["link"],
   embedInput2: ["embedInput2"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -1249,6 +1254,7 @@ type NodeDefaultElementType = {
   nameInput: typeof Input;
   keyInput: typeof Input;
   embedInput: typeof Input;
+  link: "a";
   embedInput2: typeof Input;
 };
 
@@ -1315,6 +1321,7 @@ export const PlasmicMenuItem = Object.assign(
     nameInput: makeNodeComponent("nameInput"),
     keyInput: makeNodeComponent("keyInput"),
     embedInput: makeNodeComponent("embedInput"),
+    link: makeNodeComponent("link"),
     embedInput2: makeNodeComponent("embedInput2"),
 
     // Metadata about props expected for PlasmicMenuItem

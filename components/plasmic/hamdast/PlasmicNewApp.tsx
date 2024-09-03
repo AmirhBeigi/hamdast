@@ -279,23 +279,20 @@ function PlasmicNewApp__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text___6Vyei
+                        sty.text__j2L7H
                       )}
                     >
                       {"\u0647\u0645\u200c\u062f\u0633\u062a"}
                     </div>
                     <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___8Whux
-                      )}
+                      className={classNames(projectcss.all, sty.freeBox__zQdRr)}
                     />
 
                     <div
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text___95Me
+                        sty.text__b4KYy
                       )}
                     >
                       {
@@ -435,7 +432,7 @@ function PlasmicNewApp__RenderFunc(props: {
                           displayWidth={"24px"}
                           loading={"lazy"}
                           src={{
-                            src: "/plasmic/hamdast/images/partypng.png",
+                            src: "/plasmic/hamdast/images/partyPng.png",
                             fullWidth: 160,
                             fullHeight: 160,
                             aspectRatio: undefined

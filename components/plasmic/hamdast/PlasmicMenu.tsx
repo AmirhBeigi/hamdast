@@ -262,7 +262,11 @@ function PlasmicMenu__RenderFunc(props: {
           [sty.textactive_compact]:
             hasVariant($state, "active", "active") &&
             hasVariant($state, "compact", "compact"),
-          [sty.textcompact]: hasVariant($state, "compact", "compact")
+          [sty.textcompact]: hasVariant($state, "compact", "compact"),
+          [sty.textdisabled]: hasVariant($state, "disabled", "disabled"),
+          [sty.textdisabled_compact]:
+            hasVariant($state, "disabled", "disabled") &&
+            hasVariant($state, "compact", "compact")
         })}
       >
         <React.Fragment>
