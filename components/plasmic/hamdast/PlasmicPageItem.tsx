@@ -70,8 +70,8 @@ import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6u
 import sty from "./PlasmicPageItem.module.css"; // plasmic-import: H16Cvh_Kg1CW/css
 
 import Icon22Icon from "./icons/PlasmicIcon__Icon22"; // plasmic-import: TGgY6td-PfjR/icon
-import ChevronDownsvgIcon from "./icons/PlasmicIcon__ChevronDownsvg"; // plasmic-import: iYZxMqrkbIkm/icon
-import ChevronUpsvgIcon from "./icons/PlasmicIcon__ChevronUpsvg"; // plasmic-import: dF9hk944lHvi/icon
+import ChevronDownSvgIcon from "./icons/PlasmicIcon__ChevronDownSvg"; // plasmic-import: iYZxMqrkbIkm/icon
+import ChevronUpSvgIcon from "./icons/PlasmicIcon__ChevronUpSvg"; // plasmic-import: dF9hk944lHvi/icon
 import Icon23Icon from "./icons/PlasmicIcon__Icon23"; // plasmic-import: WZWdkuuTy9hb/icon
 import Icon21Icon from "./icons/PlasmicIcon__Icon21"; // plasmic-import: UuDHOUXMn1lI/icon
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: VepSFu0Y3Pyk/icon
@@ -504,7 +504,7 @@ function PlasmicPageItem__RenderFunc(props: {
               throw e;
             }
           })() ? (
-            <ChevronDownsvgIcon
+            <ChevronDownSvgIcon
               className={classNames(projectcss.all, sty.svg___1WbFf)}
               role={"img"}
             />
@@ -522,7 +522,7 @@ function PlasmicPageItem__RenderFunc(props: {
               throw e;
             }
           })() ? (
-            <ChevronUpsvgIcon
+            <ChevronUpSvgIcon
               className={classNames(projectcss.all, sty.svg___2VjCo)}
               role={"img"}
             />
@@ -553,15 +553,30 @@ function PlasmicPageItem__RenderFunc(props: {
             className={classNames(projectcss.all, sty.freeBox__yaeuk)}
           >
             <div className={classNames(projectcss.all, sty.freeBox__f9Co)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text___0VKyz
-                )}
+              <Stack__
+                as={"div"}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.freeBox__p4Qgc)}
               >
-                {"\u0646\u0627\u0645 \u0628\u0631\u06af\u0647"}
-              </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___7SIqq
+                  )}
+                >
+                  {"\u0646\u0627\u0645 \u0628\u0631\u06af\u0647"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___6JgTl
+                  )}
+                >
+                  {"\u0627\u0644\u0632\u0627\u0645\u06cc"}
+                </div>
+              </Stack__>
               <div
                 className={classNames(
                   projectcss.all,
@@ -570,7 +585,7 @@ function PlasmicPageItem__RenderFunc(props: {
                 )}
               >
                 {
-                  "\u06cc\u06a9 \u0646\u0627\u0645 \u0628\u0647 \u0641\u0627\u0631\u0633\u06cc \u0628\u0631\u0627\u06cc \u0627\u0628\u0632\u0627\u0631\u06a9 \u062e\u0648\u062f \u0628\u06af\u0630\u0627\u0631\u06cc\u062f\u060c \u0627\u06cc\u0646 \u0646\u0627\u0645 \u0628\u0647 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0646\u0645\u0627\u06cc\u0634 \u062f\u0627\u062f\u0647 \u0645\u06cc\u200c\u0634\u0648\u062f."
+                  "\u06cc\u06a9 \u0646\u0627\u0645 \u0628\u0647 \u0641\u0627\u0631\u0633\u06cc \u0628\u0631\u0627\u06cc \u0628\u0631\u06af\u0647 \u062e\u0648\u062f \u0628\u06af\u0630\u0627\u0631\u06cc\u062f\u060c \u0627\u06cc\u0646 \u0646\u0627\u0645 \u0628\u0647 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0646\u0645\u0627\u06cc\u0634 \u062f\u0627\u062f\u0647 \u0645\u06cc\u200c\u0634\u0648\u062f."
                 }
               </div>
               <Input
@@ -601,15 +616,30 @@ function PlasmicPageItem__RenderFunc(props: {
               />
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__r1Glu)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__b8MXd
-                )}
+              <Stack__
+                as={"div"}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.freeBox__n0Ce)}
               >
-                {"\u0634\u0646\u0627\u0633\u0647"}
-              </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__tfwTe
+                  )}
+                >
+                  {"\u0634\u0646\u0627\u0633\u0647"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__bOjrw
+                  )}
+                >
+                  {"\u0627\u0644\u0632\u0627\u0645\u06cc"}
+                </div>
+              </Stack__>
               <div
                 className={classNames(
                   projectcss.all,
@@ -663,9 +693,7 @@ function PlasmicPageItem__RenderFunc(props: {
                   dir={"ltr"}
                 >
                   <React.Fragment>
-                    <React.Fragment>
-                      {"https://www.paziresh24.com/_/"}
-                    </React.Fragment>
+                    <React.Fragment>{"/_/"}</React.Fragment>
                     {
                       <span
                         className={classNames(
@@ -1143,15 +1171,30 @@ function PlasmicPageItem__RenderFunc(props: {
             </Stack__>
           </Stack__>
           <div className={classNames(projectcss.all, sty.freeBox___5BQrx)}>
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__zl99J
-              )}
+            <Stack__
+              as={"div"}
+              hasGap={true}
+              className={classNames(projectcss.all, sty.freeBox___4G9TR)}
             >
-              {"\u0622\u062f\u0631\u0633 embed"}
-            </div>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__kqwtu
+                )}
+              >
+                {"\u0622\u062f\u0631\u0633 embed"}
+              </div>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__nW7Tx
+                )}
+              >
+                {"\u0627\u0644\u0632\u0627\u0645\u06cc"}
+              </div>
+            </Stack__>
             <div
               className={classNames(
                 projectcss.all,
@@ -1593,21 +1636,29 @@ function PlasmicPageItem__RenderFunc(props: {
               shape={"rounded"}
               size={"compact"}
             >
-              <React.Fragment>
-                {(() => {
-                  try {
-                    return $state.deleteLoading ? "صبر کنید..." : "حذف";
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return "\u0630\u062e\u06cc\u0631\u0647";
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__tfPfs
+                )}
+              >
+                <React.Fragment>
+                  {(() => {
+                    try {
+                      return $state.deleteLoading ? "صبر کنید..." : "حذف";
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return "\u0630\u062e\u06cc\u0631\u0647";
+                      }
+                      throw e;
                     }
-                    throw e;
-                  }
-                })()}
-              </React.Fragment>
+                  })()}
+                </React.Fragment>
+              </div>
             </Button>
             <Button
               className={classNames("__wab_instance", sty.button___5Fe0C)}
@@ -1896,21 +1947,29 @@ function PlasmicPageItem__RenderFunc(props: {
               shape={"rounded"}
               size={"compact"}
             >
-              <React.Fragment>
-                {(() => {
-                  try {
-                    return $state.isLoading ? "صبر کنید..." : "ذخیره";
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return "\u0630\u062e\u06cc\u0631\u0647";
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__nbqlv
+                )}
+              >
+                <React.Fragment>
+                  {(() => {
+                    try {
+                      return $state.isLoading ? "صبر کنید..." : "ذخیره";
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return "\u0630\u062e\u06cc\u0631\u0647";
+                      }
+                      throw e;
                     }
-                    throw e;
-                  }
-                })()}
-              </React.Fragment>
+                  })()}
+                </React.Fragment>
+              </div>
             </Button>
           </Stack__>
         </Stack__>

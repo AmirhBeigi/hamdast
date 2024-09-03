@@ -67,6 +67,7 @@ import { Input } from "@/fragment/components/input"; // plasmic-import: AWE69UKw
 import Button from "../../Button"; // plasmic-import: _T6T2fNvkUfo/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
 import PageItem from "../../PageItem"; // plasmic-import: H16Cvh_Kg1CW/component
+import MenuItem from "../../MenuItem"; // plasmic-import: YGfSBi-EmSgY/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -101,6 +102,8 @@ export type PlasmicSettting__OverridesType = {
   fragmentInput2?: Flex__<typeof Input>;
   fragmentApiRequest?: Flex__<typeof ApiRequest>;
   pageItem?: Flex__<typeof PageItem>;
+  fragmentGetMenus?: Flex__<typeof ApiRequest>;
+  menuItem?: Flex__<typeof MenuItem>;
 };
 
 export interface DefaultSetttingProps {}
@@ -239,6 +242,43 @@ function PlasmicSettting__RenderFunc(props: {
           (() => {
             try {
               return [...$state.fragmentApiRequest.data];
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return [];
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "fragmentGetMenus.data",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "fragmentGetMenus.error",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "fragmentGetMenus.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "menuItems",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return [...$state.fragmentGetMenus.data];
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -553,16 +593,15 @@ function PlasmicSettting__RenderFunc(props: {
                       })()}
                       className={classNames("__wab_instance", sty.menu__dJhv)}
                       compact={true}
-                      disabled={true}
                       icon={false}
                       iconWrapper={null}
                       name={
-                        "\u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0645\u0646\u0648\u0647\u0627"
+                        "\u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0645\u0646\u0648"
                       }
                       onClick={async () => {
                         const $steps = {};
 
-                        $steps["updateMenu"] = false
+                        $steps["updateMenu"] = true
                           ? (() => {
                               const actionArgs = {
                                 variable: {
@@ -617,7 +656,7 @@ function PlasmicSettting__RenderFunc(props: {
                       icon={false}
                       iconWrapper={null}
                       name={
-                        "\u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0628\u0631\u06af\u0647 \u0647\u0627"
+                        "\u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0628\u0631\u06af\u0647\u200c"
                       }
                       onClick={async () => {
                         const $steps = {};
@@ -1195,7 +1234,7 @@ function PlasmicSettting__RenderFunc(props: {
                         </span>
                         <React.Fragment>
                           {
-                            "\u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0628\u0631\u06af\u0647 \u0647\u0627"
+                            "\u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0628\u0631\u06af\u0647"
                           }
                         </React.Fragment>
                       </React.Fragment>
@@ -1699,6 +1738,534 @@ function PlasmicSettting__RenderFunc(props: {
                     </ApiRequest>
                   </Stack__>
                 ) : null}
+                {(() => {
+                  try {
+                    return $state.menu === "Menu";
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })() ? (
+                  <Stack__
+                    as={"div"}
+                    hasGap={true}
+                    className={classNames(projectcss.all, sty.freeBox___7SdHc)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___9Hm5T
+                      )}
+                    >
+                      <React.Fragment>
+                        <span
+                          className={
+                            "plasmic_default__all plasmic_default__span"
+                          }
+                          style={{ color: "#0000003D" }}
+                        >
+                          {"\u0627\u062c\u0632\u0627 / "}
+                        </span>
+                        <React.Fragment>
+                          {
+                            "\u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0645\u0646\u0648\u200c"
+                          }
+                        </React.Fragment>
+                      </React.Fragment>
+                    </div>
+                    <ApiRequest
+                      data-plasmic-name={"fragmentGetMenus"}
+                      data-plasmic-override={overrides.fragmentGetMenus}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.fragmentGetMenus
+                      )}
+                      errorDisplay={
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__noIiJ
+                          )}
+                        >
+                          {"Error fetching data"}
+                        </div>
+                      }
+                      loadingDisplay={
+                        <Icon15Icon
+                          className={classNames(projectcss.all, sty.svg__eSrgd)}
+                          role={"img"}
+                        />
+                      }
+                      method={"GET"}
+                      onError={generateStateOnChangeProp($state, [
+                        "fragmentGetMenus",
+                        "error"
+                      ])}
+                      onLoading={generateStateOnChangeProp($state, [
+                        "fragmentGetMenus",
+                        "loading"
+                      ])}
+                      onSuccess={generateStateOnChangeProp($state, [
+                        "fragmentGetMenus",
+                        "data"
+                      ])}
+                      url={(() => {
+                        try {
+                          return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/menus/`;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()}
+                    >
+                      {(_par =>
+                        !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                        (() => {
+                          try {
+                            return $state.menuItems;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                      ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                        const currentItem = __plasmic_item_0;
+                        const currentIndex = __plasmic_idx_0;
+                        return (
+                          <MenuItem
+                            data-plasmic-name={"menuItem"}
+                            data-plasmic-override={overrides.menuItem}
+                            appId={(() => {
+                              try {
+                                return $ctx.params.id;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
+                              }
+                            })()}
+                            appKey={(() => {
+                              try {
+                                return $state.authProvider.apps?.find(
+                                  item => item.id === $ctx.params.id
+                                )?.key;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
+                              }
+                            })()}
+                            className={classNames(
+                              "__wab_instance",
+                              sty.menuItem
+                            )}
+                            defaultValues={(() => {
+                              try {
+                                return {
+                                  name: currentItem?.name_fa,
+                                  ...currentItem
+                                };
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return {
+                                    name: "\u0645\u0646\u0648 1",
+                                    key: "menu",
+                                    embed_src: ""
+                                  };
+                                }
+                                throw e;
+                              }
+                            })()}
+                            isOpen={(() => {
+                              try {
+                                return (
+                                  (currentItem?.id ?? currentIndex + 1) ===
+                                  $state.itemOpenPage
+                                );
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return false;
+                                }
+                                throw e;
+                              }
+                            })()}
+                            key={currentIndex}
+                            notSave={(() => {
+                              try {
+                                return !currentItem.id;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })()}
+                            onDelete={async id => {
+                              const $steps = {};
+
+                              $steps["updateMenuItems"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["menuItems"]
+                                      },
+                                      operation: 6,
+                                      startIndex: (() => {
+                                        try {
+                                          return $state.menuItems?.findIndex(
+                                            item =>
+                                              id ===
+                                              (item?.id ?? currentIndex + 1)
+                                          );
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return undefined;
+                                          }
+                                          throw e;
+                                        }
+                                      })(),
+                                      deleteCount: 1
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      const arr = $stateGet(
+                                        objRoot,
+                                        variablePath
+                                      );
+                                      arr.splice(startIndex, deleteCount);
+                                      return arr;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateMenuItems"] != null &&
+                                typeof $steps["updateMenuItems"] === "object" &&
+                                typeof $steps["updateMenuItems"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateMenuItems"] = await $steps[
+                                  "updateMenuItems"
+                                ];
+                              }
+                            }}
+                            onSave={async (id, data) => {
+                              const $steps = {};
+
+                              $steps["updateMenuItems"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["menuItems"]
+                                      },
+                                      operation: 0,
+                                      value: $state.menuItems?.map(item =>
+                                        !!item.id
+                                          ? item.id === id
+                                            ? {
+                                                ...item,
+                                                data
+                                              }
+                                            : { ...item }
+                                          : {
+                                              ...item,
+                                              ...data,
+                                              id
+                                            }
+                                      )
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateMenuItems"] != null &&
+                                typeof $steps["updateMenuItems"] === "object" &&
+                                typeof $steps["updateMenuItems"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateMenuItems"] = await $steps[
+                                  "updateMenuItems"
+                                ];
+                              }
+
+                              $steps["updateItemOpenPage"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["itemOpenPage"]
+                                      },
+                                      operation: 1
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(
+                                        objRoot,
+                                        variablePath,
+                                        undefined
+                                      );
+                                      return undefined;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateItemOpenPage"] != null &&
+                                typeof $steps["updateItemOpenPage"] ===
+                                  "object" &&
+                                typeof $steps["updateItemOpenPage"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateItemOpenPage"] = await $steps[
+                                  "updateItemOpenPage"
+                                ];
+                              }
+                            }}
+                            onSelect={async () => {
+                              const $steps = {};
+
+                              $steps["updateItemOpenPage"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["itemOpenPage"]
+                                      },
+                                      operation: 0,
+                                      value:
+                                        (currentItem?.id ?? currentIndex + 1) !=
+                                        $state.itemOpenPage
+                                          ? currentItem?.id ?? currentIndex + 1
+                                          : ""
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateItemOpenPage"] != null &&
+                                typeof $steps["updateItemOpenPage"] ===
+                                  "object" &&
+                                typeof $steps["updateItemOpenPage"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateItemOpenPage"] = await $steps[
+                                  "updateItemOpenPage"
+                                ];
+                              }
+                            }}
+                            pageId={(() => {
+                              try {
+                                return currentItem?.id ?? currentIndex + 1;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
+                              }
+                            })()}
+                          />
+                        );
+                      })}
+                      <Button
+                        className={classNames(
+                          "__wab_instance",
+                          sty.button__aEaWq
+                        )}
+                        onClick={async event => {
+                          const $steps = {};
+
+                          $steps["updateMenuItems"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["menuItems"]
+                                  },
+                                  operation: 5,
+                                  value: {
+                                    name: `منو ${$state.menuItems?.length + 1}`,
+                                    key: `menu${$state.menuItems?.length + 1}`,
+                                    embed_src: ""
+                                  }
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  const arr = $stateGet(objRoot, variablePath);
+                                  arr.push(value);
+                                  return arr;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateMenuItems"] != null &&
+                            typeof $steps["updateMenuItems"] === "object" &&
+                            typeof $steps["updateMenuItems"].then === "function"
+                          ) {
+                            $steps["updateMenuItems"] = await $steps[
+                              "updateMenuItems"
+                            ];
+                          }
+
+                          $steps["updateItemOpenPage"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["itemOpenPage"]
+                                  },
+                                  operation: 0,
+                                  value: $state.menuItems?.length
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateItemOpenPage"] != null &&
+                            typeof $steps["updateItemOpenPage"] === "object" &&
+                            typeof $steps["updateItemOpenPage"].then ===
+                              "function"
+                          ) {
+                            $steps["updateItemOpenPage"] = await $steps[
+                              "updateItemOpenPage"
+                            ];
+                          }
+                        }}
+                        shape={"rounded"}
+                        showStartIcon={true}
+                        startIcon={
+                          <Icon21Icon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__e9IRv
+                            )}
+                            role={"img"}
+                          />
+                        }
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__fvXpf
+                          )}
+                        >
+                          {"\u0633\u0627\u062e\u062a \u0645\u0646\u0648"}
+                        </div>
+                      </Button>
+                    </ApiRequest>
+                  </Stack__>
+                ) : null}
               </div>
             </Layout>
           </AuthProvider>
@@ -1717,7 +2284,9 @@ const PlasmicDescendants = {
     "fragmentInput",
     "fragmentInput2",
     "fragmentApiRequest",
-    "pageItem"
+    "pageItem",
+    "fragmentGetMenus",
+    "menuItem"
   ],
   embedHtml: ["embedHtml"],
   authProvider: [
@@ -1726,19 +2295,25 @@ const PlasmicDescendants = {
     "fragmentInput",
     "fragmentInput2",
     "fragmentApiRequest",
-    "pageItem"
+    "pageItem",
+    "fragmentGetMenus",
+    "menuItem"
   ],
   layout: [
     "layout",
     "fragmentInput",
     "fragmentInput2",
     "fragmentApiRequest",
-    "pageItem"
+    "pageItem",
+    "fragmentGetMenus",
+    "menuItem"
   ],
   fragmentInput: ["fragmentInput"],
   fragmentInput2: ["fragmentInput2"],
   fragmentApiRequest: ["fragmentApiRequest", "pageItem"],
-  pageItem: ["pageItem"]
+  pageItem: ["pageItem"],
+  fragmentGetMenus: ["fragmentGetMenus", "menuItem"],
+  menuItem: ["menuItem"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1752,6 +2327,8 @@ type NodeDefaultElementType = {
   fragmentInput2: typeof Input;
   fragmentApiRequest: typeof ApiRequest;
   pageItem: typeof PageItem;
+  fragmentGetMenus: typeof ApiRequest;
+  menuItem: typeof MenuItem;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1821,6 +2398,8 @@ export const PlasmicSettting = Object.assign(
     fragmentInput2: makeNodeComponent("fragmentInput2"),
     fragmentApiRequest: makeNodeComponent("fragmentApiRequest"),
     pageItem: makeNodeComponent("pageItem"),
+    fragmentGetMenus: makeNodeComponent("fragmentGetMenus"),
+    menuItem: makeNodeComponent("menuItem"),
 
     // Metadata about props expected for PlasmicSettting
     internalVariantProps: PlasmicSettting__VariantProps,

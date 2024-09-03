@@ -258,8 +258,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-basic-components"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "bE9NMB942w5e6uFrcCxfJN",
@@ -525,6 +524,19 @@
           "cssFilePath": "plasmic/hamdast/PlasmicPageItem.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "YGfSBi-EmSgY",
+          "name": "MenuItem",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicMenuItem.tsx",
+          "importSpec": {
+            "modulePath": "MenuItem.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicMenuItem.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -540,13 +552,13 @@
         },
         {
           "id": "iYZxMqrkbIkm",
-          "name": "ChevronDownsvgIcon",
-          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__ChevronDownsvg.tsx"
+          "name": "ChevronDownSvgIcon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__ChevronDownSvg.tsx"
         },
         {
           "id": "dF9hk944lHvi",
-          "name": "ChevronUpsvgIcon",
-          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__ChevronUpsvg.tsx"
+          "name": "ChevronUpSvgIcon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__ChevronUpSvg.tsx"
         },
         {
           "id": "LIQmGMX0UEc0",
@@ -658,7 +670,7 @@
         {
           "id": "8rIy3Z8cms8n",
           "name": "party.png",
-          "filePath": "../public/plasmic/hamdast/images/partypng.png"
+          "filePath": "../public/plasmic/hamdast/images/partyPng.png"
         }
       ],
       "indirect": false,
@@ -1208,8 +1220,7 @@
           "componentImportPath": "@plasmicpkgs/antd5/skinny/registerBreadcrumb"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     }
   ],
   "globalVariants": {

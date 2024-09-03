@@ -5,11 +5,11 @@
 import React from "react";
 import { classNames } from "@plasmicapp/react-web";
 
-export type ChevronUpsvgIconProps = React.ComponentProps<"svg"> & {
+export type ChevronDownSvgIconProps = React.ComponentProps<"svg"> & {
   title?: string;
 };
 
-export function ChevronUpsvgIcon(props: ChevronUpsvgIconProps) {
+export function ChevronDownSvgIcon(props: ChevronDownSvgIconProps) {
   const { className, style, title, ...restProps } = props;
   return (
     <svg
@@ -29,11 +29,11 @@ export function ChevronUpsvgIcon(props: ChevronUpsvgIconProps) {
         strokeLinecap={"round"}
         strokeLinejoin={"round"}
         strokeWidth={"1.5"}
-        d={"M15.25 14.25L12 10.75l-3.25 3.5"}
+        d={"M15.25 10.75L12 14.25l-3.25-3.5"}
       ></path>
     </svg>
   );
 }
 
-export default ChevronUpsvgIcon;
+export default ChevronDownSvgIcon;
 /* prettier-ignore-end */
