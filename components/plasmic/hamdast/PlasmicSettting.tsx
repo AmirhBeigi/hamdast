@@ -76,11 +76,14 @@ import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6u
 import sty from "./PlasmicSettting.module.css"; // plasmic-import: 7ri-iU6uUwQF/css
 
 import Icon19Icon from "./icons/PlasmicIcon__Icon19"; // plasmic-import: 09kUgGvbipjq/icon
+import Icon24Icon from "./icons/PlasmicIcon__Icon24"; // plasmic-import: 3P4kCztjZFA7/icon
 import Icon16Icon from "./icons/PlasmicIcon__Icon16"; // plasmic-import: zU9ql4OiZyfC/icon
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: VepSFu0Y3Pyk/icon
 import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: CmW94FEF71d7/icon
 import Icon15Icon from "./icons/PlasmicIcon__Icon15"; // plasmic-import: rQsx35tf_bcf/icon
 import Icon21Icon from "./icons/PlasmicIcon__Icon21"; // plasmic-import: UuDHOUXMn1lI/icon
+
+import __lib_copyToClipboard from "copy-to-clipboard";
 
 createPlasmicElementProxy;
 
@@ -108,7 +111,9 @@ export type PlasmicSettting__OverridesType = {
 
 export interface DefaultSetttingProps {}
 
-const $$ = {};
+const $$ = {
+  copyToClipboard: __lib_copyToClipboard
+};
 
 function useNextRouter() {
   try {
@@ -136,6 +141,8 @@ function PlasmicSettting__RenderFunc(props: {
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
+
+  const $globalActions = useGlobalActions?.();
 
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
@@ -845,25 +852,91 @@ function PlasmicSettting__RenderFunc(props: {
                             </React.Fragment>
                           </div>
                         </div>
-                        <Input
-                          data-plasmic-name={"fragmentInput"}
-                          data-plasmic-override={overrides.fragmentInput}
-                          attributes={{ dir: "ltr", readOnly: true }}
+                        <div
                           className={classNames(
-                            "__wab_instance",
-                            sty.fragmentInput
+                            projectcss.all,
+                            sty.freeBox__pwTRd
                           )}
-                          disabled={false}
-                          onChange={generateStateOnChangeProp($state, [
-                            "fragmentInput",
-                            "value"
-                          ])}
-                          type={"text"}
-                          value={generateStateValueProp($state, [
-                            "fragmentInput",
-                            "value"
-                          ])}
-                        />
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["runCode"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    customFunction: async () => {
+                                      return $$.copyToClipboard(
+                                        $state.authProvider.user.api_key
+                                      );
+                                    }
+                                  };
+                                  return (({ customFunction }) => {
+                                    return customFunction();
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["runCode"] != null &&
+                              typeof $steps["runCode"] === "object" &&
+                              typeof $steps["runCode"].then === "function"
+                            ) {
+                              $steps["runCode"] = await $steps["runCode"];
+                            }
+
+                            $steps["invokeGlobalAction"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    args: [
+                                      undefined,
+                                      "\u06a9\u067e\u06cc \u0634\u062f",
+                                      "top-center"
+                                    ]
+                                  };
+                                  return $globalActions[
+                                    "Fragment.showToast"
+                                  ]?.apply(null, [...actionArgs.args]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["invokeGlobalAction"] != null &&
+                              typeof $steps["invokeGlobalAction"] ===
+                                "object" &&
+                              typeof $steps["invokeGlobalAction"].then ===
+                                "function"
+                            ) {
+                              $steps["invokeGlobalAction"] = await $steps[
+                                "invokeGlobalAction"
+                              ];
+                            }
+                          }}
+                        >
+                          <Input
+                            data-plasmic-name={"fragmentInput"}
+                            data-plasmic-override={overrides.fragmentInput}
+                            attributes={{ dir: "ltr", readOnly: true }}
+                            className={classNames(
+                              "__wab_instance",
+                              sty.fragmentInput
+                            )}
+                            disabled={false}
+                            onChange={generateStateOnChangeProp($state, [
+                              "fragmentInput",
+                              "value"
+                            ])}
+                            type={"password"}
+                            value={generateStateValueProp($state, [
+                              "fragmentInput",
+                              "value"
+                            ])}
+                          />
+
+                          <Icon24Icon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__b9De
+                            )}
+                            role={"img"}
+                          />
+                        </div>
                       </Stack__>
                     </Stack__>
                     <Stack__
@@ -925,70 +998,137 @@ function PlasmicSettting__RenderFunc(props: {
                             }
                           </div>
                         </div>
-                        {(() => {
-                          const child$Props = {
-                            attributes: { dir: "ltr", readOnly: true },
-                            className: classNames(
-                              "__wab_instance",
-                              sty.fragmentInput2
-                            ),
-                            disabled: false,
-                            onChange: generateStateOnChangeProp($state, [
-                              "fragmentInput2",
-                              "value"
-                            ]),
-                            type: "text",
-                            value: generateStateValueProp($state, [
-                              "fragmentInput2",
-                              "value"
-                            ])
-                          };
-                          initializeCodeComponentStates(
-                            $state,
-                            [
-                              {
-                                name: "value",
-                                plasmicStateName: "fragmentInput2.value"
-                              }
-                            ],
-                            [],
-                            undefined ?? {},
-                            child$Props
-                          );
-                          initializePlasmicStates(
-                            $state,
-                            [
-                              {
-                                name: "fragmentInput2.value",
-                                initFunc: ({ $props, $state, $queries }) =>
-                                  (() => {
-                                    try {
-                                      return $state.authProvider.apps?.find(
-                                        item => item.id === $ctx.params.id
-                                      )?.key;
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return "";
-                                      }
-                                      throw e;
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__jhs94
+                          )}
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["runCode"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    customFunction: async () => {
+                                      return $$.copyToClipboard(
+                                        $state.authProvider.apps?.find(
+                                          item => item.id === $ctx.params.id
+                                        )?.key
+                                      );
                                     }
-                                  })()
-                              }
-                            ],
-                            []
-                          );
-                          return (
-                            <Input
-                              data-plasmic-name={"fragmentInput2"}
-                              data-plasmic-override={overrides.fragmentInput2}
-                              {...child$Props}
-                            />
-                          );
-                        })()}
+                                  };
+                                  return (({ customFunction }) => {
+                                    return customFunction();
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["runCode"] != null &&
+                              typeof $steps["runCode"] === "object" &&
+                              typeof $steps["runCode"].then === "function"
+                            ) {
+                              $steps["runCode"] = await $steps["runCode"];
+                            }
+
+                            $steps["invokeGlobalAction"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    args: [
+                                      undefined,
+                                      "\u06a9\u067e\u06cc \u0634\u062f",
+                                      "top-center"
+                                    ]
+                                  };
+                                  return $globalActions[
+                                    "Fragment.showToast"
+                                  ]?.apply(null, [...actionArgs.args]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["invokeGlobalAction"] != null &&
+                              typeof $steps["invokeGlobalAction"] ===
+                                "object" &&
+                              typeof $steps["invokeGlobalAction"].then ===
+                                "function"
+                            ) {
+                              $steps["invokeGlobalAction"] = await $steps[
+                                "invokeGlobalAction"
+                              ];
+                            }
+                          }}
+                        >
+                          {(() => {
+                            const child$Props = {
+                              attributes: { dir: "ltr", readOnly: true },
+                              className: classNames(
+                                "__wab_instance",
+                                sty.fragmentInput2
+                              ),
+                              disabled: false,
+                              onChange: generateStateOnChangeProp($state, [
+                                "fragmentInput2",
+                                "value"
+                              ]),
+                              type: "text",
+                              value: generateStateValueProp($state, [
+                                "fragmentInput2",
+                                "value"
+                              ])
+                            };
+                            initializeCodeComponentStates(
+                              $state,
+                              [
+                                {
+                                  name: "value",
+                                  plasmicStateName: "fragmentInput2.value"
+                                }
+                              ],
+                              [],
+                              undefined ?? {},
+                              child$Props
+                            );
+                            initializePlasmicStates(
+                              $state,
+                              [
+                                {
+                                  name: "fragmentInput2.value",
+                                  initFunc: ({ $props, $state, $queries }) =>
+                                    (() => {
+                                      try {
+                                        return $state.authProvider.apps?.find(
+                                          item => item.id === $ctx.params.id
+                                        )?.key;
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "";
+                                        }
+                                        throw e;
+                                      }
+                                    })()
+                                }
+                              ],
+                              []
+                            );
+                            return (
+                              <Input
+                                data-plasmic-name={"fragmentInput2"}
+                                data-plasmic-override={overrides.fragmentInput2}
+                                {...child$Props}
+                              />
+                            );
+                          })()}
+                          <Icon24Icon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__wrEe3
+                            )}
+                            role={"img"}
+                          />
+                        </div>
                       </Stack__>
                     </Stack__>
                     <div

@@ -665,6 +665,11 @@
           "id": "WZWdkuuTy9hb",
           "name": "Icon23Icon",
           "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon23.tsx"
+        },
+        {
+          "id": "3P4kCztjZFA7",
+          "name": "Icon24Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon24.tsx"
         }
       ],
       "images": [
@@ -1223,6 +1228,21 @@
       ],
       "customFunctions": [],
       "jsBundleThemes": []
+    },
+    {
+      "projectId": "aEHVN5v6mfM4eovDsL8Z7d",
+      "projectApiToken": "whnW133t80zLKU3zunlnszewVOEyVOxXKzwV7BG0moXtgGeWc7ggKBeDRLZRWBfP5J3nqMN96EsKaTRQYp2aw",
+      "projectName": "copy-to-clipboard",
+      "version": ">0.0.0",
+      "cssFilePath": "plasmic/copy_to_clipboard/plasmic.module.css",
+      "components": [],
+      "icons": [],
+      "images": [],
+      "indirect": true,
+      "globalContextsFilePath": "",
+      "splitsProviderFilePath": "",
+      "codeComponents": [],
+      "customFunctions": []
     }
   ],
   "globalVariants": {
