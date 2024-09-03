@@ -1069,7 +1069,7 @@ function PlasmicMenuItem__RenderFunc(props: {
                           "PUT",
                           (() => {
                             try {
-                              return `https://hamdast.paziresh24.com/api/v1/apps/${$props.appId}/pages/${$props.pageId}/`;
+                              return `https://hamdast.paziresh24.com/api/v1/apps/${$props.appId}/menus/${$props.pageId}/`;
                             } catch (e) {
                               if (
                                 e instanceof TypeError ||
