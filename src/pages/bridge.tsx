@@ -86,7 +86,7 @@ function Bridge() {
     }
 
     return () => {
-      usersDurationLog({ app, menu, duration: Date.now() - startTime.current });
+      // usersDurationLog({ app, menu, duration: Date.now() - startTime.current });
     };
   }, [app, menu, page]);
 

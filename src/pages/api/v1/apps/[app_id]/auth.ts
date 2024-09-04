@@ -1,12 +1,38 @@
 import axios, { AxiosResponse } from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
 import config from "next/config";
+import NextCors from "nextjs-cors";
 const { publicRuntimeConfig } = config();
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
+  await NextCors(req, res, {
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE", "OPTIONS"],
+    origin: new RegExp(".paziresh24."),
+    preflightContinue: true,
+    optionsSuccessStatus: 200,
+    credentials: true,
+    headers: [
+      "X-CSRF-Token",
+      "x-xsrf-token",
+      "X-Requested-With",
+      "Accept",
+      "Accept-Version",
+      "Content-Length",
+      "Content-MD5",
+      "Content-Type",
+      "Date",
+      "X-Api-Version",
+      "token",
+      "Authorization",
+    ],
+  });
+
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
   if (req.method !== "POST")
     return res.status(405).json({ message: "Method Not Allowed" });
 
@@ -61,10 +87,8 @@ export default async function handler(
   };
   await axios.request(options);
 
-  return res
-    .status(200)
-    .json({
-      session_token: sessionToken,
-      expires_at: new Date(now + 10 * 60 * 1000).toISOString(),
-    });
+  return res.status(200).json({
+    session_token: sessionToken,
+    expires_at: new Date(now + 10 * 60 * 1000).toISOString(),
+  });
 }
