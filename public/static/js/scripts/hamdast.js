@@ -69,7 +69,7 @@ const hamdastPostMessagePromise = (message) => {
 };
 
 window.hamdast = {
-  initialize({ clientKey }) {
+  initialize({ clientKey = '' }) {
     window.hamdast.clientKey = clientKey;
     hamdastCommunication({ clientKey, event: "HAMDAST_INITIALIZE" });
     hamdastRrwebFireWhenReady();
