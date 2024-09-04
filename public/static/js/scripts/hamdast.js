@@ -85,6 +85,13 @@ window.hamdast = {
       },
     });
   },
+  getSessionToken() {
+    return hamdastCommunication({
+      clientKey: window.hamdast.clientKey,
+      promise: true,
+      event: "HAMDAST_GET_SESSION_TOKEN",
+    });
+  },
   replay: {
     record() {
       rrweb.record({

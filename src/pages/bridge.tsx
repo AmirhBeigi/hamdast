@@ -1,6 +1,7 @@
 import { activeUsersLog } from "@/lib/bridge/activeUsersLog";
 import { getState } from "@/lib/bridge/getState";
 import { saveReplay } from "@/lib/bridge/saveReplay";
+import { sessionToken } from "@/lib/bridge/sessionToken";
 import { usersDurationLog } from "@/lib/bridge/usersDurationLog";
 import { generateUniqueId } from "@/lib/utils";
 import { useRouter } from "next/router";
@@ -37,6 +38,20 @@ function Bridge() {
     );
   };
 
+  const sendSessionToken = async (event: any) => {
+    const data = await sessionToken({ app });
+    iframe.current?.contentWindow?.postMessage(
+      {
+        hamdast: {
+          event: "HAMDAST_GET_SESSION_TOKEN",
+          data: data,
+          hash_id: event?.hash_id,
+        },
+      },
+      "*"
+    );
+  };
+
   useEffect(() => {
     if (app && (menu || page)) {
       startTime.current = Date.now();
@@ -44,6 +59,10 @@ function Bridge() {
       window.addEventListener("message", (messageEvent) => {
         if (messageEvent.data?.hamdast?.event === "HAMDAST_GET_STATE") {
           sendEvent(messageEvent.data?.hamdast);
+        }
+
+        if (messageEvent.data?.hamdast?.event === "HAMDAST_GET_SESSION_TOKEN") {
+          sendSessionToken(messageEvent.data?.hamdast);
         }
 
         if (messageEvent.data?.hamdast?.event === "HAMDAST_OPEN_LINK") {
