@@ -73,6 +73,7 @@ export default async function handler(
         icon: app.icon,
         published: app.published,
         client_key: app.client_key,
+        katibe_id: app.katibe_id,
         permissions: app.permissions,
       }))
     );
