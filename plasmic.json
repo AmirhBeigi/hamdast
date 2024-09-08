@@ -53,14 +53,14 @@
       "components": [
         {
           "id": "5nirPCGmCnRD",
-          "name": "Button",
+          "name": "RadixUiButton",
           "type": "managed",
           "projectId": "sqPBLwEBBKHA2WDuGb17eV",
-          "renderModuleFilePath": "plasmic/radix_ui/PlasmicButton.tsx",
+          "renderModuleFilePath": "plasmic/radix_ui/PlasmicRadixUiButton.tsx",
           "importSpec": {
-            "modulePath": "Button.tsx"
+            "modulePath": "RadixUiButton.tsx"
           },
-          "cssFilePath": "plasmic/radix_ui/PlasmicButton.module.css",
+          "cssFilePath": "plasmic/radix_ui/PlasmicRadixUiButton.module.css",
           "scheme": "blackbox",
           "componentType": "component",
           "plumeType": "button"
@@ -69,8 +69,8 @@
       "icons": [
         {
           "id": "Wyt3GMMsLefj",
-          "name": "ChecksvgIcon",
-          "moduleFilePath": "plasmic/radix_ui/icons/PlasmicIcon__Checksvg.tsx"
+          "name": "CheckSvgIcon",
+          "moduleFilePath": "plasmic/radix_ui/icons/PlasmicIcon__CheckSvg.tsx"
         },
         {
           "id": "MbDRsJU0e3bw",
@@ -132,8 +132,7 @@
           "componentImportPath": "@plasmicpkgs/radix-ui"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "qo5fwZT3vwQ9RjjQNWCz9z",
@@ -538,6 +537,20 @@
           "cssFilePath": "plasmic/hamdast/PlasmicMenuItem.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "hhjL63F0Jui4",
+          "name": "Transactions",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicTransactions.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/apps/[id]/transactions.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicTransactions.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/apps/[id]/transactions"
         }
       ],
       "icons": [
@@ -670,6 +683,11 @@
           "id": "3P4kCztjZFA7",
           "name": "Icon24Icon",
           "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon24.tsx"
+        },
+        {
+          "id": "AGSEC-pNDNUM",
+          "name": "Icon25Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon25.tsx"
         }
       ],
       "images": [
