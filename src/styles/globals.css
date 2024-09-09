@@ -59,4 +59,16 @@
 
 ::-webkit-scrollbar {
   display: none;
+  -ms-overflow-style: none; /* IE 11 */
+  scrollbar-width: none; /* Firefox 64 */
+}
+
+body {
+  scrollbar-width: none; /* Also needed to disable scrollbar Firefox */
+  -ms-overflow-style: none; /* Disable scrollbar IE 10+ */
+}
+
+* {
+  scrollbar-width: none; /* Also needed to disable scrollbar Firefox */
+  -ms-overflow-style: none; /* Disable scrollbar IE 10+ */
 }
