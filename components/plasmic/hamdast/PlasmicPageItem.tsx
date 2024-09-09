@@ -172,7 +172,9 @@ function PlasmicPageItem__RenderFunc(props: {
           },
           notSave: true
         },
-        props.args
+        Object.fromEntries(
+          Object.entries(props.args).filter(([_, v]) => v !== undefined)
+        )
       ),
     [props.args]
   );
