@@ -62,8 +62,9 @@ import {
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import AuthProvider from "../../AuthProvider"; // plasmic-import: KTPu1eZupEdG/component
 import Layout from "../../Layout"; // plasmic-import: ve2FygUyzJYe/component
-import FetchData from "../../FetchData"; // plasmic-import: -UcPqMSXVAGv/component
 import Menu from "../../Menu"; // plasmic-import: 73TqujunaOu5/component
+import FetchData from "../../FetchData"; // plasmic-import: -UcPqMSXVAGv/component
+import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
 import Filter from "../../Filter"; // plasmic-import: YY41SIghQUgw/component
 import { Chart } from "@/fragment/components/chart"; // plasmic-import: oU2v2at0brmo/codeComponent
 
@@ -73,8 +74,8 @@ import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css";
 import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectcss
 import sty from "./PlasmicStatistics.module.css"; // plasmic-import: nAbrCePpa8PZ/css
 
-import Icon15Icon from "./icons/PlasmicIcon__Icon15"; // plasmic-import: rQsx35tf_bcf/icon
 import Icon17Icon from "./icons/PlasmicIcon__Icon17"; // plasmic-import: t3gBl-ZhsAb2/icon
+import Icon15Icon from "./icons/PlasmicIcon__Icon15"; // plasmic-import: rQsx35tf_bcf/icon
 import Icon18Icon from "./icons/PlasmicIcon__Icon18"; // plasmic-import: 1FObiVFN1kNa/icon
 
 createPlasmicElementProxy;
@@ -94,6 +95,9 @@ export type PlasmicStatistics__OverridesType = {
   authProvider?: Flex__<typeof AuthProvider>;
   layout?: Flex__<typeof Layout>;
   fetchData?: Flex__<typeof FetchData>;
+  pageViewApi?: Flex__<typeof ApiRequest>;
+  activeUserApi?: Flex__<typeof ApiRequest>;
+  fragmentApiRequest2?: Flex__<typeof ApiRequest>;
   filter?: Flex__<typeof Filter>;
   fetchData2?: Flex__<typeof FetchData>;
 };
@@ -197,6 +201,60 @@ function PlasmicStatistics__RenderFunc(props: {
       },
       {
         path: "fetchData2.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "pageViewApi.data",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "pageViewApi.error",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "pageViewApi.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "fragmentApiRequest2.data",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "fragmentApiRequest2.error",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "fragmentApiRequest2.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "activeUserApi.data",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "activeUserApi.error",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "activeUserApi.loading",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
@@ -335,11 +393,109 @@ function PlasmicStatistics__RenderFunc(props: {
             >
               <div className={classNames(projectcss.all, sty.freeBox__jnlGg)}>
                 <div className={classNames(projectcss.all, sty.freeBox__dmEfe)}>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__pg3E7)}
                   >
+                    <Menu
+                      active={(() => {
+                        try {
+                          return -1 === $state.menu;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return [];
+                          }
+                          throw e;
+                        }
+                      })()}
+                      className={classNames("__wab_instance", sty.menu__graj)}
+                      compact={true}
+                      icon={true}
+                      iconWrapper={
+                        <Icon17Icon
+                          className={classNames(
+                            projectcss.all,
+                            sty.svg___8TMae
+                          )}
+                          role={"img"}
+                        />
+                      }
+                      name={"\u0646\u06af\u0627\u0647 \u06a9\u0644\u06cc"}
+                      onClick={async () => {
+                        const $steps = {};
+
+                        $steps["updateDay"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["day"]
+                                },
+                                operation: 0,
+                                value: 1
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateDay"] != null &&
+                          typeof $steps["updateDay"] === "object" &&
+                          typeof $steps["updateDay"].then === "function"
+                        ) {
+                          $steps["updateDay"] = await $steps["updateDay"];
+                        }
+
+                        $steps["updateMenu"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["menu"]
+                                },
+                                operation: 0,
+                                value: -1
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateMenu"] != null &&
+                          typeof $steps["updateMenu"] === "object" &&
+                          typeof $steps["updateMenu"].then === "function"
+                        ) {
+                          $steps["updateMenu"] = await $steps["updateMenu"];
+                        }
+                      }}
+                    />
+
                     <div
                       className={classNames(
                         projectcss.all,
@@ -348,7 +504,7 @@ function PlasmicStatistics__RenderFunc(props: {
                       )}
                     >
                       {
-                        "\u0645\u0646\u0648 \u0627\u064e\u0628\u0632\u0627\u0631\u06a9"
+                        "\u0645\u0646\u0648\u0647\u0627\u06cc \u0627\u064e\u0628\u0632\u0627\u0631\u06a9"
                       }
                     </div>
                     <FetchData
@@ -391,111 +547,6 @@ function PlasmicStatistics__RenderFunc(props: {
                           sty.freeBox__yRzdo
                         )}
                       >
-                        <Menu
-                          active={(() => {
-                            try {
-                              return -1 === $state.menu;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return [];
-                              }
-                              throw e;
-                            }
-                          })()}
-                          className={classNames(
-                            "__wab_instance",
-                            sty.menu__graj
-                          )}
-                          compact={true}
-                          icon={true}
-                          iconWrapper={
-                            <Icon17Icon
-                              className={classNames(
-                                projectcss.all,
-                                sty.svg___8TMae
-                              )}
-                              role={"img"}
-                            />
-                          }
-                          name={
-                            "\u0647\u0645\u0647 \u0645\u0646\u0648 \u0647\u0627"
-                          }
-                          onClick={async () => {
-                            const $steps = {};
-
-                            $steps["updateDay"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["day"]
-                                    },
-                                    operation: 0,
-                                    value: 1
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["updateDay"] != null &&
-                              typeof $steps["updateDay"] === "object" &&
-                              typeof $steps["updateDay"].then === "function"
-                            ) {
-                              $steps["updateDay"] = await $steps["updateDay"];
-                            }
-
-                            $steps["updateMenu"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["menu"]
-                                    },
-                                    operation: 0,
-                                    value: -1
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["updateMenu"] != null &&
-                              typeof $steps["updateMenu"] === "object" &&
-                              typeof $steps["updateMenu"].then === "function"
-                            ) {
-                              $steps["updateMenu"] = await $steps["updateMenu"];
-                            }
-                          }}
-                        />
-
                         {(_par =>
                           !_par ? [] : Array.isArray(_par) ? _par : [_par])(
                           (() => {
@@ -635,124 +686,178 @@ function PlasmicStatistics__RenderFunc(props: {
                         })}
                       </Stack__>
                     </FetchData>
-                  </Stack__>
+                  </div>
                   <Stack__
                     as={"div"}
                     hasGap={true}
                     className={classNames(projectcss.all, sty.freeBox__jnCjc)}
                   >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__reWz8)}
-                    >
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                    {(() => {
+                      try {
+                        return $state.fetchData2.data?.length != 0;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return false;
+                        }
+                        throw e;
+                      }
+                    })() ? (
+                      <div
                         className={classNames(
                           projectcss.all,
-                          sty.freeBox__nDmB
+                          sty.freeBox__tm7Ne
                         )}
                       >
-                        {(_par =>
-                          !_par ? [] : Array.isArray(_par) ? _par : [_par])(
-                          (() => {
-                            try {
-                              return [
-                                {
-                                  text: "امروز/دیروز",
-                                  value: 1
-                                },
-                                {
-                                  text: "۳ روز اخیر",
-                                  value: 3
-                                },
-                                {
-                                  text: "۷ روز اخیر",
-                                  value: 7
-                                },
-                                {
-                                  text: "۳۰ روز اخیر",
-                                  value: 30
-                                }
-                              ];
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return [];
-                              }
-                              throw e;
-                            }
-                          })()
-                        ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                          const currentItem = __plasmic_item_0;
-                          const currentIndex = __plasmic_idx_0;
-                          return (
-                            <Filter
-                              data-plasmic-name={"filter"}
-                              data-plasmic-override={overrides.filter}
-                              active={(() => {
-                                try {
-                                  return currentItem.value === $state.day;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return [];
-                                  }
-                                  throw e;
-                                }
-                              })()}
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__fc4Id
+                          )}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__bca2T
+                            )}
+                          >
+                            <ApiRequest
+                              data-plasmic-name={"pageViewApi"}
+                              data-plasmic-override={overrides.pageViewApi}
                               className={classNames(
                                 "__wab_instance",
-                                sty.filter
+                                sty.pageViewApi
                               )}
-                              key={currentIndex}
-                              onClick={async () => {
-                                const $steps = {};
-
-                                $steps["updateDay"] = true
-                                  ? (() => {
-                                      const actionArgs = {
-                                        variable: {
-                                          objRoot: $state,
-                                          variablePath: ["day"]
-                                        },
-                                        operation: 0,
-                                        value: currentItem.value
-                                      };
-                                      return (({
-                                        variable,
-                                        value,
-                                        startIndex,
-                                        deleteCount
-                                      }) => {
-                                        if (!variable) {
-                                          return;
-                                        }
-                                        const { objRoot, variablePath } =
-                                          variable;
-
-                                        $stateSet(objRoot, variablePath, value);
-                                        return value;
-                                      })?.apply(null, [actionArgs]);
-                                    })()
-                                  : undefined;
-                                if (
-                                  $steps["updateDay"] != null &&
-                                  typeof $steps["updateDay"] === "object" &&
-                                  typeof $steps["updateDay"].then === "function"
-                                ) {
-                                  $steps["updateDay"] = await $steps[
-                                    "updateDay"
-                                  ];
-                                }
-                              }}
-                              text={(() => {
+                              errorDisplay={
+                                <Stack__
+                                  as={"div"}
+                                  hasGap={true}
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__b3Knp
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text___4YVw
+                                    )}
+                                  >
+                                    {
+                                      "\u0628\u0627\u0632\u062f\u06cc\u062f \u0627\u0632 \u0635\u0641\u062d\u0627\u062a"
+                                    }
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__tvlJu
+                                    )}
+                                  >
+                                    {
+                                      "\u0645\u06cc\u0632\u0627\u0646 \u0628\u0627\u0632\u062f\u06cc\u062f \u062f\u0631 \u06f3\u06f0 \u0631\u0648\u0632 \u06af\u0630\u0634\u062a\u0647"
+                                    }
+                                  </div>
+                                  <Stack__
+                                    as={"div"}
+                                    hasGap={true}
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__qDf0A
+                                    )}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__kfIja
+                                      )}
+                                    >
+                                      {"\u06f0"}
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__yEyk
+                                      )}
+                                    >
+                                      {"\u0628\u0627\u0632\u062f\u06cc\u062f"}
+                                    </div>
+                                  </Stack__>
+                                </Stack__>
+                              }
+                              loadingDisplay={
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__p5WL7
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text___4LQlp
+                                    )}
+                                  >
+                                    {
+                                      "\u0628\u0627\u0632\u062f\u06cc\u062f \u0627\u0632 \u0635\u0641\u062d\u0627\u062a"
+                                    }
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__d0Z0
+                                    )}
+                                  >
+                                    {
+                                      "\u0645\u06cc\u0632\u0627\u0646 \u0628\u0627\u0632\u062f\u06cc\u062f \u062f\u0631 \u06f3\u06f0 \u0631\u0648\u0632 \u06af\u0630\u0634\u062a\u0647"
+                                    }
+                                  </div>
+                                  <Stack__
+                                    as={"div"}
+                                    hasGap={true}
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__wq9IF
+                                    )}
+                                  >
+                                    <Icon15Icon
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.svg__jwkEj
+                                      )}
+                                      role={"img"}
+                                    />
+                                  </Stack__>
+                                </div>
+                              }
+                              method={"GET"}
+                              onError={generateStateOnChangeProp($state, [
+                                "pageViewApi",
+                                "error"
+                              ])}
+                              onLoading={generateStateOnChangeProp($state, [
+                                "pageViewApi",
+                                "loading"
+                              ])}
+                              onSuccess={generateStateOnChangeProp($state, [
+                                "pageViewApi",
+                                "data"
+                              ])}
+                              url={(() => {
                                 try {
-                                  return currentItem.text;
+                                  return (() => {
+                                    if ($state.menu === -1) {
+                                      return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/analytics/?days_ago=30`;
+                                    }
+                                    return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/menus/${$state.menu}/analytics/?days_ago=30`;
+                                  })();
                                 } catch (e) {
                                   if (
                                     e instanceof TypeError ||
@@ -764,212 +869,783 @@ function PlasmicStatistics__RenderFunc(props: {
                                   throw e;
                                 }
                               })()}
-                            />
-                          );
-                        })}
-                      </Stack__>
-                    </div>
-                    <FetchData
-                      data-plasmic-name={"fetchData2"}
-                      data-plasmic-override={overrides.fetchData2}
-                      className={classNames("__wab_instance", sty.fetchData2)}
-                      loadingStatus={
-                        <Icon15Icon
-                          className={classNames(
-                            projectcss.all,
-                            sty.svg___3T8ZG
-                          )}
-                          role={"img"}
-                        />
-                      }
-                      onDataChange={generateStateOnChangeProp($state, [
-                        "fetchData2",
-                        "data"
-                      ])}
-                      onLoadingChange={generateStateOnChangeProp($state, [
-                        "fetchData2",
-                        "loading"
-                      ])}
-                      url={(() => {
-                        try {
-                          return (() => {
-                            if ($state.menu === -1) {
-                              return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/analytics/?days_ago=${$state.day}`;
-                            }
-                            return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/menus/${$state.menu}/analytics/?days_ago=${$state.day}`;
-                          })();
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return undefined;
-                          }
-                          throw e;
-                        }
-                      })()}
-                    >
-                      {(() => {
-                        try {
-                          return $state.fetchData2.data?.length != 0;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return false;
-                          }
-                          throw e;
-                        }
-                      })() ? (
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__tm7Ne
-                          )}
-                        >
+                            >
+                              <Stack__
+                                as={"div"}
+                                hasGap={true}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox___167Xt
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__azACw
+                                  )}
+                                >
+                                  {
+                                    "\u0628\u0627\u0632\u062f\u06cc\u062f \u0627\u0632 \u0635\u0641\u062d\u0627\u062a"
+                                  }
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text___08At
+                                  )}
+                                >
+                                  {
+                                    "\u0645\u06cc\u0632\u0627\u0646 \u0628\u0627\u0632\u062f\u06cc\u062f \u062f\u0631 \u06f3\u06f0 \u0631\u0648\u0632 \u06af\u0630\u0634\u062a\u0647"
+                                  }
+                                </div>
+                                <Stack__
+                                  as={"div"}
+                                  hasGap={true}
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__fh7Qo
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__qBk6W
+                                    )}
+                                  >
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return new Intl.NumberFormat(
+                                            "fa-IR"
+                                          ).format(
+                                            $state.pageViewApi.data?.length
+                                          );
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "\u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__jLo5
+                                    )}
+                                  >
+                                    {"\u0628\u0627\u0632\u062f\u06cc\u062f"}
+                                  </div>
+                                </Stack__>
+                              </Stack__>
+                            </ApiRequest>
+                          </div>
                           <div
                             className={classNames(
                               projectcss.all,
-                              sty.freeBox__fc4Id
+                              sty.freeBox__xK8V3
                             )}
                           >
-                            <Stack__
-                              as={"div"}
-                              hasGap={true}
+                            <ApiRequest
+                              data-plasmic-name={"activeUserApi"}
+                              data-plasmic-override={overrides.activeUserApi}
                               className={classNames(
-                                projectcss.all,
-                                sty.freeBox__aucTw
+                                "__wab_instance",
+                                sty.activeUserApi
                               )}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__yrZu2
-                                )}
-                              >
-                                {
-                                  "\u0628\u0627\u0632\u062f\u06cc\u062f \u0627\u0632 \u0635\u0641\u062d\u0627\u062a"
+                              errorDisplay={
+                                <Stack__
+                                  as={"div"}
+                                  hasGap={true}
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__d3M2H
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__tgRwa
+                                    )}
+                                  >
+                                    {
+                                      "\u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644"
+                                    }
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__twFwy
+                                    )}
+                                  >
+                                    {
+                                      "\u062a\u0639\u062f\u0627\u062f \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u06cc\u06a9\u062a\u0627 \u062f\u0631 \u06f3\u06f0 \u0631\u0648\u0632 \u06af\u0630\u0634\u062a\u0647"
+                                    }
+                                  </div>
+                                  <Stack__
+                                    as={"div"}
+                                    hasGap={true}
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__aovi9
+                                    )}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__yrbVa
+                                      )}
+                                    >
+                                      {"\u06f0"}
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__qss5Q
+                                      )}
+                                    >
+                                      {"\u06a9\u0627\u0631\u0628\u0631"}
+                                    </div>
+                                  </Stack__>
+                                </Stack__>
+                              }
+                              loadingDisplay={
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__usmKj
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__f7DuK
+                                    )}
+                                  >
+                                    {
+                                      "\u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644"
+                                    }
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__esj6Y
+                                    )}
+                                  >
+                                    {
+                                      "\u062a\u0639\u062f\u0627\u062f \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u06cc\u06a9\u062a\u0627 \u062f\u0631 \u06f3\u06f0 \u0631\u0648\u0632 \u06af\u0630\u0634\u062a\u0647"
+                                    }
+                                  </div>
+                                  <Stack__
+                                    as={"div"}
+                                    hasGap={true}
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox___1Hfuf
+                                    )}
+                                  >
+                                    <Icon15Icon
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.svg__xt4Mh
+                                      )}
+                                      role={"img"}
+                                    />
+                                  </Stack__>
+                                </div>
+                              }
+                              method={"GET"}
+                              onError={generateStateOnChangeProp($state, [
+                                "activeUserApi",
+                                "error"
+                              ])}
+                              onLoading={generateStateOnChangeProp($state, [
+                                "activeUserApi",
+                                "loading"
+                              ])}
+                              onSuccess={generateStateOnChangeProp($state, [
+                                "activeUserApi",
+                                "data"
+                              ])}
+                              url={(() => {
+                                try {
+                                  return (() => {
+                                    if ($state.menu === -1) {
+                                      return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/analytics/?days_ago=30&active_user=true`;
+                                    }
+                                    return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/menus/${$state.menu}/analytics/?days_ago=30&active_user=true`;
+                                  })();
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
                                 }
-                              </div>
+                              })()}
+                            >
                               <Stack__
                                 as={"div"}
                                 hasGap={true}
                                 className={classNames(
                                   projectcss.all,
-                                  sty.freeBox__qe5T8
+                                  sty.freeBox__m4Sx
                                 )}
                               >
                                 <div
                                   className={classNames(
                                     projectcss.all,
                                     projectcss.__wab_text,
-                                    sty.text__ygnJs
+                                    sty.text___6S7HZ
                                   )}
                                 >
-                                  <React.Fragment>
-                                    {(() => {
-                                      try {
-                                        return new Intl.NumberFormat(
-                                          "fa-IR"
-                                        ).format(
-                                          $state.fetchData2.data?.length
-                                        );
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return "\u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644";
+                                  {
+                                    "\u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644"
+                                  }
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__rBk
+                                  )}
+                                >
+                                  {
+                                    "\u062a\u0639\u062f\u0627\u062f \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u06cc\u06a9\u062a\u0627 \u062f\u0631 \u06f3\u06f0 \u0631\u0648\u0632 \u06af\u0630\u0634\u062a\u0647"
+                                  }
+                                </div>
+                                <Stack__
+                                  as={"div"}
+                                  hasGap={true}
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__fO60
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__peQHt
+                                    )}
+                                  >
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return $state.pageViewApi.data
+                                            .filter(
+                                              (item, index, self) =>
+                                                self.findIndex(
+                                                  t =>
+                                                    t.user_id === item.user_id
+                                                ) === index
+                                            )
+                                            .length.toLocaleString("fa");
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "\u06f0";
+                                          }
+                                          throw e;
                                         }
-                                        throw e;
-                                      }
-                                    })()}
-                                  </React.Fragment>
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__le6Vk
-                                  )}
-                                >
-                                  {"\u0628\u0627\u0632\u062f\u06cc\u062f"}
-                                </div>
+                                      })()}
+                                    </React.Fragment>
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__wkzuM
+                                    )}
+                                  >
+                                    {"\u06a9\u0627\u0631\u0628\u0631"}
+                                  </div>
+                                </Stack__>
                               </Stack__>
-                            </Stack__>
-                            <Stack__
-                              as={"div"}
-                              hasGap={true}
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__miSvp
-                              )}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text___6S7HZ
-                                )}
-                              >
-                                {
-                                  "\u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644"
-                                }
-                              </div>
-                              <Stack__
-                                as={"div"}
-                                hasGap={true}
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.freeBox__tJfm
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__kt3N0
-                                  )}
-                                >
-                                  <React.Fragment>
-                                    {(() => {
-                                      try {
-                                        return $state.fetchData2.data
-                                          .filter(
-                                            (item, index, self) =>
-                                              self.findIndex(
-                                                t => t.user_id === item.user_id
-                                              ) === index
-                                          )
-                                          .length.toLocaleString("fa");
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return "\u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644";
-                                        }
-                                        throw e;
-                                      }
-                                    })()}
-                                  </React.Fragment>
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__ea9Iq
-                                  )}
-                                >
-                                  {"\u06a9\u0627\u0631\u0628\u0631"}
-                                </div>
-                              </Stack__>
-                            </Stack__>
+                            </ApiRequest>
                           </div>
+                          {(() => {
+                            try {
+                              return $state.menu == -1;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return true;
+                              }
+                              throw e;
+                            }
+                          })() ? (
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__jDagA
+                              )}
+                            >
+                              <ApiRequest
+                                data-plasmic-name={"fragmentApiRequest2"}
+                                data-plasmic-override={
+                                  overrides.fragmentApiRequest2
+                                }
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.fragmentApiRequest2
+                                )}
+                                errorDisplay={
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__msCuv
+                                    )}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__enJuP
+                                      )}
+                                    >
+                                      {"\u062f\u0631\u0622\u0645\u062f"}
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__gYxqP
+                                      )}
+                                    >
+                                      {
+                                        "\u062f\u0631\u0622\u0645\u062f \u06a9\u0633\u0628 \u0634\u062f\u0647 \u0627\u0632 \u0627\u0628\u0632\u0627\u0631\u06a9"
+                                      }
+                                    </div>
+                                    <Stack__
+                                      as={"div"}
+                                      hasGap={true}
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__l5H0H
+                                      )}
+                                    >
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          projectcss.__wab_text,
+                                          sty.text__jNZz
+                                        )}
+                                      >
+                                        {"\u06f0"}
+                                      </div>
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          projectcss.__wab_text,
+                                          sty.text__zVn2F
+                                        )}
+                                      >
+                                        {"\u062a\u0648\u0645\u0627\u0646"}
+                                      </div>
+                                    </Stack__>
+                                  </div>
+                                }
+                                loadingDisplay={
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__msCga
+                                    )}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__hw3Ls
+                                      )}
+                                    >
+                                      {"\u062f\u0631\u0622\u0645\u062f"}
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text___5Ymdr
+                                      )}
+                                    >
+                                      {
+                                        "\u062f\u0631\u0622\u0645\u062f \u06a9\u0633\u0628 \u0634\u062f\u0647 \u0627\u0632 \u0627\u0628\u0632\u0627\u0631\u06a9"
+                                      }
+                                    </div>
+                                    <Stack__
+                                      as={"div"}
+                                      hasGap={true}
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__sIMoH
+                                      )}
+                                    >
+                                      <Icon15Icon
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.svg__eEwS
+                                        )}
+                                        role={"img"}
+                                      />
+                                    </Stack__>
+                                  </div>
+                                }
+                                method={"GET"}
+                                onError={generateStateOnChangeProp($state, [
+                                  "fragmentApiRequest2",
+                                  "error"
+                                ])}
+                                onLoading={generateStateOnChangeProp($state, [
+                                  "fragmentApiRequest2",
+                                  "loading"
+                                ])}
+                                onSuccess={generateStateOnChangeProp($state, [
+                                  "fragmentApiRequest2",
+                                  "data"
+                                ])}
+                                url={(() => {
+                                  try {
+                                    return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/incomes`;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__d9Vx
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__cu8Iw
+                                    )}
+                                  >
+                                    {"\u062f\u0631\u0622\u0645\u062f"}
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__bbZd5
+                                    )}
+                                  >
+                                    {
+                                      "\u062f\u0631\u0622\u0645\u062f \u06a9\u0633\u0628 \u0634\u062f\u0647 \u0627\u0632 \u0627\u0628\u0632\u0627\u0631\u06a9"
+                                    }
+                                  </div>
+                                  <Stack__
+                                    as={"div"}
+                                    hasGap={true}
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__hxBE
+                                    )}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__glozv
+                                      )}
+                                    >
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return new Intl.NumberFormat(
+                                              "fa-IR"
+                                            ).format(
+                                              (
+                                                $state.fragmentApiRequest2.data
+                                                  ?.amount ?? 0
+                                              )
+                                                .toString()
+                                                .slice(0, -1)
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "\u06f0";
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      </React.Fragment>
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__dpUyq
+                                      )}
+                                    >
+                                      {"\u062a\u0648\u0645\u0627\u0646"}
+                                    </div>
+                                  </Stack__>
+                                </div>
+                              </ApiRequest>
+                            </div>
+                          ) : null}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__reWz8
+                          )}
+                        >
+                          <Stack__
+                            as={"div"}
+                            hasGap={true}
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__nDmB
+                            )}
+                          >
+                            {(_par =>
+                              !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                              (() => {
+                                try {
+                                  return [
+                                    {
+                                      text: "امروز/دیروز",
+                                      value: 1
+                                    },
+                                    {
+                                      text: "۳ روز اخیر",
+                                      value: 3
+                                    },
+                                    {
+                                      text: "۷ روز اخیر",
+                                      value: 7
+                                    },
+                                    {
+                                      text: "۳۰ روز اخیر",
+                                      value: 30
+                                    }
+                                  ];
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return [];
+                                  }
+                                  throw e;
+                                }
+                              })()
+                            ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                              const currentItem = __plasmic_item_0;
+                              const currentIndex = __plasmic_idx_0;
+                              return (
+                                <Filter
+                                  data-plasmic-name={"filter"}
+                                  data-plasmic-override={overrides.filter}
+                                  active={(() => {
+                                    try {
+                                      return currentItem.value === $state.day;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return [];
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.filter
+                                  )}
+                                  key={currentIndex}
+                                  onClick={async () => {
+                                    const $steps = {};
+
+                                    $steps["updateDay"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: ["day"]
+                                            },
+                                            operation: 0,
+                                            value: currentItem.value
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
+
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              value
+                                            );
+                                            return value;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["updateDay"] != null &&
+                                      typeof $steps["updateDay"] === "object" &&
+                                      typeof $steps["updateDay"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["updateDay"] = await $steps[
+                                        "updateDay"
+                                      ];
+                                    }
+                                  }}
+                                  text={(() => {
+                                    try {
+                                      return currentItem.text;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                />
+                              );
+                            })}
+                          </Stack__>
+                        </div>
+                        <FetchData
+                          data-plasmic-name={"fetchData2"}
+                          data-plasmic-override={overrides.fetchData2}
+                          className={classNames(
+                            "__wab_instance",
+                            sty.fetchData2
+                          )}
+                          loadingStatus={
+                            <Icon15Icon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg___3T8ZG
+                              )}
+                              role={"img"}
+                            />
+                          }
+                          onDataChange={generateStateOnChangeProp($state, [
+                            "fetchData2",
+                            "data"
+                          ])}
+                          onLoadingChange={generateStateOnChangeProp($state, [
+                            "fetchData2",
+                            "loading"
+                          ])}
+                          url={(() => {
+                            try {
+                              return (() => {
+                                if ($state.menu === -1) {
+                                  return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/analytics/?days_ago=${$state.day}`;
+                                }
+                                return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/menus/${$state.menu}/analytics/?days_ago=${$state.day}`;
+                              })();
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()}
+                        >
+                          {(() => {
+                            try {
+                              return $state.fetchData2.data?.length == 0;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return true;
+                              }
+                              throw e;
+                            }
+                          })() ? (
+                            <Stack__
+                              as={"div"}
+                              hasGap={true}
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__t4Zgx
+                              )}
+                            >
+                              <Icon18Icon
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.svg__hCh1A
+                                )}
+                                role={"img"}
+                              />
+
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__poXpJ
+                                )}
+                              >
+                                {
+                                  "\u0622\u0645\u0627\u0631\u06cc \u062f\u0631 \u0627\u06cc\u0646 \u062a\u0627\u0631\u06cc\u062e \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u062f."
+                                }
+                              </div>
+                            </Stack__>
+                          ) : null}
                           <div
                             className={classNames(
                               projectcss.all,
@@ -1654,51 +2330,9 @@ function PlasmicStatistics__RenderFunc(props: {
                               />
                             </div>
                           </div>
-                        </div>
-                      ) : null}
-                      {(() => {
-                        try {
-                          return $state.fetchData2.data?.length == 0;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })() ? (
-                        <Stack__
-                          as={"div"}
-                          hasGap={true}
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__t4Zgx
-                          )}
-                        >
-                          <Icon18Icon
-                            className={classNames(
-                              projectcss.all,
-                              sty.svg__hCh1A
-                            )}
-                            role={"img"}
-                          />
-
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__poXpJ
-                            )}
-                          >
-                            {
-                              "\u0622\u0645\u0627\u0631\u06cc \u062f\u0631 \u0627\u06cc\u0646 \u062a\u0627\u0631\u06cc\u062e \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u062f."
-                            }
-                          </div>
-                        </Stack__>
-                      ) : null}
-                    </FetchData>
+                        </FetchData>
+                      </div>
+                    ) : null}
                   </Stack__>
                 </div>
               </div>
@@ -1717,13 +2351,36 @@ const PlasmicDescendants = {
     "authProvider",
     "layout",
     "fetchData",
+    "pageViewApi",
+    "activeUserApi",
+    "fragmentApiRequest2",
     "filter",
     "fetchData2"
   ],
   embedHtml: ["embedHtml"],
-  authProvider: ["authProvider", "layout", "fetchData", "filter", "fetchData2"],
-  layout: ["layout", "fetchData", "filter", "fetchData2"],
+  authProvider: [
+    "authProvider",
+    "layout",
+    "fetchData",
+    "pageViewApi",
+    "activeUserApi",
+    "fragmentApiRequest2",
+    "filter",
+    "fetchData2"
+  ],
+  layout: [
+    "layout",
+    "fetchData",
+    "pageViewApi",
+    "activeUserApi",
+    "fragmentApiRequest2",
+    "filter",
+    "fetchData2"
+  ],
   fetchData: ["fetchData"],
+  pageViewApi: ["pageViewApi"],
+  activeUserApi: ["activeUserApi"],
+  fragmentApiRequest2: ["fragmentApiRequest2"],
   filter: ["filter"],
   fetchData2: ["fetchData2"]
 } as const;
@@ -1736,6 +2393,9 @@ type NodeDefaultElementType = {
   authProvider: typeof AuthProvider;
   layout: typeof Layout;
   fetchData: typeof FetchData;
+  pageViewApi: typeof ApiRequest;
+  activeUserApi: typeof ApiRequest;
+  fragmentApiRequest2: typeof ApiRequest;
   filter: typeof Filter;
   fetchData2: typeof FetchData;
 };
@@ -1804,6 +2464,9 @@ export const PlasmicStatistics = Object.assign(
     authProvider: makeNodeComponent("authProvider"),
     layout: makeNodeComponent("layout"),
     fetchData: makeNodeComponent("fetchData"),
+    pageViewApi: makeNodeComponent("pageViewApi"),
+    activeUserApi: makeNodeComponent("activeUserApi"),
+    fragmentApiRequest2: makeNodeComponent("fragmentApiRequest2"),
     filter: makeNodeComponent("filter"),
     fetchData2: makeNodeComponent("fetchData2"),
 
