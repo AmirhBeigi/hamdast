@@ -58,3 +58,54 @@ export const generateUniqueId = (length: number) => {
 
   return result;
 };
+
+export function addAndUpdateQueryParam(
+  url: string,
+  key: string,
+  value: string
+): string {
+  // Encode the key and value to ensure special characters are handled
+  const encodedKey = encodeURIComponent(key);
+  const encodedValue = encodeURIComponent(value);
+
+  // Split the URL into [base + query, fragment]
+  const [baseAndQuery, fragment] = url.split("#");
+
+  // Split baseAndQuery into [base, query]
+  const [base, query] = baseAndQuery.split("?");
+
+  // Initialize an array to hold query parameters
+  const params: string[] = query ? query.split("&") : [];
+
+  // Flag to check if the key exists
+  let keyExists = false;
+
+  // Iterate over existing parameters to find and update the key
+  const updatedParams = params.map((param) => {
+    const [currentKey, currentValue] = param.split("=");
+    if (decodeURIComponent(currentKey) === key) {
+      keyExists = true;
+      return `${encodedKey}=${encodedValue}`;
+    }
+    return param;
+  });
+
+  // If the key does not exist, append it
+  if (!keyExists) {
+    updatedParams.push(`${encodedKey}=${encodedValue}`);
+  }
+
+  // Reconstruct the query string
+  const newQuery = updatedParams.join("&");
+
+  // Reconstruct the full URL
+  let updatedUrl = base;
+  if (newQuery) {
+    updatedUrl += `?${newQuery}`;
+  }
+  if (fragment) {
+    updatedUrl += `#${fragment}`;
+  }
+
+  return updatedUrl;
+}

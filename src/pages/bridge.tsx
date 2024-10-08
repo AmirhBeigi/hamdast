@@ -3,7 +3,7 @@ import { getState } from "@/lib/bridge/getState";
 import { saveReplay } from "@/lib/bridge/saveReplay";
 import { sessionToken } from "@/lib/bridge/sessionToken";
 import { usersDurationLog } from "@/lib/bridge/usersDurationLog";
-import { generateUniqueId } from "@/lib/utils";
+import { addAndUpdateQueryParam, generateUniqueId } from "@/lib/utils";
 import { useRouter } from "next/router";
 import { useEffect, useRef } from "react";
 
@@ -18,10 +18,18 @@ function Bridge() {
 
   let embedSrc: any;
   if (isReady && src) {
-    embedSrc = new URL(src ? (src as string) : "");
-    embedSrc.searchParams.append("client_key", client_key as string);
-    embedSrc.searchParams.append("hamdast_embedded", "1");
-    embedSrc.searchParams.append("user_id", user_id);
+    embedSrc = src ? (src as string) : "";
+    embedSrc = addAndUpdateQueryParam(
+      embedSrc,
+      "client_key",
+      client_key as string
+    );
+    embedSrc = addAndUpdateQueryParam(embedSrc, "hamdast_embedded", "true");
+    embedSrc = addAndUpdateQueryParam(
+      embedSrc,
+      "user_id",
+      user_id?.toString() ?? ""
+    );
   }
 
   const sendEvent = async (event: any) => {
