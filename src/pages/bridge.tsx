@@ -32,6 +32,8 @@ function Bridge() {
     );
   }
 
+  console.log(embedSrc);
+
   const sendEvent = async (event: any) => {
     const data = await getState[event?.data?.state as "user" | "provider"]();
     iframe.current?.contentWindow?.postMessage(
@@ -98,12 +100,12 @@ function Bridge() {
     };
   }, [app, menu, page]);
 
-  if (!embedSrc?.href) return null;
+  if (!embedSrc) return null;
   return (
     <>
       <iframe
         ref={iframe as any}
-        src={embedSrc?.href}
+        src={embedSrc}
         className="w-screen h-screen"
       />
     </>
