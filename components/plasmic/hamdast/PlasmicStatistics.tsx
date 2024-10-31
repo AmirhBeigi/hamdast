@@ -2466,7 +2466,7 @@ export const PlasmicStatistics = Object.assign(
 
     // Page metadata
     pageMetadata: {
-      title: "رفتار کاربران",
+      title: "آمار ابزارک",
       description: "",
       ogImageSrc: "",
       canonical: ""
