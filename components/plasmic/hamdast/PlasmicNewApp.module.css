@@ -406,17 +406,6 @@
   margin-bottom: 2px;
   min-width: 0;
 }
-.text__zZr7Y {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  font-size: 12px;
-  opacity: 0.7;
-  font-weight: 400;
-  margin-bottom: 8px;
-  min-width: 0;
-}
 .nameInput:global(.__wab_instance) {
   object-fit: cover;
   width: 100%;
@@ -679,4 +668,8 @@
   object-fit: cover;
   width: auto;
   height: 1em;
+}
+._switch:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
 }

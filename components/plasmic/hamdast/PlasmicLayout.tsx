@@ -70,8 +70,6 @@ import sty from "./PlasmicLayout.module.css"; // plasmic-import: ve2FygUyzJYe/cs
 
 import Icon12Icon from "./icons/PlasmicIcon__Icon12"; // plasmic-import: uNpsRe8HBlEO/icon
 import Icon7Icon from "./icons/PlasmicIcon__Icon7"; // plasmic-import: 1XPNabWn6mUI/icon
-import Icon4Icon from "./icons/PlasmicIcon__Icon4"; // plasmic-import: 9cwvqG5olU4z/icon
-import Icon8Icon from "./icons/PlasmicIcon__Icon8"; // plasmic-import: lYMiBDxqu5ly/icon
 import Icon25Icon from "./icons/PlasmicIcon__Icon25"; // plasmic-import: AGSEC-pNDNUM/icon
 import Icon9Icon from "./icons/PlasmicIcon__Icon9"; // plasmic-import: ly5Yl8idG7m1/icon
 import Icon13Icon from "./icons/PlasmicIcon__Icon13"; // plasmic-import: SeV8a-Sb0Haa/icon
@@ -493,125 +491,6 @@ function PlasmicLayout__RenderFunc(props: {
                   $steps["updateMenu"] = await $steps["updateMenu"];
                 }
               }}
-            />
-
-            <Menu
-              active={(() => {
-                try {
-                  return $state.menu == "Replay";
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return [];
-                  }
-                  throw e;
-                }
-              })()}
-              className={classNames("__wab_instance", sty.menu__n8Ij)}
-              disabled={true}
-              iconWrapper={
-                <Icon4Icon
-                  className={classNames(projectcss.all, sty.svg__d8RH)}
-                  role={"img"}
-                />
-              }
-              name={
-                "\u0631\u0641\u062a\u0627\u0631 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646"
-              }
-              onClick={async () => {
-                const $steps = {};
-
-                $steps["goToSessionReplay"] = false
-                  ? (() => {
-                      const actionArgs = {
-                        destination: `/apps/${(() => {
-                          try {
-                            return $props.selectedApp;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
-                            }
-                            throw e;
-                          }
-                        })()}/replay`
-                      };
-                      return (({ destination }) => {
-                        if (
-                          typeof destination === "string" &&
-                          destination.startsWith("#")
-                        ) {
-                          document
-                            .getElementById(destination.substr(1))
-                            .scrollIntoView({ behavior: "smooth" });
-                        } else {
-                          __nextRouter?.push(destination);
-                        }
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["goToSessionReplay"] != null &&
-                  typeof $steps["goToSessionReplay"] === "object" &&
-                  typeof $steps["goToSessionReplay"].then === "function"
-                ) {
-                  $steps["goToSessionReplay"] = await $steps[
-                    "goToSessionReplay"
-                  ];
-                }
-
-                $steps["updateMenu"] = false
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["menu"]
-                        },
-                        operation: 0,
-                        value: "Replay"
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["updateMenu"] != null &&
-                  typeof $steps["updateMenu"] === "object" &&
-                  typeof $steps["updateMenu"].then === "function"
-                ) {
-                  $steps["updateMenu"] = await $steps["updateMenu"];
-                }
-              }}
-            />
-
-            <Menu
-              className={classNames("__wab_instance", sty.menu__s5Ho)}
-              disabled={true}
-              iconWrapper={
-                <Icon8Icon
-                  className={classNames(projectcss.all, sty.svg__ybhO)}
-                  role={"img"}
-                />
-              }
-              name={
-                "\u0627\u0637\u0644\u0627\u0639\u200c\u0631\u0633\u0627\u0646\u06cc"
-              }
             />
 
             {(() => {

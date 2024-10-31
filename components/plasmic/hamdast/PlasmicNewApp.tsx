@@ -66,6 +66,7 @@ import { Input } from "@/fragment/components/input"; // plasmic-import: AWE69UKw
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
 import AppType from "../../AppType"; // plasmic-import: N2XFsVyv799E/component
 import Button from "../../Button"; // plasmic-import: _T6T2fNvkUfo/component
+import { Switch } from "@/fragment/components/switch"; // plasmic-import: Zc1MrGUtH5nc/codeComponent
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -99,6 +100,7 @@ export type PlasmicNewApp__OverridesType = {
   keyInput?: Flex__<typeof Input>;
   fragmentApiRequest?: Flex__<typeof ApiRequest>;
   button?: Flex__<typeof Button>;
+  _switch?: Flex__<typeof Switch>;
 };
 
 export interface DefaultNewAppProps {}
@@ -198,6 +200,12 @@ function PlasmicNewApp__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "_switch.checked",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -544,17 +552,6 @@ function PlasmicNewApp__RenderFunc(props: {
                         >
                           {
                             "\u06cc\u06a9 \u0646\u0627\u0645 \u0628\u0647 \u0641\u0627\u0631\u0633\u06cc \u0628\u0631\u0627\u06cc \u0627\u0628\u0632\u0627\u0631\u06a9 \u062e\u0648\u062f \u0628\u06af\u0630\u0627\u0631\u06cc\u062f\u060c \u0627\u06cc\u0646 \u0646\u0627\u0645 \u0628\u0647 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0646\u0645\u0627\u06cc\u0634 \u062f\u0627\u062f\u0647 \u0645\u06cc\u200c\u0634\u0648\u062f."
-                          }
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__zZr7Y
-                          )}
-                        >
-                          {
-                            "\u0627\u06cc\u0646 \u0646\u0627\u0645 \u0627\u0628\u0632\u0627\u0631\u06a9 \u0634\u0645\u0627\u0633\u062a\u060c \u0644\u0637\u0641\u0627 \u0646\u0627\u0645 \u0635\u0641\u062d\u0647 \u0647\u0627 \u06cc\u0627 \u0645\u0646\u0648\u0647\u0627\u06cc \u062e\u0648\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u06a9\u0646\u06cc\u062f."
                           }
                         </div>
                         <Input
@@ -1320,6 +1317,16 @@ function PlasmicNewApp__RenderFunc(props: {
               </Reveal>
             </div>
           </AuthProvider>
+          <Switch
+            data-plasmic-name={"_switch"}
+            data-plasmic-override={overrides._switch}
+            checked={generateStateValueProp($state, ["_switch", "checked"])}
+            className={classNames("__wab_instance", sty._switch)}
+            onCheckedChange={generateStateOnChangeProp($state, [
+              "_switch",
+              "checked"
+            ])}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -1337,7 +1344,8 @@ const PlasmicDescendants = {
     "nameInput",
     "keyInput",
     "fragmentApiRequest",
-    "button"
+    "button",
+    "_switch"
   ],
   embedHtml: ["embedHtml"],
   authProvider: [
@@ -1356,7 +1364,8 @@ const PlasmicDescendants = {
   nameInput: ["nameInput"],
   keyInput: ["keyInput"],
   fragmentApiRequest: ["fragmentApiRequest"],
-  button: ["button"]
+  button: ["button"],
+  _switch: ["_switch"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1372,6 +1381,7 @@ type NodeDefaultElementType = {
   keyInput: typeof Input;
   fragmentApiRequest: typeof ApiRequest;
   button: typeof Button;
+  _switch: typeof Switch;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1443,6 +1453,7 @@ export const PlasmicNewApp = Object.assign(
     keyInput: makeNodeComponent("keyInput"),
     fragmentApiRequest: makeNodeComponent("fragmentApiRequest"),
     button: makeNodeComponent("button"),
+    _switch: makeNodeComponent("_switch"),
 
     // Metadata about props expected for PlasmicNewApp
     internalVariantProps: PlasmicNewApp__VariantProps,
