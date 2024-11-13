@@ -110,6 +110,28 @@ export default async function handler(
       }
 
       const sendNotification = (subscribers: string[]) => {
+        try {
+          axios.post(
+            "https://hamdast-splunk-hec.paziresh24.com/services/collector",
+            {
+              sourcetype: "_json",
+              event: {
+                event_group: "send-notification-to-najva",
+                subscribers_length: subscribers?.length,
+                app_id,
+                user_id,
+                data: {
+                  ...rest,
+                },
+              },
+            },
+            {
+              headers: {
+                Authorization: "Splunk f6d1835a-30f4-4b7c-b76e-7360ff4ce70e",
+              },
+            }
+          );
+        } catch (error) {}
         return axios.post(
           "https://app.najva.com/api/v2/notification/management/send-direct/",
           {

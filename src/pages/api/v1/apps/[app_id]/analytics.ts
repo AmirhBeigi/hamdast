@@ -25,6 +25,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
+  pb.autoCancellation(false);
   await NextCors(req, res, {
     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
     origin: new RegExp(".paziresh24."),
@@ -48,6 +49,12 @@ export default async function handler(
   );
   const user = paziresh24User.data?.users[0];
 
+  if (!user) {
+    return res.status(401).json({
+      message: "Authentication credentials were not provided.",
+    });
+  }
+
   if (req.method === "GET") {
     await pb.admins.authWithPassword(
       publicRuntimeConfig.POCKETBASE_USER_NAME,
@@ -61,8 +68,12 @@ export default async function handler(
       });
 
     if (!record) {
-      return res.status(401).json({});
+      return res.status(401).json({
+        message: "Authentication credentials were not provided.",
+      });
     }
+
+    console.log({ user });
 
     const options = {
       method: "POST",
@@ -72,14 +83,30 @@ export default async function handler(
         "Content-Type": "application/json",
       },
       data: {
-        query: `select * from activeusers where app = '${app_id}'`,
-        startTime: `${getDateDaysAgo(days_ago as string)}T00:00:00+00:00`,
+        query: `EXPLAIN ANALYZE select * from activeusers where app = '${app_id}'`,
+        startTime: new Date(
+          `${getDateDaysAgo(days_ago as string)}`
+        ).toISOString(),
         endTime: new Date().toISOString(),
       },
     };
 
-    const queryData = await axios.request(options);
+    console.log({
+      query: `select count(*) as count from activeusers where app = '${app_id}'`,
+      startTime: new Date(
+        `${getDateDaysAgo(days_ago as string)}`
+      ).toISOString(),
+      endTime: new Date().toISOString(),
+    });
 
-    return res.status(200).json(queryData?.data ?? []);
+    try {
+      const queryData = await axios.request(options);
+
+      return res.status(200).json(queryData?.data ?? []);
+    } catch (error) {
+      return res.status(502).json({
+        error,
+      });
+    }
   }
 }
