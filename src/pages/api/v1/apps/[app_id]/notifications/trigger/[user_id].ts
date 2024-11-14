@@ -110,6 +110,7 @@ export default async function handler(
       }
 
       const sendNotification = (subscribers: string[]) => {
+        if (subscribers?.length === 0) throw Error;
         try {
           axios.post(
             "https://hamdast-splunk-hec.paziresh24.com/services/collector",
@@ -119,6 +120,7 @@ export default async function handler(
                 event_group: "send-notification-to-najva",
                 subscribers_length: subscribers?.length,
                 app_id,
+                api_key: apiKey,
                 user_id,
                 data: {
                   ...rest,
