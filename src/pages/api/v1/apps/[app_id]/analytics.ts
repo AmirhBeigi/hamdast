@@ -5,22 +5,6 @@ import NextCors from "nextjs-cors";
 import { pb } from "../../../../../../pocketbase";
 const { publicRuntimeConfig } = config();
 
-function getDateDaysAgo(daysAgo: string) {
-  // Create a new Date object for the current date
-  const currentDate = new Date();
-
-  // Subtract the specified number of days from the current date
-  currentDate.setDate(currentDate.getDate() - +daysAgo);
-
-  // Get the day, month, and year
-  const day = String(currentDate.getDate()).padStart(2, "0");
-  const month = String(currentDate.getMonth() + 1).padStart(2, "0"); // Months are zero-based
-  const year = currentDate.getFullYear();
-
-  // Return the date in dd-mm-yyyy format
-  return `${year}-${month}-${day}`;
-}
-
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
@@ -33,7 +17,7 @@ export default async function handler(
     optionsSuccessStatus: 200,
     credentials: true,
   });
-  const { app_id, days_ago } = req.query;
+  const { app_id, ...queries } = req.query;
   const cookieStore = req.cookies;
   const token =
     (cookieStore["token"] as string) ||
@@ -73,31 +57,18 @@ export default async function handler(
       });
     }
 
-    console.log({ user });
-
     const options = {
-      method: "POST",
-      url: "https://hamdast-logging.darkube.app/api/v1/query",
+      method: "GET",
+      url: "https://hamdast-workflow.darkube.app/webhook/statistics",
       headers: {
         Authorization: `Basic ${publicRuntimeConfig.HAMDAST_LOGGING_TOKEN}`,
         "Content-Type": "application/json",
       },
-      data: {
-        query: `EXPLAIN ANALYZE select * from activeusers where app = '${app_id}'`,
-        startTime: new Date(
-          `${getDateDaysAgo(days_ago as string)}`
-        ).toISOString(),
-        endTime: new Date().toISOString(),
+      params: {
+        app: app_id,
+        ...queries,
       },
     };
-
-    console.log({
-      query: `select count(*) as count from activeusers where app = '${app_id}'`,
-      startTime: new Date(
-        `${getDateDaysAgo(days_ago as string)}`
-      ).toISOString(),
-      endTime: new Date().toISOString(),
-    });
 
     try {
       const queryData = await axios.request(options);

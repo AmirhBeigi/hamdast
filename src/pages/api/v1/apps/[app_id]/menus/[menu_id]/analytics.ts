@@ -32,7 +32,7 @@ export default async function handler(
     optionsSuccessStatus: 200,
     credentials: true,
   });
-  const { app_id, menu_id, days_ago } = req.query;
+  const { app_id, menu_id, ...queries } = req.query;
   const cookieStore = req.cookies;
   const token =
     (cookieStore["token"] as string) ||
@@ -65,16 +65,16 @@ export default async function handler(
     }
 
     const options = {
-      method: "POST",
-      url: "https://hamdast-logging.darkube.app/api/v1/query",
+      method: "GET",
+      url: "https://hamdast-workflow.darkube.app/webhook/statistics",
       headers: {
         Authorization: `Basic ${publicRuntimeConfig.HAMDAST_LOGGING_TOKEN}`,
         "Content-Type": "application/json",
       },
-      data: {
-        query: `select * from activeusers where app = '${app_id}' and menu = '${menu_id}'`,
-        startTime: `${getDateDaysAgo(days_ago as string)}T00:00:00+00:00`,
-        endTime: new Date().toISOString(),
+      params: {
+        app: app_id,
+        menu: menu_id,
+        ...queries,
       },
     };
 
