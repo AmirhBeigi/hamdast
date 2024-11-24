@@ -55,7 +55,7 @@ export default async function handler(
       "https://apigw.paziresh24.com/v1/auth/me",
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token.trim()}`,
         },
       }
     );
@@ -64,7 +64,7 @@ export default async function handler(
       `https://apigw.paziresh24.com/v1/providers?user_id=${user.id}`,
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token.trim()}`,
         },
       }
     );

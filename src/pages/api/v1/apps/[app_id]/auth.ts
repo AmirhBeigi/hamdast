@@ -50,7 +50,7 @@ export default async function handler(
   const paziresh24User = (await axios
     .get("https://apigw.paziresh24.com/v1/auth/me", {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token?.trim()}`,
       },
     })
     .catch((error) => {
