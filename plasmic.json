@@ -41,7 +41,8 @@
           "componentImportPath": "@plasmicpkgs/react-awesome-reveal"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "sqPBLwEBBKHA2WDuGb17eV",
@@ -131,7 +132,8 @@
           "componentImportPath": "@plasmicpkgs/radix-ui"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "qo5fwZT3vwQ9RjjQNWCz9z",
@@ -256,7 +258,8 @@
           "componentImportPath": "@plasmicpkgs/plasmic-basic-components"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "bE9NMB942w5e6uFrcCxfJN",
@@ -840,7 +843,8 @@
           "componentImportPath": "@plasmicpkgs/react-chartjs-2"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "ohDidvG9XsCeFumugENU3J",
@@ -1240,7 +1244,8 @@
           "componentImportPath": "@plasmicpkgs/antd5/skinny/registerBreadcrumb"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "aEHVN5v6mfM4eovDsL8Z7d",
@@ -1257,6 +1262,21 @@
       "codeComponents": [],
       "customFunctions": [],
       "jsBundleThemes": []
+    },
+    {
+      "projectId": "kpio2pzukKRJkKg6SSrKTe",
+      "projectApiToken": "RQWq7rprDm1NKSqBCJ6XhafPCYH8pp3AYWcnbb3alqbiK2xY5YbnycM2kg5gTDZzfVqbKidLvQzjfXrnlgGgg",
+      "projectName": "dayjs",
+      "version": ">0.0.0",
+      "cssFilePath": "plasmic/dayjs/plasmic.module.css",
+      "components": [],
+      "icons": [],
+      "images": [],
+      "indirect": true,
+      "globalContextsFilePath": "",
+      "splitsProviderFilePath": "",
+      "codeComponents": [],
+      "customFunctions": []
     }
   ],
   "globalVariants": {

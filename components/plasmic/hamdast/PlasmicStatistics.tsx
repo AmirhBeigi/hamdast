@@ -62,10 +62,10 @@ import {
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import AuthProvider from "../../AuthProvider"; // plasmic-import: KTPu1eZupEdG/component
 import Layout from "../../Layout"; // plasmic-import: ve2FygUyzJYe/component
-import Menu from "../../Menu"; // plasmic-import: 73TqujunaOu5/component
 import FetchData from "../../FetchData"; // plasmic-import: -UcPqMSXVAGv/component
-import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
+import Menu from "../../Menu"; // plasmic-import: 73TqujunaOu5/component
 import Filter from "../../Filter"; // plasmic-import: YY41SIghQUgw/component
+import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
 import { Chart } from "@/fragment/components/chart"; // plasmic-import: oU2v2at0brmo/codeComponent
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -74,9 +74,10 @@ import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css";
 import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectcss
 import sty from "./PlasmicStatistics.module.css"; // plasmic-import: nAbrCePpa8PZ/css
 
-import Icon17Icon from "./icons/PlasmicIcon__Icon17"; // plasmic-import: t3gBl-ZhsAb2/icon
 import Icon15Icon from "./icons/PlasmicIcon__Icon15"; // plasmic-import: rQsx35tf_bcf/icon
 import Icon18Icon from "./icons/PlasmicIcon__Icon18"; // plasmic-import: 1FObiVFN1kNa/icon
+
+import __lib_dayjs from "dayjs";
 
 createPlasmicElementProxy;
 
@@ -95,16 +96,19 @@ export type PlasmicStatistics__OverridesType = {
   authProvider?: Flex__<typeof AuthProvider>;
   layout?: Flex__<typeof Layout>;
   fetchData?: Flex__<typeof FetchData>;
-  pageViewApi?: Flex__<typeof ApiRequest>;
+  menu?: Flex__<typeof Menu>;
+  filter?: Flex__<typeof Filter>;
   activeUserApi?: Flex__<typeof ApiRequest>;
   fragmentApiRequest2?: Flex__<typeof ApiRequest>;
-  filter?: Flex__<typeof Filter>;
-  fetchData2?: Flex__<typeof FetchData>;
+  chartRequest?: Flex__<typeof ApiRequest>;
+  fragmentChart?: Flex__<typeof Chart>;
 };
 
 export interface DefaultStatisticsProps {}
 
-const $$ = {};
+const $$ = {
+  dayjs: __lib_dayjs
+};
 
 function useNextRouter() {
   try {
@@ -175,7 +179,7 @@ function PlasmicStatistics__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
             try {
-              return -1;
+              return $state.fetchData.data[0].id;
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -192,36 +196,6 @@ function PlasmicStatistics__RenderFunc(props: {
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 1
-      },
-      {
-        path: "fetchData2.data",
-        type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "fetchData2.loading",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "pageViewApi.data",
-        type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "pageViewApi.error",
-        type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "pageViewApi.loading",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
         path: "fragmentApiRequest2.data",
@@ -255,6 +229,24 @@ function PlasmicStatistics__RenderFunc(props: {
       },
       {
         path: "activeUserApi.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "chartRequest.data",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "chartRequest.error",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "chartRequest.loading",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
@@ -396,106 +388,6 @@ function PlasmicStatistics__RenderFunc(props: {
                   <div
                     className={classNames(projectcss.all, sty.freeBox__pg3E7)}
                   >
-                    <Menu
-                      active={(() => {
-                        try {
-                          return -1 === $state.menu;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return [];
-                          }
-                          throw e;
-                        }
-                      })()}
-                      className={classNames("__wab_instance", sty.menu__graj)}
-                      compact={true}
-                      icon={true}
-                      iconWrapper={
-                        <Icon17Icon
-                          className={classNames(
-                            projectcss.all,
-                            sty.svg___8TMae
-                          )}
-                          role={"img"}
-                        />
-                      }
-                      name={"\u0646\u06af\u0627\u0647 \u06a9\u0644\u06cc"}
-                      onClick={async () => {
-                        const $steps = {};
-
-                        $steps["updateDay"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["day"]
-                                },
-                                operation: 0,
-                                value: 1
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateDay"] != null &&
-                          typeof $steps["updateDay"] === "object" &&
-                          typeof $steps["updateDay"].then === "function"
-                        ) {
-                          $steps["updateDay"] = await $steps["updateDay"];
-                        }
-
-                        $steps["updateMenu"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["menu"]
-                                },
-                                operation: 0,
-                                value: -1
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateMenu"] != null &&
-                          typeof $steps["updateMenu"] === "object" &&
-                          typeof $steps["updateMenu"].then === "function"
-                        ) {
-                          $steps["updateMenu"] = await $steps["updateMenu"];
-                        }
-                      }}
-                    />
-
                     <div
                       className={classNames(
                         projectcss.all,
@@ -567,6 +459,8 @@ function PlasmicStatistics__RenderFunc(props: {
                           const currentIndex = __plasmic_idx_0;
                           return (
                             <Menu
+                              data-plasmic-name={"menu"}
+                              data-plasmic-override={overrides.menu}
                               active={(() => {
                                 try {
                                   return currentItem.id === $state.menu;
@@ -581,10 +475,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                   throw e;
                                 }
                               })()}
-                              className={classNames(
-                                "__wab_instance",
-                                sty.menu__j6YWr
-                              )}
+                              className={classNames("__wab_instance", sty.menu)}
                               compact={true}
                               icon={false}
                               iconWrapper={null}
@@ -695,716 +586,6 @@ function PlasmicStatistics__RenderFunc(props: {
                     <div
                       className={classNames(projectcss.all, sty.freeBox__tm7Ne)}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__fc4Id
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__bca2T
-                          )}
-                        >
-                          <ApiRequest
-                            data-plasmic-name={"pageViewApi"}
-                            data-plasmic-override={overrides.pageViewApi}
-                            className={classNames(
-                              "__wab_instance",
-                              sty.pageViewApi
-                            )}
-                            errorDisplay={
-                              <Stack__
-                                as={"div"}
-                                hasGap={true}
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.freeBox__b3Knp
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text___4YVw
-                                  )}
-                                >
-                                  {
-                                    "\u0628\u0627\u0632\u062f\u06cc\u062f \u0627\u0632 \u0635\u0641\u062d\u0627\u062a"
-                                  }
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__tvlJu
-                                  )}
-                                >
-                                  {
-                                    "\u0645\u06cc\u0632\u0627\u0646 \u0628\u0627\u0632\u062f\u06cc\u062f \u062f\u0631 \u06f3\u06f0 \u0631\u0648\u0632 \u06af\u0630\u0634\u062a\u0647"
-                                  }
-                                </div>
-                                <Stack__
-                                  as={"div"}
-                                  hasGap={true}
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.freeBox__qDf0A
-                                  )}
-                                >
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__kfIja
-                                    )}
-                                  >
-                                    {"\u06f0"}
-                                  </div>
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__yEyk
-                                    )}
-                                  >
-                                    {"\u0628\u0627\u0632\u062f\u06cc\u062f"}
-                                  </div>
-                                </Stack__>
-                              </Stack__>
-                            }
-                            loadingDisplay={
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.freeBox__p5WL7
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text___4LQlp
-                                  )}
-                                >
-                                  {
-                                    "\u0628\u0627\u0632\u062f\u06cc\u062f \u0627\u0632 \u0635\u0641\u062d\u0627\u062a"
-                                  }
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__d0Z0
-                                  )}
-                                >
-                                  {
-                                    "\u0645\u06cc\u0632\u0627\u0646 \u0628\u0627\u0632\u062f\u06cc\u062f \u062f\u0631 \u06f3\u06f0 \u0631\u0648\u0632 \u06af\u0630\u0634\u062a\u0647"
-                                  }
-                                </div>
-                                <Stack__
-                                  as={"div"}
-                                  hasGap={true}
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.freeBox__wq9IF
-                                  )}
-                                >
-                                  <Icon15Icon
-                                    className={classNames(
-                                      projectcss.all,
-                                      sty.svg__jwkEj
-                                    )}
-                                    role={"img"}
-                                  />
-                                </Stack__>
-                              </div>
-                            }
-                            method={"GET"}
-                            onError={generateStateOnChangeProp($state, [
-                              "pageViewApi",
-                              "error"
-                            ])}
-                            onLoading={generateStateOnChangeProp($state, [
-                              "pageViewApi",
-                              "loading"
-                            ])}
-                            onSuccess={generateStateOnChangeProp($state, [
-                              "pageViewApi",
-                              "data"
-                            ])}
-                            url={(() => {
-                              try {
-                                return (() => {
-                                  if ($state.menu === -1) {
-                                    return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/analytics/?days_ago=30`;
-                                  }
-                                  return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/menus/${$state.menu}/analytics/?days_ago=30`;
-                                })();
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return undefined;
-                                }
-                                throw e;
-                              }
-                            })()}
-                          >
-                            <Stack__
-                              as={"div"}
-                              hasGap={true}
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox___167Xt
-                              )}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__azACw
-                                )}
-                              >
-                                {
-                                  "\u0628\u0627\u0632\u062f\u06cc\u062f \u0627\u0632 \u0635\u0641\u062d\u0627\u062a"
-                                }
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text___08At
-                                )}
-                              >
-                                {
-                                  "\u0645\u06cc\u0632\u0627\u0646 \u0628\u0627\u0632\u062f\u06cc\u062f \u062f\u0631 \u06f3\u06f0 \u0631\u0648\u0632 \u06af\u0630\u0634\u062a\u0647"
-                                }
-                              </div>
-                              <Stack__
-                                as={"div"}
-                                hasGap={true}
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.freeBox__fh7Qo
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__qBk6W
-                                  )}
-                                >
-                                  <React.Fragment>
-                                    {(() => {
-                                      try {
-                                        return new Intl.NumberFormat(
-                                          "fa-IR"
-                                        ).format(
-                                          $state.pageViewApi.data?.length
-                                        );
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return "\u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644";
-                                        }
-                                        throw e;
-                                      }
-                                    })()}
-                                  </React.Fragment>
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__jLo5
-                                  )}
-                                >
-                                  {"\u0628\u0627\u0632\u062f\u06cc\u062f"}
-                                </div>
-                              </Stack__>
-                            </Stack__>
-                          </ApiRequest>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__xK8V3
-                          )}
-                        >
-                          <ApiRequest
-                            data-plasmic-name={"activeUserApi"}
-                            data-plasmic-override={overrides.activeUserApi}
-                            className={classNames(
-                              "__wab_instance",
-                              sty.activeUserApi
-                            )}
-                            errorDisplay={
-                              <Stack__
-                                as={"div"}
-                                hasGap={true}
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.freeBox__d3M2H
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__tgRwa
-                                  )}
-                                >
-                                  {
-                                    "\u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644"
-                                  }
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__twFwy
-                                  )}
-                                >
-                                  {
-                                    "\u062a\u0639\u062f\u0627\u062f \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u06cc\u06a9\u062a\u0627 \u062f\u0631 \u06f3\u06f0 \u0631\u0648\u0632 \u06af\u0630\u0634\u062a\u0647"
-                                  }
-                                </div>
-                                <Stack__
-                                  as={"div"}
-                                  hasGap={true}
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.freeBox__aovi9
-                                  )}
-                                >
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__yrbVa
-                                    )}
-                                  >
-                                    {"\u06f0"}
-                                  </div>
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__qss5Q
-                                    )}
-                                  >
-                                    {"\u06a9\u0627\u0631\u0628\u0631"}
-                                  </div>
-                                </Stack__>
-                              </Stack__>
-                            }
-                            loadingDisplay={
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.freeBox__usmKj
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__f7DuK
-                                  )}
-                                >
-                                  {
-                                    "\u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644"
-                                  }
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__esj6Y
-                                  )}
-                                >
-                                  {
-                                    "\u062a\u0639\u062f\u0627\u062f \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u06cc\u06a9\u062a\u0627 \u062f\u0631 \u06f3\u06f0 \u0631\u0648\u0632 \u06af\u0630\u0634\u062a\u0647"
-                                  }
-                                </div>
-                                <Stack__
-                                  as={"div"}
-                                  hasGap={true}
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.freeBox___1Hfuf
-                                  )}
-                                >
-                                  <Icon15Icon
-                                    className={classNames(
-                                      projectcss.all,
-                                      sty.svg__xt4Mh
-                                    )}
-                                    role={"img"}
-                                  />
-                                </Stack__>
-                              </div>
-                            }
-                            method={"GET"}
-                            onError={generateStateOnChangeProp($state, [
-                              "activeUserApi",
-                              "error"
-                            ])}
-                            onLoading={generateStateOnChangeProp($state, [
-                              "activeUserApi",
-                              "loading"
-                            ])}
-                            onSuccess={generateStateOnChangeProp($state, [
-                              "activeUserApi",
-                              "data"
-                            ])}
-                            url={(() => {
-                              try {
-                                return (() => {
-                                  if ($state.menu === -1) {
-                                    return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/analytics/?days_ago=30&active_user=true`;
-                                  }
-                                  return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/menus/${$state.menu}/analytics/?days_ago=30&active_user=true`;
-                                })();
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return undefined;
-                                }
-                                throw e;
-                              }
-                            })()}
-                          >
-                            <Stack__
-                              as={"div"}
-                              hasGap={true}
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__m4Sx
-                              )}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text___6S7HZ
-                                )}
-                              >
-                                {
-                                  "\u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644"
-                                }
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__rBk
-                                )}
-                              >
-                                {
-                                  "\u062a\u0639\u062f\u0627\u062f \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u06cc\u06a9\u062a\u0627 \u062f\u0631 \u06f3\u06f0 \u0631\u0648\u0632 \u06af\u0630\u0634\u062a\u0647"
-                                }
-                              </div>
-                              <Stack__
-                                as={"div"}
-                                hasGap={true}
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.freeBox__fO60
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__peQHt
-                                  )}
-                                >
-                                  <React.Fragment>
-                                    {(() => {
-                                      try {
-                                        return $state.pageViewApi.data
-                                          .filter(
-                                            (item, index, self) =>
-                                              self.findIndex(
-                                                t => t.user_id === item.user_id
-                                              ) === index
-                                          )
-                                          .length.toLocaleString("fa");
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return "\u06f0";
-                                        }
-                                        throw e;
-                                      }
-                                    })()}
-                                  </React.Fragment>
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__wkzuM
-                                  )}
-                                >
-                                  {"\u06a9\u0627\u0631\u0628\u0631"}
-                                </div>
-                              </Stack__>
-                            </Stack__>
-                          </ApiRequest>
-                        </div>
-                        {(() => {
-                          try {
-                            return $state.menu == -1;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return true;
-                            }
-                            throw e;
-                          }
-                        })() ? (
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__jDagA
-                            )}
-                          >
-                            <ApiRequest
-                              data-plasmic-name={"fragmentApiRequest2"}
-                              data-plasmic-override={
-                                overrides.fragmentApiRequest2
-                              }
-                              className={classNames(
-                                "__wab_instance",
-                                sty.fragmentApiRequest2
-                              )}
-                              errorDisplay={
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.freeBox__msCuv
-                                  )}
-                                >
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__enJuP
-                                    )}
-                                  >
-                                    {"\u062f\u0631\u0622\u0645\u062f"}
-                                  </div>
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__gYxqP
-                                    )}
-                                  >
-                                    {
-                                      "\u062f\u0631\u0622\u0645\u062f \u06a9\u0633\u0628 \u0634\u062f\u0647 \u0627\u0632 \u0627\u0628\u0632\u0627\u0631\u06a9"
-                                    }
-                                  </div>
-                                  <Stack__
-                                    as={"div"}
-                                    hasGap={true}
-                                    className={classNames(
-                                      projectcss.all,
-                                      sty.freeBox__l5H0H
-                                    )}
-                                  >
-                                    <div
-                                      className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
-                                        sty.text__jNZz
-                                      )}
-                                    >
-                                      {"\u06f0"}
-                                    </div>
-                                    <div
-                                      className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
-                                        sty.text__zVn2F
-                                      )}
-                                    >
-                                      {"\u062a\u0648\u0645\u0627\u0646"}
-                                    </div>
-                                  </Stack__>
-                                </div>
-                              }
-                              loadingDisplay={
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.freeBox__msCga
-                                  )}
-                                >
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__hw3Ls
-                                    )}
-                                  >
-                                    {"\u062f\u0631\u0622\u0645\u062f"}
-                                  </div>
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text___5Ymdr
-                                    )}
-                                  >
-                                    {
-                                      "\u062f\u0631\u0622\u0645\u062f \u06a9\u0633\u0628 \u0634\u062f\u0647 \u0627\u0632 \u0627\u0628\u0632\u0627\u0631\u06a9"
-                                    }
-                                  </div>
-                                  <Stack__
-                                    as={"div"}
-                                    hasGap={true}
-                                    className={classNames(
-                                      projectcss.all,
-                                      sty.freeBox__sIMoH
-                                    )}
-                                  >
-                                    <Icon15Icon
-                                      className={classNames(
-                                        projectcss.all,
-                                        sty.svg__eEwS
-                                      )}
-                                      role={"img"}
-                                    />
-                                  </Stack__>
-                                </div>
-                              }
-                              method={"GET"}
-                              onError={generateStateOnChangeProp($state, [
-                                "fragmentApiRequest2",
-                                "error"
-                              ])}
-                              onLoading={generateStateOnChangeProp($state, [
-                                "fragmentApiRequest2",
-                                "loading"
-                              ])}
-                              onSuccess={generateStateOnChangeProp($state, [
-                                "fragmentApiRequest2",
-                                "data"
-                              ])}
-                              url={(() => {
-                                try {
-                                  return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/incomes`;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return undefined;
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.freeBox__d9Vx
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__cu8Iw
-                                  )}
-                                >
-                                  {"\u062f\u0631\u0622\u0645\u062f"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__bbZd5
-                                  )}
-                                >
-                                  {
-                                    "\u062f\u0631\u0622\u0645\u062f \u06a9\u0633\u0628 \u0634\u062f\u0647 \u0627\u0632 \u0627\u0628\u0632\u0627\u0631\u06a9"
-                                  }
-                                </div>
-                                <Stack__
-                                  as={"div"}
-                                  hasGap={true}
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.freeBox__hxBE
-                                  )}
-                                >
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__glozv
-                                    )}
-                                  >
-                                    <React.Fragment>
-                                      {(() => {
-                                        try {
-                                          return new Intl.NumberFormat(
-                                            "fa-IR"
-                                          ).format(
-                                            (
-                                              $state.fragmentApiRequest2.data
-                                                ?.amount ?? 0
-                                            )
-                                              .toString()
-                                              .slice(0, -1)
-                                          );
-                                        } catch (e) {
-                                          if (
-                                            e instanceof TypeError ||
-                                            e?.plasmicType ===
-                                              "PlasmicUndefinedDataError"
-                                          ) {
-                                            return "\u06f0";
-                                          }
-                                          throw e;
-                                        }
-                                      })()}
-                                    </React.Fragment>
-                                  </div>
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__dpUyq
-                                    )}
-                                  >
-                                    {"\u062a\u0648\u0645\u0627\u0646"}
-                                  </div>
-                                </Stack__>
-                              </div>
-                            </ApiRequest>
-                          </div>
-                        ) : null}
-                      </div>
                       <div
                         className={classNames(
                           projectcss.all,
@@ -1541,11 +722,489 @@ function PlasmicStatistics__RenderFunc(props: {
                           })}
                         </Stack__>
                       </div>
-                      <FetchData
-                        data-plasmic-name={"fetchData2"}
-                        data-plasmic-override={overrides.fetchData2}
-                        className={classNames("__wab_instance", sty.fetchData2)}
-                        loadingStatus={
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__fc4Id
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__xK8V3
+                          )}
+                        >
+                          <ApiRequest
+                            data-plasmic-name={"activeUserApi"}
+                            data-plasmic-override={overrides.activeUserApi}
+                            className={classNames(
+                              "__wab_instance",
+                              sty.activeUserApi
+                            )}
+                            errorDisplay={
+                              <Stack__
+                                as={"div"}
+                                hasGap={true}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__d3M2H
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__xluRx
+                                  )}
+                                >
+                                  {"DAU"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__rwp4P
+                                  )}
+                                >
+                                  {
+                                    "\u0645\u06cc\u0627\u0646\u06af\u06cc\u0646 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644 \u0631\u0648\u0632\u0627\u0646\u0647"
+                                  }
+                                </div>
+                                <Stack__
+                                  as={"div"}
+                                  hasGap={true}
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__aovi9
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__yrbVa
+                                    )}
+                                  >
+                                    {"\u06f0"}
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__qss5Q
+                                    )}
+                                  >
+                                    {"\u06a9\u0627\u0631\u0628\u0631"}
+                                  </div>
+                                </Stack__>
+                              </Stack__>
+                            }
+                            loadingDisplay={
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__usmKj
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__dTkNd
+                                  )}
+                                >
+                                  {"DAU"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__y3RJb
+                                  )}
+                                >
+                                  {
+                                    "\u0645\u06cc\u0627\u0646\u06af\u06cc\u0646 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644 \u0631\u0648\u0632\u0627\u0646\u0647"
+                                  }
+                                </div>
+                                <Stack__
+                                  as={"div"}
+                                  hasGap={true}
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox___1Hfuf
+                                  )}
+                                >
+                                  <Icon15Icon
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.svg__xt4Mh
+                                    )}
+                                    role={"img"}
+                                  />
+                                </Stack__>
+                              </div>
+                            }
+                            method={"GET"}
+                            onError={generateStateOnChangeProp($state, [
+                              "activeUserApi",
+                              "error"
+                            ])}
+                            onLoading={generateStateOnChangeProp($state, [
+                              "activeUserApi",
+                              "loading"
+                            ])}
+                            onSuccess={generateStateOnChangeProp($state, [
+                              "activeUserApi",
+                              "data"
+                            ])}
+                            url={(() => {
+                              try {
+                                return (() => {
+                                  return `https://hamdast.paziresh24.com/api/v1/apps/${
+                                    $ctx.params.id
+                                  }/menus/${
+                                    $state.menu
+                                  }/analytics/?start_date=${$$.dayjs()
+                                    .subtract($state.day - 1, "day")
+                                    .format(
+                                      "YYYY-MM-DD"
+                                    )}&end_date=${$$.dayjs().format(
+                                    "YYYY-MM-DD"
+                                  )}`;
+                                })();
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
+                              }
+                            })()}
+                          >
+                            <Stack__
+                              as={"div"}
+                              hasGap={true}
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__m4Sx
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text___6S7HZ
+                                )}
+                              >
+                                {"DAU"}
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__rBk
+                                )}
+                              >
+                                {
+                                  "\u0645\u06cc\u0627\u0646\u06af\u06cc\u0646 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644 \u0631\u0648\u0632\u0627\u0646\u0647"
+                                }
+                              </div>
+                              <Stack__
+                                as={"div"}
+                                hasGap={true}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__fO60
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__peQHt
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return new Intl.NumberFormat(
+                                          "fa-IR"
+                                        ).format(
+                                          Number(
+                                            $state.activeUserApi.data[0]?.value
+                                          ).toFixed(2)
+                                        );
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "\u06f0";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__wkzuM
+                                  )}
+                                >
+                                  {"\u06a9\u0627\u0631\u0628\u0631"}
+                                </div>
+                              </Stack__>
+                            </Stack__>
+                          </ApiRequest>
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__jDagA
+                          )}
+                        >
+                          <ApiRequest
+                            data-plasmic-name={"fragmentApiRequest2"}
+                            data-plasmic-override={
+                              overrides.fragmentApiRequest2
+                            }
+                            className={classNames(
+                              "__wab_instance",
+                              sty.fragmentApiRequest2
+                            )}
+                            errorDisplay={
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__msCuv
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__enJuP
+                                  )}
+                                >
+                                  {"\u062f\u0631\u0622\u0645\u062f"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__gYxqP
+                                  )}
+                                >
+                                  {
+                                    "\u062f\u0631\u0622\u0645\u062f \u06a9\u0633\u0628 \u0634\u062f\u0647 \u0627\u0632 \u0627\u0628\u0632\u0627\u0631\u06a9"
+                                  }
+                                </div>
+                                <Stack__
+                                  as={"div"}
+                                  hasGap={true}
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__l5H0H
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__jNZz
+                                    )}
+                                  >
+                                    {"\u06f0"}
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__zVn2F
+                                    )}
+                                  >
+                                    {"\u062a\u0648\u0645\u0627\u0646"}
+                                  </div>
+                                </Stack__>
+                              </div>
+                            }
+                            loadingDisplay={
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__msCga
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__hw3Ls
+                                  )}
+                                >
+                                  {"\u062f\u0631\u0622\u0645\u062f"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text___5Ymdr
+                                  )}
+                                >
+                                  {
+                                    "\u062f\u0631\u0622\u0645\u062f \u06a9\u0633\u0628 \u0634\u062f\u0647 \u0627\u0632 \u0627\u0628\u0632\u0627\u0631\u06a9"
+                                  }
+                                </div>
+                                <Stack__
+                                  as={"div"}
+                                  hasGap={true}
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__sIMoH
+                                  )}
+                                >
+                                  <Icon15Icon
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.svg__eEwS
+                                    )}
+                                    role={"img"}
+                                  />
+                                </Stack__>
+                              </div>
+                            }
+                            method={"GET"}
+                            onError={generateStateOnChangeProp($state, [
+                              "fragmentApiRequest2",
+                              "error"
+                            ])}
+                            onLoading={generateStateOnChangeProp($state, [
+                              "fragmentApiRequest2",
+                              "loading"
+                            ])}
+                            onSuccess={generateStateOnChangeProp($state, [
+                              "fragmentApiRequest2",
+                              "data"
+                            ])}
+                            url={(() => {
+                              try {
+                                return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/incomes`;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
+                              }
+                            })()}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__d9Vx
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__cu8Iw
+                                )}
+                              >
+                                {"\u062f\u0631\u0622\u0645\u062f"}
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__bbZd5
+                                )}
+                              >
+                                {
+                                  "\u062f\u0631\u0622\u0645\u062f \u06a9\u0633\u0628 \u0634\u062f\u0647 \u0627\u0632 \u0627\u0628\u0632\u0627\u0631\u06a9"
+                                }
+                              </div>
+                              <Stack__
+                                as={"div"}
+                                hasGap={true}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__hxBE
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__glozv
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return new Intl.NumberFormat(
+                                          "fa-IR"
+                                        ).format(
+                                          (
+                                            $state.fragmentApiRequest2.data
+                                              ?.amount ?? 0
+                                          )
+                                            .toString()
+                                            .slice(0, -1)
+                                        );
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "\u06f0";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__dpUyq
+                                  )}
+                                >
+                                  {"\u062a\u0648\u0645\u0627\u0646"}
+                                </div>
+                              </Stack__>
+                            </div>
+                          </ApiRequest>
+                        </div>
+                      </div>
+                      <ApiRequest
+                        data-plasmic-name={"chartRequest"}
+                        data-plasmic-override={overrides.chartRequest}
+                        className={classNames(
+                          "__wab_instance",
+                          sty.chartRequest
+                        )}
+                        errorDisplay={
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text___2S1UW
+                            )}
+                          >
+                            {"Error fetching data"}
+                          </div>
+                        }
+                        loadingDisplay={
                           <Icon15Icon
                             className={classNames(
                               projectcss.all,
@@ -1554,21 +1213,31 @@ function PlasmicStatistics__RenderFunc(props: {
                             role={"img"}
                           />
                         }
-                        onDataChange={generateStateOnChangeProp($state, [
-                          "fetchData2",
-                          "data"
+                        method={"GET"}
+                        onError={generateStateOnChangeProp($state, [
+                          "chartRequest",
+                          "error"
                         ])}
-                        onLoadingChange={generateStateOnChangeProp($state, [
-                          "fetchData2",
+                        onLoading={generateStateOnChangeProp($state, [
+                          "chartRequest",
                           "loading"
+                        ])}
+                        onSuccess={generateStateOnChangeProp($state, [
+                          "chartRequest",
+                          "data"
                         ])}
                         url={(() => {
                           try {
                             return (() => {
-                              if ($state.menu === -1) {
-                                return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/analytics/?days_ago=${$state.day}`;
-                              }
-                              return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/menus/${$state.menu}/analytics/?days_ago=${$state.day}`;
+                              return `https://hamdast.paziresh24.com/api/v1/apps/${
+                                $ctx.params.id
+                              }/menus/${
+                                $state.menu
+                              }/analytics/?start_date=${$$.dayjs()
+                                .subtract($state.day - 1, "day")
+                                .format(
+                                  "YYYY-MM-DD"
+                                )}&end_date=${$$.dayjs().format("YYYY-MM-DD")}`;
                             })();
                           } catch (e) {
                             if (
@@ -1581,19 +1250,7 @@ function PlasmicStatistics__RenderFunc(props: {
                           }
                         })()}
                       >
-                        {(() => {
-                          try {
-                            return $state.fetchData2.data?.length == 0;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return true;
-                            }
-                            throw e;
-                          }
-                        })() ? (
+                        {false ? (
                           <Stack__
                             as={"div"}
                             hasGap={true}
@@ -1623,19 +1280,7 @@ function PlasmicStatistics__RenderFunc(props: {
                             </div>
                           </Stack__>
                         ) : null}
-                        {(() => {
-                          try {
-                            return $state.fetchData2.data?.length > 0;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return true;
-                            }
-                            throw e;
-                          }
-                        })() ? (
+                        {false ? (
                           <div
                             className={classNames(
                               projectcss.all,
@@ -1649,6 +1294,8 @@ function PlasmicStatistics__RenderFunc(props: {
                               )}
                             >
                               <Chart
+                                data-plasmic-name={"fragmentChart"}
+                                data-plasmic-override={overrides.fragmentChart}
                                 cartesianGrid={["horizontal"]}
                                 chartConfig={(() => {
                                   const __composite = [
@@ -1681,52 +1328,11 @@ function PlasmicStatistics__RenderFunc(props: {
                                 })()}
                                 className={classNames(
                                   "__wab_instance",
-                                  sty.fragmentChart___5PUtz
+                                  sty.fragmentChart
                                 )}
                                 data={(() => {
                                   try {
-                                    return (() => {
-                                      const groupByDateAndCountVisitors =
-                                        data => {
-                                          const groupedData = data.reduce(
-                                            (acc, entry) => {
-                                              const date = new Date(
-                                                entry.p_timestamp
-                                              ).toLocaleDateString("fa-IR", {
-                                                day: "2-digit",
-                                                month: "short"
-                                              });
-                                              if (!acc[date]) {
-                                                acc[date] = {
-                                                  visitors: 0,
-                                                  userIds: new Set()
-                                                };
-                                              }
-                                              acc[date].visitors++;
-                                              acc[date].userIds.add(
-                                                entry.user_id
-                                              );
-                                              return acc;
-                                            },
-                                            {}
-                                          );
-
-                                          const result = Object.keys(
-                                            groupedData
-                                          ).map(date => ({
-                                            visitors:
-                                              groupedData[date].visitors,
-                                            active_users:
-                                              groupedData[date].userIds.size,
-                                            date: date
-                                          }));
-
-                                          return result;
-                                        };
-                                      return groupByDateAndCountVisitors(
-                                        $state.fetchData2?.data ?? []
-                                      );
-                                    })();
+                                    return [];
                                   } catch (e) {
                                     if (
                                       e instanceof TypeError ||
@@ -1776,552 +1382,10 @@ function PlasmicStatistics__RenderFunc(props: {
                                   return __composite;
                                 })()}
                               />
-
-                              {(() => {
-                                try {
-                                  return $state.menu == -1;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return true;
-                                  }
-                                  throw e;
-                                }
-                              })() ? (
-                                <Chart
-                                  cartesianGrid={["horizontal"]}
-                                  chartConfig={(() => {
-                                    const __composite = [
-                                      {
-                                        color: null,
-                                        type: "natural",
-                                        dot: null,
-                                        key: null,
-                                        label: null
-                                      },
-                                      {
-                                        color: null,
-                                        type: "natural",
-                                        dot: false,
-                                        key: null,
-                                        label: null
-                                      }
-                                    ];
-                                    __composite["0"]["color"] = "#000000";
-                                    __composite["0"]["dot"] = true;
-                                    __composite["0"]["key"] = "visitors";
-                                    __composite["0"]["label"] =
-                                      "\u0628\u0627\u0632\u062f\u06cc\u062f \u06a9\u0646\u0646\u062f\u0647";
-                                    __composite["1"]["color"] = "#5E5E5E";
-                                    __composite["1"]["key"] = "users";
-                                    __composite["1"]["label"] =
-                                      "\u06a9\u0627\u0631\u0628\u0631";
-                                    return __composite;
-                                  })()}
-                                  className={classNames(
-                                    "__wab_instance",
-                                    sty.fragmentChart__l2El
-                                  )}
-                                  data={(() => {
-                                    try {
-                                      return (() => {
-                                        function countVisitorsAndUsersByMenu(
-                                          data
-                                        ) {
-                                          const menuCount = {};
-
-                                          data.forEach(entry => {
-                                            const menu =
-                                              entry.menu.toLowerCase();
-                                            if (!menuCount[menu]) {
-                                              menuCount[menu] = {
-                                                visitors: 0,
-                                                users: new Set()
-                                              };
-                                            }
-                                            menuCount[menu].visitors++;
-                                            menuCount[menu].users.add(
-                                              entry.user_id
-                                            );
-                                          });
-
-                                          return Object.keys(menuCount).map(
-                                            menu => {
-                                              return {
-                                                menu: $state.fetchData.data.find(
-                                                  item => item.id === menu
-                                                ).name_fa,
-                                                visitors:
-                                                  menuCount[menu].visitors,
-                                                users:
-                                                  menuCount[menu].users.size
-                                              };
-                                            }
-                                          );
-                                        }
-                                        return countVisitorsAndUsersByMenu(
-                                          $state.fetchData2?.data ?? []
-                                        );
-                                      })();
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
-                                    }
-                                  })()}
-                                  label={false}
-                                  layout={"horizontal"}
-                                  legend={true}
-                                  stack={false}
-                                  tooltip={(() => {
-                                    const __composite = {
-                                      enabled: null,
-                                      indicator: null
-                                    };
-                                    __composite["enabled"] = true;
-                                    __composite["indicator"] = "dot";
-                                    return __composite;
-                                  })()}
-                                  type={"bar"}
-                                  xAxis={(() => {
-                                    const __composite = {
-                                      enabled: null,
-                                      key: null,
-                                      type: null,
-                                      tickLine: null
-                                    };
-                                    __composite["enabled"] = true;
-                                    __composite["key"] = "menu";
-                                    __composite["type"] = "category";
-                                    __composite["tickLine"] = false;
-                                    return __composite;
-                                  })()}
-                                  yAxis={(() => {
-                                    const __composite = {
-                                      enabled: null,
-                                      key: null,
-                                      type: null
-                                    };
-                                    __composite["enabled"] = true;
-                                    __composite["key"] = "visitors";
-                                    __composite["type"] = "number";
-                                    return __composite;
-                                  })()}
-                                />
-                              ) : null}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox___8A8L
-                              )}
-                            >
-                              <Chart
-                                cartesianGrid={["horizontal"]}
-                                chartConfig={(() => {
-                                  const __composite = [
-                                    {
-                                      color: null,
-                                      type: "natural",
-                                      dot: null,
-                                      key: null,
-                                      label: null
-                                    },
-                                    {
-                                      color: "#000000",
-                                      type: "natural",
-                                      dot: false
-                                    }
-                                  ];
-                                  __composite["0"]["color"] =
-                                    "var(--token-EueuB3d74YKA)";
-                                  __composite["0"]["dot"] = true;
-                                  __composite["0"]["key"] = "doctor";
-                                  __composite["0"]["label"] =
-                                    "\u067e\u0632\u0634\u06a9";
-                                  return __composite;
-                                })()}
-                                className={classNames(
-                                  "__wab_instance",
-                                  sty.fragmentChart___68V5T
-                                )}
-                                data={(() => {
-                                  try {
-                                    return (() => {
-                                      function countVisitorsByBrowser(data) {
-                                        const browserCount = {};
-                                        data.forEach(entry => {
-                                          const browser =
-                                            entry.job_title.toLowerCase();
-                                          if (browserCount[browser]) {
-                                            browserCount[browser]++;
-                                          } else {
-                                            browserCount[browser] = 1;
-                                          }
-                                        });
-                                        return Object.keys(browserCount).map(
-                                          browser => {
-                                            return {
-                                              browser: browser,
-                                              visitor: browserCount[browser]
-                                            };
-                                          }
-                                        );
-                                      }
-                                      return countVisitorsByBrowser(
-                                        $state.fetchData2?.data ?? []
-                                      );
-                                    })();
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return undefined;
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                                dataKey={(() => {
-                                  const __composite = {
-                                    key: null,
-                                    label: null
-                                  };
-                                  __composite["key"] = "visitor";
-                                  __composite["label"] =
-                                    "\u0646\u0648\u0639 \u06a9\u0627\u0631\u0628\u0631";
-                                  return __composite;
-                                })()}
-                                label={false}
-                                layout={"horizontal"}
-                                legend={true}
-                                nameKey={(() => {
-                                  const __composite = { key: null };
-                                  __composite["key"] = "browser";
-                                  return __composite;
-                                })()}
-                                tooltip={(() => {
-                                  const __composite = {
-                                    enabled: null,
-                                    indicator: null
-                                  };
-                                  __composite["enabled"] = true;
-                                  __composite["indicator"] = "line";
-                                  return __composite;
-                                })()}
-                                type={"pie"}
-                                xAxis={(() => {
-                                  const __composite = {
-                                    enabled: null,
-                                    key: null,
-                                    type: null,
-                                    tickLine: null
-                                  };
-                                  __composite["enabled"] = true;
-                                  __composite["key"] = "date";
-                                  __composite["type"] = "category";
-                                  __composite["tickLine"] = false;
-                                  return __composite;
-                                })()}
-                                yAxis={(() => {
-                                  const __composite = {
-                                    enabled: null,
-                                    key: null,
-                                    type: null
-                                  };
-                                  __composite["enabled"] = true;
-                                  __composite["key"] = "visitors";
-                                  __composite["type"] = "number";
-                                  return __composite;
-                                })()}
-                              />
-
-                              <Chart
-                                cartesianGrid={["horizontal"]}
-                                chartConfig={(() => {
-                                  const __composite = [
-                                    {
-                                      color: null,
-                                      type: "natural",
-                                      dot: false,
-                                      key: null,
-                                      label: null
-                                    },
-                                    {
-                                      color: null,
-                                      type: "natural",
-                                      dot: false,
-                                      key: null,
-                                      label: null
-                                    }
-                                  ];
-                                  __composite["0"]["color"] =
-                                    "var(--token-u21Gzl9DygXI)";
-                                  __composite["0"]["key"] = "mobile";
-                                  __composite["0"]["label"] =
-                                    "\u0645\u0648\u0628\u0627\u06cc\u0644";
-                                  __composite["1"]["color"] =
-                                    "var(--token-EueuB3d74YKA)";
-                                  __composite["1"]["key"] = "desktop";
-                                  __composite["1"]["label"] =
-                                    "\u062f\u0633\u06a9\u062a\u0627\u067e";
-                                  return __composite;
-                                })()}
-                                className={classNames(
-                                  "__wab_instance",
-                                  sty.fragmentChart__oHdoe
-                                )}
-                                data={(() => {
-                                  try {
-                                    return (() => {
-                                      function countVisitorsByBrowser(data) {
-                                        const browserCount = {};
-                                        data.forEach(entry => {
-                                          const browser =
-                                            entry.device.toLowerCase();
-                                          if (browserCount[browser]) {
-                                            browserCount[browser]++;
-                                          } else {
-                                            browserCount[browser] = 1;
-                                          }
-                                        });
-                                        return Object.keys(browserCount).map(
-                                          browser => {
-                                            return {
-                                              browser: browser,
-                                              visitor: browserCount[browser]
-                                            };
-                                          }
-                                        );
-                                      }
-                                      return countVisitorsByBrowser(
-                                        $state.fetchData2?.data ?? []
-                                      );
-                                    })();
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return undefined;
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                                dataKey={(() => {
-                                  const __composite = {
-                                    key: null,
-                                    label: null
-                                  };
-                                  __composite["key"] = "visitor";
-                                  __composite["label"] =
-                                    "\u062f\u0633\u062a\u06af\u0627\u0647";
-                                  return __composite;
-                                })()}
-                                label={false}
-                                layout={"horizontal"}
-                                legend={true}
-                                nameKey={(() => {
-                                  const __composite = { key: null };
-                                  __composite["key"] = "browser";
-                                  return __composite;
-                                })()}
-                                tooltip={(() => {
-                                  const __composite = {
-                                    enabled: null,
-                                    indicator: null
-                                  };
-                                  __composite["enabled"] = true;
-                                  __composite["indicator"] = "line";
-                                  return __composite;
-                                })()}
-                                type={"pie"}
-                                xAxis={(() => {
-                                  const __composite = {
-                                    enabled: null,
-                                    key: null,
-                                    type: null,
-                                    tickLine: null
-                                  };
-                                  __composite["enabled"] = true;
-                                  __composite["key"] = "date";
-                                  __composite["type"] = "category";
-                                  __composite["tickLine"] = false;
-                                  return __composite;
-                                })()}
-                                yAxis={(() => {
-                                  const __composite = {
-                                    enabled: null,
-                                    key: null,
-                                    type: null
-                                  };
-                                  __composite["enabled"] = true;
-                                  __composite["key"] = "visitors";
-                                  __composite["type"] = "number";
-                                  return __composite;
-                                })()}
-                              />
-
-                              <Chart
-                                cartesianGrid={["horizontal"]}
-                                chartConfig={(() => {
-                                  const __composite = [
-                                    {
-                                      color: null,
-                                      type: "natural",
-                                      dot: null,
-                                      key: null,
-                                      label: null
-                                    },
-                                    {
-                                      color: null,
-                                      type: "natural",
-                                      dot: false,
-                                      key: null,
-                                      label: null
-                                    },
-                                    {
-                                      color: null,
-                                      type: "natural",
-                                      dot: false,
-                                      key: null,
-                                      label: null
-                                    },
-                                    {
-                                      color: null,
-                                      type: "natural",
-                                      dot: false,
-                                      key: null,
-                                      label: null
-                                    }
-                                  ];
-                                  __composite["0"]["color"] = "#2A9D90";
-                                  __composite["0"]["dot"] = true;
-                                  __composite["0"]["key"] = "chrome";
-                                  __composite["0"]["label"] =
-                                    "\u06a9\u0631\u0648\u0645";
-                                  __composite["1"]["color"] = "#E76E50";
-                                  __composite["1"]["key"] = "safari";
-                                  __composite["1"]["label"] =
-                                    "\u0633\u0627\u0641\u0627\u0631\u06cc";
-                                  __composite["2"]["color"] = "#1B3E4C";
-                                  __composite["2"]["key"] = "firefox";
-                                  __composite["2"]["label"] =
-                                    "\u0641\u0627\u06cc\u0631\u0641\u0627\u06a9\u0633";
-                                  __composite["3"]["color"] = "#E8C468";
-                                  __composite["3"]["key"] = "microsoft edge";
-                                  __composite["3"]["label"] = "\u0627\u062c";
-                                  return __composite;
-                                })()}
-                                className={classNames(
-                                  "__wab_instance",
-                                  sty.fragmentChart__op3Vz
-                                )}
-                                data={(() => {
-                                  try {
-                                    return (() => {
-                                      function countVisitorsByBrowser(data) {
-                                        const browserCount = {};
-                                        data.forEach(entry => {
-                                          const browser =
-                                            entry.browser.toLowerCase();
-                                          if (browserCount[browser]) {
-                                            browserCount[browser]++;
-                                          } else {
-                                            browserCount[browser] = 1;
-                                          }
-                                        });
-                                        return Object.keys(browserCount).map(
-                                          browser => {
-                                            return {
-                                              browser: browser,
-                                              visitor: browserCount[browser]
-                                            };
-                                          }
-                                        );
-                                      }
-                                      return countVisitorsByBrowser(
-                                        $state.fetchData2?.data ?? []
-                                      );
-                                    })();
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return undefined;
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                                dataKey={(() => {
-                                  const __composite = {
-                                    key: null,
-                                    label: null
-                                  };
-                                  __composite["key"] = "visitor";
-                                  __composite["label"] =
-                                    "\u0645\u0631\u0648\u0631\u06af\u0631";
-                                  return __composite;
-                                })()}
-                                label={false}
-                                layout={"horizontal"}
-                                legend={true}
-                                nameKey={(() => {
-                                  const __composite = { key: null };
-                                  __composite["key"] = "browser";
-                                  return __composite;
-                                })()}
-                                tooltip={(() => {
-                                  const __composite = {
-                                    enabled: null,
-                                    indicator: null
-                                  };
-                                  __composite["enabled"] = true;
-                                  __composite["indicator"] = "line";
-                                  return __composite;
-                                })()}
-                                type={"pie"}
-                                xAxis={(() => {
-                                  const __composite = {
-                                    enabled: null,
-                                    key: null,
-                                    type: null,
-                                    tickLine: null
-                                  };
-                                  __composite["enabled"] = true;
-                                  __composite["key"] = "date";
-                                  __composite["type"] = "category";
-                                  __composite["tickLine"] = false;
-                                  return __composite;
-                                })()}
-                                yAxis={(() => {
-                                  const __composite = {
-                                    enabled: null,
-                                    key: null,
-                                    type: null
-                                  };
-                                  __composite["enabled"] = true;
-                                  __composite["key"] = "visitors";
-                                  __composite["type"] = "number";
-                                  return __composite;
-                                })()}
-                              />
                             </div>
                           </div>
                         ) : null}
-                      </FetchData>
+                      </ApiRequest>
                     </div>
                   </Stack__>
                 </div>
@@ -2341,38 +1405,42 @@ const PlasmicDescendants = {
     "authProvider",
     "layout",
     "fetchData",
-    "pageViewApi",
+    "menu",
+    "filter",
     "activeUserApi",
     "fragmentApiRequest2",
-    "filter",
-    "fetchData2"
+    "chartRequest",
+    "fragmentChart"
   ],
   embedHtml: ["embedHtml"],
   authProvider: [
     "authProvider",
     "layout",
     "fetchData",
-    "pageViewApi",
+    "menu",
+    "filter",
     "activeUserApi",
     "fragmentApiRequest2",
-    "filter",
-    "fetchData2"
+    "chartRequest",
+    "fragmentChart"
   ],
   layout: [
     "layout",
     "fetchData",
-    "pageViewApi",
+    "menu",
+    "filter",
     "activeUserApi",
     "fragmentApiRequest2",
-    "filter",
-    "fetchData2"
+    "chartRequest",
+    "fragmentChart"
   ],
-  fetchData: ["fetchData"],
-  pageViewApi: ["pageViewApi"],
+  fetchData: ["fetchData", "menu"],
+  menu: ["menu"],
+  filter: ["filter"],
   activeUserApi: ["activeUserApi"],
   fragmentApiRequest2: ["fragmentApiRequest2"],
-  filter: ["filter"],
-  fetchData2: ["fetchData2"]
+  chartRequest: ["chartRequest", "fragmentChart"],
+  fragmentChart: ["fragmentChart"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -2383,11 +1451,12 @@ type NodeDefaultElementType = {
   authProvider: typeof AuthProvider;
   layout: typeof Layout;
   fetchData: typeof FetchData;
-  pageViewApi: typeof ApiRequest;
+  menu: typeof Menu;
+  filter: typeof Filter;
   activeUserApi: typeof ApiRequest;
   fragmentApiRequest2: typeof ApiRequest;
-  filter: typeof Filter;
-  fetchData2: typeof FetchData;
+  chartRequest: typeof ApiRequest;
+  fragmentChart: typeof Chart;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -2454,11 +1523,12 @@ export const PlasmicStatistics = Object.assign(
     authProvider: makeNodeComponent("authProvider"),
     layout: makeNodeComponent("layout"),
     fetchData: makeNodeComponent("fetchData"),
-    pageViewApi: makeNodeComponent("pageViewApi"),
+    menu: makeNodeComponent("menu"),
+    filter: makeNodeComponent("filter"),
     activeUserApi: makeNodeComponent("activeUserApi"),
     fragmentApiRequest2: makeNodeComponent("fragmentApiRequest2"),
-    filter: makeNodeComponent("filter"),
-    fetchData2: makeNodeComponent("fetchData2"),
+    chartRequest: makeNodeComponent("chartRequest"),
+    fragmentChart: makeNodeComponent("fragmentChart"),
 
     // Metadata about props expected for PlasmicStatistics
     internalVariantProps: PlasmicStatistics__VariantProps,
