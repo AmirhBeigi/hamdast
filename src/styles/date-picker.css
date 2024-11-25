@@ -82,5 +82,5 @@
 }
 
 .fragment .rmdp-range {
-  @apply !shadow-none !bg-primary/10;
+  @apply !shadow-none !bg-slate-100;
 }
