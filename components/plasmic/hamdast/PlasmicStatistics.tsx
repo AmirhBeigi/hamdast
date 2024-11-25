@@ -65,8 +65,8 @@ import Layout from "../../Layout"; // plasmic-import: ve2FygUyzJYe/component
 import FetchData from "../../FetchData"; // plasmic-import: -UcPqMSXVAGv/component
 import Menu from "../../Menu"; // plasmic-import: 73TqujunaOu5/component
 import Filter from "../../Filter"; // plasmic-import: YY41SIghQUgw/component
+import { DatePicker } from "@/fragment/components/date-picker"; // plasmic-import: jSLVhlSUsyZa/codeComponent
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
-import { Chart } from "@/fragment/components/chart"; // plasmic-import: oU2v2at0brmo/codeComponent
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -75,7 +75,6 @@ import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6u
 import sty from "./PlasmicStatistics.module.css"; // plasmic-import: nAbrCePpa8PZ/css
 
 import Icon15Icon from "./icons/PlasmicIcon__Icon15"; // plasmic-import: rQsx35tf_bcf/icon
-import Icon18Icon from "./icons/PlasmicIcon__Icon18"; // plasmic-import: 1FObiVFN1kNa/icon
 
 import __lib_dayjs from "dayjs";
 
@@ -98,11 +97,10 @@ export type PlasmicStatistics__OverridesType = {
   fetchData?: Flex__<typeof FetchData>;
   menu?: Flex__<typeof Menu>;
   filter?: Flex__<typeof Filter>;
+  datePicker?: Flex__<typeof DatePicker>;
   activeUserApi?: Flex__<typeof ApiRequest>;
   activeUserApi2?: Flex__<typeof ApiRequest>;
   fragmentApiRequest2?: Flex__<typeof ApiRequest>;
-  chartRequest?: Flex__<typeof ApiRequest>;
-  fragmentChart?: Flex__<typeof Chart>;
 };
 
 export interface DefaultStatisticsProps {}
@@ -235,24 +233,6 @@ function PlasmicStatistics__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "chartRequest.data",
-        type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "chartRequest.error",
-        type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "chartRequest.loading",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
         path: "activeUserApi2.data",
         type: "private",
         variableType: "object",
@@ -268,6 +248,30 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "activeUserApi2.loading",
         type: "private",
         variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "datePicker.value",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "datePicker.values",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => []
+      },
+      {
+        path: "datePicker.month",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "datePicker.year",
+        type: "private",
+        variableType: "object",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
@@ -740,6 +744,75 @@ function PlasmicStatistics__RenderFunc(props: {
                             );
                           })}
                         </Stack__>
+                        <DatePicker
+                          data-plasmic-name={"datePicker"}
+                          data-plasmic-override={overrides.datePicker}
+                          className={classNames(
+                            "__wab_instance",
+                            sty.datePicker
+                          )}
+                          customDayCell={false}
+                          dayCell={(dateProps: any) => (
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__skvvU
+                              )}
+                              onClick={async event => {
+                                const $steps = {};
+
+                                $steps["runCode"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        customFunction: async () => {
+                                          return undefined;
+                                        }
+                                      };
+                                      return (({ customFunction }) => {
+                                        return customFunction();
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["runCode"] != null &&
+                                  typeof $steps["runCode"] === "object" &&
+                                  typeof $steps["runCode"].then === "function"
+                                ) {
+                                  $steps["runCode"] = await $steps["runCode"];
+                                }
+                              }}
+                            />
+                          )}
+                          holidays={[]}
+                          locale={"fa"}
+                          mode={"range"}
+                          onChange={async (...eventArgs: any) => {
+                            generateStateOnChangeProp($state, [
+                              "datePicker",
+                              "value"
+                            ]).apply(null, eventArgs);
+                            generateStateOnChangeProp($state, [
+                              "datePicker",
+                              "values"
+                            ]).apply(null, eventArgs);
+                          }}
+                          onMonthChange={generateStateOnChangeProp($state, [
+                            "datePicker",
+                            "month"
+                          ])}
+                          onYearChange={generateStateOnChangeProp($state, [
+                            "datePicker",
+                            "year"
+                          ])}
+                          value={generateStateValueProp($state, [
+                            "datePicker",
+                            "value"
+                          ])}
+                          values={generateStateValueProp($state, [
+                            "datePicker",
+                            "values"
+                          ])}
+                        />
                       </div>
                       <div
                         className={classNames(
@@ -879,10 +952,12 @@ function PlasmicStatistics__RenderFunc(props: {
                             params={(() => {
                               try {
                                 return {
-                                  start_date: $$.dayjs()
-                                    .subtract($state.day - 1, "day")
-                                    .format("YYYY-MM-DD"),
-                                  end_date: $$.dayjs().format("YYYY-MM-DD"),
+                                  start_date: $$.dayjs(
+                                    $state.datePicker.values[0] * 1000
+                                  ).format("YYYY-MM-DD"),
+                                  end_date: $$.dayjs(
+                                    $state.datePicker.values[1] * 1000
+                                  ).format("YYYY-MM-DD"),
                                   type: "dau"
                                 };
                               } catch (e) {
@@ -961,7 +1036,8 @@ function PlasmicStatistics__RenderFunc(props: {
                                           "fa-IR"
                                         ).format(
                                           Number(
-                                            $state.activeUserApi.data[0]?.value
+                                            $state.activeUserApi.data[0]
+                                              ?.value ?? 0
                                           ).toFixed(2)
                                         );
                                       } catch (e) {
@@ -1122,10 +1198,12 @@ function PlasmicStatistics__RenderFunc(props: {
                             params={(() => {
                               try {
                                 return {
-                                  start_date: $$.dayjs()
-                                    .subtract($state.day - 1, "day")
-                                    .format("YYYY-MM-DD"),
-                                  end_date: $$.dayjs().format("YYYY-MM-DD"),
+                                  start_date: $$.dayjs(
+                                    $state.datePicker.values[0] * 1000
+                                  ).format("YYYY-MM-DD"),
+                                  end_date: $$.dayjs(
+                                    $state.datePicker.values[1] * 1000
+                                  ).format("YYYY-MM-DD"),
                                   type: "mau"
                                 };
                               } catch (e) {
@@ -1204,7 +1282,8 @@ function PlasmicStatistics__RenderFunc(props: {
                                           "fa-IR"
                                         ).format(
                                           Number(
-                                            $state.activeUserApi2.data[0]?.value
+                                            $state.activeUserApi2.data[0]
+                                              ?.value ?? 0
                                           ).toFixed(2)
                                         );
                                       } catch (e) {
@@ -1457,206 +1536,6 @@ function PlasmicStatistics__RenderFunc(props: {
                           </ApiRequest>
                         </div>
                       </div>
-                      <ApiRequest
-                        data-plasmic-name={"chartRequest"}
-                        data-plasmic-override={overrides.chartRequest}
-                        className={classNames(
-                          "__wab_instance",
-                          sty.chartRequest
-                        )}
-                        errorDisplay={
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___2S1UW
-                            )}
-                          >
-                            {"Error fetching data"}
-                          </div>
-                        }
-                        loadingDisplay={
-                          <Icon15Icon
-                            className={classNames(
-                              projectcss.all,
-                              sty.svg___3T8ZG
-                            )}
-                            role={"img"}
-                          />
-                        }
-                        method={"GET"}
-                        onError={generateStateOnChangeProp($state, [
-                          "chartRequest",
-                          "error"
-                        ])}
-                        onLoading={generateStateOnChangeProp($state, [
-                          "chartRequest",
-                          "loading"
-                        ])}
-                        onSuccess={generateStateOnChangeProp($state, [
-                          "chartRequest",
-                          "data"
-                        ])}
-                        url={(() => {
-                          try {
-                            return (() => {
-                              return `https://hamdast.paziresh24.com/api/v1/apps/${
-                                $ctx.params.id
-                              }/menus/${
-                                $state.menu
-                              }/analytics/?start_date=${$$.dayjs()
-                                .subtract($state.day - 1, "day")
-                                .format(
-                                  "YYYY-MM-DD"
-                                )}&end_date=${$$.dayjs().format("YYYY-MM-DD")}`;
-                            })();
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
-                            }
-                            throw e;
-                          }
-                        })()}
-                      >
-                        {false ? (
-                          <Stack__
-                            as={"div"}
-                            hasGap={true}
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__t4Zgx
-                            )}
-                          >
-                            <Icon18Icon
-                              className={classNames(
-                                projectcss.all,
-                                sty.svg__hCh1A
-                              )}
-                              role={"img"}
-                            />
-
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__poXpJ
-                              )}
-                            >
-                              {
-                                "\u0622\u0645\u0627\u0631\u06cc \u062f\u0631 \u0627\u06cc\u0646 \u062a\u0627\u0631\u06cc\u062e \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u062f."
-                              }
-                            </div>
-                          </Stack__>
-                        ) : null}
-                        {false ? (
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox___8Yie6
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__sE5LK
-                              )}
-                            >
-                              <Chart
-                                data-plasmic-name={"fragmentChart"}
-                                data-plasmic-override={overrides.fragmentChart}
-                                cartesianGrid={["horizontal"]}
-                                chartConfig={(() => {
-                                  const __composite = [
-                                    {
-                                      color: null,
-                                      type: null,
-                                      dot: null,
-                                      key: null,
-                                      label: null
-                                    },
-                                    {
-                                      color: null,
-                                      type: "natural",
-                                      dot: false,
-                                      key: null,
-                                      label: null
-                                    }
-                                  ];
-                                  __composite["0"]["color"] = "#000000";
-                                  __composite["0"]["type"] = "natural";
-                                  __composite["0"]["dot"] = true;
-                                  __composite["0"]["key"] = "visitors";
-                                  __composite["0"]["label"] =
-                                    "\u0628\u0627\u0632\u062f\u06cc\u062f";
-                                  __composite["1"]["color"] = "#5E5E5E";
-                                  __composite["1"]["key"] = "active_users";
-                                  __composite["1"]["label"] =
-                                    "\u06a9\u0627\u0631\u0628\u0631";
-                                  return __composite;
-                                })()}
-                                className={classNames(
-                                  "__wab_instance",
-                                  sty.fragmentChart
-                                )}
-                                data={(() => {
-                                  try {
-                                    return [];
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return undefined;
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                                label={false}
-                                layout={"horizontal"}
-                                legend={true}
-                                tooltip={(() => {
-                                  const __composite = {
-                                    enabled: null,
-                                    indicator: null
-                                  };
-                                  __composite["enabled"] = true;
-                                  __composite["indicator"] = "dot";
-                                  return __composite;
-                                })()}
-                                type={"bar"}
-                                xAxis={(() => {
-                                  const __composite = {
-                                    enabled: null,
-                                    key: null,
-                                    type: null,
-                                    tickLine: null
-                                  };
-                                  __composite["enabled"] = true;
-                                  __composite["key"] = "date";
-                                  __composite["type"] = "category";
-                                  __composite["tickLine"] = false;
-                                  return __composite;
-                                })()}
-                                yAxis={(() => {
-                                  const __composite = {
-                                    enabled: null,
-                                    key: null,
-                                    type: null
-                                  };
-                                  __composite["enabled"] = true;
-                                  __composite["key"] = "visitors";
-                                  __composite["type"] = "number";
-                                  return __composite;
-                                })()}
-                              />
-                            </div>
-                          </div>
-                        ) : null}
-                      </ApiRequest>
                     </div>
                   </Stack__>
                 </div>
@@ -1678,11 +1557,10 @@ const PlasmicDescendants = {
     "fetchData",
     "menu",
     "filter",
+    "datePicker",
     "activeUserApi",
     "activeUserApi2",
-    "fragmentApiRequest2",
-    "chartRequest",
-    "fragmentChart"
+    "fragmentApiRequest2"
   ],
   embedHtml: ["embedHtml"],
   authProvider: [
@@ -1691,31 +1569,28 @@ const PlasmicDescendants = {
     "fetchData",
     "menu",
     "filter",
+    "datePicker",
     "activeUserApi",
     "activeUserApi2",
-    "fragmentApiRequest2",
-    "chartRequest",
-    "fragmentChart"
+    "fragmentApiRequest2"
   ],
   layout: [
     "layout",
     "fetchData",
     "menu",
     "filter",
+    "datePicker",
     "activeUserApi",
     "activeUserApi2",
-    "fragmentApiRequest2",
-    "chartRequest",
-    "fragmentChart"
+    "fragmentApiRequest2"
   ],
   fetchData: ["fetchData", "menu"],
   menu: ["menu"],
   filter: ["filter"],
+  datePicker: ["datePicker"],
   activeUserApi: ["activeUserApi"],
   activeUserApi2: ["activeUserApi2"],
-  fragmentApiRequest2: ["fragmentApiRequest2"],
-  chartRequest: ["chartRequest", "fragmentChart"],
-  fragmentChart: ["fragmentChart"]
+  fragmentApiRequest2: ["fragmentApiRequest2"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1728,11 +1603,10 @@ type NodeDefaultElementType = {
   fetchData: typeof FetchData;
   menu: typeof Menu;
   filter: typeof Filter;
+  datePicker: typeof DatePicker;
   activeUserApi: typeof ApiRequest;
   activeUserApi2: typeof ApiRequest;
   fragmentApiRequest2: typeof ApiRequest;
-  chartRequest: typeof ApiRequest;
-  fragmentChart: typeof Chart;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1801,11 +1675,10 @@ export const PlasmicStatistics = Object.assign(
     fetchData: makeNodeComponent("fetchData"),
     menu: makeNodeComponent("menu"),
     filter: makeNodeComponent("filter"),
+    datePicker: makeNodeComponent("datePicker"),
     activeUserApi: makeNodeComponent("activeUserApi"),
     activeUserApi2: makeNodeComponent("activeUserApi2"),
     fragmentApiRequest2: makeNodeComponent("fragmentApiRequest2"),
-    chartRequest: makeNodeComponent("chartRequest"),
-    fragmentChart: makeNodeComponent("fragmentChart"),
 
     // Metadata about props expected for PlasmicStatistics
     internalVariantProps: PlasmicStatistics__VariantProps,
