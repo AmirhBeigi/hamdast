@@ -606,7 +606,9 @@ function PlasmicStatistics__RenderFunc(props: {
                     hasGap={true}
                     className={classNames(projectcss.all, sty.freeBox__jnCjc)}
                   >
-                    <div
+                    <Stack__
+                      as={"div"}
+                      hasGap={true}
                       className={classNames(projectcss.all, sty.freeBox__tm7Ne)}
                     >
                       <div
@@ -1536,7 +1538,7 @@ function PlasmicStatistics__RenderFunc(props: {
                           </ApiRequest>
                         </div>
                       </div>
-                    </div>
+                    </Stack__>
                   </Stack__>
                 </div>
               </div>
