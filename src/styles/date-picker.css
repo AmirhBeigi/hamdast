@@ -35,6 +35,10 @@
   @apply !text-inherit !inset-auto !static !rounded-none !shadow-none !p-0 select-none hover:!bg-transparent !bg-transparent;
 }
 
+.fragment.fragment.custom-day-cell .rmdp-range {
+  @apply !shadow-none !bg-transparent;
+}
+
 /* --------- */
 
 .fragment-day-today-cell {
@@ -75,4 +79,8 @@
 }
 .fragment .rmdp-arrow-container:hover {
   @apply bg-primary;
+}
+
+.fragment .rmdp-range {
+  @apply !shadow-none !bg-primary/10;
 }
