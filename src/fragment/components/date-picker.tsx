@@ -81,7 +81,7 @@ export const DatePicker = ({
                 isSelected: Array.isArray(selectedDate)
                   ? selectedDate.some(
                       (item) =>
-                        moment(+item.unix * 1000)
+                        moment(+(item as DateObject)!.unix! * 1000)
                           .startOf("day")
                           .unix() ==
                         moment(date.unix * 1000)
@@ -117,7 +117,7 @@ export const DatePicker = ({
             Array.isArray(selectedDate)
               ? selectedDate.some(
                   (item) =>
-                    moment(+item.unix * 1000)
+                    moment(+(item as DateObject)!.unix! * 1000)
                       .startOf("day")
                       .unix() ==
                     moment(date.unix * 1000)
