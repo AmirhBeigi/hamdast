@@ -352,20 +352,6 @@
           "path": "/app/[id]/replay"
         },
         {
-          "id": "95NoFP37q3yQ",
-          "name": "Hamdast",
-          "type": "managed",
-          "projectId": "bE9NMB942w5e6uFrcCxfJN",
-          "renderModuleFilePath": "plasmic/hamdast/PlasmicHamdast.tsx",
-          "importSpec": {
-            "modulePath": "../src/pages/index.tsx"
-          },
-          "cssFilePath": "plasmic/hamdast/PlasmicHamdast.module.css",
-          "scheme": "blackbox",
-          "componentType": "page",
-          "path": "/"
-        },
-        {
           "id": "KTPu1eZupEdG",
           "name": "AuthProvider",
           "type": "managed",
@@ -552,6 +538,34 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/apps/[id]/transactions"
+        },
+        {
+          "id": "95NoFP37q3yQ",
+          "name": "HamdastLogin",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicHamdastLogin.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/login.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicHamdastLogin.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/login"
+        },
+        {
+          "id": "S7QID4Zn_0WI",
+          "name": "Landing",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicLanding.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/index.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicLanding.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/"
         }
       ],
       "icons": [
@@ -689,6 +703,16 @@
           "id": "AGSEC-pNDNUM",
           "name": "Icon25Icon",
           "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon25.tsx"
+        },
+        {
+          "id": "1pURnLijkTh9",
+          "name": "Icon26Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon26.tsx"
+        },
+        {
+          "id": "0E0-Td2sxrpd",
+          "name": "Icon27Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon27.tsx"
         }
       ],
       "images": [
