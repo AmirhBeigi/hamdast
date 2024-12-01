@@ -70,7 +70,6 @@ import sty from "./PlasmicIntegrations.module.css"; // plasmic-import: ANnvdUMqE
 import Icon27Icon from "./icons/PlasmicIcon__Icon27"; // plasmic-import: 0E0-Td2sxrpd/icon
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: VepSFu0Y3Pyk/icon
 import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: CmW94FEF71d7/icon
-import Icon28Icon from "./icons/PlasmicIcon__Icon28"; // plasmic-import: KuhYrsUGl66d/icon
 
 createPlasmicElementProxy;
 
@@ -85,7 +84,7 @@ export const PlasmicIntegrations__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicIntegrations__OverridesType = {
   root?: Flex__<"div">;
-  link?: Flex__<"a"> & Partial<LinkProps>;
+  svg?: Flex__<"svg">;
   button?: Flex__<typeof Button>;
 };
 
@@ -169,14 +168,23 @@ function PlasmicIntegrations__RenderFunc(props: {
           )}
           dir={"rtl"}
         >
-          <div className={classNames(projectcss.all, sty.freeBox__slf3B)}>
+          <div className={classNames(projectcss.all, sty.freeBox__kfWCe)}>
             <Stack__
-              as={"div"}
+              as={PlasmicLink__}
               hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__ecFk9)}
+              className={classNames(
+                projectcss.all,
+                projectcss.a,
+                sty.link___7Obi4
+              )}
+              component={Link}
+              href={`/`}
+              platform={"nextjs"}
             >
               <Icon27Icon
-                className={classNames(projectcss.all, sty.svg__cOpPr)}
+                data-plasmic-name={"svg"}
+                data-plasmic-override={overrides.svg}
+                className={classNames(projectcss.all, sty.svg)}
                 role={"img"}
               />
 
@@ -184,7 +192,7 @@ function PlasmicIntegrations__RenderFunc(props: {
                 className={classNames(
                   projectcss.all,
                   projectcss.__wab_text,
-                  sty.text__vWaEc
+                  sty.text__nbMOr
                 )}
               >
                 {"\u0647\u0645\u062f\u0633\u062a"}
@@ -193,16 +201,14 @@ function PlasmicIntegrations__RenderFunc(props: {
             <Stack__
               as={"div"}
               hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__aNtDm)}
+              className={classNames(projectcss.all, sty.freeBox__uiToj)}
             >
               <PlasmicLink__
-                data-plasmic-name={"link"}
-                data-plasmic-override={overrides.link}
                 className={classNames(
                   projectcss.all,
                   projectcss.a,
                   projectcss.__wab_text,
-                  sty.link
+                  sty.link___8NvHh
                 )}
                 component={Link}
                 href={"https://developers.paziresh24.com/apps"}
@@ -211,15 +217,19 @@ function PlasmicIntegrations__RenderFunc(props: {
               >
                 {"\u0645\u0633\u062a\u0646\u062f\u0627\u062a"}
               </PlasmicLink__>
-              <div
+              <PlasmicLink__
                 className={classNames(
                   projectcss.all,
+                  projectcss.a,
                   projectcss.__wab_text,
-                  sty.text__md9Tr
+                  sty.link__ssFx
                 )}
+                component={Link}
+                href={`/integrations`}
+                platform={"nextjs"}
               >
                 {"\u0627\u062f\u063a\u0627\u0645 \u0647\u0627"}
-              </div>
+              </PlasmicLink__>
             </Stack__>
             <Button
               data-plasmic-name={"button"}
@@ -233,7 +243,7 @@ function PlasmicIntegrations__RenderFunc(props: {
                 className={classNames(
                   projectcss.all,
                   projectcss.__wab_text,
-                  sty.text__umkCs
+                  sty.text__r3EsJ
                 )}
               >
                 {
@@ -401,10 +411,10 @@ function PlasmicIntegrations__RenderFunc(props: {
                 displayWidth={"40px"}
                 loading={"lazy"}
                 src={{
-                  src: "/plasmic/hamdast/images/najva125125Png.png",
-                  fullWidth: 125,
-                  fullHeight: 125,
-                  aspectRatio: undefined
+                  src: "/plasmic/hamdast/images/_4C5D8A25714Def303Ef66Ff369428BcfSvg.svg",
+                  fullWidth: 48,
+                  fullHeight: 48,
+                  aspectRatio: 1
                 }}
               />
 
@@ -431,57 +441,6 @@ function PlasmicIntegrations__RenderFunc(props: {
                 </div>
               </div>
             </Stack__>
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__haafL)}
-            >
-              <PlasmicImg__
-                alt={""}
-                className={classNames(sty.img__wL0LM)}
-                displayHeight={"40px"}
-                displayMaxHeight={"none"}
-                displayMaxWidth={"100%"}
-                displayMinHeight={"0"}
-                displayMinWidth={"0"}
-                displayWidth={"40px"}
-                loading={"lazy"}
-                src={{
-                  src: "/plasmic/hamdast/images/najva125125Png.png",
-                  fullWidth: 125,
-                  fullHeight: 125,
-                  aspectRatio: undefined
-                }}
-              />
-
-              <Icon28Icon
-                className={classNames(projectcss.all, sty.svg__lWDjH)}
-                role={"img"}
-              />
-
-              <div className={classNames(projectcss.all, sty.freeBox__dNvkF)}>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__r97Nl
-                  )}
-                >
-                  {"\u067e\u0644\u0632\u0645\u06cc\u06a9"}
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___66HD
-                  )}
-                >
-                  {
-                    "\u062a\u0648\u0633\u0639\u0647 \u0641\u0631\u0627\u0646\u062a\u200c\u0627\u0646\u062f \u0627\u0628\u0632\u0627\u0631\u06a9"
-                  }
-                </div>
-              </div>
-            </Stack__>
           </div>
         </div>
       </div>
@@ -490,8 +449,8 @@ function PlasmicIntegrations__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "link", "button"],
-  link: ["link"],
+  root: ["root", "svg", "button"],
+  svg: ["svg"],
   button: ["button"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -499,7 +458,7 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  link: "a";
+  svg: "svg";
   button: typeof Button;
 };
 
@@ -563,7 +522,7 @@ export const PlasmicIntegrations = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    link: makeNodeComponent("link"),
+    svg: makeNodeComponent("svg"),
     button: makeNodeComponent("button"),
 
     // Metadata about props expected for PlasmicIntegrations

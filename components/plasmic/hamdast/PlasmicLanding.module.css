@@ -34,33 +34,37 @@
   min-width: 0;
   padding: 8px;
 }
-.freeBox__ypiuh {
-  display: flex;
-  flex-direction: row;
+.link__ypiuh {
   position: relative;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  padding-left: 8px;
-  padding-right: 8px;
   padding-top: 8px;
-}
-.freeBox__ypiuh > :global(.__wab_flex-container) {
+  padding-right: 8px;
+  padding-left: 8px;
+  max-width: 100%;
+  height: auto;
+  width: auto;
   flex-direction: row;
-  align-items: center;
+  display: flex;
+  color: #000000;
+}
+.link__ypiuh > :global(.__wab_flex-container) {
   justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
   margin-left: calc(0px - 15px);
   width: calc(100% + 15px);
 }
-.freeBox__ypiuh > :global(.__wab_flex-container) > *,
-.freeBox__ypiuh > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.freeBox__ypiuh > :global(.__wab_flex-container) > picture > img,
-.freeBox__ypiuh
+.link__ypiuh > :global(.__wab_flex-container) > *,
+.link__ypiuh > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.link__ypiuh > :global(.__wab_flex-container) > picture > img,
+.link__ypiuh
   > :global(.__wab_flex-container)
   > :global(.__wab_slot)
   > picture
   > img {
   margin-left: 15px;
+}
+.root .link__ypiuh:hover {
+  color: #000000;
 }
 .svg {
   object-fit: cover;
@@ -103,7 +107,7 @@
   > img {
   margin-left: 26px;
 }
-.link {
+.link__uLgo0 {
   position: relative;
   width: 100%;
   height: auto;
@@ -113,7 +117,7 @@
   color: #00000099;
   min-width: 0;
 }
-.text___0SG2 {
+.link___0SG2 {
   position: relative;
   width: 100%;
   height: auto;

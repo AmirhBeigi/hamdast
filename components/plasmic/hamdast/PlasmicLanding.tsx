@@ -85,7 +85,6 @@ export const PlasmicLanding__ArgProps = new Array<ArgPropType>();
 export type PlasmicLanding__OverridesType = {
   root?: Flex__<"div">;
   svg?: Flex__<"svg">;
-  link?: Flex__<"a"> & Partial<LinkProps>;
 };
 
 export interface DefaultLandingProps {}
@@ -170,9 +169,16 @@ function PlasmicLanding__RenderFunc(props: {
         >
           <div className={classNames(projectcss.all, sty.freeBox__la0Sl)}>
             <Stack__
-              as={"div"}
+              as={PlasmicLink__}
               hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__ypiuh)}
+              className={classNames(
+                projectcss.all,
+                projectcss.a,
+                sty.link__ypiuh
+              )}
+              component={Link}
+              href={`/`}
+              platform={"nextjs"}
             >
               <Icon27Icon
                 data-plasmic-name={"svg"}
@@ -197,13 +203,11 @@ function PlasmicLanding__RenderFunc(props: {
               className={classNames(projectcss.all, sty.freeBox__rdoli)}
             >
               <PlasmicLink__
-                data-plasmic-name={"link"}
-                data-plasmic-override={overrides.link}
                 className={classNames(
                   projectcss.all,
                   projectcss.a,
                   projectcss.__wab_text,
-                  sty.link
+                  sty.link__uLgo0
                 )}
                 component={Link}
                 href={"https://developers.paziresh24.com/apps"}
@@ -212,15 +216,19 @@ function PlasmicLanding__RenderFunc(props: {
               >
                 {"\u0645\u0633\u062a\u0646\u062f\u0627\u062a"}
               </PlasmicLink__>
-              <div
+              <PlasmicLink__
                 className={classNames(
                   projectcss.all,
+                  projectcss.a,
                   projectcss.__wab_text,
-                  sty.text___0SG2
+                  sty.link___0SG2
                 )}
+                component={Link}
+                href={`/integrations`}
+                platform={"nextjs"}
               >
                 {"\u0627\u062f\u063a\u0627\u0645 \u0647\u0627"}
-              </div>
+              </PlasmicLink__>
             </Stack__>
             <Button
               className={classNames("__wab_instance", sty.button___3EXjU)}
@@ -381,9 +389,8 @@ function PlasmicLanding__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "svg", "link"],
-  svg: ["svg"],
-  link: ["link"]
+  root: ["root", "svg"],
+  svg: ["svg"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -391,7 +398,6 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   svg: "svg";
-  link: "a";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -455,7 +461,6 @@ export const PlasmicLanding = Object.assign(
   {
     // Helper components rendering sub-elements
     svg: makeNodeComponent("svg"),
-    link: makeNodeComponent("link"),
 
     // Metadata about props expected for PlasmicLanding
     internalVariantProps: PlasmicLanding__VariantProps,
