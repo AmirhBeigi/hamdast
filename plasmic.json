@@ -566,6 +566,20 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/"
+        },
+        {
+          "id": "ANnvdUMqEs3c",
+          "name": "Integrations",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicIntegrations.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/integrations.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicIntegrations.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/integrations"
         }
       ],
       "icons": [
@@ -713,6 +727,16 @@
           "id": "0E0-Td2sxrpd",
           "name": "Icon27Icon",
           "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon27.tsx"
+        },
+        {
+          "id": "7b-w8FIbuA3A",
+          "name": "MahamSvgIcon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__MahamSvg.tsx"
+        },
+        {
+          "id": "KuhYrsUGl66d",
+          "name": "Icon28Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon28.tsx"
         }
       ],
       "images": [
@@ -720,6 +744,16 @@
           "id": "8rIy3Z8cms8n",
           "name": "party.png",
           "filePath": "../public/plasmic/hamdast/images/partyPng.png"
+        },
+        {
+          "id": "QnxgCqfwPnDr",
+          "name": "logo.png",
+          "filePath": "../public/plasmic/hamdast/images/logoPng.png"
+        },
+        {
+          "id": "C-gV90uoE2h8",
+          "name": "najva-125_125.png",
+          "filePath": "../public/plasmic/hamdast/images/najva125125Png.png"
         }
       ],
       "indirect": false,
