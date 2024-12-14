@@ -849,39 +849,39 @@ function PlasmicMenuItem__RenderFunc(props: {
                   ];
                 }
 
-                $steps["updateDeleteLoading2"] = true
+                $steps["invokeGlobalAction"] = !$props.notSave
                   ? (() => {
                       const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["deleteLoading"]
-                        },
-                        operation: 0,
-                        value: false
+                        args: [
+                          "DELETE",
+                          (() => {
+                            try {
+                              return `https://hamdast.paziresh24.com/api/v1/apps/${$props.appId}/menus/${$props.pageId}/`;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
+                        ]
                       };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
+                      return $globalActions["Fragment.apiRequest"]?.apply(
+                        null,
+                        [...actionArgs.args]
+                      );
                     })()
                   : undefined;
                 if (
-                  $steps["updateDeleteLoading2"] != null &&
-                  typeof $steps["updateDeleteLoading2"] === "object" &&
-                  typeof $steps["updateDeleteLoading2"].then === "function"
+                  $steps["invokeGlobalAction"] != null &&
+                  typeof $steps["invokeGlobalAction"] === "object" &&
+                  typeof $steps["invokeGlobalAction"].then === "function"
                 ) {
-                  $steps["updateDeleteLoading2"] = await $steps[
-                    "updateDeleteLoading2"
+                  $steps["invokeGlobalAction"] = await $steps[
+                    "invokeGlobalAction"
                   ];
                 }
 
@@ -918,39 +918,39 @@ function PlasmicMenuItem__RenderFunc(props: {
                   $steps["runOnDelete"] = await $steps["runOnDelete"];
                 }
 
-                $steps["invokeGlobalAction"] = true
+                $steps["updateDeleteLoading2"] = true
                   ? (() => {
                       const actionArgs = {
-                        args: [
-                          "DELETE",
-                          (() => {
-                            try {
-                              return `https://hamdast.paziresh24.com/api/v1/apps/${$props.appId}/menus/${$props.pageId}/`;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
-                            }
-                          })()
-                        ]
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["deleteLoading"]
+                        },
+                        operation: 0,
+                        value: false
                       };
-                      return $globalActions["Fragment.apiRequest"]?.apply(
-                        null,
-                        [...actionArgs.args]
-                      );
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
                     })()
                   : undefined;
                 if (
-                  $steps["invokeGlobalAction"] != null &&
-                  typeof $steps["invokeGlobalAction"] === "object" &&
-                  typeof $steps["invokeGlobalAction"].then === "function"
+                  $steps["updateDeleteLoading2"] != null &&
+                  typeof $steps["updateDeleteLoading2"] === "object" &&
+                  typeof $steps["updateDeleteLoading2"].then === "function"
                 ) {
-                  $steps["invokeGlobalAction"] = await $steps[
-                    "invokeGlobalAction"
+                  $steps["updateDeleteLoading2"] = await $steps[
+                    "updateDeleteLoading2"
                   ];
                 }
               }}
