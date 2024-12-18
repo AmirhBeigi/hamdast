@@ -238,14 +238,26 @@ function PlasmicSetAppIcon__RenderFunc(props: {
             data-plasmic-name={"authProvider"}
             data-plasmic-override={overrides.authProvider}
             className={classNames("__wab_instance", sty.authProvider)}
-            onAppsChange={generateStateOnChangeProp($state, [
-              "authProvider",
-              "apps"
-            ])}
-            onUserChange={generateStateOnChangeProp($state, [
-              "authProvider",
-              "user"
-            ])}
+            onAppsChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["authProvider", "apps"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (eventArgs.length > 1 && eventArgs[1]) {
+                return;
+              }
+            }}
+            onUserChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["authProvider", "user"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (eventArgs.length > 1 && eventArgs[1]) {
+                return;
+              }
+            }}
           >
             <div className={classNames(projectcss.all, sty.freeBox__oDkc)}>
               <Reveal
@@ -621,10 +633,16 @@ function PlasmicSetAppIcon__RenderFunc(props: {
                             sty.fragmentTextarea
                           )}
                           disabled={false}
-                          onChange={generateStateOnChangeProp($state, [
-                            "fragmentTextarea",
-                            "value"
-                          ])}
+                          onChange={async (...eventArgs: any) => {
+                            generateStateOnChangeProp($state, [
+                              "fragmentTextarea",
+                              "value"
+                            ]).apply(null, eventArgs);
+
+                            if (eventArgs.length > 1 && eventArgs[1]) {
+                              return;
+                            }
+                          }}
                           placeholder={
                             '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.27 21.7s9.87-3.5 12.73-6.36a4.5 4.5 0 0 0-6.36-6.37C5.77 11.84 2.27 ...'
                           }
@@ -670,10 +688,16 @@ function PlasmicSetAppIcon__RenderFunc(props: {
                                 sty.fragmentInput
                               )}
                               multiple={false}
-                              onChange={generateStateOnChangeProp($state, [
-                                "fragmentInput",
-                                "value"
-                              ])}
+                              onChange={async (...eventArgs: any) => {
+                                generateStateOnChangeProp($state, [
+                                  "fragmentInput",
+                                  "value"
+                                ]).apply(null, eventArgs);
+
+                                if (eventArgs.length > 1 && eventArgs[1]) {
+                                  return;
+                                }
+                              }}
                               type={"file"}
                               value={generateStateValueProp($state, [
                                 "fragmentInput",

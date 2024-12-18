@@ -580,6 +580,20 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/integrations"
+        },
+        {
+          "id": "ReIV2oHalt4i",
+          "name": "SingleIntegrationPage",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicSingleIntegrationPage.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/integrations/[name].tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicSingleIntegrationPage.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/integrations/[name]"
         }
       ],
       "icons": [

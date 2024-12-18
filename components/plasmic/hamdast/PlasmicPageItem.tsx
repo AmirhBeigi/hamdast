@@ -594,10 +594,16 @@ function PlasmicPageItem__RenderFunc(props: {
                 data-plasmic-name={"nameInput"}
                 data-plasmic-override={overrides.nameInput}
                 className={classNames("__wab_instance", sty.nameInput)}
-                onChange={generateStateOnChangeProp($state, [
-                  "nameInput",
-                  "value"
-                ])}
+                onChange={async (...eventArgs: any) => {
+                  generateStateOnChangeProp($state, [
+                    "nameInput",
+                    "value"
+                  ]).apply(null, eventArgs);
+
+                  if (eventArgs.length > 1 && eventArgs[1]) {
+                    return;
+                  }
+                }}
                 placeholder={(() => {
                   try {
                     return $state.nameInput?.value
@@ -663,10 +669,16 @@ function PlasmicPageItem__RenderFunc(props: {
                   data-plasmic-override={overrides.keyInput}
                   attributes={{ dir: "ltr" }}
                   className={classNames("__wab_instance", sty.keyInput)}
-                  onChange={generateStateOnChangeProp($state, [
-                    "keyInput",
-                    "value"
-                  ])}
+                  onChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "keyInput",
+                      "value"
+                    ]).apply(null, eventArgs);
+
+                    if (eventArgs.length > 1 && eventArgs[1]) {
+                      return;
+                    }
+                  }}
                   placeholder={(() => {
                     try {
                       return $state.keyInput?.value
@@ -1106,11 +1118,17 @@ function PlasmicPageItem__RenderFunc(props: {
                               "__wab_instance",
                               sty.pathParameterInput
                             ),
-                            onChange: generateStateOnChangeProp($state, [
-                              "pathParameterInput",
-                              __plasmic_idx_0,
-                              "value"
-                            ]),
+                            onChange: async (...eventArgs: any) => {
+                              generateStateOnChangeProp($state, [
+                                "pathParameterInput",
+                                __plasmic_idx_0,
+                                "value"
+                              ]).apply(null, eventArgs);
+
+                              if (eventArgs.length > 1 && eventArgs[1]) {
+                                return;
+                              }
+                            },
                             placeholder: ``,
                             type: "text",
                             value: generateStateValueProp($state, [
@@ -1271,10 +1289,16 @@ function PlasmicPageItem__RenderFunc(props: {
               data-plasmic-override={overrides.embedInput}
               attributes={{ dir: "ltr" }}
               className={classNames("__wab_instance", sty.embedInput)}
-              onChange={generateStateOnChangeProp($state, [
-                "embedInput",
-                "value"
-              ])}
+              onChange={async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, [
+                  "embedInput",
+                  "value"
+                ]).apply(null, eventArgs);
+
+                if (eventArgs.length > 1 && eventArgs[1]) {
+                  return;
+                }
+              }}
               type={"text"}
               value={generateStateValueProp($state, ["embedInput", "value"])}
             />
@@ -1322,10 +1346,16 @@ function PlasmicPageItem__RenderFunc(props: {
                     "checked"
                   ])}
                   className={classNames("__wab_instance", sty.fragmentSwitch)}
-                  onCheckedChange={generateStateOnChangeProp($state, [
-                    "fragmentSwitch",
-                    "checked"
-                  ])}
+                  onCheckedChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "fragmentSwitch",
+                      "checked"
+                    ]).apply(null, eventArgs);
+
+                    if (eventArgs.length > 1 && eventArgs[1]) {
+                      return;
+                    }
+                  }}
                 />
               </Stack__>
               <Stack__
@@ -1350,10 +1380,16 @@ function PlasmicPageItem__RenderFunc(props: {
                     "checked"
                   ])}
                   className={classNames("__wab_instance", sty.fragmentSwitch2)}
-                  onCheckedChange={generateStateOnChangeProp($state, [
-                    "fragmentSwitch2",
-                    "checked"
-                  ])}
+                  onCheckedChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "fragmentSwitch2",
+                      "checked"
+                    ]).apply(null, eventArgs);
+
+                    if (eventArgs.length > 1 && eventArgs[1]) {
+                      return;
+                    }
+                  }}
                 />
               </Stack__>
               <Stack__
@@ -1380,10 +1416,16 @@ function PlasmicPageItem__RenderFunc(props: {
                     "checked"
                   ])}
                   className={classNames("__wab_instance", sty.fragmentSwitch3)}
-                  onCheckedChange={generateStateOnChangeProp($state, [
-                    "fragmentSwitch3",
-                    "checked"
-                  ])}
+                  onCheckedChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "fragmentSwitch3",
+                      "checked"
+                    ]).apply(null, eventArgs);
+
+                    if (eventArgs.length > 1 && eventArgs[1]) {
+                      return;
+                    }
+                  }}
                 />
               </Stack__>
             </Stack__>
@@ -1433,10 +1475,16 @@ function PlasmicPageItem__RenderFunc(props: {
                     "checked"
                   ])}
                   className={classNames("__wab_instance", sty.fragmentSwitch4)}
-                  onCheckedChange={generateStateOnChangeProp($state, [
-                    "fragmentSwitch4",
-                    "checked"
-                  ])}
+                  onCheckedChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "fragmentSwitch4",
+                      "checked"
+                    ]).apply(null, eventArgs);
+
+                    if (eventArgs.length > 1 && eventArgs[1]) {
+                      return;
+                    }
+                  }}
                 />
               </Stack__>
             </Stack__>

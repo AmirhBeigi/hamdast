@@ -1,0 +1,211 @@
+.root {
+  display: grid;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  align-content: flex-start;
+  justify-items: center;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  min-height: 0;
+  grid-template-columns:
+    var(--plsmc-viewport-gap) 1fr minmax(0, var(--plsmc-wide-chunk))
+    min(
+      var(--plsmc-standard-width),
+      calc(100% - var(--plsmc-viewport-gap) - var(--plsmc-viewport-gap))
+    )
+    minmax(0, var(--plsmc-wide-chunk)) 1fr var(--plsmc-viewport-gap);
+  padding: 2rem;
+}
+.root > * {
+  grid-column: 4;
+}
+.freeBox___6Cceq {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 70px;
+  max-width: 100%;
+  min-width: 0;
+  padding: 8px;
+}
+.link__d1BRc {
+  position: relative;
+  padding-top: 8px;
+  padding-right: 8px;
+  padding-left: 8px;
+  max-width: 100%;
+  height: auto;
+  width: auto;
+  flex-direction: row;
+  display: flex;
+  color: #000000;
+}
+.link__d1BRc > :global(.__wab_flex-container) {
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  margin-left: calc(0px - 15px);
+  width: calc(100% + 15px);
+}
+.link__d1BRc > :global(.__wab_flex-container) > *,
+.link__d1BRc > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.link__d1BRc > :global(.__wab_flex-container) > picture > img,
+.link__d1BRc
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: 15px;
+}
+.root .link__d1BRc:hover {
+  color: #000000;
+}
+.svg {
+  object-fit: cover;
+  max-width: 100%;
+  width: 30px;
+  height: 30px;
+  color: #000000;
+  min-width: 30px;
+  flex-shrink: 0;
+}
+.text__b1Las {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-weight: 800;
+  font-size: 18px;
+  min-width: 0;
+}
+.freeBox__itlTn {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+}
+.freeBox__itlTn > :global(.__wab_flex-container) {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-left: calc(0px - 26px);
+  width: calc(100% + 26px);
+}
+.freeBox__itlTn > :global(.__wab_flex-container) > *,
+.freeBox__itlTn > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.freeBox__itlTn > :global(.__wab_flex-container) > picture > img,
+.freeBox__itlTn
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: 26px;
+}
+.link__sJcGh {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-weight: 500;
+  font-size: 14px;
+  color: #00000099;
+  min-width: 0;
+}
+.link__e3P7P {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-weight: 500;
+  font-size: 14px;
+  color: #00000099;
+  min-width: 0;
+}
+.button__p1Uu:global(.__wab_instance) {
+  max-width: 100%;
+  height: 35px;
+}
+.svg___3QJqD {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.text___2A7KC {
+  font-size: 14px;
+}
+.svg__j1Fse {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.freeBox___6QWf7 {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  background: none;
+  box-shadow: none;
+  cursor: pointer;
+  min-width: 0;
+  padding: 55px 8px 0px;
+}
+.freeBox__nX1Kz {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  background: none;
+  cursor: pointer;
+  box-shadow: none;
+}
+.text__qybP1 {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+.text__nse3A {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  font-weight: 400;
+  font-size: 16px;
+}
+.button__zafsi:global(.__wab_instance) {
+  max-width: 100%;
+}
+.svg__keSp8 {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.text__qkYfF {
+  padding-left: 0px;
+}
+.svg__nvPds {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}

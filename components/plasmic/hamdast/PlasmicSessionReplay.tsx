@@ -265,14 +265,26 @@ function PlasmicSessionReplay__RenderFunc(props: {
             data-plasmic-name={"authProvider"}
             data-plasmic-override={overrides.authProvider}
             className={classNames("__wab_instance", sty.authProvider)}
-            onAppsChange={generateStateOnChangeProp($state, [
-              "authProvider",
-              "apps"
-            ])}
-            onUserChange={generateStateOnChangeProp($state, [
-              "authProvider",
-              "user"
-            ])}
+            onAppsChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["authProvider", "apps"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (eventArgs.length > 1 && eventArgs[1]) {
+                return;
+              }
+            }}
+            onUserChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["authProvider", "user"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (eventArgs.length > 1 && eventArgs[1]) {
+                return;
+              }
+            }}
           >
             <Layout
               data-plasmic-name={"layout"}
@@ -361,14 +373,26 @@ function PlasmicSessionReplay__RenderFunc(props: {
                         role={"img"}
                       />
                     }
-                    onDataChange={generateStateOnChangeProp($state, [
-                      "fetchData",
-                      "data"
-                    ])}
-                    onLoadingChange={generateStateOnChangeProp($state, [
-                      "fetchData",
-                      "loading"
-                    ])}
+                    onDataChange={async (...eventArgs: any) => {
+                      generateStateOnChangeProp($state, [
+                        "fetchData",
+                        "data"
+                      ]).apply(null, eventArgs);
+
+                      if (eventArgs.length > 1 && eventArgs[1]) {
+                        return;
+                      }
+                    }}
+                    onLoadingChange={async (...eventArgs: any) => {
+                      generateStateOnChangeProp($state, [
+                        "fetchData",
+                        "loading"
+                      ]).apply(null, eventArgs);
+
+                      if (eventArgs.length > 1 && eventArgs[1]) {
+                        return;
+                      }
+                    }}
                     url={(() => {
                       try {
                         return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/menus/`;
@@ -693,14 +717,26 @@ function PlasmicSessionReplay__RenderFunc(props: {
                         role={"img"}
                       />
                     }
-                    onDataChange={generateStateOnChangeProp($state, [
-                      "fetchData2",
-                      "data"
-                    ])}
-                    onLoadingChange={generateStateOnChangeProp($state, [
-                      "fetchData2",
-                      "loading"
-                    ])}
+                    onDataChange={async (...eventArgs: any) => {
+                      generateStateOnChangeProp($state, [
+                        "fetchData2",
+                        "data"
+                      ]).apply(null, eventArgs);
+
+                      if (eventArgs.length > 1 && eventArgs[1]) {
+                        return;
+                      }
+                    }}
+                    onLoadingChange={async (...eventArgs: any) => {
+                      generateStateOnChangeProp($state, [
+                        "fetchData2",
+                        "loading"
+                      ]).apply(null, eventArgs);
+
+                      if (eventArgs.length > 1 && eventArgs[1]) {
+                        return;
+                      }
+                    }}
                     url={(() => {
                       try {
                         return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/menus/${$state.menu}/replay?days_ago=${$state.day}`;

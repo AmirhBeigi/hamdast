@@ -337,14 +337,26 @@ function PlasmicStatistics__RenderFunc(props: {
             data-plasmic-name={"authProvider"}
             data-plasmic-override={overrides.authProvider}
             className={classNames("__wab_instance", sty.authProvider)}
-            onAppsChange={generateStateOnChangeProp($state, [
-              "authProvider",
-              "apps"
-            ])}
-            onUserChange={generateStateOnChangeProp($state, [
-              "authProvider",
-              "user"
-            ])}
+            onAppsChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["authProvider", "apps"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (eventArgs.length > 1 && eventArgs[1]) {
+                return;
+              }
+            }}
+            onUserChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["authProvider", "user"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (eventArgs.length > 1 && eventArgs[1]) {
+                return;
+              }
+            }}
           >
             <Layout
               data-plasmic-name={"layout"}
@@ -432,14 +444,26 @@ function PlasmicStatistics__RenderFunc(props: {
                           role={"img"}
                         />
                       }
-                      onDataChange={generateStateOnChangeProp($state, [
-                        "fetchData",
-                        "data"
-                      ])}
-                      onLoadingChange={generateStateOnChangeProp($state, [
-                        "fetchData",
-                        "loading"
-                      ])}
+                      onDataChange={async (...eventArgs: any) => {
+                        generateStateOnChangeProp($state, [
+                          "fetchData",
+                          "data"
+                        ]).apply(null, eventArgs);
+
+                        if (eventArgs.length > 1 && eventArgs[1]) {
+                          return;
+                        }
+                      }}
+                      onLoadingChange={async (...eventArgs: any) => {
+                        generateStateOnChangeProp($state, [
+                          "fetchData",
+                          "loading"
+                        ]).apply(null, eventArgs);
+
+                        if (eventArgs.length > 1 && eventArgs[1]) {
+                          return;
+                        }
+                      }}
                       url={(() => {
                         try {
                           return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/menus/`;
@@ -797,15 +821,31 @@ function PlasmicStatistics__RenderFunc(props: {
                               "datePicker",
                               "values"
                             ]).apply(null, eventArgs);
+
+                            if (eventArgs.length > 1 && eventArgs[1]) {
+                              return;
+                            }
                           }}
-                          onMonthChange={generateStateOnChangeProp($state, [
-                            "datePicker",
-                            "month"
-                          ])}
-                          onYearChange={generateStateOnChangeProp($state, [
-                            "datePicker",
-                            "year"
-                          ])}
+                          onMonthChange={async (...eventArgs: any) => {
+                            generateStateOnChangeProp($state, [
+                              "datePicker",
+                              "month"
+                            ]).apply(null, eventArgs);
+
+                            if (eventArgs.length > 1 && eventArgs[1]) {
+                              return;
+                            }
+                          }}
+                          onYearChange={async (...eventArgs: any) => {
+                            generateStateOnChangeProp($state, [
+                              "datePicker",
+                              "year"
+                            ]).apply(null, eventArgs);
+
+                            if (eventArgs.length > 1 && eventArgs[1]) {
+                              return;
+                            }
+                          }}
                           value={generateStateValueProp($state, [
                             "datePicker",
                             "value"
@@ -939,18 +979,36 @@ function PlasmicStatistics__RenderFunc(props: {
                               </div>
                             }
                             method={"GET"}
-                            onError={generateStateOnChangeProp($state, [
-                              "activeUserApi",
-                              "error"
-                            ])}
-                            onLoading={generateStateOnChangeProp($state, [
-                              "activeUserApi",
-                              "loading"
-                            ])}
-                            onSuccess={generateStateOnChangeProp($state, [
-                              "activeUserApi",
-                              "data"
-                            ])}
+                            onError={async (...eventArgs: any) => {
+                              generateStateOnChangeProp($state, [
+                                "activeUserApi",
+                                "error"
+                              ]).apply(null, eventArgs);
+
+                              if (eventArgs.length > 1 && eventArgs[1]) {
+                                return;
+                              }
+                            }}
+                            onLoading={async (...eventArgs: any) => {
+                              generateStateOnChangeProp($state, [
+                                "activeUserApi",
+                                "loading"
+                              ]).apply(null, eventArgs);
+
+                              if (eventArgs.length > 1 && eventArgs[1]) {
+                                return;
+                              }
+                            }}
+                            onSuccess={async (...eventArgs: any) => {
+                              generateStateOnChangeProp($state, [
+                                "activeUserApi",
+                                "data"
+                              ]).apply(null, eventArgs);
+
+                              if (eventArgs.length > 1 && eventArgs[1]) {
+                                return;
+                              }
+                            }}
                             params={(() => {
                               try {
                                 return {
@@ -1185,18 +1243,36 @@ function PlasmicStatistics__RenderFunc(props: {
                               </div>
                             }
                             method={"GET"}
-                            onError={generateStateOnChangeProp($state, [
-                              "activeUserApi2",
-                              "error"
-                            ])}
-                            onLoading={generateStateOnChangeProp($state, [
-                              "activeUserApi2",
-                              "loading"
-                            ])}
-                            onSuccess={generateStateOnChangeProp($state, [
-                              "activeUserApi2",
-                              "data"
-                            ])}
+                            onError={async (...eventArgs: any) => {
+                              generateStateOnChangeProp($state, [
+                                "activeUserApi2",
+                                "error"
+                              ]).apply(null, eventArgs);
+
+                              if (eventArgs.length > 1 && eventArgs[1]) {
+                                return;
+                              }
+                            }}
+                            onLoading={async (...eventArgs: any) => {
+                              generateStateOnChangeProp($state, [
+                                "activeUserApi2",
+                                "loading"
+                              ]).apply(null, eventArgs);
+
+                              if (eventArgs.length > 1 && eventArgs[1]) {
+                                return;
+                              }
+                            }}
+                            onSuccess={async (...eventArgs: any) => {
+                              generateStateOnChangeProp($state, [
+                                "activeUserApi2",
+                                "data"
+                              ]).apply(null, eventArgs);
+
+                              if (eventArgs.length > 1 && eventArgs[1]) {
+                                return;
+                              }
+                            }}
                             params={(() => {
                               try {
                                 return {
@@ -1431,18 +1507,36 @@ function PlasmicStatistics__RenderFunc(props: {
                               </div>
                             }
                             method={"GET"}
-                            onError={generateStateOnChangeProp($state, [
-                              "fragmentApiRequest2",
-                              "error"
-                            ])}
-                            onLoading={generateStateOnChangeProp($state, [
-                              "fragmentApiRequest2",
-                              "loading"
-                            ])}
-                            onSuccess={generateStateOnChangeProp($state, [
-                              "fragmentApiRequest2",
-                              "data"
-                            ])}
+                            onError={async (...eventArgs: any) => {
+                              generateStateOnChangeProp($state, [
+                                "fragmentApiRequest2",
+                                "error"
+                              ]).apply(null, eventArgs);
+
+                              if (eventArgs.length > 1 && eventArgs[1]) {
+                                return;
+                              }
+                            }}
+                            onLoading={async (...eventArgs: any) => {
+                              generateStateOnChangeProp($state, [
+                                "fragmentApiRequest2",
+                                "loading"
+                              ]).apply(null, eventArgs);
+
+                              if (eventArgs.length > 1 && eventArgs[1]) {
+                                return;
+                              }
+                            }}
+                            onSuccess={async (...eventArgs: any) => {
+                              generateStateOnChangeProp($state, [
+                                "fragmentApiRequest2",
+                                "data"
+                              ]).apply(null, eventArgs);
+
+                              if (eventArgs.length > 1 && eventArgs[1]) {
+                                return;
+                              }
+                            }}
                             url={(() => {
                               try {
                                 return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/incomes`;

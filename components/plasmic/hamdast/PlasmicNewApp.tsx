@@ -270,14 +270,26 @@ function PlasmicNewApp__RenderFunc(props: {
             data-plasmic-name={"authProvider"}
             data-plasmic-override={overrides.authProvider}
             className={classNames("__wab_instance", sty.authProvider)}
-            onAppsChange={generateStateOnChangeProp($state, [
-              "authProvider",
-              "apps"
-            ])}
-            onUserChange={generateStateOnChangeProp($state, [
-              "authProvider",
-              "user"
-            ])}
+            onAppsChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["authProvider", "apps"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (eventArgs.length > 1 && eventArgs[1]) {
+                return;
+              }
+            }}
+            onUserChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["authProvider", "user"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (eventArgs.length > 1 && eventArgs[1]) {
+                return;
+              }
+            }}
             withOutUser={false}
           >
             <div className={classNames(projectcss.all, sty.freeBox__myAsb)}>
@@ -561,10 +573,16 @@ function PlasmicNewApp__RenderFunc(props: {
                             "__wab_instance",
                             sty.nameInput
                           )}
-                          onChange={generateStateOnChangeProp($state, [
-                            "nameInput",
-                            "value"
-                          ])}
+                          onChange={async (...eventArgs: any) => {
+                            generateStateOnChangeProp($state, [
+                              "nameInput",
+                              "value"
+                            ]).apply(null, eventArgs);
+
+                            if (eventArgs.length > 1 && eventArgs[1]) {
+                              return;
+                            }
+                          }}
                           placeholder={
                             "\u0646\u0633\u062e\u0647 \u0646\u0648\u06cc\u0633\u06cc"
                           }
@@ -617,10 +635,16 @@ function PlasmicNewApp__RenderFunc(props: {
                               "__wab_instance",
                               sty.keyInput
                             )}
-                            onChange={generateStateOnChangeProp($state, [
-                              "keyInput",
-                              "value"
-                            ])}
+                            onChange={async (...eventArgs: any) => {
+                              generateStateOnChangeProp($state, [
+                                "keyInput",
+                                "value"
+                              ]).apply(null, eventArgs);
+
+                              if (eventArgs.length > 1 && eventArgs[1]) {
+                                return;
+                              }
+                            }}
                             type={"text"}
                             value={generateStateValueProp($state, [
                               "keyInput",
@@ -698,18 +722,36 @@ function PlasmicNewApp__RenderFunc(props: {
                                 </div>
                               }
                               method={"GET"}
-                              onError={generateStateOnChangeProp($state, [
-                                "fragmentApiRequest",
-                                "error"
-                              ])}
-                              onLoading={generateStateOnChangeProp($state, [
-                                "fragmentApiRequest",
-                                "loading"
-                              ])}
-                              onSuccess={generateStateOnChangeProp($state, [
-                                "fragmentApiRequest",
-                                "data"
-                              ])}
+                              onError={async (...eventArgs: any) => {
+                                generateStateOnChangeProp($state, [
+                                  "fragmentApiRequest",
+                                  "error"
+                                ]).apply(null, eventArgs);
+
+                                if (eventArgs.length > 1 && eventArgs[1]) {
+                                  return;
+                                }
+                              }}
+                              onLoading={async (...eventArgs: any) => {
+                                generateStateOnChangeProp($state, [
+                                  "fragmentApiRequest",
+                                  "loading"
+                                ]).apply(null, eventArgs);
+
+                                if (eventArgs.length > 1 && eventArgs[1]) {
+                                  return;
+                                }
+                              }}
+                              onSuccess={async (...eventArgs: any) => {
+                                generateStateOnChangeProp($state, [
+                                  "fragmentApiRequest",
+                                  "data"
+                                ]).apply(null, eventArgs);
+
+                                if (eventArgs.length > 1 && eventArgs[1]) {
+                                  return;
+                                }
+                              }}
                               params={(() => {
                                 try {
                                   return {
@@ -1322,10 +1364,16 @@ function PlasmicNewApp__RenderFunc(props: {
             data-plasmic-override={overrides._switch}
             checked={generateStateValueProp($state, ["_switch", "checked"])}
             className={classNames("__wab_instance", sty._switch)}
-            onCheckedChange={generateStateOnChangeProp($state, [
-              "_switch",
-              "checked"
-            ])}
+            onCheckedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["_switch", "checked"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (eventArgs.length > 1 && eventArgs[1]) {
+                return;
+              }
+            }}
           />
         </div>
       </div>

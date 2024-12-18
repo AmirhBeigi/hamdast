@@ -369,14 +369,26 @@ function PlasmicSettting__RenderFunc(props: {
             data-plasmic-name={"authProvider"}
             data-plasmic-override={overrides.authProvider}
             className={classNames("__wab_instance", sty.authProvider)}
-            onAppsChange={generateStateOnChangeProp($state, [
-              "authProvider",
-              "apps"
-            ])}
-            onUserChange={generateStateOnChangeProp($state, [
-              "authProvider",
-              "user"
-            ])}
+            onAppsChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["authProvider", "apps"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (eventArgs.length > 1 && eventArgs[1]) {
+                return;
+              }
+            }}
+            onUserChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["authProvider", "user"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (eventArgs.length > 1 && eventArgs[1]) {
+                return;
+              }
+            }}
           >
             <Layout
               data-plasmic-name={"layout"}
@@ -927,10 +939,16 @@ function PlasmicSettting__RenderFunc(props: {
                               sty.fragmentInput
                             )}
                             disabled={false}
-                            onChange={generateStateOnChangeProp($state, [
-                              "fragmentInput",
-                              "value"
-                            ])}
+                            onChange={async (...eventArgs: any) => {
+                              generateStateOnChangeProp($state, [
+                                "fragmentInput",
+                                "value"
+                              ]).apply(null, eventArgs);
+
+                              if (eventArgs.length > 1 && eventArgs[1]) {
+                                return;
+                              }
+                            }}
                             type={"password"}
                             value={generateStateValueProp($state, [
                               "fragmentInput",
@@ -1074,10 +1092,16 @@ function PlasmicSettting__RenderFunc(props: {
                                 sty.fragmentInput2
                               ),
                               disabled: false,
-                              onChange: generateStateOnChangeProp($state, [
-                                "fragmentInput2",
-                                "value"
-                              ]),
+                              onChange: async (...eventArgs: any) => {
+                                generateStateOnChangeProp($state, [
+                                  "fragmentInput2",
+                                  "value"
+                                ]).apply(null, eventArgs);
+
+                                if (eventArgs.length > 1 && eventArgs[1]) {
+                                  return;
+                                }
+                              },
                               type: "text",
                               value: generateStateValueProp($state, [
                                 "fragmentInput2",
@@ -1413,18 +1437,36 @@ function PlasmicSettting__RenderFunc(props: {
                         />
                       }
                       method={"GET"}
-                      onError={generateStateOnChangeProp($state, [
-                        "fragmentApiRequest",
-                        "error"
-                      ])}
-                      onLoading={generateStateOnChangeProp($state, [
-                        "fragmentApiRequest",
-                        "loading"
-                      ])}
-                      onSuccess={generateStateOnChangeProp($state, [
-                        "fragmentApiRequest",
-                        "data"
-                      ])}
+                      onError={async (...eventArgs: any) => {
+                        generateStateOnChangeProp($state, [
+                          "fragmentApiRequest",
+                          "error"
+                        ]).apply(null, eventArgs);
+
+                        if (eventArgs.length > 1 && eventArgs[1]) {
+                          return;
+                        }
+                      }}
+                      onLoading={async (...eventArgs: any) => {
+                        generateStateOnChangeProp($state, [
+                          "fragmentApiRequest",
+                          "loading"
+                        ]).apply(null, eventArgs);
+
+                        if (eventArgs.length > 1 && eventArgs[1]) {
+                          return;
+                        }
+                      }}
+                      onSuccess={async (...eventArgs: any) => {
+                        generateStateOnChangeProp($state, [
+                          "fragmentApiRequest",
+                          "data"
+                        ]).apply(null, eventArgs);
+
+                        if (eventArgs.length > 1 && eventArgs[1]) {
+                          return;
+                        }
+                      }}
                       url={(() => {
                         try {
                           return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/pages`;
@@ -1952,18 +1994,36 @@ function PlasmicSettting__RenderFunc(props: {
                         />
                       }
                       method={"GET"}
-                      onError={generateStateOnChangeProp($state, [
-                        "fragmentGetMenus",
-                        "error"
-                      ])}
-                      onLoading={generateStateOnChangeProp($state, [
-                        "fragmentGetMenus",
-                        "loading"
-                      ])}
-                      onSuccess={generateStateOnChangeProp($state, [
-                        "fragmentGetMenus",
-                        "data"
-                      ])}
+                      onError={async (...eventArgs: any) => {
+                        generateStateOnChangeProp($state, [
+                          "fragmentGetMenus",
+                          "error"
+                        ]).apply(null, eventArgs);
+
+                        if (eventArgs.length > 1 && eventArgs[1]) {
+                          return;
+                        }
+                      }}
+                      onLoading={async (...eventArgs: any) => {
+                        generateStateOnChangeProp($state, [
+                          "fragmentGetMenus",
+                          "loading"
+                        ]).apply(null, eventArgs);
+
+                        if (eventArgs.length > 1 && eventArgs[1]) {
+                          return;
+                        }
+                      }}
+                      onSuccess={async (...eventArgs: any) => {
+                        generateStateOnChangeProp($state, [
+                          "fragmentGetMenus",
+                          "data"
+                        ]).apply(null, eventArgs);
+
+                        if (eventArgs.length > 1 && eventArgs[1]) {
+                          return;
+                        }
+                      }}
                       url={(() => {
                         try {
                           return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/menus/`;

@@ -520,10 +520,16 @@ function PlasmicMenuItem__RenderFunc(props: {
                 data-plasmic-name={"nameInput"}
                 data-plasmic-override={overrides.nameInput}
                 className={classNames("__wab_instance", sty.nameInput)}
-                onChange={generateStateOnChangeProp($state, [
-                  "nameInput",
-                  "value"
-                ])}
+                onChange={async (...eventArgs: any) => {
+                  generateStateOnChangeProp($state, [
+                    "nameInput",
+                    "value"
+                  ]).apply(null, eventArgs);
+
+                  if (eventArgs.length > 1 && eventArgs[1]) {
+                    return;
+                  }
+                }}
                 placeholder={(() => {
                   try {
                     return $state.nameInput?.value
@@ -589,10 +595,16 @@ function PlasmicMenuItem__RenderFunc(props: {
                   data-plasmic-override={overrides.keyInput}
                   attributes={{ dir: "ltr" }}
                   className={classNames("__wab_instance", sty.keyInput)}
-                  onChange={generateStateOnChangeProp($state, [
-                    "keyInput",
-                    "value"
-                  ])}
+                  onChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "keyInput",
+                      "value"
+                    ]).apply(null, eventArgs);
+
+                    if (eventArgs.length > 1 && eventArgs[1]) {
+                      return;
+                    }
+                  }}
                   placeholder={(() => {
                     try {
                       return $state.keyInput?.value
@@ -718,10 +730,16 @@ function PlasmicMenuItem__RenderFunc(props: {
               data-plasmic-override={overrides.embedInput}
               attributes={{ dir: "ltr" }}
               className={classNames("__wab_instance", sty.embedInput)}
-              onChange={generateStateOnChangeProp($state, [
-                "embedInput",
-                "value"
-              ])}
+              onChange={async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, [
+                  "embedInput",
+                  "value"
+                ]).apply(null, eventArgs);
+
+                if (eventArgs.length > 1 && eventArgs[1]) {
+                  return;
+                }
+              }}
               placeholder={"https://..."}
               type={"text"}
               value={generateStateValueProp($state, ["embedInput", "value"])}
@@ -793,10 +811,16 @@ function PlasmicMenuItem__RenderFunc(props: {
               data-plasmic-override={overrides.unreadInput}
               attributes={{ dir: "ltr" }}
               className={classNames("__wab_instance", sty.unreadInput)}
-              onChange={generateStateOnChangeProp($state, [
-                "unreadInput",
-                "value"
-              ])}
+              onChange={async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, [
+                  "unreadInput",
+                  "value"
+                ]).apply(null, eventArgs);
+
+                if (eventArgs.length > 1 && eventArgs[1]) {
+                  return;
+                }
+              }}
               placeholder={"https://..."}
               type={"text"}
               value={generateStateValueProp($state, ["unreadInput", "value"])}
