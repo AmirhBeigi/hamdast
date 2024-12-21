@@ -151,87 +151,84 @@ export default async function handler(
     },
   });
 
+  console.log("hi");
+
   res.status(200).json(
-    [app]
-      .map((app) => ({
-        id: app.id,
-        key: app.key,
-        client_key: app.client_key,
-        name: {
-          fa: app.name_fa,
-          en: app.name_en,
-        },
-        display_name: growthbook.getFeatureValue<any>(`hamdast::${app.key}`, {})
-          ?.display_name || {
-          fa: app.display_name_fa,
-          en: app.display_name_en,
-        },
-        icon:
-          growthbook.getFeatureValue<any>(`hamdast::${app.key}`, {})?.icon ||
-          app.icon,
-        fragments: [
-          {
-            type: "menu",
-            options: menus
-              .filter((menu) => menu.app === app.id)
-              .map((menu) => ({
-                id: menu.id,
-                key: menu.key,
-                name: growthbook.getFeatureValue<any>(
+    [app].map((app) => ({
+      id: app.id,
+      key: app.key,
+      client_key: app.client_key,
+      name: {
+        fa: app.name_fa,
+        en: app.name_en,
+      },
+      display_name: growthbook.getFeatureValue<any>(`hamdast::${app.key}`, {})
+        ?.display_name || {
+        fa: app.display_name_fa,
+        en: app.display_name_en,
+      },
+      icon:
+        growthbook.getFeatureValue<any>(`hamdast::${app.key}`, {})?.icon ||
+        app.icon,
+      fragments: [
+        {
+          type: "menu",
+          options: menus
+            .filter((menu) => menu.app === app.id)
+            .map((menu) => ({
+              id: menu.id,
+              key: menu.key,
+              name: growthbook.getFeatureValue<any>(
+                `hamdast::${app.key}-${menu.key}`,
+                {}
+              )?.name || {
+                fa: menu.name_fa,
+                en: menu.name_en,
+              },
+              embed_src:
+                growthbook.getFeatureValue<any>(
                   `hamdast::${app.key}-${menu.key}`,
                   {}
-                )?.name || {
-                  fa: menu.name_fa,
-                  en: menu.name_en,
-                },
-                embed_src:
-                  growthbook.getFeatureValue<any>(
-                    `hamdast::${app.key}-${menu.key}`,
-                    {}
-                  )?.embed_src || menu.embed_src,
-              })),
-          },
-          {
-            type: "pages",
-            options: pages
-              .filter((page) => page.app === app.id)
-              .map((page) => ({
-                id: page.id,
-                key: page.key,
-                name: growthbook.getFeatureValue<any>(
+                )?.embed_src || menu.embed_src,
+            })),
+        },
+        {
+          type: "pages",
+          options: pages
+            .filter((page) => page.app === app.id)
+            .map((page) => ({
+              id: page.id,
+              key: page.key,
+              name: growthbook.getFeatureValue<any>(
+                `hamdast::${app.key}-${page.key}`,
+                {}
+              )?.name || {
+                fa: page.name_fa,
+                en: page.name_en,
+              },
+              embed_src:
+                growthbook.getFeatureValue<any>(
                   `hamdast::${app.key}-${page.key}`,
                   {}
-                )?.name || {
-                  fa: page.name_fa,
-                  en: page.name_en,
-                },
-                embed_src:
-                  growthbook.getFeatureValue<any>(
-                    `hamdast::${app.key}-${page.key}`,
-                    {}
-                  )?.embed_src || page.embed_src,
-                layout:
-                  growthbook.getFeatureValue<any>(
-                    `hamdast::${app.key}-${page.key}`,
-                    {}
-                  )?.layout || page.layout,
-                parameters:
-                  growthbook.getFeatureValue<any>(
-                    `hamdast::${app.key}-${page.key}`,
-                    {}
-                  )?.parameters || page.parameters,
-                is_protected_route:
-                  growthbook.getFeatureValue<any>(
-                    `hamdast::${app.key}-${page.key}`,
-                    {}
-                  )?.is_protected_route || page.is_protected_route,
-              })),
-          },
-        ].filter(Boolean),
-      }))
-      .filter(
-        (app) =>
-          !growthbook.getFeatureValue<any>(`hamdast::${app.key}`, {}).hide
-      )[0]
+                )?.embed_src || page.embed_src,
+              layout:
+                growthbook.getFeatureValue<any>(
+                  `hamdast::${app.key}-${page.key}`,
+                  {}
+                )?.layout || page.layout,
+              parameters:
+                growthbook.getFeatureValue<any>(
+                  `hamdast::${app.key}-${page.key}`,
+                  {}
+                )?.parameters || page.parameters,
+              is_protected_route:
+                growthbook.getFeatureValue<any>(
+                  `hamdast::${app.key}-${page.key}`,
+                  {}
+                )?.is_protected_route || page.is_protected_route,
+            })),
+        },
+      ].filter(Boolean),
+    }))[0]
   );
 }
