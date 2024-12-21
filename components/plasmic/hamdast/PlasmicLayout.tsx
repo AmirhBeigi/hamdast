@@ -276,6 +276,11 @@ function PlasmicLayout__RenderFunc(props: {
                 "fragmentSelect",
                 "value"
               ]).apply(null, eventArgs);
+
+              if (eventArgs.length > 1 && eventArgs[1]) {
+                return;
+              }
+
               (async value => {
                 const $steps = {};
 
@@ -319,10 +324,16 @@ function PlasmicLayout__RenderFunc(props: {
                 }
               }).apply(null, eventArgs);
             }}
-            onOpenChange={generateStateOnChangeProp($state, [
-              "fragmentSelect",
-              "open"
-            ])}
+            onOpenChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "fragmentSelect",
+                "open"
+              ]).apply(null, eventArgs);
+
+              if (eventArgs.length > 1 && eventArgs[1]) {
+                return;
+              }
+            }}
             open={generateStateValueProp($state, ["fragmentSelect", "open"])}
             options={(() => {
               try {

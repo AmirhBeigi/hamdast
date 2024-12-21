@@ -6,6 +6,12 @@
 .rootcolor_softGreen {
   border-color: #ffffff00;
 }
+.root:focus-within {
+  outline: none;
+}
+.root___focusVisibleWithin {
+  outline: none;
+}
 .trigger {
   position: relative;
   display: flex;
@@ -61,16 +67,20 @@
 }
 .root:focus-within .trigger {
   box-shadow: 0px 0px 0px 3px #96c7f2;
+  outline: none;
 }
 .root .trigger___focusVisibleWithin {
   box-shadow: 0px 0px 0px 3px #96c7f2;
+  outline: none;
 }
 .rootcolor_softCyan:focus-within .triggercolor_softCyan {
   box-shadow: 0px 0px 0px 3px #b7cad2;
   background: #eef3f5;
+  outline: none;
 }
 .rootcolor_softCyan .triggercolor_softCyan____focusVisibleWithin {
   box-shadow: 0px 0px 0px 3px #eef3f5;
+  outline: none;
 }
 .root .trigger:hover {
   background: #eeeeec;
@@ -126,6 +136,9 @@
 .rootcolor_softPurple .triggercolor_softPurple:active {
   background: #eddbf9;
 }
+.rootcolor_softCyan:focus-within .triggercolor_softCyan:hover {
+  outline: none;
+}
 .contentContainer {
   display: flex;
   position: relative;
@@ -134,6 +147,9 @@
   justify-content: flex-start;
   width: 100%;
   min-width: 0;
+}
+.root:focus-within .contentContainer {
+  outline: none;
 }
 .slotTargetSelectedContent {
   white-space: pre;
@@ -224,6 +240,40 @@
 }
 .slotTargetSelectedContentcolor_softPurple {
   color: #793aaf;
+}
+.root:focus-within .slotTargetSelectedContent > *,
+.root:focus-within .slotTargetSelectedContent > :global(.__wab_slot) > *,
+.root:focus-within
+  .slotTargetSelectedContent
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > *,
+.root:focus-within
+  .slotTargetSelectedContent
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > *,
+.root:focus-within .slotTargetSelectedContent > picture > img,
+.root:focus-within
+  .slotTargetSelectedContent
+  > :global(.__wab_slot)
+  > picture
+  > img,
+.root:focus-within
+  .slotTargetSelectedContent
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > picture
+  > img,
+.root:focus-within
+  .slotTargetSelectedContent
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  outline: none;
 }
 .slotTargetPlaceholder {
   white-space: pre;
@@ -348,6 +398,12 @@
 }
 .dropdownIconcolor_softPurple {
   color: #8e4ec6;
+}
+.root .dropdownIcon___focusVisibleWithin {
+  outline: none;
+}
+.root:focus-within .dropdownIcon {
+  outline: none;
 }
 .overlay:global(.__wab_instance) {
   position: absolute;

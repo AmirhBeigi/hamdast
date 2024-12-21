@@ -520,10 +520,16 @@ function PlasmicMenuItem__RenderFunc(props: {
                 data-plasmic-name={"nameInput"}
                 data-plasmic-override={overrides.nameInput}
                 className={classNames("__wab_instance", sty.nameInput)}
-                onChange={generateStateOnChangeProp($state, [
-                  "nameInput",
-                  "value"
-                ])}
+                onChange={async (...eventArgs: any) => {
+                  generateStateOnChangeProp($state, [
+                    "nameInput",
+                    "value"
+                  ]).apply(null, eventArgs);
+
+                  if (eventArgs.length > 1 && eventArgs[1]) {
+                    return;
+                  }
+                }}
                 placeholder={(() => {
                   try {
                     return $state.nameInput?.value
@@ -589,10 +595,16 @@ function PlasmicMenuItem__RenderFunc(props: {
                   data-plasmic-override={overrides.keyInput}
                   attributes={{ dir: "ltr" }}
                   className={classNames("__wab_instance", sty.keyInput)}
-                  onChange={generateStateOnChangeProp($state, [
-                    "keyInput",
-                    "value"
-                  ])}
+                  onChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "keyInput",
+                      "value"
+                    ]).apply(null, eventArgs);
+
+                    if (eventArgs.length > 1 && eventArgs[1]) {
+                      return;
+                    }
+                  }}
                   placeholder={(() => {
                     try {
                       return $state.keyInput?.value
@@ -718,10 +730,16 @@ function PlasmicMenuItem__RenderFunc(props: {
               data-plasmic-override={overrides.embedInput}
               attributes={{ dir: "ltr" }}
               className={classNames("__wab_instance", sty.embedInput)}
-              onChange={generateStateOnChangeProp($state, [
-                "embedInput",
-                "value"
-              ])}
+              onChange={async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, [
+                  "embedInput",
+                  "value"
+                ]).apply(null, eventArgs);
+
+                if (eventArgs.length > 1 && eventArgs[1]) {
+                  return;
+                }
+              }}
               placeholder={"https://..."}
               type={"text"}
               value={generateStateValueProp($state, ["embedInput", "value"])}
@@ -793,10 +811,16 @@ function PlasmicMenuItem__RenderFunc(props: {
               data-plasmic-override={overrides.unreadInput}
               attributes={{ dir: "ltr" }}
               className={classNames("__wab_instance", sty.unreadInput)}
-              onChange={generateStateOnChangeProp($state, [
-                "unreadInput",
-                "value"
-              ])}
+              onChange={async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, [
+                  "unreadInput",
+                  "value"
+                ]).apply(null, eventArgs);
+
+                if (eventArgs.length > 1 && eventArgs[1]) {
+                  return;
+                }
+              }}
               placeholder={"https://..."}
               type={"text"}
               value={generateStateValueProp($state, ["unreadInput", "value"])}
@@ -849,39 +873,39 @@ function PlasmicMenuItem__RenderFunc(props: {
                   ];
                 }
 
-                $steps["updateDeleteLoading2"] = true
+                $steps["invokeGlobalAction"] = !$props.notSave
                   ? (() => {
                       const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["deleteLoading"]
-                        },
-                        operation: 0,
-                        value: false
+                        args: [
+                          "DELETE",
+                          (() => {
+                            try {
+                              return `https://hamdast.paziresh24.com/api/v1/apps/${$props.appId}/menus/${$props.pageId}/`;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
+                        ]
                       };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
+                      return $globalActions["Fragment.apiRequest"]?.apply(
+                        null,
+                        [...actionArgs.args]
+                      );
                     })()
                   : undefined;
                 if (
-                  $steps["updateDeleteLoading2"] != null &&
-                  typeof $steps["updateDeleteLoading2"] === "object" &&
-                  typeof $steps["updateDeleteLoading2"].then === "function"
+                  $steps["invokeGlobalAction"] != null &&
+                  typeof $steps["invokeGlobalAction"] === "object" &&
+                  typeof $steps["invokeGlobalAction"].then === "function"
                 ) {
-                  $steps["updateDeleteLoading2"] = await $steps[
-                    "updateDeleteLoading2"
+                  $steps["invokeGlobalAction"] = await $steps[
+                    "invokeGlobalAction"
                   ];
                 }
 
@@ -918,39 +942,39 @@ function PlasmicMenuItem__RenderFunc(props: {
                   $steps["runOnDelete"] = await $steps["runOnDelete"];
                 }
 
-                $steps["invokeGlobalAction"] = true
+                $steps["updateDeleteLoading2"] = true
                   ? (() => {
                       const actionArgs = {
-                        args: [
-                          "DELETE",
-                          (() => {
-                            try {
-                              return `https://hamdast.paziresh24.com/api/v1/apps/${$props.appId}/menus/${$props.pageId}/`;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
-                            }
-                          })()
-                        ]
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["deleteLoading"]
+                        },
+                        operation: 0,
+                        value: false
                       };
-                      return $globalActions["Fragment.apiRequest"]?.apply(
-                        null,
-                        [...actionArgs.args]
-                      );
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
                     })()
                   : undefined;
                 if (
-                  $steps["invokeGlobalAction"] != null &&
-                  typeof $steps["invokeGlobalAction"] === "object" &&
-                  typeof $steps["invokeGlobalAction"].then === "function"
+                  $steps["updateDeleteLoading2"] != null &&
+                  typeof $steps["updateDeleteLoading2"] === "object" &&
+                  typeof $steps["updateDeleteLoading2"].then === "function"
                 ) {
-                  $steps["invokeGlobalAction"] = await $steps[
-                    "invokeGlobalAction"
+                  $steps["updateDeleteLoading2"] = await $steps[
+                    "updateDeleteLoading2"
                   ];
                 }
               }}
