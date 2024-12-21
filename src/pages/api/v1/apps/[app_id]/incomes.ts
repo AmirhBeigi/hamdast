@@ -70,12 +70,10 @@ export default async function handler(
       .getFirstListItem(`collaborators~'${record.id}' && id = '${app_id}'`);
 
     const queryData = await axios.get(
-      "https://apigw.paziresh24.com/transaction/v1/productStatistics",
+      `https://apigw.paziresh24.com/katibe/v1/productStatistics?codename=${app.key}`,
       {
         params: {
-          productid: app.katibe_id,
-          fromdate: "2024-01-01",
-          todate: moment().format("YYYY-MM-DD"),
+          productid: app.key,
         },
         headers: {
           "x-api-key": process.env.KATIBE_API_KEY,
@@ -84,7 +82,7 @@ export default async function handler(
     );
 
     return res.status(200).json({
-      amount: queryData?.data?.data?.sale ?? 0,
+      amount: queryData?.data?.data?.deposit ?? 0,
       currency: "IRR",
     });
   }
