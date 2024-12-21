@@ -46,17 +46,19 @@ export default async function handler(
 
   let user = null;
 
-  try {
-    const paziresh24User = await axios.get(
-      "https://apigw.paziresh24.com/v1/auth/me",
-      {
-        headers: {
-          Authorization: `Bearer ${token?.trim()}`,
-        },
-      }
-    );
-    user = paziresh24User.data?.users?.[0];
-  } catch (error) {}
+  if (req.method == "PUT" || req.method == "DELETE") {
+    try {
+      const paziresh24User = await axios.get(
+        "https://apigw.paziresh24.com/v1/auth/me",
+        {
+          headers: {
+            Authorization: `Bearer ${token?.trim()}`,
+          },
+        }
+      );
+      user = paziresh24User.data?.users?.[0];
+    } catch (error) {}
+  }
 
   if (req.method == "PUT") {
     const { key, name_fa, embed_src, layout, parameters, is_protected_route } =
@@ -117,11 +119,6 @@ export default async function handler(
     clientKey: "sdk-St1dBftdp07geqtD",
   });
 
-  if (user?.id) {
-    growthbook.setAttributes({
-      user_id: Number(user?.id),
-    });
-  }
   await growthbook.init({ timeout: 1000 });
 
   let app;
