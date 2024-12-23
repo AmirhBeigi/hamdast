@@ -18,6 +18,7 @@
     "@plasmicpkgs/plasmic-basic-components": "^0.0.218",
     "@plasmicpkgs/plasmic-query": "^0.0.216",
     "@plasmicpkgs/radix-ui": "^0.0.53",
+    "@plasmicpkgs/react-aria": "^0.0.96",
     "@plasmicpkgs/react-awesome-reveal": "^3.8.210",
     "@plasmicpkgs/react-chartjs-2": "^1.0.113",
     "@radix-ui/react-popover": "^1.0.7",

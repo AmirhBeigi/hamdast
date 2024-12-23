@@ -525,10 +525,6 @@ function PlasmicMenuItem__RenderFunc(props: {
                     "nameInput",
                     "value"
                   ]).apply(null, eventArgs);
-
-                  if (eventArgs.length > 1 && eventArgs[1]) {
-                    return;
-                  }
                 }}
                 placeholder={(() => {
                   try {
@@ -600,10 +596,6 @@ function PlasmicMenuItem__RenderFunc(props: {
                       "keyInput",
                       "value"
                     ]).apply(null, eventArgs);
-
-                    if (eventArgs.length > 1 && eventArgs[1]) {
-                      return;
-                    }
                   }}
                   placeholder={(() => {
                     try {
@@ -735,10 +727,6 @@ function PlasmicMenuItem__RenderFunc(props: {
                   "embedInput",
                   "value"
                 ]).apply(null, eventArgs);
-
-                if (eventArgs.length > 1 && eventArgs[1]) {
-                  return;
-                }
               }}
               placeholder={"https://..."}
               type={"text"}
@@ -816,10 +804,6 @@ function PlasmicMenuItem__RenderFunc(props: {
                   "unreadInput",
                   "value"
                 ]).apply(null, eventArgs);
-
-                if (eventArgs.length > 1 && eventArgs[1]) {
-                  return;
-                }
               }}
               placeholder={"https://..."}
               type={"text"}

@@ -158,7 +158,8 @@
   max-width: 100%;
   background: none;
   box-shadow: none;
-  cursor: pointer;
+  cursor: auto;
+  pointer-events: auto;
   min-width: 0;
   padding: 55px 8px 0px;
 }
@@ -171,7 +172,7 @@
   justify-content: center;
   align-items: flex-start;
   background: none;
-  cursor: pointer;
+  cursor: auto;
   box-shadow: none;
 }
 .text__qybP1 {

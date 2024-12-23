@@ -66,7 +66,6 @@ import { Input } from "@/fragment/components/input"; // plasmic-import: AWE69UKw
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
 import AppType from "../../AppType"; // plasmic-import: N2XFsVyv799E/component
 import Button from "../../Button"; // plasmic-import: _T6T2fNvkUfo/component
-import { Switch } from "@/fragment/components/switch"; // plasmic-import: Zc1MrGUtH5nc/codeComponent
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -100,7 +99,6 @@ export type PlasmicNewApp__OverridesType = {
   keyInput?: Flex__<typeof Input>;
   fragmentApiRequest?: Flex__<typeof ApiRequest>;
   button?: Flex__<typeof Button>;
-  _switch?: Flex__<typeof Switch>;
 };
 
 export interface DefaultNewAppProps {}
@@ -200,12 +198,6 @@ function PlasmicNewApp__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
-      },
-      {
-        path: "_switch.checked",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -276,7 +268,11 @@ function PlasmicNewApp__RenderFunc(props: {
                 eventArgs
               );
 
-              if (eventArgs.length > 1 && eventArgs[1]) {
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
                 return;
               }
             }}
@@ -286,7 +282,11 @@ function PlasmicNewApp__RenderFunc(props: {
                 eventArgs
               );
 
-              if (eventArgs.length > 1 && eventArgs[1]) {
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
                 return;
               }
             }}
@@ -563,7 +563,7 @@ function PlasmicNewApp__RenderFunc(props: {
                           )}
                         >
                           {
-                            "\u06cc\u06a9 \u0646\u0627\u0645 \u0628\u0647 \u0641\u0627\u0631\u0633\u06cc \u0628\u0631\u0627\u06cc \u0627\u0628\u0632\u0627\u0631\u06a9 \u062e\u0648\u062f \u0628\u06af\u0630\u0627\u0631\u06cc\u062f\u060c \u0627\u06cc\u0646 \u0646\u0627\u0645 \u0628\u0647 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0646\u0645\u0627\u06cc\u0634 \u062f\u0627\u062f\u0647 \u0645\u06cc\u200c\u0634\u0648\u062f."
+                            "\u06cc\u06a9 \u0646\u0627\u0645 \u0628\u0647 \u0641\u0627\u0631\u0633\u06cc \u0628\u0631\u0627\u06cc \u0627\u0628\u0632\u0627\u0631\u06a9 \u062e\u0648\u062f \u0628\u06af\u0630\u0627\u0631\u06cc\u062f."
                           }
                         </div>
                         <Input
@@ -578,10 +578,6 @@ function PlasmicNewApp__RenderFunc(props: {
                               "nameInput",
                               "value"
                             ]).apply(null, eventArgs);
-
-                            if (eventArgs.length > 1 && eventArgs[1]) {
-                              return;
-                            }
                           }}
                           placeholder={
                             "\u0646\u0633\u062e\u0647 \u0646\u0648\u06cc\u0633\u06cc"
@@ -640,10 +636,6 @@ function PlasmicNewApp__RenderFunc(props: {
                                 "keyInput",
                                 "value"
                               ]).apply(null, eventArgs);
-
-                              if (eventArgs.length > 1 && eventArgs[1]) {
-                                return;
-                              }
                             }}
                             type={"text"}
                             value={generateStateValueProp($state, [
@@ -668,7 +660,8 @@ function PlasmicNewApp__RenderFunc(props: {
                             return (
                               !!$state.keyInput.value &&
                               !$state.keyInput.value.match(/[\u0600-\u06FF]/) &&
-                              $state.keyInput.value.length >= 4
+                              $state.keyInput.value.length >= 4 &&
+                              !$state.keyInput.value.includes("/")
                             );
                           } catch (e) {
                             if (
@@ -727,30 +720,18 @@ function PlasmicNewApp__RenderFunc(props: {
                                   "fragmentApiRequest",
                                   "error"
                                 ]).apply(null, eventArgs);
-
-                                if (eventArgs.length > 1 && eventArgs[1]) {
-                                  return;
-                                }
                               }}
                               onLoading={async (...eventArgs: any) => {
                                 generateStateOnChangeProp($state, [
                                   "fragmentApiRequest",
                                   "loading"
                                 ]).apply(null, eventArgs);
-
-                                if (eventArgs.length > 1 && eventArgs[1]) {
-                                  return;
-                                }
                               }}
                               onSuccess={async (...eventArgs: any) => {
                                 generateStateOnChangeProp($state, [
                                   "fragmentApiRequest",
                                   "data"
                                 ]).apply(null, eventArgs);
-
-                                if (eventArgs.length > 1 && eventArgs[1]) {
-                                  return;
-                                }
                               }}
                               params={(() => {
                                 try {
@@ -793,7 +774,8 @@ function PlasmicNewApp__RenderFunc(props: {
                               (!!$state.keyInput.value.match(
                                 /[\u0600-\u06FF]/
                               ) ||
-                                $state.keyInput.value.length < 4)
+                                $state.keyInput.value.length < 4 ||
+                                $state.keyInput.value.includes("/"))
                             );
                           } catch (e) {
                             if (
@@ -827,13 +809,17 @@ function PlasmicNewApp__RenderFunc(props: {
                                       const hasPersianCharacters =
                                         keyInputValue.match(/[\u0600-\u06FF]/);
                                       const isShort = keyInputValue.length < 4;
+                                      const notValid =
+                                        keyInputValue.includes("/");
 
                                       if (hasPersianCharacters) {
                                         return "شناسه باید با حروف انگلیسی باشد.";
                                       } else if (isShort) {
                                         return "شناسه باید حداقل ۴ کاراکتر باشد.";
+                                      } else if (notValid) {
+                                        return "شناسه معتبر نیست از / استفاده نکنید.";
                                       } else {
-                                        return "";
+                                        return "شناسه معتبر نیست.";
                                       }
                                     })();
                                   } catch (e) {
@@ -1359,22 +1345,6 @@ function PlasmicNewApp__RenderFunc(props: {
               </Reveal>
             </div>
           </AuthProvider>
-          <Switch
-            data-plasmic-name={"_switch"}
-            data-plasmic-override={overrides._switch}
-            checked={generateStateValueProp($state, ["_switch", "checked"])}
-            className={classNames("__wab_instance", sty._switch)}
-            onCheckedChange={async (...eventArgs: any) => {
-              generateStateOnChangeProp($state, ["_switch", "checked"]).apply(
-                null,
-                eventArgs
-              );
-
-              if (eventArgs.length > 1 && eventArgs[1]) {
-                return;
-              }
-            }}
-          />
         </div>
       </div>
     </React.Fragment>
@@ -1392,8 +1362,7 @@ const PlasmicDescendants = {
     "nameInput",
     "keyInput",
     "fragmentApiRequest",
-    "button",
-    "_switch"
+    "button"
   ],
   embedHtml: ["embedHtml"],
   authProvider: [
@@ -1412,8 +1381,7 @@ const PlasmicDescendants = {
   nameInput: ["nameInput"],
   keyInput: ["keyInput"],
   fragmentApiRequest: ["fragmentApiRequest"],
-  button: ["button"],
-  _switch: ["_switch"]
+  button: ["button"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1429,7 +1397,6 @@ type NodeDefaultElementType = {
   keyInput: typeof Input;
   fragmentApiRequest: typeof ApiRequest;
   button: typeof Button;
-  _switch: typeof Switch;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1501,7 +1468,6 @@ export const PlasmicNewApp = Object.assign(
     keyInput: makeNodeComponent("keyInput"),
     fragmentApiRequest: makeNodeComponent("fragmentApiRequest"),
     button: makeNodeComponent("button"),
-    _switch: makeNodeComponent("_switch"),
 
     // Metadata about props expected for PlasmicNewApp
     internalVariantProps: PlasmicNewApp__VariantProps,

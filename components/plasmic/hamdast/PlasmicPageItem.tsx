@@ -599,10 +599,6 @@ function PlasmicPageItem__RenderFunc(props: {
                     "nameInput",
                     "value"
                   ]).apply(null, eventArgs);
-
-                  if (eventArgs.length > 1 && eventArgs[1]) {
-                    return;
-                  }
                 }}
                 placeholder={(() => {
                   try {
@@ -674,10 +670,6 @@ function PlasmicPageItem__RenderFunc(props: {
                       "keyInput",
                       "value"
                     ]).apply(null, eventArgs);
-
-                    if (eventArgs.length > 1 && eventArgs[1]) {
-                      return;
-                    }
                   }}
                   placeholder={(() => {
                     try {
@@ -1124,10 +1116,6 @@ function PlasmicPageItem__RenderFunc(props: {
                                 __plasmic_idx_0,
                                 "value"
                               ]).apply(null, eventArgs);
-
-                              if (eventArgs.length > 1 && eventArgs[1]) {
-                                return;
-                              }
                             },
                             placeholder: ``,
                             type: "text",
@@ -1294,10 +1282,6 @@ function PlasmicPageItem__RenderFunc(props: {
                   "embedInput",
                   "value"
                 ]).apply(null, eventArgs);
-
-                if (eventArgs.length > 1 && eventArgs[1]) {
-                  return;
-                }
               }}
               type={"text"}
               value={generateStateValueProp($state, ["embedInput", "value"])}
@@ -1351,10 +1335,6 @@ function PlasmicPageItem__RenderFunc(props: {
                       "fragmentSwitch",
                       "checked"
                     ]).apply(null, eventArgs);
-
-                    if (eventArgs.length > 1 && eventArgs[1]) {
-                      return;
-                    }
                   }}
                 />
               </Stack__>
@@ -1385,10 +1365,6 @@ function PlasmicPageItem__RenderFunc(props: {
                       "fragmentSwitch2",
                       "checked"
                     ]).apply(null, eventArgs);
-
-                    if (eventArgs.length > 1 && eventArgs[1]) {
-                      return;
-                    }
                   }}
                 />
               </Stack__>
@@ -1421,10 +1397,6 @@ function PlasmicPageItem__RenderFunc(props: {
                       "fragmentSwitch3",
                       "checked"
                     ]).apply(null, eventArgs);
-
-                    if (eventArgs.length > 1 && eventArgs[1]) {
-                      return;
-                    }
                   }}
                 />
               </Stack__>
@@ -1480,10 +1452,6 @@ function PlasmicPageItem__RenderFunc(props: {
                       "fragmentSwitch4",
                       "checked"
                     ]).apply(null, eventArgs);
-
-                    if (eventArgs.length > 1 && eventArgs[1]) {
-                      return;
-                    }
                   }}
                 />
               </Stack__>

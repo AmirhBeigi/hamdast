@@ -375,7 +375,11 @@ function PlasmicSettting__RenderFunc(props: {
                 eventArgs
               );
 
-              if (eventArgs.length > 1 && eventArgs[1]) {
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
                 return;
               }
             }}
@@ -385,7 +389,11 @@ function PlasmicSettting__RenderFunc(props: {
                 eventArgs
               );
 
-              if (eventArgs.length > 1 && eventArgs[1]) {
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
                 return;
               }
             }}
@@ -944,10 +952,6 @@ function PlasmicSettting__RenderFunc(props: {
                                 "fragmentInput",
                                 "value"
                               ]).apply(null, eventArgs);
-
-                              if (eventArgs.length > 1 && eventArgs[1]) {
-                                return;
-                              }
                             }}
                             type={"password"}
                             value={generateStateValueProp($state, [
@@ -1097,10 +1101,6 @@ function PlasmicSettting__RenderFunc(props: {
                                   "fragmentInput2",
                                   "value"
                                 ]).apply(null, eventArgs);
-
-                                if (eventArgs.length > 1 && eventArgs[1]) {
-                                  return;
-                                }
                               },
                               type: "text",
                               value: generateStateValueProp($state, [
@@ -1442,30 +1442,18 @@ function PlasmicSettting__RenderFunc(props: {
                           "fragmentApiRequest",
                           "error"
                         ]).apply(null, eventArgs);
-
-                        if (eventArgs.length > 1 && eventArgs[1]) {
-                          return;
-                        }
                       }}
                       onLoading={async (...eventArgs: any) => {
                         generateStateOnChangeProp($state, [
                           "fragmentApiRequest",
                           "loading"
                         ]).apply(null, eventArgs);
-
-                        if (eventArgs.length > 1 && eventArgs[1]) {
-                          return;
-                        }
                       }}
                       onSuccess={async (...eventArgs: any) => {
                         generateStateOnChangeProp($state, [
                           "fragmentApiRequest",
                           "data"
                         ]).apply(null, eventArgs);
-
-                        if (eventArgs.length > 1 && eventArgs[1]) {
-                          return;
-                        }
                       }}
                       url={(() => {
                         try {
@@ -1999,30 +1987,18 @@ function PlasmicSettting__RenderFunc(props: {
                           "fragmentGetMenus",
                           "error"
                         ]).apply(null, eventArgs);
-
-                        if (eventArgs.length > 1 && eventArgs[1]) {
-                          return;
-                        }
                       }}
                       onLoading={async (...eventArgs: any) => {
                         generateStateOnChangeProp($state, [
                           "fragmentGetMenus",
                           "loading"
                         ]).apply(null, eventArgs);
-
-                        if (eventArgs.length > 1 && eventArgs[1]) {
-                          return;
-                        }
                       }}
                       onSuccess={async (...eventArgs: any) => {
                         generateStateOnChangeProp($state, [
                           "fragmentGetMenus",
                           "data"
                         ]).apply(null, eventArgs);
-
-                        if (eventArgs.length > 1 && eventArgs[1]) {
-                          return;
-                        }
                       }}
                       url={(() => {
                         try {

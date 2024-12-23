@@ -244,7 +244,11 @@ function PlasmicSetAppIcon__RenderFunc(props: {
                 eventArgs
               );
 
-              if (eventArgs.length > 1 && eventArgs[1]) {
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
                 return;
               }
             }}
@@ -254,7 +258,11 @@ function PlasmicSetAppIcon__RenderFunc(props: {
                 eventArgs
               );
 
-              if (eventArgs.length > 1 && eventArgs[1]) {
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
                 return;
               }
             }}
@@ -638,10 +646,6 @@ function PlasmicSetAppIcon__RenderFunc(props: {
                               "fragmentTextarea",
                               "value"
                             ]).apply(null, eventArgs);
-
-                            if (eventArgs.length > 1 && eventArgs[1]) {
-                              return;
-                            }
                           }}
                           placeholder={
                             '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.27 21.7s9.87-3.5 12.73-6.36a4.5 4.5 0 0 0-6.36-6.37C5.77 11.84 2.27 ...'
@@ -693,10 +697,6 @@ function PlasmicSetAppIcon__RenderFunc(props: {
                                   "fragmentInput",
                                   "value"
                                 ]).apply(null, eventArgs);
-
-                                if (eventArgs.length > 1 && eventArgs[1]) {
-                                  return;
-                                }
                               }}
                               type={"file"}
                               value={generateStateValueProp($state, [

@@ -271,7 +271,11 @@ function PlasmicSessionReplay__RenderFunc(props: {
                 eventArgs
               );
 
-              if (eventArgs.length > 1 && eventArgs[1]) {
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
                 return;
               }
             }}
@@ -281,7 +285,11 @@ function PlasmicSessionReplay__RenderFunc(props: {
                 eventArgs
               );
 
-              if (eventArgs.length > 1 && eventArgs[1]) {
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
                 return;
               }
             }}
@@ -379,7 +387,11 @@ function PlasmicSessionReplay__RenderFunc(props: {
                         "data"
                       ]).apply(null, eventArgs);
 
-                      if (eventArgs.length > 1 && eventArgs[1]) {
+                      if (
+                        eventArgs.length > 1 &&
+                        eventArgs[1] &&
+                        eventArgs[1]._plasmic_state_init_
+                      ) {
                         return;
                       }
                     }}
@@ -389,7 +401,11 @@ function PlasmicSessionReplay__RenderFunc(props: {
                         "loading"
                       ]).apply(null, eventArgs);
 
-                      if (eventArgs.length > 1 && eventArgs[1]) {
+                      if (
+                        eventArgs.length > 1 &&
+                        eventArgs[1] &&
+                        eventArgs[1]._plasmic_state_init_
+                      ) {
                         return;
                       }
                     }}
@@ -723,7 +739,11 @@ function PlasmicSessionReplay__RenderFunc(props: {
                         "data"
                       ]).apply(null, eventArgs);
 
-                      if (eventArgs.length > 1 && eventArgs[1]) {
+                      if (
+                        eventArgs.length > 1 &&
+                        eventArgs[1] &&
+                        eventArgs[1]._plasmic_state_init_
+                      ) {
                         return;
                       }
                     }}
@@ -733,7 +753,11 @@ function PlasmicSessionReplay__RenderFunc(props: {
                         "loading"
                       ]).apply(null, eventArgs);
 
-                      if (eventArgs.length > 1 && eventArgs[1]) {
+                      if (
+                        eventArgs.length > 1 &&
+                        eventArgs[1] &&
+                        eventArgs[1]._plasmic_state_init_
+                      ) {
                         return;
                       }
                     }}
