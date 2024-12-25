@@ -1,6 +1,16 @@
 {
   "props": [
     {
+      "name": "Basic/Border",
+      "type": "color",
+      "value": "#D1D5DB",
+      "category": "color",
+      "meta": {
+        "projectId": "bE9NMB942w5e6uFrcCxfJN",
+        "id": "1diinA05a45D"
+      }
+    },
+    {
       "name": "Basic/Container-Background",
       "type": "color",
       "value": "#FFFFFF",
@@ -21,6 +31,36 @@
       }
     },
     {
+      "name": "Basic/Input-Background",
+      "type": "color",
+      "value": "#E5E7EB",
+      "category": "color",
+      "meta": {
+        "projectId": "bE9NMB942w5e6uFrcCxfJN",
+        "id": "Z4XSY2FW3yVT"
+      }
+    },
+    {
+      "name": "Basic/Overlay-Background",
+      "type": "color",
+      "value": "#0A0A0A80",
+      "category": "color",
+      "meta": {
+        "projectId": "bE9NMB942w5e6uFrcCxfJN",
+        "id": "R0Uq2O1B65dV"
+      }
+    },
+    {
+      "name": "Basic/Ring",
+      "type": "color",
+      "value": "#9CA3AF",
+      "category": "color",
+      "meta": {
+        "projectId": "bE9NMB942w5e6uFrcCxfJN",
+        "id": "yDIAPJLk_GSk"
+      }
+    },
+    {
       "name": "Basic/Text-Primary",
       "type": "color",
       "value": "#030712",
@@ -28,6 +68,16 @@
       "meta": {
         "projectId": "bE9NMB942w5e6uFrcCxfJN",
         "id": "ExXtYmh32M4K"
+      }
+    },
+    {
+      "name": "Basic/Text-Secondary",
+      "type": "color",
+      "value": "#6B7280",
+      "category": "color",
+      "meta": {
+        "projectId": "bE9NMB942w5e6uFrcCxfJN",
+        "id": "A-u07RlpTYdX"
       }
     },
     {
@@ -271,6 +321,16 @@
       }
     },
     {
+      "name": "Muted/Muted-Soft-Hover",
+      "type": "color",
+      "value": "#E5E7EB",
+      "category": "color",
+      "meta": {
+        "projectId": "bE9NMB942w5e6uFrcCxfJN",
+        "id": "ehMViar0B-5G"
+      }
+    },
+    {
       "name": "Neutral/Neutral",
       "type": "color",
       "value": "#374151",
@@ -368,6 +428,36 @@
       "meta": {
         "projectId": "bE9NMB942w5e6uFrcCxfJN",
         "id": "jESTLQMle5YA"
+      }
+    },
+    {
+      "name": "Size-20",
+      "type": "spacing",
+      "value": "1.25rem",
+      "category": "spacing",
+      "meta": {
+        "projectId": "bE9NMB942w5e6uFrcCxfJN",
+        "id": "AMuzw0jjwUyx"
+      }
+    },
+    {
+      "name": "Size-24",
+      "type": "spacing",
+      "value": "1.5rem",
+      "category": "spacing",
+      "meta": {
+        "projectId": "bE9NMB942w5e6uFrcCxfJN",
+        "id": "9pqKvO_y5mge"
+      }
+    },
+    {
+      "name": "Size-32",
+      "type": "spacing",
+      "value": "2rem",
+      "category": "spacing",
+      "meta": {
+        "projectId": "bE9NMB942w5e6uFrcCxfJN",
+        "id": "sknYwGLTsKCf"
       }
     },
     {
