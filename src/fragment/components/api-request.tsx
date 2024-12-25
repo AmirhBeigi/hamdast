@@ -106,6 +106,7 @@ export const apiRequestMeta: CodeComponentMeta<ApiRequestType> = {
   displayName: "Fragment/ApiRequest",
   importPath: "@/fragment/components/api-request",
   figmaMappings: [{ figmaComponentName: "ApiRequest" }],
+  section: "Fragment",
   props: {
     method: {
       type: "choice",

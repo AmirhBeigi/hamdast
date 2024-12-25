@@ -139,6 +139,7 @@ export const datePickerMeta: CodeComponentMeta<any> = {
   name: "DatePicker",
   displayName: "Fragment/DatePicker",
   importPath: "@/fragment/components/date-picker",
+  section: "Fragment",
   props: {
     value: {
       type: "number",
