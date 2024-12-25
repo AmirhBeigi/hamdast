@@ -65,8 +65,8 @@ import Layout from "../../Layout"; // plasmic-import: ve2FygUyzJYe/component
 import FetchData from "../../FetchData"; // plasmic-import: -UcPqMSXVAGv/component
 import Menu from "../../Menu"; // plasmic-import: 73TqujunaOu5/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
-import Popover from "../../Popover"; // plasmic-import: HKaXGnP5tVdt/component
-import Button2 from "../../Button2"; // plasmic-import: MWPpidh4VIvE/component
+import { Popover } from "@/fragment/components/popover"; // plasmic-import: ckUN_zlRhUeS/codeComponent
+import Button from "../../Button"; // plasmic-import: _T6T2fNvkUfo/component
 import { DatePicker } from "@/fragment/components/date-picker"; // plasmic-import: jSLVhlSUsyZa/codeComponent
 import Filter from "../../Filter"; // plasmic-import: YY41SIghQUgw/component
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
@@ -79,8 +79,8 @@ import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6u
 import sty from "./PlasmicStatistics.module.css"; // plasmic-import: nAbrCePpa8PZ/css
 
 import Icon15Icon from "./icons/PlasmicIcon__Icon15"; // plasmic-import: rQsx35tf_bcf/icon
-import CircleIcon from "./icons/PlasmicIcon__Circle"; // plasmic-import: 8lcONCwJAEsj/icon
-import ChevronDownIcon from "./icons/PlasmicIcon__ChevronDown"; // plasmic-import: 0l8GqiEmlVdS/icon
+import Icon29Icon from "./icons/PlasmicIcon__Icon29"; // plasmic-import: xtxFVbwCzd_9/icon
+import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: CmW94FEF71d7/icon
 
 import __lib_dayjs from "dayjs";
 
@@ -103,8 +103,8 @@ export type PlasmicStatistics__OverridesType = {
   fetchData?: Flex__<typeof FetchData>;
   menu?: Flex__<typeof Menu>;
   fragmentApiRequest2?: Flex__<typeof ApiRequest>;
-  popover?: Flex__<typeof Popover>;
-  button2?: Flex__<typeof Button2>;
+  popover2?: Flex__<typeof Popover>;
+  button?: Flex__<typeof Button>;
   datePicker2?: Flex__<typeof DatePicker>;
   filter?: Flex__<typeof Filter>;
   activeUserApi3?: Flex__<typeof ApiRequest>;
@@ -297,10 +297,12 @@ function PlasmicStatistics__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "popover.isOpen",
+        path: "popover2.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $ctx }) => false,
+
+        refName: "popover2"
       }
     ],
     [$props, $ctx, $refs]
@@ -928,9 +930,9 @@ function PlasmicStatistics__RenderFunc(props: {
                         )}
                       >
                         <Popover
-                          data-plasmic-name={"popover"}
-                          data-plasmic-override={overrides.popover}
-                          className={classNames("__wab_instance", sty.popover)}
+                          data-plasmic-name={"popover2"}
+                          data-plasmic-override={overrides.popover2}
+                          className={classNames("__wab_instance", sty.popover2)}
                           content={
                             <Stack__
                               as={"div"}
@@ -1020,119 +1022,122 @@ function PlasmicStatistics__RenderFunc(props: {
                           }
                           onOpenChange={async (...eventArgs: any) => {
                             generateStateOnChangeProp($state, [
-                              "popover",
-                              "isOpen"
+                              "popover2",
+                              "open"
                             ]).apply(null, eventArgs);
-
-                            if (
-                              eventArgs.length > 1 &&
-                              eventArgs[1] &&
-                              eventArgs[1]._plasmic_state_init_
-                            ) {
-                              return;
-                            }
                           }}
-                          placement={"bottom"}
+                          open={generateStateValueProp($state, [
+                            "popover2",
+                            "open"
+                          ])}
+                          ref={ref => {
+                            $refs["popover2"] = ref;
+                          }}
                           trigger={
-                            <Button2
-                              data-plasmic-name={"button2"}
-                              data-plasmic-override={overrides.button2}
+                            <Button
+                              data-plasmic-name={"button"}
+                              data-plasmic-override={overrides.button}
                               className={classNames(
                                 "__wab_instance",
-                                sty.button2
+                                sty.button
                               )}
-                              color={"muted"}
-                              disabled={false}
-                              flatSide={[]}
-                              iconEnd={true}
-                              label={
-                                <div
+                              shape={"rounded"}
+                              showStartIcon={true}
+                              size={"compact"}
+                              startIcon={
+                                <Icon29Icon
                                   className={classNames(
                                     projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__edz1K
+                                    sty.svg___3JtNx
                                   )}
-                                >
-                                  <React.Fragment>
-                                    <React.Fragment>
-                                      {"\u0627\u0632 "}
-                                    </React.Fragment>
-                                    {
-                                      <span
-                                        className={classNames(
-                                          projectcss.all,
-                                          projectcss.span,
-                                          projectcss.__wab_text,
-                                          projectcss.plasmic_default__inline,
-                                          sty.span__xq46
-                                        )}
-                                      >
-                                        <React.Fragment>
-                                          {(() => {
-                                            try {
-                                              return new Date(
-                                                $state.datePicker2.values?.[0]
-                                                  ? $state.datePicker2
-                                                      .values?.[0] * 1000
-                                                  : new Date()
-                                              ).toLocaleDateString("fa-IR");
-                                            } catch (e) {
-                                              if (
-                                                e instanceof TypeError ||
-                                                e?.plasmicType ===
-                                                  "PlasmicUndefinedDataError"
-                                              ) {
-                                                return "-";
-                                              }
-                                              throw e;
-                                            }
-                                          })()}
-                                        </React.Fragment>
-                                      </span>
-                                    }
-                                    <React.Fragment>
-                                      {" \u062a\u0627 "}
-                                    </React.Fragment>
-                                    {
-                                      <span
-                                        className={classNames(
-                                          projectcss.all,
-                                          projectcss.span,
-                                          projectcss.__wab_text,
-                                          projectcss.plasmic_default__inline,
-                                          sty.span__jRk2F
-                                        )}
-                                      >
-                                        <React.Fragment>
-                                          {(() => {
-                                            try {
-                                              return new Date(
-                                                $state.datePicker2.values?.[1]
-                                                  ? $state.datePicker2
-                                                      .values?.[1] * 1000
-                                                  : new Date()
-                                              ).toLocaleDateString("fa-IR");
-                                            } catch (e) {
-                                              if (
-                                                e instanceof TypeError ||
-                                                e?.plasmicType ===
-                                                  "PlasmicUndefinedDataError"
-                                              ) {
-                                                return "-";
-                                              }
-                                              throw e;
-                                            }
-                                          })()}
-                                        </React.Fragment>
-                                      </span>
-                                    }
-                                    <React.Fragment>{""}</React.Fragment>
-                                  </React.Fragment>
-                                </div>
+                                  role={"img"}
+                                />
                               }
-                              roundedFull={true}
-                              type={"soft"}
-                            />
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__edz1K
+                                )}
+                              >
+                                <React.Fragment>
+                                  <React.Fragment>
+                                    {"\u0627\u0632 "}
+                                  </React.Fragment>
+                                  {
+                                    <span
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.span,
+                                        projectcss.__wab_text,
+                                        projectcss.plasmic_default__inline,
+                                        sty.span__xq46
+                                      )}
+                                    >
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return new Date(
+                                              $state.datePicker2.values?.[0]
+                                                ? $state.datePicker2
+                                                    .values?.[0] * 1000
+                                                : new Date()
+                                            ).toLocaleDateString("fa-IR");
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "-";
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      </React.Fragment>
+                                    </span>
+                                  }
+                                  <React.Fragment>
+                                    {" \u062a\u0627 "}
+                                  </React.Fragment>
+                                  {
+                                    <span
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.span,
+                                        projectcss.__wab_text,
+                                        projectcss.plasmic_default__inline,
+                                        sty.span__jRk2F
+                                      )}
+                                    >
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return new Date(
+                                              $state.datePicker2.values?.[1]
+                                                ? $state.datePicker2
+                                                    .values?.[1] * 1000
+                                                : new Date()
+                                            ).toLocaleDateString("fa-IR");
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "-";
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      </React.Fragment>
+                                    </span>
+                                  }
+                                  <React.Fragment>{""}</React.Fragment>
+                                </React.Fragment>
+                              </div>
+                            </Button>
                           }
                         />
                       </div>
@@ -1847,8 +1852,8 @@ const PlasmicDescendants = {
     "fetchData",
     "menu",
     "fragmentApiRequest2",
-    "popover",
-    "button2",
+    "popover2",
+    "button",
     "datePicker2",
     "filter",
     "activeUserApi3",
@@ -1862,8 +1867,8 @@ const PlasmicDescendants = {
     "fetchData",
     "menu",
     "fragmentApiRequest2",
-    "popover",
-    "button2",
+    "popover2",
+    "button",
     "datePicker2",
     "filter",
     "activeUserApi3",
@@ -1874,8 +1879,8 @@ const PlasmicDescendants = {
     "fetchData",
     "menu",
     "fragmentApiRequest2",
-    "popover",
-    "button2",
+    "popover2",
+    "button",
     "datePicker2",
     "filter",
     "activeUserApi3",
@@ -1884,8 +1889,8 @@ const PlasmicDescendants = {
   fetchData: ["fetchData", "menu"],
   menu: ["menu"],
   fragmentApiRequest2: ["fragmentApiRequest2"],
-  popover: ["popover", "button2", "datePicker2"],
-  button2: ["button2"],
+  popover2: ["popover2", "button", "datePicker2"],
+  button: ["button"],
   datePicker2: ["datePicker2"],
   filter: ["filter"],
   activeUserApi3: ["activeUserApi3"],
@@ -1903,8 +1908,8 @@ type NodeDefaultElementType = {
   fetchData: typeof FetchData;
   menu: typeof Menu;
   fragmentApiRequest2: typeof ApiRequest;
-  popover: typeof Popover;
-  button2: typeof Button2;
+  popover2: typeof Popover;
+  button: typeof Button;
   datePicker2: typeof DatePicker;
   filter: typeof Filter;
   activeUserApi3: typeof ApiRequest;
@@ -1978,8 +1983,8 @@ export const PlasmicStatistics = Object.assign(
     fetchData: makeNodeComponent("fetchData"),
     menu: makeNodeComponent("menu"),
     fragmentApiRequest2: makeNodeComponent("fragmentApiRequest2"),
-    popover: makeNodeComponent("popover"),
-    button2: makeNodeComponent("button2"),
+    popover2: makeNodeComponent("popover2"),
+    button: makeNodeComponent("button"),
     datePicker2: makeNodeComponent("datePicker2"),
     filter: makeNodeComponent("filter"),
     activeUserApi3: makeNodeComponent("activeUserApi3"),

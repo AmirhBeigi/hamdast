@@ -1088,6 +1088,11 @@
           "id": "tLjCuYmRzHWi",
           "name": "MinusIcon",
           "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Minus.tsx"
+        },
+        {
+          "id": "xtxFVbwCzd_9",
+          "name": "Icon29Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon29.tsx"
         }
       ],
       "images": [
