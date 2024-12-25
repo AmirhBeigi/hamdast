@@ -59,8 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { BaseRadio } from "@plasmicpkgs/react-aria/skinny/registerRadio";
-
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
@@ -76,7 +74,6 @@ export const PlasmicRadio__VariantProps = new Array<VariantPropType>();
 
 export type PlasmicRadio__ArgsType = {
   value?: string;
-  label?: React.ReactNode;
   autoFocus?: boolean;
   disabled?: boolean;
   ariaLabel?: string;
@@ -84,19 +81,17 @@ export type PlasmicRadio__ArgsType = {
 type ArgPropType = keyof PlasmicRadio__ArgsType;
 export const PlasmicRadio__ArgProps = new Array<ArgPropType>(
   "value",
-  "label",
   "autoFocus",
   "disabled",
   "ariaLabel"
 );
 
 export type PlasmicRadio__OverridesType = {
-  ariaRadio?: Flex__<typeof BaseRadio>;
+  root?: Flex__<"div">;
 };
 
 export interface DefaultRadioProps {
   value?: string;
-  label?: React.ReactNode;
   autoFocus?: boolean;
   disabled?: boolean;
   ariaLabel?: string;
@@ -141,69 +136,33 @@ function PlasmicRadio__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const [$ccVariants, setDollarCcVariants] = React.useState<
-    Record<string, boolean>
-  >({
-    selected: false,
-    hovered: false,
-    pressed: false,
-    focused: false,
-    focusVisible: false,
-    disabled: false,
-    readonly: false
-  });
-  const updateVariant = React.useCallback(
-    (changes: Record<string, boolean>) => {
-      setDollarCcVariants(prev => {
-        if (!Object.keys(changes).some(k => prev[k] !== changes[k])) {
-          return prev;
-        }
-        return { ...prev, ...changes };
-      });
-    },
-    []
-  );
-
   return (
-    <BaseRadio
-      data-plasmic-name={"ariaRadio"}
-      data-plasmic-override={overrides.ariaRadio}
+    <div
+      data-plasmic-name={"root"}
+      data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      aria-label={args.ariaLabel}
-      autoFocus={args.autoFocus}
       className={classNames(
-        "__wab_instance",
+        projectcss.all,
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         projectcss.plasmic_tokens,
         plasmic_antd_5_hostless_css.plasmic_tokens,
-        sty.ariaRadio
+        sty.root
       )}
-      isDisabled={args.disabled}
-      plasmicUpdateVariant={updateVariant}
-      value={args.value}
-    >
-      <div className={classNames(projectcss.all, sty.freeBox__aFyAn)}>
-        <div className={classNames(projectcss.all, sty.freeBox__cima7)} />
-      </div>
-      {renderPlasmicSlot({
-        defaultContents: "Option",
-        value: args.label
-      })}
-    </BaseRadio>
+    />
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  ariaRadio: ["ariaRadio"]
+  root: ["root"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
-  ariaRadio: typeof BaseRadio;
+  root: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -253,7 +212,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       forNode: nodeName
     });
   };
-  if (nodeName === "ariaRadio") {
+  if (nodeName === "root") {
     func.displayName = "PlasmicRadio";
   } else {
     func.displayName = `PlasmicRadio.${nodeName}`;
@@ -263,7 +222,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
 
 export const PlasmicRadio = Object.assign(
   // Top-level PlasmicRadio renders the root element
-  makeNodeComponent("ariaRadio"),
+  makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
 

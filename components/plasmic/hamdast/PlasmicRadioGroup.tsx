@@ -59,11 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { BaseRadioGroup } from "@plasmicpkgs/react-aria/skinny/registerRadioGroup";
-import Label from "../../Label"; // plasmic-import: s-bU96RB6OEn/component
-import Radio from "../../Radio"; // plasmic-import: FpQmo9WWCXuP/component
-import Description from "../../Description"; // plasmic-import: sC3KMwrCbbRF/component
-
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
@@ -83,10 +78,6 @@ export type PlasmicRadioGroup__ArgsType = {
   showDescription?: boolean;
   disabled?: boolean;
   ariaLabel?: string;
-  onChange?: (val: any) => void;
-  label?: React.ReactNode;
-  options?: React.ReactNode;
-  description?: React.ReactNode;
 };
 type ArgPropType = keyof PlasmicRadioGroup__ArgsType;
 export const PlasmicRadioGroup__ArgProps = new Array<ArgPropType>(
@@ -94,17 +85,11 @@ export const PlasmicRadioGroup__ArgProps = new Array<ArgPropType>(
   "showLabel",
   "showDescription",
   "disabled",
-  "ariaLabel",
-  "onChange",
-  "label",
-  "options",
-  "description"
+  "ariaLabel"
 );
 
 export type PlasmicRadioGroup__OverridesType = {
-  ariaRadioGroup?: Flex__<typeof BaseRadioGroup>;
-  label?: Flex__<typeof Label>;
-  description?: Flex__<typeof Description>;
+  root?: Flex__<"div">;
 };
 
 export interface DefaultRadioGroupProps {
@@ -113,10 +98,6 @@ export interface DefaultRadioGroupProps {
   showDescription?: boolean;
   disabled?: boolean;
   ariaLabel?: string;
-  onChange?: (val: any) => void;
-  label?: React.ReactNode;
-  options?: React.ReactNode;
-  description?: React.ReactNode;
   className?: string;
 }
 
@@ -161,141 +142,33 @@ function PlasmicRadioGroup__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
-    () => [
-      {
-        path: "ariaRadioGroup.value",
-        type: "readonly",
-        variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          $props["defaultValue"],
-
-        onChangeProp: "onChange"
-      }
-    ],
-    [$props, $ctx, $refs]
-  );
-  const $state = useDollarState(stateSpecs, {
-    $props,
-    $ctx,
-    $queries: {},
-    $refs
-  });
-
-  const [$ccVariants, setDollarCcVariants] = React.useState<
-    Record<string, boolean>
-  >({
-    disabled: false,
-    readonly: false
-  });
-  const updateVariant = React.useCallback(
-    (changes: Record<string, boolean>) => {
-      setDollarCcVariants(prev => {
-        if (!Object.keys(changes).some(k => prev[k] !== changes[k])) {
-          return prev;
-        }
-        return { ...prev, ...changes };
-      });
-    },
-    []
-  );
-
   return (
-    <BaseRadioGroup
-      data-plasmic-name={"ariaRadioGroup"}
-      data-plasmic-override={overrides.ariaRadioGroup}
+    <div
+      data-plasmic-name={"root"}
+      data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      aria-label={args.ariaLabel}
       className={classNames(
-        "__wab_instance",
+        projectcss.all,
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         projectcss.plasmic_tokens,
         plasmic_antd_5_hostless_css.plasmic_tokens,
-        sty.ariaRadioGroup
+        sty.root
       )}
-      defaultValue={args.defaultValue}
-      isDisabled={args.disabled}
-      isReadOnly={$ccVariants["readonly"] ? true : undefined}
-      onChange={async (...eventArgs: any) => {
-        generateStateOnChangeProp($state, ["ariaRadioGroup", "value"]).apply(
-          null,
-          eventArgs
-        );
-      }}
-      plasmicUpdateVariant={updateVariant}
-      value={generateStateValueProp($state, ["ariaRadioGroup", "value"])}
-    >
-      {$props.showLabel ? (
-        <Label
-          data-plasmic-name={"label"}
-          data-plasmic-override={overrides.label}
-          className={classNames("__wab_instance", sty.label)}
-        >
-          {renderPlasmicSlot({
-            defaultContents: "Label",
-            value: args.label
-          })}
-        </Label>
-      ) : null}
-      {renderPlasmicSlot({
-        defaultContents: (
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__tgzbj)}
-          >
-            <Radio
-              className={classNames("__wab_instance", sty.radio__dEi3L)}
-              label={"Option 1"}
-              value={"option1"}
-            />
-
-            <Radio
-              className={classNames("__wab_instance", sty.radio__haGg5)}
-              label={"Option 2"}
-              value={"option2"}
-            />
-
-            <Radio
-              className={classNames("__wab_instance", sty.radio__jAj3)}
-              label={"Option 3"}
-              value={"option3"}
-            />
-          </Stack__>
-        ),
-        value: args.options
-      })}
-      {$props.showDescription ? (
-        <Description
-          data-plasmic-name={"description"}
-          data-plasmic-override={overrides.description}
-          className={classNames("__wab_instance", sty.description)}
-        >
-          {renderPlasmicSlot({
-            defaultContents: "Description...",
-            value: args.description
-          })}
-        </Description>
-      ) : null}
-    </BaseRadioGroup>
+    />
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  ariaRadioGroup: ["ariaRadioGroup", "label", "description"],
-  label: ["label"],
-  description: ["description"]
+  root: ["root"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
-  ariaRadioGroup: typeof BaseRadioGroup;
-  label: typeof Label;
-  description: typeof Description;
+  root: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -345,7 +218,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       forNode: nodeName
     });
   };
-  if (nodeName === "ariaRadioGroup") {
+  if (nodeName === "root") {
     func.displayName = "PlasmicRadioGroup";
   } else {
     func.displayName = `PlasmicRadioGroup.${nodeName}`;
@@ -355,11 +228,9 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
 
 export const PlasmicRadioGroup = Object.assign(
   // Top-level PlasmicRadioGroup renders the root element
-  makeNodeComponent("ariaRadioGroup"),
+  makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    label: makeNodeComponent("label"),
-    description: makeNodeComponent("description"),
 
     // Metadata about props expected for PlasmicRadioGroup
     internalVariantProps: PlasmicRadioGroup__VariantProps,

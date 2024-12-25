@@ -59,8 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { BaseSliderThumb } from "@plasmicpkgs/react-aria/skinny/registerSliderThumb";
-
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
@@ -85,7 +83,7 @@ export const PlasmicSliderThumb__ArgProps = new Array<ArgPropType>(
 );
 
 export type PlasmicSliderThumb__OverridesType = {
-  root?: Flex__<typeof BaseSliderThumb>;
+  root?: Flex__<"div">;
 };
 
 export interface DefaultSliderThumbProps {
@@ -132,38 +130,14 @@ function PlasmicSliderThumb__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const [$ccVariants, setDollarCcVariants] = React.useState<
-    Record<string, boolean>
-  >({
-    dragging: false,
-    hovered: false,
-    focused: false,
-    focusVisible: false,
-    disabled: false
-  });
-  const updateVariant = React.useCallback(
-    (changes: Record<string, boolean>) => {
-      setDollarCcVariants(prev => {
-        if (!Object.keys(changes).some(k => prev[k] !== changes[k])) {
-          return prev;
-        }
-        return { ...prev, ...changes };
-      });
-    },
-    []
-  );
-
   return (
-    <BaseSliderThumb
+    <div
       data-plasmic-name={"root"}
       data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      advanced={false}
-      autoFocus={args.autoFocus}
-      children={null}
       className={classNames(
-        "__wab_instance",
+        projectcss.all,
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
@@ -171,8 +145,6 @@ function PlasmicSliderThumb__RenderFunc(props: {
         plasmic_antd_5_hostless_css.plasmic_tokens,
         sty.root
       )}
-      isDisabled={args.disabled}
-      plasmicUpdateVariant={updateVariant}
     />
   ) as React.ReactElement | null;
 }
@@ -184,7 +156,7 @@ type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
-  root: typeof BaseSliderThumb;
+  root: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";

@@ -596,19 +596,6 @@
           "path": "/integrations/[name]"
         },
         {
-          "id": "MWPpidh4VIvE",
-          "name": "Button2",
-          "type": "managed",
-          "projectId": "bE9NMB942w5e6uFrcCxfJN",
-          "renderModuleFilePath": "plasmic/hamdast/PlasmicButton2.tsx",
-          "importSpec": {
-            "modulePath": "Button2.tsx"
-          },
-          "cssFilePath": "plasmic/hamdast/PlasmicButton2.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
           "id": "Z-FbG4zvwWLi",
           "name": "OverlayArrow",
           "type": "managed",
@@ -618,19 +605,6 @@
             "modulePath": "OverlayArrow.tsx"
           },
           "cssFilePath": "plasmic/hamdast/PlasmicOverlayArrow.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
-          "id": "HKaXGnP5tVdt",
-          "name": "Popover",
-          "type": "managed",
-          "projectId": "bE9NMB942w5e6uFrcCxfJN",
-          "renderModuleFilePath": "plasmic/hamdast/PlasmicPopover.tsx",
-          "importSpec": {
-            "modulePath": "Popover.tsx"
-          },
-          "cssFilePath": "plasmic/hamdast/PlasmicPopover.module.css",
           "scheme": "blackbox",
           "componentType": "component"
         },
@@ -765,19 +739,6 @@
           "componentType": "component"
         },
         {
-          "id": "vyCt2B_JyUsd",
-          "name": "Select2",
-          "type": "managed",
-          "projectId": "bE9NMB942w5e6uFrcCxfJN",
-          "renderModuleFilePath": "plasmic/hamdast/PlasmicSelect2.tsx",
-          "importSpec": {
-            "modulePath": "Select2.tsx"
-          },
-          "cssFilePath": "plasmic/hamdast/PlasmicSelect2.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
           "id": "ePJK-Tfm7HNh",
           "name": "Switch",
           "type": "managed",
@@ -865,32 +826,6 @@
             "modulePath": "RangeSlider.tsx"
           },
           "cssFilePath": "plasmic/hamdast/PlasmicRangeSlider.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
-          "id": "kih77aF909SP",
-          "name": "Modal",
-          "type": "managed",
-          "projectId": "bE9NMB942w5e6uFrcCxfJN",
-          "renderModuleFilePath": "plasmic/hamdast/PlasmicModal.tsx",
-          "importSpec": {
-            "modulePath": "Modal.tsx"
-          },
-          "cssFilePath": "plasmic/hamdast/PlasmicModal.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
-          "id": "lC4dv_SNOuzj",
-          "name": "Drawer",
-          "type": "managed",
-          "projectId": "bE9NMB942w5e6uFrcCxfJN",
-          "renderModuleFilePath": "plasmic/hamdast/PlasmicDrawer.tsx",
-          "importSpec": {
-            "modulePath": "Drawer.tsx"
-          },
-          "cssFilePath": "plasmic/hamdast/PlasmicDrawer.module.css",
           "scheme": "blackbox",
           "componentType": "component"
         },

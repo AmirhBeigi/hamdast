@@ -59,8 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { BaseLabel } from "@plasmicpkgs/react-aria/skinny/registerLabel";
-
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
@@ -83,20 +81,15 @@ export const PlasmicLabel__VariantProps = new Array<VariantPropType>(
   "requirementIndicator"
 );
 
-export type PlasmicLabel__ArgsType = {
-  children?: React.ReactNode;
-};
+export type PlasmicLabel__ArgsType = {};
 type ArgPropType = keyof PlasmicLabel__ArgsType;
-export const PlasmicLabel__ArgProps = new Array<ArgPropType>("children");
+export const PlasmicLabel__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicLabel__OverridesType = {
-  root?: Flex__<typeof BaseLabel>;
-  freeBox?: Flex__<"div">;
-  text?: Flex__<"div">;
+  root?: Flex__<"div">;
 };
 
 export interface DefaultLabelProps {
-  children?: React.ReactNode;
   size?: SingleChoiceArg<"sm" | "lg">;
   requirementIndicator?: SingleChoiceArg<"optional" | "required">;
   className?: string;
@@ -166,13 +159,13 @@ function PlasmicLabel__RenderFunc(props: {
   });
 
   return (
-    <BaseLabel
+    <div
       data-plasmic-name={"root"}
       data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        "__wab_instance",
+        projectcss.all,
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
@@ -194,82 +187,18 @@ function PlasmicLabel__RenderFunc(props: {
           [sty.rootsize_sm]: hasVariant($state, "size", "sm")
         }
       )}
-    >
-      <Stack__
-        as={"div"}
-        data-plasmic-name={"freeBox"}
-        data-plasmic-override={overrides.freeBox}
-        hasGap={true}
-        className={classNames(projectcss.all, sty.freeBox, {
-          [sty.freeBoxrequirementIndicator_optional]: hasVariant(
-            $state,
-            "requirementIndicator",
-            "optional"
-          ),
-          [sty.freeBoxsize_lg]: hasVariant($state, "size", "lg"),
-          [sty.freeBoxsize_sm]: hasVariant($state, "size", "sm")
-        })}
-      >
-        {renderPlasmicSlot({
-          defaultContents: "Label",
-          value: args.children,
-          className: classNames(sty.slotTargetChildren, {
-            [sty.slotTargetChildrenrequirementIndicator_optional]: hasVariant(
-              $state,
-              "requirementIndicator",
-              "optional"
-            ),
-            [sty.slotTargetChildrenrequirementIndicator_required]: hasVariant(
-              $state,
-              "requirementIndicator",
-              "required"
-            ),
-            [sty.slotTargetChildrensize_lg]: hasVariant($state, "size", "lg"),
-            [sty.slotTargetChildrensize_sm]: hasVariant($state, "size", "sm")
-          })
-        })}
-        <div
-          data-plasmic-name={"text"}
-          data-plasmic-override={overrides.text}
-          className={classNames(
-            projectcss.all,
-            projectcss.__wab_text,
-            sty.text,
-            {
-              [sty.textrequirementIndicator_optional]: hasVariant(
-                $state,
-                "requirementIndicator",
-                "optional"
-              ),
-              [sty.textrequirementIndicator_required]: hasVariant(
-                $state,
-                "requirementIndicator",
-                "required"
-              )
-            }
-          )}
-        >
-          {hasVariant($state, "requirementIndicator", "required")
-            ? "*"
-            : "(optional)"}
-        </div>
-      </Stack__>
-    </BaseLabel>
+    />
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root", "freeBox", "text"],
-  freeBox: ["freeBox", "text"],
-  text: ["text"]
+  root: ["root"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
-  root: typeof BaseLabel;
-  freeBox: "div";
-  text: "div";
+  root: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -332,8 +261,6 @@ export const PlasmicLabel = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    freeBox: makeNodeComponent("freeBox"),
-    text: makeNodeComponent("text"),
 
     // Metadata about props expected for PlasmicLabel
     internalVariantProps: PlasmicLabel__VariantProps,

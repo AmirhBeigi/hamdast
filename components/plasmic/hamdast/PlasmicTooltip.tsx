@@ -59,9 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { BaseTooltip } from "@plasmicpkgs/react-aria/skinny/registerTooltip";
-import OverlayArrow from "../../OverlayArrow"; // plasmic-import: Z-FbG4zvwWLi/component
-
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
@@ -82,8 +79,6 @@ export type PlasmicTooltip__ArgsType = {
   isDisabled?: boolean;
   showArrow?: boolean;
   offset?: number;
-  trigger?: React.ReactNode;
-  content?: React.ReactNode;
 };
 type ArgPropType = keyof PlasmicTooltip__ArgsType;
 export const PlasmicTooltip__ArgProps = new Array<ArgPropType>(
@@ -92,15 +87,11 @@ export const PlasmicTooltip__ArgProps = new Array<ArgPropType>(
   "placement",
   "isDisabled",
   "showArrow",
-  "offset",
-  "trigger",
-  "content"
+  "offset"
 );
 
 export type PlasmicTooltip__OverridesType = {
-  ariaTooltip?: Flex__<typeof BaseTooltip>;
-  overlayArrow?: Flex__<typeof OverlayArrow>;
-  freeBox?: Flex__<"div">;
+  root?: Flex__<"div">;
 };
 
 export interface DefaultTooltipProps {
@@ -110,8 +101,6 @@ export interface DefaultTooltipProps {
   isDisabled?: boolean;
   showArrow?: boolean;
   offset?: number;
-  trigger?: React.ReactNode;
-  content?: React.ReactNode;
   className?: string;
 }
 
@@ -159,156 +148,33 @@ function PlasmicTooltip__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
-    () => [
-      {
-        path: "ariaTooltip.isOpen",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      }
-    ],
-    [$props, $ctx, $refs]
-  );
-  const $state = useDollarState(stateSpecs, {
-    $props,
-    $ctx,
-    $queries: {},
-    $refs
-  });
-
-  const [$ccVariants, setDollarCcVariants] = React.useState<
-    Record<string, boolean>
-  >({
-    placementTop: false,
-    placementBottom: false,
-    placementLeft: false,
-    placementRight: false
-  });
-  const updateVariant = React.useCallback(
-    (changes: Record<string, boolean>) => {
-      setDollarCcVariants(prev => {
-        if (!Object.keys(changes).some(k => prev[k] !== changes[k])) {
-          return prev;
-        }
-        return { ...prev, ...changes };
-      });
-    },
-    []
-  );
-
   return (
-    <BaseTooltip
-      data-plasmic-name={"ariaTooltip"}
-      data-plasmic-override={overrides.ariaTooltip}
+    <div
+      data-plasmic-name={"root"}
+      data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        "__wab_instance",
+        projectcss.all,
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         projectcss.plasmic_tokens,
         plasmic_antd_5_hostless_css.plasmic_tokens,
-        sty.ariaTooltip
+        sty.root
       )}
-      closeDelay={args.closeDelay}
-      delay={args.delay}
-      isDisabled={args.isDisabled}
-      isOpen={generateStateValueProp($state, ["ariaTooltip", "isOpen"])}
-      offset={args.offset}
-      onOpenChange={async (...eventArgs: any) => {
-        generateStateOnChangeProp($state, ["ariaTooltip", "isOpen"]).apply(
-          null,
-          eventArgs
-        );
-      }}
-      placement={args.placement}
-      plasmicUpdateVariant={updateVariant}
-      resetClassName={classNames(
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
-        projectcss.plasmic_tokens,
-        plasmic_antd_5_hostless_css.plasmic_tokens
-      )}
-      tooltipContent={
-        <React.Fragment>
-          <OverlayArrow
-            data-plasmic-name={"overlayArrow"}
-            data-plasmic-override={overrides.overlayArrow}
-            className={classNames("__wab_instance", sty.overlayArrow)}
-            dark={true}
-          />
-
-          <Stack__
-            as={"div"}
-            data-plasmic-name={"freeBox"}
-            data-plasmic-override={overrides.freeBox}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox)}
-          >
-            {renderPlasmicSlot({
-              defaultContents: (
-                <React.Fragment>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__sXn0X
-                    )}
-                  >
-                    {"Hello from Tooltip! "}
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__eCh8J
-                    )}
-                  >
-                    {"Lorem ipsum dolor sit amet"}
-                  </div>
-                </React.Fragment>
-              ),
-              value: args.content,
-              className: classNames(sty.slotTargetContent)
-            })}
-          </Stack__>
-        </React.Fragment>
-      }
-    >
-      {renderPlasmicSlot({
-        defaultContents: (
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__rWsPa
-            )}
-          >
-            {"Hover me!"}
-          </div>
-        ),
-        value: args.trigger,
-        className: classNames(sty.slotTargetTrigger)
-      })}
-    </BaseTooltip>
+    />
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  ariaTooltip: ["ariaTooltip", "overlayArrow", "freeBox"],
-  overlayArrow: ["overlayArrow"],
-  freeBox: ["freeBox"]
+  root: ["root"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
-  ariaTooltip: typeof BaseTooltip;
-  overlayArrow: typeof OverlayArrow;
-  freeBox: "div";
+  root: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -358,7 +224,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       forNode: nodeName
     });
   };
-  if (nodeName === "ariaTooltip") {
+  if (nodeName === "root") {
     func.displayName = "PlasmicTooltip";
   } else {
     func.displayName = `PlasmicTooltip.${nodeName}`;
@@ -368,11 +234,9 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
 
 export const PlasmicTooltip = Object.assign(
   // Top-level PlasmicTooltip renders the root element
-  makeNodeComponent("ariaTooltip"),
+  makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    overlayArrow: makeNodeComponent("overlayArrow"),
-    freeBox: makeNodeComponent("freeBox"),
 
     // Metadata about props expected for PlasmicTooltip
     internalVariantProps: PlasmicTooltip__VariantProps,

@@ -59,8 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { BaseText } from "@plasmicpkgs/react-aria/skinny/registerText";
-
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
@@ -74,19 +72,15 @@ export type PlasmicDescription__VariantsArgs = {};
 type VariantPropType = keyof PlasmicDescription__VariantsArgs;
 export const PlasmicDescription__VariantProps = new Array<VariantPropType>();
 
-export type PlasmicDescription__ArgsType = {
-  children?: React.ReactNode;
-};
+export type PlasmicDescription__ArgsType = {};
 type ArgPropType = keyof PlasmicDescription__ArgsType;
-export const PlasmicDescription__ArgProps = new Array<ArgPropType>("children");
+export const PlasmicDescription__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicDescription__OverridesType = {
-  root?: Flex__<typeof BaseText>;
-  freeBox?: Flex__<"div">;
+  root?: Flex__<"div">;
 };
 
 export interface DefaultDescriptionProps {
-  children?: React.ReactNode;
   className?: string;
 }
 
@@ -129,13 +123,13 @@ function PlasmicDescription__RenderFunc(props: {
   const $refs = refsRef.current;
 
   return (
-    <BaseText
+    <div
       data-plasmic-name={"root"}
       data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        "__wab_instance",
+        projectcss.all,
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
@@ -143,32 +137,18 @@ function PlasmicDescription__RenderFunc(props: {
         plasmic_antd_5_hostless_css.plasmic_tokens,
         sty.root
       )}
-      slot={"description"}
-    >
-      <div
-        data-plasmic-name={"freeBox"}
-        data-plasmic-override={overrides.freeBox}
-        className={classNames(projectcss.all, sty.freeBox)}
-      >
-        {renderPlasmicSlot({
-          defaultContents: "Description\u2026",
-          value: args.children
-        })}
-      </div>
-    </BaseText>
+    />
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root", "freeBox"],
-  freeBox: ["freeBox"]
+  root: ["root"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
-  root: typeof BaseText;
-  freeBox: "div";
+  root: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -231,7 +211,6 @@ export const PlasmicDescription = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    freeBox: makeNodeComponent("freeBox"),
 
     // Metadata about props expected for PlasmicDescription
     internalVariantProps: PlasmicDescription__VariantProps,

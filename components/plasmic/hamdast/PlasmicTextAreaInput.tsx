@@ -59,9 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { BaseTextArea } from "@plasmicpkgs/react-aria/skinny/registerTextArea";
-import { inputHelpers as BaseTextArea_Helpers } from "@plasmicpkgs/react-aria/skinny/registerTextArea";
-
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
@@ -103,7 +100,6 @@ export type PlasmicTextAreaInput__ArgsType = {
     | "decimal"
     | "search";
   ariaLabel?: string;
-  onChange?: (val: string) => void;
 };
 type ArgPropType = keyof PlasmicTextAreaInput__ArgsType;
 export const PlasmicTextAreaInput__ArgProps = new Array<ArgPropType>(
@@ -113,12 +109,11 @@ export const PlasmicTextAreaInput__ArgProps = new Array<ArgPropType>(
   "readOnly",
   "autoFocus",
   "inputMode",
-  "ariaLabel",
-  "onChange"
+  "ariaLabel"
 );
 
 export type PlasmicTextAreaInput__OverridesType = {
-  ariaTextArea?: Flex__<typeof BaseTextArea>;
+  root?: Flex__<"div">;
 };
 
 export interface DefaultTextAreaInputProps {
@@ -137,7 +132,6 @@ export interface DefaultTextAreaInputProps {
     | "decimal"
     | "search";
   ariaLabel?: string;
-  onChange?: (val: string) => void;
   type?: SingleChoiceArg<"soft" | "plain">;
   flat?: MultiChoiceArg<"top" | "right" | "bottom" | "left">;
   padded?: MultiChoiceArg<"left" | "right">;
@@ -185,17 +179,6 @@ function PlasmicTextAreaInput__RenderFunc(props: {
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
-        path: "ariaTextArea.value",
-        type: "readonly",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          $props["defaultValue"],
-
-        onChangeProp: "onChange",
-
-        onMutate: generateOnMutateForSpec("value", BaseTextArea_Helpers)
-      },
-      {
         path: "type",
         type: "private",
         variableType: "variant",
@@ -223,98 +206,43 @@ function PlasmicTextAreaInput__RenderFunc(props: {
     $refs
   });
 
-  const [$ccVariants, setDollarCcVariants] = React.useState<
-    Record<string, boolean>
-  >({
-    focused: false,
-    focusVisible: false,
-    hovered: false,
-    disabled: false
-  });
-  const updateVariant = React.useCallback(
-    (changes: Record<string, boolean>) => {
-      setDollarCcVariants(prev => {
-        if (!Object.keys(changes).some(k => prev[k] !== changes[k])) {
-          return prev;
-        }
-        return { ...prev, ...changes };
-      });
-    },
-    []
-  );
-
-  return (() => {
-    const child$Props = {
-      "aria-label": args.ariaLabel,
-      autoFocus: args.autoFocus,
-      className: classNames(
-        "__wab_instance",
+  return (
+    <div
+      data-plasmic-name={"root"}
+      data-plasmic-override={overrides.root}
+      data-plasmic-root={true}
+      data-plasmic-for-node={forNode}
+      className={classNames(
+        projectcss.all,
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         projectcss.plasmic_tokens,
         plasmic_antd_5_hostless_css.plasmic_tokens,
-        sty.ariaTextArea,
+        sty.root,
         {
-          [sty.ariaTextAreaflat_bottom]: hasVariant($state, "flat", "bottom"),
-          [sty.ariaTextAreaflat_left]: hasVariant($state, "flat", "left"),
-          [sty.ariaTextAreaflat_right]: hasVariant($state, "flat", "right"),
-          [sty.ariaTextAreaflat_top]: hasVariant($state, "flat", "top"),
-          [sty.ariaTextAreapadded_left]: hasVariant($state, "padded", "left"),
-          [sty.ariaTextAreapadded_right]: hasVariant($state, "padded", "right"),
-          [sty.ariaTextAreatype_plain]: hasVariant($state, "type", "plain"),
-          [sty.ariaTextAreatype_soft]: hasVariant($state, "type", "soft")
+          [sty.rootflat_bottom]: hasVariant($state, "flat", "bottom"),
+          [sty.rootflat_left]: hasVariant($state, "flat", "left"),
+          [sty.rootflat_right]: hasVariant($state, "flat", "right"),
+          [sty.rootflat_top]: hasVariant($state, "flat", "top"),
+          [sty.rootpadded_left]: hasVariant($state, "padded", "left"),
+          [sty.rootpadded_right]: hasVariant($state, "padded", "right"),
+          [sty.roottype_plain]: hasVariant($state, "type", "plain"),
+          [sty.roottype_soft]: hasVariant($state, "type", "soft")
         }
-      ),
-      defaultValue: args.defaultValue,
-      disabled: args.disabled,
-      inputMode: args.inputMode,
-      onChange: async (...eventArgs: any) => {
-        generateStateOnChangePropForCodeComponents(
-          $state,
-          "value",
-          ["ariaTextArea", "value"],
-          BaseTextArea_Helpers
-        ).apply(null, eventArgs);
-      },
-      placeholder: args.placeholder,
-      plasmicUpdateVariant: updateVariant,
-      readOnly: args.readOnly,
-      value: generateStateValueProp($state, ["ariaTextArea", "value"])
-    };
-    initializeCodeComponentStates(
-      $state,
-      [
-        {
-          name: "value",
-          plasmicStateName: "ariaTextArea.value"
-        }
-      ],
-      [],
-      BaseTextArea_Helpers ?? {},
-      child$Props
-    );
-
-    return (
-      <BaseTextArea
-        data-plasmic-name={"ariaTextArea"}
-        data-plasmic-override={overrides.ariaTextArea}
-        data-plasmic-root={true}
-        data-plasmic-for-node={forNode}
-        {...child$Props}
-      />
-    );
-  })() as React.ReactElement | null;
+      )}
+    />
+  ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  ariaTextArea: ["ariaTextArea"]
+  root: ["root"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
-  ariaTextArea: typeof BaseTextArea;
+  root: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -364,7 +292,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       forNode: nodeName
     });
   };
-  if (nodeName === "ariaTextArea") {
+  if (nodeName === "root") {
     func.displayName = "PlasmicTextAreaInput";
   } else {
     func.displayName = `PlasmicTextAreaInput.${nodeName}`;
@@ -374,7 +302,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
 
 export const PlasmicTextAreaInput = Object.assign(
   // Top-level PlasmicTextAreaInput renders the root element
-  makeNodeComponent("ariaTextArea"),
+  makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
 

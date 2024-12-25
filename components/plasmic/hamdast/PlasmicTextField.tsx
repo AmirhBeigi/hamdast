@@ -59,19 +59,11 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { BaseTextField } from "@plasmicpkgs/react-aria/skinny/registerTextField";
-import Label from "../../Label"; // plasmic-import: s-bU96RB6OEn/component
-import TextInput from "../../TextInput"; // plasmic-import: 6b1K9fIjhteL/component
-import TextAreaInput from "../../TextAreaInput"; // plasmic-import: OmCUuhg8xIw8/component
-import Description from "../../Description"; // plasmic-import: sC3KMwrCbbRF/component
-
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectcss
 import sty from "./PlasmicTextField.module.css"; // plasmic-import: djr2w7tEP2w1/css
-
-import CircleIcon from "./icons/PlasmicIcon__Circle"; // plasmic-import: 8lcONCwJAEsj/icon
 
 createPlasmicElementProxy;
 
@@ -171,11 +163,6 @@ export type PlasmicTextField__ArgsType = {
     | "photo"
     | "webauthn";
   ariaLabel?: string;
-  onChange?: (val: string) => void;
-  label?: React.ReactNode;
-  start?: React.ReactNode;
-  end?: React.ReactNode;
-  description?: React.ReactNode;
 };
 type ArgPropType = keyof PlasmicTextField__ArgsType;
 export const PlasmicTextField__ArgProps = new Array<ArgPropType>(
@@ -189,20 +176,11 @@ export const PlasmicTextField__ArgProps = new Array<ArgPropType>(
   "type",
   "inputMode",
   "autoComplete",
-  "ariaLabel",
-  "onChange",
-  "label",
-  "start",
-  "end",
-  "description"
+  "ariaLabel"
 );
 
 export type PlasmicTextField__OverridesType = {
-  ariaTextField?: Flex__<typeof BaseTextField>;
-  label?: Flex__<typeof Label>;
-  textInput?: Flex__<typeof TextInput>;
-  textAreaInput?: Flex__<typeof TextAreaInput>;
-  description?: Flex__<typeof Description>;
+  root?: Flex__<"div">;
 };
 
 export interface DefaultTextFieldProps {
@@ -284,11 +262,6 @@ export interface DefaultTextFieldProps {
     | "photo"
     | "webauthn";
   ariaLabel?: string;
-  onChange?: (val: string) => void;
-  label?: React.ReactNode;
-  start?: React.ReactNode;
-  end?: React.ReactNode;
-  description?: React.ReactNode;
   multiLine?: SingleBooleanChoiceArg<"multiLine">;
   iconStart?: SingleBooleanChoiceArg<"iconStart">;
   iconEnd?: SingleBooleanChoiceArg<"iconEnd">;
@@ -341,15 +314,6 @@ function PlasmicTextField__RenderFunc(props: {
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
-        path: "ariaTextField.value",
-        type: "readonly",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          $props["defaultValue"],
-
-        onChangeProp: "onChange"
-      },
-      {
         path: "multiLine",
         type: "private",
         variableType: "variant",
@@ -366,18 +330,6 @@ function PlasmicTextField__RenderFunc(props: {
         type: "private",
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.iconEnd
-      },
-      {
-        path: "textInput.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "textAreaInput.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -389,278 +341,41 @@ function PlasmicTextField__RenderFunc(props: {
     $refs
   });
 
-  const [$ccVariants, setDollarCcVariants] = React.useState<
-    Record<string, boolean>
-  >({
-    disabled: false,
-    readonly: false
-  });
-  const updateVariant = React.useCallback(
-    (changes: Record<string, boolean>) => {
-      setDollarCcVariants(prev => {
-        if (!Object.keys(changes).some(k => prev[k] !== changes[k])) {
-          return prev;
-        }
-        return { ...prev, ...changes };
-      });
-    },
-    []
-  );
-
   return (
-    <BaseTextField
-      data-plasmic-name={"ariaTextField"}
-      data-plasmic-override={overrides.ariaTextField}
+    <div
+      data-plasmic-name={"root"}
+      data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      aria-label={args.ariaLabel}
-      autoComplete={args.autoComplete}
-      autoFocus={args.autoFocus}
       className={classNames(
-        "__wab_instance",
+        projectcss.all,
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         projectcss.plasmic_tokens,
         plasmic_antd_5_hostless_css.plasmic_tokens,
-        sty.ariaTextField,
+        sty.root,
         {
-          [sty.ariaTextFieldiconEnd]: hasVariant($state, "iconEnd", "iconEnd"),
-          [sty.ariaTextFieldiconEnd_iconStart]:
+          [sty.rooticonEnd]: hasVariant($state, "iconEnd", "iconEnd"),
+          [sty.rooticonEnd_iconStart]:
             hasVariant($state, "iconStart", "iconStart") &&
             hasVariant($state, "iconEnd", "iconEnd"),
-          [sty.ariaTextFieldiconStart]: hasVariant(
-            $state,
-            "iconStart",
-            "iconStart"
-          ),
-          [sty.ariaTextFieldmultiLine]: hasVariant(
-            $state,
-            "multiLine",
-            "multiLine"
-          )
+          [sty.rooticonStart]: hasVariant($state, "iconStart", "iconStart"),
+          [sty.rootmultiLine]: hasVariant($state, "multiLine", "multiLine")
         }
       )}
-      defaultValue={args.defaultValue}
-      inputMode={args.inputMode}
-      isDisabled={args.disabled}
-      isReadOnly={args.readOnly}
-      onChange={async (...eventArgs: any) => {
-        generateStateOnChangeProp($state, ["ariaTextField", "value"]).apply(
-          null,
-          eventArgs
-        );
-      }}
-      plasmicUpdateVariant={updateVariant}
-      type={args.type}
-      value={generateStateValueProp($state, ["ariaTextField", "value"])}
-    >
-      {$props.showLabel ? (
-        <Label
-          data-plasmic-name={"label"}
-          data-plasmic-override={overrides.label}
-          className={classNames("__wab_instance", sty.label, {
-            [sty.labelmultiLine]: hasVariant($state, "multiLine", "multiLine")
-          })}
-        >
-          {renderPlasmicSlot({
-            defaultContents: "Label",
-            value: args.label
-          })}
-        </Label>
-      ) : null}
-      <div
-        className={classNames(projectcss.all, sty.freeBox__sROc, {
-          [sty.freeBoxiconEnd__sROcHfneZ]: hasVariant(
-            $state,
-            "iconEnd",
-            "iconEnd"
-          ),
-          [sty.freeBoxiconStart__sROCvbo1F]: hasVariant(
-            $state,
-            "iconStart",
-            "iconStart"
-          ),
-          [sty.freeBoxmultiLine__sROClfpjI]: hasVariant(
-            $state,
-            "multiLine",
-            "multiLine"
-          )
-        })}
-      >
-        <div
-          className={classNames(projectcss.all, sty.freeBox__p6UbJ, {
-            [sty.freeBoxiconStart__p6UbJvbo1F]: hasVariant(
-              $state,
-              "iconStart",
-              "iconStart"
-            ),
-            [sty.freeBoxmultiLine__p6UbJlfpjI]: hasVariant(
-              $state,
-              "multiLine",
-              "multiLine"
-            )
-          })}
-        >
-          {renderPlasmicSlot({
-            defaultContents: (
-              <CircleIcon
-                className={classNames(projectcss.all, sty.svg__zfyRe)}
-                role={"img"}
-              />
-            ),
-
-            value: args.start,
-            className: classNames(sty.slotTargetStart, {
-              [sty.slotTargetStarticonStart]: hasVariant(
-                $state,
-                "iconStart",
-                "iconStart"
-              )
-            })
-          })}
-        </div>
-        <TextInput
-          data-plasmic-name={"textInput"}
-          data-plasmic-override={overrides.textInput}
-          className={classNames("__wab_instance", {
-            [sty.textInputmultiLine]: hasVariant(
-              $state,
-              "multiLine",
-              "multiLine"
-            )
-          })}
-          disabled={$ccVariants["disabled"] ? true : undefined}
-          onChange={async (...eventArgs: any) => {
-            generateStateOnChangeProp($state, ["textInput", "value"]).apply(
-              null,
-              eventArgs
-            );
-
-            if (
-              eventArgs.length > 1 &&
-              eventArgs[1] &&
-              eventArgs[1]._plasmic_state_init_
-            ) {
-              return;
-            }
-          }}
-          padded={
-            hasVariant($state, "iconStart", "iconStart") &&
-            hasVariant($state, "iconEnd", "iconEnd")
-              ? ["right", "left"]
-              : hasVariant($state, "iconEnd", "iconEnd")
-              ? ["right"]
-              : hasVariant($state, "iconStart", "iconStart")
-              ? ["left"]
-              : undefined
-          }
-          placeholder={args.placeholder}
-        />
-
-        {(hasVariant($state, "multiLine", "multiLine") ? true : false) ? (
-          <TextAreaInput
-            data-plasmic-name={"textAreaInput"}
-            data-plasmic-override={overrides.textAreaInput}
-            className={classNames("__wab_instance", {
-              [sty.textAreaInputmultiLine]: hasVariant(
-                $state,
-                "multiLine",
-                "multiLine"
-              )
-            })}
-            onChange={async (...eventArgs: any) => {
-              generateStateOnChangeProp($state, [
-                "textAreaInput",
-                "value"
-              ]).apply(null, eventArgs);
-
-              if (
-                eventArgs.length > 1 &&
-                eventArgs[1] &&
-                eventArgs[1]._plasmic_state_init_
-              ) {
-                return;
-              }
-            }}
-            padded={
-              hasVariant($state, "iconStart", "iconStart") &&
-              hasVariant($state, "iconEnd", "iconEnd")
-                ? ["right", "left"]
-                : hasVariant($state, "iconEnd", "iconEnd")
-                ? ["right"]
-                : hasVariant($state, "iconStart", "iconStart")
-                ? ["left"]
-                : undefined
-            }
-            placeholder={args.placeholder}
-          />
-        ) : null}
-        <div
-          className={classNames(projectcss.all, sty.freeBox__cbSDr, {
-            [sty.freeBoxiconEnd__cbSDrHfneZ]: hasVariant(
-              $state,
-              "iconEnd",
-              "iconEnd"
-            ),
-            [sty.freeBoxiconStart__cbSDrvbo1F]: hasVariant(
-              $state,
-              "iconStart",
-              "iconStart"
-            )
-          })}
-        >
-          {renderPlasmicSlot({
-            defaultContents: (
-              <CircleIcon
-                className={classNames(projectcss.all, sty.svg__y25F6)}
-                role={"img"}
-              />
-            ),
-
-            value: args.end,
-            className: classNames(sty.slotTargetEnd)
-          })}
-        </div>
-      </div>
-      {$props.showDescription ? (
-        <Description
-          data-plasmic-name={"description"}
-          data-plasmic-override={overrides.description}
-          className={classNames("__wab_instance", sty.description)}
-        >
-          {renderPlasmicSlot({
-            defaultContents: "Description...",
-            value: args.description
-          })}
-        </Description>
-      ) : null}
-    </BaseTextField>
+    />
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  ariaTextField: [
-    "ariaTextField",
-    "label",
-    "textInput",
-    "textAreaInput",
-    "description"
-  ],
-  label: ["label"],
-  textInput: ["textInput"],
-  textAreaInput: ["textAreaInput"],
-  description: ["description"]
+  root: ["root"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
-  ariaTextField: typeof BaseTextField;
-  label: typeof Label;
-  textInput: typeof TextInput;
-  textAreaInput: typeof TextAreaInput;
-  description: typeof Description;
+  root: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -710,7 +425,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       forNode: nodeName
     });
   };
-  if (nodeName === "ariaTextField") {
+  if (nodeName === "root") {
     func.displayName = "PlasmicTextField";
   } else {
     func.displayName = `PlasmicTextField.${nodeName}`;
@@ -720,13 +435,9 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
 
 export const PlasmicTextField = Object.assign(
   // Top-level PlasmicTextField renders the root element
-  makeNodeComponent("ariaTextField"),
+  makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    label: makeNodeComponent("label"),
-    textInput: makeNodeComponent("textInput"),
-    textAreaInput: makeNodeComponent("textAreaInput"),
-    description: makeNodeComponent("description"),
 
     // Metadata about props expected for PlasmicTextField
     internalVariantProps: PlasmicTextField__VariantProps,

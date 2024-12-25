@@ -59,13 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { BaseSlider } from "@plasmicpkgs/react-aria/skinny/registerSlider";
-import Label from "../../Label"; // plasmic-import: s-bU96RB6OEn/component
-import { BaseSliderOutput } from "@plasmicpkgs/react-aria/skinny/registerSliderOutput";
-import { BaseSliderTrack } from "@plasmicpkgs/react-aria/skinny/registerSliderTrack";
-import SliderThumb from "../../SliderThumb"; // plasmic-import: 7HOIHmpuZwCJ/component
-import Description from "../../Description"; // plasmic-import: sC3KMwrCbbRF/component
-
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
@@ -90,10 +83,7 @@ export type PlasmicRangeSlider__ArgsType = {
   filled?: boolean;
   initialValue?: any;
   disabled?: boolean;
-  onChange?: (val: any) => void;
   ariaLabel?: string;
-  label?: React.ReactNode;
-  thumbs?: React.ReactNode;
 };
 type ArgPropType = keyof PlasmicRangeSlider__ArgsType;
 export const PlasmicRangeSlider__ArgProps = new Array<ArgPropType>(
@@ -107,21 +97,11 @@ export const PlasmicRangeSlider__ArgProps = new Array<ArgPropType>(
   "filled",
   "initialValue",
   "disabled",
-  "onChange",
-  "ariaLabel",
-  "label",
-  "thumbs"
+  "ariaLabel"
 );
 
 export type PlasmicRangeSlider__OverridesType = {
-  ariaRangeSlider?: Flex__<typeof BaseSlider>;
-  label?: Flex__<typeof Label>;
-  ariaSliderOutput?: Flex__<typeof BaseSliderOutput>;
-  text?: Flex__<"div">;
-  background?: Flex__<"div">;
-  ariaSliderTrack?: Flex__<typeof BaseSliderTrack>;
-  foreground?: Flex__<"div">;
-  description?: Flex__<typeof Description>;
+  root?: Flex__<"div">;
 };
 
 export interface DefaultRangeSliderProps {
@@ -135,10 +115,7 @@ export interface DefaultRangeSliderProps {
   filled?: boolean;
   initialValue?: any;
   disabled?: boolean;
-  onChange?: (val: any) => void;
   ariaLabel?: string;
-  label?: React.ReactNode;
-  thumbs?: React.ReactNode;
   className?: string;
 }
 
@@ -186,216 +163,33 @@ function PlasmicRangeSlider__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
-    () => [
-      {
-        path: "ariaRangeSlider.value",
-        type: "readonly",
-        variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          $props["initialValue"],
-
-        onChangeProp: "onChange"
-      }
-    ],
-    [$props, $ctx, $refs]
-  );
-  const $state = useDollarState(stateSpecs, {
-    $props,
-    $ctx,
-    $queries: {},
-    $refs
-  });
-
-  const [$ccVariants, setDollarCcVariants] = React.useState<
-    Record<string, boolean>
-  >({
-    disabled: false
-  });
-  const updateVariant = React.useCallback(
-    (changes: Record<string, boolean>) => {
-      setDollarCcVariants(prev => {
-        if (!Object.keys(changes).some(k => prev[k] !== changes[k])) {
-          return prev;
-        }
-        return { ...prev, ...changes };
-      });
-    },
-    []
-  );
-
   return (
-    <BaseSlider
-      data-plasmic-name={"ariaRangeSlider"}
-      data-plasmic-override={overrides.ariaRangeSlider}
+    <div
+      data-plasmic-name={"root"}
+      data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      aria-label={args.ariaLabel}
       className={classNames(
-        "__wab_instance",
+        projectcss.all,
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         projectcss.plasmic_tokens,
         plasmic_antd_5_hostless_css.plasmic_tokens,
-        sty.ariaRangeSlider
+        sty.root
       )}
-      defaultValue={args.initialValue}
-      isDisabled={args.disabled}
-      maxValue={args.maxValue}
-      minValue={args.minValue}
-      onChange={async (...eventArgs: any) => {
-        generateStateOnChangeProp($state, ["ariaRangeSlider", "value"]).apply(
-          null,
-          eventArgs
-        );
-      }}
-      orientation={"horizontal"}
-      plasmicUpdateVariant={updateVariant}
-      step={args.step}
-      value={generateStateValueProp($state, ["ariaRangeSlider", "value"])}
-    >
-      <Stack__
-        as={"div"}
-        hasGap={true}
-        className={classNames(projectcss.all, sty.freeBox___4BB0)}
-      >
-        {$props.showLabel ? (
-          <Label
-            data-plasmic-name={"label"}
-            data-plasmic-override={overrides.label}
-            className={classNames("__wab_instance", sty.label)}
-          >
-            {renderPlasmicSlot({
-              defaultContents: (
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__mywKi
-                  )}
-                >
-                  {"Label"}
-                </div>
-              ),
-              value: args.label
-            })}
-          </Label>
-        ) : null}
-        {$props.showOutputText ? (
-          <BaseSliderOutput
-            data-plasmic-name={"ariaSliderOutput"}
-            data-plasmic-override={overrides.ariaSliderOutput}
-            className={classNames("__wab_instance", sty.ariaSliderOutput)}
-          >
-            <div
-              data-plasmic-name={"text"}
-              data-plasmic-override={overrides.text}
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text
-              )}
-            >
-              <React.Fragment>
-                {(() => {
-                  try {
-                    return (
-                      $props.outputText ??
-                      $state.ariaRangeSlider.value?.join(",")
-                    );
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return "";
-                    }
-                    throw e;
-                  }
-                })()}
-              </React.Fragment>
-            </div>
-          </BaseSliderOutput>
-        ) : null}
-      </Stack__>
-      <div className={classNames(projectcss.all, sty.freeBox__pWv5W)}>
-        <div
-          data-plasmic-name={"background"}
-          data-plasmic-override={overrides.background}
-          className={classNames(projectcss.all, sty.background)}
-        >
-          <BaseSliderTrack
-            data-plasmic-name={"ariaSliderTrack"}
-            data-plasmic-override={overrides.ariaSliderTrack}
-            className={classNames("__wab_instance", sty.ariaSliderTrack)}
-            progressBar={
-              $props.filled ? (
-                <div
-                  data-plasmic-name={"foreground"}
-                  data-plasmic-override={overrides.foreground}
-                  className={classNames(projectcss.all, sty.foreground)}
-                />
-              ) : null
-            }
-          >
-            {renderPlasmicSlot({
-              defaultContents: (
-                <SliderThumb
-                  className={classNames(
-                    "__wab_instance",
-                    sty.sliderThumb__eVrS
-                  )}
-                />
-              ),
-
-              value: args.thumbs
-            })}
-          </BaseSliderTrack>
-        </div>
-      </div>
-      {$props.showDescription ? (
-        <Description
-          data-plasmic-name={"description"}
-          data-plasmic-override={overrides.description}
-          className={classNames("__wab_instance", sty.description)}
-        />
-      ) : null}
-    </BaseSlider>
+    />
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  ariaRangeSlider: [
-    "ariaRangeSlider",
-    "label",
-    "ariaSliderOutput",
-    "text",
-    "background",
-    "ariaSliderTrack",
-    "foreground",
-    "description"
-  ],
-  label: ["label"],
-  ariaSliderOutput: ["ariaSliderOutput", "text"],
-  text: ["text"],
-  background: ["background", "ariaSliderTrack", "foreground"],
-  ariaSliderTrack: ["ariaSliderTrack", "foreground"],
-  foreground: ["foreground"],
-  description: ["description"]
+  root: ["root"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
-  ariaRangeSlider: typeof BaseSlider;
-  label: typeof Label;
-  ariaSliderOutput: typeof BaseSliderOutput;
-  text: "div";
-  background: "div";
-  ariaSliderTrack: typeof BaseSliderTrack;
-  foreground: "div";
-  description: typeof Description;
+  root: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -445,7 +239,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       forNode: nodeName
     });
   };
-  if (nodeName === "ariaRangeSlider") {
+  if (nodeName === "root") {
     func.displayName = "PlasmicRangeSlider";
   } else {
     func.displayName = `PlasmicRangeSlider.${nodeName}`;
@@ -455,16 +249,9 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
 
 export const PlasmicRangeSlider = Object.assign(
   // Top-level PlasmicRangeSlider renders the root element
-  makeNodeComponent("ariaRangeSlider"),
+  makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    label: makeNodeComponent("label"),
-    ariaSliderOutput: makeNodeComponent("ariaSliderOutput"),
-    text: makeNodeComponent("text"),
-    background: makeNodeComponent("background"),
-    ariaSliderTrack: makeNodeComponent("ariaSliderTrack"),
-    foreground: makeNodeComponent("foreground"),
-    description: makeNodeComponent("description"),
 
     // Metadata about props expected for PlasmicRangeSlider
     internalVariantProps: PlasmicRangeSlider__VariantProps,

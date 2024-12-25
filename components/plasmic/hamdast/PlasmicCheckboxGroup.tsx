@@ -59,11 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { BaseCheckboxGroup } from "@plasmicpkgs/react-aria/skinny/registerCheckboxGroup";
-import Label from "../../Label"; // plasmic-import: s-bU96RB6OEn/component
-import Checkbox from "../../Checkbox"; // plasmic-import: hRyqVT9WQfmC/component
-import Description from "../../Description"; // plasmic-import: sC3KMwrCbbRF/component
-
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
@@ -83,10 +78,6 @@ export type PlasmicCheckboxGroup__ArgsType = {
   showDescription?: boolean;
   disabled?: boolean;
   ariaLabel?: string;
-  onChange?: (val: any) => void;
-  label?: React.ReactNode;
-  options?: React.ReactNode;
-  description?: React.ReactNode;
 };
 type ArgPropType = keyof PlasmicCheckboxGroup__ArgsType;
 export const PlasmicCheckboxGroup__ArgProps = new Array<ArgPropType>(
@@ -94,17 +85,11 @@ export const PlasmicCheckboxGroup__ArgProps = new Array<ArgPropType>(
   "showLabel",
   "showDescription",
   "disabled",
-  "ariaLabel",
-  "onChange",
-  "label",
-  "options",
-  "description"
+  "ariaLabel"
 );
 
 export type PlasmicCheckboxGroup__OverridesType = {
-  ariaCheckboxGroup?: Flex__<typeof BaseCheckboxGroup>;
-  label?: Flex__<typeof Label>;
-  description?: Flex__<typeof Description>;
+  root?: Flex__<"div">;
 };
 
 export interface DefaultCheckboxGroupProps {
@@ -113,10 +98,6 @@ export interface DefaultCheckboxGroupProps {
   showDescription?: boolean;
   disabled?: boolean;
   ariaLabel?: string;
-  onChange?: (val: any) => void;
-  label?: React.ReactNode;
-  options?: React.ReactNode;
-  description?: React.ReactNode;
   className?: string;
 }
 
@@ -161,141 +142,33 @@ function PlasmicCheckboxGroup__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
-    () => [
-      {
-        path: "ariaCheckboxGroup.value",
-        type: "readonly",
-        variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          $props["defaultValues"],
-
-        onChangeProp: "onChange"
-      }
-    ],
-    [$props, $ctx, $refs]
-  );
-  const $state = useDollarState(stateSpecs, {
-    $props,
-    $ctx,
-    $queries: {},
-    $refs
-  });
-
-  const [$ccVariants, setDollarCcVariants] = React.useState<
-    Record<string, boolean>
-  >({
-    disabled: false,
-    readonly: false
-  });
-  const updateVariant = React.useCallback(
-    (changes: Record<string, boolean>) => {
-      setDollarCcVariants(prev => {
-        if (!Object.keys(changes).some(k => prev[k] !== changes[k])) {
-          return prev;
-        }
-        return { ...prev, ...changes };
-      });
-    },
-    []
-  );
-
   return (
-    <BaseCheckboxGroup
-      data-plasmic-name={"ariaCheckboxGroup"}
-      data-plasmic-override={overrides.ariaCheckboxGroup}
+    <div
+      data-plasmic-name={"root"}
+      data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      aria-label={args.ariaLabel}
       className={classNames(
-        "__wab_instance",
+        projectcss.all,
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         projectcss.plasmic_tokens,
         plasmic_antd_5_hostless_css.plasmic_tokens,
-        sty.ariaCheckboxGroup
+        sty.root
       )}
-      defaultValue={args.defaultValues}
-      isDisabled={args.disabled}
-      isReadOnly={$ccVariants["readonly"] ? true : undefined}
-      onChange={async (...eventArgs: any) => {
-        generateStateOnChangeProp($state, ["ariaCheckboxGroup", "value"]).apply(
-          null,
-          eventArgs
-        );
-      }}
-      plasmicUpdateVariant={updateVariant}
-      value={generateStateValueProp($state, ["ariaCheckboxGroup", "value"])}
-    >
-      {$props.showLabel ? (
-        <Label
-          data-plasmic-name={"label"}
-          data-plasmic-override={overrides.label}
-          className={classNames("__wab_instance", sty.label)}
-        >
-          {renderPlasmicSlot({
-            defaultContents: "Label",
-            value: args.label
-          })}
-        </Label>
-      ) : null}
-      {renderPlasmicSlot({
-        defaultContents: (
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__eZxR3)}
-          >
-            <Checkbox
-              className={classNames("__wab_instance", sty.checkbox__iInKa)}
-              label={"Option 1"}
-              value={"option1"}
-            />
-
-            <Checkbox
-              className={classNames("__wab_instance", sty.checkbox__k1Yca)}
-              label={"Option 2"}
-              value={"option2"}
-            />
-
-            <Checkbox
-              className={classNames("__wab_instance", sty.checkbox__fznlj)}
-              label={"Option 3"}
-              value={"option3"}
-            />
-          </Stack__>
-        ),
-        value: args.options
-      })}
-      {$props.showDescription ? (
-        <Description
-          data-plasmic-name={"description"}
-          data-plasmic-override={overrides.description}
-          className={classNames("__wab_instance", sty.description)}
-        >
-          {renderPlasmicSlot({
-            defaultContents: "Description...",
-            value: args.description
-          })}
-        </Description>
-      ) : null}
-    </BaseCheckboxGroup>
+    />
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  ariaCheckboxGroup: ["ariaCheckboxGroup", "label", "description"],
-  label: ["label"],
-  description: ["description"]
+  root: ["root"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
-  ariaCheckboxGroup: typeof BaseCheckboxGroup;
-  label: typeof Label;
-  description: typeof Description;
+  root: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -345,7 +218,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       forNode: nodeName
     });
   };
-  if (nodeName === "ariaCheckboxGroup") {
+  if (nodeName === "root") {
     func.displayName = "PlasmicCheckboxGroup";
   } else {
     func.displayName = `PlasmicCheckboxGroup.${nodeName}`;
@@ -355,11 +228,9 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
 
 export const PlasmicCheckboxGroup = Object.assign(
   // Top-level PlasmicCheckboxGroup renders the root element
-  makeNodeComponent("ariaCheckboxGroup"),
+  makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    label: makeNodeComponent("label"),
-    description: makeNodeComponent("description"),
 
     // Metadata about props expected for PlasmicCheckboxGroup
     internalVariantProps: PlasmicCheckboxGroup__VariantProps,

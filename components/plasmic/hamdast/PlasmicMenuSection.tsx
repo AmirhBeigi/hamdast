@@ -59,9 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { BaseSection } from "@plasmicpkgs/react-aria/skinny/registerSection";
-import MenuItem2 from "../../MenuItem2"; // plasmic-import: 6oW4dozQm6Fz/component
-
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
@@ -75,24 +72,15 @@ export type PlasmicMenuSection__VariantsArgs = {};
 type VariantPropType = keyof PlasmicMenuSection__VariantsArgs;
 export const PlasmicMenuSection__VariantProps = new Array<VariantPropType>();
 
-export type PlasmicMenuSection__ArgsType = {
-  header?: React.ReactNode;
-  items?: React.ReactNode;
-};
+export type PlasmicMenuSection__ArgsType = {};
 type ArgPropType = keyof PlasmicMenuSection__ArgsType;
-export const PlasmicMenuSection__ArgProps = new Array<ArgPropType>(
-  "header",
-  "items"
-);
+export const PlasmicMenuSection__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicMenuSection__OverridesType = {
-  root?: Flex__<typeof BaseSection>;
-  freeBox?: Flex__<"div">;
+  root?: Flex__<"div">;
 };
 
 export interface DefaultMenuSectionProps {
-  header?: React.ReactNode;
-  items?: React.ReactNode;
   className?: string;
 }
 
@@ -135,13 +123,13 @@ function PlasmicMenuSection__RenderFunc(props: {
   const $refs = refsRef.current;
 
   return (
-    <BaseSection
+    <div
       data-plasmic-name={"root"}
       data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        "__wab_instance",
+        projectcss.all,
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
@@ -149,45 +137,18 @@ function PlasmicMenuSection__RenderFunc(props: {
         plasmic_antd_5_hostless_css.plasmic_tokens,
         sty.root
       )}
-      header={
-        <div
-          data-plasmic-name={"freeBox"}
-          data-plasmic-override={overrides.freeBox}
-          className={classNames(projectcss.all, sty.freeBox)}
-        >
-          {renderPlasmicSlot({
-            defaultContents: "Section Header",
-            value: args.header,
-            className: classNames(sty.slotTargetHeader)
-          })}
-        </div>
-      }
-      items={renderPlasmicSlot({
-        defaultContents: (
-          <React.Fragment>
-            <MenuItem2 label={"Section Item 1"} value={"section-item-1"} />
-
-            <MenuItem2 label={"Section Item 2"} value={"section-item-2"} />
-
-            <MenuItem2 label={"Section Item 3"} value={"section-item-3"} />
-          </React.Fragment>
-        ),
-        value: args.items
-      })}
     />
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root", "freeBox"],
-  freeBox: ["freeBox"]
+  root: ["root"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
-  root: typeof BaseSection;
-  freeBox: "div";
+  root: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -250,7 +211,6 @@ export const PlasmicMenuSection = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    freeBox: makeNodeComponent("freeBox"),
 
     // Metadata about props expected for PlasmicMenuSection
     internalVariantProps: PlasmicMenuSection__VariantProps,

@@ -59,15 +59,11 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { BaseOverlayArrow } from "@plasmicpkgs/react-aria/skinny/registerOverlayArrow";
-
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectcss
 import sty from "./PlasmicOverlayArrow.module.css"; // plasmic-import: Z-FbG4zvwWLi/css
-
-import TriangleFilledIcon from "./icons/PlasmicIcon__TriangleFilled"; // plasmic-import: DA7lxrRNWpy_/icon
 
 createPlasmicElementProxy;
 
@@ -87,8 +83,7 @@ type ArgPropType = keyof PlasmicOverlayArrow__ArgsType;
 export const PlasmicOverlayArrow__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicOverlayArrow__OverridesType = {
-  root?: Flex__<typeof BaseOverlayArrow>;
-  svg?: Flex__<"svg">;
+  root?: Flex__<"div">;
 };
 
 export interface DefaultOverlayArrowProps {
@@ -152,33 +147,14 @@ function PlasmicOverlayArrow__RenderFunc(props: {
     $refs
   });
 
-  const [$ccVariants, setDollarCcVariants] = React.useState<
-    Record<string, boolean>
-  >({
-    placementTop: false,
-    placementLeft: false,
-    placementRight: false
-  });
-  const updateVariant = React.useCallback(
-    (changes: Record<string, boolean>) => {
-      setDollarCcVariants(prev => {
-        if (!Object.keys(changes).some(k => prev[k] !== changes[k])) {
-          return prev;
-        }
-        return { ...prev, ...changes };
-      });
-    },
-    []
-  );
-
   return (
-    <BaseOverlayArrow
+    <div
       data-plasmic-name={"root"}
       data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        "__wab_instance",
+        projectcss.all,
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
@@ -187,30 +163,18 @@ function PlasmicOverlayArrow__RenderFunc(props: {
         sty.root,
         { [sty.rootdark]: hasVariant($state, "dark", "dark") }
       )}
-      plasmicUpdateVariant={updateVariant}
-    >
-      <TriangleFilledIcon
-        data-plasmic-name={"svg"}
-        data-plasmic-override={overrides.svg}
-        className={classNames(projectcss.all, sty.svg, {
-          [sty.svgdark]: hasVariant($state, "dark", "dark")
-        })}
-        role={"img"}
-      />
-    </BaseOverlayArrow>
+    />
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root", "svg"],
-  svg: ["svg"]
+  root: ["root"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
-  root: typeof BaseOverlayArrow;
-  svg: "svg";
+  root: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -273,7 +237,6 @@ export const PlasmicOverlayArrow = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    svg: makeNodeComponent("svg"),
 
     // Metadata about props expected for PlasmicOverlayArrow
     internalVariantProps: PlasmicOverlayArrow__VariantProps,

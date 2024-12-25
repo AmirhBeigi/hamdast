@@ -59,12 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { BasePopover } from "@plasmicpkgs/react-aria/skinny/registerPopover";
-import { BaseListBox } from "@plasmicpkgs/react-aria/skinny/registerListBox";
-import { listboxHelpers as BaseListBox_Helpers } from "@plasmicpkgs/react-aria/skinny/registerListBox";
-import MenuItem2 from "../../MenuItem2"; // plasmic-import: 6oW4dozQm6Fz/component
-import MenuSection from "../../MenuSection"; // plasmic-import: Lz0b_UNWfR91/component
-
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
@@ -80,24 +74,20 @@ export const PlasmicMenuPopover__VariantProps = new Array<VariantPropType>();
 
 export type PlasmicMenuPopover__ArgsType = {
   offset?: number;
-  menuItems?: React.ReactNode;
   initialSelectedKey?: "Dynamic options";
 };
 type ArgPropType = keyof PlasmicMenuPopover__ArgsType;
 export const PlasmicMenuPopover__ArgProps = new Array<ArgPropType>(
   "offset",
-  "menuItems",
   "initialSelectedKey"
 );
 
 export type PlasmicMenuPopover__OverridesType = {
-  root?: Flex__<typeof BasePopover>;
-  ariaListBox?: Flex__<typeof BaseListBox>;
+  root?: Flex__<"div">;
 };
 
 export interface DefaultMenuPopoverProps {
   offset?: number;
-  menuItems?: React.ReactNode;
   initialSelectedKey?: "Dynamic options";
   className?: string;
 }
@@ -142,55 +132,14 @@ function PlasmicMenuPopover__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
-    () => [
-      {
-        path: "ariaListBox.selectedValue",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          $props["initialSelectedKey"],
-
-        onMutate: generateOnMutateForSpec("selectedValue", BaseListBox_Helpers)
-      }
-    ],
-    [$props, $ctx, $refs]
-  );
-  const $state = useDollarState(stateSpecs, {
-    $props,
-    $ctx,
-    $queries: {},
-    $refs
-  });
-
-  const [$ccVariants, setDollarCcVariants] = React.useState<
-    Record<string, boolean>
-  >({
-    placementTop: false,
-    placementBottom: false,
-    placementLeft: false,
-    placementRight: false
-  });
-  const updateVariant = React.useCallback(
-    (changes: Record<string, boolean>) => {
-      setDollarCcVariants(prev => {
-        if (!Object.keys(changes).some(k => prev[k] !== changes[k])) {
-          return prev;
-        }
-        return { ...prev, ...changes };
-      });
-    },
-    []
-  );
-
   return (
-    <BasePopover
+    <div
       data-plasmic-name={"root"}
       data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        "__wab_instance",
+        projectcss.all,
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
@@ -198,130 +147,18 @@ function PlasmicMenuPopover__RenderFunc(props: {
         plasmic_antd_5_hostless_css.plasmic_tokens,
         sty.root
       )}
-      matchTriggerWidth={true}
-      offset={args.offset}
-      placement={"bottom"}
-      plasmicUpdateVariant={updateVariant}
-      resetClassName={classNames(
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
-        projectcss.plasmic_tokens,
-        plasmic_antd_5_hostless_css.plasmic_tokens
-      )}
-      shouldFlip={true}
-    >
-      {(() => {
-        const child$Props = {
-          className: classNames("__wab_instance", sty.ariaListBox),
-          defaultSelectedKeys: args.initialSelectedKey,
-          onSelectionChange: async (...eventArgs: any) => {
-            generateStateOnChangePropForCodeComponents(
-              $state,
-              "selectedValue",
-              ["ariaListBox", "selectedValue"],
-              BaseListBox_Helpers
-            ).apply(null, eventArgs);
-          },
-          selectedKeys: generateStateValueProp($state, [
-            "ariaListBox",
-            "selectedValue"
-          ]),
-          selectionMode: "single"
-        };
-        initializeCodeComponentStates(
-          $state,
-          [
-            {
-              name: "selectedValue",
-              plasmicStateName: "ariaListBox.selectedValue"
-            }
-          ],
-          [],
-          BaseListBox_Helpers ?? {},
-          child$Props
-        );
-
-        return (
-          <BaseListBox
-            data-plasmic-name={"ariaListBox"}
-            data-plasmic-override={overrides.ariaListBox}
-            {...child$Props}
-          >
-            {renderPlasmicSlot({
-              defaultContents: (
-                <React.Fragment>
-                  <MenuItem2
-                    className={classNames(
-                      "__wab_instance",
-                      sty.menuItem2__p3Wkb
-                    )}
-                    value={"item1"}
-                  />
-
-                  <MenuItem2
-                    className={classNames(
-                      "__wab_instance",
-                      sty.menuItem2___8Vv
-                    )}
-                    label={"Item 2"}
-                    value={"item2"}
-                  />
-
-                  <MenuItem2
-                    className={classNames(
-                      "__wab_instance",
-                      sty.menuItem2__dWdY
-                    )}
-                    label={"Item 3"}
-                    value={"item3"}
-                  />
-
-                  <MenuSection
-                    className={classNames(
-                      "__wab_instance",
-                      sty.menuSection__dGsQ
-                    )}
-                    items={
-                      <React.Fragment>
-                        <MenuItem2
-                          label={"Section Item 1"}
-                          value={"section-item-1"}
-                        />
-
-                        <MenuItem2
-                          label={"Section Item 2"}
-                          value={"section-item-2"}
-                        />
-
-                        <MenuItem2
-                          label={"Section Item 3"}
-                          value={"section-item-3"}
-                        />
-                      </React.Fragment>
-                    }
-                  />
-                </React.Fragment>
-              ),
-              value: args.menuItems
-            })}
-          </BaseListBox>
-        );
-      })()}
-    </BasePopover>
+    />
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root", "ariaListBox"],
-  ariaListBox: ["ariaListBox"]
+  root: ["root"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
-  root: typeof BasePopover;
-  ariaListBox: typeof BaseListBox;
+  root: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -384,7 +221,6 @@ export const PlasmicMenuPopover = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    ariaListBox: makeNodeComponent("ariaListBox"),
 
     // Metadata about props expected for PlasmicMenuPopover
     internalVariantProps: PlasmicMenuPopover__VariantProps,

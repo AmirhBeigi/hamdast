@@ -59,10 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { BaseListBoxItem } from "@plasmicpkgs/react-aria/skinny/registerListBoxItem";
-import { BaseText } from "@plasmicpkgs/react-aria/skinny/registerText";
-import { BaseText as BaseText2 } from "@plasmicpkgs/react-aria/skinny/registerText";
-
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
@@ -89,9 +85,7 @@ export const PlasmicMenuItem2__ArgProps = new Array<ArgPropType>(
 );
 
 export type PlasmicMenuItem2__OverridesType = {
-  root?: Flex__<typeof BaseListBoxItem>;
-  ariaText?: Flex__<typeof BaseText>;
-  ariaDescription?: Flex__<typeof BaseText2>;
+  root?: Flex__<"div">;
 };
 
 export interface DefaultMenuItem2Props {
@@ -142,36 +136,14 @@ function PlasmicMenuItem2__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const [$ccVariants, setDollarCcVariants] = React.useState<
-    Record<string, boolean>
-  >({
-    hovered: false,
-    pressed: false,
-    focused: false,
-    focusVisible: false,
-    selected: false,
-    disabled: false
-  });
-  const updateVariant = React.useCallback(
-    (changes: Record<string, boolean>) => {
-      setDollarCcVariants(prev => {
-        if (!Object.keys(changes).some(k => prev[k] !== changes[k])) {
-          return prev;
-        }
-        return { ...prev, ...changes };
-      });
-    },
-    []
-  );
-
   return (
-    <BaseListBoxItem
+    <div
       data-plasmic-name={"root"}
       data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        "__wab_instance",
+        projectcss.all,
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
@@ -179,94 +151,18 @@ function PlasmicMenuItem2__RenderFunc(props: {
         plasmic_antd_5_hostless_css.plasmic_tokens,
         sty.root
       )}
-      id={args.value}
-      plasmicUpdateVariant={updateVariant}
-      textValue={args.label}
-    >
-      <Stack__
-        as={"div"}
-        hasGap={true}
-        className={classNames(projectcss.all, sty.freeBox__oZbxq)}
-      >
-        <BaseText
-          data-plasmic-name={"ariaText"}
-          data-plasmic-override={overrides.ariaText}
-          className={classNames("__wab_instance", sty.ariaText)}
-          slot={"label"}
-        >
-          <div className={classNames(projectcss.all, sty.freeBox__iE3U5)}>
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__fb9Xq
-              )}
-            >
-              <React.Fragment>
-                {(() => {
-                  try {
-                    return $props.label;
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return "Item 1";
-                    }
-                    throw e;
-                  }
-                })()}
-              </React.Fragment>
-            </div>
-          </div>
-        </BaseText>
-        {(() => {
-          try {
-            return $props.description;
-          } catch (e) {
-            if (
-              e instanceof TypeError ||
-              e?.plasmicType === "PlasmicUndefinedDataError"
-            ) {
-              return false;
-            }
-            throw e;
-          }
-        })() ? (
-          <BaseText2
-            data-plasmic-name={"ariaDescription"}
-            data-plasmic-override={overrides.ariaDescription}
-            className={classNames("__wab_instance", sty.ariaDescription)}
-            slot={"description"}
-          >
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__i5GId
-              )}
-            >
-              <React.Fragment>{$props.description}</React.Fragment>
-            </div>
-          </BaseText2>
-        ) : null}
-      </Stack__>
-    </BaseListBoxItem>
+    />
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root", "ariaText", "ariaDescription"],
-  ariaText: ["ariaText"],
-  ariaDescription: ["ariaDescription"]
+  root: ["root"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
-  root: typeof BaseListBoxItem;
-  ariaText: typeof BaseText;
-  ariaDescription: typeof BaseText2;
+  root: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -329,8 +225,6 @@ export const PlasmicMenuItem2 = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    ariaText: makeNodeComponent("ariaText"),
-    ariaDescription: makeNodeComponent("ariaDescription"),
 
     // Metadata about props expected for PlasmicMenuItem2
     internalVariantProps: PlasmicMenuItem2__VariantProps,

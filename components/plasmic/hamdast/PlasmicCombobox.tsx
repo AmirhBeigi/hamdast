@@ -59,23 +59,11 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { BaseComboBox } from "@plasmicpkgs/react-aria/skinny/registerComboBox";
-import Label from "../../Label"; // plasmic-import: s-bU96RB6OEn/component
-import { BaseInput } from "@plasmicpkgs/react-aria/skinny/registerInput";
-import { inputHelpers as BaseInput_Helpers } from "@plasmicpkgs/react-aria/skinny/registerInput";
-import { BaseButton } from "@plasmicpkgs/react-aria/skinny/registerButton";
-import Description from "../../Description"; // plasmic-import: sC3KMwrCbbRF/component
-import MenuPopover from "../../MenuPopover"; // plasmic-import: TuJx6gm0OTg5/component
-import MenuItem2 from "../../MenuItem2"; // plasmic-import: 6oW4dozQm6Fz/component
-import MenuSection from "../../MenuSection"; // plasmic-import: Lz0b_UNWfR91/component
-
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectcss
 import sty from "./PlasmicCombobox.module.css"; // plasmic-import: sNfr46nD9HFq/css
-
-import ChevronDownIcon from "./icons/PlasmicIcon__ChevronDown"; // plasmic-import: 0l8GqiEmlVdS/icon
 
 createPlasmicElementProxy;
 
@@ -92,58 +80,40 @@ export type PlasmicCombobox__ArgsType = {
   placeholder?: string;
   showLabel?: boolean;
   showDescription?: boolean;
-  onChange?: (val: string) => void;
   initialSelectedKey?: "Dynamic options";
   autoFocus?: boolean;
   inputDisplayValue?: string;
   disabled?: boolean;
   ariaLabel?: string;
   readOnly?: boolean;
-  label?: React.ReactNode;
-  description?: React.ReactNode;
-  items?: React.ReactNode;
 };
 type ArgPropType = keyof PlasmicCombobox__ArgsType;
 export const PlasmicCombobox__ArgProps = new Array<ArgPropType>(
   "placeholder",
   "showLabel",
   "showDescription",
-  "onChange",
   "initialSelectedKey",
   "autoFocus",
   "inputDisplayValue",
   "disabled",
   "ariaLabel",
-  "readOnly",
-  "label",
-  "description",
-  "items"
+  "readOnly"
 );
 
 export type PlasmicCombobox__OverridesType = {
-  ariaComboBox?: Flex__<typeof BaseComboBox>;
-  label?: Flex__<typeof Label>;
-  ariaInput?: Flex__<typeof BaseInput>;
-  ariaButton?: Flex__<typeof BaseButton>;
-  svg?: Flex__<"svg">;
-  description?: Flex__<typeof Description>;
-  menuPopover?: Flex__<typeof MenuPopover>;
+  root?: Flex__<"div">;
 };
 
 export interface DefaultComboboxProps {
   placeholder?: string;
   showLabel?: boolean;
   showDescription?: boolean;
-  onChange?: (val: string) => void;
   initialSelectedKey?: "Dynamic options";
   autoFocus?: boolean;
   inputDisplayValue?: string;
   disabled?: boolean;
   ariaLabel?: string;
   readOnly?: boolean;
-  label?: React.ReactNode;
-  description?: React.ReactNode;
-  items?: React.ReactNode;
   type?: SingleChoiceArg<"soft" | "plain">;
   className?: string;
 }
@@ -193,33 +163,10 @@ function PlasmicCombobox__RenderFunc(props: {
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
-        path: "ariaComboBox.isOpen",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
-      },
-      {
-        path: "ariaComboBox.selectedValue",
-        type: "readonly",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          $props["initialSelectedKey"],
-
-        onChangeProp: "onChange"
-      },
-      {
         path: "type",
         type: "private",
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.type
-      },
-      {
-        path: "ariaInput.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
-
-        onMutate: generateOnMutateForSpec("value", BaseInput_Helpers)
       }
     ],
     [$props, $ctx, $refs]
@@ -231,220 +178,37 @@ function PlasmicCombobox__RenderFunc(props: {
     $refs
   });
 
-  const [$ccVariants, setDollarCcVariants] = React.useState<
-    Record<string, boolean>
-  >({
-    disabled: false
-  });
-  const updateVariant = React.useCallback(
-    (changes: Record<string, boolean>) => {
-      setDollarCcVariants(prev => {
-        if (!Object.keys(changes).some(k => prev[k] !== changes[k])) {
-          return prev;
-        }
-        return { ...prev, ...changes };
-      });
-    },
-    []
-  );
-
   return (
-    <BaseComboBox
-      data-plasmic-name={"ariaComboBox"}
-      data-plasmic-override={overrides.ariaComboBox}
+    <div
+      data-plasmic-name={"root"}
+      data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      aria-label={args.ariaLabel}
       className={classNames(
-        "__wab_instance",
+        projectcss.all,
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         projectcss.plasmic_tokens,
         plasmic_antd_5_hostless_css.plasmic_tokens,
-        sty.ariaComboBox,
+        sty.root,
         {
-          [sty.ariaComboBoxtype_plain]: hasVariant($state, "type", "plain"),
-          [sty.ariaComboBoxtype_soft]: hasVariant($state, "type", "soft")
+          [sty.roottype_plain]: hasVariant($state, "type", "plain"),
+          [sty.roottype_soft]: hasVariant($state, "type", "soft")
         }
       )}
-      defaultSelectedKey={args.initialSelectedKey}
-      isDisabled={args.disabled}
-      isOpen={generateStateValueProp($state, ["ariaComboBox", "isOpen"])}
-      onOpenChange={async (...eventArgs: any) => {
-        generateStateOnChangeProp($state, ["ariaComboBox", "isOpen"]).apply(
-          null,
-          eventArgs
-        );
-      }}
-      onSelectionChange={async (...eventArgs: any) => {
-        generateStateOnChangeProp($state, [
-          "ariaComboBox",
-          "selectedValue"
-        ]).apply(null, eventArgs);
-      }}
-      plasmicUpdateVariant={updateVariant}
-      selectedKey={generateStateValueProp($state, [
-        "ariaComboBox",
-        "selectedValue"
-      ])}
-    >
-      {$props.showLabel ? (
-        <Label
-          data-plasmic-name={"label"}
-          data-plasmic-override={overrides.label}
-          className={classNames("__wab_instance", sty.label)}
-        >
-          {renderPlasmicSlot({
-            defaultContents: "Label",
-            value: args.label
-          })}
-        </Label>
-      ) : null}
-      <div className={classNames(projectcss.all, sty.freeBox__jED)}>
-        {(() => {
-          const child$Props = {
-            className: classNames("__wab_instance", sty.ariaInput),
-            onChange: async (...eventArgs: any) => {
-              generateStateOnChangePropForCodeComponents(
-                $state,
-                "value",
-                ["ariaInput", "value"],
-                BaseInput_Helpers
-              ).apply(null, eventArgs);
-            },
-            placeholder: args.placeholder,
-            value: generateStateValueProp($state, ["ariaInput", "value"])
-          };
-          initializeCodeComponentStates(
-            $state,
-            [
-              {
-                name: "value",
-                plasmicStateName: "ariaInput.value"
-              }
-            ],
-            [],
-            BaseInput_Helpers ?? {},
-            child$Props
-          );
-
-          return (
-            <BaseInput
-              data-plasmic-name={"ariaInput"}
-              data-plasmic-override={overrides.ariaInput}
-              {...child$Props}
-            />
-          );
-        })()}
-        <BaseButton
-          data-plasmic-name={"ariaButton"}
-          data-plasmic-override={overrides.ariaButton}
-          className={classNames("__wab_instance", sty.ariaButton)}
-        >
-          <div className={classNames(projectcss.all, sty.freeBox__ttNkC)}>
-            <ChevronDownIcon
-              data-plasmic-name={"svg"}
-              data-plasmic-override={overrides.svg}
-              className={classNames(projectcss.all, sty.svg)}
-              role={"img"}
-            />
-          </div>
-        </BaseButton>
-      </div>
-      {$props.showDescription ? (
-        <Description
-          data-plasmic-name={"description"}
-          data-plasmic-override={overrides.description}
-          className={classNames("__wab_instance", sty.description)}
-        >
-          {renderPlasmicSlot({
-            defaultContents: "Description...",
-            value: args.description
-          })}
-        </Description>
-      ) : null}
-      <MenuPopover
-        data-plasmic-name={"menuPopover"}
-        data-plasmic-override={overrides.menuPopover}
-        menuItems={renderPlasmicSlot({
-          defaultContents: (
-            <React.Fragment>
-              <MenuItem2 label={"Item 1"} value={"item1"} />
-
-              <MenuItem2 label={"Item 2"} value={"item2"} />
-
-              <MenuItem2 label={"Item 3"} value={"item3"} />
-
-              <MenuSection
-                header={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__cnacH
-                    )}
-                  >
-                    {"Section"}
-                  </div>
-                }
-                items={
-                  <React.Fragment>
-                    <MenuItem2
-                      label={"Section Item 1"}
-                      value={"section-item-1"}
-                    />
-
-                    <MenuItem2
-                      label={"Section Item 2"}
-                      value={"section-item-2"}
-                    />
-
-                    <MenuItem2
-                      label={"Section Item 3"}
-                      value={"section-item-3"}
-                    />
-                  </React.Fragment>
-                }
-              />
-            </React.Fragment>
-          ),
-          value: args.items
-        })}
-        offset={2}
-      />
-    </BaseComboBox>
+    />
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  ariaComboBox: [
-    "ariaComboBox",
-    "label",
-    "ariaInput",
-    "ariaButton",
-    "svg",
-    "description",
-    "menuPopover"
-  ],
-  label: ["label"],
-  ariaInput: ["ariaInput"],
-  ariaButton: ["ariaButton", "svg"],
-  svg: ["svg"],
-  description: ["description"],
-  menuPopover: ["menuPopover"]
+  root: ["root"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
-  ariaComboBox: typeof BaseComboBox;
-  label: typeof Label;
-  ariaInput: typeof BaseInput;
-  ariaButton: typeof BaseButton;
-  svg: "svg";
-  description: typeof Description;
-  menuPopover: typeof MenuPopover;
+  root: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -494,7 +258,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       forNode: nodeName
     });
   };
-  if (nodeName === "ariaComboBox") {
+  if (nodeName === "root") {
     func.displayName = "PlasmicCombobox";
   } else {
     func.displayName = `PlasmicCombobox.${nodeName}`;
@@ -504,15 +268,9 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
 
 export const PlasmicCombobox = Object.assign(
   // Top-level PlasmicCombobox renders the root element
-  makeNodeComponent("ariaComboBox"),
+  makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    label: makeNodeComponent("label"),
-    ariaInput: makeNodeComponent("ariaInput"),
-    ariaButton: makeNodeComponent("ariaButton"),
-    svg: makeNodeComponent("svg"),
-    description: makeNodeComponent("description"),
-    menuPopover: makeNodeComponent("menuPopover"),
 
     // Metadata about props expected for PlasmicCombobox
     internalVariantProps: PlasmicCombobox__VariantProps,

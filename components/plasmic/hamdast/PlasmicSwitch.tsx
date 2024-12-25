@@ -59,9 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { BaseSwitch } from "@plasmicpkgs/react-aria/skinny/registerSwitch";
-import Description from "../../Description"; // plasmic-import: sC3KMwrCbbRF/component
-
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
@@ -79,44 +76,31 @@ export type PlasmicSwitch__ArgsType = {
   showLabel?: boolean;
   showDescription?: boolean;
   autoFocus?: boolean;
-  isSelected?: boolean;
   disabled?: boolean;
   readOnly?: boolean;
   ariaLabel?: string;
-  onChange?: (val: boolean) => void;
-  label?: React.ReactNode;
 };
 type ArgPropType = keyof PlasmicSwitch__ArgsType;
 export const PlasmicSwitch__ArgProps = new Array<ArgPropType>(
   "showLabel",
   "showDescription",
   "autoFocus",
-  "isSelected",
   "disabled",
   "readOnly",
-  "ariaLabel",
-  "onChange",
-  "label"
+  "ariaLabel"
 );
 
 export type PlasmicSwitch__OverridesType = {
-  ariaSwitch?: Flex__<typeof BaseSwitch>;
-  freeBox?: Flex__<"div">;
-  switchIndicator?: Flex__<"div">;
-  thumb?: Flex__<"div">;
-  description?: Flex__<typeof Description>;
+  root?: Flex__<"div">;
 };
 
 export interface DefaultSwitchProps {
   showLabel?: boolean;
   showDescription?: boolean;
   autoFocus?: boolean;
-  isSelected?: boolean;
   disabled?: boolean;
   readOnly?: boolean;
   ariaLabel?: string;
-  onChange?: (val: boolean) => void;
-  label?: React.ReactNode;
   className?: string;
 }
 
@@ -163,135 +147,33 @@ function PlasmicSwitch__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
-    () => [
-      {
-        path: "ariaSwitch.isSelected",
-        type: "writable",
-        variableType: "boolean",
-
-        valueProp: "isSelected",
-        onChangeProp: "onChange"
-      }
-    ],
-    [$props, $ctx, $refs]
-  );
-  const $state = useDollarState(stateSpecs, {
-    $props,
-    $ctx,
-    $queries: {},
-    $refs
-  });
-
-  const [$ccVariants, setDollarCcVariants] = React.useState<
-    Record<string, boolean>
-  >({
-    hovered: false,
-    pressed: false,
-    focused: false,
-    focusVisible: false,
-    selected: false,
-    disabled: false,
-    readonly: false
-  });
-  const updateVariant = React.useCallback(
-    (changes: Record<string, boolean>) => {
-      setDollarCcVariants(prev => {
-        if (!Object.keys(changes).some(k => prev[k] !== changes[k])) {
-          return prev;
-        }
-        return { ...prev, ...changes };
-      });
-    },
-    []
-  );
-
   return (
-    <BaseSwitch
-      data-plasmic-name={"ariaSwitch"}
-      data-plasmic-override={overrides.ariaSwitch}
+    <div
+      data-plasmic-name={"root"}
+      data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      aria-label={args.ariaLabel}
-      autoFocus={args.autoFocus}
       className={classNames(
-        "__wab_instance",
+        projectcss.all,
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         projectcss.plasmic_tokens,
         plasmic_antd_5_hostless_css.plasmic_tokens,
-        sty.ariaSwitch
+        sty.root
       )}
-      isDisabled={args.disabled}
-      isReadOnly={args.readOnly}
-      isSelected={generateStateValueProp($state, ["ariaSwitch", "isSelected"])}
-      onChange={async (...eventArgs: any) => {
-        generateStateOnChangeProp($state, ["ariaSwitch", "isSelected"]).apply(
-          null,
-          eventArgs
-        );
-      }}
-      plasmicUpdateVariant={updateVariant}
-    >
-      <Stack__
-        as={"div"}
-        data-plasmic-name={"freeBox"}
-        data-plasmic-override={overrides.freeBox}
-        hasGap={true}
-        className={classNames(projectcss.all, sty.freeBox)}
-      >
-        <div
-          data-plasmic-name={"switchIndicator"}
-          data-plasmic-override={overrides.switchIndicator}
-          className={classNames(projectcss.all, sty.switchIndicator)}
-        >
-          <div
-            data-plasmic-name={"thumb"}
-            data-plasmic-override={overrides.thumb}
-            className={classNames(projectcss.all, sty.thumb)}
-          />
-        </div>
-        {$props.showLabel
-          ? renderPlasmicSlot({
-              defaultContents: "Label",
-              value: args.label
-            })
-          : null}
-      </Stack__>
-      {$props.showDescription ? (
-        <Description
-          data-plasmic-name={"description"}
-          data-plasmic-override={overrides.description}
-          className={classNames("__wab_instance", sty.description)}
-        />
-      ) : null}
-    </BaseSwitch>
+    />
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  ariaSwitch: [
-    "ariaSwitch",
-    "freeBox",
-    "switchIndicator",
-    "thumb",
-    "description"
-  ],
-  freeBox: ["freeBox", "switchIndicator", "thumb"],
-  switchIndicator: ["switchIndicator", "thumb"],
-  thumb: ["thumb"],
-  description: ["description"]
+  root: ["root"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
-  ariaSwitch: typeof BaseSwitch;
-  freeBox: "div";
-  switchIndicator: "div";
-  thumb: "div";
-  description: typeof Description;
+  root: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -341,7 +223,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       forNode: nodeName
     });
   };
-  if (nodeName === "ariaSwitch") {
+  if (nodeName === "root") {
     func.displayName = "PlasmicSwitch";
   } else {
     func.displayName = `PlasmicSwitch.${nodeName}`;
@@ -351,13 +233,9 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
 
 export const PlasmicSwitch = Object.assign(
   // Top-level PlasmicSwitch renders the root element
-  makeNodeComponent("ariaSwitch"),
+  makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    freeBox: makeNodeComponent("freeBox"),
-    switchIndicator: makeNodeComponent("switchIndicator"),
-    thumb: makeNodeComponent("thumb"),
-    description: makeNodeComponent("description"),
 
     // Metadata about props expected for PlasmicSwitch
     internalVariantProps: PlasmicSwitch__VariantProps,
