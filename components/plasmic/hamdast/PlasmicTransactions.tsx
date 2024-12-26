@@ -64,6 +64,7 @@ import AuthProvider from "../../AuthProvider"; // plasmic-import: KTPu1eZupEdG/c
 import Layout from "../../Layout"; // plasmic-import: ve2FygUyzJYe/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
 import { AntdAvatar } from "@plasmicpkgs/antd5/skinny/registerAvatar";
+import FragmentLineClamp from "../../FragmentLineClamp"; // plasmic-import: UrqY_XZuYhn2/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -93,6 +94,7 @@ export type PlasmicTransactions__OverridesType = {
   svg?: Flex__<"svg">;
   apiRequest2?: Flex__<typeof ApiRequest>;
   avatar?: Flex__<typeof AntdAvatar>;
+  fragmentLineClamp?: Flex__<typeof FragmentLineClamp>;
 };
 
 export interface DefaultTransactionsProps {}
@@ -364,6 +366,72 @@ function PlasmicTransactions__RenderFunc(props: {
                     "\u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627\u06cc \u0645\u0627\u0644\u06cc"
                   }
                 </div>
+                <Stack__
+                  as={"div"}
+                  hasGap={true}
+                  className={classNames(projectcss.all, sty.freeBox__aoClD)}
+                >
+                  <Stack__
+                    as={"div"}
+                    hasGap={true}
+                    className={classNames(projectcss.all, sty.freeBox__xtE4O)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__cBfo
+                      )}
+                    >
+                      {"\u0646\u0627\u0645 \u06a9\u0627\u0631\u0628\u0631"}
+                    </div>
+                  </Stack__>
+                  <Stack__
+                    as={"div"}
+                    hasGap={true}
+                    className={classNames(projectcss.all, sty.freeBox__hoH9K)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__xBL
+                      )}
+                    >
+                      {"\u0645\u0628\u0644\u063a"}
+                    </div>
+                  </Stack__>
+                  <Stack__
+                    as={"div"}
+                    hasGap={true}
+                    className={classNames(projectcss.all, sty.freeBox__olFdy)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__x7TEm
+                      )}
+                    >
+                      {"\u0639\u0646\u0648\u0627\u0646"}
+                    </div>
+                  </Stack__>
+                  <Stack__
+                    as={"div"}
+                    hasGap={true}
+                    className={classNames(projectcss.all, sty.freeBox__npcuE)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__wv5Y
+                      )}
+                    >
+                      {"\u0632\u0645\u0627\u0646"}
+                    </div>
+                  </Stack__>
+                </Stack__>
                 <ApiRequest
                   data-plasmic-name={"apiRequest"}
                   data-plasmic-override={overrides.apiRequest}
@@ -663,37 +731,39 @@ function PlasmicTransactions__RenderFunc(props: {
                             sty.freeBox__nQUz
                           )}
                         >
-                          <div
+                          <FragmentLineClamp
+                            data-plasmic-name={"fragmentLineClamp"}
+                            data-plasmic-override={overrides.fragmentLineClamp}
                             className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___4Y6Uo
+                              "__wab_instance",
+                              sty.fragmentLineClamp
                             )}
                           >
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return new Date(
-                                    currentItem.register_date +
-                                      " " +
-                                      currentItem.register_time
-                                  ).toLocaleString("fa-IR", {
-                                    timeStyle: "short",
-                                    dateStyle: "medium"
-                                  });
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "";
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___4Y6Uo
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return currentItem.title;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "";
+                                    }
+                                    throw e;
                                   }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          </div>
+                                })()}
+                              </React.Fragment>
+                            </div>
+                          </FragmentLineClamp>
                         </Stack__>
                         <Stack__
                           as={"div"}
@@ -757,7 +827,8 @@ const PlasmicDescendants = {
     "apiRequest",
     "svg",
     "apiRequest2",
-    "avatar"
+    "avatar",
+    "fragmentLineClamp"
   ],
   embedHtml: ["embedHtml"],
   authProvider: [
@@ -766,13 +837,28 @@ const PlasmicDescendants = {
     "apiRequest",
     "svg",
     "apiRequest2",
-    "avatar"
+    "avatar",
+    "fragmentLineClamp"
   ],
-  layout: ["layout", "apiRequest", "svg", "apiRequest2", "avatar"],
-  apiRequest: ["apiRequest", "svg", "apiRequest2", "avatar"],
+  layout: [
+    "layout",
+    "apiRequest",
+    "svg",
+    "apiRequest2",
+    "avatar",
+    "fragmentLineClamp"
+  ],
+  apiRequest: [
+    "apiRequest",
+    "svg",
+    "apiRequest2",
+    "avatar",
+    "fragmentLineClamp"
+  ],
   svg: ["svg"],
   apiRequest2: ["apiRequest2", "avatar"],
-  avatar: ["avatar"]
+  avatar: ["avatar"],
+  fragmentLineClamp: ["fragmentLineClamp"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -786,6 +872,7 @@ type NodeDefaultElementType = {
   svg: "svg";
   apiRequest2: typeof ApiRequest;
   avatar: typeof AntdAvatar;
+  fragmentLineClamp: typeof FragmentLineClamp;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -855,6 +942,7 @@ export const PlasmicTransactions = Object.assign(
     svg: makeNodeComponent("svg"),
     apiRequest2: makeNodeComponent("apiRequest2"),
     avatar: makeNodeComponent("avatar"),
+    fragmentLineClamp: makeNodeComponent("fragmentLineClamp"),
 
     // Metadata about props expected for PlasmicTransactions
     internalVariantProps: PlasmicTransactions__VariantProps,
