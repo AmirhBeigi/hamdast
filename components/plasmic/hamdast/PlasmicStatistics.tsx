@@ -79,8 +79,9 @@ import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6u
 import sty from "./PlasmicStatistics.module.css"; // plasmic-import: nAbrCePpa8PZ/css
 
 import Icon15Icon from "./icons/PlasmicIcon__Icon15"; // plasmic-import: rQsx35tf_bcf/icon
-import Icon29Icon from "./icons/PlasmicIcon__Icon29"; // plasmic-import: xtxFVbwCzd_9/icon
+import Icon9Icon from "./icons/PlasmicIcon__Icon9"; // plasmic-import: ly5Yl8idG7m1/icon
 import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: CmW94FEF71d7/icon
+import Icon29Icon from "./icons/PlasmicIcon__Icon29"; // plasmic-import: xtxFVbwCzd_9/icon
 
 import __lib_dayjs from "dayjs";
 
@@ -101,10 +102,10 @@ export type PlasmicStatistics__OverridesType = {
   authProvider?: Flex__<typeof AuthProvider>;
   layout?: Flex__<typeof Layout>;
   fetchData?: Flex__<typeof FetchData>;
-  menu?: Flex__<typeof Menu>;
   fragmentApiRequest2?: Flex__<typeof ApiRequest>;
+  popover3?: Flex__<typeof Popover>;
+  fetchData2?: Flex__<typeof FetchData>;
   popover2?: Flex__<typeof Popover>;
-  button?: Flex__<typeof Button>;
   datePicker2?: Flex__<typeof DatePicker>;
   filter?: Flex__<typeof Filter>;
   activeUserApi3?: Flex__<typeof ApiRequest>;
@@ -321,6 +322,26 @@ function PlasmicStatistics__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => false,
 
         refName: "popover2"
+      },
+      {
+        path: "popover3.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false,
+
+        refName: "popover3"
+      },
+      {
+        path: "fetchData2.data",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "fetchData2.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -570,8 +591,6 @@ function PlasmicStatistics__RenderFunc(props: {
                           const currentIndex = __plasmic_idx_0;
                           return (
                             <Menu
-                              data-plasmic-name={"menu"}
-                              data-plasmic-override={overrides.menu}
                               active={(() => {
                                 try {
                                   return currentItem.id === $state.menu;
@@ -586,7 +605,10 @@ function PlasmicStatistics__RenderFunc(props: {
                                   throw e;
                                 }
                               })()}
-                              className={classNames("__wab_instance", sty.menu)}
+                              className={classNames(
+                                "__wab_instance",
+                                sty.menu__j6YWr
+                              )}
                               compact={true}
                               icon={false}
                               iconWrapper={null}
@@ -944,12 +966,366 @@ function PlasmicStatistics__RenderFunc(props: {
                       hasGap={true}
                       className={classNames(projectcss.all, sty.freeBox__cYsK7)}
                     >
-                      <div
+                      <Stack__
+                        as={"div"}
+                        hasGap={true}
                         className={classNames(
                           projectcss.all,
                           sty.freeBox__uEmbm
                         )}
                       >
+                        <Popover
+                          data-plasmic-name={"popover3"}
+                          data-plasmic-override={overrides.popover3}
+                          className={classNames("__wab_instance", sty.popover3)}
+                          content={
+                            <Stack__
+                              as={"div"}
+                              hasGap={true}
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__fgvY6
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__v0GNu
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text___4YoDk
+                                  )}
+                                >
+                                  {
+                                    "\u0645\u0646\u0648\u0647\u0627\u06cc \u0627\u064e\u0628\u0632\u0627\u0631\u06a9"
+                                  }
+                                </div>
+                                <FetchData
+                                  data-plasmic-name={"fetchData2"}
+                                  data-plasmic-override={overrides.fetchData2}
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.fetchData2
+                                  )}
+                                  loadingStatus={
+                                    <Icon15Icon
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.svg__yiOrv
+                                      )}
+                                      role={"img"}
+                                    />
+                                  }
+                                  onDataChange={async (...eventArgs: any) => {
+                                    generateStateOnChangeProp($state, [
+                                      "fetchData2",
+                                      "data"
+                                    ]).apply(null, eventArgs);
+
+                                    if (
+                                      eventArgs.length > 1 &&
+                                      eventArgs[1] &&
+                                      eventArgs[1]._plasmic_state_init_
+                                    ) {
+                                      return;
+                                    }
+                                  }}
+                                  onLoadingChange={async (
+                                    ...eventArgs: any
+                                  ) => {
+                                    generateStateOnChangeProp($state, [
+                                      "fetchData2",
+                                      "loading"
+                                    ]).apply(null, eventArgs);
+
+                                    if (
+                                      eventArgs.length > 1 &&
+                                      eventArgs[1] &&
+                                      eventArgs[1]._plasmic_state_init_
+                                    ) {
+                                      return;
+                                    }
+                                  }}
+                                  url={(() => {
+                                    try {
+                                      return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/menus/`;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                >
+                                  <Stack__
+                                    as={"div"}
+                                    hasGap={true}
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__zqlVl
+                                    )}
+                                  >
+                                    {(_par =>
+                                      !_par
+                                        ? []
+                                        : Array.isArray(_par)
+                                        ? _par
+                                        : [_par])(
+                                      (() => {
+                                        try {
+                                          return $state.fetchData2.data;
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return [];
+                                          }
+                                          throw e;
+                                        }
+                                      })()
+                                    ).map(
+                                      (__plasmic_item_0, __plasmic_idx_0) => {
+                                        const currentItem = __plasmic_item_0;
+                                        const currentIndex = __plasmic_idx_0;
+                                        return (
+                                          <Menu
+                                            active={(() => {
+                                              try {
+                                                return (
+                                                  currentItem.id === $state.menu
+                                                );
+                                              } catch (e) {
+                                                if (
+                                                  e instanceof TypeError ||
+                                                  e?.plasmicType ===
+                                                    "PlasmicUndefinedDataError"
+                                                ) {
+                                                  return [];
+                                                }
+                                                throw e;
+                                              }
+                                            })()}
+                                            className={classNames(
+                                              "__wab_instance",
+                                              sty.menu___0U5PW
+                                            )}
+                                            compact={true}
+                                            icon={false}
+                                            iconWrapper={null}
+                                            key={currentIndex}
+                                            name={(() => {
+                                              try {
+                                                return currentItem.name_fa;
+                                              } catch (e) {
+                                                if (
+                                                  e instanceof TypeError ||
+                                                  e?.plasmicType ===
+                                                    "PlasmicUndefinedDataError"
+                                                ) {
+                                                  return undefined;
+                                                }
+                                                throw e;
+                                              }
+                                            })()}
+                                            onClick={async () => {
+                                              const $steps = {};
+
+                                              $steps["updateDay"] = true
+                                                ? (() => {
+                                                    const actionArgs = {
+                                                      variable: {
+                                                        objRoot: $state,
+                                                        variablePath: ["day"]
+                                                      },
+                                                      operation: 0,
+                                                      value: 1
+                                                    };
+                                                    return (({
+                                                      variable,
+                                                      value,
+                                                      startIndex,
+                                                      deleteCount
+                                                    }) => {
+                                                      if (!variable) {
+                                                        return;
+                                                      }
+                                                      const {
+                                                        objRoot,
+                                                        variablePath
+                                                      } = variable;
+
+                                                      $stateSet(
+                                                        objRoot,
+                                                        variablePath,
+                                                        value
+                                                      );
+                                                      return value;
+                                                    })?.apply(null, [
+                                                      actionArgs
+                                                    ]);
+                                                  })()
+                                                : undefined;
+                                              if (
+                                                $steps["updateDay"] != null &&
+                                                typeof $steps["updateDay"] ===
+                                                  "object" &&
+                                                typeof $steps["updateDay"]
+                                                  .then === "function"
+                                              ) {
+                                                $steps["updateDay"] =
+                                                  await $steps["updateDay"];
+                                              }
+
+                                              $steps["updateMenu"] = true
+                                                ? (() => {
+                                                    const actionArgs = {
+                                                      variable: {
+                                                        objRoot: $state,
+                                                        variablePath: ["menu"]
+                                                      },
+                                                      operation: 0,
+                                                      value: currentItem.id
+                                                    };
+                                                    return (({
+                                                      variable,
+                                                      value,
+                                                      startIndex,
+                                                      deleteCount
+                                                    }) => {
+                                                      if (!variable) {
+                                                        return;
+                                                      }
+                                                      const {
+                                                        objRoot,
+                                                        variablePath
+                                                      } = variable;
+
+                                                      $stateSet(
+                                                        objRoot,
+                                                        variablePath,
+                                                        value
+                                                      );
+                                                      return value;
+                                                    })?.apply(null, [
+                                                      actionArgs
+                                                    ]);
+                                                  })()
+                                                : undefined;
+                                              if (
+                                                $steps["updateMenu"] != null &&
+                                                typeof $steps["updateMenu"] ===
+                                                  "object" &&
+                                                typeof $steps["updateMenu"]
+                                                  .then === "function"
+                                              ) {
+                                                $steps["updateMenu"] =
+                                                  await $steps["updateMenu"];
+                                              }
+
+                                              $steps["updateMenu3"] = true
+                                                ? (() => {
+                                                    const actionArgs = {
+                                                      tplRef: "popover3",
+                                                      action: "close"
+                                                    };
+                                                    return (({
+                                                      tplRef,
+                                                      action,
+                                                      args
+                                                    }) => {
+                                                      return $refs?.[tplRef]?.[
+                                                        action
+                                                      ]?.(...(args ?? []));
+                                                    })?.apply(null, [
+                                                      actionArgs
+                                                    ]);
+                                                  })()
+                                                : undefined;
+                                              if (
+                                                $steps["updateMenu3"] != null &&
+                                                typeof $steps["updateMenu3"] ===
+                                                  "object" &&
+                                                typeof $steps["updateMenu3"]
+                                                  .then === "function"
+                                              ) {
+                                                $steps["updateMenu3"] =
+                                                  await $steps["updateMenu3"];
+                                              }
+                                            }}
+                                          />
+                                        );
+                                      }
+                                    )}
+                                  </Stack__>
+                                </FetchData>
+                              </div>
+                            </Stack__>
+                          }
+                          onOpenChange={async (...eventArgs: any) => {
+                            generateStateOnChangeProp($state, [
+                              "popover3",
+                              "open"
+                            ]).apply(null, eventArgs);
+                          }}
+                          open={generateStateValueProp($state, [
+                            "popover3",
+                            "open"
+                          ])}
+                          ref={ref => {
+                            $refs["popover3"] = ref;
+                          }}
+                          trigger={
+                            <Button
+                              className={classNames(
+                                "__wab_instance",
+                                sty.button__q0GeU
+                              )}
+                              color={"softSand"}
+                              shape={"rounded"}
+                              showStartIcon={true}
+                              size={"compact"}
+                              startIcon={
+                                <Icon9Icon
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.svg___7QxCl
+                                  )}
+                                  role={"img"}
+                                />
+                              }
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return $state.fetchData.data.find(
+                                      item => item.id == $state.menu
+                                    ).name_fa;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "\u0627\u0646\u062a\u062e\u0627\u0628 \u0645\u0646\u0648";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </Button>
+                          }
+                        />
+
                         <Popover
                           data-plasmic-name={"popover2"}
                           data-plasmic-override={overrides.popover2}
@@ -1056,11 +1432,9 @@ function PlasmicStatistics__RenderFunc(props: {
                           }}
                           trigger={
                             <Button
-                              data-plasmic-name={"button"}
-                              data-plasmic-override={overrides.button}
                               className={classNames(
                                 "__wab_instance",
-                                sty.button
+                                sty.button___7T1CZ
                               )}
                               shape={"rounded"}
                               showStartIcon={true}
@@ -1161,7 +1535,7 @@ function PlasmicStatistics__RenderFunc(props: {
                             </Button>
                           }
                         />
-                      </div>
+                      </Stack__>
                       <div
                         className={classNames(
                           projectcss.all,
@@ -1877,10 +2251,10 @@ const PlasmicDescendants = {
     "authProvider",
     "layout",
     "fetchData",
-    "menu",
     "fragmentApiRequest2",
+    "popover3",
+    "fetchData2",
     "popover2",
-    "button",
     "datePicker2",
     "filter",
     "activeUserApi3",
@@ -1892,10 +2266,10 @@ const PlasmicDescendants = {
     "authProvider",
     "layout",
     "fetchData",
-    "menu",
     "fragmentApiRequest2",
+    "popover3",
+    "fetchData2",
     "popover2",
-    "button",
     "datePicker2",
     "filter",
     "activeUserApi3",
@@ -1904,20 +2278,20 @@ const PlasmicDescendants = {
   layout: [
     "layout",
     "fetchData",
-    "menu",
     "fragmentApiRequest2",
+    "popover3",
+    "fetchData2",
     "popover2",
-    "button",
     "datePicker2",
     "filter",
     "activeUserApi3",
     "activeUserApi4"
   ],
-  fetchData: ["fetchData", "menu"],
-  menu: ["menu"],
+  fetchData: ["fetchData"],
   fragmentApiRequest2: ["fragmentApiRequest2"],
-  popover2: ["popover2", "button", "datePicker2"],
-  button: ["button"],
+  popover3: ["popover3", "fetchData2"],
+  fetchData2: ["fetchData2"],
+  popover2: ["popover2", "datePicker2"],
   datePicker2: ["datePicker2"],
   filter: ["filter"],
   activeUserApi3: ["activeUserApi3"],
@@ -1933,10 +2307,10 @@ type NodeDefaultElementType = {
   authProvider: typeof AuthProvider;
   layout: typeof Layout;
   fetchData: typeof FetchData;
-  menu: typeof Menu;
   fragmentApiRequest2: typeof ApiRequest;
+  popover3: typeof Popover;
+  fetchData2: typeof FetchData;
   popover2: typeof Popover;
-  button: typeof Button;
   datePicker2: typeof DatePicker;
   filter: typeof Filter;
   activeUserApi3: typeof ApiRequest;
@@ -2008,10 +2382,10 @@ export const PlasmicStatistics = Object.assign(
     authProvider: makeNodeComponent("authProvider"),
     layout: makeNodeComponent("layout"),
     fetchData: makeNodeComponent("fetchData"),
-    menu: makeNodeComponent("menu"),
     fragmentApiRequest2: makeNodeComponent("fragmentApiRequest2"),
+    popover3: makeNodeComponent("popover3"),
+    fetchData2: makeNodeComponent("fetchData2"),
     popover2: makeNodeComponent("popover2"),
-    button: makeNodeComponent("button"),
     datePicker2: makeNodeComponent("datePicker2"),
     filter: makeNodeComponent("filter"),
     activeUserApi3: makeNodeComponent("activeUserApi3"),
