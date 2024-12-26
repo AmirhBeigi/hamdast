@@ -209,19 +209,25 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "fragmentApiRequest2.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "fragmentApiRequest2"
       },
       {
         path: "fragmentApiRequest2.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "fragmentApiRequest2"
       },
       {
         path: "fragmentApiRequest2.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "fragmentApiRequest2"
       },
       {
         path: "datePicker2.value",
@@ -264,37 +270,49 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "activeUserApi3.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "activeUserApi3"
       },
       {
         path: "activeUserApi3.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "activeUserApi3"
       },
       {
         path: "activeUserApi3.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "activeUserApi3"
       },
       {
         path: "activeUserApi4.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "activeUserApi4"
       },
       {
         path: "activeUserApi4.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "activeUserApi4"
       },
       {
         path: "activeUserApi4.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "activeUserApi4"
       },
       {
         path: "popover2.open",
@@ -821,6 +839,9 @@ function PlasmicStatistics__RenderFunc(props: {
                                 "fragmentApiRequest2",
                                 "data"
                               ]).apply(null, eventArgs);
+                            }}
+                            ref={ref => {
+                              $refs["fragmentApiRequest2"] = ref;
                             }}
                             url={(() => {
                               try {
@@ -1439,6 +1460,9 @@ function PlasmicStatistics__RenderFunc(props: {
                                 throw e;
                               }
                             })()}
+                            ref={ref => {
+                              $refs["activeUserApi3"] = ref;
+                            }}
                             url={(() => {
                               try {
                                 return (() => {
@@ -1691,6 +1715,9 @@ function PlasmicStatistics__RenderFunc(props: {
                                 throw e;
                               }
                             })()}
+                            ref={ref => {
+                              $refs["activeUserApi4"] = ref;
+                            }}
                             url={(() => {
                               try {
                                 return (() => {

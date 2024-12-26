@@ -496,123 +496,108 @@ function PlasmicLayout__RenderFunc(props: {
               }}
             />
 
-            {(() => {
-              try {
-                return $props.apps?.some(
-                  item => item.id === $props.selectedApp && !!item.katibe_id
-                );
-              } catch (e) {
-                if (
-                  e instanceof TypeError ||
-                  e?.plasmicType === "PlasmicUndefinedDataError"
-                ) {
-                  return false;
+            <Menu
+              active={(() => {
+                try {
+                  return $state.menu === "Transactions";
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return [];
+                  }
+                  throw e;
                 }
-                throw e;
+              })()}
+              className={classNames("__wab_instance", sty.menu__bjjDu)}
+              iconWrapper={
+                <Icon25Icon
+                  className={classNames(projectcss.all, sty.svg__pGmD)}
+                  role={"img"}
+                />
               }
-            })() ? (
-              <Menu
-                active={(() => {
-                  try {
-                    return $state.menu === "Transactions";
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return [];
-                    }
-                    throw e;
-                  }
-                })()}
-                className={classNames("__wab_instance", sty.menu__bjjDu)}
-                iconWrapper={
-                  <Icon25Icon
-                    className={classNames(projectcss.all, sty.svg__pGmD)}
-                    role={"img"}
-                  />
-                }
-                name={
-                  "\u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627\u06cc \u0645\u0627\u0644\u06cc"
-                }
-                onClick={async () => {
-                  const $steps = {};
+              name={
+                "\u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627\u06cc \u0645\u0627\u0644\u06cc"
+              }
+              onClick={async () => {
+                const $steps = {};
 
-                  $steps["updateMenu2"] = true
-                    ? (() => {
-                        const actionArgs = {
-                          destination: `/apps/${(() => {
-                            try {
-                              return $props.selectedApp;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
+                $steps["updateMenu2"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        destination: `/apps/${(() => {
+                          try {
+                            return $props.selectedApp;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
                             }
-                          })()}/transactions`
-                        };
-                        return (({ destination }) => {
-                          if (
-                            typeof destination === "string" &&
-                            destination.startsWith("#")
-                          ) {
-                            document
-                              .getElementById(destination.substr(1))
-                              .scrollIntoView({ behavior: "smooth" });
-                          } else {
-                            __nextRouter?.push(destination);
+                            throw e;
                           }
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["updateMenu2"] != null &&
-                    typeof $steps["updateMenu2"] === "object" &&
-                    typeof $steps["updateMenu2"].then === "function"
-                  ) {
-                    $steps["updateMenu2"] = await $steps["updateMenu2"];
-                  }
+                        })()}/transactions`
+                      };
+                      return (({ destination }) => {
+                        if (
+                          typeof destination === "string" &&
+                          destination.startsWith("#")
+                        ) {
+                          document
+                            .getElementById(destination.substr(1))
+                            .scrollIntoView({ behavior: "smooth" });
+                        } else {
+                          __nextRouter?.push(destination);
+                        }
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateMenu2"] != null &&
+                  typeof $steps["updateMenu2"] === "object" &&
+                  typeof $steps["updateMenu2"].then === "function"
+                ) {
+                  $steps["updateMenu2"] = await $steps["updateMenu2"];
+                }
 
-                  $steps["updateMenu"] = true
-                    ? (() => {
-                        const actionArgs = {
-                          variable: {
-                            objRoot: $state,
-                            variablePath: ["menu"]
-                          },
-                          operation: 0,
-                          value: "Transactions"
-                        };
-                        return (({
-                          variable,
-                          value,
-                          startIndex,
-                          deleteCount
-                        }) => {
-                          if (!variable) {
-                            return;
-                          }
-                          const { objRoot, variablePath } = variable;
+                $steps["updateMenu"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["menu"]
+                        },
+                        operation: 0,
+                        value: "Transactions"
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
 
-                          $stateSet(objRoot, variablePath, value);
-                          return value;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["updateMenu"] != null &&
-                    typeof $steps["updateMenu"] === "object" &&
-                    typeof $steps["updateMenu"].then === "function"
-                  ) {
-                    $steps["updateMenu"] = await $steps["updateMenu"];
-                  }
-                }}
-              />
-            ) : null}
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateMenu"] != null &&
+                  typeof $steps["updateMenu"] === "object" &&
+                  typeof $steps["updateMenu"].then === "function"
+                ) {
+                  $steps["updateMenu"] = await $steps["updateMenu"];
+                }
+              }}
+            />
+
             <Menu
               active={(() => {
                 try {
