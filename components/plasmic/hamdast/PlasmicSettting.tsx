@@ -236,19 +236,25 @@ function PlasmicSettting__RenderFunc(props: {
         path: "fragmentApiRequest.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "fragmentApiRequest"
       },
       {
         path: "fragmentApiRequest.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "fragmentApiRequest"
       },
       {
         path: "fragmentApiRequest.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "fragmentApiRequest"
       },
       {
         path: "pagesItems",
@@ -273,19 +279,25 @@ function PlasmicSettting__RenderFunc(props: {
         path: "fragmentGetMenus.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "fragmentGetMenus"
       },
       {
         path: "fragmentGetMenus.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "fragmentGetMenus"
       },
       {
         path: "fragmentGetMenus.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "fragmentGetMenus"
       },
       {
         path: "menuItems",
@@ -1455,6 +1467,9 @@ function PlasmicSettting__RenderFunc(props: {
                           "data"
                         ]).apply(null, eventArgs);
                       }}
+                      ref={ref => {
+                        $refs["fragmentApiRequest"] = ref;
+                      }}
                       url={(() => {
                         try {
                           return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/pages`;
@@ -1999,6 +2014,9 @@ function PlasmicSettting__RenderFunc(props: {
                           "fragmentGetMenus",
                           "data"
                         ]).apply(null, eventArgs);
+                      }}
+                      ref={ref => {
+                        $refs["fragmentGetMenus"] = ref;
                       }}
                       url={(() => {
                         try {
