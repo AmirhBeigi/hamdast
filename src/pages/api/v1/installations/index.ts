@@ -88,10 +88,8 @@ export default async function handler(
   await growthbook.init({ timeout: 1000 });
 
   const apps = await pb.collection("apps").getFullList({
-    expand: "app",
-    filter: `published = true ${
-      provider?.job_title !== "doctor" ? `&& type = 'users'` : ""
-    }`,
+    expand: "collaborators",
+    filter: `${provider?.job_title !== "doctor" ? `&& type = 'users'` : ""}`,
     headers: {
       x_token: publicRuntimeConfig.HAMDAST_TOKEN,
     },
@@ -109,8 +107,17 @@ export default async function handler(
     },
   });
 
+  const filteredApps = apps.filter((app) => {
+    const collaborators = app.expand?.collaborators;
+    return (
+      collaborators?.some(
+        (collaborator: any) => collaborator.paziresh24_user_id == user.id
+      ) || app.published
+    );
+  });
+
   res.status(200).json(
-    apps
+    filteredApps
       .map((app) => ({
         id: app.id,
         key: app.key,
