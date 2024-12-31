@@ -1620,8 +1620,8 @@ function PlasmicStatistics__RenderFunc(props: {
                                           "fa-IR"
                                         ).format(
                                           Number(
-                                            $state.activeUserApi6.data[0]
-                                              ?.value ?? 0
+                                            $state.activeUserApi6.data?.value ??
+                                              0
                                           ).toFixed(2)
                                         );
                                       } catch (e) {
@@ -1881,8 +1881,8 @@ function PlasmicStatistics__RenderFunc(props: {
                                           "fa-IR"
                                         ).format(
                                           Number(
-                                            $state.activeUserApi5.data[0]
-                                              ?.value ?? 0
+                                            $state.activeUserApi5.data?.value ??
+                                              0
                                           ).toFixed(2)
                                         );
                                       } catch (e) {
@@ -2142,8 +2142,8 @@ function PlasmicStatistics__RenderFunc(props: {
                                           "fa-IR"
                                         ).format(
                                           Number(
-                                            $state.activeUserApi7.data[0]
-                                              ?.value ?? 0
+                                            $state.activeUserApi7.data?.value ??
+                                              0
                                           ).toFixed(2)
                                         );
                                       } catch (e) {
