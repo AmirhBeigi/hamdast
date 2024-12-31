@@ -1905,7 +1905,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                     sty.text__nonpe
                                   )}
                                 >
-                                  {"\u06a9\u0627\u0631\u0628\u0631"}
+                                  {"\u0628\u0627\u0631"}
                                 </div>
                               </Stack__>
                             </Stack__>
@@ -2166,7 +2166,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                     sty.text__vw9Eh
                                   )}
                                 >
-                                  {"\u06a9\u0627\u0631\u0628\u0631"}
+                                  {"\u0628\u0627\u0631"}
                                 </div>
                               </Stack__>
                             </Stack__>
