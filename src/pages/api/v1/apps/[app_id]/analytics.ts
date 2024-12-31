@@ -57,6 +57,65 @@ export default async function handler(
       });
     }
 
+    if (["LOGIN", "REGISTER", "LOGIN_ERROR"].includes(queries.type as string)) {
+      const record = await pb
+        .collection("users")
+        .getFirstListItem(`paziresh24_user_id="${user.id}"`, {
+          expand: "role",
+        });
+
+      if (!record) {
+        return res.status(401).json({});
+      }
+
+      const app = await pb
+        .collection("apps")
+        .getFirstListItem(`collaborators~'${record.id}' && id = '${app_id}'`);
+
+      const gozarToken = await axios.post(
+        "https://user.paziresh24.com/realms/paziresh24/protocol/openid-connect/token",
+        {
+          grant_type: "client_credentials",
+          client_id: process.env.GOZARGAH_CLIENT_ID,
+          client_secret: process.env.GOZARGAH_CLIENT_SECRET,
+        },
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
+
+      const options = {
+        method: "GET",
+        url: "https://user.paziresh24.com/admin/realms/paziresh24/events",
+        headers: {
+          Authorization: `Bearer ${gozarToken.data?.access_token}`,
+          "Content-Type": "application/json",
+        },
+        params: {
+          client: app.key,
+          type: queries.type,
+          max: 999999999,
+          dateFrom: queries.start_date,
+          dateTo: queries.end_date,
+        },
+      };
+
+      try {
+        const queryData = await axios.request(options);
+
+        return res.status(200).json({
+          type: queries.type,
+          value: queryData?.data?.length,
+        });
+      } catch (error) {
+        return res.status(502).json({
+          error,
+        });
+      }
+    }
+
     const options = {
       method: "GET",
       url: "https://hamdast-workflow.darkube.app/webhook/statistics",
