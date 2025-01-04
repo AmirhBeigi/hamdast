@@ -89,7 +89,7 @@ export default async function handler(
 
   const apps = await pb.collection("apps").getFullList({
     expand: "collaborators",
-    filter: `${provider?.job_title !== "doctor" ? `&& type = 'users'` : ""}`,
+    filter: `${provider?.job_title !== "doctor" ? `type = 'users'` : ""}`,
     headers: {
       x_token: publicRuntimeConfig.HAMDAST_TOKEN,
     },
