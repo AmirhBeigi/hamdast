@@ -382,6 +382,216 @@ function PlasmicLanding__RenderFunc(props: {
               </div>
             </div>
           </Stack__>
+          <div className={classNames(projectcss.all, sty.freeBox__hbzZs)}>
+            <div className={classNames(projectcss.all, sty.freeBox__trY8L)}>
+              <PlasmicImg__
+                alt={""}
+                className={classNames(sty.img___5K09F)}
+                displayHeight={"auto"}
+                displayMaxHeight={"none"}
+                displayMaxWidth={"100%"}
+                displayMinHeight={"0"}
+                displayMinWidth={"0"}
+                displayWidth={"300px"}
+                loading={"lazy"}
+                src={{
+                  src: "/plasmic/hamdast/images/frame73Png.png",
+                  fullWidth: 1349,
+                  fullHeight: 1253,
+                  aspectRatio: undefined
+                }}
+              />
+            </div>
+            <Stack__
+              as={"div"}
+              hasGap={true}
+              className={classNames(projectcss.all, sty.freeBox___93M3A)}
+            >
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__anXZ
+                )}
+              >
+                {"\u0627\u062d\u0631\u0627\u0632 \u0647\u0648\u06cc\u062a"}
+              </div>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__mEqLi
+                )}
+              >
+                {
+                  "\u0641\u0631\u0627\u06cc\u0646\u062f \u0627\u062d\u0631\u0627\u0632 \u0647\u0648\u06cc\u062a \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0631\u0627 \u0628\u0647 \u0633\u0627\u062f\u0647\u200c\u062a\u0631\u06cc\u0646 \u0634\u06a9\u0644 \u062f\u0631 \u0627\u067e\u0644\u06cc\u06a9\u06cc\u0634\u0646 \u062e\u0648\u062f \u067e\u06cc\u0627\u062f\u0647\u200c\u0633\u0627\u0632\u06cc \u06a9\u0646\u06cc\u062f. \u0627\u06cc\u0646 \u0627\u0628\u0632\u0627\u0631 \u0628\u0647 \u0634\u0645\u0627 \u0627\u0645\u06a9\u0627\u0646 \u0645\u06cc\u200c\u062f\u0647\u062f \u062a\u0627 \u0628\u062f\u0648\u0646 \u0646\u06cc\u0627\u0632 \u0628\u0647 \u0635\u0631\u0641 \u0632\u0645\u0627\u0646 \u0628\u0631\u0627\u06cc \u062a\u0648\u0633\u0639\u0647 \u0632\u06cc\u0631\u0633\u0627\u062e\u062a\u200c\u0647\u0627\u06cc \u067e\u06cc\u0686\u06cc\u062f\u0647\u060c \u0648\u0631\u0648\u062f \u0627\u06cc\u0645\u0646 \u0648 \u0633\u0631\u06cc\u0639 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0631\u0627 \u0641\u0631\u0627\u0647\u0645 \u06a9\u0646\u06cc\u062f."
+                }
+              </div>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__vGeZv
+                )}
+              >
+                <React.Fragment>
+                  <React.Fragment>{""}</React.Fragment>
+                  {
+                    <ul
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.ul,
+                        sty.ul__p5Q6R
+                      )}
+                    >
+                      <li
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.li,
+                          projectcss.__wab_text,
+                          sty.li___2TjQb
+                        )}
+                      >
+                        {
+                          "\u0637\u0631\u0627\u062d\u06cc \u0634\u062f\u0647 \u0628\u0631\u0627\u06cc \u0627\u0641\u0632\u0627\u06cc\u0634 \u0627\u0645\u0646\u06cc\u062a \u0648 \u0627\u0639\u062a\u0645\u0627\u062f"
+                        }
+                      </li>
+                      <li
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.li,
+                          projectcss.__wab_text,
+                          sty.li__co6QQ
+                        )}
+                      >
+                        {
+                          "\u0633\u0627\u0632\u06af\u0627\u0631 \u0628\u0627 \u0646\u06cc\u0627\u0632\u0647\u0627\u06cc \u0645\u062e\u062a\u0644\u0641 \u0627\u067e\u0644\u06cc\u06a9\u06cc\u0634\u0646\u200c\u0647\u0627"
+                        }
+                      </li>
+                      <li
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.li,
+                          projectcss.__wab_text,
+                          sty.li__cKnuh
+                        )}
+                      >
+                        {
+                          "\u0642\u0627\u0628\u0644\u06cc\u062a \u067e\u06cc\u0627\u062f\u0647\u200c\u0633\u0627\u0632\u06cc \u0622\u0633\u0627\u0646 \u0648 \u0633\u0631\u06cc\u0639"
+                        }
+                      </li>
+                    </ul>
+                  }
+                  <React.Fragment>{""}</React.Fragment>
+                </React.Fragment>
+              </div>
+            </Stack__>
+          </div>
+          <div className={classNames(projectcss.all, sty.freeBox___9MrEt)}>
+            <Stack__
+              as={"div"}
+              hasGap={true}
+              className={classNames(projectcss.all, sty.freeBox__sj5Bn)}
+            >
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__cAhBt
+                )}
+              >
+                {"\u067e\u0631\u062f\u0627\u062e\u062a"}
+              </div>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__cSw4S
+                )}
+              >
+                {
+                  "\u0641\u0631\u0627\u06cc\u0646\u062f \u067e\u0631\u062f\u0627\u062e\u062a \u062f\u0631 \u0627\u067e\u0644\u06cc\u06a9\u06cc\u0634\u0646 \u062e\u0648\u062f \u0631\u0627 \u0628\u0627 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0632 \u0627\u0628\u0632\u0627\u0631 \u067e\u0631\u062f\u0627\u062e\u062a \u067e\u0630\u06cc\u0631\u0634\u06f2\u06f4 \u0633\u0627\u062f\u0647 \u0648 \u06cc\u06a9\u067e\u0627\u0631\u0686\u0647 \u06a9\u0646\u06cc\u062f. \u0627\u06cc\u0646 \u0631\u0627\u0647\u06a9\u0627\u0631 \u0628\u0647 \u0634\u0645\u0627 \u0627\u0645\u06a9\u0627\u0646 \u0645\u06cc\u200c\u062f\u0647\u062f \u062a\u0627 \u062a\u062c\u0631\u0628\u0647\u200c\u0627\u06cc \u0631\u0648\u0627\u0646 \u0648 \u0627\u0645\u0646 \u0628\u0631\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u062e\u0648\u062f \u0641\u0631\u0627\u0647\u0645 \u06a9\u0646\u06cc\u062f \u0648 \u0645\u062f\u06cc\u0631\u06cc\u062a \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627 \u0631\u0627 \u0628\u062f\u0648\u0646 \u062f\u063a\u062f\u063a\u0647 \u0627\u0646\u062c\u0627\u0645 \u062f\u0647\u06cc\u062f."
+                }
+              </div>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__b7Aqu
+                )}
+              >
+                <React.Fragment>
+                  <React.Fragment>{""}</React.Fragment>
+                  {
+                    <ul
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.ul,
+                        sty.ul__tKiTf
+                      )}
+                    >
+                      <li
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.li,
+                          projectcss.__wab_text,
+                          sty.li__tylYb
+                        )}
+                      >
+                        {
+                          "\u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u0627\u0632 \u067e\u0631\u062f\u0627\u062e\u062a\u200c\u0647\u0627\u06cc \u0622\u0646\u0644\u0627\u06cc\u0646 \u0648 \u06a9\u06cc\u0641 \u067e\u0648\u0644"
+                        }
+                      </li>
+                      <li
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.li,
+                          projectcss.__wab_text,
+                          sty.li__zh0Ip
+                        )}
+                      >
+                        {
+                          "\u06af\u0632\u0627\u0631\u0634\u200c\u06af\u06cc\u0631\u06cc \u06a9\u0627\u0645\u0644 \u0627\u0632 \u0648\u0636\u0639\u06cc\u062a \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627"
+                        }
+                      </li>
+                      <li
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.li,
+                          projectcss.__wab_text,
+                          sty.li__dr2WC
+                        )}
+                      >
+                        {
+                          "\u067e\u06cc\u0627\u062f\u0647\u200c\u0633\u0627\u0632\u06cc \u0622\u0633\u0627\u0646 \u062f\u0631 \u0686\u0646\u062f \u0645\u0631\u062d\u0644\u0647"
+                        }
+                      </li>
+                    </ul>
+                  }
+                  <React.Fragment>{""}</React.Fragment>
+                </React.Fragment>
+              </div>
+            </Stack__>
+            <div className={classNames(projectcss.all, sty.freeBox__yfahr)}>
+              <PlasmicImg__
+                alt={""}
+                className={classNames(sty.img___4Kkhg)}
+                displayHeight={"auto"}
+                displayMaxHeight={"none"}
+                displayMaxWidth={"100%"}
+                displayMinHeight={"0"}
+                displayMinWidth={"0"}
+                displayWidth={"300px"}
+                loading={"lazy"}
+                src={{
+                  src: "/plasmic/hamdast/images/frame74Png.png",
+                  fullWidth: 1349,
+                  fullHeight: 1253,
+                  aspectRatio: undefined
+                }}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </React.Fragment>

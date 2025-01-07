@@ -841,6 +841,20 @@
           "cssFilePath": "plasmic/hamdast/PlasmicTooltip.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "WWLxyRO9gQ0w",
+          "name": "SearchResult",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicSearchResult.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/search-result.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicSearchResult.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/search-result"
         }
       ],
       "icons": [
@@ -1050,6 +1064,16 @@
           "id": "WFTzjoUaEu4T",
           "name": "4c5d8a25714def303ef66ff369428bcf.svg",
           "filePath": "../public/plasmic/hamdast/images/_4C5D8A25714Def303Ef66Ff369428BcfSvg.svg"
+        },
+        {
+          "id": "nH6Sm4sV9CY8",
+          "name": "Frame 73.png",
+          "filePath": "../public/plasmic/hamdast/images/frame73Png.png"
+        },
+        {
+          "id": "Fkkt6KPDSbof",
+          "name": "Frame 74.png",
+          "filePath": "../public/plasmic/hamdast/images/frame74Png.png"
         }
       ],
       "indirect": false,
