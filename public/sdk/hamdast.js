@@ -9,6 +9,10 @@
 })();
 
 function hamdastCommunication({ clientKey, event, data, promise = false }) {
+  if (window.self == window.top) {
+    alert("این امکان فقط در پذیرش۲۴ قابل استفاده است.");
+    return;
+  }
   const message = {
     hamdast: {
       clientKey,
@@ -128,5 +132,18 @@ window.hamdast = {
       });
     }
     return location.assign(url);
+  },
+  payment: {
+    async pay({ product_key, payload }) {
+      return hamdastCommunication({
+        clientKey: window.hamdast.clientKey,
+        event: "HAMDAST_PAYMENT_PAY",
+        data: {
+          product_key,
+          payload,
+        },
+        promise: true,
+      });
+    },
   },
 };
