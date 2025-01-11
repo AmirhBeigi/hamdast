@@ -19,15 +19,22 @@ export default async function handler(
     (cookieStore["token"] as string) ||
     req.headers.authorization?.replace("Bearer", "");
 
-  const paziresh24User = await axios.get(
-    "https://apigw.paziresh24.com/v1/auth/me",
-    {
-      headers: {
-        Authorization: `Bearer ${token?.trim()}`,
-      },
-    }
-  );
-  const user = paziresh24User.data?.users[0];
+  let user;
+  try {
+    const paziresh24User = await axios.get(
+      "https://apigw.paziresh24.com/v1/auth/me",
+      {
+        headers: {
+          Authorization: `Bearer ${token?.trim()}`,
+        },
+      }
+    );
+    user = paziresh24User.data?.users[0];
+  } catch (error) {
+    return res.status(401).json({
+      message: "Authentication credentials were not provided.",
+    });
+  }
 
   if (!user) {
     return res.status(401).json({
@@ -39,12 +46,12 @@ export default async function handler(
     const { receipt_id } = req.body;
 
     try {
-      const queryData = await axios.get(
+      const queryData = await axios.post(
         `https://hamdast-workflow.darkube.app/webhook/d21ff781-d40d-47dd-8c73-ccd6c36f357c/v1/${app_id}/payment/verify`,
         {
-          params: {
-            receipt_id: receipt_id,
-          },
+          receipt_id: receipt_id,
+        },
+        {
           headers: {
             "x-api-key": process.env.HAMDAST_TOKEN,
           },
