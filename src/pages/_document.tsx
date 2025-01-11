@@ -8,7 +8,8 @@ export default function Document() {
         <Script
           id="hamdast-script"
           type="text/javascript"
-          src="https://hamdast.paziresh24.com/static/js/scripts/hamdast.js"
+          // src="http://localhost:3000/sdk/hamdast.js"
+          src="https://hamdast.paziresh24.com/sdk/hamdast.js"
           strategy="beforeInteractive"
         />
       </Head>
