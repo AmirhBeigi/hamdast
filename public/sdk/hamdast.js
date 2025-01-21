@@ -68,7 +68,7 @@ const hamdastPostMessagePromise = (message) => {
     });
     setTimeout(() => {
       reject();
-    }, 30000);
+    }, 60 * 60 * 1000);
   });
 };
 
