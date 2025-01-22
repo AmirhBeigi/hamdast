@@ -146,4 +146,20 @@ window.hamdast = {
       });
     },
   },
+  auth: {
+    async login() {
+      return hamdastCommunication({
+        clientKey: window.hamdast.clientKey,
+        event: "HAMDAST_AUTH_LOGIN",
+        promise: true,
+      });
+    },
+    async getAuthCode() {
+      return hamdastCommunication({
+        clientKey: window.hamdast.clientKey,
+        event: "HAMDAST_AUTH_GET_AUTH_CODE",
+        promise: true,
+      });
+    },
+  },
 };
