@@ -66,11 +66,15 @@ import sty from "./PlasmicFragmentCollapsible.module.css"; // plasmic-import: Ht
 
 createPlasmicElementProxy;
 
-export type PlasmicFragmentCollapsible__VariantMembers = {};
-export type PlasmicFragmentCollapsible__VariantsArgs = {};
+export type PlasmicFragmentCollapsible__VariantMembers = {
+  noLayout: "noLayout";
+};
+export type PlasmicFragmentCollapsible__VariantsArgs = {
+  noLayout?: SingleBooleanChoiceArg<"noLayout">;
+};
 type VariantPropType = keyof PlasmicFragmentCollapsible__VariantsArgs;
 export const PlasmicFragmentCollapsible__VariantProps =
-  new Array<VariantPropType>();
+  new Array<VariantPropType>("noLayout");
 
 export type PlasmicFragmentCollapsible__ArgsType = {
   children?: React.ReactNode;
@@ -95,6 +99,7 @@ export interface DefaultFragmentCollapsibleProps {
   expandsTrigger?: React.ReactNode;
   collapsesTrigger?: React.ReactNode;
   defaultMaxHeight?: string;
+  noLayout?: SingleBooleanChoiceArg<"noLayout">;
   className?: string;
 }
 
@@ -121,7 +126,9 @@ function PlasmicFragmentCollapsible__RenderFunc(props: {
         {
           defaultMaxHeight: "200px"
         },
-        props.args
+        Object.fromEntries(
+          Object.entries(props.args).filter(([_, v]) => v !== undefined)
+        )
       ),
     [props.args]
   );
@@ -143,6 +150,12 @@ function PlasmicFragmentCollapsible__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "noLayout",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.noLayout
       }
     ],
     [$props, $ctx, $refs]
@@ -166,28 +179,55 @@ function PlasmicFragmentCollapsible__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         projectcss.plasmic_tokens,
-        sty.root
+        sty.root,
+        { [sty.rootnoLayout]: hasVariant($state, "noLayout", "noLayout") }
       )}
     >
       <div
-        className={classNames(projectcss.all, sty.freeBox__tRueh)}
-        style={(() => {
-          try {
-            return (() => {
-              if (!$state.openStatus) {
-                return { "max-height": $props.defaultMaxHeight };
-              }
-            })();
-          } catch (e) {
-            if (
-              e instanceof TypeError ||
-              e?.plasmicType === "PlasmicUndefinedDataError"
-            ) {
-              return undefined;
-            }
-            throw e;
-          }
-        })()}
+        className={classNames(projectcss.all, sty.freeBox__tRueh, {
+          [sty.freeBoxnoLayout__tRuehlO260]: hasVariant(
+            $state,
+            "noLayout",
+            "noLayout"
+          )
+        })}
+        style={
+          hasVariant($state, "noLayout", "noLayout")
+            ? (() => {
+                try {
+                  return (() => {
+                    if (!$state.openStatus) {
+                      return {};
+                    }
+                  })();
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()
+            : (() => {
+                try {
+                  return (() => {
+                    if (!$state.openStatus) {
+                      return { "max-height": $props.defaultMaxHeight };
+                    }
+                  })();
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()
+        }
       >
         {renderPlasmicSlot({
           defaultContents: (
@@ -205,37 +245,59 @@ function PlasmicFragmentCollapsible__RenderFunc(props: {
           ),
           value: args.children
         })}
-        {(() => {
-          try {
-            return !$state.openStatus;
-          } catch (e) {
-            if (
-              e instanceof TypeError ||
-              e?.plasmicType === "PlasmicUndefinedDataError"
-            ) {
-              return true;
-            }
-            throw e;
-          }
-        })() ? (
-          <div className={classNames(projectcss.all, sty.freeBox__of1Yg)} />
+        {(
+          hasVariant($state, "noLayout", "noLayout")
+            ? true
+            : (() => {
+                try {
+                  return !$state.openStatus;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return true;
+                  }
+                  throw e;
+                }
+              })()
+        ) ? (
+          <div
+            className={classNames(projectcss.all, sty.freeBox__of1Yg, {
+              [sty.freeBoxnoLayout__of1YglO260]: hasVariant(
+                $state,
+                "noLayout",
+                "noLayout"
+              )
+            })}
+          />
         ) : null}
       </div>
-      {(() => {
-        try {
-          return !$state.openStatus;
-        } catch (e) {
-          if (
-            e instanceof TypeError ||
-            e?.plasmicType === "PlasmicUndefinedDataError"
-          ) {
-            return true;
-          }
-          throw e;
-        }
-      })() ? (
+      {(
+        hasVariant($state, "noLayout", "noLayout")
+          ? true
+          : (() => {
+              try {
+                return !$state.openStatus;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
+              }
+            })()
+      ) ? (
         <div
-          className={classNames(projectcss.all, sty.freeBox__tyToy)}
+          className={classNames(projectcss.all, sty.freeBox__tyToy, {
+            [sty.freeBoxnoLayout__tyToYlO260]: hasVariant(
+              $state,
+              "noLayout",
+              "noLayout"
+            )
+          })}
           onClick={async event => {
             const $steps = {};
 
@@ -285,21 +347,31 @@ function PlasmicFragmentCollapsible__RenderFunc(props: {
           })}
         </div>
       ) : null}
-      {(() => {
-        try {
-          return $state.openStatus;
-        } catch (e) {
-          if (
-            e instanceof TypeError ||
-            e?.plasmicType === "PlasmicUndefinedDataError"
-          ) {
-            return true;
-          }
-          throw e;
-        }
-      })() ? (
+      {(
+        hasVariant($state, "noLayout", "noLayout")
+          ? true
+          : (() => {
+              try {
+                return $state.openStatus;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
+              }
+            })()
+      ) ? (
         <div
-          className={classNames(projectcss.all, sty.freeBox___3Azgn)}
+          className={classNames(projectcss.all, sty.freeBox___3Azgn, {
+            [sty.freeBoxnoLayout___3AzgNlO260]: hasVariant(
+              $state,
+              "noLayout",
+              "noLayout"
+            )
+          })}
           onClick={async event => {
             const $steps = {};
 
