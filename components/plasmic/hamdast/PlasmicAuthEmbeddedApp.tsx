@@ -138,7 +138,7 @@ function PlasmicAuthEmbeddedApp__RenderFunc(props: {
       <div className={projectcss.plasmic_page_wrapper}>
         {(() => {
           try {
-            return !!$ctx.params.app_key;
+            return !!$ctx.params.id;
           } catch (e) {
             if (
               e instanceof TypeError ||
@@ -171,7 +171,7 @@ function PlasmicAuthEmbeddedApp__RenderFunc(props: {
               className={classNames("__wab_instance", sty.sideEffect)}
               deps={(() => {
                 try {
-                  return [$ctx.params.app_key, $ctx.query.code];
+                  return [$ctx.params.id, $ctx.query.code];
                 } catch (e) {
                   if (
                     e instanceof TypeError ||

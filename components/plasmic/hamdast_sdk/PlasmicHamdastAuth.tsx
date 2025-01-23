@@ -101,7 +101,6 @@ export type PlasmicHamdastAuth__OverridesType = {
   embedHtml?: Flex__<typeof Embed>;
   alert?: Flex__<typeof Paziresh24Dialog>;
   span?: Flex__<"span">;
-  sideEffect?: Flex__<typeof SideEffect>;
   iframe?: Flex__<typeof Iframe>;
   svg?: Flex__<"svg">;
 };
@@ -432,6 +431,30 @@ function PlasmicHamdastAuth__RenderFunc(props: {
                       "updateLoadIframe3"
                     ];
                   }
+
+                  $steps["updateLoadIframe4"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return setTimeout(() => {
+                              $state.isLoading = false;
+                            }, 2000);
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateLoadIframe4"] != null &&
+                    typeof $steps["updateLoadIframe4"] === "object" &&
+                    typeof $steps["updateLoadIframe4"].then === "function"
+                  ) {
+                    $steps["updateLoadIframe4"] = await $steps[
+                      "updateLoadIframe4"
+                    ];
+                  }
                 }}
               />
 
@@ -544,9 +567,7 @@ function PlasmicHamdastAuth__RenderFunc(props: {
       />
 
       <SideEffect
-        data-plasmic-name={"sideEffect"}
-        data-plasmic-override={overrides.sideEffect}
-        className={classNames("__wab_instance", sty.sideEffect)}
+        className={classNames("__wab_instance", sty.sideEffect__o6Qy3)}
         deps={(() => {
           try {
             return [$props.trigger];
@@ -571,7 +592,7 @@ function PlasmicHamdastAuth__RenderFunc(props: {
                       if (
                         window.self !== window.top &&
                         !globalThis.document.referrer.includes(
-                          "https://hamdast.paziresh24.com"
+                          "https://hamdast.pazires24.com"
                         )
                       ) {
                         $state.alert.open = true;
@@ -583,12 +604,55 @@ function PlasmicHamdastAuth__RenderFunc(props: {
                           if (event.event === "HAMDAST_AUTH_SUCCESS") {
                             $state.loadIframe = true;
                             $state.isLoading = true;
+                            setTimeout(() => {
+                              $state.isLoading = false;
+                            }, 2000);
                           }
                           if (event.event === "HAMDAST_AUTH_CANCEL") {
                             $props.onCancel();
                           }
                         });
                     })();
+                  }
+                };
+                return (({ customFunction }) => {
+                  return customFunction();
+                })?.apply(null, [actionArgs]);
+              })()
+            : undefined;
+          if (
+            $steps["runCode"] != null &&
+            typeof $steps["runCode"] === "object" &&
+            typeof $steps["runCode"].then === "function"
+          ) {
+            $steps["runCode"] = await $steps["runCode"];
+          }
+        }}
+      />
+
+      <SideEffect
+        className={classNames("__wab_instance", sty.sideEffect__dDSpg)}
+        onMount={async () => {
+          const $steps = {};
+
+          $steps["runCode"] = true
+            ? (() => {
+                const actionArgs = {
+                  customFunction: async () => {
+                    return globalThis.addEventListener(
+                      "message",
+                      messageEvent => {
+                        console.log("events", messageEvent);
+                        if (
+                          messageEvent.data.hamdast?.event ===
+                          "HAMDAST_AUTH_GET_AUTH_CODE"
+                        ) {
+                          $props.onSuccess(messageEvent.data.hamdast?.code);
+                          $state.isLoading = false;
+                          $state.loadIframe = false;
+                        }
+                      }
+                    );
                   }
                 };
                 return (({ customFunction }) => {
@@ -623,6 +687,9 @@ function PlasmicHamdastAuth__RenderFunc(props: {
           data-plasmic-name={"iframe"}
           data-plasmic-override={overrides.iframe}
           className={classNames("__wab_instance", sty.iframe)}
+          onLoad={async event => {
+            const $steps = {};
+          }}
           preview={true}
           src={(() => {
             try {
@@ -668,6 +735,9 @@ function PlasmicHamdastAuth__RenderFunc(props: {
                             if (event.event === "HAMDAST_AUTH_SUCCESS") {
                               $state.loadIframe = true;
                               $state.isLoading = true;
+                              setTimeout(() => {
+                                $state.isLoading = false;
+                              }, 2000);
                             }
                             if (event.event === "HAMDAST_AUTH_CANCEL") {
                               $props.onCancel();
@@ -722,11 +792,10 @@ function PlasmicHamdastAuth__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "embedHtml", "alert", "span", "sideEffect", "iframe", "svg"],
+  root: ["root", "embedHtml", "alert", "span", "iframe", "svg"],
   embedHtml: ["embedHtml"],
   alert: ["alert", "span"],
   span: ["span"],
-  sideEffect: ["sideEffect"],
   iframe: ["iframe"],
   svg: ["svg"]
 } as const;
@@ -738,7 +807,6 @@ type NodeDefaultElementType = {
   embedHtml: typeof Embed;
   alert: typeof Paziresh24Dialog;
   span: "span";
-  sideEffect: typeof SideEffect;
   iframe: typeof Iframe;
   svg: "svg";
 };
@@ -806,7 +874,6 @@ export const PlasmicHamdastAuth = Object.assign(
     embedHtml: makeNodeComponent("embedHtml"),
     alert: makeNodeComponent("alert"),
     span: makeNodeComponent("span"),
-    sideEffect: makeNodeComponent("sideEffect"),
     iframe: makeNodeComponent("iframe"),
     svg: makeNodeComponent("svg"),
 

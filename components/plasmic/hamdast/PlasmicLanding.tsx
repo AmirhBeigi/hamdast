@@ -132,6 +132,8 @@ function PlasmicLanding__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const $globalActions = useGlobalActions?.();
+
   return (
     <React.Fragment>
       <Head>
@@ -339,6 +341,33 @@ function PlasmicLanding__RenderFunc(props: {
                   data-plasmic-name={"hamdastAuth"}
                   data-plasmic-override={overrides.hamdastAuth}
                   className={classNames("__wab_instance", sty.hamdastAuth)}
+                  onSuccess={async authCode => {
+                    const $steps = {};
+
+                    $steps["invokeGlobalAction"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              undefined,
+                              "\u062e\u0648\u0634 \u0622\u0645\u062f\u06cc\u062f"
+                            ]
+                          };
+                          return $globalActions["Fragment.showToast"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
+                    if (
+                      $steps["invokeGlobalAction"] != null &&
+                      typeof $steps["invokeGlobalAction"] === "object" &&
+                      typeof $steps["invokeGlobalAction"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction"] = await $steps[
+                        "invokeGlobalAction"
+                      ];
+                    }
+                  }}
                   trigger={true}
                 >
                   <Button
