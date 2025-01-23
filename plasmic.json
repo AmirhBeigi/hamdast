@@ -172,8 +172,8 @@
       "icons": [
         {
           "id": "gHdrY9EQWnWc",
-          "name": "ChecksvgIcon",
-          "moduleFilePath": "plasmic/fragment_design_system/icons/PlasmicIcon__Checksvg.tsx"
+          "name": "CheckSvgIcon",
+          "moduleFilePath": "plasmic/fragment_design_system/icons/PlasmicIcon__CheckSvg.tsx"
         },
         {
           "id": "ixZ_jQZifzLu",
@@ -199,8 +199,7 @@
           "componentImportPath": "@plasmicapp/react-web/lib/data-sources"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "caTPwKxj5ZrD9LQ7DMdK4Z",
@@ -855,6 +854,20 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/search-result"
+        },
+        {
+          "id": "REDHmYlWVnvR",
+          "name": "AuthEmbeddedApp",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicAuthEmbeddedApp.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/apps/[app_key]/auth/embedded.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicAuthEmbeddedApp.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/apps/[app_key]/auth/embedded"
         }
       ],
       "icons": [
@@ -1913,6 +1926,392 @@
         }
       ],
       "customFunctions": []
+    },
+    {
+      "projectId": "9UibdRruyX43DxnB8Q1QXF",
+      "projectApiToken": "ZNj972EbwCfknN1MAhdxLU3H7BjjWdUah5wjYLBnTSIVLgc0W6mbuSO49RMpnrdKocnSMgvQwlZ1GHOA3TuCg",
+      "projectName": "nanoid",
+      "version": ">0.0.0",
+      "cssFilePath": "plasmic/nanoid/plasmic.module.css",
+      "components": [],
+      "icons": [],
+      "images": [],
+      "indirect": true,
+      "globalContextsFilePath": "",
+      "splitsProviderFilePath": "",
+      "codeComponents": [],
+      "customFunctions": []
+    },
+    {
+      "projectId": "oBJtsp5RgVpcN6KCrDTuQT",
+      "projectApiToken": "Z0HEwdCEbNq2vJqCawLDXDkFahbOZftdUQ198aMRfnh2EL3KVg2GQ0q3G7MV4Q5hexgsS4BVG9ZpjLWYxcjg",
+      "projectName": "Fragment/Icons",
+      "version": ">0.0.0",
+      "cssFilePath": "plasmic/fragment_icons/plasmic.module.css",
+      "components": [],
+      "icons": [
+        {
+          "id": "rDjUqSUK3eUM",
+          "name": "BellIcon",
+          "moduleFilePath": "plasmic/fragment_icons/icons/PlasmicIcon__Bell.tsx"
+        },
+        {
+          "id": "r9Upp9NbiZkf",
+          "name": "ChevronLeftIcon",
+          "moduleFilePath": "plasmic/fragment_icons/icons/PlasmicIcon__ChevronLeft.tsx"
+        },
+        {
+          "id": "GHdF3hS-oP_3",
+          "name": "ChevronRightIcon",
+          "moduleFilePath": "plasmic/fragment_icons/icons/PlasmicIcon__ChevronRight.tsx"
+        },
+        {
+          "id": "YXreB8gS3SjV",
+          "name": "ChevronUpIcon",
+          "moduleFilePath": "plasmic/fragment_icons/icons/PlasmicIcon__ChevronUp.tsx"
+        },
+        {
+          "id": "aC_QFogxt1Ko",
+          "name": "ChevronDownIcon",
+          "moduleFilePath": "plasmic/fragment_icons/icons/PlasmicIcon__ChevronDown.tsx"
+        },
+        {
+          "id": "GRY2zHJ6uxOn",
+          "name": "ThumbUpIcon",
+          "moduleFilePath": "plasmic/fragment_icons/icons/PlasmicIcon__ThumbUp.tsx"
+        },
+        {
+          "id": "jHvDymIOvRnf",
+          "name": "ThumbDownIcon",
+          "moduleFilePath": "plasmic/fragment_icons/icons/PlasmicIcon__ThumbDown.tsx"
+        },
+        {
+          "id": "9zdEG9CdGbdC",
+          "name": "LocationIcon",
+          "moduleFilePath": "plasmic/fragment_icons/icons/PlasmicIcon__Location.tsx"
+        },
+        {
+          "id": "7Dhq6fgU-utK",
+          "name": "InfoIcon",
+          "moduleFilePath": "plasmic/fragment_icons/icons/PlasmicIcon__Info.tsx"
+        },
+        {
+          "id": "J8ozh55UiWsA",
+          "name": "SmileIcon",
+          "moduleFilePath": "plasmic/fragment_icons/icons/PlasmicIcon__Smile.tsx"
+        },
+        {
+          "id": "rW7v27ONOoUe",
+          "name": "ClockIcon",
+          "moduleFilePath": "plasmic/fragment_icons/icons/PlasmicIcon__Clock.tsx"
+        },
+        {
+          "id": "4D7uZNf6OjbV",
+          "name": "MoneyIcon",
+          "moduleFilePath": "plasmic/fragment_icons/icons/PlasmicIcon__Money.tsx"
+        },
+        {
+          "id": "e2zWN9c_lxv7",
+          "name": "CalendarIcon",
+          "moduleFilePath": "plasmic/fragment_icons/icons/PlasmicIcon__Calendar.tsx"
+        },
+        {
+          "id": "WTtCf_1I-uMv",
+          "name": "HeartIcon",
+          "moduleFilePath": "plasmic/fragment_icons/icons/PlasmicIcon__Heart.tsx"
+        },
+        {
+          "id": "eZfYsLpdWQA_",
+          "name": "BoldHeartIcon",
+          "moduleFilePath": "plasmic/fragment_icons/icons/PlasmicIcon__BoldHeart.tsx"
+        },
+        {
+          "id": "NSxX1Iy4jDVL",
+          "name": "ShareIcon",
+          "moduleFilePath": "plasmic/fragment_icons/icons/PlasmicIcon__Share.tsx"
+        },
+        {
+          "id": "dmfb3Ga2IoVt",
+          "name": "MenuIcon",
+          "moduleFilePath": "plasmic/fragment_icons/icons/PlasmicIcon__Menu.tsx"
+        },
+        {
+          "id": "BamIPHX72k5k",
+          "name": "RepliesIcon",
+          "moduleFilePath": "plasmic/fragment_icons/icons/PlasmicIcon__Replies.tsx"
+        },
+        {
+          "id": "zb1oqVXdrxPK",
+          "name": "XIcon",
+          "moduleFilePath": "plasmic/fragment_icons/icons/PlasmicIcon__X.tsx"
+        },
+        {
+          "id": "oob3UzcKBsd_",
+          "name": "WhatsappIcon",
+          "moduleFilePath": "plasmic/fragment_icons/icons/PlasmicIcon__Whatsapp.tsx"
+        },
+        {
+          "id": "qxWwW7vbw7na",
+          "name": "EitaaIcon",
+          "moduleFilePath": "plasmic/fragment_icons/icons/PlasmicIcon__Eitaa.tsx"
+        },
+        {
+          "id": "vu4uxcIH4gVk",
+          "name": "TelegramIcon",
+          "moduleFilePath": "plasmic/fragment_icons/icons/PlasmicIcon__Telegram.tsx"
+        },
+        {
+          "id": "0Ejs1gKiFp1s",
+          "name": "TwitterXIcon",
+          "moduleFilePath": "plasmic/fragment_icons/icons/PlasmicIcon__TwitterX.tsx"
+        }
+      ],
+      "images": [
+        {
+          "id": "ijbf5URccsnE",
+          "name": "Red-Dot",
+          "filePath": "../public/plasmic/fragment_icons/images/redDot.svg"
+        }
+      ],
+      "indirect": true,
+      "globalContextsFilePath": "",
+      "splitsProviderFilePath": "",
+      "codeComponents": [
+        {
+          "id": "kbwf7uMhTcmG",
+          "name": "PlasmicHead",
+          "displayName": "hostless-plasmic-head",
+          "componentImportPath": "@plasmicapp/react-web"
+        },
+        {
+          "id": "8bmEUoRKkAPa",
+          "name": "Fetcher",
+          "displayName": "plasmic-data-source-fetcher",
+          "componentImportPath": "@plasmicapp/react-web/lib/data-sources"
+        }
+      ],
+      "customFunctions": []
+    },
+    {
+      "projectId": "6HBcNwr8dz9LuS1Qe36xa5",
+      "projectApiToken": "Z9JffHbKIbzmVDViSEaJBhHZgPC0WAshkJyVg8elTeyVX8PAxnaijtBfOCKwgzzb0I1MOTEhg5LQu6hFVlqDA",
+      "projectName": "Paziresh24/DesignSystem",
+      "version": ">0.0.0",
+      "cssFilePath": "plasmic/paziresh_24_design_system/plasmic.module.css",
+      "components": [
+        {
+          "id": "zljt-TXjec48",
+          "name": "Paziresh24Avatar",
+          "type": "managed",
+          "projectId": "6HBcNwr8dz9LuS1Qe36xa5",
+          "renderModuleFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24Avatar.tsx",
+          "importSpec": {
+            "modulePath": "Paziresh24Avatar.tsx"
+          },
+          "cssFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24Avatar.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "YOhw5fIQJQgB",
+          "name": "Paziresh24Button",
+          "type": "managed",
+          "projectId": "6HBcNwr8dz9LuS1Qe36xa5",
+          "renderModuleFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24Button.tsx",
+          "importSpec": {
+            "modulePath": "Paziresh24Button.tsx"
+          },
+          "cssFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24Button.module.css",
+          "scheme": "blackbox",
+          "componentType": "component",
+          "plumeType": "button"
+        },
+        {
+          "id": "ZGdhyEBPJSmH",
+          "name": "Paziresh24Dialog",
+          "type": "managed",
+          "projectId": "6HBcNwr8dz9LuS1Qe36xa5",
+          "renderModuleFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24Dialog.tsx",
+          "importSpec": {
+            "modulePath": "Paziresh24Dialog.tsx"
+          },
+          "cssFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24Dialog.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "df-BFL5jhiFc",
+          "name": "Paziresh24Chip",
+          "type": "managed",
+          "projectId": "6HBcNwr8dz9LuS1Qe36xa5",
+          "renderModuleFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24Chip.tsx",
+          "importSpec": {
+            "modulePath": "Paziresh24Chip.tsx"
+          },
+          "cssFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24Chip.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "xFfrwlkCaWS8",
+          "name": "Paziresh24LineClamp",
+          "type": "managed",
+          "projectId": "6HBcNwr8dz9LuS1Qe36xa5",
+          "renderModuleFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24LineClamp.tsx",
+          "importSpec": {
+            "modulePath": "Paziresh24LineClamp.tsx"
+          },
+          "cssFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24LineClamp.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "5O8XqcSJJk6J",
+          "name": "Paziresh24MultilineTextInput",
+          "type": "managed",
+          "projectId": "6HBcNwr8dz9LuS1Qe36xa5",
+          "renderModuleFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24MultilineTextInput.tsx",
+          "importSpec": {
+            "modulePath": "Paziresh24MultilineTextInput.tsx"
+          },
+          "cssFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24MultilineTextInput.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "l6VIhr1cb9Jb",
+          "name": "Paziresh24Collapsible",
+          "type": "managed",
+          "projectId": "6HBcNwr8dz9LuS1Qe36xa5",
+          "renderModuleFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24Collapsible.tsx",
+          "importSpec": {
+            "modulePath": "Paziresh24Collapsible.tsx"
+          },
+          "cssFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24Collapsible.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        }
+      ],
+      "icons": [
+        {
+          "id": "K0KrVjcOVNaS",
+          "name": "Icon17Icon",
+          "moduleFilePath": "plasmic/paziresh_24_design_system/icons/PlasmicIcon__Icon17.tsx"
+        },
+        {
+          "id": "34E5G5rzRc3Y",
+          "name": "IconIcon",
+          "moduleFilePath": "plasmic/paziresh_24_design_system/icons/PlasmicIcon__Icon.tsx"
+        },
+        {
+          "id": "JEIVIUvVwQk7",
+          "name": "SearchSvgIcon",
+          "moduleFilePath": "plasmic/paziresh_24_design_system/icons/PlasmicIcon__SearchSvg.tsx"
+        },
+        {
+          "id": "EEdf86PDs5c6",
+          "name": "CheckSvgIcon",
+          "moduleFilePath": "plasmic/paziresh_24_design_system/icons/PlasmicIcon__CheckSvg.tsx"
+        },
+        {
+          "id": "rwy2JSXIoIh2",
+          "name": "Icon2Icon",
+          "moduleFilePath": "plasmic/paziresh_24_design_system/icons/PlasmicIcon__Icon2.tsx"
+        }
+      ],
+      "images": [],
+      "indirect": true,
+      "globalContextsFilePath": "",
+      "splitsProviderFilePath": "",
+      "codeComponents": [
+        {
+          "id": "rGf-lJJbEBzF",
+          "name": "PlasmicHead",
+          "displayName": "hostless-plasmic-head",
+          "componentImportPath": "@plasmicapp/react-web"
+        },
+        {
+          "id": "wpVWHDEkdf8R",
+          "name": "Fetcher",
+          "displayName": "plasmic-data-source-fetcher",
+          "componentImportPath": "@plasmicapp/react-web/lib/data-sources"
+        }
+      ],
+      "customFunctions": []
+    },
+    {
+      "projectId": "9yPKYrtYPnCNEj6BTTfHnY",
+      "projectApiToken": "caJMVcyN9TzlwZkolKBTw2YWBUFRDNfYVftishw2973CP9Qky86xBuu93pc31OpIhcsrB5xbDyMFSqKwg",
+      "projectName": "@Hamdast/sdk",
+      "version": ">0.0.0",
+      "cssFilePath": "plasmic/hamdast_sdk/plasmic.module.css",
+      "components": [
+        {
+          "id": "KS8cTh0gsgPl",
+          "name": "HamdastProvider",
+          "type": "managed",
+          "projectId": "9yPKYrtYPnCNEj6BTTfHnY",
+          "renderModuleFilePath": "plasmic/hamdast_sdk/PlasmicHamdastProvider.tsx",
+          "importSpec": {
+            "modulePath": "HamdastProvider.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast_sdk/PlasmicHamdastProvider.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "6gK09XfScFeD",
+          "name": "HamdastAuth",
+          "type": "managed",
+          "projectId": "9yPKYrtYPnCNEj6BTTfHnY",
+          "renderModuleFilePath": "plasmic/hamdast_sdk/PlasmicHamdastAuth.tsx",
+          "importSpec": {
+            "modulePath": "HamdastAuth.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast_sdk/PlasmicHamdastAuth.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "Us2coAfx-xTz",
+          "name": "HamdastPayment",
+          "type": "managed",
+          "projectId": "9yPKYrtYPnCNEj6BTTfHnY",
+          "renderModuleFilePath": "plasmic/hamdast_sdk/PlasmicHamdastPayment.tsx",
+          "importSpec": {
+            "modulePath": "HamdastPayment.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast_sdk/PlasmicHamdastPayment.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        }
+      ],
+      "icons": [
+        {
+          "id": "EpJsLqY0ZzKz",
+          "name": "IconIcon",
+          "moduleFilePath": "plasmic/hamdast_sdk/icons/PlasmicIcon__Icon.tsx"
+        }
+      ],
+      "images": [],
+      "indirect": true,
+      "globalContextsFilePath": "",
+      "splitsProviderFilePath": "",
+      "codeComponents": [
+        {
+          "id": "4TsK3snb_L57",
+          "name": "PlasmicHead",
+          "displayName": "hostless-plasmic-head",
+          "componentImportPath": "@plasmicapp/react-web"
+        },
+        {
+          "id": "GTrnx3J44e8j",
+          "name": "Fetcher",
+          "displayName": "plasmic-data-source-fetcher",
+          "componentImportPath": "@plasmicapp/react-web/lib/data-sources"
+        }
+      ],
+      "customFunctions": []
     }
   ],
   "globalVariants": {
@@ -1934,6 +2333,24 @@
         "name": "Screen",
         "projectId": "tGFFjizqpBh1JPEqzUQxjY",
         "contextFilePath": "plasmic/fragment_pro/PlasmicGlobalVariant__Screen.tsx"
+      },
+      {
+        "id": "BR2UhI7ulpvR",
+        "name": "Screen",
+        "projectId": "oBJtsp5RgVpcN6KCrDTuQT",
+        "contextFilePath": "plasmic/fragment_icons/PlasmicGlobalVariant__Screen.tsx"
+      },
+      {
+        "id": "QiBUXNlixBgQ",
+        "name": "Screen",
+        "projectId": "6HBcNwr8dz9LuS1Qe36xa5",
+        "contextFilePath": "plasmic/paziresh_24_design_system/PlasmicGlobalVariant__Screen.tsx"
+      },
+      {
+        "id": "NlcKhjN_EH2L",
+        "name": "Screen",
+        "projectId": "9yPKYrtYPnCNEj6BTTfHnY",
+        "contextFilePath": "plasmic/hamdast_sdk/PlasmicGlobalVariant__Screen.tsx"
       }
     ]
   },

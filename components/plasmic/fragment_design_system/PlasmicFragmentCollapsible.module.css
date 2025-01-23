@@ -20,6 +20,9 @@
   overflow: hidden;
   min-width: 0;
 }
+.freeBoxnoLayout__tRuehlO260 {
+  overflow: visible;
+}
 .text___8WjQ {
   position: relative;
   height: auto;
@@ -40,6 +43,9 @@
   right: 0;
   bottom: 0;
 }
+.freeBoxnoLayout__of1YglO260 {
+  display: none;
+}
 .freeBox__tyToy {
   display: flex;
   position: relative;
@@ -49,6 +55,9 @@
   width: auto;
   height: auto;
   max-width: 100%;
+}
+.freeBoxnoLayout__tyToYlO260 {
+  display: none;
 }
 .text__jkR2K {
   position: relative;
@@ -69,6 +78,9 @@
   width: auto;
   height: auto;
   max-width: 100%;
+}
+.freeBoxnoLayout___3AzgNlO260 {
+  display: none;
 }
 .text__yITpT {
   position: relative;

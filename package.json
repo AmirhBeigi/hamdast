@@ -33,6 +33,7 @@
     "jalali-moment": "^3.3.11",
     "lucide-react": "^0.399.0",
     "moment": "^2.30.1",
+    "nanoid": "^5.0.9",
     "next": "14.2.3",
     "nextjs-cors": "^2.2.0",
     "node-gzip": "^1.1.2",

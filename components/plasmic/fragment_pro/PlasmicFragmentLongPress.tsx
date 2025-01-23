@@ -264,6 +264,91 @@ function PlasmicFragmentLongPress__RenderFunc(props: {
           $steps["runOnCancel"] = await $steps["runOnCancel"];
         }
       }}
+      onTouchEnd={async event => {
+        const $steps = {};
+
+        $steps["runOnLongPress"] =
+          Date.now() - $state.start >= $props.duration
+            ? (() => {
+                const actionArgs = { eventRef: $props["onLongPress"] };
+                return (({ eventRef, args }) => {
+                  return eventRef?.(...(args ?? []));
+                })?.apply(null, [actionArgs]);
+              })()
+            : undefined;
+        if (
+          $steps["runOnLongPress"] != null &&
+          typeof $steps["runOnLongPress"] === "object" &&
+          typeof $steps["runOnLongPress"].then === "function"
+        ) {
+          $steps["runOnLongPress"] = await $steps["runOnLongPress"];
+        }
+
+        $steps["updateActive2"] =
+          Date.now() - $state.start < $props.duration
+            ? (() => {
+                const actionArgs = { eventRef: $props["onCancel"] };
+                return (({ eventRef, args }) => {
+                  return eventRef?.(...(args ?? []));
+                })?.apply(null, [actionArgs]);
+              })()
+            : undefined;
+        if (
+          $steps["updateActive2"] != null &&
+          typeof $steps["updateActive2"] === "object" &&
+          typeof $steps["updateActive2"].then === "function"
+        ) {
+          $steps["updateActive2"] = await $steps["updateActive2"];
+        }
+      }}
+      onTouchStart={async event => {
+        const $steps = {};
+
+        $steps["updateStart"] = true
+          ? (() => {
+              const actionArgs = {
+                variable: {
+                  objRoot: $state,
+                  variablePath: ["start"]
+                },
+                operation: 0,
+                value: Date.now()
+              };
+              return (({ variable, value, startIndex, deleteCount }) => {
+                if (!variable) {
+                  return;
+                }
+                const { objRoot, variablePath } = variable;
+
+                $stateSet(objRoot, variablePath, value);
+                return value;
+              })?.apply(null, [actionArgs]);
+            })()
+          : undefined;
+        if (
+          $steps["updateStart"] != null &&
+          typeof $steps["updateStart"] === "object" &&
+          typeof $steps["updateStart"].then === "function"
+        ) {
+          $steps["updateStart"] = await $steps["updateStart"];
+        }
+
+        $steps["runOnStart"] = true
+          ? (() => {
+              const actionArgs = { eventRef: $props["onStart"] };
+              return (({ eventRef, args }) => {
+                return eventRef?.(...(args ?? []));
+              })?.apply(null, [actionArgs]);
+            })()
+          : undefined;
+        if (
+          $steps["runOnStart"] != null &&
+          typeof $steps["runOnStart"] === "object" &&
+          typeof $steps["runOnStart"].then === "function"
+        ) {
+          $steps["runOnStart"] = await $steps["runOnStart"];
+        }
+      }}
     >
       {renderPlasmicSlot({
         defaultContents: null,
