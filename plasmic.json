@@ -2289,6 +2289,19 @@
           "cssFilePath": "plasmic/hamdast_sdk/PlasmicHamdastPayment.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "RRKFlqCHeJfP",
+          "name": "HamdastUtilsOpenLink",
+          "type": "managed",
+          "projectId": "9yPKYrtYPnCNEj6BTTfHnY",
+          "renderModuleFilePath": "plasmic/hamdast_sdk/PlasmicHamdastUtilsOpenLink.tsx",
+          "importSpec": {
+            "modulePath": "HamdastUtilsOpenLink.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast_sdk/PlasmicHamdastUtilsOpenLink.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -2363,6 +2376,6 @@
   "nextjsConfig": {
     "pagesDir": "../src/pages"
   },
-  "cliVersion": "0.1.334",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.334/dist/plasmic.schema.json"
+  "cliVersion": "0.1.335",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.335/dist/plasmic.schema.json"
 }

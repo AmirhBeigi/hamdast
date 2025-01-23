@@ -125,7 +125,7 @@
         "aEHVN5v6mfM4eovDsL8Z7d": "0.4.0",
         "kpio2pzukKRJkKg6SSrKTe": "0.2.0",
         "tGFFjizqpBh1JPEqzUQxjY": "0.0.3",
-        "9yPKYrtYPnCNEj6BTTfHnY": "2.0.3",
+        "9yPKYrtYPnCNEj6BTTfHnY": "3.0.0",
         "9UibdRruyX43DxnB8Q1QXF": "0.4.0",
         "6HBcNwr8dz9LuS1Qe36xa5": "0.2.2",
         "oBJtsp5RgVpcN6KCrDTuQT": "1.4.0"
@@ -495,12 +495,12 @@
         {
           "type": "renderModule",
           "assetId": "S7QID4Zn_0WI",
-          "checksum": "3f706e03b95e9f1dd3f630020e0d473e"
+          "checksum": "2bfb66831cc4098f87f27596c6e2f1a0"
         },
         {
           "type": "cssRules",
           "assetId": "S7QID4Zn_0WI",
-          "checksum": "3f706e03b95e9f1dd3f630020e0d473e"
+          "checksum": "2bfb66831cc4098f87f27596c6e2f1a0"
         },
         {
           "type": "icon",
@@ -1212,7 +1212,7 @@
     },
     {
       "projectId": "9yPKYrtYPnCNEj6BTTfHnY",
-      "version": "2.0.3",
+      "version": "3.0.0",
       "dependencies": {
         "caTPwKxj5ZrD9LQ7DMdK4Z": "3.40.0",
         "6HBcNwr8dz9LuS1Qe36xa5": "0.2.2",
@@ -1240,12 +1240,12 @@
         {
           "type": "renderModule",
           "assetId": "6gK09XfScFeD",
-          "checksum": "9f6c760c30b52edf3071f86b8893c61d"
+          "checksum": "72fcd8f0253e25c3254c66a15675e235"
         },
         {
           "type": "cssRules",
           "assetId": "6gK09XfScFeD",
-          "checksum": "9f6c760c30b52edf3071f86b8893c61d"
+          "checksum": "72fcd8f0253e25c3254c66a15675e235"
         },
         {
           "type": "renderModule",
@@ -1266,6 +1266,16 @@
           "assetId": "9yPKYrtYPnCNEj6BTTfHnY",
           "type": "projectCss",
           "checksum": "9d0afafe44873a06f020e2b7c25800a9"
+        },
+        {
+          "type": "renderModule",
+          "assetId": "RRKFlqCHeJfP",
+          "checksum": "bcc87421dca7bf4017d27e8252479d9b"
+        },
+        {
+          "type": "cssRules",
+          "assetId": "RRKFlqCHeJfP",
+          "checksum": "bcc87421dca7bf4017d27e8252479d9b"
         }
       ],
       "codegenVersion": "0.0.1"

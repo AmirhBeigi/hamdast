@@ -134,7 +134,7 @@ function PlasmicHamdastAuth__RenderFunc(props: {
     () =>
       Object.assign(
         {
-          trigger: false
+          trigger: true
         },
         Object.fromEntries(
           Object.entries(props.args).filter(([_, v]) => v !== undefined)
@@ -396,7 +396,7 @@ function PlasmicHamdastAuth__RenderFunc(props: {
                     ];
                   }
 
-                  $steps["updateLoadIframe3"] = !$props.trigger
+                  $steps["updateLoadIframe3"] = true
                     ? (() => {
                         const actionArgs = {
                           variable: {
@@ -438,7 +438,7 @@ function PlasmicHamdastAuth__RenderFunc(props: {
                           customFunction: async () => {
                             return setTimeout(() => {
                               $state.isLoading = false;
-                            }, 2000);
+                            }, 10000);
                           }
                         };
                         return (({ customFunction }) => {
@@ -606,7 +606,7 @@ function PlasmicHamdastAuth__RenderFunc(props: {
                             $state.isLoading = true;
                             setTimeout(() => {
                               $state.isLoading = false;
-                            }, 2000);
+                            }, 10000);
                           }
                           if (event.event === "HAMDAST_AUTH_CANCEL") {
                             $props.onCancel();
@@ -737,7 +737,7 @@ function PlasmicHamdastAuth__RenderFunc(props: {
                               $state.isLoading = true;
                               setTimeout(() => {
                                 $state.isLoading = false;
-                              }, 2000);
+                              }, 10000);
                             }
                             if (event.event === "HAMDAST_AUTH_CANCEL") {
                               $props.onCancel();
