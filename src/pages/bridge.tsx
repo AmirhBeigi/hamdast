@@ -64,6 +64,20 @@ function Bridge() {
       startTime.current = Date.now();
       activeUsersLog({ app, menu, page });
       window.addEventListener("message", (messageEvent) => {
+        if (
+          messageEvent.data?.hamdast?.event?.startsWith("HAMDAST_") &&
+          messageEvent.data?.hamdast?.action !== "forwardToApp"
+        ) {
+          window.parent.postMessage(messageEvent.data, "*");
+        }
+
+        if (
+          messageEvent.data?.hamdast?.event?.startsWith("HAMDAST_") &&
+          messageEvent.data?.hamdast?.action === "forwardToApp"
+        ) {
+          iframe.current?.contentWindow?.postMessage(messageEvent.data, "*");
+        }
+
         if (messageEvent.data?.hamdast?.event === "HAMDAST_GET_STATE") {
           sendEvent(messageEvent.data?.hamdast);
         }
