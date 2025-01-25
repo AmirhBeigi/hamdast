@@ -72,3 +72,42 @@ body {
   scrollbar-width: none; /* Also needed to disable scrollbar Firefox */
   -ms-overflow-style: none; /* Disable scrollbar IE 10+ */
 }
+
+@font-face {
+  font-family: YekanBakh;
+  font-style: normal;
+  font-weight: 300;
+  src: url("../public/fonts/YekanBakh-Light.woff") format("woff2");
+}
+
+@font-face {
+  font-family: YekanBakh;
+  font-style: normal;
+  font-weight: 400;
+  src: url("../public/fonts/YekanBakh-News.woff") format("woff2");
+}
+
+@font-face {
+  font-family: YekanBakh;
+  font-style: normal;
+  font-weight: 500;
+  src: url("../public/fonts/YekanBakh-Regular.woff") format("woff2");
+}
+
+@font-face {
+  font-family: YekanBakh;
+  font-style: normal;
+  font-weight: 600;
+  src: url("../public/fonts/YekanBakh-Bold.woff") format("woff2");
+}
+
+@font-face {
+  font-family: YekanBakh;
+  font-style: normal;
+  font-weight: 700;
+  src: url("../public/fonts/YekanBakh-Fat.woff") format("woff2");
+}
+
+* {
+  font-family: YekanBakh, tahoma;
+}
