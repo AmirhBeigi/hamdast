@@ -9,10 +9,6 @@
 })();
 
 function hamdastCommunication({ clientKey, event, data, promise = false }) {
-  if (window.self == window.top) {
-    alert("این امکان فقط در پذیرش۲۴ قابل استفاده است.");
-    return;
-  }
   const message = {
     hamdast: {
       clientKey,
