@@ -18,11 +18,6 @@ function Bridge() {
   let embedSrc: any;
   if (isReady && src) {
     embedSrc = src ? (src as string) : "";
-    embedSrc = addAndUpdateQueryParam(
-      embedSrc,
-      "client_key",
-      client_key as string
-    );
     embedSrc = addAndUpdateQueryParam(embedSrc, "hamdast_embedded", "true");
     embedSrc = addAndUpdateQueryParam(
       embedSrc,
