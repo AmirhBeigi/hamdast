@@ -50,6 +50,7 @@ export default async function handler(
 
   let user = null;
   let provider = null;
+  let attributes = {};
   try {
     const paziresh24User = await axios.get(
       "https://apigw.paziresh24.com/v1/auth/me",
@@ -60,15 +61,42 @@ export default async function handler(
       }
     );
     user = paziresh24User.data?.users?.[0];
-    const paziresh24Provider = await axios.get(
-      `https://apigw.paziresh24.com/v1/providers?user_id=${user.id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token.trim()}`,
+    const [paziresh24Provider, katibeAttributes] = await Promise.allSettled([
+      axios.get(
+        `https://apigw.paziresh24.com/v1/providers?user_id=${user.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token.trim()}`,
+          },
+        }
+      ),
+      axios.get("https://apigw.paziresh24.com/katibe/v1/p24/users/attributes", {
+        params: {
+          user_id: user.id,
         },
-      }
-    );
-    provider = paziresh24Provider.data?.providers?.[0];
+        headers: {
+          cookie: req.headers?.cookie,
+        },
+        timeout: 1000,
+      }),
+    ]);
+
+    if (katibeAttributes.status === "fulfilled") {
+      attributes = {
+        ...Object.entries(
+          katibeAttributes.value?.data as Record<string, boolean>
+        ).reduce((prev, current) => {
+          return {
+            ...prev,
+            [`hamdast::katibe::${current[0]}`]: current[1],
+          };
+        }, {}),
+      };
+    }
+
+    if (paziresh24Provider.status === "fulfilled") {
+      provider = paziresh24Provider.value.data?.providers?.[0];
+    }
   } catch (error) {
     return res.status(401).json({
       message: "Authentication credentials were not provided.",
@@ -83,6 +111,7 @@ export default async function handler(
   growthbook.setAttributes({
     user_id: Number(user?.id),
     is_doctor: provider?.job_title === "doctor",
+    ...attributes,
   });
 
   await growthbook.init({ timeout: 1000 });
