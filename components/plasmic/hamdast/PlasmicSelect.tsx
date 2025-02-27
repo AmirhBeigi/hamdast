@@ -68,6 +68,7 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
 import plasmic_paziresh_24_design_system_css from "../paziresh_24_design_system/plasmic.module.css"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/projectcss
+import plasmic_ravi_design_system_css from "../ravi_design_system/plasmic.module.css"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectcss
 import sty from "./PlasmicSelect.module.css"; // plasmic-import: gnuET5DaB7nZ/css
 
@@ -278,6 +279,7 @@ function PlasmicSelect__RenderFunc(props: {
           projectcss.plasmic_tokens,
           plasmic_antd_5_hostless_css.plasmic_tokens,
           plasmic_paziresh_24_design_system_css.plasmic_tokens,
+          plasmic_ravi_design_system_css.plasmic_tokens,
           sty.root,
           {
             [sty.root___focusVisibleWithin]: triggers.focusVisibleWithin_root,
