@@ -19,6 +19,7 @@ export default async function handler(
 
   return res.status(200).json(
     data?.map((item) => ({
+      id: item?.widget,
       plasmic_component_id: item.expand?.widget?.plasmic_component_id,
       plasmic_project_id: item?.expand?.widget?.plasmic_project_id,
       placement: item?.expand?.widget?.placement,
