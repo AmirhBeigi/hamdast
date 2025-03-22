@@ -10,20 +10,22 @@ import { Fragment } from "@/fragment/fragment"; // plasmic-import: RU9vRSFaHTLI/
 import { GrowthBook } from "@/fragment/growthbook"; // plasmic-import: eIOuzd2aMPic/codeComponent
 import { Splunk } from "@/fragment/splunk"; // plasmic-import: tZh4H4rl7IwR/codeComponent
 import { AntdConfigProvider } from "@plasmicpkgs/antd5/skinny/registerConfigProvider";
+import { EmbedCss } from "@plasmicpkgs/plasmic-embed-css";
 
 export interface GlobalContextsProviderProps {
   children?: React.ReactElement;
   fragmentProps?: Partial<
     Omit<React.ComponentProps<typeof Fragment>, "children">
   >;
-
   growthBookProps?: Partial<
     Omit<React.ComponentProps<typeof GrowthBook>, "children">
   >;
-
   splunkProps?: Partial<Omit<React.ComponentProps<typeof Splunk>, "children">>;
   antdConfigProviderProps?: Partial<
     Omit<React.ComponentProps<typeof AntdConfigProvider>, "children">
+  >;
+  embedCssProps?: Partial<
+    Omit<React.ComponentProps<typeof EmbedCss>, "children">
   >;
 }
 
@@ -35,7 +37,8 @@ export default function GlobalContextsProvider(
     fragmentProps,
     growthBookProps,
     splunkProps,
-    antdConfigProviderProps
+    antdConfigProviderProps,
+    embedCssProps
   } = props;
 
   return (
@@ -158,7 +161,7 @@ export default function GlobalContextsProvider(
               antdConfigProviderProps &&
               "removeLoading" in antdConfigProviderProps
                 ? antdConfigProviderProps.removeLoading!
-                : undefined
+                : true
             }
             sizeStep={
               antdConfigProviderProps && "sizeStep" in antdConfigProviderProps
@@ -191,7 +194,16 @@ export default function GlobalContextsProvider(
                 : false
             }
           >
-            {children}
+            <EmbedCss
+              {...embedCssProps}
+              css={
+                embedCssProps && "css" in embedCssProps
+                  ? embedCssProps.css!
+                  : "ul{\r\n  margin-right: 14px  !important; \r\n  padding-left: 0\r\n}"
+              }
+            >
+              {children}
+            </EmbedCss>
           </AntdConfigProvider>
         </Splunk>
       </GrowthBook>

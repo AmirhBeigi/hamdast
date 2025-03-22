@@ -66,10 +66,10 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic.module.css"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/projectcss
 import sty from "./PlasmicPaziresh24Button.module.css"; // plasmic-import: YOhw5fIQJQgB/css
 
-import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
+import ChevronRightIcon from "./icons/PlasmicIcon__ChevronRight"; // plasmic-import: 0359howWu0cr/icon
 import Icon17Icon from "./icons/PlasmicIcon__Icon17"; // plasmic-import: K0KrVjcOVNaS/icon
 import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: rwy2JSXIoIh2/icon
-import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
+import ChevronLeftIcon from "./icons/PlasmicIcon__ChevronLeft"; // plasmic-import: jS0YlkKPLO7U/icon
 
 createPlasmicElementProxy;
 
