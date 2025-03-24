@@ -150,6 +150,13 @@ window.hamdast = {
         promise: true,
       });
     },
+    async removeFromProfile() {
+      return hamdastCommunication({
+        clientKey: window.hamdast.clientKey,
+        event: "HAMDAST_WIDGET_REMOVE_FROM_PROFILE",
+        promise: true,
+      });
+    },
   },
   auth: {
     async login() {
