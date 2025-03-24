@@ -101,6 +101,24 @@ export default async function handler(
           },
         }
       );
+
+      try {
+        await axios.post(
+          "https://napi.arvancloud.ir/cdn/4.0/domains/paziresh24.com/caching/purge",
+          {
+            purge: "individual",
+            purge_urls: [
+              `https://www.paziresh24.com/dr/${profile?.data?.data?.slug}/`,
+            ],
+          },
+          {
+            headers: {
+              authorization: publicRuntimeConfig.ARVAN,
+            },
+          }
+        );
+      } catch (error) {}
+
       return res.status(200).json({});
     } catch (error) {
       return res.status(400).json({
@@ -147,6 +165,24 @@ export default async function handler(
           x_token: publicRuntimeConfig.HAMDAST_TOKEN,
         },
       });
+
+      try {
+        await axios.post(
+          "https://napi.arvancloud.ir/cdn/4.0/domains/paziresh24.com/caching/purge",
+          {
+            purge: "individual",
+            purge_urls: [
+              `https://www.paziresh24.com/dr/${profile?.data?.data?.slug}/`,
+            ],
+          },
+          {
+            headers: {
+              authorization: publicRuntimeConfig.ARVAN,
+            },
+          }
+        );
+      } catch (error) {}
+
       return res.status(200).json({});
     } catch (error) {
       return res.status(400).json({
