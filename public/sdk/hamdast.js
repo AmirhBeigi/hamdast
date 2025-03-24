@@ -142,6 +142,15 @@ window.hamdast = {
       });
     },
   },
+  widget: {
+    async addToProfile() {
+      return hamdastCommunication({
+        clientKey: window.hamdast.clientKey,
+        event: "HAMDAST_WIDGET_ADD_TO_PROFILE",
+        promise: true,
+      });
+    },
+  },
   auth: {
     async login() {
       return hamdastCommunication({
