@@ -107,6 +107,7 @@ export default async function handler(
           profile_id: item.profile_id,
           placements:
             item?.placement?.length > 0 ? item?.placement : widget?.placement,
+          placements_metadata: item.placements_metadata ?? {},
         }))
       );
     } catch (error) {

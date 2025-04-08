@@ -113,6 +113,7 @@ export default async function handler(
           profileWidget?.placement?.length > 0
             ? profileWidget?.placement
             : widget?.placement,
+        placements_metadata: profileWidget?.placements_metadata ?? {},
       });
     } catch (error) {
       return res.status(404).json({
@@ -186,7 +187,31 @@ export default async function handler(
 
   if (req.method == "PUT") {
     const { profile_id } = req.query;
-    const { placements } = req.body;
+    const { placements, placements_metadata } = req.body;
+
+    if (Object.keys(placements_metadata).length > 0) {
+      const placementTypes = [
+        "head",
+        "section_one",
+        "section_two",
+        "section_three",
+        "services",
+        "sidebar",
+        "center_info",
+      ];
+      const isValid = Object.keys(placements_metadata).every((item) =>
+        placementTypes.includes(item)
+      );
+
+      if (!isValid) {
+        return res.status(400).json({
+          message: `placements_metadata can only be [${placementTypes.join(
+            ", "
+          )}]`,
+        });
+      }
+    }
+
     let slug;
 
     try {
@@ -233,6 +258,7 @@ export default async function handler(
             profileWidgets.id,
             {
               placement: placements,
+              placements_metadata,
             },
             {
               headers: {
@@ -248,6 +274,7 @@ export default async function handler(
               profile_id: profile_id,
               widget: widget.id,
               placement: placements,
+              placements_metadata,
             },
             {
               headers: {

@@ -56,6 +56,7 @@ export default async function handler(
           item?.placement?.length > 0
             ? item?.placement
             : item?.expand?.widget?.placement,
+        placements_metadata: item?.placements_metadata ?? {},
         data_endpoint: item?.expand?.widget?.data_endpoint ?? null,
       }))
     );
