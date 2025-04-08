@@ -64,10 +64,12 @@ export default async function handler(
     });
   }
 
+  let app;
+
   try {
-    await pb
+    app = await pb
       .collection("apps")
-      .getFirstListItem(`collaborators~"${record.id}" && id = "${app_id}"`, {
+      .getFirstListItem(`collaborators~"${record.id}" && key = "${app_id}"`, {
         headers: {
           x_token: publicRuntimeConfig.HAMDAST_TOKEN,
         },
@@ -83,11 +85,11 @@ export default async function handler(
   }
 
   if (req.method == "GET") {
-    const { app_id, profile_id } = req.query;
+    const { profile_id } = req.query;
 
     const widget = await pb
       .collection("widgets")
-      .getFirstListItem(`app = "${app_id}"`, {
+      .getFirstListItem(`app = "${app.id}"`, {
         headers: {
           x_token: publicRuntimeConfig.HAMDAST_TOKEN,
         },
@@ -106,6 +108,7 @@ export default async function handler(
         );
 
       return res.status(200).json({
+        id: profile_id,
         placements:
           profileWidget?.placement?.length > 0
             ? profileWidget?.placement
@@ -119,12 +122,12 @@ export default async function handler(
   }
 
   if (req.method == "DELETE") {
-    const { app_id, profile_id } = req.query;
+    const { profile_id } = req.query;
 
     try {
       const widget = await pb
         .collection("widgets")
-        .getFirstListItem(`app = "${app_id}"`, {
+        .getFirstListItem(`app = "${app.id}"`, {
           headers: {
             x_token: publicRuntimeConfig.HAMDAST_TOKEN,
           },
@@ -182,7 +185,7 @@ export default async function handler(
   }
 
   if (req.method == "PUT") {
-    const { app_id, profile_id } = req.query;
+    const { profile_id } = req.query;
     const { placements } = req.body;
     let slug;
 
@@ -206,7 +209,7 @@ export default async function handler(
 
     const widget = await pb
       .collection("widgets")
-      .getFirstListItem(`app = "${app_id}"`, {
+      .getFirstListItem(`app = "${app.id}"`, {
         headers: {
           x_token: publicRuntimeConfig.HAMDAST_TOKEN,
         },
