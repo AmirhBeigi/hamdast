@@ -52,7 +52,10 @@ export default async function handler(
         id: item?.widget,
         plasmic_component_id: item.expand?.widget?.plasmic_component_id,
         plasmic_project_id: item?.expand?.widget?.plasmic_project_id,
-        placement: item?.expand?.widget?.placement,
+        placement:
+          item?.placement?.length > 0
+            ? item?.placement
+            : item?.expand?.widget?.placement,
         data_endpoint: item?.expand?.widget?.data_endpoint ?? null,
       }))
     );
@@ -108,6 +111,7 @@ export default async function handler(
           {
             purge: "individual",
             purge_urls: [
+              `https://hamdast.paziresh24.com/api/v1/widgets/?id=${profile?.data?.data?.id}`,
               `https://www.paziresh24.com/dr/${profile?.data?.data?.slug}/`,
             ],
           },
@@ -153,14 +157,24 @@ export default async function handler(
 
     try {
       const widget = await pb
-        .collection("profile_widgets")
-        .getFirstListItem(`profile_id = "${profile_id}"`, {
+        .collection("widgets")
+        .getFirstListItem(`app = "${app_id}"`, {
           headers: {
             x_token: publicRuntimeConfig.HAMDAST_TOKEN,
           },
         });
+      const profileWidget = await pb
+        .collection("profile_widgets")
+        .getFirstListItem(
+          `profile_id = "${profile_id}" && widget = "${widget.id}"`,
+          {
+            headers: {
+              x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+            },
+          }
+        );
 
-      await pb.collection("profile_widgets").delete(widget.id, {
+      await pb.collection("profile_widgets").delete(profileWidget.id, {
         headers: {
           x_token: publicRuntimeConfig.HAMDAST_TOKEN,
         },
@@ -172,6 +186,7 @@ export default async function handler(
           {
             purge: "individual",
             purge_urls: [
+              `https://hamdast.paziresh24.com/api/v1/widgets/?id=${profile_id}`,
               `https://www.paziresh24.com/dr/${profile?.data?.data?.slug}/`,
             ],
           },
