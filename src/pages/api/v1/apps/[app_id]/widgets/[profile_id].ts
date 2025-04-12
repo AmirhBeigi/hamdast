@@ -189,7 +189,7 @@ export default async function handler(
     const { profile_id } = req.query;
     const { placements, placements_metadata } = req.body;
 
-    if (Object.keys(placements_metadata).length > 0) {
+    if (placements_metadata && Object.keys(placements_metadata).length > 0) {
       const placementTypes = [
         "head",
         "section_one",
