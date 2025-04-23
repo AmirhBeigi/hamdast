@@ -85,7 +85,7 @@ export default async function handler(
   }
 
   if (req.method == "GET") {
-    const { profile_id } = req.query;
+    const { provider_id } = req.query;
 
     const widget = await pb
       .collection("widgets")
@@ -99,7 +99,7 @@ export default async function handler(
       const profileWidget = await pb
         .collection("profile_widgets")
         .getFirstListItem(
-          `profile_id = "${profile_id}" && widget = "${widget.id}"`,
+          `provider_id = "${provider_id}" && widget = "${widget.id}"`,
           {
             headers: {
               x_token: publicRuntimeConfig.HAMDAST_TOKEN,
@@ -108,7 +108,7 @@ export default async function handler(
         );
 
       return res.status(200).json({
-        id: profile_id,
+        id: provider_id,
         placements:
           profileWidget?.placement?.length > 0
             ? profileWidget?.placement
@@ -123,7 +123,7 @@ export default async function handler(
   }
 
   if (req.method == "DELETE") {
-    const { profile_id } = req.query;
+    const { provider_id } = req.query;
 
     try {
       const widget = await pb
@@ -137,7 +137,7 @@ export default async function handler(
       const profileWidget = await pb
         .collection("profile_widgets")
         .getFirstListItem(
-          `profile_id = "${profile_id}" && widget = "${widget.id}"`,
+          `provider_id = "${provider_id}" && widget = "${widget.id}"`,
           {
             headers: {
               x_token: publicRuntimeConfig.HAMDAST_TOKEN,
@@ -152,10 +152,10 @@ export default async function handler(
       });
 
       const { data: slugData } = await axios.get(
-        `https://api.paziresh24.com/V1/doctor/slug?doctor_id=${profile_id}&server_id=1`
+        `https://apigw.paziresh24.com/v1/providers?id=${provider_id}`
       );
 
-      const slug = slugData?.data?.slug;
+      const slug = slugData?.providers[0]?.slug;
 
       try {
         await axios.post(
@@ -163,7 +163,7 @@ export default async function handler(
           {
             purge: "individual",
             purge_urls: [
-              `https://hamdast.paziresh24.com/api/v1/widgets/?id=${profile_id}`,
+              `https://hamdast.paziresh24.com/api/v1/widgets/?provider_id=${provider_id}`,
               `https://www.paziresh24.com/dr/${slug}/`,
             ],
           },
@@ -186,7 +186,7 @@ export default async function handler(
   }
 
   if (req.method == "PUT") {
-    const { profile_id } = req.query;
+    const { provider_id } = req.query;
     const { placements, placements_metadata } = req.body;
 
     if (placements_metadata && Object.keys(placements_metadata).length > 0) {
@@ -216,10 +216,10 @@ export default async function handler(
 
     try {
       const { data: slugData } = await axios.get(
-        `https://api.paziresh24.com/V1/doctor/slug?doctor_id=${profile_id}&server_id=1`
+        `https://apigw.paziresh24.com/v1/providers?id=${provider_id}`
       );
 
-      slug = slugData?.data?.slug;
+      slug = slugData?.providers[0]?.slug;
 
       if (!slug) {
         return res.status(404).json({
@@ -246,7 +246,7 @@ export default async function handler(
         profileWidgets = await pb
           .collection("profile_widgets")
           .getFirstListItem(
-            `profile_id = "${profile_id}" && widget = "${widget.id}"`,
+            `provider_id = "${provider_id}" && widget = "${widget.id}"`,
             {
               headers: {
                 x_token: publicRuntimeConfig.HAMDAST_TOKEN,
@@ -271,7 +271,7 @@ export default async function handler(
         if (!profileWidgets) {
           await pb.collection("profile_widgets").create(
             {
-              profile_id: profile_id,
+              provider_id: provider_id,
               widget: widget.id,
               placement: placements,
               placements_metadata,
@@ -296,7 +296,7 @@ export default async function handler(
           {
             purge: "individual",
             purge_urls: [
-              `https://hamdast.paziresh24.com/api/v1/widgets/?id=${profile_id}`,
+              `https://hamdast.paziresh24.com/api/v1/widgets/?provider_id=${provider_id}`,
               `https://www.paziresh24.com/dr/${slug}/`,
             ],
           },
