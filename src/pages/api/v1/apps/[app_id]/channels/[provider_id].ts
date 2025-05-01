@@ -87,8 +87,8 @@ export default async function handler(
   if (req.method == "GET") {
     const { provider_id } = req.query;
 
-    const widget = await pb
-      .collection("widgets")
+    const channel = await pb
+      .collection("channels")
       .getFirstListItem(`app = "${app.id}"`, {
         headers: {
           x_token: publicRuntimeConfig.HAMDAST_TOKEN,
@@ -96,10 +96,10 @@ export default async function handler(
       });
 
     try {
-      const profileWidget = await pb
-        .collection("profile_widgets")
+      const providerChannel = await pb
+        .collection("provider_channels")
         .getFirstListItem(
-          `provider_id = "${provider_id}" && widget = "${widget.id}"`,
+          `provider_id = "${provider_id}" && channel = "${channel.id}"`,
           {
             headers: {
               x_token: publicRuntimeConfig.HAMDAST_TOKEN,
@@ -109,15 +109,11 @@ export default async function handler(
 
       return res.status(200).json({
         id: provider_id,
-        placements:
-          profileWidget?.placement?.length > 0
-            ? profileWidget?.placement
-            : widget?.placement,
-        placements_metadata: profileWidget?.placements_metadata ?? {},
+        display_name: channel.display_name,
       });
     } catch (error) {
       return res.status(404).json({
-        message: "Widget not found",
+        message: "Channel not found",
       });
     }
   }
@@ -126,18 +122,18 @@ export default async function handler(
     const { provider_id } = req.query;
 
     try {
-      const widget = await pb
-        .collection("widgets")
+      const channel = await pb
+        .collection("channels")
         .getFirstListItem(`app = "${app.id}"`, {
           headers: {
             x_token: publicRuntimeConfig.HAMDAST_TOKEN,
           },
         });
 
-      const profileWidget = await pb
-        .collection("profile_widgets")
+      const providerChannel = await pb
+        .collection("provider_channels")
         .getFirstListItem(
-          `provider_id = "${provider_id}" && widget = "${widget.id}"`,
+          `provider_id = "${provider_id}" && channel = "${channel.id}"`,
           {
             headers: {
               x_token: publicRuntimeConfig.HAMDAST_TOKEN,
@@ -145,7 +141,7 @@ export default async function handler(
           }
         );
 
-      await pb.collection("profile_widgets").delete(profileWidget.id, {
+      await pb.collection("provider_channels").delete(providerChannel.id, {
         headers: {
           x_token: publicRuntimeConfig.HAMDAST_TOKEN,
         },

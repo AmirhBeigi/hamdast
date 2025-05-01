@@ -12,7 +12,7 @@ export default async function handler(
   pb.autoCancellation(false);
   await NextCors(req, res, {
     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE", "OPTIONS"],
-    origin: "*",
+    origin: new RegExp(".paziresh24."),
     preflightContinue: true,
     optionsSuccessStatus: 200,
     credentials: true,
@@ -29,14 +29,8 @@ export default async function handler(
       "X-Api-Version",
       "token",
       "Authorization",
-      "X-Api-KEY",
-      "x-api-key",
     ],
   });
-
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
-  }
 
   const { app_id } = req.query;
 
@@ -85,9 +79,13 @@ export default async function handler(
     });
   }
 
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
   if (req.method == "GET") {
-    const widget = await pb
-      .collection("widgets")
+    const channel = await pb
+      .collection("channels")
       .getFirstListItem(`app = "${app.id}"`, {
         headers: {
           x_token: publicRuntimeConfig.HAMDAST_TOKEN,
@@ -95,26 +93,23 @@ export default async function handler(
       });
 
     try {
-      const profileWidgets = await pb
-        .collection("profile_widgets")
+      const providerChannels = await pb
+        .collection("provider_channels")
         .getFullList({
-          filter: `widget = "${widget.id}"`,
+          filter: `channel = "${channel.id}"`,
           headers: {
             x_token: publicRuntimeConfig.HAMDAST_TOKEN,
           },
         });
 
       return res.status(200).json(
-        profileWidgets?.map((item) => ({
+        providerChannels?.map((item) => ({
           provider_id: item.provider_id,
-          placements:
-            item?.placement?.length > 0 ? item?.placement : widget?.placement,
-          placements_metadata: item.placements_metadata ?? {},
         }))
       );
     } catch (error) {
       return res.status(404).json({
-        message: "Widget not found",
+        message: "Channel not found",
       });
     }
   }
