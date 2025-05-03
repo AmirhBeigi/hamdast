@@ -2,9 +2,9 @@
 // This file is owned by you, feel free to edit as you see fit.
 import * as React from "react";
 import { PageParamsProvider as PageParamsProvider__ } from "@plasmicapp/react-web/lib/host";
-import GlobalContextsProvider from "../../../../components/plasmic/hamdast/PlasmicGlobalContextsProvider";
+import GlobalContextsProvider from "../../../../../components/plasmic/hamdast/PlasmicGlobalContextsProvider";
 
-import { PlasmicTransactions } from "../../../../components/plasmic/hamdast/PlasmicTransactions";
+import { PlasmicTransactions } from "../../../../../components/plasmic/hamdast/PlasmicTransactions";
 import { useRouter } from "next/router";
 
 function Transactions() {
