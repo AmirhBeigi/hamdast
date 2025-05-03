@@ -1,6 +1,6 @@
-// @ts-nocheck
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /* prettier-ignore-start */
 
 /** @jsxRuntime classic */
@@ -325,8 +325,12 @@ function PlasmicTransactions__RenderFunc(props: {
               selectedMenu={(() => {
                 try {
                   return (
-                    $ctx.pageRoute.split("/")[3][0].toUpperCase() +
-                    $ctx.pageRoute.split("/")[3].slice(1)
+                    $ctx.pageRoute
+                      .split("/")
+                      [$ctx.pageRoute.split("/")?.length - 1][0].toUpperCase() +
+                    $ctx.pageRoute
+                      .split("/")
+                      [$ctx.pageRoute.split("/")?.length - 1].slice(1)
                   );
                 } catch (e) {
                   if (
@@ -363,12 +367,22 @@ function PlasmicTransactions__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__i57Kc
+                    sty.text___6KWmF
                   )}
                 >
-                  {
-                    "\u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627\u06cc \u0645\u0627\u0644\u06cc"
-                  }
+                  <React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ color: "#0000003D" }}
+                    >
+                      {"\u06a9\u0633\u0628 \u062f\u0631\u0622\u0645\u062f / "}
+                    </span>
+                    <React.Fragment>
+                      {
+                        "\u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627\u06cc \u0645\u0627\u0644\u06cc"
+                      }
+                    </React.Fragment>
+                  </React.Fragment>
                 </div>
                 <Stack__
                   as={"div"}
@@ -417,7 +431,7 @@ function PlasmicTransactions__RenderFunc(props: {
                         sty.text__x7TEm
                       )}
                     >
-                      {"\u0639\u0646\u0648\u0627\u0646"}
+                      {"\u0646\u0627\u0645 \u0645\u062d\u0635\u0648\u0644"}
                     </div>
                   </Stack__>
                   <Stack__
@@ -891,15 +905,15 @@ type NodeComponentProps<T extends NodeNameType> =
     args?: PlasmicTransactions__ArgsType;
     overrides?: NodeOverridesType<T>;
   } & Omit<PlasmicTransactions__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
-    /* Specify args directly as props*/ Omit<
-      PlasmicTransactions__ArgsType,
-      ReservedPropsType
-    > &
-    /* Specify overrides for each element directly as props*/ Omit<
+    // Specify args directly as props
+    Omit<PlasmicTransactions__ArgsType, ReservedPropsType> &
+    // Specify overrides for each element directly as props
+    Omit<
       NodeOverridesType<T>,
       ReservedPropsType | VariantPropType | ArgPropType
     > &
-    /* Specify props for the root element*/ Omit<
+    // Specify props for the root element
+    Omit<
       Partial<React.ComponentProps<NodeDefaultElementType[T]>>,
       ReservedPropsType | VariantPropType | ArgPropType | DescendantsType<T>
     >;
