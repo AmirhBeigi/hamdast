@@ -132,7 +132,8 @@
           "componentImportPath": "@plasmicpkgs/radix-ui"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "qo5fwZT3vwQ9RjjQNWCz9z",
@@ -531,7 +532,7 @@
           "projectId": "bE9NMB942w5e6uFrcCxfJN",
           "renderModuleFilePath": "plasmic/hamdast/PlasmicTransactions.tsx",
           "importSpec": {
-            "modulePath": "../src/pages/apps/[id]/transactions.tsx"
+            "modulePath": "../src/pages/apps/[id]/monetization/transactions.tsx"
           },
           "cssFilePath": "plasmic/hamdast/PlasmicTransactions.module.css",
           "scheme": "blackbox",
@@ -882,6 +883,33 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/apps/liom"
+        },
+        {
+          "id": "I68B0bLmdK_3",
+          "name": "Products",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicProducts.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/apps/[id]/monetization/products.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicProducts.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/apps/[id]/monetization/products"
+        },
+        {
+          "id": "FXUsKM4SitKY",
+          "name": "ProductCard",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicProductCard.tsx",
+          "importSpec": {
+            "modulePath": "ProductCard.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicProductCard.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -1084,6 +1112,36 @@
           "id": "s6ZdUpIWLunB",
           "name": "Icon32Icon",
           "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon32.tsx"
+        },
+        {
+          "id": "5jr5YwKHRzM_",
+          "name": "Icon33Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon33.tsx"
+        },
+        {
+          "id": "PlgfnLGgEx77",
+          "name": "Icon34Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon34.tsx"
+        },
+        {
+          "id": "m-5uHwTYBv5w",
+          "name": "Icon35Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon35.tsx"
+        },
+        {
+          "id": "GNR7bffuY0r7",
+          "name": "Icon36Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon36.tsx"
+        },
+        {
+          "id": "jJklr8JrZZGy",
+          "name": "Icon37Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon37.tsx"
+        },
+        {
+          "id": "CVfbTh-PFUte",
+          "name": "Icon38Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon38.tsx"
         }
       ],
       "images": [
@@ -1665,7 +1723,8 @@
           "componentImportPath": "@plasmicpkgs/antd5/skinny/registerBreadcrumb"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "aEHVN5v6mfM4eovDsL8Z7d",
@@ -2287,7 +2346,8 @@
           "componentImportPath": "@plasmicapp/react-web/lib/data-sources"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "9yPKYrtYPnCNEj6BTTfHnY",
@@ -2397,7 +2457,8 @@
           "componentImportPath": "@plasmicpkgs/plasmic-embed-css"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "pkMLinFwM9pzwv5S5KpiAu",
@@ -2864,6 +2925,6 @@
   "nextjsConfig": {
     "pagesDir": "../src/pages"
   },
-  "cliVersion": "0.1.335",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.335/dist/plasmic.schema.json"
+  "cliVersion": "0.1.337",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.337/dist/plasmic.schema.json"
 }

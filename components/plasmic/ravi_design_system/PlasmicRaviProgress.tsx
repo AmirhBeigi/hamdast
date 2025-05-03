@@ -1,6 +1,6 @@
-// @ts-nocheck
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /* prettier-ignore-start */
 
 /** @jsxRuntime classic */
@@ -72,10 +72,7 @@ export type PlasmicRaviProgress__VariantsArgs = {};
 type VariantPropType = keyof PlasmicRaviProgress__VariantsArgs;
 export const PlasmicRaviProgress__VariantProps = new Array<VariantPropType>();
 
-export type PlasmicRaviProgress__ArgsType = {
-  lable?: string;
-  value?: number;
-};
+export type PlasmicRaviProgress__ArgsType = { lable?: string; value?: number };
 type ArgPropType = keyof PlasmicRaviProgress__ArgsType;
 export const PlasmicRaviProgress__ArgProps = new Array<ArgPropType>(
   "lable",
@@ -258,15 +255,15 @@ type NodeComponentProps<T extends NodeNameType> =
     args?: PlasmicRaviProgress__ArgsType;
     overrides?: NodeOverridesType<T>;
   } & Omit<PlasmicRaviProgress__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
-    /* Specify args directly as props*/ Omit<
-      PlasmicRaviProgress__ArgsType,
-      ReservedPropsType
-    > &
-    /* Specify overrides for each element directly as props*/ Omit<
+    // Specify args directly as props
+    Omit<PlasmicRaviProgress__ArgsType, ReservedPropsType> &
+    // Specify overrides for each element directly as props
+    Omit<
       NodeOverridesType<T>,
       ReservedPropsType | VariantPropType | ArgPropType
     > &
-    /* Specify props for the root element*/ Omit<
+    // Specify props for the root element
+    Omit<
       Partial<React.ComponentProps<NodeDefaultElementType[T]>>,
       ReservedPropsType | VariantPropType | ArgPropType | DescendantsType<T>
     >;

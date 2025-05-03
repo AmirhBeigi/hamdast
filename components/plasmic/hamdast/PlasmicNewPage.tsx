@@ -1,6 +1,6 @@
-// @ts-nocheck
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /* prettier-ignore-start */
 
 /** @jsxRuntime classic */
@@ -344,31 +344,20 @@ function PlasmicNewPage__RenderFunc(props: {
               onClick={async event => {
                 const $steps = {};
 
-                $steps["updateStateVariable"] = true
+                $steps["runElementAction"] = true
                   ? (() => {
                       const actionArgs = {};
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-                        undefined;
+                      return (({ tplRef, action, args }) => {
+                        return $refs?.[tplRef]?.[action]?.(...(args ?? []));
                       })?.apply(null, [actionArgs]);
                     })()
                   : undefined;
                 if (
-                  $steps["updateStateVariable"] != null &&
-                  typeof $steps["updateStateVariable"] === "object" &&
-                  typeof $steps["updateStateVariable"].then === "function"
+                  $steps["runElementAction"] != null &&
+                  typeof $steps["runElementAction"] === "object" &&
+                  typeof $steps["runElementAction"].then === "function"
                 ) {
-                  $steps["updateStateVariable"] = await $steps[
-                    "updateStateVariable"
-                  ];
+                  $steps["runElementAction"] = await $steps["runElementAction"];
                 }
               }}
             />
@@ -792,6 +781,7 @@ function PlasmicNewPage__RenderFunc(props: {
                         throw e;
                       }
                     })(),
+                    hideActions: true,
                     isDoctor: false,
                     isLoadingSendReport: false,
                     isVisited: false,
@@ -888,15 +878,15 @@ type NodeComponentProps<T extends NodeNameType> =
     args?: PlasmicNewPage__ArgsType;
     overrides?: NodeOverridesType<T>;
   } & Omit<PlasmicNewPage__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
-    /* Specify args directly as props*/ Omit<
-      PlasmicNewPage__ArgsType,
-      ReservedPropsType
-    > &
-    /* Specify overrides for each element directly as props*/ Omit<
+    // Specify args directly as props
+    Omit<PlasmicNewPage__ArgsType, ReservedPropsType> &
+    // Specify overrides for each element directly as props
+    Omit<
       NodeOverridesType<T>,
       ReservedPropsType | VariantPropType | ArgPropType
     > &
-    /* Specify props for the root element*/ Omit<
+    // Specify props for the root element
+    Omit<
       Partial<React.ComponentProps<NodeDefaultElementType[T]>>,
       ReservedPropsType | VariantPropType | ArgPropType | DescendantsType<T>
     >;

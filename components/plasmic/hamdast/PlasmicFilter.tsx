@@ -1,6 +1,6 @@
-// @ts-nocheck
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /* prettier-ignore-start */
 
 /** @jsxRuntime classic */
@@ -78,10 +78,7 @@ export type PlasmicFilter__VariantsArgs = {
 type VariantPropType = keyof PlasmicFilter__VariantsArgs;
 export const PlasmicFilter__VariantProps = new Array<VariantPropType>("active");
 
-export type PlasmicFilter__ArgsType = {
-  text?: string;
-  onClick?: () => void;
-};
+export type PlasmicFilter__ArgsType = { text?: string; onClick?: () => void };
 type ArgPropType = keyof PlasmicFilter__ArgsType;
 export const PlasmicFilter__ArgProps = new Array<ArgPropType>(
   "text",
@@ -243,15 +240,15 @@ type NodeComponentProps<T extends NodeNameType> =
     args?: PlasmicFilter__ArgsType;
     overrides?: NodeOverridesType<T>;
   } & Omit<PlasmicFilter__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
-    /* Specify args directly as props*/ Omit<
-      PlasmicFilter__ArgsType,
-      ReservedPropsType
-    > &
-    /* Specify overrides for each element directly as props*/ Omit<
+    // Specify args directly as props
+    Omit<PlasmicFilter__ArgsType, ReservedPropsType> &
+    // Specify overrides for each element directly as props
+    Omit<
       NodeOverridesType<T>,
       ReservedPropsType | VariantPropType | ArgPropType
     > &
-    /* Specify props for the root element*/ Omit<
+    // Specify props for the root element
+    Omit<
       Partial<React.ComponentProps<NodeDefaultElementType[T]>>,
       ReservedPropsType | VariantPropType | ArgPropType | DescendantsType<T>
     >;

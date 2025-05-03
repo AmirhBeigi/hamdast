@@ -1,6 +1,6 @@
-// @ts-nocheck
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /* prettier-ignore-start */
 
 /** @jsxRuntime classic */
@@ -80,9 +80,7 @@ export const PlasmicRaviAlert__VariantProps = new Array<VariantPropType>(
   "isSmall"
 );
 
-export type PlasmicRaviAlert__ArgsType = {
-  content?: string;
-};
+export type PlasmicRaviAlert__ArgsType = { content?: string };
 type ArgPropType = keyof PlasmicRaviAlert__ArgsType;
 export const PlasmicRaviAlert__ArgProps = new Array<ArgPropType>("content");
 
@@ -249,15 +247,15 @@ type NodeComponentProps<T extends NodeNameType> =
     args?: PlasmicRaviAlert__ArgsType;
     overrides?: NodeOverridesType<T>;
   } & Omit<PlasmicRaviAlert__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
-    /* Specify args directly as props*/ Omit<
-      PlasmicRaviAlert__ArgsType,
-      ReservedPropsType
-    > &
-    /* Specify overrides for each element directly as props*/ Omit<
+    // Specify args directly as props
+    Omit<PlasmicRaviAlert__ArgsType, ReservedPropsType> &
+    // Specify overrides for each element directly as props
+    Omit<
       NodeOverridesType<T>,
       ReservedPropsType | VariantPropType | ArgPropType
     > &
-    /* Specify props for the root element*/ Omit<
+    // Specify props for the root element
+    Omit<
       Partial<React.ComponentProps<NodeDefaultElementType[T]>>,
       ReservedPropsType | VariantPropType | ArgPropType | DescendantsType<T>
     >;
