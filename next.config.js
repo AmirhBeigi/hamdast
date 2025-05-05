@@ -14,6 +14,7 @@ const nextConfig = {
     HAMDAST_TOKEN: process.env.HAMDAST_TOKEN,
     SIB_ZAMINI_API_KEY: process.env.SIB_ZAMINI_API_KEY,
     ARVAN: process.env.ARVAN,
+    PANEL_TOKEN: process.env.PANEL_TOKEN,
   },
 };
 
