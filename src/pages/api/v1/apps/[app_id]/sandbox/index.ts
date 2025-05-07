@@ -156,9 +156,9 @@ export default async function handler(
       ? JSON.parse(JSON.stringify(findUser?.data))?.user?.gender
       : user?.gender === "male"
       ? 1
-      : 0;
+      : 2;
 
-    const medicalCode = `h_${record?.id}`;
+    const medicalCode = `h_${record?.id.slice(0, 8)}`;
 
     const add = await axios.post(
       "https://panel.paziresh24.com/booking/provider/e5d0fa25-a8e1-40db-a957-97aa0af1c0ee/add",
