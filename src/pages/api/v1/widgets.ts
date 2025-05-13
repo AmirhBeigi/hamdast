@@ -57,7 +57,10 @@ export default async function handler(
             ? item?.placement
             : item?.expand?.widget?.placement,
         placements_metadata: item?.placements_metadata ?? {},
-        display_conditions: item?.display_conditions ?? null,
+        display_conditions:
+          item?.display_conditions?.length > 0
+            ? item?.display_conditions
+            : item?.expand?.widget?.display_conditions,
         data_endpoint: item?.expand?.widget?.data_endpoint ?? null,
       }))
     );
