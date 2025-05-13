@@ -3,6 +3,7 @@ import { pb } from "../../../../../../../pocketbase";
 import config from "next/config";
 import axios from "axios";
 import NextCors from "nextjs-cors";
+import { isUUID } from "@/lib/utils";
 const { publicRuntimeConfig } = config();
 
 export default async function handler(
@@ -152,11 +153,26 @@ export default async function handler(
         },
       });
 
-      const { data: slugData } = await axios.get(
-        `https://apigw.paziresh24.com/v1/providers?id=${provider_id}`
-      );
+      let slug = "";
 
-      const slug = slugData?.providers[0]?.slug;
+      if (
+        (provider_id as string).startsWith("doctor_") &&
+        (provider_id as string)?.split("_")?.length == 3
+      ) {
+        const { data: slugData } = await axios.get(
+          `https://api.paziresh24.com/V1/doctor/slug?doctor_id=${
+            (provider_id as string)?.split("_")[1]
+          }&server_id=${(provider_id as string)?.split("_")[2]}`
+        );
+
+        slug = slugData?.data?.slug;
+      } else {
+        const { data: slugData } = await axios.get(
+          `https://apigw.paziresh24.com/v1/providers?id=${provider_id}`
+        );
+
+        slug = slugData?.providers[0]?.slug;
+      }
 
       try {
         await axios.post(
@@ -214,8 +230,26 @@ export default async function handler(
     }
 
     let slug;
-
     try {
+      if (
+        (provider_id as string).startsWith("doctor_") &&
+        (provider_id as string)?.split("_")?.length == 3
+      ) {
+        const { data: slugData } = await axios.get(
+          `https://api.paziresh24.com/V1/doctor/slug?doctor_id=${
+            (provider_id as string)?.split("_")[1]
+          }&server_id=${(provider_id as string)?.split("_")[2]}`
+        );
+
+        slug = slugData?.data?.slug;
+
+        if (!slug) {
+          return res.status(404).json({
+            message: "Profile not found",
+          });
+        }
+        return;
+      }
       const { data: slugData } = await axios.get(
         `https://apigw.paziresh24.com/v1/providers?id=${provider_id}`
       );
