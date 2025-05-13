@@ -235,12 +235,6 @@ export default async function handler(
         (provider_id as string).startsWith("doctor_") &&
         (provider_id as string)?.split("_")?.length == 3
       ) {
-        console.log(
-          "hello",
-          `https://api.paziresh24.com/V1/doctor/slug?doctor_id=${
-            (provider_id as string)?.split("_")[1]
-          }&server_id=${(provider_id as string)?.split("_")[2]}`
-        );
         const { data: slugData } = await axios.get(
           `https://api.paziresh24.com/V1/doctor/slug?doctor_id=${
             (provider_id as string)?.split("_")[1]
