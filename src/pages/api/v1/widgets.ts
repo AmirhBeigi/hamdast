@@ -37,10 +37,10 @@ export default async function handler(
   }
 
   if (req.method == "GET") {
-    const { id, provider_id } = req.query;
+    const { profile_id, provider_id } = req.query;
 
     const data = await pb.collection("profile_widgets").getFullList({
-      filter: `profile_id="${id}" || provider_id ="${provider_id}"`,
+      filter: `profile_id="${profile_id}" || provider_id ="${provider_id}"`,
       expand: "widget",
       headers: {
         x_token: publicRuntimeConfig.HAMDAST_TOKEN,
