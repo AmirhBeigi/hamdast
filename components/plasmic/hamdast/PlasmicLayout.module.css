@@ -323,6 +323,17 @@
   width: 22px;
   height: 22px;
 }
+.menu__zADn7:global(.__wab_instance) {
+  max-width: 100%;
+  position: relative;
+}
+.svg__ndGbf {
+  position: relative;
+  object-fit: cover;
+  max-width: 100%;
+  width: 22px;
+  height: 22px;
+}
 .freeBox__zqKrN {
   display: flex;
   flex-direction: column;
