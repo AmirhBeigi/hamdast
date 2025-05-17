@@ -283,12 +283,9 @@ function PlasmicTransactionCard__RenderFunc(props: {
             letters={(() => {
               try {
                 return (() => {
-                  const name =
-                    $state.apiRequest2[$props.currentIndex]?.data?.users?.[0]
-                      ?.name?.[0];
+                  const name = $state.apiRequest2?.data?.users?.[0]?.name?.[0];
                   const family =
-                    $state.apiRequest2[$props.currentIndex]?.data?.users?.[0]
-                      ?.family?.[0];
+                    $state.apiRequest2?.data?.users?.[0]?.family?.[0];
                   return (name ? name : "ک") + "" + (family ? family : "ب");
                 })();
               } catch (e) {
@@ -316,12 +313,8 @@ function PlasmicTransactionCard__RenderFunc(props: {
               {(() => {
                 try {
                   return (() => {
-                    const name =
-                      $state.apiRequest2[$props.currentIndex]?.data?.users?.[0]
-                        ?.name;
-                    const family =
-                      $state.apiRequest2[$props.currentIndex]?.data?.users?.[0]
-                        ?.family;
+                    const name = $state.apiRequest2?.data?.users?.[0]?.name;
+                    const family = $state.apiRequest2?.data?.users?.[0]?.family;
                     return (
                       (name ? name : "کاربر") +
                       " " +

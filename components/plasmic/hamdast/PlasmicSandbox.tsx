@@ -399,7 +399,7 @@ function PlasmicSandbox__RenderFunc(props: {
                   }}
                   url={(() => {
                     try {
-                      return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/monetization/products`;
+                      return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/sandbox`;
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
