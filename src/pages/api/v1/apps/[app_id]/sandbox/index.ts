@@ -120,6 +120,7 @@ export default async function handler(
         profile_url: provider?.data?.providers?.[0]?.slug
           ? `https://www.paziresh24.com/dr/${provider?.data?.providers?.[0]?.slug}`
           : null,
+        slug: provider?.data?.providers?.[0]?.slug,
         created_at: doctor?.last_update ?? null,
       });
     } catch (error) {
