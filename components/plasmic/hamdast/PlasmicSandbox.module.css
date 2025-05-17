@@ -84,7 +84,6 @@
   height: auto;
   max-width: 100%;
   min-width: 0;
-  padding: 8px;
 }
 .freeBox__rvYRk > :global(.__wab_flex-container) {
   flex-direction: column;
@@ -171,7 +170,6 @@
   height: auto;
   max-width: 100%;
   min-width: 0;
-  padding: 8px;
 }
 .freeBox___70Hrg > :global(.__wab_flex-container) {
   flex-direction: column;
@@ -380,7 +378,6 @@
   height: auto;
   max-width: 100%;
   min-width: 0;
-  padding: 8px;
 }
 .freeBox__l8MVh > :global(.__wab_flex-container) {
   flex-direction: column;
