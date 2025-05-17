@@ -76,6 +76,7 @@ import Icon38Icon from "./icons/PlasmicIcon__Icon38"; // plasmic-import: CVfbTh-
 import Icon37Icon from "./icons/PlasmicIcon__Icon37"; // plasmic-import: jJklr8JrZZGy/icon
 import Icon35Icon from "./icons/PlasmicIcon__Icon35"; // plasmic-import: m-5uHwTYBv5w/icon
 import Icon36Icon from "./icons/PlasmicIcon__Icon36"; // plasmic-import: GNR7bffuY0r7/icon
+import Icon39Icon from "./icons/PlasmicIcon__Icon39"; // plasmic-import: NK6m-ppRJfOC/icon
 import Icon33Icon from "./icons/PlasmicIcon__Icon33"; // plasmic-import: 5jr5YwKHRzM_/icon
 import Icon30Icon from "./icons/PlasmicIcon__Icon30"; // plasmic-import: lj0OYAqPaiqC/icon
 import Icon25Icon from "./icons/PlasmicIcon__Icon25"; // plasmic-import: AGSEC-pNDNUM/icon
@@ -154,6 +155,7 @@ function PlasmicLayout__RenderFunc(props: {
   };
 
   const __nextRouter = useNextRouter();
+
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
@@ -888,6 +890,108 @@ function PlasmicLayout__RenderFunc(props: {
                               },
                               operation: 0,
                               value: "Transactions"
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateMenu"] != null &&
+                        typeof $steps["updateMenu"] === "object" &&
+                        typeof $steps["updateMenu"].then === "function"
+                      ) {
+                        $steps["updateMenu"] = await $steps["updateMenu"];
+                      }
+                    }}
+                  />
+
+                  <Menu
+                    active={(() => {
+                      try {
+                        return $state.menu === "Sandbox";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
+                        }
+                        throw e;
+                      }
+                    })()}
+                    className={classNames("__wab_instance", sty.menu__zADn7)}
+                    compact={true}
+                    iconWrapper={
+                      <Icon39Icon
+                        className={classNames(projectcss.all, sty.svg__ndGbf)}
+                        role={"img"}
+                      />
+                    }
+                    name={"\u0633\u0646\u062f\u0628\u0627\u06a9\u0633"}
+                    onClick={async () => {
+                      const $steps = {};
+
+                      $steps["updateMenu2"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              destination: `/apps/${(() => {
+                                try {
+                                  return $props.selectedApp;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()}/buikd/sandbox`
+                            };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateMenu2"] != null &&
+                        typeof $steps["updateMenu2"] === "object" &&
+                        typeof $steps["updateMenu2"].then === "function"
+                      ) {
+                        $steps["updateMenu2"] = await $steps["updateMenu2"];
+                      }
+
+                      $steps["updateMenu"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["menu"]
+                              },
+                              operation: 0,
+                              value: "Sandbox"
                             };
                             return (({
                               variable,

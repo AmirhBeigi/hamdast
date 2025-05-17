@@ -910,6 +910,33 @@
           "cssFilePath": "plasmic/hamdast/PlasmicProductCard.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "eT9QQuVFBchb",
+          "name": "Sandbox",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicSandbox.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/apps/[id]/buikd/sandbox.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicSandbox.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/apps/[id]/buikd/sandbox"
+        },
+        {
+          "id": "hnKe0-Td8nYz",
+          "name": "TransactionCard",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicTransactionCard.tsx",
+          "importSpec": {
+            "modulePath": "TransactionCard.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicTransactionCard.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -1142,6 +1169,11 @@
           "id": "CVfbTh-PFUte",
           "name": "Icon38Icon",
           "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon38.tsx"
+        },
+        {
+          "id": "NK6m-ppRJfOC",
+          "name": "Icon39Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon39.tsx"
         }
       ],
       "images": [
@@ -1964,7 +1996,8 @@
           "componentImportPath": "@plasmicpkgs/react-aria/skinny/registerDialog"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "tGFFjizqpBh1JPEqzUQxjY",
@@ -2872,7 +2905,8 @@
           "componentImportPath": "@plasmicapp/react-web/lib/data-sources"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     }
   ],
   "globalVariants": {
@@ -2925,6 +2959,6 @@
   "nextjsConfig": {
     "pagesDir": "../src/pages"
   },
-  "cliVersion": "0.1.337",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.337/dist/plasmic.schema.json"
+  "cliVersion": "0.1.338",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.338/dist/plasmic.schema.json"
 }

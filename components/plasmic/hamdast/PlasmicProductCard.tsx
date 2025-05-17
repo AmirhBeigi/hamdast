@@ -71,10 +71,13 @@ import plasmic_ravi_design_system_css from "../ravi_design_system/plasmic.module
 import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectcss
 import sty from "./PlasmicProductCard.module.css"; // plasmic-import: FXUsKM4SitKY/css
 
+import Icon24Icon from "./icons/PlasmicIcon__Icon24"; // plasmic-import: 3P4kCztjZFA7/icon
 import IconIcon from "../ravi_design_system/icons/PlasmicIcon__Icon"; // plasmic-import: 2uzLLHig1Vpp/icon
 import ChevronLeftIcon from "../paziresh_24_design_system/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: jS0YlkKPLO7U/icon
 import ChevronRightIcon from "../paziresh_24_design_system/icons/PlasmicIcon__ChevronRight"; // plasmic-import: 0359howWu0cr/icon
 import Icon3Icon from "../ravi_design_system/icons/PlasmicIcon__Icon3"; // plasmic-import: EZeYNol_o3Nk/icon
+
+import __lib_copyToClipboard from "copy-to-clipboard";
 
 createPlasmicElementProxy;
 
@@ -106,7 +109,9 @@ export interface DefaultProductCardProps {
   className?: string;
 }
 
-const $$ = {};
+const $$ = {
+  copyToClipboard: __lib_copyToClipboard
+};
 
 function useNextRouter() {
   try {
@@ -140,6 +145,7 @@ function PlasmicProductCard__RenderFunc(props: {
   };
 
   const __nextRouter = useNextRouter();
+
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
@@ -293,6 +299,51 @@ function PlasmicProductCard__RenderFunc(props: {
         as={"div"}
         hasGap={true}
         className={classNames(projectcss.all, sty.freeBox__wQygW)}
+        onClick={async event => {
+          const $steps = {};
+
+          $steps["runCode"] = true
+            ? (() => {
+                const actionArgs = {
+                  customFunction: async () => {
+                    return $$.copyToClipboard($props.currentItem.id);
+                  }
+                };
+                return (({ customFunction }) => {
+                  return customFunction();
+                })?.apply(null, [actionArgs]);
+              })()
+            : undefined;
+          if (
+            $steps["runCode"] != null &&
+            typeof $steps["runCode"] === "object" &&
+            typeof $steps["runCode"].then === "function"
+          ) {
+            $steps["runCode"] = await $steps["runCode"];
+          }
+
+          $steps["invokeGlobalAction"] = true
+            ? (() => {
+                const actionArgs = {
+                  args: [
+                    undefined,
+                    "\u0634\u0646\u0627\u0633\u0647 \u0645\u062d\u0635\u0648\u0644 \u06a9\u067e\u06cc \u0634\u062f.",
+                    "top-center"
+                  ]
+                };
+                return $globalActions["Fragment.showToast"]?.apply(null, [
+                  ...actionArgs.args
+                ]);
+              })()
+            : undefined;
+          if (
+            $steps["invokeGlobalAction"] != null &&
+            typeof $steps["invokeGlobalAction"] === "object" &&
+            typeof $steps["invokeGlobalAction"].then === "function"
+          ) {
+            $steps["invokeGlobalAction"] = await $steps["invokeGlobalAction"];
+          }
+        }}
       >
         <div
           className={classNames(
@@ -317,6 +368,10 @@ function PlasmicProductCard__RenderFunc(props: {
             })()}
           </React.Fragment>
         </div>
+        <Icon24Icon
+          className={classNames(projectcss.all, sty.svg___11PYs)}
+          role={"img"}
+        />
       </Stack__>
       <Stack__
         as={"div"}
