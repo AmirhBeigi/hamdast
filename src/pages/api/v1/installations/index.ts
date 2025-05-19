@@ -62,14 +62,11 @@ export default async function handler(
     );
     user = paziresh24User.data?.users?.[0];
     const [paziresh24Provider, katibeAttributes] = await Promise.allSettled([
-      axios.get(
-        `https://apigw.paziresh24.com/v1/providers?user_id=${user.id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token.trim()}`,
-          },
-        }
-      ),
+      axios.get(`https://apigw.paziresh24.com/v1/doctor/profile`, {
+        headers: {
+          Authorization: `Bearer ${token.trim()}`,
+        },
+      }),
       axios.get("https://apigw.paziresh24.com/katibe/v1/p24/users/attributes", {
         params: {
           user_id: user.id,
@@ -95,7 +92,7 @@ export default async function handler(
     }
 
     if (paziresh24Provider.status === "fulfilled") {
-      provider = paziresh24Provider.value.data?.providers?.[0];
+      provider = paziresh24Provider.value.data?.data ?? {};
     }
   } catch (error) {
     return res.status(401).json({
@@ -110,7 +107,7 @@ export default async function handler(
 
   growthbook.setAttributes({
     user_id: Number(user?.id),
-    is_doctor: provider?.job_title === "doctor",
+    is_doctor: !!provider?.id,
     ...attributes,
   });
 
@@ -118,7 +115,7 @@ export default async function handler(
 
   const apps = await pb.collection("apps").getFullList({
     expand: "collaborators",
-    filter: `${provider?.job_title !== "doctor" ? `type = 'users'` : ""}`,
+    filter: `${!provider?.id ? `type = 'users'` : ""}`,
     headers: {
       x_token: publicRuntimeConfig.HAMDAST_TOKEN,
     },

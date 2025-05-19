@@ -62,21 +62,21 @@ export default async function handler(
     );
     user = paziresh24User.data?.users?.[0];
     const paziresh24Provider = await axios.get(
-      `https://apigw.paziresh24.com/v1/providers?user_id=${user.id}`,
+      `https://apigw.paziresh24.com/v1/doctor/profile`,
       {
         headers: {
           Authorization: `Bearer ${token.trim()}`,
         },
       }
     );
-    provider = paziresh24Provider.data?.providers?.[0];
+    provider = paziresh24Provider?.data?.data ?? {};
   } catch (error) {
     return res.status(401).json({
       message: "Authentication credentials were not provided.",
     });
   }
 
-  if (provider?.job_title !== "doctor") {
+  if (!provider?.id) {
     return res.status(200).json([]);
   }
 
