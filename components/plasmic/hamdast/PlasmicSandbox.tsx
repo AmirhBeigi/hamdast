@@ -835,7 +835,8 @@ function PlasmicSandbox__RenderFunc(props: {
                                       objRoot: $state,
                                       variablePath: ["loading"]
                                     },
-                                    operation: 0
+                                    operation: 0,
+                                    value: true
                                   };
                                   return (({
                                     variable,
@@ -1050,7 +1051,8 @@ function PlasmicSandbox__RenderFunc(props: {
                                       objRoot: $state,
                                       variablePath: ["loading"]
                                     },
-                                    operation: 0
+                                    operation: 0,
+                                    value: true
                                   };
                                   return (({
                                     variable,
@@ -1082,7 +1084,7 @@ function PlasmicSandbox__RenderFunc(props: {
                               ? (() => {
                                   const actionArgs = {
                                     args: [
-                                      "PUT",
+                                      "PATCH",
                                       (() => {
                                         try {
                                           return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/sandbox/`;
