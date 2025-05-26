@@ -88,12 +88,18 @@ export default async function handler(
   if (req.method == "POST") {
     const { receipt_id } = req.body;
 
+    if (!receipt_id) {
+      return res.status(400).json({
+        message: "The receipt_id field is required.",
+      });
+    }
+
     try {
-      const receipt = await axios.get(
+      const receipt = await axios.post(
         `https://apigw.paziresh24.com/katibe/v1/payments/${receipt_id}/verify`,
         {
           headers: {
-            "x-api-key": app?.tokens?.katibe,
+            token: app?.tokens?.katibe,
           },
         }
       );
