@@ -1,175 +1,108 @@
-(function () {
-  var head = document.getElementsByTagName("head")[0];
-  var script = document.createElement("script");
-  script.async = true;
-  script.id = "rrweb-hamdast-script";
-  script.src =
-    "https://hamdast.paziresh24.com/static/js/scripts/rrweb-all.min.js";
-  head.appendChild(script);
-})();
+function hamdastCommunication(obj) {
+  var clientKey = obj.clientKey;
+  var event = obj.event;
+  var data = obj.data;
+  var promise = obj.promise || false;
 
-function hamdastCommunication({ clientKey, event, data, promise = false }) {
-  const message = {
+  var message = {
     hamdast: {
-      clientKey,
+      clientKey: clientKey,
       host: window.location.origin,
-      event,
-      data,
+      event: event,
+      data: data,
     },
   };
+
   if (promise) {
     return hamdastPostMessagePromise(message);
   }
   window.parent.postMessage(message, "*");
 }
 
-function hamdastRrwebFireWhenReady() {
-  if (typeof window?.rrweb?.record != "undefined") {
-    if (
-      window.hamdast?.replay?.record &&
-      typeof window.hamdast?.replay?.record === "function"
-    ) {
-      window.hamdast?.replay?.record?.();
-    }
-  } else {
-    setTimeout(
-      () =>
-        hamdastRrwebFireWhenReady(
-          window?.rrweb?.record,
-          window.hamdast?.replay?.record
-        ),
-      100
-    );
-  }
-}
-
-const hamdastPostMessagePromise = (message) => {
-  const hash_id = Date.now();
+function hamdastPostMessagePromise(message) {
+  var hash_id = Date.now();
 
   window.parent.postMessage(
     {
       hamdast: {
-        ...message.hamdast,
-        hash_id,
+        clientKey: message.hamdast.clientKey,
+        host: message.hamdast.host,
+        event: message.hamdast.event,
+        data: message.hamdast.data,
+        hash_id: hash_id,
       },
     },
     "*"
   );
 
-  return new Promise((resolve, reject) => {
+  return new Promise(function (resolve, reject) {
     window.addEventListener("message", function (e) {
-      if (e.data?.hamdast?.hash_id === hash_id) {
-        resolve(e.data?.hamdast?.data);
+      if (e.data && e.data.hamdast && e.data.hamdast.hash_id === hash_id) {
+        resolve(e.data.hamdast.data);
       }
     });
-    setTimeout(() => {
+    setTimeout(function () {
       reject();
     }, 60 * 60 * 1000);
   });
-};
+}
 
 window.hamdast = {
-  initialize({ clientKey = "" } = { clientKey: "" }) {
+  initialize: function (options) {
+    options = options || {};
+    var clientKey = options.clientKey || "";
     window.hamdast.clientKey = clientKey;
-    hamdastCommunication({ clientKey, event: "HAMDAST_INITIALIZE" });
-    hamdastRrwebFireWhenReady();
+    hamdastCommunication({ clientKey: clientKey, event: "HAMDAST_INITIALIZE" });
   },
   clientKey: null,
-  getState(state) {
+  getState: function (state) {
     return hamdastCommunication({
       clientKey: window.hamdast.clientKey,
       promise: true,
       event: "HAMDAST_GET_STATE",
       data: {
-        state,
+        state: state,
       },
     });
   },
-  getSessionToken() {
-    return hamdastCommunication({
-      clientKey: window.hamdast.clientKey,
-      promise: true,
-      event: "HAMDAST_GET_SESSION_TOKEN",
-    });
-  },
-  replay: {
-    record() {
-      rrweb.record({
-        emit(event) {
-          window.hamdast?.replay?.events?.push?.(event);
-        },
-        sampling: {
-          input: "last",
-          scroll: 150,
-          media: 800,
-        },
-      });
-
-      // save events every 10 seconds
-      setInterval(window.hamdast?.replay?.save, 10 * 1000);
-    },
-    save() {
-      hamdastCommunication({
-        clientKey: window.hamdast.clientKey,
-        event: "HAMDAST_REPLAY_SAVE",
-        data: { events: window.hamdast?.replay?.events },
-      });
-    },
-    events: [],
-  },
-  openLink({ url }) {
+  openLink: function (obj) {
+    var url = obj.url;
     if (window.self !== window.top) {
       return hamdastCommunication({
         clientKey: window.hamdast.clientKey,
         event: "HAMDAST_OPEN_LINK",
         data: {
-          url,
+          url: url,
         },
       });
     }
     return location.assign(url);
   },
   payment: {
-    async pay({ product_key, payload }) {
+    pay: function (obj) {
       return hamdastCommunication({
         clientKey: window.hamdast.clientKey,
         event: "HAMDAST_PAYMENT_PAY",
         data: {
-          product_key,
-          payload,
+          product_key: obj.product_key,
+          payload: obj.payload,
         },
         promise: true,
       });
     },
   },
   widget: {
-    async addToProfile() {
+    addToProfile: function () {
       return hamdastCommunication({
         clientKey: window.hamdast.clientKey,
         event: "HAMDAST_WIDGET_ADD_TO_PROFILE",
         promise: true,
       });
     },
-    async removeFromProfile() {
+    removeFromProfile: function () {
       return hamdastCommunication({
         clientKey: window.hamdast.clientKey,
         event: "HAMDAST_WIDGET_REMOVE_FROM_PROFILE",
-        promise: true,
-      });
-    },
-  },
-  auth: {
-    async login() {
-      return hamdastCommunication({
-        clientKey: window.hamdast.clientKey,
-        event: "HAMDAST_AUTH_LOGIN",
-        promise: true,
-      });
-    },
-    async getAuthCode() {
-      return hamdastCommunication({
-        clientKey: window.hamdast.clientKey,
-        event: "HAMDAST_AUTH_GET_AUTH_CODE",
         promise: true,
       });
     },
