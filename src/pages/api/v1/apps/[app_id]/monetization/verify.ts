@@ -97,6 +97,7 @@ export default async function handler(
     try {
       const receipt = await axios.post(
         `https://apigw.paziresh24.com/katibe/v1/payments/${receipt_id}/verify`,
+        undefined,
         {
           headers: {
             token: app?.tokens?.katibe,
