@@ -37,10 +37,10 @@ export default async function handler(
   }
 
   if (req.method == "GET") {
-    const { profile_id, provider_id } = req.query;
+    const { user_id } = req.query;
 
     const data = await pb.collection("profile_widgets").getFullList({
-      filter: `profile_id="${profile_id}" || provider_id ="${provider_id}"`,
+      filter: `user_id ="${user_id}"`,
       expand: "widget",
       headers: {
         x_token: publicRuntimeConfig.HAMDAST_TOKEN,
@@ -72,7 +72,7 @@ export default async function handler(
     const cookieStore = req.cookies;
     const token =
       (cookieStore["token"] as string) ||
-      req.headers.authorization?.replace("Bearer", "");
+      req.headers.authorization?.replace("Bearer ", "");
 
     if (!token) {
       return res.status(401).json({
@@ -80,22 +80,24 @@ export default async function handler(
       });
     }
 
-    const profile = await axios.get(
-      "https://api.paziresh24.com/V1/doctor/profile",
-      {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const user = await axios.get("https://apigw.paziresh24.com/v1/auth/me", {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+
+    const user_id = user?.data?.users?.[0]?.id;
+
     const provider = await axios.get(
       "https://apigw.paziresh24.com/v1/providers",
       {
         params: {
-          slug: profile.data?.data?.slug,
+          user_id: user_id,
         },
       }
     );
+
+    const slug = provider?.data?.providers?.[0]?.slug;
 
     const widget = await pb
       .collection("widgets")
@@ -108,8 +110,7 @@ export default async function handler(
     try {
       await pb.collection("profile_widgets").create(
         {
-          profile_id: profile?.data?.data?.id,
-          provider_id: provider?.data?.providers?.[0]?.id,
+          user_id: user_id,
           widget: widget.id,
         },
         {
@@ -125,9 +126,8 @@ export default async function handler(
           {
             purge: "individual",
             purge_urls: [
-              `https://hamdast.paziresh24.com/api/v1/widgets/?id=${profile?.data?.data?.id}`,
-              `https://hamdast.paziresh24.com/api/v1/widgets/?provider_id=${provider?.data?.providers?.[0]?.id}`,
-              `https://www.paziresh24.com/dr/${profile?.data?.data?.slug}/`,
+              `https://hamdast.paziresh24.com/api/v1/widgets/?user_id=${user_id}`,
+              `https://www.paziresh24.com/dr/${slug}/`,
             ],
           },
           {
@@ -152,7 +152,7 @@ export default async function handler(
     const cookieStore = req.cookies;
     const token =
       (cookieStore["token"] as string) ||
-      req.headers.authorization?.replace("Bearer", "");
+      req.headers.authorization?.replace("Bearer ", "");
 
     if (!token) {
       return res.status(401).json({
@@ -160,24 +160,22 @@ export default async function handler(
       });
     }
 
-    const profile = await axios.get(
-      "https://api.paziresh24.com/V1/doctor/profile",
-      {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    const profile_id = profile?.data?.data?.id;
+    const user = await axios.get("https://apigw.paziresh24.com/v1/auth/me", {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+
+    const user_id = user?.data?.users?.[0]?.id;
 
     const provider = await axios.get(
       "https://apigw.paziresh24.com/v1/providers",
       {
-        params: {
-          slug: profile.data?.data?.slug,
-        },
+        params: { user_id: user_id },
       }
     );
+
+    const slug = provider?.data?.providers?.[0]?.slug;
 
     try {
       const widget = await pb
@@ -189,14 +187,11 @@ export default async function handler(
         });
       const profileWidget = await pb
         .collection("profile_widgets")
-        .getFirstListItem(
-          `(profile_id = "${profile_id}" || provider_id = "${provider?.data?.providers?.[0]?.id}") && widget = "${widget.id}"`,
-          {
-            headers: {
-              x_token: publicRuntimeConfig.HAMDAST_TOKEN,
-            },
-          }
-        );
+        .getFirstListItem(`user_id = "${user_id}" && widget = "${widget.id}"`, {
+          headers: {
+            x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+          },
+        });
 
       await pb.collection("profile_widgets").delete(profileWidget.id, {
         headers: {
@@ -210,9 +205,8 @@ export default async function handler(
           {
             purge: "individual",
             purge_urls: [
-              `https://hamdast.paziresh24.com/api/v1/widgets/?id=${profile_id}`,
-              `https://hamdast.paziresh24.com/api/v1/widgets/?provider_id=${provider?.data?.providers?.[0]?.id}`,
-              `https://www.paziresh24.com/dr/${profile?.data?.data?.slug}/`,
+              `https://hamdast.paziresh24.com/api/v1/widgets/?user_id=${user_id}`,
+              `https://www.paziresh24.com/dr/${slug}/`,
             ],
           },
           {

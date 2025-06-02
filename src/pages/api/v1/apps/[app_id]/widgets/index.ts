@@ -106,8 +106,7 @@ export default async function handler(
 
       return res.status(200).json(
         profileWidgets?.map((item) => ({
-          profile_id: item?.profile_id,
-          provider_id: item.provider_id,
+          user_id: item?.user_id,
           placements:
             item?.placement?.length > 0 ? item?.placement : widget?.placement,
           placements_metadata: item.placements_metadata ?? {},

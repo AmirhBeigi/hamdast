@@ -87,7 +87,7 @@ export default async function handler(
   }
 
   if (req.method == "GET") {
-    const { provider_id } = req.query;
+    const { user_id } = req.query;
 
     const widget = await pb
       .collection("widgets")
@@ -100,18 +100,14 @@ export default async function handler(
     try {
       const profileWidget = await pb
         .collection("profile_widgets")
-        .getFirstListItem(
-          `(provider_id = "${provider_id}" || profile_id = "${provider_id}") && widget = "${widget.id}"`,
-          {
-            headers: {
-              x_token: publicRuntimeConfig.HAMDAST_TOKEN,
-            },
-          }
-        );
+        .getFirstListItem(`user_id = "${user_id}" && widget = "${widget.id}"`, {
+          headers: {
+            x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+          },
+        });
 
       return res.status(200).json({
-        profile_id: profileWidget?.profile_id,
-        provider_id: profileWidget?.provider_id,
+        user_id: profileWidget?.user_id,
         placements:
           profileWidget?.placement?.length > 0
             ? profileWidget?.placement
@@ -126,7 +122,7 @@ export default async function handler(
   }
 
   if (req.method == "DELETE") {
-    const { provider_id } = req.query;
+    const { user_id } = req.query;
 
     try {
       const widget = await pb
@@ -139,14 +135,11 @@ export default async function handler(
 
       const profileWidget = await pb
         .collection("profile_widgets")
-        .getFirstListItem(
-          `(provider_id = "${provider_id}" || profile_id = "${provider_id}") && widget = "${widget.id}"`,
-          {
-            headers: {
-              x_token: publicRuntimeConfig.HAMDAST_TOKEN,
-            },
-          }
-        );
+        .getFirstListItem(`user_id = "${user_id}" && widget = "${widget.id}"`, {
+          headers: {
+            x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+          },
+        });
 
       await pb.collection("profile_widgets").delete(profileWidget.id, {
         headers: {
@@ -154,26 +147,11 @@ export default async function handler(
         },
       });
 
-      let slug = "";
+      const { data: slugData } = await axios.get(
+        `https://apigw.paziresh24.com/v1/providers?user_id=${user_id}`
+      );
 
-      if (
-        (provider_id as string).startsWith("doctor_") &&
-        (provider_id as string)?.split("_")?.length == 3
-      ) {
-        const { data: slugData } = await axios.get(
-          `https://api.paziresh24.com/V1/doctor/slug?doctor_id=${
-            (provider_id as string)?.split("_")[1]
-          }&server_id=${(provider_id as string)?.split("_")[2]}`
-        );
-
-        slug = slugData?.data?.slug;
-      } else {
-        const { data: slugData } = await axios.get(
-          `https://apigw.paziresh24.com/v1/providers?id=${provider_id}`
-        );
-
-        slug = slugData?.providers[0]?.slug;
-      }
+      const slug = slugData?.providers[0]?.slug;
 
       try {
         await axios.post(
@@ -181,9 +159,7 @@ export default async function handler(
           {
             purge: "individual",
             purge_urls: [
-              `https://hamdast.paziresh24.com/api/v1/widgets/?provider_id=${provider_id}`,
-              `https://hamdast.paziresh24.com/api/v1/widgets/?profile_id=${profileWidget.profile_id}`,
-              `https://hamdast.paziresh24.com/api/v1/widgets/?provider_id=${provider_id}&profile_id=${profileWidget.profile_id}`,
+              `https://hamdast.paziresh24.com/api/v1/widgets/?user_id=${user_id}`,
               `https://www.paziresh24.com/dr/${slug}/`,
             ],
           },
@@ -206,7 +182,7 @@ export default async function handler(
   }
 
   if (req.method == "PUT") {
-    const { provider_id } = req.query;
+    const { user_id } = req.query;
     const { placements, placements_metadata } = req.body;
 
     if (placements_metadata && Object.keys(placements_metadata).length > 0) {
@@ -233,49 +209,18 @@ export default async function handler(
     }
 
     let slug;
-    let providerIdValue = provider_id;
-    let profileIdValue = provider_id;
+
     try {
-      if (
-        (provider_id as string).startsWith("doctor_") &&
-        (provider_id as string)?.split("_")?.length == 3
-      ) {
-        const { data: slugData } = await axios.get(
-          `https://api.paziresh24.com/V1/doctor/slug?doctor_id=${
-            (provider_id as string)?.split("_")[1]
-          }&server_id=${(provider_id as string)?.split("_")[2]}`
-        );
+      const { data: slugData } = await axios.get(
+        `https://apigw.paziresh24.com/v1/providers?user_id=${user_id}`
+      );
 
-        slug = slugData?.data?.slug;
+      slug = slugData?.providers[0]?.slug;
 
-        if (!slug) {
-          return res.status(404).json({
-            message: "Profile not found",
-          });
-        }
-        const { data: provider } = await axios.get(
-          `https://apigw.paziresh24.com/v1/providers?slug=${slug}`
-        );
-
-        providerIdValue = slugData?.providers[0]?.slug;
-      } else {
-        const { data: slugData } = await axios.get(
-          `https://apigw.paziresh24.com/v1/providers?id=${provider_id}`
-        );
-
-        slug = slugData?.providers[0]?.slug;
-
-        if (!slug) {
-          return res.status(404).json({
-            message: "Profile not found",
-          });
-        }
-
-        const { data: fullProfile } = await axios.get(
-          `https://apigw.paziresh24.com/v1/full-profile/${slug}`
-        );
-
-        profileIdValue = fullProfile?.data?.id;
+      if (!slug) {
+        return res.status(404).json({
+          message: "Profile not found",
+        });
       }
     } catch (error) {
       return res.status(404).json({
@@ -297,7 +242,7 @@ export default async function handler(
         profileWidgets = await pb
           .collection("profile_widgets")
           .getFirstListItem(
-            `(provider_id = "${providerIdValue}" || profile_id = "${profileIdValue}") && widget = "${widget.id}"`,
+            `user_id = "${user_id}" && widget = "${widget.id}"`,
             {
               headers: {
                 x_token: publicRuntimeConfig.HAMDAST_TOKEN,
@@ -322,8 +267,7 @@ export default async function handler(
         if (!profileWidgets) {
           await pb.collection("profile_widgets").create(
             {
-              profile_id: profileIdValue,
-              provider_id: providerIdValue,
+              user_id: user_id,
               widget: widget.id,
               placement: placements,
               placements_metadata,
@@ -348,9 +292,7 @@ export default async function handler(
           {
             purge: "individual",
             purge_urls: [
-              `https://hamdast.paziresh24.com/api/v1/widgets/?provider_id=${providerIdValue}`,
-              `https://hamdast.paziresh24.com/api/v1/widgets/?profile_id=${profileIdValue}`,
-              `https://hamdast.paziresh24.com/api/v1/widgets/?provider_id=${providerIdValue}&profile_id=${profileIdValue}`,
+              `https://hamdast.paziresh24.com/api/v1/widgets/?user_id=${user_id}`,
               `https://www.paziresh24.com/dr/${slug}/`,
             ],
           },
