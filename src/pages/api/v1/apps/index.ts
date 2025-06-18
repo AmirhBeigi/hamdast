@@ -80,7 +80,7 @@ export default async function handler(
   }
 
   if (req.method === "POST") {
-    const { name_fa, key, type } = req.body;
+    const { name_fa, key } = req.body;
     if (!name_fa && !key) {
       return res.status(400).json({});
     }
@@ -88,8 +88,53 @@ export default async function handler(
       name_fa,
       collaborators: [record.id],
       key,
-      type,
     });
+
+    try {
+      const gozarToken = await axios.post(
+        "https://user.paziresh24.com/realms/paziresh24/protocol/openid-connect/token",
+        {
+          grant_type: "client_credentials",
+          client_id: process.env.GOZARGAH_CLIENT_ID,
+          client_secret: process.env.GOZARGAH_CLIENT_SECRET,
+        },
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
+
+      var axios = require("axios").default;
+
+      var options = {
+        method: "POST",
+        url: "https://user.paziresh24.com/admin/realms/paziresh24/clients/",
+        headers: {
+          Authorization: `Bearer ${gozarToken.data?.access_token}`,
+          "Content-Type": "application/json",
+        },
+        data: {
+          clientId: `hamdast-${key}`,
+          name: name_fa,
+          enabled: true,
+          protocol: "openid-connect",
+          publicClient: false,
+          standardFlowEnabled: true,
+          directAccessGrantsEnabled: true,
+          serviceAccountsEnabled: false,
+          consentRequired: true,
+        },
+      };
+      await axios.request(options);
+      await pb.collection("apps").update(app.id, {
+        gozargah_client: `hamdast-${key}`,
+      });
+    } catch (error) {
+      await pb.collection("apps").delete(app.id);
+      return res.status(502).json({});
+    }
+
     return res.status(200).json({
       id: app.id,
       collaborators: app.collaborators,
