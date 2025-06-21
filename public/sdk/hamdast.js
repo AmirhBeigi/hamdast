@@ -86,7 +86,7 @@ window.hamdast = {
         data: {
           product_key: obj.product_key,
           payload: obj.payload,
-          receipt_id: ob.receipt_id,
+          receipt_id: obj.receipt_id,
         },
         promise: true,
       });
