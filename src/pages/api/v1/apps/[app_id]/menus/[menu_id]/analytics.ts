@@ -67,7 +67,7 @@ export default async function handler(
 
     const options = {
       method: "GET",
-      url: "https://hamdast-workflow.darkube.app/webhook/statistics",
+      url: "https://hamdast-workflow.paziresh24.com/webhook/statistics",
       headers: {
         Authorization: `Basic ${publicRuntimeConfig.HAMDAST_LOGGING_TOKEN}`,
         "Content-Type": "application/json",
