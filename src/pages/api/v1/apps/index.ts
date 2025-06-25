@@ -105,8 +105,6 @@ export default async function handler(
         }
       );
 
-      var axios = require("axios").default;
-
       var options = {
         method: "POST",
         url: "https://user.paziresh24.com/admin/realms/paziresh24/clients/",
