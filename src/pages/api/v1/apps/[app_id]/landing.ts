@@ -11,7 +11,7 @@ export default async function handler(
   pb.autoCancellation(false);
   await NextCors(req, res, {
     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE", "OPTIONS"],
-    origin: "*",
+    origin: new RegExp(".paziresh24."),
     preflightContinue: true,
     optionsSuccessStatus: 200,
     credentials: true,
@@ -28,8 +28,6 @@ export default async function handler(
       "X-Api-Version",
       "token",
       "Authorization",
-      "X-Api-KEY",
-      "x-api-key",
     ],
   });
 
