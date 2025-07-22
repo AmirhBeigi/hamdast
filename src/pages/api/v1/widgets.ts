@@ -67,7 +67,7 @@ export default async function handler(
   }
 
   if (req.method == "POST") {
-    const { app_id } = req.body;
+    const { app_id, placements_metadata } = req.body;
 
     const cookieStore = req.cookies;
     const token =
@@ -112,6 +112,7 @@ export default async function handler(
         {
           user_id: user_id,
           widget: widget.id,
+          placements_metadata: placements_metadata ?? null,
         },
         {
           headers: {
