@@ -63,7 +63,7 @@ export default async function handler(
     }
 
     const queryData = await axios.put(
-      `https://apigw.paziresh24.com/katib/v1/payments/${receipt_id}/refund`,
+      `https://apigw.paziresh24.com/katibe/v1/payments/${receipt_id}/refund`,
       {
         headers: {
           token: app.tokens?.katibe,
