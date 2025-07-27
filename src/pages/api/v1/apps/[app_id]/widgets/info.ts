@@ -51,6 +51,7 @@ export default async function handler(
         id: widget.id,
         placement: widget.placement,
         display_conditions: widget?.display_conditions,
+        successful_popup: widget?.successful_popup,
       });
     } catch (error) {
       return res.status(404).json({
