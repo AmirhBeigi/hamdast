@@ -151,8 +151,6 @@ export default async function handler(
     },
   });
 
-  console.log("hi");
-
   res.status(200).json(
     [app].map((app) => ({
       id: app.id,
