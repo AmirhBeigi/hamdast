@@ -82,6 +82,7 @@ export default async function handler(
           client_id: process.env.GOZARGAH_CLIENT_ID,
           client_secret: process.env.GOZARGAH_CLIENT_SECRET,
           redirect_uri: process.env.GOZARGAH_REDIRECT_URI,
+          code,
         },
         {
           headers: {
@@ -102,7 +103,9 @@ export default async function handler(
         name: credential.name,
       });
     } catch (error) {
-      return res.status(502).json({});
+      if (axios.isAxiosError(error)) {
+        return res.status(502).json(error.response?.data);
+      }
     }
   }
 }
