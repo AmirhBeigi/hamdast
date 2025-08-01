@@ -877,9 +877,7 @@ function PlasmicHamdastLogin__RenderFunc(props: {
 
                             $steps["goToNewAppPage"] = true
                               ? (() => {
-                                  const actionArgs = {
-                                    destination: `/apps/new`
-                                  };
+                                  const actionArgs = { destination: `/new` };
                                   return (({ destination }) => {
                                     if (
                                       typeof destination === "string" &&

@@ -204,9 +204,17 @@ function PlasmicAppType__RenderFunc(props: {
       <Stack__
         as={"div"}
         hasGap={true}
-        className={classNames(projectcss.all, sty.freeBox__pbQ10)}
+        className={classNames(projectcss.all, sty.freeBox__pbQ10, {
+          [sty.freeBoxselected__pbQ10L8Tv]: hasVariant(
+            $state,
+            "selected",
+            "selected"
+          )
+        })}
       >
-        <div
+        <Stack__
+          as={"div"}
+          hasGap={true}
           className={classNames(projectcss.all, sty.freeBox__nHxMy, {
             [sty.freeBoxselected__nHxMYl8Tv]: hasVariant(
               $state,
@@ -219,7 +227,14 @@ function PlasmicAppType__RenderFunc(props: {
             className={classNames(
               projectcss.all,
               projectcss.__wab_text,
-              sty.text__eEfPe
+              sty.text__eEfPe,
+              {
+                [sty.textselected__eEfPel8Tv]: hasVariant(
+                  $state,
+                  "selected",
+                  "selected"
+                )
+              }
             )}
           >
             <React.Fragment>
@@ -261,7 +276,7 @@ function PlasmicAppType__RenderFunc(props: {
               })()}
             </React.Fragment>
           </div>
-        </div>
+        </Stack__>
       </Stack__>
     </Stack__>
   ) as React.ReactElement | null;

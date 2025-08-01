@@ -41,8 +41,7 @@
           "componentImportPath": "@plasmicpkgs/react-awesome-reveal"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "sqPBLwEBBKHA2WDuGb17eV",
@@ -132,8 +131,7 @@
           "componentImportPath": "@plasmicpkgs/radix-ui"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "qo5fwZT3vwQ9RjjQNWCz9z",
@@ -258,8 +256,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-basic-components"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "bE9NMB942w5e6uFrcCxfJN",
@@ -912,20 +909,6 @@
           "componentType": "component"
         },
         {
-          "id": "eT9QQuVFBchb",
-          "name": "Sandbox",
-          "type": "managed",
-          "projectId": "bE9NMB942w5e6uFrcCxfJN",
-          "renderModuleFilePath": "plasmic/hamdast/PlasmicSandbox.tsx",
-          "importSpec": {
-            "modulePath": "../src/pages/apps/[id]/buikd/sandbox.tsx"
-          },
-          "cssFilePath": "plasmic/hamdast/PlasmicSandbox.module.css",
-          "scheme": "blackbox",
-          "componentType": "page",
-          "path": "/apps/[id]/buikd/sandbox"
-        },
-        {
           "id": "hnKe0-Td8nYz",
           "name": "TransactionCard",
           "type": "managed",
@@ -937,6 +920,90 @@
           "cssFilePath": "plasmic/hamdast/PlasmicTransactionCard.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "eT9QQuVFBchb",
+          "name": "BuildSandbox",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicBuildSandbox.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/apps/[id]/build/sandbox.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicBuildSandbox.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/apps/[id]/build/sandbox"
+        },
+        {
+          "id": "RN8QdSWhw1VG",
+          "name": "New",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicNew.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/new.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicNew.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/new"
+        },
+        {
+          "id": "01z6Jy-KWQkM",
+          "name": "BuildAuthorization",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicBuildAuthorization.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/apps/[id]/build/authorization.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicBuildAuthorization.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/apps/[id]/build/authorization"
+        },
+        {
+          "id": "thJ-D6wl_-t8",
+          "name": "BuildFeatures",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicBuildFeatures.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/apps/[id]/build/features.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicBuildFeatures.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/apps/[id]/build/features"
+        },
+        {
+          "id": "ixrwwEvs3ED2",
+          "name": "NewPage2",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicNewPage2.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/new-page.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicNewPage2.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/new-page"
+        },
+        {
+          "id": "RAtxP5ozw8mB",
+          "name": "CredentialsSettings",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicCredentialsSettings.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/credentials.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicCredentialsSettings.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/credentials"
         }
       ],
       "icons": [
@@ -1336,8 +1403,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-query"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "kS7YGZfVr6mU43XDQjXELc",
@@ -1359,8 +1425,7 @@
           "componentImportPath": "@plasmicpkgs/react-chartjs-2"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "ohDidvG9XsCeFumugENU3J",
@@ -1760,8 +1825,7 @@
           "componentImportPath": "@plasmicpkgs/antd5/skinny/registerBreadcrumb"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "aEHVN5v6mfM4eovDsL8Z7d",
@@ -1776,8 +1840,7 @@
       "globalContextsFilePath": "",
       "splitsProviderFilePath": "",
       "codeComponents": [],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "kpio2pzukKRJkKg6SSrKTe",
@@ -1792,8 +1855,7 @@
       "globalContextsFilePath": "",
       "splitsProviderFilePath": "",
       "codeComponents": [],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "gmeH6XgPaBtkt51HunAo4g",
@@ -2001,8 +2063,7 @@
           "componentImportPath": "@plasmicpkgs/react-aria/skinny/registerDialog"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "tGFFjizqpBh1JPEqzUQxjY",
@@ -2060,8 +2121,7 @@
       "globalContextsFilePath": "",
       "splitsProviderFilePath": "",
       "codeComponents": [],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "oBJtsp5RgVpcN6KCrDTuQT",
@@ -2495,8 +2555,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-embed-css"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "pkMLinFwM9pzwv5S5KpiAu",
@@ -2964,6 +3023,6 @@
   "nextjsConfig": {
     "pagesDir": "../src/pages"
   },
-  "cliVersion": "0.1.338",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.338/dist/plasmic.schema.json"
+  "cliVersion": "0.1.340",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.340/dist/plasmic.schema.json"
 }
