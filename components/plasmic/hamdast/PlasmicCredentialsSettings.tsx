@@ -468,42 +468,39 @@ function PlasmicCredentialsSettings__RenderFunc(props: {
                           ? (() => {
                               const actionArgs = {
                                 customFunction: async () => {
-                                  return function openOAuthPopup() {
-                                    const width = 500;
-                                    const height = 600;
-                                    const left = (screen.width - width) / 2;
-                                    const top = (screen.height - height) / 2;
-
-                                    const popup = window.open(
-                                      `https://user.paziresh24.com/realms/paziresh24/protocol/openid-connect/auth?client_id=hamdast&redirect_uri=https://hamdast.paziresh24.com/credentials/oauth/${$state.authProvider.user.id}/&response_type=code&kc_idp_hint=gozar`,
-                                      "OAuthPopup",
-                                      `width=${width},height=${height},top=${top},left=${left},resizable=no,scrollbars=yes`
-                                    );
-
-                                    if (popup) {
-                                      // Optional: monitor the popup for closure or message
-                                      const timer = setInterval(() => {
-                                        const popupUrl = popup.location.href;
-
-                                        // Check if we're on the redirect URL and it has a code
-                                        if (popupUrl.includes("code=")) {
-                                          const url = new URL(popupUrl);
-                                          const code =
-                                            url.searchParams.get("code");
-                                          console.log("OAuth code:", code);
-                                          $state.oauthCode = code;
-                                          $state.newApiKeyDialog.open = true;
-
-                                          clearInterval(interval);
-                                          popup.close();
-                                        }
-                                      }, 500);
-                                    } else {
-                                      alert(
-                                        "Popup blocked. Please allow popups for this site."
+                                  return (() => {
+                                    function openOAuthPopup() {
+                                      const width = 500;
+                                      const height = 600;
+                                      const left = (screen.width - width) / 2;
+                                      const top = (screen.height - height) / 2;
+                                      const popup = window.open(
+                                        `https://user.paziresh24.com/realms/paziresh24/protocol/openid-connect/auth?client_id=hamdast&redirect_uri=https://hamdast.paziresh24.com/credentials/oauth/&response_type=code&kc_idp_hint=gozar`,
+                                        "OAuthPopup",
+                                        `width=${width},height=${height},top=${top},left=${left},resizable=no,scrollbars=yes`
                                       );
+                                      if (popup) {
+                                        const timer = setInterval(() => {
+                                          const popupUrl = popup.location.href;
+                                          if (popupUrl.includes("code=")) {
+                                            const url = new URL(popupUrl);
+                                            const code =
+                                              url.searchParams.get("code");
+                                            console.log("OAuth code:", code);
+                                            $state.oauthCode = code;
+                                            popup.close();
+                                            $state.newApiKeyDialog.open = true;
+                                            clearInterval(timer);
+                                          }
+                                        }, 500);
+                                      } else {
+                                        alert(
+                                          "Popup blocked. Please allow popups for this site."
+                                        );
+                                      }
                                     }
-                                  };
+                                    return openOAuthPopup();
+                                  })();
                                 }
                               };
                               return (({ customFunction }) => {
@@ -601,12 +598,12 @@ function PlasmicCredentialsSettings__RenderFunc(props: {
                             onClick={async event => {
                               const $steps = {};
 
-                              $steps["updateLoading"] = true
+                              $steps["updateNewApikeyButtonLoading"] = true
                                 ? (() => {
                                     const actionArgs = {
                                       variable: {
                                         objRoot: $state,
-                                        variablePath: ["loading"]
+                                        variablePath: ["newApikeyButtonLoading"]
                                       },
                                       operation: 0,
                                       value: true
@@ -629,14 +626,16 @@ function PlasmicCredentialsSettings__RenderFunc(props: {
                                   })()
                                 : undefined;
                               if (
-                                $steps["updateLoading"] != null &&
-                                typeof $steps["updateLoading"] === "object" &&
-                                typeof $steps["updateLoading"].then ===
-                                  "function"
+                                $steps["updateNewApikeyButtonLoading"] !=
+                                  null &&
+                                typeof $steps[
+                                  "updateNewApikeyButtonLoading"
+                                ] === "object" &&
+                                typeof $steps["updateNewApikeyButtonLoading"]
+                                  .then === "function"
                               ) {
-                                $steps["updateLoading"] = await $steps[
-                                  "updateLoading"
-                                ];
+                                $steps["updateNewApikeyButtonLoading"] =
+                                  await $steps["updateNewApikeyButtonLoading"];
                               }
 
                               $steps["invokeGlobalAction"] = true

@@ -310,8 +310,50 @@ function PlasmicProductCard__RenderFunc(props: {
           children2={"\u062d\u0630\u0641"}
           className={classNames("__wab_instance", sty.paziresh24Button)}
           color={"red"}
+          loading={(() => {
+            try {
+              return $state.loading;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return [];
+              }
+              throw e;
+            }
+          })()}
           onClick={async event => {
             const $steps = {};
+
+            $steps["updateLoading"] = true
+              ? (() => {
+                  const actionArgs = {
+                    variable: {
+                      objRoot: $state,
+                      variablePath: ["loading"]
+                    },
+                    operation: 0,
+                    value: true
+                  };
+                  return (({ variable, value, startIndex, deleteCount }) => {
+                    if (!variable) {
+                      return;
+                    }
+                    const { objRoot, variablePath } = variable;
+
+                    $stateSet(objRoot, variablePath, value);
+                    return value;
+                  })?.apply(null, [actionArgs]);
+                })()
+              : undefined;
+            if (
+              $steps["updateLoading"] != null &&
+              typeof $steps["updateLoading"] === "object" &&
+              typeof $steps["updateLoading"].then === "function"
+            ) {
+              $steps["updateLoading"] = await $steps["updateLoading"];
+            }
 
             $steps["invokeGlobalAction"] = true
               ? (() => {
@@ -344,6 +386,51 @@ function PlasmicProductCard__RenderFunc(props: {
               typeof $steps["invokeGlobalAction"].then === "function"
             ) {
               $steps["invokeGlobalAction"] = await $steps["invokeGlobalAction"];
+            }
+
+            $steps["runRefresh"] = true
+              ? (() => {
+                  const actionArgs = { eventRef: $props["refresh"] };
+                  return (({ eventRef, args }) => {
+                    return eventRef?.(...(args ?? []));
+                  })?.apply(null, [actionArgs]);
+                })()
+              : undefined;
+            if (
+              $steps["runRefresh"] != null &&
+              typeof $steps["runRefresh"] === "object" &&
+              typeof $steps["runRefresh"].then === "function"
+            ) {
+              $steps["runRefresh"] = await $steps["runRefresh"];
+            }
+
+            $steps["updateLoading2"] = true
+              ? (() => {
+                  const actionArgs = {
+                    variable: {
+                      objRoot: $state,
+                      variablePath: ["loading"]
+                    },
+                    operation: 0,
+                    value: false
+                  };
+                  return (({ variable, value, startIndex, deleteCount }) => {
+                    if (!variable) {
+                      return;
+                    }
+                    const { objRoot, variablePath } = variable;
+
+                    $stateSet(objRoot, variablePath, value);
+                    return value;
+                  })?.apply(null, [actionArgs]);
+                })()
+              : undefined;
+            if (
+              $steps["updateLoading2"] != null &&
+              typeof $steps["updateLoading2"] === "object" &&
+              typeof $steps["updateLoading2"].then === "function"
+            ) {
+              $steps["updateLoading2"] = await $steps["updateLoading2"];
             }
           }}
           outline={true}
