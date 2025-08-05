@@ -201,13 +201,11 @@ function PlasmicTransactionCard__RenderFunc(props: {
   });
 
   return (
-    <Stack__
-      as={"div"}
+    <div
       data-plasmic-name={"root"}
       data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      hasGap={true}
       className={classNames(
         projectcss.all,
         projectcss.root_reset,
@@ -226,26 +224,18 @@ function PlasmicTransactionCard__RenderFunc(props: {
         className={classNames("__wab_instance", sty.apiRequest2)}
         config={{ headers: {} }}
         errorDisplay={
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox___2N0G1)}
-          >
+          <div className={classNames(projectcss.all, sty.freeBox___2N0G1)}>
             <div className={classNames(projectcss.all, sty.freeBox__no0Ef)} />
 
             <div className={classNames(projectcss.all, sty.freeBox__ervX1)} />
-          </Stack__>
+          </div>
         }
         loadingDisplay={
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__uNeyn)}
-          >
+          <div className={classNames(projectcss.all, sty.freeBox__uNeyn)}>
             <div className={classNames(projectcss.all, sty.freeBox__zUuIe)} />
 
             <div className={classNames(projectcss.all, sty.freeBox__muf6M)} />
-          </Stack__>
+          </div>
         }
         method={"GET"}
         onError={async (...eventArgs: any) => {
@@ -271,11 +261,7 @@ function PlasmicTransactionCard__RenderFunc(props: {
         }}
         url={`https://apigw.paziresh24.com/v1/users/${$props.currentItem.userid}`}
       >
-        <Stack__
-          as={"div"}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.freeBox__sKbtl)}
-        >
+        <div className={classNames(projectcss.all, sty.freeBox__sKbtl)}>
           <AntdAvatar
             data-plasmic-name={"avatar"}
             data-plasmic-override={overrides.avatar}
@@ -333,13 +319,9 @@ function PlasmicTransactionCard__RenderFunc(props: {
               })()}
             </React.Fragment>
           </div>
-        </Stack__>
+        </div>
       </ApiRequest>
-      <Stack__
-        as={"div"}
-        hasGap={true}
-        className={classNames(projectcss.all, sty.freeBox___8JEmc)}
-      >
+      <div className={classNames(projectcss.all, sty.freeBox___8JEmc)}>
         <div
           className={classNames(
             projectcss.all,
@@ -366,12 +348,8 @@ function PlasmicTransactionCard__RenderFunc(props: {
             })()}
           </React.Fragment>
         </div>
-      </Stack__>
-      <Stack__
-        as={"div"}
-        hasGap={true}
-        className={classNames(projectcss.all, sty.freeBox__e7X3Q)}
-      >
+      </div>
+      <div className={classNames(projectcss.all, sty.freeBox__e7X3Q)}>
         <FragmentLineClamp
           data-plasmic-name={"fragmentLineClamp"}
           data-plasmic-override={overrides.fragmentLineClamp}
@@ -401,12 +379,8 @@ function PlasmicTransactionCard__RenderFunc(props: {
             </React.Fragment>
           </div>
         </FragmentLineClamp>
-      </Stack__>
-      <Stack__
-        as={"div"}
-        hasGap={true}
-        className={classNames(projectcss.all, sty.freeBox___7OSRs)}
-      >
+      </div>
+      <div className={classNames(projectcss.all, sty.freeBox___7OSRs)}>
         <div
           className={classNames(
             projectcss.all,
@@ -437,21 +411,13 @@ function PlasmicTransactionCard__RenderFunc(props: {
             })()}
           </React.Fragment>
         </div>
-      </Stack__>
-      <Stack__
-        as={"div"}
-        hasGap={true}
-        className={classNames(projectcss.all, sty.freeBox__fqvXr)}
-      >
+      </div>
+      <div className={classNames(projectcss.all, sty.freeBox__fqvXr)}>
         <Paziresh24Dialog
           data-plasmic-name={"dialog"}
           data-plasmic-override={overrides.dialog}
           body={
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__yflDr)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__yflDr)}>
               <div
                 className={classNames(
                   projectcss.all,
@@ -463,11 +429,7 @@ function PlasmicTransactionCard__RenderFunc(props: {
                   "\u0627\u06af\u0631 \u0627\u0632 \u062a\u0627\u0631\u06cc\u062e \u062a\u0631\u0627\u06a9\u0646\u0634 \u0628\u06cc\u0634\u062a\u0631 \u0627\u0632 \u06f1\u06f5 \u0631\u0648\u0632 \u06af\u0630\u0634\u062a\u0647 \u0628\u0627\u0634\u0647\u060c \u0645\u062a\u0623\u0633\u0641\u0627\u0646\u0647 \u062f\u06cc\u06af\u0631 \u0627\u0645\u06a9\u0627\u0646 \u067e\u0633 \u062f\u0627\u062f\u0646 \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u0647."
                 }
               </div>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__zJbk)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox__zJbk)}>
                 <Paziresh24Button
                   children2={"\u067e\u0633 \u062f\u0627\u062f\u0646"}
                   className={classNames(
@@ -710,8 +672,8 @@ function PlasmicTransactionCard__RenderFunc(props: {
                   }}
                   outline={true}
                 />
-              </Stack__>
-            </Stack__>
+              </div>
+            </div>
           }
           className={classNames("__wab_instance", sty.dialog)}
           onOpenChange={async (...eventArgs: any) => {
@@ -746,8 +708,8 @@ function PlasmicTransactionCard__RenderFunc(props: {
             />
           }
         />
-      </Stack__>
-    </Stack__>
+      </div>
+    </div>
   ) as React.ReactElement | null;
 }
 

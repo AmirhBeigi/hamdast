@@ -360,11 +360,7 @@ function PlasmicSessionReplay__RenderFunc(props: {
               })()}
             >
               <div className={classNames(projectcss.all, sty.freeBox___7SEoc)}>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__uYljv)}
-                >
+                <div className={classNames(projectcss.all, sty.freeBox__uYljv)}>
                   <div
                     className={classNames(
                       projectcss.all,
@@ -428,9 +424,7 @@ function PlasmicSessionReplay__RenderFunc(props: {
                       }
                     })()}
                   >
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__x7G9A)}
                     >
                       {(_par =>
@@ -589,20 +583,14 @@ function PlasmicSessionReplay__RenderFunc(props: {
                           }
                         </div>
                       ) : null}
-                    </Stack__>
+                    </div>
                   </FetchData>
-                </Stack__>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__mwIBa)}
-                >
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__mwIBa)}>
                   <div
                     className={classNames(projectcss.all, sty.freeBox__t0Sc6)}
                   >
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__qIInK)}
                     >
                       {(_par =>
@@ -713,7 +701,7 @@ function PlasmicSessionReplay__RenderFunc(props: {
                           />
                         );
                       })}
-                    </Stack__>
+                    </div>
                   </div>
                   <FetchData
                     data-plasmic-name={"fetchData2"}
@@ -955,9 +943,7 @@ function PlasmicSessionReplay__RenderFunc(props: {
                       throw e;
                     }
                   })() ? (
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox___7I6)}
                     >
                       <Icon16Icon
@@ -976,9 +962,9 @@ function PlasmicSessionReplay__RenderFunc(props: {
                           "\u0648\u06cc\u062f\u06cc\u0648 \u0636\u0628\u0637 \u0634\u062f\u0647 \u0627\u06cc \u062f\u0631 \u0627\u06cc\u0646 \u062a\u0627\u0631\u06cc\u062e \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u062f \u06cc\u0627 \u062a\u0646\u0638\u06cc\u0645\u0627\u062a SDK \u0628\u0647\u200c\u062f\u0631\u0633\u062a\u06cc \u0628\u0631\u0627\u06cc \u0627\u06cc\u0646 \u0645\u0646\u0648 \u0627\u0639\u0645\u0627\u0644 \u0646\u0634\u062f\u0647 \u0627\u0633\u062a."
                         }
                       </div>
-                    </Stack__>
+                    </div>
                   ) : null}
-                </Stack__>
+                </div>
               </div>
             </Layout>
           </AuthProvider>

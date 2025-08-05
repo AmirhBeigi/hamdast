@@ -51,12 +51,12 @@ import {
   useDollarState,
   usePlasmicTranslator,
   useTrigger,
-  wrapWithClassName,
+  wrapWithClassName
 } from "@plasmicapp/react-web";
 import {
   DataCtxReader as DataCtxReader__,
   useDataEnv,
-  useGlobalActions,
+  useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
@@ -118,7 +118,7 @@ function PlasmicSearchResult__RenderFunc(props: {
 
   const $props = {
     ...args,
-    ...variants,
+    ...variants
   };
 
   const __nextRouter = useNextRouter();
@@ -135,7 +135,7 @@ function PlasmicSearchResult__RenderFunc(props: {
         variableType: "object",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
 
-        refName: "apiRequest",
+        refName: "apiRequest"
       },
       {
         path: "apiRequest.error",
@@ -143,7 +143,7 @@ function PlasmicSearchResult__RenderFunc(props: {
         variableType: "object",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
 
-        refName: "apiRequest",
+        refName: "apiRequest"
       },
       {
         path: "apiRequest.loading",
@@ -151,8 +151,8 @@ function PlasmicSearchResult__RenderFunc(props: {
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
 
-        refName: "apiRequest",
-      },
+        refName: "apiRequest"
+      }
     ],
     [$props, $ctx, $refs]
   );
@@ -160,7 +160,7 @@ function PlasmicSearchResult__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
-    $refs,
+    $refs
   });
 
   return (
@@ -227,7 +227,7 @@ function PlasmicSearchResult__RenderFunc(props: {
             onLoading={async (...eventArgs: any) => {
               generateStateOnChangeProp($state, [
                 "apiRequest",
-                "loading",
+                "loading"
               ]).apply(null, eventArgs);
             }}
             onSuccess={async (...eventArgs: any) => {
@@ -241,7 +241,7 @@ function PlasmicSearchResult__RenderFunc(props: {
                 return {
                   what: $ctx.query.what,
                   start: $ctx.query.start_date,
-                  end: $ctx.query.end_date,
+                  end: $ctx.query.end_date
                 };
               } catch (e) {
                 if (
@@ -253,10 +253,10 @@ function PlasmicSearchResult__RenderFunc(props: {
                 throw e;
               }
             })()}
-            ref={(ref) => {
+            ref={ref => {
               $refs["apiRequest"] = ref;
             }}
-            url={"https://hamdast-workflow.paziresh24.com/webhook/search"}
+            url={"https://hamdast-workflow.darkube.app/webhook/search"}
           >
             <div
               data-plasmic-name={"freeBox"}
@@ -292,7 +292,7 @@ function PlasmicSearchResult__RenderFunc(props: {
 const PlasmicDescendants = {
   root: ["root", "apiRequest", "freeBox"],
   apiRequest: ["apiRequest", "freeBox"],
-  freeBox: ["freeBox"],
+  freeBox: ["freeBox"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -339,7 +339,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
           name: nodeName,
           descendantNames: PlasmicDescendants[nodeName],
           internalArgPropNames: PlasmicSearchResult__ArgProps,
-          internalVariantPropNames: PlasmicSearchResult__VariantProps,
+          internalVariantPropNames: PlasmicSearchResult__VariantProps
         }),
       [props, nodeName]
     );
@@ -347,7 +347,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       variants,
       args,
       overrides,
-      forNode: nodeName,
+      forNode: nodeName
     });
   };
   if (nodeName === "root") {
@@ -375,8 +375,8 @@ export const PlasmicSearchResult = Object.assign(
       title: "",
       description: "",
       ogImageSrc: "",
-      canonical: "",
-    },
+      canonical: ""
+    }
   }
 );
 

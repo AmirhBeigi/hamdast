@@ -83,25 +83,10 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  min-width: 0;
-}
-.freeBox__iMko7 > :global(.__wab_flex-container) {
-  flex-direction: column;
   justify-content: flex-start;
   align-items: flex-end;
+  row-gap: 10px;
   min-width: 0;
-  margin-top: calc(0px - 10px);
-  height: calc(100% + 10px);
-}
-.freeBox__iMko7 > :global(.__wab_flex-container) > *,
-.freeBox__iMko7 > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.freeBox__iMko7 > :global(.__wab_flex-container) > picture > img,
-.freeBox__iMko7
-  > :global(.__wab_flex-container)
-  > :global(.__wab_slot)
-  > picture
-  > img {
-  margin-top: 10px;
 }
 .freeBox__nIv {
   display: flex;
@@ -110,29 +95,14 @@
   width: 100%;
   height: auto;
   max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
   opacity: 0.8;
   background: var(--token-CLN8EitO07Ao);
+  row-gap: 10px;
   min-width: 0;
   border-radius: 8px;
   padding: 18px;
-}
-.freeBox__nIv > :global(.__wab_flex-container) {
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-  margin-top: calc(0px - 10px);
-  height: calc(100% + 10px);
-}
-.freeBox__nIv > :global(.__wab_flex-container) > *,
-.freeBox__nIv > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.freeBox__nIv > :global(.__wab_flex-container) > picture > img,
-.freeBox__nIv
-  > :global(.__wab_flex-container)
-  > :global(.__wab_slot)
-  > picture
-  > img {
-  margin-top: 10px;
 }
 .text__rjoPl {
   position: relative;
@@ -169,25 +139,10 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  min-width: 0;
-}
-.freeBox__d8LhD > :global(.__wab_flex-container) {
-  flex-direction: column;
   justify-content: flex-start;
   align-items: flex-end;
+  row-gap: 10px;
   min-width: 0;
-  margin-top: calc(0px - 10px);
-  height: calc(100% + 10px);
-}
-.freeBox__d8LhD > :global(.__wab_flex-container) > *,
-.freeBox__d8LhD > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.freeBox__d8LhD > :global(.__wab_flex-container) > picture > img,
-.freeBox__d8LhD
-  > :global(.__wab_flex-container)
-  > :global(.__wab_slot)
-  > picture
-  > img {
-  margin-top: 10px;
 }
 .freeBox__r7X5S {
   display: flex;
@@ -224,26 +179,12 @@
   display: flex;
   flex-direction: row;
   position: relative;
+  align-items: center;
+  justify-content: flex-start;
   width: auto;
   height: auto;
   max-width: 100%;
-}
-.freeBox___0TjGm > :global(.__wab_flex-container) {
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  margin-left: calc(0px - 10px);
-  width: calc(100% + 10px);
-}
-.freeBox___0TjGm > :global(.__wab_flex-container) > *,
-.freeBox___0TjGm > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.freeBox___0TjGm > :global(.__wab_flex-container) > picture > img,
-.freeBox___0TjGm
-  > :global(.__wab_flex-container)
-  > :global(.__wab_slot)
-  > picture
-  > img {
-  margin-left: 10px;
+  column-gap: 10px;
 }
 .paziresh24Avatar:global(.__wab_instance) {
   max-width: 100%;
@@ -258,26 +199,11 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  min-width: 0;
-  padding: 8px;
-}
-.freeBox__ym0AL > :global(.__wab_flex-container) {
-  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  row-gap: 10px;
   min-width: 0;
-  margin-top: calc(0px - 10px);
-  height: calc(100% + 10px);
-}
-.freeBox__ym0AL > :global(.__wab_flex-container) > *,
-.freeBox__ym0AL > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.freeBox__ym0AL > :global(.__wab_flex-container) > picture > img,
-.freeBox__ym0AL
-  > :global(.__wab_flex-container)
-  > :global(.__wab_slot)
-  > picture
-  > img {
-  margin-top: 10px;
+  padding: 8px;
 }
 .text__i7YEt {
   position: relative;
@@ -300,27 +226,13 @@
   display: flex;
   flex-direction: row;
   position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
   width: auto;
   height: auto;
   max-width: 100%;
+  column-gap: 10px;
   padding: 8px;
-}
-.freeBox__oAcyL > :global(.__wab_flex-container) {
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: flex-start;
-  margin-left: calc(0px - 10px);
-  width: calc(100% + 10px);
-}
-.freeBox__oAcyL > :global(.__wab_flex-container) > *,
-.freeBox__oAcyL > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.freeBox__oAcyL > :global(.__wab_flex-container) > picture > img,
-.freeBox__oAcyL
-  > :global(.__wab_flex-container)
-  > :global(.__wab_slot)
-  > picture
-  > img {
-  margin-left: 10px;
 }
 .paziresh24Button__nc0F3:global(.__wab_instance) {
   max-width: 100%;
@@ -377,25 +289,10 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  min-width: 0;
-}
-.freeBox__b20Zj > :global(.__wab_flex-container) {
-  flex-direction: column;
   justify-content: flex-start;
   align-items: flex-end;
+  row-gap: 10px;
   min-width: 0;
-  margin-top: calc(0px - 10px);
-  height: calc(100% + 10px);
-}
-.freeBox__b20Zj > :global(.__wab_flex-container) > *,
-.freeBox__b20Zj > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.freeBox__b20Zj > :global(.__wab_flex-container) > picture > img,
-.freeBox__b20Zj
-  > :global(.__wab_flex-container)
-  > :global(.__wab_slot)
-  > picture
-  > img {
-  margin-top: 10px;
 }
 .freeBox__p2Ojo {
   display: flex;
@@ -404,29 +301,14 @@
   width: 100%;
   height: auto;
   max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
   opacity: 0.8;
   background: #fef2f2;
+  row-gap: 10px;
   min-width: 0;
   border-radius: 8px;
   padding: 18px;
-}
-.freeBox__p2Ojo > :global(.__wab_flex-container) {
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-  margin-top: calc(0px - 10px);
-  height: calc(100% + 10px);
-}
-.freeBox__p2Ojo > :global(.__wab_flex-container) > *,
-.freeBox__p2Ojo > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.freeBox__p2Ojo > :global(.__wab_flex-container) > picture > img,
-.freeBox__p2Ojo
-  > :global(.__wab_flex-container)
-  > :global(.__wab_slot)
-  > picture
-  > img {
-  margin-top: 10px;
 }
 .text__miJuW {
   position: relative;

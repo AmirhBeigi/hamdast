@@ -66,7 +66,7 @@ import Paziresh24Button from "../../Paziresh24Button"; // plasmic-import: YOhw5f
 import Paziresh24Dialog from "../../Paziresh24Dialog"; // plasmic-import: ZGdhyEBPJSmH/component
 import { Input } from "@/fragment/components/input"; // plasmic-import: AWE69UKwmIyg/codeComponent
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
-import ProductCard from "../../ProductCard"; // plasmic-import: FXUsKM4SitKY/component
+import ProductCard2 from "../../ProductCard2"; // plasmic-import: JTTV7mRsMr5W/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -101,7 +101,7 @@ export type PlasmicCredentialsSettings__OverridesType = {
   newApiKeyDialog?: Flex__<typeof Paziresh24Dialog>;
   apiKeyNameField?: Flex__<typeof Input>;
   apiRequest?: Flex__<typeof ApiRequest>;
-  productCard?: Flex__<typeof ProductCard>;
+  productCard2?: Flex__<typeof ProductCard2>;
 };
 
 export interface DefaultCredentialsSettingsProps {}
@@ -404,14 +404,8 @@ function PlasmicCredentialsSettings__RenderFunc(props: {
                     </React.Fragment>
                   </React.Fragment>
                 </div>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__kWxwe)}
-                >
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                <div className={classNames(projectcss.all, sty.freeBox__kWxwe)}>
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__ouCv)}
                   >
                     <div
@@ -423,10 +417,8 @@ function PlasmicCredentialsSettings__RenderFunc(props: {
                     >
                       {"\u0646\u0627\u0645"}
                     </div>
-                  </Stack__>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  </div>
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__bBeS6)}
                   >
                     <div
@@ -438,10 +430,8 @@ function PlasmicCredentialsSettings__RenderFunc(props: {
                     >
                       {"\u06a9\u0644\u06cc\u062f API"}
                     </div>
-                  </Stack__>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  </div>
+                  <div
                     className={classNames(projectcss.all, sty.freeBox___2Sx7W)}
                   >
                     <div
@@ -813,8 +803,8 @@ function PlasmicCredentialsSettings__RenderFunc(props: {
                       title={"\u0627\u06cc\u062c\u0627\u062f API Key"}
                       trigger={null}
                     />
-                  </Stack__>
-                </Stack__>
+                  </div>
+                </div>
                 <ApiRequest
                   data-plasmic-name={"apiRequest"}
                   data-plasmic-override={overrides.apiRequest}
@@ -905,14 +895,26 @@ function PlasmicCredentialsSettings__RenderFunc(props: {
                     const currentItem = __plasmic_item_0;
                     const currentIndex = __plasmic_idx_0;
                     return (
-                      <ProductCard
-                        data-plasmic-name={"productCard"}
-                        data-plasmic-override={overrides.productCard}
+                      <ProductCard2
+                        data-plasmic-name={"productCard2"}
+                        data-plasmic-override={overrides.productCard2}
                         className={classNames(
                           "__wab_instance",
-                          sty.productCard
+                          sty.productCard2
                         )}
-                        currentItem={currentItem}
+                        currentItem={(() => {
+                          try {
+                            return currentItem;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()}
                         key={currentIndex}
                         refresh={async () => {
                           const $steps = {};
@@ -964,7 +966,7 @@ const PlasmicDescendants = {
     "newApiKeyDialog",
     "apiKeyNameField",
     "apiRequest",
-    "productCard"
+    "productCard2"
   ],
   embedHtml: ["embedHtml"],
   authProvider: [
@@ -973,19 +975,19 @@ const PlasmicDescendants = {
     "newApiKeyDialog",
     "apiKeyNameField",
     "apiRequest",
-    "productCard"
+    "productCard2"
   ],
   layout: [
     "layout",
     "newApiKeyDialog",
     "apiKeyNameField",
     "apiRequest",
-    "productCard"
+    "productCard2"
   ],
   newApiKeyDialog: ["newApiKeyDialog", "apiKeyNameField"],
   apiKeyNameField: ["apiKeyNameField"],
-  apiRequest: ["apiRequest", "productCard"],
-  productCard: ["productCard"]
+  apiRequest: ["apiRequest", "productCard2"],
+  productCard2: ["productCard2"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -998,7 +1000,7 @@ type NodeDefaultElementType = {
   newApiKeyDialog: typeof Paziresh24Dialog;
   apiKeyNameField: typeof Input;
   apiRequest: typeof ApiRequest;
-  productCard: typeof ProductCard;
+  productCard2: typeof ProductCard2;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1067,7 +1069,7 @@ export const PlasmicCredentialsSettings = Object.assign(
     newApiKeyDialog: makeNodeComponent("newApiKeyDialog"),
     apiKeyNameField: makeNodeComponent("apiKeyNameField"),
     apiRequest: makeNodeComponent("apiRequest"),
-    productCard: makeNodeComponent("productCard"),
+    productCard2: makeNodeComponent("productCard2"),
 
     // Metadata about props expected for PlasmicCredentialsSettings
     internalVariantProps: PlasmicCredentialsSettings__VariantProps,

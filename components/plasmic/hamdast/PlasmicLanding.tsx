@@ -176,9 +176,7 @@ function PlasmicLanding__RenderFunc(props: {
             dir={"rtl"}
           >
             <div className={classNames(projectcss.all, sty.freeBox__la0Sl)}>
-              <Stack__
-                as={PlasmicLink__}
-                hasGap={true}
+              <PlasmicLink__
                 className={classNames(
                   projectcss.all,
                   projectcss.a,
@@ -204,12 +202,8 @@ function PlasmicLanding__RenderFunc(props: {
                 >
                   {"\u0647\u0645\u062f\u0633\u062a"}
                 </div>
-              </Stack__>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__rdoli)}
-              >
+              </PlasmicLink__>
+              <div className={classNames(projectcss.all, sty.freeBox__rdoli)}>
                 <PlasmicLink__
                   className={classNames(
                     projectcss.all,
@@ -237,7 +231,7 @@ function PlasmicLanding__RenderFunc(props: {
                 >
                   {"\u0627\u062f\u063a\u0627\u0645 \u0647\u0627"}
                 </PlasmicLink__>
-              </Stack__>
+              </div>
               <Button
                 className={classNames("__wab_instance", sty.button___3EXjU)}
                 link={`/login`}
@@ -257,11 +251,7 @@ function PlasmicLanding__RenderFunc(props: {
                 </div>
               </Button>
             </div>
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__wysfY)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__wysfY)}>
               <div
                 className={classNames(
                   projectcss.all,
@@ -284,11 +274,7 @@ function PlasmicLanding__RenderFunc(props: {
                   "\u067e\u0630\u06cc\u0631\u0634\u06f2\u06f4 \u06cc\u06a9 \u0647\u062f\u0641 \u0645\u0647\u0645 \u062f\u0627\u0631\u062f: \u0628\u06cc\u0645\u0627\u0631\u0647\u0627 \u0628\u0647 \u062c\u0632 \u062f\u0631\u062f \u0628\u06cc\u0645\u0627\u0631\u06cc\u200c\u0634\u0627\u0646 \u0631\u0646\u062c \u062f\u06cc\u06af\u0631\u06cc \u062a\u062d\u0645\u0644 \u0646\u06a9\u0646\u0646\u062f. \u0627\u06af\u0631 \u0627\u06cc\u0646 \u0647\u062f\u0641 \u0628\u0631\u0627\u06cc \u0634\u0645\u0627 \u0647\u0645 \u0645\u0647\u0645 \u0627\u0633\u062a\u060c \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0627\u0628\u0632\u0627\u0631\u06a9 \u0628\u0646\u0648\u06cc\u0633\u06cc\u062f \u0648 \u067e\u0630\u06cc\u0631\u0634\u06f2\u06f4 \u0631\u0627 \u0628\u0647\u0628\u0648\u062f \u0628\u062f\u0647\u06cc\u062f."
                 }
               </div>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox___72XQz)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox___72XQz)}>
                 <Button
                   className={classNames("__wab_instance", sty.button__d2DuQ)}
                   link={`/login`}
@@ -325,13 +311,9 @@ function PlasmicLanding__RenderFunc(props: {
                     {"\u0645\u0633\u062a\u0646\u062f\u0627\u062a"}
                   </div>
                 </Button>
-              </Stack__>
-            </Stack__>
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox___2Azhv)}
-            >
+              </div>
+            </div>
+            <div className={classNames(projectcss.all, sty.freeBox___2Azhv)}>
               <div
                 className={classNames(
                   projectcss.all,
@@ -389,7 +371,7 @@ function PlasmicLanding__RenderFunc(props: {
                   </div>
                 </div>
               </div>
-            </Stack__>
+            </div>
             <div className={classNames(projectcss.all, sty.freeBox__hbzZs)}>
               <div className={classNames(projectcss.all, sty.freeBox__trY8L)}>
                 <PlasmicImg__
@@ -410,11 +392,7 @@ function PlasmicLanding__RenderFunc(props: {
                   }}
                 />
               </div>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox___93M3A)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox___93M3A)}>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -493,14 +471,10 @@ function PlasmicLanding__RenderFunc(props: {
                     <React.Fragment>{""}</React.Fragment>
                   </React.Fragment>
                 </div>
-              </Stack__>
+              </div>
             </div>
             <div className={classNames(projectcss.all, sty.freeBox___9MrEt)}>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__sj5Bn)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox__sj5Bn)}>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -579,7 +553,7 @@ function PlasmicLanding__RenderFunc(props: {
                     <React.Fragment>{""}</React.Fragment>
                   </React.Fragment>
                 </div>
-              </Stack__>
+              </div>
               <div className={classNames(projectcss.all, sty.freeBox__yfahr)}>
                 <PlasmicImg__
                   alt={""}

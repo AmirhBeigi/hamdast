@@ -342,11 +342,7 @@ function PlasmicMenuItem__RenderFunc(props: {
           }
         }}
       >
-        <Stack__
-          as={"div"}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.freeBox__xLHj)}
-        >
+        <div className={classNames(projectcss.all, sty.freeBox__xLHj)}>
           <div
             className={classNames(
               projectcss.all,
@@ -376,12 +372,8 @@ function PlasmicMenuItem__RenderFunc(props: {
             className={classNames(projectcss.all, sty.svg__kzS3I)}
             role={"img"}
           />
-        </Stack__>
-        <Stack__
-          as={"div"}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.freeBox__di5I)}
-        >
+        </div>
+        <div className={classNames(projectcss.all, sty.freeBox__di5I)}>
           <div
             className={classNames(
               projectcss.all,
@@ -460,7 +452,7 @@ function PlasmicMenuItem__RenderFunc(props: {
               role={"img"}
             />
           ) : null}
-        </Stack__>
+        </div>
       </div>
       {(() => {
         try {
@@ -475,22 +467,10 @@ function PlasmicMenuItem__RenderFunc(props: {
           throw e;
         }
       })() ? (
-        <Stack__
-          as={"div"}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.freeBox__gQhyi)}
-        >
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__xou9C)}
-          >
+        <div className={classNames(projectcss.all, sty.freeBox__gQhyi)}>
+          <div className={classNames(projectcss.all, sty.freeBox__xou9C)}>
             <div className={classNames(projectcss.all, sty.freeBox__foKo)}>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__bx61G)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox__bx61G)}>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -509,7 +489,7 @@ function PlasmicMenuItem__RenderFunc(props: {
                 >
                   {"\u0627\u0644\u0632\u0627\u0645\u06cc"}
                 </div>
-              </Stack__>
+              </div>
               <div
                 className={classNames(
                   projectcss.all,
@@ -551,11 +531,7 @@ function PlasmicMenuItem__RenderFunc(props: {
               />
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__qTHos)}>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__idDcy)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox__idDcy)}>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -574,7 +550,7 @@ function PlasmicMenuItem__RenderFunc(props: {
                 >
                   {"\u0627\u0644\u0632\u0627\u0645\u06cc"}
                 </div>
-              </Stack__>
+              </div>
               <div
                 className={classNames(
                   projectcss.all,
@@ -586,11 +562,7 @@ function PlasmicMenuItem__RenderFunc(props: {
                   "\u06cc\u06a9 \u0634\u0646\u0627\u0633\u0647 \u0645\u0646\u062d\u0635\u0631 \u0628\u0647 \u0641\u0631\u062f \u0628\u0631\u0627\u06cc \u0645\u0646\u0648 \u062e\u0648\u062f \u0628\u06af\u0630\u0627\u0631\u06cc\u062f."
                 }
               </div>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__luwxQ)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox__luwxQ)}>
                 <Input
                   data-plasmic-name={"keyInput"}
                   data-plasmic-override={overrides.keyInput}
@@ -661,15 +633,11 @@ function PlasmicMenuItem__RenderFunc(props: {
                     <React.Fragment>{"/"}</React.Fragment>
                   </React.Fragment>
                 </div>
-              </Stack__>
+              </div>
             </div>
-          </Stack__>
+          </div>
           <div className={classNames(projectcss.all, sty.freeBox__yik6Z)}>
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox___8XQ9H)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox___8XQ9H)}>
               <div
                 className={classNames(
                   projectcss.all,
@@ -688,7 +656,7 @@ function PlasmicMenuItem__RenderFunc(props: {
               >
                 {"\u0627\u0644\u0632\u0627\u0645\u06cc"}
               </div>
-            </Stack__>
+            </div>
             <div
               className={classNames(
                 projectcss.all,
@@ -815,11 +783,7 @@ function PlasmicMenuItem__RenderFunc(props: {
               value={generateStateValueProp($state, ["unreadInput", "value"])}
             />
           </div>
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox___6PUq)}
-          >
+          <div className={classNames(projectcss.all, sty.freeBox___6PUq)}>
             <Button
               className={classNames("__wab_instance", sty.button__tsegk)}
               color={"softRed"}
@@ -1264,8 +1228,8 @@ function PlasmicMenuItem__RenderFunc(props: {
                 </React.Fragment>
               </div>
             </Button>
-          </Stack__>
-        </Stack__>
+          </div>
+        </div>
       ) : null}
     </div>
   ) as React.ReactElement | null;

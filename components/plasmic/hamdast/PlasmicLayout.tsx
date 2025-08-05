@@ -294,11 +294,7 @@ function PlasmicLayout__RenderFunc(props: {
       dir={"rtl"}
     >
       <div className={classNames(projectcss.all, sty.freeBox__fVnc)}>
-        <Stack__
-          as={"div"}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.freeBox__z5SsY)}
-        >
+        <div className={classNames(projectcss.all, sty.freeBox__z5SsY)}>
           <div
             className={classNames(
               projectcss.all,
@@ -319,12 +315,8 @@ function PlasmicLayout__RenderFunc(props: {
           >
             {"\u062a\u0648\u0633\u0639\u0647 \u062f\u0647\u0646\u062f\u0647"}
           </div>
-        </Stack__>
-        <Stack__
-          as={"div"}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.freeBox__e2Ntx)}
-        >
+        </div>
+        <div className={classNames(projectcss.all, sty.freeBox__e2Ntx)}>
           <Select
             data-plasmic-name={"fragmentSelect"}
             data-plasmic-override={overrides.fragmentSelect}
@@ -419,11 +411,7 @@ function PlasmicLayout__RenderFunc(props: {
 
           <div className={classNames(projectcss.all, sty.freeBox__ll30Q)} />
 
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__vgQcc)}
-          >
+          <div className={classNames(projectcss.all, sty.freeBox__vgQcc)}>
             <Icon12Icon
               className={classNames(projectcss.all, sty.svg__qVz2G)}
               role={"img"}
@@ -452,8 +440,8 @@ function PlasmicLayout__RenderFunc(props: {
                 })()}
               </React.Fragment>
             </div>
-          </Stack__>
-        </Stack__>
+          </div>
+        </div>
       </div>
       <div className={classNames(projectcss.all, sty.freeBox__ry92P)}>
         {(
@@ -461,9 +449,7 @@ function PlasmicLayout__RenderFunc(props: {
             ? false
             : true
         ) ? (
-          <Stack__
-            as={"div"}
-            hasGap={true}
+          <div
             className={classNames(projectcss.all, sty.freeBox__zu78Z, {
               [sty.freeBoxhideAppsSidebar__zu78Z5Z3El]: hasVariant(
                 $state,
@@ -472,11 +458,7 @@ function PlasmicLayout__RenderFunc(props: {
               )
             })}
           >
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__mHtax)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__mHtax)}>
               <Menu
                 active={(() => {
                   try {
@@ -1471,17 +1453,11 @@ function PlasmicLayout__RenderFunc(props: {
                   }
                 }}
               />
-            </Stack__>
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__hKovo)}
-            >
-              <Stack__
-                as={PlasmicLink__}
+            </div>
+            <div className={classNames(projectcss.all, sty.freeBox__hKovo)}>
+              <PlasmicLink__
                 data-plasmic-name={"link"}
                 data-plasmic-override={overrides.link}
-                hasGap={true}
                 className={classNames(projectcss.all, projectcss.a, sty.link)}
                 component={Link}
                 href={"https://t.me/amirhbeigi"}
@@ -1502,9 +1478,9 @@ function PlasmicLayout__RenderFunc(props: {
                 >
                   {"\u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc"}
                 </div>
-              </Stack__>
-            </Stack__>
-          </Stack__>
+              </PlasmicLink__>
+            </div>
+          </div>
         ) : null}
         <div className={classNames(projectcss.all, sty.freeBox___3B2E0)}>
           {renderPlasmicSlot({

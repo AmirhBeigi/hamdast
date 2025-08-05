@@ -279,9 +279,7 @@ function PlasmicSetAppIcon__RenderFunc(props: {
                 triggerOnce={true}
               >
                 <div className={classNames(projectcss.all, sty.freeBox__nn9Fq)}>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__lhx9R)}
                   >
                     <div
@@ -308,15 +306,11 @@ function PlasmicSetAppIcon__RenderFunc(props: {
                         "\u062a\u0648\u0633\u0639\u0647 \u062f\u0647\u0646\u062f\u0647"
                       }
                     </div>
-                  </Stack__>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  </div>
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__zf7K5)}
                   >
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__m7K13)}
                     >
                       <Icon12Icon
@@ -354,8 +348,8 @@ function PlasmicSetAppIcon__RenderFunc(props: {
                           })()}
                         </React.Fragment>
                       </div>
-                    </Stack__>
-                  </Stack__>
+                    </div>
+                  </div>
                 </div>
               </Reveal>
               <Reveal
@@ -443,14 +437,10 @@ function PlasmicSetAppIcon__RenderFunc(props: {
                         </div>
                       </div>
                     </div>
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__knqWw)}
                     >
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                      <div
                         className={classNames(
                           projectcss.all,
                           sty.freeBox__hQk3T
@@ -478,10 +468,8 @@ function PlasmicSetAppIcon__RenderFunc(props: {
                             "\u067e\u06cc\u0634\u0646\u0647\u0627\u062f \u0645\u06cc\u0634\u0648\u062f \u0622\u06cc\u06a9\u0648\u0646 SVG \u0628\u0627\u0634\u062f \u0632\u06cc\u0631\u0627 \u062a\u062c\u0631\u0628\u0647 \u0644\u0648\u062f \u0633\u0631\u06cc\u0639 \u062a\u0631 \u0628\u0631\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631 \u062e\u0648\u0627\u0647\u062f \u062f\u0627\u0634\u062a."
                           }
                         </div>
-                      </Stack__>
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                      </div>
+                      <div
                         className={classNames(
                           projectcss.all,
                           sty.freeBox__elDx5
@@ -623,7 +611,7 @@ function PlasmicSetAppIcon__RenderFunc(props: {
                             {".png"}
                           </div>
                         </Button>
-                      </Stack__>
+                      </div>
                       {(() => {
                         try {
                           return $state.type === "svg";
@@ -674,9 +662,7 @@ function PlasmicSetAppIcon__RenderFunc(props: {
                           throw e;
                         }
                       })() ? (
-                        <Stack__
-                          as={"div"}
-                          hasGap={true}
+                        <div
                           className={classNames(
                             projectcss.all,
                             sty.freeBox__iPiSo
@@ -710,7 +696,7 @@ function PlasmicSetAppIcon__RenderFunc(props: {
                               ])}
                             />
                           </div>
-                        </Stack__>
+                        </div>
                       ) : null}
                       <Button
                         className={classNames(
@@ -749,7 +735,7 @@ function PlasmicSetAppIcon__RenderFunc(props: {
                           })()}
                         </React.Fragment>
                       </Button>
-                    </Stack__>
+                    </div>
                   </div>
                 </div>
               </Reveal>

@@ -394,14 +394,8 @@ function PlasmicBuildFeatures__RenderFunc(props: {
                     </React.Fragment>
                   </React.Fragment>
                 </div>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__hd4Br)}
-                >
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                <div className={classNames(projectcss.all, sty.freeBox__hd4Br)}>
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__oy3WT)}
                   >
                     <div
@@ -413,10 +407,8 @@ function PlasmicBuildFeatures__RenderFunc(props: {
                     >
                       {"\u0639\u0646\u0648\u0627\u0646"}
                     </div>
-                  </Stack__>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  </div>
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__tjfK)}
                   >
                     <div
@@ -428,10 +420,8 @@ function PlasmicBuildFeatures__RenderFunc(props: {
                     >
                       {"\u0634\u0646\u0627\u0633\u0647"}
                     </div>
-                  </Stack__>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  </div>
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__cZkSs)}
                   >
                     <div
@@ -443,27 +433,21 @@ function PlasmicBuildFeatures__RenderFunc(props: {
                     >
                       {"\u0646\u0648\u0639"}
                     </div>
-                  </Stack__>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  </div>
+                  <div
                     className={classNames(projectcss.all, sty.freeBox___9JE3U)}
                   >
                     <Paziresh24Dialog
                       data-plasmic-name={"dialog"}
                       data-plasmic-override={overrides.dialog}
                       body={
-                        <Stack__
-                          as={"div"}
-                          hasGap={true}
+                        <div
                           className={classNames(
                             projectcss.all,
                             sty.freeBox__o5Dr
                           )}
                         >
-                          <Stack__
-                            as={"div"}
-                            hasGap={true}
+                          <div
                             className={classNames(
                               projectcss.all,
                               sty.freeBox___9GbOg
@@ -525,10 +509,8 @@ function PlasmicBuildFeatures__RenderFunc(props: {
                                 }
                               </div>
                             </div>
-                          </Stack__>
-                          <Stack__
-                            as={"div"}
-                            hasGap={true}
+                          </div>
+                          <div
                             className={classNames(
                               projectcss.all,
                               sty.freeBox__w6Srw
@@ -569,8 +551,8 @@ function PlasmicBuildFeatures__RenderFunc(props: {
                                 sty.freeBox__cqptw
                               )}
                             />
-                          </Stack__>
-                        </Stack__>
+                          </div>
+                        </div>
                       }
                       className={classNames("__wab_instance", sty.dialog)}
                       onOpenChange={async (...eventArgs: any) => {
@@ -616,8 +598,8 @@ function PlasmicBuildFeatures__RenderFunc(props: {
                         />
                       }
                     />
-                  </Stack__>
-                </Stack__>
+                  </div>
+                </div>
                 <ApiRequest
                   data-plasmic-name={"apiRequest"}
                   data-plasmic-override={overrides.apiRequest}

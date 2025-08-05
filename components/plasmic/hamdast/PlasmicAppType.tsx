@@ -162,13 +162,11 @@ function PlasmicAppType__RenderFunc(props: {
   });
 
   return (
-    <Stack__
-      as={"div"}
+    <div
       data-plasmic-name={"root"}
       data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      hasGap={true}
       className={classNames(
         projectcss.all,
         projectcss.root_reset,
@@ -201,9 +199,7 @@ function PlasmicAppType__RenderFunc(props: {
         }
       }}
     >
-      <Stack__
-        as={"div"}
-        hasGap={true}
+      <div
         className={classNames(projectcss.all, sty.freeBox__pbQ10, {
           [sty.freeBoxselected__pbQ10L8Tv]: hasVariant(
             $state,
@@ -212,9 +208,7 @@ function PlasmicAppType__RenderFunc(props: {
           )
         })}
       >
-        <Stack__
-          as={"div"}
-          hasGap={true}
+        <div
           className={classNames(projectcss.all, sty.freeBox__nHxMy, {
             [sty.freeBoxselected__nHxMYl8Tv]: hasVariant(
               $state,
@@ -276,9 +270,9 @@ function PlasmicAppType__RenderFunc(props: {
               })()}
             </React.Fragment>
           </div>
-        </Stack__>
-      </Stack__>
-    </Stack__>
+        </div>
+      </div>
+    </div>
   ) as React.ReactElement | null;
 }
 

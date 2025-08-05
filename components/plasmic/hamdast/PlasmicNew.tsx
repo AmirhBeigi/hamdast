@@ -267,9 +267,7 @@ function PlasmicNew__RenderFunc(props: {
                 triggerOnce={true}
               >
                 <div className={classNames(projectcss.all, sty.freeBox__f4Yb0)}>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__jknp4)}
                   >
                     <div
@@ -299,15 +297,11 @@ function PlasmicNew__RenderFunc(props: {
                         "\u062a\u0648\u0633\u0639\u0647 \u062f\u0647\u0646\u062f\u0647"
                       }
                     </div>
-                  </Stack__>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  </div>
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__ef8HT)}
                   >
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__fr3Y)}
                     >
                       <Icon12Icon
@@ -345,8 +339,8 @@ function PlasmicNew__RenderFunc(props: {
                           })()}
                         </React.Fragment>
                       </div>
-                    </Stack__>
-                  </Stack__>
+                    </div>
+                  </div>
                 </div>
               </Reveal>
               <Reveal
@@ -361,14 +355,10 @@ function PlasmicNew__RenderFunc(props: {
                   <div
                     className={classNames(projectcss.all, sty.freeBox__vfQA)}
                   >
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__vhsCg)}
                     >
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                      <div
                         className={classNames(
                           projectcss.all,
                           sty.freeBox__tJlry
@@ -440,7 +430,7 @@ function PlasmicNew__RenderFunc(props: {
                             aspectRatio: undefined
                           }}
                         />
-                      </Stack__>
+                      </div>
                       <div
                         className={classNames(
                           projectcss.all,
@@ -503,15 +493,11 @@ function PlasmicNew__RenderFunc(props: {
                           </React.Fragment>
                         </React.Fragment>
                       </div>
-                    </Stack__>
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    </div>
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__ds9Rm)}
                     >
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                      <div
                         className={classNames(
                           projectcss.all,
                           sty.freeBox___3YW7I
@@ -659,43 +645,6 @@ function PlasmicNew__RenderFunc(props: {
                           name={
                             "\u0633\u0646\u062f\u0628\u0627\u06a9\u0633 \u067e\u0632\u0634\u06a9"
                           }
-                          onClick={async () => {
-                            const $steps = {};
-
-                            $steps["updateType"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["type"]
-                                    },
-                                    operation: 0,
-                                    value: 3
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["updateType"] != null &&
-                              typeof $steps["updateType"] === "object" &&
-                              typeof $steps["updateType"].then === "function"
-                            ) {
-                              $steps["updateType"] = await $steps["updateType"];
-                            }
-                          }}
                           selected={(() => {
                             try {
                               return $state.type == 3;
@@ -710,7 +659,7 @@ function PlasmicNew__RenderFunc(props: {
                             }
                           })()}
                         />
-                      </Stack__>
+                      </div>
                       <Paziresh24Button
                         data-plasmic-name={"paziresh24Button"}
                         data-plasmic-override={overrides.paziresh24Button}
@@ -749,9 +698,41 @@ function PlasmicNew__RenderFunc(props: {
                           ) {
                             $steps["goToNewApp"] = await $steps["goToNewApp"];
                           }
+
+                          $steps["goToCredentialsSettings"] =
+                            $state.type == 1
+                              ? (() => {
+                                  const actionArgs = {
+                                    destination: `/credentials`
+                                  };
+                                  return (({ destination }) => {
+                                    if (
+                                      typeof destination === "string" &&
+                                      destination.startsWith("#")
+                                    ) {
+                                      document
+                                        .getElementById(destination.substr(1))
+                                        .scrollIntoView({ behavior: "smooth" });
+                                    } else {
+                                      __nextRouter?.push(destination);
+                                    }
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                          if (
+                            $steps["goToCredentialsSettings"] != null &&
+                            typeof $steps["goToCredentialsSettings"] ===
+                              "object" &&
+                            typeof $steps["goToCredentialsSettings"].then ===
+                              "function"
+                          ) {
+                            $steps["goToCredentialsSettings"] = await $steps[
+                              "goToCredentialsSettings"
+                            ];
+                          }
                         }}
                       />
-                    </Stack__>
+                    </div>
                   </div>
                 </div>
               </Reveal>

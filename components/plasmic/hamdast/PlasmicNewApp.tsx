@@ -309,9 +309,7 @@ function PlasmicNewApp__RenderFunc(props: {
                 triggerOnce={true}
               >
                 <div className={classNames(projectcss.all, sty.freeBox__tp9)}>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__vu16Q)}
                   >
                     <div
@@ -338,15 +336,11 @@ function PlasmicNewApp__RenderFunc(props: {
                         "\u062a\u0648\u0633\u0639\u0647 \u062f\u0647\u0646\u062f\u0647"
                       }
                     </div>
-                  </Stack__>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  </div>
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__hthxa)}
                   >
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__zS7UP)}
                     >
                       <Icon12Icon
@@ -384,8 +378,8 @@ function PlasmicNewApp__RenderFunc(props: {
                           })()}
                         </React.Fragment>
                       </div>
-                    </Stack__>
-                  </Stack__>
+                    </div>
+                  </div>
                 </div>
               </Reveal>
               <Reveal
@@ -398,14 +392,10 @@ function PlasmicNewApp__RenderFunc(props: {
                   <div
                     className={classNames(projectcss.all, sty.freeBox__bpoUp)}
                   >
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__rypiP)}
                     >
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                      <div
                         className={classNames(
                           projectcss.all,
                           sty.freeBox__vwS2
@@ -477,7 +467,7 @@ function PlasmicNewApp__RenderFunc(props: {
                             aspectRatio: undefined
                           }}
                         />
-                      </Stack__>
+                      </div>
                       <div
                         className={classNames(
                           projectcss.all,
@@ -540,15 +530,11 @@ function PlasmicNewApp__RenderFunc(props: {
                           </React.Fragment>
                         </React.Fragment>
                       </div>
-                    </Stack__>
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    </div>
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__rXWpE)}
                     >
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                      <div
                         className={classNames(
                           projectcss.all,
                           sty.freeBox__hEfgr
@@ -598,7 +584,7 @@ function PlasmicNewApp__RenderFunc(props: {
                             "value"
                           ])}
                         />
-                      </Stack__>
+                      </div>
                       <div
                         className={classNames(
                           projectcss.all,
@@ -625,9 +611,7 @@ function PlasmicNewApp__RenderFunc(props: {
                             "\u06cc\u06a9 \u0634\u0646\u0627\u0633\u0647 \u0645\u0646\u062d\u0635\u0631 \u0628\u0647 \u0641\u0631\u062f \u0628\u0631\u0627\u06cc \u0627\u0628\u0632\u0627\u0631\u06a9 \u062e\u0648\u062f \u0628\u06af\u0630\u0627\u0631\u06cc\u062f."
                           }
                         </div>
-                        <Stack__
-                          as={"div"}
-                          hasGap={true}
+                        <div
                           className={classNames(
                             projectcss.all,
                             sty.freeBox__kKwDc
@@ -653,7 +637,7 @@ function PlasmicNewApp__RenderFunc(props: {
                               "value"
                             ])}
                           />
-                        </Stack__>
+                        </div>
                         {(() => {
                           try {
                             return (
@@ -1136,7 +1120,7 @@ function PlasmicNewApp__RenderFunc(props: {
                           }
                         }}
                       />
-                    </Stack__>
+                    </div>
                   </div>
                 </div>
               </Reveal>

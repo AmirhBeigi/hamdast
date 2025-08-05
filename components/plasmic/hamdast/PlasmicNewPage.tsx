@@ -195,11 +195,7 @@ function PlasmicNewPage__RenderFunc(props: {
             }
           />
 
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__wNert)}
-          >
+          <div className={classNames(projectcss.all, sty.freeBox__wNert)}>
             <div className={classNames(projectcss.all, sty.freeBox__wzk5C)}>
               <PlasmicImg__
                 alt={""}
@@ -218,11 +214,7 @@ function PlasmicNewPage__RenderFunc(props: {
                 width={"70"}
               />
 
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__z5T64)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox__z5T64)}>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -245,14 +237,10 @@ function PlasmicNewPage__RenderFunc(props: {
                     "\u067e\u0631\u06cc\u0648\u062f \u0634\u0645\u0627 \u0646\u0627\u0645\u0646\u0638\u0645 \u0627\u0633\u062a\u061f \u0647\u0645\u06cc\u0646 \u0627\u0644\u0627\u0646\u060c \u06af\u0641\u062a\u06af\u0648 \u0631\u0627 \u0622\u063a\u0627\u0632 \u06a9\u0646\u06cc\u062f."
                   }
                 </div>
-              </Stack__>
+              </div>
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__xcjV)}>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox___40Ofq)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox___40Ofq)}>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -271,17 +259,9 @@ function PlasmicNewPage__RenderFunc(props: {
                 >
                   {"\u06af\u0641\u062a\u06af\u0648 \u0645\u0648\u0641\u0642"}
                 </div>
-              </Stack__>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox___8RDqh)}
-              >
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__nq9IL)}
-                >
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox___8RDqh)}>
+                <div className={classNames(projectcss.all, sty.freeBox__nq9IL)}>
                   <div
                     className={classNames(
                       projectcss.all,
@@ -297,7 +277,7 @@ function PlasmicNewPage__RenderFunc(props: {
                     className={classNames(projectcss.all, sty.svg)}
                     role={"img"}
                   />
-                </Stack__>
+                </div>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -307,12 +287,8 @@ function PlasmicNewPage__RenderFunc(props: {
                 >
                   {"\u0627\u0632 \u06f1\u06f0 \u0646\u0638\u0631"}
                 </div>
-              </Stack__>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox___1HWp)}
-              >
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox___1HWp)}>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -331,7 +307,7 @@ function PlasmicNewPage__RenderFunc(props: {
                 >
                   {"\u062f\u0633\u062a\u0647 \u0628\u0646\u062f\u06cc"}
                 </div>
-              </Stack__>
+              </div>
             </div>
             <Paziresh24Button
               children2={
@@ -362,7 +338,7 @@ function PlasmicNewPage__RenderFunc(props: {
                 }
               }}
             />
-          </Stack__>
+          </div>
           <div className={classNames(projectcss.all, sty.freeBox__daPqq)}>
             <div className={classNames(projectcss.all, sty.freeBox__qpZdF)}>
               <div
@@ -709,11 +685,7 @@ function PlasmicNewPage__RenderFunc(props: {
                 {"\u0646\u0638\u0631\u0627\u062a"}
               </div>
             </div>
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__bbhy4)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__bbhy4)}>
               {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                 (() => {
                   try {
@@ -843,7 +815,7 @@ function PlasmicNewPage__RenderFunc(props: {
                   );
                 })();
               })}
-            </Stack__>
+            </div>
           </div>
         </div>
       </div>

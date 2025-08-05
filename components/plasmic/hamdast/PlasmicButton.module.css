@@ -2,28 +2,18 @@
   display: flex;
   position: relative;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
   background: #000000;
   cursor: pointer;
   transition-property: background;
   transition-duration: 0.1s;
+  column-gap: 5px;
   -webkit-transition-property: background;
   -webkit-transition-duration: 0.1s;
   border-radius: 6px;
   padding: 12px 20px;
   border: 0px solid #191919;
-}
-.root > :global(.__wab_flex-container) {
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-left: calc(0px - 5px);
-  width: calc(100% + 5px);
-}
-.root > :global(.__wab_flex-container) > *,
-.root > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.root > :global(.__wab_flex-container) > picture > img,
-.root > :global(.__wab_flex-container) > :global(.__wab_slot) > picture > img {
-  margin-left: 5px;
 }
 .rootshowStartIcon {
   padding-left: 16px;
@@ -52,24 +42,9 @@
   padding: 6px 16px;
 }
 .rootsize_minimal {
+  column-gap: 8px;
+  row-gap: 0px;
   padding: 3px 0px;
-}
-.rootsize_minimal > :global(.__wab_flex-container) {
-  margin-left: calc(0px - 8px);
-  width: calc(100% + 8px);
-  margin-top: calc(0px - 0px);
-  height: calc(100% + 0px);
-}
-.rootsize_minimal > :global(.__wab_flex-container) > *,
-.rootsize_minimal > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.rootsize_minimal > :global(.__wab_flex-container) > picture > img,
-.rootsize_minimal
-  > :global(.__wab_flex-container)
-  > :global(.__wab_slot)
-  > picture
-  > img {
-  margin-left: 8px;
-  margin-top: 0px;
 }
 .rootcolor_blue {
   background: #0091ff;

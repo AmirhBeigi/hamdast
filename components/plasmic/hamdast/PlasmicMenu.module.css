@@ -4,27 +4,16 @@
   position: relative;
   width: 100%;
   height: auto;
+  justify-content: flex-start;
+  align-items: center;
   max-width: 100%;
   background: none;
   opacity: 0.9;
   cursor: pointer;
+  column-gap: 8px;
   min-width: 0;
   border-radius: 10px;
   padding: 10px 14px 10px 8px;
-}
-.root > :global(.__wab_flex-container) {
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-  margin-left: calc(0px - 8px);
-  width: calc(100% + 8px);
-}
-.root > :global(.__wab_flex-container) > *,
-.root > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.root > :global(.__wab_flex-container) > picture > img,
-.root > :global(.__wab_flex-container) > :global(.__wab_slot) > picture > img {
-  margin-left: 8px;
 }
 .rootactive {
   width: 100%;
@@ -32,31 +21,14 @@
   max-width: 100%;
   background: #efefef;
   flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
   opacity: 1;
+  column-gap: 8px;
+  row-gap: 0px;
   min-width: 0;
   border-radius: 10px;
   padding: 10px 14px 10px 8px;
-}
-.rootactive > :global(.__wab_flex-container) {
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-  margin-left: calc(0px - 8px);
-  width: calc(100% + 8px);
-  margin-top: calc(0px - 0px);
-  height: calc(100% + 0px);
-}
-.rootactive > :global(.__wab_flex-container) > *,
-.rootactive > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.rootactive > :global(.__wab_flex-container) > picture > img,
-.rootactive
-  > :global(.__wab_flex-container)
-  > :global(.__wab_slot)
-  > picture
-  > img {
-  margin-left: 8px;
-  margin-top: 0px;
 }
 .rootcompact {
   width: 100%;
@@ -64,27 +36,12 @@
   max-width: 100%;
   background: none;
   flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  row-gap: 0px;
   min-width: 0;
   border-radius: 8px;
   padding: 8px 12px 8px 8px;
-}
-.rootcompact > :global(.__wab_flex-container) {
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-  margin-top: calc(0px - 0px);
-  height: calc(100% + 0px);
-}
-.rootcompact > :global(.__wab_flex-container) > *,
-.rootcompact > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.rootcompact > :global(.__wab_flex-container) > picture > img,
-.rootcompact
-  > :global(.__wab_flex-container)
-  > :global(.__wab_slot)
-  > picture
-  > img {
-  margin-top: 0px;
 }
 .rootdisabled {
   opacity: 0.3;

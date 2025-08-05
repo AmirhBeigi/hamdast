@@ -42,26 +42,12 @@
   max-width: 100%;
   height: auto;
   width: auto;
-  flex-direction: row;
-  display: flex;
-  color: #000000;
-}
-.link__d1BRc > :global(.__wab_flex-container) {
   justify-content: flex-start;
   align-items: center;
   flex-direction: row;
-  margin-left: calc(0px - 15px);
-  width: calc(100% + 15px);
-}
-.link__d1BRc > :global(.__wab_flex-container) > *,
-.link__d1BRc > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.link__d1BRc > :global(.__wab_flex-container) > picture > img,
-.link__d1BRc
-  > :global(.__wab_flex-container)
-  > :global(.__wab_slot)
-  > picture
-  > img {
-  margin-left: 15px;
+  display: flex;
+  color: #000000;
+  column-gap: 15px;
 }
 .root .link__d1BRc:hover {
   color: #000000;
@@ -87,26 +73,12 @@
   display: flex;
   flex-direction: row;
   position: relative;
+  align-items: center;
+  justify-content: center;
   width: auto;
   height: auto;
   max-width: 100%;
-}
-.freeBox__itlTn > :global(.__wab_flex-container) {
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-left: calc(0px - 26px);
-  width: calc(100% + 26px);
-}
-.freeBox__itlTn > :global(.__wab_flex-container) > *,
-.freeBox__itlTn > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.freeBox__itlTn > :global(.__wab_flex-container) > picture > img,
-.freeBox__itlTn
-  > :global(.__wab_flex-container)
-  > :global(.__wab_slot)
-  > picture
-  > img {
-  margin-left: 26px;
+  column-gap: 26px;
 }
 .link__sJcGh {
   position: relative;

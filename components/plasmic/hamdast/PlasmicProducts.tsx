@@ -393,14 +393,8 @@ function PlasmicProducts__RenderFunc(props: {
                     </React.Fragment>
                   </React.Fragment>
                 </div>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__asGfH)}
-                >
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                <div className={classNames(projectcss.all, sty.freeBox__asGfH)}>
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__qfb04)}
                   >
                     <div
@@ -412,10 +406,8 @@ function PlasmicProducts__RenderFunc(props: {
                     >
                       {"\u0646\u0627\u0645 \u0645\u062d\u0635\u0648\u0644"}
                     </div>
-                  </Stack__>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  </div>
+                  <div
                     className={classNames(projectcss.all, sty.freeBox___3ZktE)}
                   >
                     <div
@@ -427,10 +419,8 @@ function PlasmicProducts__RenderFunc(props: {
                     >
                       {"\u0645\u0628\u0644\u063a"}
                     </div>
-                  </Stack__>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  </div>
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__frMkP)}
                   >
                     <div
@@ -442,10 +432,8 @@ function PlasmicProducts__RenderFunc(props: {
                     >
                       {"\u0634\u0646\u0627\u0633\u0647"}
                     </div>
-                  </Stack__>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  </div>
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__h2Ve4)}
                   >
                     <div
@@ -461,17 +449,13 @@ function PlasmicProducts__RenderFunc(props: {
                       data-plasmic-name={"dialog"}
                       data-plasmic-override={overrides.dialog}
                       body={
-                        <Stack__
-                          as={"div"}
-                          hasGap={true}
+                        <div
                           className={classNames(
                             projectcss.all,
                             sty.freeBox__rHyen
                           )}
                         >
-                          <Stack__
-                            as={"div"}
-                            hasGap={true}
+                          <div
                             className={classNames(
                               projectcss.all,
                               sty.freeBox__sa933
@@ -510,10 +494,8 @@ function PlasmicProducts__RenderFunc(props: {
                                 "value"
                               ])}
                             />
-                          </Stack__>
-                          <Stack__
-                            as={"div"}
-                            hasGap={true}
+                          </div>
+                          <div
                             className={classNames(
                               projectcss.all,
                               sty.freeBox__u5Keu
@@ -539,17 +521,13 @@ function PlasmicProducts__RenderFunc(props: {
                                 "\u0645\u0628\u0644\u0639 \u0646\u0647\u0627\u06cc\u06cc \u0628\u0631\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631 \u0628\u0647 \u0647\u0645\u0631\u0627\u0647 \u06f1\u06f0% \u0645\u0627\u0644\u06cc\u0627\u062a \u0628\u0631 \u0627\u0631\u0632\u0634 \u0627\u0641\u0632\u0648\u062f\u0647 \u0627\u0633\u062a."
                               }
                             </div>
-                            <Stack__
-                              as={"div"}
-                              hasGap={true}
+                            <div
                               className={classNames(
                                 projectcss.all,
                                 sty.freeBox__ae3QM
                               )}
                             >
-                              <Stack__
-                                as={"div"}
-                                hasGap={true}
+                              <div
                                 className={classNames(
                                   projectcss.all,
                                   sty.freeBox___1GKYr
@@ -585,7 +563,7 @@ function PlasmicProducts__RenderFunc(props: {
                                 >
                                   {"\u062a\u0648\u0645\u0627\u0646"}
                                 </div>
-                              </Stack__>
+                              </div>
                               {(() => {
                                 try {
                                   return !$state.input2.value;
@@ -754,8 +732,8 @@ function PlasmicProducts__RenderFunc(props: {
                                   </React.Fragment>
                                 </div>
                               ) : null}
-                            </Stack__>
-                          </Stack__>
+                            </div>
+                          </div>
                           <Paziresh24Button
                             children2={
                               "\u0633\u0627\u062e\u062a \u0645\u062d\u0635\u0648\u0644"
@@ -1015,7 +993,7 @@ function PlasmicProducts__RenderFunc(props: {
                               }
                             }}
                           />
-                        </Stack__>
+                        </div>
                       }
                       className={classNames("__wab_instance", sty.dialog)}
                       onOpenChange={async (...eventArgs: any) => {
@@ -1059,8 +1037,8 @@ function PlasmicProducts__RenderFunc(props: {
                         />
                       }
                     />
-                  </Stack__>
-                </Stack__>
+                  </div>
+                </div>
                 <ApiRequest
                   data-plasmic-name={"apiRequest"}
                   data-plasmic-override={overrides.apiRequest}

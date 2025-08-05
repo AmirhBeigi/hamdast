@@ -416,11 +416,7 @@ function PlasmicPageItem__RenderFunc(props: {
           }
         }}
       >
-        <Stack__
-          as={"div"}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.freeBox__r8Iwy)}
-        >
+        <div className={classNames(projectcss.all, sty.freeBox__r8Iwy)}>
           <div
             className={classNames(
               projectcss.all,
@@ -450,12 +446,8 @@ function PlasmicPageItem__RenderFunc(props: {
             className={classNames(projectcss.all, sty.svg__oi4OG)}
             role={"img"}
           />
-        </Stack__>
-        <Stack__
-          as={"div"}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.freeBox__vh5Wd)}
-        >
+        </div>
+        <div className={classNames(projectcss.all, sty.freeBox__vh5Wd)}>
           <div
             className={classNames(
               projectcss.all,
@@ -534,7 +526,7 @@ function PlasmicPageItem__RenderFunc(props: {
               role={"img"}
             />
           ) : null}
-        </Stack__>
+        </div>
       </div>
       {(() => {
         try {
@@ -549,22 +541,10 @@ function PlasmicPageItem__RenderFunc(props: {
           throw e;
         }
       })() ? (
-        <Stack__
-          as={"div"}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.freeBox___0ICey)}
-        >
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__yaeuk)}
-          >
+        <div className={classNames(projectcss.all, sty.freeBox___0ICey)}>
+          <div className={classNames(projectcss.all, sty.freeBox__yaeuk)}>
             <div className={classNames(projectcss.all, sty.freeBox__f9Co)}>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__p4Qgc)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox__p4Qgc)}>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -583,7 +563,7 @@ function PlasmicPageItem__RenderFunc(props: {
                 >
                   {"\u0627\u0644\u0632\u0627\u0645\u06cc"}
                 </div>
-              </Stack__>
+              </div>
               <div
                 className={classNames(
                   projectcss.all,
@@ -625,11 +605,7 @@ function PlasmicPageItem__RenderFunc(props: {
               />
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__r1Glu)}>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__n0Ce)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox__n0Ce)}>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -648,7 +624,7 @@ function PlasmicPageItem__RenderFunc(props: {
                 >
                   {"\u0627\u0644\u0632\u0627\u0645\u06cc"}
                 </div>
-              </Stack__>
+              </div>
               <div
                 className={classNames(
                   projectcss.all,
@@ -660,11 +636,7 @@ function PlasmicPageItem__RenderFunc(props: {
                   "\u06cc\u06a9 \u0634\u0646\u0627\u0633\u0647 \u0645\u0646\u062d\u0635\u0631 \u0628\u0647 \u0641\u0631\u062f \u0628\u0631\u0627\u06cc \u0635\u0641\u062d\u0647 \u062e\u0648\u062f \u0628\u06af\u0630\u0627\u0631\u06cc\u062f."
                 }
               </div>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__ypni)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox__ypni)}>
                 <Input
                   data-plasmic-name={"keyInput"}
                   data-plasmic-override={overrides.keyInput}
@@ -735,19 +707,11 @@ function PlasmicPageItem__RenderFunc(props: {
                     <React.Fragment>{"/"}</React.Fragment>
                   </React.Fragment>
                 </div>
-              </Stack__>
+              </div>
             </div>
-          </Stack__>
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__uNJn)}
-          >
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__j9XhM)}
-            >
+          </div>
+          <div className={classNames(projectcss.all, sty.freeBox__uNJn)}>
+            <div className={classNames(projectcss.all, sty.freeBox__j9XhM)}>
               <div className={classNames(projectcss.all, sty.freeBox__hqFe6)}>
                 <div
                   className={classNames(
@@ -758,11 +722,7 @@ function PlasmicPageItem__RenderFunc(props: {
                 >
                   {"\u067e\u0627\u0631\u0627\u0645\u062a\u0631 \u0647\u0627"}
                 </div>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__is1K)}
-                >
+                <div className={classNames(projectcss.all, sty.freeBox__is1K)}>
                   {(() => {
                     try {
                       return $state.parametersList?.length !== 0;
@@ -776,9 +736,7 @@ function PlasmicPageItem__RenderFunc(props: {
                       throw e;
                     }
                   })() ? (
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__u8YkA)}
                       onClick={async event => {
                         const $steps = {};
@@ -914,11 +872,9 @@ function PlasmicPageItem__RenderFunc(props: {
                           "\u062d\u0630\u0641 \u067e\u0627\u0631\u0627\u0645\u062a\u0631"
                         }
                       </div>
-                    </Stack__>
+                    </div>
                   ) : null}
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__tu7Hq)}
                     onClick={async event => {
                       const $steps = {};
@@ -978,8 +934,8 @@ function PlasmicPageItem__RenderFunc(props: {
                         "\u0627\u0641\u0632\u0648\u062f\u0646 \u067e\u0627\u0631\u0627\u0645\u062a\u0631 \u062c\u062f\u06cc\u062f"
                       }
                     </div>
-                  </Stack__>
-                </Stack__>
+                  </div>
+                </div>
               </div>
               {(() => {
                 try {
@@ -994,9 +950,7 @@ function PlasmicPageItem__RenderFunc(props: {
                   throw e;
                 }
               })() ? (
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
+                <div
                   className={classNames(projectcss.all, sty.freeBox__jjEJe)}
                   dir={"ltr"}
                 >
@@ -1090,9 +1044,7 @@ function PlasmicPageItem__RenderFunc(props: {
                     const currentItem = __plasmic_item_0;
                     const currentIndex = __plasmic_idx_0;
                     return (
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                      <div
                         className={classNames(
                           projectcss.all,
                           sty.freeBox__lvWmJ
@@ -1176,19 +1128,15 @@ function PlasmicPageItem__RenderFunc(props: {
                             />
                           );
                         })()}
-                      </Stack__>
+                      </div>
                     );
                   })}
-                </Stack__>
+                </div>
               ) : null}
-            </Stack__>
-          </Stack__>
+            </div>
+          </div>
           <div className={classNames(projectcss.all, sty.freeBox___5BQrx)}>
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox___4G9TR)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox___4G9TR)}>
               <div
                 className={classNames(
                   projectcss.all,
@@ -1207,7 +1155,7 @@ function PlasmicPageItem__RenderFunc(props: {
               >
                 {"\u0627\u0644\u0632\u0627\u0645\u06cc"}
               </div>
-            </Stack__>
+            </div>
             <div
               className={classNames(
                 projectcss.all,
@@ -1292,11 +1240,7 @@ function PlasmicPageItem__RenderFunc(props: {
               value={generateStateValueProp($state, ["embedInput", "value"])}
             />
           </div>
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__gksbm)}
-          >
+          <div className={classNames(projectcss.all, sty.freeBox__gksbm)}>
             <div
               className={classNames(
                 projectcss.all,
@@ -1308,16 +1252,8 @@ function PlasmicPageItem__RenderFunc(props: {
                 "\u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0646\u0645\u0627\u06cc\u0634\u06cc"
               }
             </div>
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox___2SP9B)}
-            >
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox___6TzSl)}
-              >
+            <div className={classNames(projectcss.all, sty.freeBox___2SP9B)}>
+              <div className={classNames(projectcss.all, sty.freeBox___6TzSl)}>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -1342,12 +1278,8 @@ function PlasmicPageItem__RenderFunc(props: {
                     ]).apply(null, eventArgs);
                   }}
                 />
-              </Stack__>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__jcF3Z)}
-              >
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__jcF3Z)}>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -1372,12 +1304,8 @@ function PlasmicPageItem__RenderFunc(props: {
                     ]).apply(null, eventArgs);
                   }}
                 />
-              </Stack__>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__kWudv)}
-              >
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__kWudv)}>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -1404,14 +1332,10 @@ function PlasmicPageItem__RenderFunc(props: {
                     ]).apply(null, eventArgs);
                   }}
                 />
-              </Stack__>
-            </Stack__>
-          </Stack__>
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__lwjD)}
-          >
+              </div>
+            </div>
+          </div>
+          <div className={classNames(projectcss.all, sty.freeBox__lwjD)}>
             <div
               className={classNames(
                 projectcss.all,
@@ -1423,16 +1347,8 @@ function PlasmicPageItem__RenderFunc(props: {
                 "\u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0627\u0645\u0646\u06cc\u062a\u06cc"
               }
             </div>
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__w4R2W)}
-            >
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__vpWdf)}
-              >
+            <div className={classNames(projectcss.all, sty.freeBox__w4R2W)}>
+              <div className={classNames(projectcss.all, sty.freeBox__vpWdf)}>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -1459,14 +1375,10 @@ function PlasmicPageItem__RenderFunc(props: {
                     ]).apply(null, eventArgs);
                   }}
                 />
-              </Stack__>
-            </Stack__>
-          </Stack__>
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox___7Vpw)}
-          >
+              </div>
+            </div>
+          </div>
+          <div className={classNames(projectcss.all, sty.freeBox___7Vpw)}>
             <Button
               className={classNames("__wab_instance", sty.button__eV5F)}
               color={"softRed"}
@@ -1992,8 +1904,8 @@ function PlasmicPageItem__RenderFunc(props: {
                 </React.Fragment>
               </div>
             </Button>
-          </Stack__>
-        </Stack__>
+          </div>
+        </div>
       ) : null}
     </div>
   ) as React.ReactElement | null;

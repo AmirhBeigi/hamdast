@@ -385,14 +385,8 @@ function PlasmicTransactions__RenderFunc(props: {
                     </React.Fragment>
                   </React.Fragment>
                 </div>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__aoClD)}
-                >
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                <div className={classNames(projectcss.all, sty.freeBox__aoClD)}>
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__xtE4O)}
                   >
                     <div
@@ -404,10 +398,8 @@ function PlasmicTransactions__RenderFunc(props: {
                     >
                       {"\u0646\u0627\u0645 \u06a9\u0627\u0631\u0628\u0631"}
                     </div>
-                  </Stack__>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  </div>
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__hoH9K)}
                   >
                     <div
@@ -419,10 +411,8 @@ function PlasmicTransactions__RenderFunc(props: {
                     >
                       {"\u0645\u0628\u0644\u063a"}
                     </div>
-                  </Stack__>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  </div>
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__olFdy)}
                   >
                     <div
@@ -434,10 +424,8 @@ function PlasmicTransactions__RenderFunc(props: {
                     >
                       {"\u0646\u0627\u0645 \u0645\u062d\u0635\u0648\u0644"}
                     </div>
-                  </Stack__>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  </div>
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__npcuE)}
                   >
                     <div
@@ -449,13 +437,11 @@ function PlasmicTransactions__RenderFunc(props: {
                     >
                       {"\u0632\u0645\u0627\u0646"}
                     </div>
-                  </Stack__>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  </div>
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__v2PS4)}
                   />
-                </Stack__>
+                </div>
                 <ApiRequest
                   data-plasmic-name={"apiRequest"}
                   data-plasmic-override={overrides.apiRequest}

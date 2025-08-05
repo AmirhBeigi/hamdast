@@ -1021,6 +1021,19 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/credentials/oauth"
+        },
+        {
+          "id": "JTTV7mRsMr5W",
+          "name": "ProductCard2",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicProductCard2.tsx",
+          "importSpec": {
+            "modulePath": "ProductCard2.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicProductCard2.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -1263,6 +1276,21 @@
           "id": "RLm5CHqIuRxP",
           "name": "Icon40Icon",
           "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon40.tsx"
+        },
+        {
+          "id": "t17EZHHm0zct",
+          "name": "ChevronLeftIcon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__ChevronLeft.tsx"
+        },
+        {
+          "id": "DpaiUBxxJtK5",
+          "name": "ChevronRightIcon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__ChevronRight.tsx"
+        },
+        {
+          "id": "DoezJRNgA6sA",
+          "name": "Icon41Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon41.tsx"
         }
       ],
       "images": [

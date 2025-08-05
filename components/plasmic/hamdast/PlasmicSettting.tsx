@@ -476,14 +476,8 @@ function PlasmicSettting__RenderFunc(props: {
               })()}
             >
               <div className={classNames(projectcss.all, sty.freeBox__pLoc7)}>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__as44O)}
-                >
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                <div className={classNames(projectcss.all, sty.freeBox__as44O)}>
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__tFyjQ)}
                   >
                     <div
@@ -615,10 +609,8 @@ function PlasmicSettting__RenderFunc(props: {
                         }
                       }}
                     />
-                  </Stack__>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  </div>
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__axPke)}
                   >
                     <div
@@ -785,8 +777,8 @@ function PlasmicSettting__RenderFunc(props: {
                         }
                       }}
                     />
-                  </Stack__>
-                </Stack__>
+                  </div>
+                </div>
                 {(() => {
                   try {
                     return $state.menu === "API Key";
@@ -800,9 +792,7 @@ function PlasmicSettting__RenderFunc(props: {
                     throw e;
                   }
                 })() ? (
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__esqEs)}
                   >
                     <div
@@ -814,14 +804,10 @@ function PlasmicSettting__RenderFunc(props: {
                     >
                       {"\u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 API"}
                     </div>
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__sshHq)}
                     >
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                      <div
                         className={classNames(
                           projectcss.all,
                           sty.freeBox__b9Y9Z
@@ -833,9 +819,7 @@ function PlasmicSettting__RenderFunc(props: {
                             sty.freeBox__a7HMj
                           )}
                         >
-                          <Stack__
-                            as={"div"}
-                            hasGap={true}
+                          <div
                             className={classNames(
                               projectcss.all,
                               sty.freeBox__siiZ
@@ -858,7 +842,7 @@ function PlasmicSettting__RenderFunc(props: {
                             >
                               {"API Key"}
                             </div>
-                          </Stack__>
+                          </div>
                           <div
                             className={classNames(
                               projectcss.all,
@@ -985,16 +969,12 @@ function PlasmicSettting__RenderFunc(props: {
                             role={"img"}
                           />
                         </div>
-                      </Stack__>
-                    </Stack__>
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                      </div>
+                    </div>
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__gCdn)}
                     >
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                      <div
                         className={classNames(
                           projectcss.all,
                           sty.freeBox__qIbDj
@@ -1006,9 +986,7 @@ function PlasmicSettting__RenderFunc(props: {
                             sty.freeBox__qfruk
                           )}
                         >
-                          <Stack__
-                            as={"div"}
-                            hasGap={true}
+                          <div
                             className={classNames(
                               projectcss.all,
                               sty.freeBox__n0Hb3
@@ -1033,7 +1011,7 @@ function PlasmicSettting__RenderFunc(props: {
                                 "\u0634\u0646\u0627\u0633\u0647 \u0627\u0628\u0632\u0627\u0631\u06a9"
                               }
                             </div>
-                          </Stack__>
+                          </div>
                           <div
                             className={classNames(
                               projectcss.all,
@@ -1179,8 +1157,8 @@ function PlasmicSettting__RenderFunc(props: {
                             role={"img"}
                           />
                         </div>
-                      </Stack__>
-                    </Stack__>
+                      </div>
+                    </div>
                     <div
                       className={classNames(
                         projectcss.all,
@@ -1192,14 +1170,10 @@ function PlasmicSettting__RenderFunc(props: {
                         "\u062f\u0631\u062e\u0648\u0627\u0633\u062a\u200c\u0647\u0627\u06cc \u062f\u0633\u062a\u0631\u0633\u06cc"
                       }
                     </div>
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__mmn3N)}
                     >
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                      <div
                         className={classNames(
                           projectcss.all,
                           sty.freeBox__nn7Sa
@@ -1295,16 +1269,12 @@ function PlasmicSettting__RenderFunc(props: {
                             </div>
                           </Button>
                         </div>
-                      </Stack__>
-                    </Stack__>
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                      </div>
+                    </div>
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__x792V)}
                     >
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                      <div
                         className={classNames(
                           projectcss.all,
                           sty.freeBox__egWk0
@@ -1384,9 +1354,9 @@ function PlasmicSettting__RenderFunc(props: {
                             </div>
                           </Button>
                         </div>
-                      </Stack__>
-                    </Stack__>
-                  </Stack__>
+                      </div>
+                    </div>
+                  </div>
                 ) : null}
                 {(() => {
                   try {
@@ -1401,9 +1371,7 @@ function PlasmicSettting__RenderFunc(props: {
                     throw e;
                   }
                 })() ? (
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox___0Gkbh)}
                   >
                     <div
@@ -1934,7 +1902,7 @@ function PlasmicSettting__RenderFunc(props: {
                         </div>
                       </Button>
                     </ApiRequest>
-                  </Stack__>
+                  </div>
                 ) : null}
                 {(() => {
                   try {
@@ -1949,9 +1917,7 @@ function PlasmicSettting__RenderFunc(props: {
                     throw e;
                   }
                 })() ? (
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox___7SdHc)}
                   >
                     <div
@@ -2470,7 +2436,7 @@ function PlasmicSettting__RenderFunc(props: {
                         </div>
                       </Button>
                     </ApiRequest>
-                  </Stack__>
+                  </div>
                 ) : null}
               </div>
             </Layout>

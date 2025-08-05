@@ -185,9 +185,7 @@ function PlasmicRecordCard__RenderFunc(props: {
       )}
       dir={"rtl"}
     >
-      <Stack__
-        as={"div"}
-        hasGap={true}
+      <div
         className={classNames(projectcss.all, sty.freeBox__h8ZUn)}
         onClick={async event => {
           const $steps = {};
@@ -222,16 +220,8 @@ function PlasmicRecordCard__RenderFunc(props: {
           }
         }}
       >
-        <Stack__
-          as={"div"}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.freeBox__h12EY)}
-        >
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__cI6Rn)}
-          >
+        <div className={classNames(projectcss.all, sty.freeBox__h12EY)}>
+          <div className={classNames(projectcss.all, sty.freeBox__cI6Rn)}>
             <div
               className={classNames(
                 projectcss.all,
@@ -278,18 +268,10 @@ function PlasmicRecordCard__RenderFunc(props: {
                 {"\u067e\u0632\u0634\u06a9"}
               </div>
             ) : null}
-          </Stack__>
-        </Stack__>
-        <Stack__
-          as={"div"}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.freeBox__x5Bsa)}
-        >
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox___6CYPe)}
-          >
+          </div>
+        </div>
+        <div className={classNames(projectcss.all, sty.freeBox__x5Bsa)}>
+          <div className={classNames(projectcss.all, sty.freeBox___6CYPe)}>
             <div
               className={classNames(
                 projectcss.all,
@@ -313,9 +295,9 @@ function PlasmicRecordCard__RenderFunc(props: {
                 })()}
               </React.Fragment>
             </div>
-          </Stack__>
-        </Stack__>
-      </Stack__>
+          </div>
+        </div>
+      </div>
       {(() => {
         try {
           return $state.isOpen;

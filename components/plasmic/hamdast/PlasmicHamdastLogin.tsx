@@ -407,9 +407,7 @@ function PlasmicHamdastLogin__RenderFunc(props: {
                           }
                         </div>
                       </div>
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                      <div
                         className={classNames(
                           projectcss.all,
                           sty.freeBox__bgrTr
@@ -569,7 +567,7 @@ function PlasmicHamdastLogin__RenderFunc(props: {
                             "\u0633\u0627\u062e\u062a \u0627\u0648\u0644\u06cc\u0646 \u0627\u064e\u0628\u0632\u0627\u0631\u06a9"
                           }
                         </Button>
-                      </Stack__>
+                      </div>
                     </Reveal>
                   ) : null}
                   {(() => {
@@ -646,9 +644,7 @@ function PlasmicHamdastLogin__RenderFunc(props: {
                           }
                         </div>
                       </div>
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                      <div
                         className={classNames(
                           projectcss.all,
                           sty.freeBox__wPh8B
@@ -917,7 +913,7 @@ function PlasmicHamdastLogin__RenderFunc(props: {
                             "\u062e\u0648\u0627\u0646\u062f\u0645 \u0648 \u0645\u06cc\u200c\u067e\u0630\u06cc\u0631\u0645."
                           }
                         </Button>
-                      </Stack__>
+                      </div>
                     </Reveal>
                   ) : null}
                 </div>

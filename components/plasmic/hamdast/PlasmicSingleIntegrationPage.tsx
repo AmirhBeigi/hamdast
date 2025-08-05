@@ -199,9 +199,7 @@ function PlasmicSingleIntegrationPage__RenderFunc(props: {
           }}
         >
           <div className={classNames(projectcss.all, sty.freeBox___6Cceq)}>
-            <Stack__
-              as={PlasmicLink__}
-              hasGap={true}
+            <PlasmicLink__
               className={classNames(
                 projectcss.all,
                 projectcss.a,
@@ -227,12 +225,8 @@ function PlasmicSingleIntegrationPage__RenderFunc(props: {
               >
                 {"\u0647\u0645\u062f\u0633\u062a"}
               </div>
-            </Stack__>
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__itlTn)}
-            >
+            </PlasmicLink__>
+            <div className={classNames(projectcss.all, sty.freeBox__itlTn)}>
               <PlasmicLink__
                 className={classNames(
                   projectcss.all,
@@ -260,7 +254,7 @@ function PlasmicSingleIntegrationPage__RenderFunc(props: {
               >
                 {"\u0627\u062f\u063a\u0627\u0645 \u0647\u0627"}
               </PlasmicLink__>
-            </Stack__>
+            </div>
             <Button
               className={classNames("__wab_instance", sty.button__p1Uu)}
               link={`/login`}

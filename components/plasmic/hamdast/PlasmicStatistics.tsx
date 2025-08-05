@@ -642,9 +642,7 @@ function PlasmicStatistics__RenderFunc(props: {
                         }
                       })()}
                     >
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                      <div
                         className={classNames(
                           projectcss.all,
                           sty.freeBox__yRzdo
@@ -787,17 +785,13 @@ function PlasmicStatistics__RenderFunc(props: {
                             />
                           );
                         })}
-                      </Stack__>
+                      </div>
                     </FetchData>
                   </div>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__jnCjc)}
                   >
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__tm7Ne)}
                     >
                       <div
@@ -848,9 +842,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                     "\u062f\u0631\u0622\u0645\u062f \u06a9\u0633\u0628 \u0634\u062f\u0647 \u0627\u0632 \u0627\u0628\u0632\u0627\u0631\u06a9"
                                   }
                                 </div>
-                                <Stack__
-                                  as={"div"}
-                                  hasGap={true}
+                                <div
                                   className={classNames(
                                     projectcss.all,
                                     sty.freeBox__l5H0H
@@ -874,7 +866,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                   >
                                     {"\u062a\u0648\u0645\u0627\u0646"}
                                   </div>
-                                </Stack__>
+                                </div>
                               </div>
                             }
                             loadingDisplay={
@@ -904,9 +896,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                     "\u062f\u0631\u0622\u0645\u062f \u06a9\u0633\u0628 \u0634\u062f\u0647 \u0627\u0632 \u0627\u0628\u0632\u0627\u0631\u06a9"
                                   }
                                 </div>
-                                <Stack__
-                                  as={"div"}
-                                  hasGap={true}
+                                <div
                                   className={classNames(
                                     projectcss.all,
                                     sty.freeBox__sIMoH
@@ -919,7 +909,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                     )}
                                     role={"img"}
                                   />
-                                </Stack__>
+                                </div>
                               </div>
                             }
                             method={"GET"}
@@ -984,9 +974,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                   "\u062f\u0631\u0622\u0645\u062f \u06a9\u0633\u0628 \u0634\u062f\u0647 \u0627\u0632 \u0627\u0628\u0632\u0627\u0631\u06a9"
                                 }
                               </div>
-                              <Stack__
-                                as={"div"}
-                                hasGap={true}
+                              <div
                                 className={classNames(
                                   projectcss.all,
                                   sty.freeBox__hxBE
@@ -1034,15 +1022,13 @@ function PlasmicStatistics__RenderFunc(props: {
                                 >
                                   {"\u062a\u0648\u0645\u0627\u0646"}
                                 </div>
-                              </Stack__>
+                              </div>
                             </div>
                           </ApiRequest>
                         </div>
                       </div>
-                    </Stack__>
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    </div>
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__uEmbm)}
                     >
                       <Popover
@@ -1050,9 +1036,7 @@ function PlasmicStatistics__RenderFunc(props: {
                         data-plasmic-override={overrides.popover2}
                         className={classNames("__wab_instance", sty.popover2)}
                         content={
-                          <Stack__
-                            as={"div"}
-                            hasGap={true}
+                          <div
                             className={classNames(
                               projectcss.all,
                               sty.freeBox__vqzSt
@@ -1134,7 +1118,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                 "values"
                               ])}
                             />
-                          </Stack__>
+                          </div>
                         }
                         onOpenChange={async (...eventArgs: any) => {
                           generateStateOnChangeProp($state, [
@@ -1254,10 +1238,8 @@ function PlasmicStatistics__RenderFunc(props: {
                           </Button>
                         }
                       />
-                    </Stack__>
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    </div>
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__lUpZz)}
                     >
                       <div
@@ -1266,9 +1248,7 @@ function PlasmicStatistics__RenderFunc(props: {
                           sty.freeBox___5XFaG
                         )}
                       >
-                        <Stack__
-                          as={"div"}
-                          hasGap={true}
+                        <div
                           className={classNames(
                             projectcss.all,
                             sty.freeBox__ric13
@@ -1392,7 +1372,7 @@ function PlasmicStatistics__RenderFunc(props: {
                               />
                             );
                           })}
-                        </Stack__>
+                        </div>
                       </div>
                       <div
                         className={classNames(
@@ -1414,9 +1394,7 @@ function PlasmicStatistics__RenderFunc(props: {
                               sty.activeUserApi6
                             )}
                             errorDisplay={
-                              <Stack__
-                                as={"div"}
-                                hasGap={true}
+                              <div
                                 className={classNames(
                                   projectcss.all,
                                   sty.freeBox__czbOb
@@ -1442,9 +1420,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                     "\u062a\u0639\u062f\u0627\u062f \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u062b\u0628\u062a \u0646\u0627\u0645 \u0634\u062f\u0647 \u0627\u0632 \u0627\u0628\u0632\u0627\u0631\u06a9"
                                   }
                                 </div>
-                                <Stack__
-                                  as={"div"}
-                                  hasGap={true}
+                                <div
                                   className={classNames(
                                     projectcss.all,
                                     sty.freeBox__dnBtO
@@ -1468,8 +1444,8 @@ function PlasmicStatistics__RenderFunc(props: {
                                   >
                                     {"\u06a9\u0627\u0631\u0628\u0631"}
                                   </div>
-                                </Stack__>
-                              </Stack__>
+                                </div>
+                              </div>
                             }
                             loadingDisplay={
                               <div
@@ -1498,9 +1474,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                     "\u062a\u0639\u062f\u0627\u062f \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u062b\u0628\u062a \u0646\u0627\u0645 \u0634\u062f\u0647 \u0627\u0632 \u0627\u0628\u0632\u0627\u0631\u06a9"
                                   }
                                 </div>
-                                <Stack__
-                                  as={"div"}
-                                  hasGap={true}
+                                <div
                                   className={classNames(
                                     projectcss.all,
                                     sty.freeBox__jwwAi
@@ -1513,7 +1487,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                     )}
                                     role={"img"}
                                   />
-                                </Stack__>
+                                </div>
                               </div>
                             }
                             method={"GET"}
@@ -1575,9 +1549,7 @@ function PlasmicStatistics__RenderFunc(props: {
                               }
                             })()}
                           >
-                            <Stack__
-                              as={"div"}
-                              hasGap={true}
+                            <div
                               className={classNames(
                                 projectcss.all,
                                 sty.freeBox___1WdDt
@@ -1603,9 +1575,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                   "\u062a\u0639\u062f\u0627\u062f \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u062b\u0628\u062a \u0646\u0627\u0645 \u0634\u062f\u0647 \u0627\u0632 \u0627\u0628\u0632\u0627\u0631\u06a9"
                                 }
                               </div>
-                              <Stack__
-                                as={"div"}
-                                hasGap={true}
+                              <div
                                 className={classNames(
                                   projectcss.all,
                                   sty.freeBox__eYco6
@@ -1651,8 +1621,8 @@ function PlasmicStatistics__RenderFunc(props: {
                                 >
                                   {"\u06a9\u0627\u0631\u0628\u0631"}
                                 </div>
-                              </Stack__>
-                            </Stack__>
+                              </div>
+                            </div>
                           </ApiRequest>
                         </div>
                         <div
@@ -1669,9 +1639,7 @@ function PlasmicStatistics__RenderFunc(props: {
                               sty.activeUserApi5
                             )}
                             errorDisplay={
-                              <Stack__
-                                as={"div"}
-                                hasGap={true}
+                              <div
                                 className={classNames(
                                   projectcss.all,
                                   sty.freeBox__mHXfD
@@ -1699,9 +1667,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                     "\u062a\u0639\u062f\u0627\u062f \u0648\u0631\u0648\u062f \u0645\u0648\u0641\u0642 \u062f\u0631 \u0627\u0628\u0632\u0627\u0631\u06a9"
                                   }
                                 </div>
-                                <Stack__
-                                  as={"div"}
-                                  hasGap={true}
+                                <div
                                   className={classNames(
                                     projectcss.all,
                                     sty.freeBox__p3QZp
@@ -1725,8 +1691,8 @@ function PlasmicStatistics__RenderFunc(props: {
                                   >
                                     {"\u0628\u0627\u0631"}
                                   </div>
-                                </Stack__>
-                              </Stack__>
+                                </div>
+                              </div>
                             }
                             loadingDisplay={
                               <div
@@ -1757,9 +1723,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                     "\u062a\u0639\u062f\u0627\u062f \u0648\u0631\u0648\u062f \u0645\u0648\u0641\u0642 \u062f\u0631 \u0627\u0628\u0632\u0627\u0631\u06a9"
                                   }
                                 </div>
-                                <Stack__
-                                  as={"div"}
-                                  hasGap={true}
+                                <div
                                   className={classNames(
                                     projectcss.all,
                                     sty.freeBox__jiCrY
@@ -1772,7 +1736,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                     )}
                                     role={"img"}
                                   />
-                                </Stack__>
+                                </div>
                               </div>
                             }
                             method={"GET"}
@@ -1834,9 +1798,7 @@ function PlasmicStatistics__RenderFunc(props: {
                               }
                             })()}
                           >
-                            <Stack__
-                              as={"div"}
-                              hasGap={true}
+                            <div
                               className={classNames(
                                 projectcss.all,
                                 sty.freeBox___9DiXg
@@ -1864,9 +1826,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                   "\u062a\u0639\u062f\u0627\u062f \u0648\u0631\u0648\u062f \u0645\u0648\u0641\u0642 \u062f\u0631 \u0627\u0628\u0632\u0627\u0631\u06a9"
                                 }
                               </div>
-                              <Stack__
-                                as={"div"}
-                                hasGap={true}
+                              <div
                                 className={classNames(
                                   projectcss.all,
                                   sty.freeBox__h5SBs
@@ -1912,8 +1872,8 @@ function PlasmicStatistics__RenderFunc(props: {
                                 >
                                   {"\u0628\u0627\u0631"}
                                 </div>
-                              </Stack__>
-                            </Stack__>
+                              </div>
+                            </div>
                           </ApiRequest>
                         </div>
                         <div
@@ -1930,9 +1890,7 @@ function PlasmicStatistics__RenderFunc(props: {
                               sty.activeUserApi7
                             )}
                             errorDisplay={
-                              <Stack__
-                                as={"div"}
-                                hasGap={true}
+                              <div
                                 className={classNames(
                                   projectcss.all,
                                   sty.freeBox__y0Iiz
@@ -1960,9 +1918,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                     "\u062a\u0639\u062f\u0627\u062f \u0648\u0631\u0648\u062f \u0646\u0627\u0645\u0648\u0641\u0642 \u062f\u0631 \u0627\u0628\u0632\u0627\u0631\u06a9"
                                   }
                                 </div>
-                                <Stack__
-                                  as={"div"}
-                                  hasGap={true}
+                                <div
                                   className={classNames(
                                     projectcss.all,
                                     sty.freeBox__zoVkj
@@ -1986,8 +1942,8 @@ function PlasmicStatistics__RenderFunc(props: {
                                   >
                                     {"\u0628\u0627\u0631"}
                                   </div>
-                                </Stack__>
-                              </Stack__>
+                                </div>
+                              </div>
                             }
                             loadingDisplay={
                               <div
@@ -2018,9 +1974,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                     "\u062a\u0639\u062f\u0627\u062f \u0648\u0631\u0648\u062f \u0646\u0627\u0645\u0648\u0641\u0642 \u062f\u0631 \u0627\u0628\u0632\u0627\u0631\u06a9"
                                   }
                                 </div>
-                                <Stack__
-                                  as={"div"}
-                                  hasGap={true}
+                                <div
                                   className={classNames(
                                     projectcss.all,
                                     sty.freeBox__z3B35
@@ -2033,7 +1987,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                     )}
                                     role={"img"}
                                   />
-                                </Stack__>
+                                </div>
                               </div>
                             }
                             method={"GET"}
@@ -2095,9 +2049,7 @@ function PlasmicStatistics__RenderFunc(props: {
                               }
                             })()}
                           >
-                            <Stack__
-                              as={"div"}
-                              hasGap={true}
+                            <div
                               className={classNames(
                                 projectcss.all,
                                 sty.freeBox__llo9R
@@ -2125,9 +2077,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                   "\u062a\u0639\u062f\u0627\u062f \u0648\u0631\u0648\u062f \u0646\u0627\u0645\u0648\u0641\u0642 \u062f\u0631 \u0627\u0628\u0632\u0627\u0631\u06a9"
                                 }
                               </div>
-                              <Stack__
-                                as={"div"}
-                                hasGap={true}
+                              <div
                                 className={classNames(
                                   projectcss.all,
                                   sty.freeBox___4NoW9
@@ -2173,12 +2123,12 @@ function PlasmicStatistics__RenderFunc(props: {
                                 >
                                   {"\u0628\u0627\u0631"}
                                 </div>
-                              </Stack__>
-                            </Stack__>
+                              </div>
+                            </div>
                           </ApiRequest>
                         </div>
                       </div>
-                    </Stack__>
+                    </div>
                     <div
                       className={classNames(
                         projectcss.all,
@@ -2190,9 +2140,7 @@ function PlasmicStatistics__RenderFunc(props: {
                         data-plasmic-override={overrides.popover3}
                         className={classNames("__wab_instance", sty.popover3)}
                         content={
-                          <Stack__
-                            as={"div"}
-                            hasGap={true}
+                          <div
                             className={classNames(
                               projectcss.all,
                               sty.freeBox__fgvY6
@@ -2274,9 +2222,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                   }
                                 })()}
                               >
-                                <Stack__
-                                  as={"div"}
-                                  hasGap={true}
+                                <div
                                   className={classNames(
                                     projectcss.all,
                                     sty.freeBox__zqlVl
@@ -2469,10 +2415,10 @@ function PlasmicStatistics__RenderFunc(props: {
                                       />
                                     );
                                   })}
-                                </Stack__>
+                                </div>
                               </FetchData>
                             </div>
-                          </Stack__>
+                          </div>
                         }
                         onOpenChange={async (...eventArgs: any) => {
                           generateStateOnChangeProp($state, [
@@ -2529,9 +2475,7 @@ function PlasmicStatistics__RenderFunc(props: {
                         }
                       />
                     </div>
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__cYsK7)}
                     >
                       <div
@@ -2540,9 +2484,7 @@ function PlasmicStatistics__RenderFunc(props: {
                           sty.freeBox__tr8NN
                         )}
                       >
-                        <Stack__
-                          as={"div"}
-                          hasGap={true}
+                        <div
                           className={classNames(
                             projectcss.all,
                             sty.freeBox__zAxBt
@@ -2666,7 +2608,7 @@ function PlasmicStatistics__RenderFunc(props: {
                               />
                             );
                           })}
-                        </Stack__>
+                        </div>
                       </div>
                       <div
                         className={classNames(
@@ -2688,9 +2630,7 @@ function PlasmicStatistics__RenderFunc(props: {
                               sty.activeUserApi3
                             )}
                             errorDisplay={
-                              <Stack__
-                                as={"div"}
-                                hasGap={true}
+                              <div
                                 className={classNames(
                                   projectcss.all,
                                   sty.freeBox__syDse
@@ -2716,9 +2656,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                     "\u0645\u06cc\u0627\u0646\u06af\u06cc\u0646 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644 \u0631\u0648\u0632\u0627\u0646\u0647"
                                   }
                                 </div>
-                                <Stack__
-                                  as={"div"}
-                                  hasGap={true}
+                                <div
                                   className={classNames(
                                     projectcss.all,
                                     sty.freeBox__iKc3
@@ -2742,8 +2680,8 @@ function PlasmicStatistics__RenderFunc(props: {
                                   >
                                     {"\u06a9\u0627\u0631\u0628\u0631"}
                                   </div>
-                                </Stack__>
-                              </Stack__>
+                                </div>
+                              </div>
                             }
                             loadingDisplay={
                               <div
@@ -2772,9 +2710,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                     "\u0645\u06cc\u0627\u0646\u06af\u06cc\u0646 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644 \u0631\u0648\u0632\u0627\u0646\u0647"
                                   }
                                 </div>
-                                <Stack__
-                                  as={"div"}
-                                  hasGap={true}
+                                <div
                                   className={classNames(
                                     projectcss.all,
                                     sty.freeBox__jpjx6
@@ -2787,7 +2723,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                     )}
                                     role={"img"}
                                   />
-                                </Stack__>
+                                </div>
                               </div>
                             }
                             method={"GET"}
@@ -2849,9 +2785,7 @@ function PlasmicStatistics__RenderFunc(props: {
                               }
                             })()}
                           >
-                            <Stack__
-                              as={"div"}
-                              hasGap={true}
+                            <div
                               className={classNames(
                                 projectcss.all,
                                 sty.freeBox__ge4JD
@@ -2877,9 +2811,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                   "\u0645\u06cc\u0627\u0646\u06af\u06cc\u0646 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644 \u0631\u0648\u0632\u0627\u0646\u0647"
                                 }
                               </div>
-                              <Stack__
-                                as={"div"}
-                                hasGap={true}
+                              <div
                                 className={classNames(
                                   projectcss.all,
                                   sty.freeBox___04H48
@@ -2925,8 +2857,8 @@ function PlasmicStatistics__RenderFunc(props: {
                                 >
                                   {"\u06a9\u0627\u0631\u0628\u0631"}
                                 </div>
-                              </Stack__>
-                            </Stack__>
+                              </div>
+                            </div>
                           </ApiRequest>
                         </div>
                         <div
@@ -2943,9 +2875,7 @@ function PlasmicStatistics__RenderFunc(props: {
                               sty.activeUserApi4
                             )}
                             errorDisplay={
-                              <Stack__
-                                as={"div"}
-                                hasGap={true}
+                              <div
                                 className={classNames(
                                   projectcss.all,
                                   sty.freeBox__dujI2
@@ -2971,9 +2901,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                     "\u0645\u06cc\u0627\u0646\u06af\u06cc\u0646 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644 \u0645\u0627\u0647\u0627\u0646\u0647"
                                   }
                                 </div>
-                                <Stack__
-                                  as={"div"}
-                                  hasGap={true}
+                                <div
                                   className={classNames(
                                     projectcss.all,
                                     sty.freeBox__rKtcA
@@ -2997,8 +2925,8 @@ function PlasmicStatistics__RenderFunc(props: {
                                   >
                                     {"\u06a9\u0627\u0631\u0628\u0631"}
                                   </div>
-                                </Stack__>
-                              </Stack__>
+                                </div>
+                              </div>
                             }
                             loadingDisplay={
                               <div
@@ -3027,9 +2955,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                     "\u0645\u06cc\u0627\u0646\u06af\u06cc\u0646 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644 \u0645\u0627\u0647\u0627\u0646\u0647"
                                   }
                                 </div>
-                                <Stack__
-                                  as={"div"}
-                                  hasGap={true}
+                                <div
                                   className={classNames(
                                     projectcss.all,
                                     sty.freeBox__iFw0C
@@ -3042,7 +2968,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                     )}
                                     role={"img"}
                                   />
-                                </Stack__>
+                                </div>
                               </div>
                             }
                             method={"GET"}
@@ -3104,9 +3030,7 @@ function PlasmicStatistics__RenderFunc(props: {
                               }
                             })()}
                           >
-                            <Stack__
-                              as={"div"}
-                              hasGap={true}
+                            <div
                               className={classNames(
                                 projectcss.all,
                                 sty.freeBox__zmYx
@@ -3132,9 +3056,7 @@ function PlasmicStatistics__RenderFunc(props: {
                                   "\u0645\u06cc\u0627\u0646\u06af\u06cc\u0646 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0641\u0639\u0627\u0644 \u0645\u0627\u0647\u0627\u0646\u0647"
                                 }
                               </div>
-                              <Stack__
-                                as={"div"}
-                                hasGap={true}
+                              <div
                                 className={classNames(
                                   projectcss.all,
                                   sty.freeBox__p210W
@@ -3180,13 +3102,13 @@ function PlasmicStatistics__RenderFunc(props: {
                                 >
                                   {"\u06a9\u0627\u0631\u0628\u0631"}
                                 </div>
-                              </Stack__>
-                            </Stack__>
+                              </div>
+                            </div>
                           </ApiRequest>
                         </div>
                       </div>
-                    </Stack__>
-                  </Stack__>
+                    </div>
+                  </div>
                 </div>
               </div>
             </Layout>

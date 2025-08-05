@@ -197,9 +197,7 @@ function PlasmicIntegrations__RenderFunc(props: {
           }}
         >
           <div className={classNames(projectcss.all, sty.freeBox__kfWCe)}>
-            <Stack__
-              as={PlasmicLink__}
-              hasGap={true}
+            <PlasmicLink__
               className={classNames(
                 projectcss.all,
                 projectcss.a,
@@ -225,12 +223,8 @@ function PlasmicIntegrations__RenderFunc(props: {
               >
                 {"\u0647\u0645\u062f\u0633\u062a"}
               </div>
-            </Stack__>
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__uiToj)}
-            >
+            </PlasmicLink__>
+            <div className={classNames(projectcss.all, sty.freeBox__uiToj)}>
               <PlasmicLink__
                 className={classNames(
                   projectcss.all,
@@ -258,7 +252,7 @@ function PlasmicIntegrations__RenderFunc(props: {
               >
                 {"\u0627\u062f\u063a\u0627\u0645 \u0647\u0627"}
               </PlasmicLink__>
-            </Stack__>
+            </div>
             <Button
               data-plasmic-name={"button"}
               data-plasmic-override={overrides.button}
@@ -280,11 +274,7 @@ function PlasmicIntegrations__RenderFunc(props: {
               </div>
             </Button>
           </div>
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__iUiJ)}
-          >
+          <div className={classNames(projectcss.all, sty.freeBox__iUiJ)}>
             <div
               className={classNames(
                 projectcss.all,
@@ -307,13 +297,9 @@ function PlasmicIntegrations__RenderFunc(props: {
                 " \u062a\u0646\u0647\u0627 \u0631\u0648\u06cc \u062a\u0648\u0633\u0639\u0647\u200c\u06cc \u0645\u062d\u0635\u0648\u0644 \u0648 \u06a9\u0633\u0628\u200c\u0648\u06a9\u0627\u0631\u062a\u0627\u0646 \u062a\u0645\u0631\u06a9\u0632 \u06a9\u0646\u06cc\u062f."
               }
             </div>
-          </Stack__>
+          </div>
           <div className={classNames(projectcss.all, sty.freeBox__dIrj)}>
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__kdCbg)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__kdCbg)}>
               <PlasmicImg__
                 alt={""}
                 className={classNames(sty.img__oLhUj)}
@@ -354,7 +340,7 @@ function PlasmicIntegrations__RenderFunc(props: {
                   }
                 </div>
               </div>
-            </Stack__>
+            </div>
             <PlasmicLink__
               className={classNames(
                 projectcss.all,
@@ -386,11 +372,7 @@ function PlasmicIntegrations__RenderFunc(props: {
                 }
               </div>
             </PlasmicLink__>
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__bwd)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__bwd)}>
               <PlasmicImg__
                 alt={""}
                 className={classNames(sty.img___5FTeV)}
@@ -431,12 +413,8 @@ function PlasmicIntegrations__RenderFunc(props: {
                   }
                 </div>
               </div>
-            </Stack__>
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__s3OIy)}
-            >
+            </div>
+            <div className={classNames(projectcss.all, sty.freeBox__s3OIy)}>
               <PlasmicImg__
                 alt={""}
                 className={classNames(sty.img___5FVrU)}
@@ -477,7 +455,7 @@ function PlasmicIntegrations__RenderFunc(props: {
                   }
                 </div>
               </div>
-            </Stack__>
+            </div>
           </div>
         </div>
       </div>
