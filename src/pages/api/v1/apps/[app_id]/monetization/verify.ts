@@ -100,7 +100,7 @@ export default async function handler(
     const releaseAt = products.release_at
       ? moment()
           .add(products.release_at?.[0], products.release_at?.[1])
-          .format("YYYY-MM-DD HH:mm-ss")
+          .format("YYYY-MM-DD HH:mm:ss")
       : undefined;
 
     if (!receipt_id) {
