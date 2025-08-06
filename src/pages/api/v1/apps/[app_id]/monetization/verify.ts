@@ -3,6 +3,7 @@ import { pb } from "../../../../../../../pocketbase";
 import config from "next/config";
 import axios from "axios";
 import NextCors from "nextjs-cors";
+import moment from "jalali-moment";
 const { publicRuntimeConfig } = config();
 
 export default async function handler(
@@ -88,6 +89,20 @@ export default async function handler(
   if (req.method == "POST") {
     const { receipt_id } = req.body;
 
+    const products = await pb
+      .collection("products")
+      .getFirstListItem(`app~"${app.id}"`, {
+        headers: {
+          x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+        },
+      });
+
+    const releaseAt = products.release_at
+      ? moment()
+          .add(products.release_at?.[0], products.release_at?.[1])
+          .format("YYYY-MM-DD HH:mm-ss")
+      : undefined;
+
     if (!receipt_id) {
       return res.status(400).json({
         message: "The receipt_id field is required.",
@@ -97,7 +112,9 @@ export default async function handler(
     try {
       const receipt = await axios.post(
         `https://apigw.paziresh24.com/katibe/v1/payments/${receipt_id}/verify`,
-        undefined,
+        {
+          release_at: releaseAt,
+        },
         {
           headers: {
             token: app?.tokens?.katibe,
