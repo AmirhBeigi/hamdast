@@ -385,7 +385,7 @@ function PlasmicTransactionCard__RenderFunc(props: {
                     e instanceof TypeError ||
                     e?.plasmicType === "PlasmicUndefinedDataError"
                   ) {
-                    return true;
+                    return false;
                   }
                   throw e;
                 }
@@ -417,6 +417,7 @@ function PlasmicTransactionCard__RenderFunc(props: {
                     }
                   })()}
                   platform={"nextjs"}
+                  target={"_blank"}
                 >
                   {
                     "\u0645\u0634\u0627\u0647\u062f\u0647 \u067e\u0631\u0648\u0641\u0627\u06cc\u0644 \u067e\u0632\u0634\u06a9"
