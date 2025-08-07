@@ -100,6 +100,8 @@ export type PlasmicTransactionCard__OverridesType = {
   root?: Flex__<"div">;
   apiRequest2?: Flex__<typeof ApiRequest>;
   avatar?: Flex__<typeof AntdAvatar>;
+  apiRequest?: Flex__<typeof ApiRequest>;
+  link?: Flex__<"a"> & Partial<LinkProps>;
   fragmentLineClamp?: Flex__<typeof FragmentLineClamp>;
   dialog?: Flex__<typeof Paziresh24Dialog>;
 };
@@ -189,6 +191,30 @@ function PlasmicTransactionCard__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "apiRequest.data",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "apiRequest"
+      },
+      {
+        path: "apiRequest.error",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "apiRequest"
+      },
+      {
+        path: "apiRequest.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "apiRequest"
       }
     ],
     [$props, $ctx, $refs]
@@ -288,36 +314,116 @@ function PlasmicTransactionCard__RenderFunc(props: {
             size={"large"}
           />
 
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__gnaiq
-            )}
-          >
-            <React.Fragment>
+          <div className={classNames(projectcss.all, sty.freeBox__rzJj)}>
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__gnaiq
+              )}
+            >
+              <React.Fragment>
+                {(() => {
+                  try {
+                    return (() => {
+                      const name = $state.apiRequest2?.data?.users?.[0]?.name;
+                      const family =
+                        $state.apiRequest2?.data?.users?.[0]?.family;
+                      return (
+                        (name ? name : "کاربر") +
+                        " " +
+                        (family ? family : "بدون نام")
+                      );
+                    })();
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return "";
+                    }
+                    throw e;
+                  }
+                })()}
+              </React.Fragment>
+            </div>
+            <ApiRequest
+              data-plasmic-name={"apiRequest"}
+              data-plasmic-override={overrides.apiRequest}
+              className={classNames("__wab_instance", sty.apiRequest)}
+              errorDisplay={null}
+              loadingDisplay={null}
+              method={"GET"}
+              onError={async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, [
+                  "apiRequest",
+                  "error"
+                ]).apply(null, eventArgs);
+              }}
+              onLoading={async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, [
+                  "apiRequest",
+                  "loading"
+                ]).apply(null, eventArgs);
+              }}
+              onSuccess={async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, ["apiRequest", "data"]).apply(
+                  null,
+                  eventArgs
+                );
+              }}
+              ref={ref => {
+                $refs["apiRequest"] = ref;
+              }}
+              url={`https://apigw.paziresh24.com/v1/providers?user_id=${$props.currentItem.userid}`}
+            >
               {(() => {
                 try {
-                  return (() => {
-                    const name = $state.apiRequest2?.data?.users?.[0]?.name;
-                    const family = $state.apiRequest2?.data?.users?.[0]?.family;
-                    return (
-                      (name ? name : "کاربر") +
-                      " " +
-                      (family ? family : "بدون نام")
-                    );
-                  })();
+                  return !!$state.apiRequest.data.providers[0].slug;
                 } catch (e) {
                   if (
                     e instanceof TypeError ||
                     e?.plasmicType === "PlasmicUndefinedDataError"
                   ) {
-                    return "";
+                    return true;
                   }
                   throw e;
                 }
-              })()}
-            </React.Fragment>
+              })() ? (
+                <PlasmicLink__
+                  data-plasmic-name={"link"}
+                  data-plasmic-override={overrides.link}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.a,
+                    projectcss.__wab_text,
+                    sty.link
+                  )}
+                  component={Link}
+                  href={(() => {
+                    try {
+                      return (
+                        `https://www.paziresh24.com/dr/` +
+                        $state.apiRequest.data.providers[0].slug
+                      );
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()}
+                  platform={"nextjs"}
+                >
+                  {
+                    "\u0645\u0634\u0627\u0647\u062f\u0647 \u067e\u0631\u0648\u0641\u0627\u06cc\u0644 \u067e\u0632\u0634\u06a9"
+                  }
+                </PlasmicLink__>
+              ) : null}
+            </ApiRequest>
           </div>
         </div>
       </ApiRequest>
@@ -714,9 +820,19 @@ function PlasmicTransactionCard__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "apiRequest2", "avatar", "fragmentLineClamp", "dialog"],
-  apiRequest2: ["apiRequest2", "avatar"],
+  root: [
+    "root",
+    "apiRequest2",
+    "avatar",
+    "apiRequest",
+    "link",
+    "fragmentLineClamp",
+    "dialog"
+  ],
+  apiRequest2: ["apiRequest2", "avatar", "apiRequest", "link"],
   avatar: ["avatar"],
+  apiRequest: ["apiRequest", "link"],
+  link: ["link"],
   fragmentLineClamp: ["fragmentLineClamp"],
   dialog: ["dialog"]
 } as const;
@@ -727,6 +843,8 @@ type NodeDefaultElementType = {
   root: "div";
   apiRequest2: typeof ApiRequest;
   avatar: typeof AntdAvatar;
+  apiRequest: typeof ApiRequest;
+  link: "a";
   fragmentLineClamp: typeof FragmentLineClamp;
   dialog: typeof Paziresh24Dialog;
 };
@@ -793,6 +911,8 @@ export const PlasmicTransactionCard = Object.assign(
     // Helper components rendering sub-elements
     apiRequest2: makeNodeComponent("apiRequest2"),
     avatar: makeNodeComponent("avatar"),
+    apiRequest: makeNodeComponent("apiRequest"),
+    link: makeNodeComponent("link"),
     fragmentLineClamp: makeNodeComponent("fragmentLineClamp"),
     dialog: makeNodeComponent("dialog"),
 
