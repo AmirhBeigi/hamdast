@@ -63,6 +63,8 @@ import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import AuthProvider from "../../AuthProvider"; // plasmic-import: KTPu1eZupEdG/component
 import Layout from "../../Layout"; // plasmic-import: ve2FygUyzJYe/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
+import Filter from "../../Filter"; // plasmic-import: YY41SIghQUgw/component
+import Paziresh24Button from "../../Paziresh24Button"; // plasmic-import: YOhw5fIQJQgB/component
 import TransactionCard from "../../TransactionCard"; // plasmic-import: hnKe0-Td8nYz/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -73,7 +75,12 @@ import plasmic_ravi_design_system_css from "../ravi_design_system/plasmic.module
 import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectcss
 import sty from "./PlasmicTransactions.module.css"; // plasmic-import: hhjL63F0Jui4/css
 
+import Icon42Icon from "./icons/PlasmicIcon__Icon42"; // plasmic-import: QvI77t3YrvM9/icon
 import Icon15Icon from "./icons/PlasmicIcon__Icon15"; // plasmic-import: rQsx35tf_bcf/icon
+import Icon25Icon from "./icons/PlasmicIcon__Icon25"; // plasmic-import: AGSEC-pNDNUM/icon
+import Icon43Icon from "./icons/PlasmicIcon__Icon43"; // plasmic-import: TmLWglGupeVI/icon
+import ChevronRightIcon from "../paziresh_24_design_system/icons/PlasmicIcon__ChevronRight"; // plasmic-import: 0359howWu0cr/icon
+import ChevronLeftIcon from "../paziresh_24_design_system/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: jS0YlkKPLO7U/icon
 
 createPlasmicElementProxy;
 
@@ -91,8 +98,10 @@ export type PlasmicTransactions__OverridesType = {
   embedHtml?: Flex__<typeof Embed>;
   authProvider?: Flex__<typeof AuthProvider>;
   layout?: Flex__<typeof Layout>;
+  fragmentApiRequest2?: Flex__<typeof ApiRequest>;
+  fragmentApiRequest3?: Flex__<typeof ApiRequest>;
+  paziresh24Button?: Flex__<typeof Paziresh24Button>;
   apiRequest?: Flex__<typeof ApiRequest>;
-  svg?: Flex__<"svg">;
   transactionCard?: Flex__<typeof TransactionCard>;
 };
 
@@ -174,6 +183,60 @@ function PlasmicTransactions__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
 
         refName: "apiRequest"
+      },
+      {
+        path: "fragmentApiRequest2.data",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "fragmentApiRequest2"
+      },
+      {
+        path: "fragmentApiRequest2.error",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "fragmentApiRequest2"
+      },
+      {
+        path: "fragmentApiRequest2.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "fragmentApiRequest2"
+      },
+      {
+        path: "statusFilter",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => "done"
+      },
+      {
+        path: "fragmentApiRequest3.data",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "fragmentApiRequest3"
+      },
+      {
+        path: "fragmentApiRequest3.error",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "fragmentApiRequest3"
+      },
+      {
+        path: "fragmentApiRequest3.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "fragmentApiRequest3"
       }
     ],
     [$props, $ctx, $refs]
@@ -385,6 +448,748 @@ function PlasmicTransactions__RenderFunc(props: {
                     </React.Fragment>
                   </React.Fragment>
                 </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox___6DFfd)}
+                >
+                  <ApiRequest
+                    data-plasmic-name={"fragmentApiRequest2"}
+                    data-plasmic-override={overrides.fragmentApiRequest2}
+                    className={classNames(
+                      "__wab_instance",
+                      sty.fragmentApiRequest2
+                    )}
+                    errorDisplay={
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__dvOz
+                        )}
+                      >
+                        <Icon42Icon
+                          className={classNames(projectcss.all, sty.svg__jsHyB)}
+                          role={"img"}
+                        />
+
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__oPoYc
+                          )}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__xyrgT
+                            )}
+                          >
+                            {"\u062f\u0631\u0622\u0645\u062f"}
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__ceK7X
+                            )}
+                          >
+                            <Icon15Icon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg___7YTz6
+                              )}
+                              role={"img"}
+                            />
+
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___8T8Aq
+                              )}
+                            >
+                              {"\u062a\u0648\u0645\u0627\u0646"}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    }
+                    loadingDisplay={
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__zd5Im
+                        )}
+                      >
+                        <Icon42Icon
+                          className={classNames(projectcss.all, sty.svg__nMt4E)}
+                          role={"img"}
+                        />
+
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__njL7E
+                          )}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__b1Isr
+                            )}
+                          >
+                            {"\u062f\u0631\u0622\u0645\u062f"}
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__liGa
+                            )}
+                          >
+                            <Icon15Icon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg___9VxzD
+                              )}
+                              role={"img"}
+                            />
+
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__yPntm
+                              )}
+                            >
+                              {"\u062a\u0648\u0645\u0627\u0646"}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    }
+                    method={"GET"}
+                    onError={async (...eventArgs: any) => {
+                      generateStateOnChangeProp($state, [
+                        "fragmentApiRequest2",
+                        "error"
+                      ]).apply(null, eventArgs);
+                    }}
+                    onLoading={async (...eventArgs: any) => {
+                      generateStateOnChangeProp($state, [
+                        "fragmentApiRequest2",
+                        "loading"
+                      ]).apply(null, eventArgs);
+                    }}
+                    onSuccess={async (...eventArgs: any) => {
+                      generateStateOnChangeProp($state, [
+                        "fragmentApiRequest2",
+                        "data"
+                      ]).apply(null, eventArgs);
+                    }}
+                    ref={ref => {
+                      $refs["fragmentApiRequest2"] = ref;
+                    }}
+                    url={(() => {
+                      try {
+                        return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/monetization/transactions/income`;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__v1IWt)}
+                    >
+                      <Icon42Icon
+                        className={classNames(projectcss.all, sty.svg__g7Ca)}
+                        role={"img"}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___1Uip2
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__spBo3
+                          )}
+                        >
+                          {"\u062f\u0631\u0622\u0645\u062f"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__tktVb
+                          )}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__oD7Hy
+                            )}
+                          >
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return new Intl.NumberFormat("fa-IR").format(
+                                    (
+                                      $state.fragmentApiRequest2.data
+                                        ?.balance ?? 0
+                                    )
+                                      .toString()
+                                      .slice(0, -1)
+                                  );
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "\u06f0";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__lp1SI
+                            )}
+                          >
+                            {"\u062a\u0648\u0645\u0627\u0646"}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ApiRequest>
+                  <ApiRequest
+                    data-plasmic-name={"fragmentApiRequest3"}
+                    data-plasmic-override={overrides.fragmentApiRequest3}
+                    className={classNames(
+                      "__wab_instance",
+                      sty.fragmentApiRequest3
+                    )}
+                    errorDisplay={
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__qnjOw
+                        )}
+                      >
+                        <Icon25Icon
+                          className={classNames(
+                            projectcss.all,
+                            sty.svg___79Sn6
+                          )}
+                          role={"img"}
+                        />
+
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__nZn4F
+                          )}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__cZRl
+                            )}
+                          >
+                            {
+                              "\u0645\u0628\u0644\u063a \u0642\u0627\u0628\u0644 \u0628\u0631\u062f\u0627\u0634\u062a"
+                            }
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox___4WO9Q
+                            )}
+                          >
+                            <Icon15Icon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg__iFcci
+                              )}
+                              role={"img"}
+                            />
+
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__w7Loe
+                              )}
+                            >
+                              {"\u062a\u0648\u0645\u0627\u0646"}
+                            </div>
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text___89JAl
+                            )}
+                          >
+                            <React.Fragment>
+                              <React.Fragment>
+                                {
+                                  "\u062a\u0631\u0627\u06a9\u0646\u0634 \u0647\u0627\u06cc\u06cc \u06a9\u0647 "
+                                }
+                              </React.Fragment>
+                              <span
+                                className={
+                                  "plasmic_default__all plasmic_default__span"
+                                }
+                                style={{ fontWeight: 700 }}
+                              >
+                                {"\u06f7 \u0631\u0648\u0632"}
+                              </span>
+                              <React.Fragment>
+                                {
+                                  " \u0627\u0632 \u0632\u0645\u0627\u0646\u200c\u0634\u0627\u0646 \u06af\u0630\u0634\u062a\u0647 \u0627\u0634\u062a."
+                                }
+                              </React.Fragment>
+                            </React.Fragment>
+                          </div>
+                        </div>
+                      </div>
+                    }
+                    loadingDisplay={
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__tl3UU
+                        )}
+                      >
+                        <Icon25Icon
+                          className={classNames(
+                            projectcss.all,
+                            sty.svg___22Vdg
+                          )}
+                          role={"img"}
+                        />
+
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__bEcJc
+                          )}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__hA49V
+                            )}
+                          >
+                            {
+                              "\u0645\u0628\u0644\u063a \u0642\u0627\u0628\u0644 \u0628\u0631\u062f\u0627\u0634\u062a"
+                            }
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox___7GJ7Q
+                            )}
+                          >
+                            <Icon15Icon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg___6LZxu
+                              )}
+                              role={"img"}
+                            />
+
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___4LgA2
+                              )}
+                            >
+                              {"\u062a\u0648\u0645\u0627\u0646"}
+                            </div>
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text___94Xv
+                            )}
+                          >
+                            <React.Fragment>
+                              <React.Fragment>
+                                {
+                                  "\u062a\u0631\u0627\u06a9\u0646\u0634 \u0647\u0627\u06cc\u06cc \u06a9\u0647 "
+                                }
+                              </React.Fragment>
+                              <span
+                                className={
+                                  "plasmic_default__all plasmic_default__span"
+                                }
+                                style={{ fontWeight: 700 }}
+                              >
+                                {"\u06f7 \u0631\u0648\u0632"}
+                              </span>
+                              <React.Fragment>
+                                {
+                                  " \u0627\u0632 \u0632\u0645\u0627\u0646\u200c\u0634\u0627\u0646 \u06af\u0630\u0634\u062a\u0647 \u0627\u0634\u062a."
+                                }
+                              </React.Fragment>
+                            </React.Fragment>
+                          </div>
+                        </div>
+                      </div>
+                    }
+                    method={"GET"}
+                    onError={async (...eventArgs: any) => {
+                      generateStateOnChangeProp($state, [
+                        "fragmentApiRequest3",
+                        "error"
+                      ]).apply(null, eventArgs);
+                    }}
+                    onLoading={async (...eventArgs: any) => {
+                      generateStateOnChangeProp($state, [
+                        "fragmentApiRequest3",
+                        "loading"
+                      ]).apply(null, eventArgs);
+                    }}
+                    onSuccess={async (...eventArgs: any) => {
+                      generateStateOnChangeProp($state, [
+                        "fragmentApiRequest3",
+                        "data"
+                      ]).apply(null, eventArgs);
+                    }}
+                    ref={ref => {
+                      $refs["fragmentApiRequest3"] = ref;
+                    }}
+                    url={(() => {
+                      try {
+                        return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/monetization/transactions/withdrawable`;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__rRgx7)}
+                    >
+                      <Icon25Icon
+                        className={classNames(projectcss.all, sty.svg__sevT2)}
+                        role={"img"}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__wlJmn
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__znxbX
+                          )}
+                        >
+                          {
+                            "\u0645\u0628\u0644\u063a \u0642\u0627\u0628\u0644 \u0628\u0631\u062f\u0627\u0634\u062a"
+                          }
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__jyZ9Y
+                          )}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__s1NwH
+                            )}
+                          >
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return new Intl.NumberFormat("fa-IR").format(
+                                    (
+                                      $state.fragmentApiRequest3.data
+                                        ?.balance ?? 0
+                                    )
+                                      .toString()
+                                      .slice(0, -1)
+                                  );
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "\u06f0";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text___0Hynf
+                            )}
+                          >
+                            {"\u062a\u0648\u0645\u0627\u0646"}
+                          </div>
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___6EMt
+                          )}
+                        >
+                          <React.Fragment>
+                            <React.Fragment>
+                              {
+                                "\u062a\u0631\u0627\u06a9\u0646\u0634 \u0647\u0627\u06cc\u06cc \u06a9\u0647 "
+                              }
+                            </React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{ fontWeight: 700 }}
+                            >
+                              {"\u06f7 \u0631\u0648\u0632"}
+                            </span>
+                            <React.Fragment>
+                              {
+                                " \u0627\u0632 \u0632\u0645\u0627\u0646\u200c\u0634\u0627\u0646 \u06af\u0630\u0634\u062a\u0647 \u0627\u0634\u062a."
+                              }
+                            </React.Fragment>
+                          </React.Fragment>
+                        </div>
+                      </div>
+                    </div>
+                  </ApiRequest>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__rggxG)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__zf2Kk)}
+                  >
+                    <Icon43Icon
+                      className={classNames(projectcss.all, sty.svg___1ApIl)}
+                      role={"img"}
+                    />
+
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__h7JZ8
+                      )}
+                    >
+                      {"\u0648\u0636\u0639\u06cc\u062a"}
+                    </div>
+                  </div>
+                  <Filter
+                    active={(() => {
+                      try {
+                        return $state.statusFilter == "done";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
+                        }
+                        throw e;
+                      }
+                    })()}
+                    className={classNames("__wab_instance", sty.filter___6Ch5D)}
+                    onClick={async () => {
+                      const $steps = {};
+
+                      $steps["updateStatusFilter"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["statusFilter"]
+                              },
+                              operation: 0,
+                              value: "done"
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateStatusFilter"] != null &&
+                        typeof $steps["updateStatusFilter"] === "object" &&
+                        typeof $steps["updateStatusFilter"].then === "function"
+                      ) {
+                        $steps["updateStatusFilter"] = await $steps[
+                          "updateStatusFilter"
+                        ];
+                      }
+                    }}
+                    text={"\u0627\u0646\u062c\u0627\u0645 \u0634\u062f\u0647"}
+                  />
+
+                  <Filter
+                    active={(() => {
+                      try {
+                        return $state.statusFilter == "pending";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
+                        }
+                        throw e;
+                      }
+                    })()}
+                    className={classNames("__wab_instance", sty.filter__oKEaO)}
+                    onClick={async () => {
+                      const $steps = {};
+
+                      $steps["updateStatusFilter"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["statusFilter"]
+                              },
+                              operation: 0,
+                              value: "pending"
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateStatusFilter"] != null &&
+                        typeof $steps["updateStatusFilter"] === "object" &&
+                        typeof $steps["updateStatusFilter"].then === "function"
+                      ) {
+                        $steps["updateStatusFilter"] = await $steps[
+                          "updateStatusFilter"
+                        ];
+                      }
+                    }}
+                    text={
+                      "\u067e\u0631\u062f\u0627\u062e\u062a \u0646\u0634\u062f\u0647"
+                    }
+                  />
+
+                  <Filter
+                    active={(() => {
+                      try {
+                        return $state.statusFilter == "canceled";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
+                        }
+                        throw e;
+                      }
+                    })()}
+                    className={classNames("__wab_instance", sty.filter___59CFa)}
+                    onClick={async () => {
+                      const $steps = {};
+
+                      $steps["updateStatusFilter"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["statusFilter"]
+                              },
+                              operation: 0,
+                              value: "canceled"
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateStatusFilter"] != null &&
+                        typeof $steps["updateStatusFilter"] === "object" &&
+                        typeof $steps["updateStatusFilter"].then === "function"
+                      ) {
+                        $steps["updateStatusFilter"] = await $steps[
+                          "updateStatusFilter"
+                        ];
+                      }
+                    }}
+                    text={
+                      "\u062a\u0627\u06cc\u06cc\u062f \u0646\u0634\u062f\u0647 / \u067e\u0633 \u062f\u0627\u062f\u0647 \u0634\u062f\u0647"
+                    }
+                  />
+                </div>
                 <div className={classNames(projectcss.all, sty.freeBox__aoClD)}>
                   <div
                     className={classNames(projectcss.all, sty.freeBox__xtE4O)}
@@ -440,7 +1245,30 @@ function PlasmicTransactions__RenderFunc(props: {
                   </div>
                   <div
                     className={classNames(projectcss.all, sty.freeBox__v2PS4)}
-                  />
+                  >
+                    <Paziresh24Button
+                      data-plasmic-name={"paziresh24Button"}
+                      data-plasmic-override={overrides.paziresh24Button}
+                      children2={
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__qZqZa
+                          )}
+                        >
+                          {
+                            "\u0628\u0631\u062f\u0627\u0634\u062a \u067e\u0648\u0644 (\u0628\u0632\u0648\u062f\u06cc)"
+                          }
+                        </div>
+                      }
+                      className={classNames(
+                        "__wab_instance",
+                        sty.paziresh24Button
+                      )}
+                      isDisabled={true}
+                    />
+                  </div>
                 </div>
                 <ApiRequest
                   data-plasmic-name={"apiRequest"}
@@ -449,9 +1277,7 @@ function PlasmicTransactions__RenderFunc(props: {
                   errorDisplay={null}
                   loadingDisplay={
                     <Icon15Icon
-                      data-plasmic-name={"svg"}
-                      data-plasmic-override={overrides.svg}
-                      className={classNames(projectcss.all, sty.svg)}
+                      className={classNames(projectcss.all, sty.svg___8SO3)}
                       role={"img"}
                     />
                   }
@@ -474,6 +1300,21 @@ function PlasmicTransactions__RenderFunc(props: {
                       "data"
                     ]).apply(null, eventArgs);
                   }}
+                  params={(() => {
+                    try {
+                      return {
+                        status: $state.statusFilter
+                      };
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()}
                   ref={ref => {
                     $refs["apiRequest"] = ref;
                   }}
@@ -543,6 +1384,19 @@ function PlasmicTransactions__RenderFunc(props: {
                         )}
                         currentIndex={currentIndex}
                         currentItem={currentItem}
+                        hideButton={(() => {
+                          try {
+                            return $state.statusFilter != "done";
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()}
                         key={currentIndex}
                       />
                     );
@@ -563,21 +1417,34 @@ const PlasmicDescendants = {
     "embedHtml",
     "authProvider",
     "layout",
+    "fragmentApiRequest2",
+    "fragmentApiRequest3",
+    "paziresh24Button",
     "apiRequest",
-    "svg",
     "transactionCard"
   ],
   embedHtml: ["embedHtml"],
   authProvider: [
     "authProvider",
     "layout",
+    "fragmentApiRequest2",
+    "fragmentApiRequest3",
+    "paziresh24Button",
     "apiRequest",
-    "svg",
     "transactionCard"
   ],
-  layout: ["layout", "apiRequest", "svg", "transactionCard"],
-  apiRequest: ["apiRequest", "svg", "transactionCard"],
-  svg: ["svg"],
+  layout: [
+    "layout",
+    "fragmentApiRequest2",
+    "fragmentApiRequest3",
+    "paziresh24Button",
+    "apiRequest",
+    "transactionCard"
+  ],
+  fragmentApiRequest2: ["fragmentApiRequest2"],
+  fragmentApiRequest3: ["fragmentApiRequest3"],
+  paziresh24Button: ["paziresh24Button"],
+  apiRequest: ["apiRequest", "transactionCard"],
   transactionCard: ["transactionCard"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -588,8 +1455,10 @@ type NodeDefaultElementType = {
   embedHtml: typeof Embed;
   authProvider: typeof AuthProvider;
   layout: typeof Layout;
+  fragmentApiRequest2: typeof ApiRequest;
+  fragmentApiRequest3: typeof ApiRequest;
+  paziresh24Button: typeof Paziresh24Button;
   apiRequest: typeof ApiRequest;
-  svg: "svg";
   transactionCard: typeof TransactionCard;
 };
 
@@ -656,8 +1525,10 @@ export const PlasmicTransactions = Object.assign(
     embedHtml: makeNodeComponent("embedHtml"),
     authProvider: makeNodeComponent("authProvider"),
     layout: makeNodeComponent("layout"),
+    fragmentApiRequest2: makeNodeComponent("fragmentApiRequest2"),
+    fragmentApiRequest3: makeNodeComponent("fragmentApiRequest3"),
+    paziresh24Button: makeNodeComponent("paziresh24Button"),
     apiRequest: makeNodeComponent("apiRequest"),
-    svg: makeNodeComponent("svg"),
     transactionCard: makeNodeComponent("transactionCard"),
 
     // Metadata about props expected for PlasmicTransactions

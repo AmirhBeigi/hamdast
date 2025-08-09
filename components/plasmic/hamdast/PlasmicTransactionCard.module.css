@@ -233,7 +233,6 @@
   align-self: center;
   column-gap: 10px;
   flex-shrink: 0;
-  padding: 8px;
 }
 .dialog:global(.__wab_instance):global(.__wab_instance) {
   max-width: 100%;

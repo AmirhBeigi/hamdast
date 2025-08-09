@@ -195,7 +195,9 @@ function PlasmicFilter__RenderFunc(props: {
       <div
         data-plasmic-name={"text"}
         data-plasmic-override={overrides.text}
-        className={classNames(projectcss.all, projectcss.__wab_text, sty.text)}
+        className={classNames(projectcss.all, projectcss.__wab_text, sty.text, {
+          [sty.textactive]: hasVariant($state, "active", "active")
+        })}
       >
         <React.Fragment>
           {(() => {

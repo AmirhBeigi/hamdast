@@ -1291,6 +1291,16 @@
           "id": "DoezJRNgA6sA",
           "name": "Icon41Icon",
           "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon41.tsx"
+        },
+        {
+          "id": "QvI77t3YrvM9",
+          "name": "Icon42Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon42.tsx"
+        },
+        {
+          "id": "TmLWglGupeVI",
+          "name": "Icon43Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon43.tsx"
         }
       ],
       "images": [
