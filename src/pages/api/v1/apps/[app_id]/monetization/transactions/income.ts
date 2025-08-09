@@ -39,8 +39,6 @@ export default async function handler(
   }
 
   if (req.method === "GET") {
-    const { status } = req.query;
-
     await pb.admins.authWithPassword(
       publicRuntimeConfig.POCKETBASE_USER_NAME,
       publicRuntimeConfig.POCKETBASE_PASSWORD
@@ -61,22 +59,36 @@ export default async function handler(
       .getFirstListItem(`collaborators~'${record.id}' && id = '${app_id}'`);
 
     if (!app.tokens?.katibe) {
-      return res.status(200).json([]);
+      return res.status(200).json({});
     }
 
-    const queryData = await axios.get(
-      `https://apigw.paziresh24.com/katibe/v1/splits`,
+    const escrow = await axios.get(
+      `https://apigw.paziresh24.com/katibe/v1/transactions/balance`,
       {
         params: {
-          status: status,
-          limit: 20000,
+          userid: app.key,
+          account: "escrow",
         },
         headers: {
-          token: app.tokens?.katibe,
+          token: process.env.KATIBE_TOKEN,
         },
       }
     );
 
-    return res.status(200).json(queryData?.data?.data ?? []);
+    const wallet = await axios.get(
+      `https://apigw.paziresh24.com/katibe/v1/transactions/balance`,
+      {
+        params: {
+          userid: app.key,
+        },
+        headers: {
+          token: process.env.KATIBE_TOKEN,
+        },
+      }
+    );
+
+    return res.status(200).json({
+      balance: wallet.data?.data?.balance + escrow.data?.data?.balance,
+    });
   }
 }
