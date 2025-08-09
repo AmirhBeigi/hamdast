@@ -987,7 +987,7 @@ function PlasmicTransactions__RenderFunc(props: {
                             </span>
                             <React.Fragment>
                               {
-                                " \u0627\u0632 \u0632\u0645\u0627\u0646\u200c\u0634\u0627\u0646 \u06af\u0630\u0634\u062a\u0647 \u0627\u0634\u062a."
+                                " \u0627\u0632 \u0632\u0645\u0627\u0646\u200c\u0634\u0627\u0646 \u06af\u0630\u0634\u062a\u0647 \u0627\u0633\u062a."
                               }
                             </React.Fragment>
                           </React.Fragment>
