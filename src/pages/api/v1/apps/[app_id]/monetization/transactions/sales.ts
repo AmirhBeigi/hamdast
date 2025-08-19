@@ -62,6 +62,18 @@ export default async function handler(
       return res.status(200).json({});
     }
 
+    const queryData = await axios.get(
+      `https://apigw.paziresh24.com/katibe/v1/productStatistics?codename=${app.key}`,
+      {
+        params: {
+          productid: app.key,
+        },
+        headers: {
+          "x-api-key": process.env.KATIBE_API_KEY,
+        },
+      }
+    );
+
     const escrow = await axios.get(
       `https://apigw.paziresh24.com/katibe/v1/transactions/balance`,
       {
@@ -75,20 +87,8 @@ export default async function handler(
       }
     );
 
-    const wallet = await axios.get(
-      `https://apigw.paziresh24.com/katibe/v1/transactions/balance`,
-      {
-        params: {
-          userid: app.key,
-        },
-        headers: {
-          token: process.env.KATIBE_TOKEN,
-        },
-      }
-    );
-
     return res.status(200).json({
-      balance: wallet.data?.data?.balance + escrow.data?.data?.balance,
+      balance: queryData?.data?.data?.deposit + escrow.data?.data?.balance,
     });
   }
 }
