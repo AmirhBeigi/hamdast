@@ -80,7 +80,7 @@ export default async function handler(
 
     var updateOptions = {
       method: "PUT",
-      url: `https://user.paziresh24.com/admin/realms/paziresh24/clients/${clientId}/default-client-scopes/${id}`,
+      url: `https://user.paziresh24.com/admin/realms/paziresh24/clients/${clientId}/optional-client-scopes/${id}`,
       headers: {
         Authorization: `Bearer ${gozarToken.data?.access_token}`,
         "Content-Type": "application/json",
@@ -125,7 +125,7 @@ export default async function handler(
 
     var updateOptions = {
       method: "DELETE",
-      url: `https://user.paziresh24.com/admin/realms/paziresh24/clients/${clientId}/default-client-scopes/${id}`,
+      url: `https://user.paziresh24.com/admin/realms/paziresh24/clients/${clientId}/optional-client-scopes/${id}`,
       headers: {
         Authorization: `Bearer ${gozarToken.data?.access_token}`,
         "Content-Type": "application/json",
