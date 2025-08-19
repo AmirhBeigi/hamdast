@@ -39,7 +39,7 @@ export default async function handler(
   }
 
   if (req.method === "GET") {
-    const { cell } = req.body;
+    const { cell } = req.query;
     await pb.admins.authWithPassword(
       publicRuntimeConfig.POCKETBASE_USER_NAME,
       publicRuntimeConfig.POCKETBASE_PASSWORD
@@ -76,7 +76,7 @@ export default async function handler(
     );
 
     return res.status(200).json({
-      ...splits?.data?.[0],
+      ...splits?.data,
     });
   }
 }
