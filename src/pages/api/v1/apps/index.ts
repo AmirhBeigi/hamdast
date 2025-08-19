@@ -140,6 +140,7 @@ export default async function handler(
       name_en: app.name_en,
       name_fa: app.name_fa,
       client_key: app.client_key,
+      description: app.description,
       permissions: app.permissions,
     });
   }
