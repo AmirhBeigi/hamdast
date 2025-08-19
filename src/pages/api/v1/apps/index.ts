@@ -58,6 +58,7 @@ export default async function handler(
   if (req.method === "GET") {
     const apps = await pb.collection("apps").getFullList({
       filter: `collaborators~'${record.id}'`,
+      expand: "collaborators",
     });
 
     return res.status(200).json(
@@ -69,6 +70,7 @@ export default async function handler(
         name_fa: app.name_fa,
         display_name_fa: app.display_name_fa,
         display_name_en: app.display_name_en,
+        description: app.description,
         type: app.type,
         icon: app.icon,
         published: app.published,
@@ -140,7 +142,6 @@ export default async function handler(
       name_en: app.name_en,
       name_fa: app.name_fa,
       client_key: app.client_key,
-      description: app.description,
       permissions: app.permissions,
     });
   }
