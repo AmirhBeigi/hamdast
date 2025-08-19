@@ -59,9 +59,12 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import { _useGlobalVariants } from "./plasmic"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectModule
+import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_paziresh_24_design_system } from "../paziresh_24_design_system/PlasmicStyleTokensProvider"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/styleTokensProvider
+
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import plasmic_paziresh_24_design_system_css from "../paziresh_24_design_system/plasmic.module.css"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectcss
 import sty from "./PlasmicRaviAlert.module.css"; // plasmic-import: 22UkaHSSFOEU/css
 
@@ -131,6 +134,7 @@ function PlasmicRaviAlert__RenderFunc(props: {
   };
 
   const __nextRouter = useNextRouter();
+
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
@@ -153,6 +157,10 @@ function PlasmicRaviAlert__RenderFunc(props: {
     $refs
   });
 
+  const styleTokensClassNames = _useStyleTokens();
+  const styleTokensClassNames_paziresh_24_design_system =
+    useStyleTokens_paziresh_24_design_system();
+
   return (
     <div
       data-plasmic-name={"root"}
@@ -164,17 +172,15 @@ function PlasmicRaviAlert__RenderFunc(props: {
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
-        projectcss.plasmic_tokens,
-        plasmic_paziresh_24_design_system_css.plasmic_tokens,
+        styleTokensClassNames,
+        styleTokensClassNames_paziresh_24_design_system,
         sty.root,
         { [sty.rootisSmall]: hasVariant($state, "isSmall", "isSmall") }
       )}
     >
-      <Stack__
-        as={"div"}
+      <div
         data-plasmic-name={"freeBox"}
         data-plasmic-override={overrides.freeBox}
-        hasGap={true}
         className={classNames(projectcss.all, sty.freeBox, {
           [sty.freeBoxisSmall]: hasVariant($state, "isSmall", "isSmall")
         })}
@@ -214,7 +220,7 @@ function PlasmicRaviAlert__RenderFunc(props: {
           })}
           role={"img"}
         />
-      </Stack__>
+      </div>
     </div>
   ) as React.ReactElement | null;
 }

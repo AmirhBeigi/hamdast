@@ -1,6 +1,6 @@
-// @ts-nocheck
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /* prettier-ignore-start */
 
 /** @jsxRuntime classic */
@@ -58,6 +58,9 @@ import {
   useDataEnv,
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
+
+import { _useGlobalVariants } from "./plasmic"; // plasmic-import: qo5fwZT3vwQ9RjjQNWCz9z/projectModule
+import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: qo5fwZT3vwQ9RjjQNWCz9z/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -128,9 +131,12 @@ function PlasmicFragmentLineClamp__RenderFunc(props: {
   };
 
   const __nextRouter = useNextRouter();
+
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
+
+  const styleTokensClassNames = _useStyleTokens();
 
   return (
     <div
@@ -143,7 +149,7 @@ function PlasmicFragmentLineClamp__RenderFunc(props: {
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
-        projectcss.plasmic_tokens,
+        styleTokensClassNames,
         sty.root
       )}
       style={(() => {
@@ -207,15 +213,15 @@ type NodeComponentProps<T extends NodeNameType> =
     args?: PlasmicFragmentLineClamp__ArgsType;
     overrides?: NodeOverridesType<T>;
   } & Omit<PlasmicFragmentLineClamp__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
-    /* Specify args directly as props*/ Omit<
-      PlasmicFragmentLineClamp__ArgsType,
-      ReservedPropsType
-    > &
-    /* Specify overrides for each element directly as props*/ Omit<
+    // Specify args directly as props
+    Omit<PlasmicFragmentLineClamp__ArgsType, ReservedPropsType> &
+    // Specify overrides for each element directly as props
+    Omit<
       NodeOverridesType<T>,
       ReservedPropsType | VariantPropType | ArgPropType
     > &
-    /* Specify props for the root element*/ Omit<
+    // Specify props for the root element
+    Omit<
       Partial<React.ComponentProps<NodeDefaultElementType[T]>>,
       ReservedPropsType | VariantPropType | ArgPropType | DescendantsType<T>
     >;

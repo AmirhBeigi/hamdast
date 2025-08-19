@@ -1,6 +1,6 @@
-// @ts-nocheck
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /* prettier-ignore-start */
 
 /** @jsxRuntime classic */
@@ -58,6 +58,9 @@ import {
   useDataEnv,
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
+
+import { _useGlobalVariants } from "./plasmic"; // plasmic-import: tGFFjizqpBh1JPEqzUQxjY/projectModule
+import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: tGFFjizqpBh1JPEqzUQxjY/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -137,6 +140,7 @@ function PlasmicFragmentLongPress__RenderFunc(props: {
   };
 
   const __nextRouter = useNextRouter();
+
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
@@ -165,6 +169,8 @@ function PlasmicFragmentLongPress__RenderFunc(props: {
     $refs
   });
 
+  const styleTokensClassNames = _useStyleTokens();
+
   return (
     <div
       data-plasmic-name={"root"}
@@ -176,7 +182,7 @@ function PlasmicFragmentLongPress__RenderFunc(props: {
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
-        projectcss.plasmic_tokens,
+        styleTokensClassNames,
         sty.root
       )}
       onMouseDown={async event => {
@@ -380,15 +386,15 @@ type NodeComponentProps<T extends NodeNameType> =
     args?: PlasmicFragmentLongPress__ArgsType;
     overrides?: NodeOverridesType<T>;
   } & Omit<PlasmicFragmentLongPress__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
-    /* Specify args directly as props*/ Omit<
-      PlasmicFragmentLongPress__ArgsType,
-      ReservedPropsType
-    > &
-    /* Specify overrides for each element directly as props*/ Omit<
+    // Specify args directly as props
+    Omit<PlasmicFragmentLongPress__ArgsType, ReservedPropsType> &
+    // Specify overrides for each element directly as props
+    Omit<
       NodeOverridesType<T>,
       ReservedPropsType | VariantPropType | ArgPropType
     > &
-    /* Specify props for the root element*/ Omit<
+    // Specify props for the root element
+    Omit<
       Partial<React.ComponentProps<NodeDefaultElementType[T]>>,
       ReservedPropsType | VariantPropType | ArgPropType | DescendantsType<T>
     >;

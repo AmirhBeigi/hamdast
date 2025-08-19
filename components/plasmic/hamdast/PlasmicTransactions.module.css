@@ -776,7 +776,10 @@
   column-gap: 10px;
   flex-shrink: 0;
 }
-.paziresh24Button:global(.__wab_instance) {
+.dialog:global(.__wab_instance):global(.__wab_instance) {
+  max-width: 100%;
+}
+.paziresh24Button__beAs:global(.__wab_instance) {
   max-width: 100%;
   width: auto;
 }
@@ -790,6 +793,211 @@
   font-size: var(--token-P2saABvfDCPH);
 }
 .svg__mghL9 {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.text__iKenu {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  text-align: right;
+  font-weight: 500;
+  font-size: 13px;
+  min-width: 0;
+}
+.freeBox___9D8En {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 20px;
+  row-gap: 10px;
+  min-width: 0;
+}
+.text__oaEm {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 10px;
+  min-width: 0;
+}
+.freeBox__hgqu4 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  min-width: 0;
+}
+.freeBox__cwVJa {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  cursor: pointer;
+  min-width: 0;
+  border-radius: 8px;
+  padding: 8px;
+  border: 1px solid var(--token-4iQ-8GWBqX6X);
+}
+.apiRequest2:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
+.svg__vGyeL {
+  object-fit: cover;
+  max-width: 100%;
+  width: 20px;
+  height: 20px;
+}
+.text__e66B3 {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  min-width: 0;
+}
+.freeBox__uLSf {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  margin-top: 10px;
+  column-gap: 20px;
+  min-width: 0;
+}
+.freeBox___84Zf {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 1px;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  background: var(--token-4iQ-8GWBqX6X);
+  min-width: 0;
+}
+.text__s5E1 {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+.freeBox___7GfmL {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 1px;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  background: var(--token-4iQ-8GWBqX6X);
+  min-width: 0;
+}
+.text__vlfyc {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 10px;
+  min-width: 0;
+}
+.freeBox__zkCem {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 10px;
+  row-gap: 10px;
+  min-width: 0;
+}
+.input:global(.__wab_instance) {
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  min-width: 0;
+}
+.freeBox__pukI {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-width: 0;
+}
+.apiRequest3:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
+.svg__yIxYk {
+  object-fit: cover;
+  max-width: 100%;
+  width: 24px;
+  height: 24px;
+}
+.text__kaAc {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 0;
+}
+.text__a1PT {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--token-574ev59-GPbp);
+  min-width: 0;
+}
+.paziresh24Button__i7Vmu:global(.__wab_instance) {
+  max-width: 100%;
+  margin-top: 10px;
+}
+.svg__xQ6Fg {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.svg__dlVft {
   position: relative;
   object-fit: cover;
   width: auto;

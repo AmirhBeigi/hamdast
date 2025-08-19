@@ -60,10 +60,12 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import { BaseCheckbox } from "@plasmicpkgs/react-aria/skinny/registerCheckbox";
+import { _useGlobalVariants } from "./plasmic"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectModule
+import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_paziresh_24_design_system } from "../paziresh_24_design_system/PlasmicStyleTokensProvider"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import plasmic_paziresh_24_design_system_css from "../paziresh_24_design_system/plasmic.module.css"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectcss
 import sty from "./PlasmicCheckbox.module.css"; // plasmic-import: 3y7pc6cf4L1a/css
 
@@ -150,6 +152,7 @@ function PlasmicCheckbox__RenderFunc(props: {
   };
 
   const __nextRouter = useNextRouter();
+
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
@@ -174,6 +177,10 @@ function PlasmicCheckbox__RenderFunc(props: {
     $queries: {},
     $refs
   });
+
+  const styleTokensClassNames = _useStyleTokens();
+  const styleTokensClassNames_paziresh_24_design_system =
+    useStyleTokens_paziresh_24_design_system();
 
   const [$ccVariants, setDollarCcVariants] = React.useState<
     Record<string, boolean>
@@ -212,8 +219,8 @@ function PlasmicCheckbox__RenderFunc(props: {
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
-        projectcss.plasmic_tokens,
-        plasmic_paziresh_24_design_system_css.plasmic_tokens,
+        styleTokensClassNames,
+        styleTokensClassNames_paziresh_24_design_system,
         sty.ariaCheckbox
       )}
       defaultSelected={args.defaultSelected}

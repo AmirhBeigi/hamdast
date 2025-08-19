@@ -5,7 +5,8 @@
 // Plasmic Project: pkMLinFwM9pzwv5S5KpiAu
 
 import * as React from "react";
-import { hasVariant, ensureGlobalVariants } from "@plasmicapp/react-web";
+
+import { _useGlobalVariants } from "./plasmic"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectModule
 import { EmbedCss } from "@plasmicpkgs/plasmic-embed-css";
 
 export interface GlobalContextsProviderProps {

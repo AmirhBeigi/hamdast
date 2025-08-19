@@ -61,10 +61,12 @@ import {
 
 import Paziresh24Avatar from "../../Paziresh24Avatar"; // plasmic-import: zljt-TXjec48/component
 import Paziresh24Chip from "../../Paziresh24Chip"; // plasmic-import: df-BFL5jhiFc/component
+import { _useGlobalVariants } from "./plasmic"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectModule
+import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_paziresh_24_design_system } from "../paziresh_24_design_system/PlasmicStyleTokensProvider"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import plasmic_paziresh_24_design_system_css from "../paziresh_24_design_system/plasmic.module.css"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectcss
 import sty from "./PlasmicRaviUser.module.css"; // plasmic-import: LGI_uX8bDUNt/css
 
@@ -163,9 +165,14 @@ function PlasmicRaviUser__RenderFunc(props: {
   };
 
   const __nextRouter = useNextRouter();
+
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
+
+  const styleTokensClassNames = _useStyleTokens();
+  const styleTokensClassNames_paziresh_24_design_system =
+    useStyleTokens_paziresh_24_design_system();
 
   return (
     <div
@@ -178,8 +185,8 @@ function PlasmicRaviUser__RenderFunc(props: {
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
-        projectcss.plasmic_tokens,
-        plasmic_paziresh_24_design_system_css.plasmic_tokens,
+        styleTokensClassNames,
+        styleTokensClassNames_paziresh_24_design_system,
         sty.root
       )}
     >
@@ -268,11 +275,7 @@ function PlasmicRaviUser__RenderFunc(props: {
           />
         </PlasmicLink__>
         <div className={classNames(projectcss.all, sty.freeBox___3QZhk)}>
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__yKFgb)}
-          >
+          <div className={classNames(projectcss.all, sty.freeBox__yKFgb)}>
             <div
               className={classNames(
                 projectcss.all,
@@ -370,12 +373,8 @@ function PlasmicRaviUser__RenderFunc(props: {
                 size={"xSmall"}
               />
             ) : null}
-          </Stack__>
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__io37I)}
-          >
+          </div>
+          <div className={classNames(projectcss.all, sty.freeBox__io37I)}>
             <div
               className={classNames(
                 projectcss.all,
@@ -551,7 +550,7 @@ function PlasmicRaviUser__RenderFunc(props: {
                 </React.Fragment>
               </PlasmicLink__>
             ) : null}
-          </Stack__>
+          </div>
         </div>
       </div>
     </div>

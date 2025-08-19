@@ -141,6 +141,8 @@
   background: none;
   background-size: 100% 100%;
   background-repeat: no-repeat;
+  row-gap: 0px;
+  column-gap: 0px;
   box-shadow: none;
   box-sizing: border-box;
   text-decoration-line: none;
@@ -154,6 +156,8 @@
   background: none;
   background-size: 100% 100%;
   background-repeat: no-repeat;
+  row-gap: 0px;
+  column-gap: 0px;
   box-shadow: none;
   box-sizing: border-box;
   margin: 0;
@@ -587,7 +591,7 @@ ul:where(.root_reset_tags) {
   padding-left: var(--mixin-YPRttR3XDj1N_padding-left);
   position: var(--mixin-YPRttR3XDj1N_position);
   list-style-type: var(--mixin-YPRttR3XDj1N_list-style-type);
-  flex-column-gap: var(--mixin-YPRttR3XDj1N_flex-column-gap);
+  column-gap: var(--mixin-YPRttR3XDj1N_column-gap);
 }
 
 :where(.root_reset) ol:where(.ol),
@@ -603,7 +607,7 @@ ol:where(.root_reset_tags) {
   padding-left: var(--mixin-SxTmPjpvpQr7_padding-left);
   position: var(--mixin-SxTmPjpvpQr7_position);
   list-style-type: var(--mixin-SxTmPjpvpQr7_list-style-type);
-  flex-column-gap: var(--mixin-SxTmPjpvpQr7_flex-column-gap);
+  column-gap: var(--mixin-SxTmPjpvpQr7_column-gap);
 }
 
 :where(.root_reset) h5:where(.h5),

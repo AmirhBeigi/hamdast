@@ -65,10 +65,12 @@ import { Popover } from "@plasmicpkgs/radix-ui";
 import RaviRateStar from "../../RaviRateStar"; // plasmic-import: e1uyHZLgwx11/component
 import Paziresh24MultilineTextInput from "../../Paziresh24MultilineTextInput"; // plasmic-import: 5O8XqcSJJk6J/component
 import Paziresh24Dialog from "../../Paziresh24Dialog"; // plasmic-import: ZGdhyEBPJSmH/component
+import { _useGlobalVariants } from "./plasmic"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectModule
+import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_paziresh_24_design_system } from "../paziresh_24_design_system/PlasmicStyleTokensProvider"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import plasmic_paziresh_24_design_system_css from "../paziresh_24_design_system/plasmic.module.css"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectcss
 import sty from "./PlasmicRaviReviewCard.module.css"; // plasmic-import: mdyuGePDb8Fy/css
 
@@ -225,6 +227,7 @@ function PlasmicRaviReviewCard__RenderFunc(props: {
   };
 
   const __nextRouter = useNextRouter();
+
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
@@ -285,6 +288,10 @@ function PlasmicRaviReviewCard__RenderFunc(props: {
     $refs
   });
 
+  const styleTokensClassNames = _useStyleTokens();
+  const styleTokensClassNames_paziresh_24_design_system =
+    useStyleTokens_paziresh_24_design_system();
+
   return (
     <div
       data-plasmic-name={"root"}
@@ -296,22 +303,16 @@ function PlasmicRaviReviewCard__RenderFunc(props: {
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
-        projectcss.plasmic_tokens,
-        plasmic_paziresh_24_design_system_css.plasmic_tokens,
+        styleTokensClassNames,
+        styleTokensClassNames_paziresh_24_design_system,
         sty.root
       )}
     >
-      <Stack__
-        as={"div"}
-        hasGap={true}
+      <div
         className={classNames(projectcss.all, sty.freeBox__bvPaw)}
         dir={"rtl"}
       >
-        <Stack__
-          as={"div"}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.freeBox__hbgQp)}
-        >
+        <div className={classNames(projectcss.all, sty.freeBox__hbgQp)}>
           <RaviUser
             data-plasmic-name={"raviUser"}
             data-plasmic-override={overrides.raviUser}
@@ -456,7 +457,7 @@ function PlasmicRaviReviewCard__RenderFunc(props: {
               value: args.options
             })}
           </div>
-        </Stack__>
+        </div>
         <div
           className={classNames(
             projectcss.all,
@@ -585,11 +586,7 @@ function PlasmicRaviReviewCard__RenderFunc(props: {
                 />
               ) : null}
             </div>
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__kv2Iy)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__kv2Iy)}>
               <Popover
                 data-plasmic-name={"popoverCore"}
                 data-plasmic-override={overrides.popoverCore}
@@ -602,9 +599,7 @@ function PlasmicRaviReviewCard__RenderFunc(props: {
                 }}
                 open={generateStateValueProp($state, ["popoverCore", "open"])}
                 overlay={
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(
                       projectcss.all,
                       sty.freeBox__fBedF,
@@ -702,19 +697,17 @@ function PlasmicRaviReviewCard__RenderFunc(props: {
                         </div>
                       );
                     })}
-                  </Stack__>
+                  </div>
                 }
                 themeResetClass={classNames(
                   projectcss.root_reset,
                   projectcss.plasmic_default_styles,
                   projectcss.plasmic_mixins,
-                  projectcss.plasmic_tokens,
-                  plasmic_paziresh_24_design_system_css.plasmic_tokens
+                  styleTokensClassNames,
+                  styleTokensClassNames_paziresh_24_design_system
                 )}
               >
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
+                <div
                   className={classNames(projectcss.all, sty.freeBox___3LcFx)}
                 >
                   {(() => {
@@ -801,7 +794,7 @@ function PlasmicRaviReviewCard__RenderFunc(props: {
                       "\u0686\u0642\u062f\u0631 \u0645\u0641\u06cc\u062f \u0628\u0648\u062f\u061f"
                     }
                   </div>
-                </Stack__>
+                </div>
               </Popover>
               <Paziresh24Button
                 children2={
@@ -867,7 +860,7 @@ function PlasmicRaviReviewCard__RenderFunc(props: {
                   />
                 }
               />
-            </Stack__>
+            </div>
           </div>
         ) : null}
         {(() => {
@@ -1102,7 +1095,7 @@ function PlasmicRaviReviewCard__RenderFunc(props: {
             </div>
           </div>
         ) : null}
-      </Stack__>
+      </div>
       <div className={classNames(projectcss.all, sty.freeBox__yzxqQ)}>
         {renderPlasmicSlot({
           defaultContents: null,
