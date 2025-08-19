@@ -63,8 +63,9 @@ import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import AuthProvider from "../../AuthProvider"; // plasmic-import: KTPu1eZupEdG/component
 import Layout from "../../Layout"; // plasmic-import: ve2FygUyzJYe/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
-import Paziresh24Avatar from "../../Paziresh24Avatar"; // plasmic-import: zljt-TXjec48/component
+import { Input } from "@/fragment/components/input"; // plasmic-import: AWE69UKwmIyg/codeComponent
 import Paziresh24Button from "../../Paziresh24Button"; // plasmic-import: YOhw5fIQJQgB/component
+import { Switch } from "@/fragment/components/switch"; // plasmic-import: Zc1MrGUtH5nc/codeComponent
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -75,9 +76,16 @@ import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6u
 import sty from "./PlasmicBuildAuthorization.module.css"; // plasmic-import: 01z6Jy-KWQkM/css
 
 import Icon15Icon from "./icons/PlasmicIcon__Icon15"; // plasmic-import: rQsx35tf_bcf/icon
-import Icon40Icon from "./icons/PlasmicIcon__Icon40"; // plasmic-import: RLm5CHqIuRxP/icon
+import Icon35Icon from "./icons/PlasmicIcon__Icon35"; // plasmic-import: m-5uHwTYBv5w/icon
+import Icon24Icon from "./icons/PlasmicIcon__Icon24"; // plasmic-import: 3P4kCztjZFA7/icon
+import Icon19Icon from "./icons/PlasmicIcon__Icon19"; // plasmic-import: 09kUgGvbipjq/icon
+import Icon44Icon from "./icons/PlasmicIcon__Icon44"; // plasmic-import: c8EwO1fm8dRF/icon
+import Icon41Icon from "./icons/PlasmicIcon__Icon41"; // plasmic-import: DoezJRNgA6sA/icon
+import Icon21Icon from "./icons/PlasmicIcon__Icon21"; // plasmic-import: UuDHOUXMn1lI/icon
 import ChevronLeftIcon from "../paziresh_24_design_system/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: jS0YlkKPLO7U/icon
-import IconIcon from "../ravi_design_system/icons/PlasmicIcon__Icon"; // plasmic-import: 2uzLLHig1Vpp/icon
+import Icon45Icon from "./icons/PlasmicIcon__Icon45"; // plasmic-import: RQYF77Lo96ru/icon
+
+import __lib_copyToClipboard from "copy-to-clipboard";
 
 createPlasmicElementProxy;
 
@@ -97,14 +105,18 @@ export type PlasmicBuildAuthorization__OverridesType = {
   authProvider?: Flex__<typeof AuthProvider>;
   layout?: Flex__<typeof Layout>;
   apiRequest?: Flex__<typeof ApiRequest>;
-  ul?: Flex__<"ul">;
-  apiRequest2?: Flex__<typeof ApiRequest>;
-  paziresh24Avatar?: Flex__<typeof Paziresh24Avatar>;
+  fragmentInput3?: Flex__<typeof Input>;
+  fragmentInput4?: Flex__<typeof Input>;
+  fragmentInput5?: Flex__<typeof Input>;
+  _switch?: Flex__<typeof Switch>;
+  switch2?: Flex__<typeof Switch>;
 };
 
 export interface DefaultBuildAuthorizationProps {}
 
-const $$ = {};
+const $$ = {
+  copyToClipboard: __lib_copyToClipboard
+};
 
 function useNextRouter() {
   try {
@@ -190,28 +202,84 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
-        path: "apiRequest2.data",
+        path: "fragmentInput3.value",
         type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
-
-        refName: "apiRequest2"
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.apiRequest.data.client_id;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       },
       {
-        path: "apiRequest2.error",
+        path: "fragmentInput4.value",
         type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
-
-        refName: "apiRequest2"
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.apiRequest.data.client_secret;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       },
       {
-        path: "apiRequest2.loading",
+        path: "fragmentInput5[].value",
+        type: "private",
+        variableType: "text"
+      },
+      {
+        path: "redirectUris",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.apiRequest.data.redirect_uris?.map(
+                (item, index) => ({ id: index + 1, value: item })
+              );
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return [];
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "redirectUriButtonLoading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
-
-        refName: "apiRequest2"
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "_switch[].checked",
+        type: "private",
+        variableType: "text"
+      },
+      {
+        path: "switch2[].checked",
+        type: "private",
+        variableType: "text"
       }
     ],
     [$props, $ctx, $refs]
@@ -395,7 +463,9 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                       {"\u0633\u0627\u062e\u062a / "}
                     </span>
                     <React.Fragment>
-                      {"\u0633\u0646\u062f\u0628\u0627\u06a9\u0633"}
+                      {
+                        "OAuth \u0648 \u062f\u0633\u062a\u0631\u0633\u06cc \u0647\u0627"
+                      }
                     </React.Fragment>
                   </React.Fragment>
                 </div>
@@ -434,7 +504,7 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                   }}
                   url={(() => {
                     try {
-                      return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/sandbox/`;
+                      return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/oauth/`;
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
@@ -447,303 +517,987 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                   })()}
                 >
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__iMko7)}
+                    className={classNames(projectcss.all, sty.freeBox__emdJp)}
                   >
                     <div
-                      className={classNames(projectcss.all, sty.freeBox__nIv)}
+                      className={classNames(projectcss.all, sty.freeBox__gj7O0)}
                     >
                       <div
                         className={classNames(
                           projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__rjoPl
-                        )}
-                      >
-                        {
-                          "\u0645\u062d\u06cc\u0637 \u062a\u0633\u062a \u067e\u0632\u0634\u06a9"
-                        }
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__sHnqw
-                        )}
-                      >
-                        {
-                          "\u0686\u0631\u0627 \u0646\u06cc\u0627\u0632 \u0628\u0647 \u0633\u0646\u062f\u0628\u0627\u06a9\u0633 \u067e\u0632\u0634\u06a9 \u062f\u0627\u0631\u0645\u061f"
-                        }
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___4UqxK
-                        )}
-                      >
-                        <React.Fragment>
-                          <React.Fragment>{""}</React.Fragment>
-                          {
-                            <ul
-                              data-plasmic-name={"ul"}
-                              data-plasmic-override={overrides.ul}
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.ul,
-                                sty.ul
-                              )}
-                            >
-                              <li
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.li,
-                                  projectcss.__wab_text,
-                                  sty.li__c4Rxu
-                                )}
-                              >
-                                {
-                                  "\u062a\u0648\u0633\u0639\u0647 \u0627\u0628\u0632\u0627\u0631\u06a9 \u0628\u0631\u0627\u06cc \u067e\u0632\u0634\u06a9\u0627\u0646"
-                                }
-                              </li>
-                              <li
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.li,
-                                  projectcss.__wab_text,
-                                  sty.li__zBrwY
-                                )}
-                              >
-                                {
-                                  "\u0645\u0634\u0627\u0647\u062f\u0647 \u0648 \u062a\u0633\u062a \u0627\u0628\u0632\u0627\u0631\u06a9 \u0647\u0627\u06cc \u067e\u0632\u0634\u06a9\u0627\u0646"
-                                }
-                              </li>
-                              <li
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.li,
-                                  projectcss.__wab_text,
-                                  sty.li__m2If5
-                                )}
-                              >
-                                {
-                                  "\u0645\u0634\u0627\u0647\u062f\u0647 \u0648 \u06a9\u0627\u0631 \u0628\u0627 \u067e\u0646\u0644 \u067e\u0632\u0634\u06a9\u0627\u0646"
-                                }
-                              </li>
-                            </ul>
-                          }
-                          <React.Fragment>{""}</React.Fragment>
-                        </React.Fragment>
-                      </div>
-                    </div>
-                    {(() => {
-                      try {
-                        return !!$state.apiRequest.data.slug;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return false;
-                        }
-                        throw e;
-                      }
-                    })() ? (
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__d8LhD
+                          sty.freeBox__vpcQ2
                         )}
                       >
                         <div
                           className={classNames(
                             projectcss.all,
-                            sty.freeBox__r7X5S
+                            sty.freeBox__uzV8P
                           )}
                         >
-                          <ApiRequest
-                            data-plasmic-name={"apiRequest2"}
-                            data-plasmic-override={overrides.apiRequest2}
+                          <Icon35Icon
                             className={classNames(
-                              "__wab_instance",
-                              sty.apiRequest2
+                              projectcss.all,
+                              sty.svg__dYv2N
                             )}
-                            errorDisplay={
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__kYpEs
-                                )}
-                              >
-                                {"Error fetching data"}
-                              </div>
-                            }
-                            loadingDisplay={
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__b8Qwn
-                                )}
-                              >
-                                {"Loading..."}
-                              </div>
-                            }
-                            method={"GET"}
-                            onError={async (...eventArgs: any) => {
-                              generateStateOnChangeProp($state, [
-                                "apiRequest2",
-                                "error"
-                              ]).apply(null, eventArgs);
-                            }}
-                            onLoading={async (...eventArgs: any) => {
-                              generateStateOnChangeProp($state, [
-                                "apiRequest2",
-                                "loading"
-                              ]).apply(null, eventArgs);
-                            }}
-                            onSuccess={async (...eventArgs: any) => {
-                              generateStateOnChangeProp($state, [
-                                "apiRequest2",
-                                "data"
-                              ]).apply(null, eventArgs);
-                            }}
-                            ref={ref => {
-                              $refs["apiRequest2"] = ref;
-                            }}
-                            url={(() => {
-                              try {
-                                return `https://apigw.paziresh24.com/v1/full-profile/${$state.apiRequest.data.slug}`;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return undefined;
-                                }
-                                throw e;
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text___6Fw6
+                            )}
+                          >
+                            {"Client ID"}
+                          </div>
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__vqVbn
+                          )}
+                        >
+                          {
+                            " \u0628\u0627\u06cc\u062f \u062f\u0631 \u0647\u0646\u06af\u0627\u0645 \u062f\u0631\u062e\u0648\u0627\u0633\u062a access token \u0648 \u0628\u0627\u0632 \u06a9\u0631\u062f\u0646 \u0635\u0641\u062d\u0647 OAtuh \u062f\u0631 \u067e\u0627\u0631\u0627\u0645\u062a\u0631 client_id \u0628\u0641\u0631\u0633\u062a\u06cc\u062f. "
+                          }
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___5Wr3B
+                        )}
+                        onClick={async event => {
+                          const $steps = {};
+
+                          $steps["runCode"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  customFunction: async () => {
+                                    return $$.copyToClipboard(
+                                      $state.apiRequest.data?.client_id
+                                    );
+                                  }
+                                };
+                                return (({ customFunction }) => {
+                                  return customFunction();
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["runCode"] != null &&
+                            typeof $steps["runCode"] === "object" &&
+                            typeof $steps["runCode"].then === "function"
+                          ) {
+                            $steps["runCode"] = await $steps["runCode"];
+                          }
+
+                          $steps["invokeGlobalAction"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  args: [
+                                    undefined,
+                                    "\u06a9\u067e\u06cc \u0634\u062f.",
+                                    "top-left"
+                                  ]
+                                };
+                                return $globalActions[
+                                  "Fragment.showToast"
+                                ]?.apply(null, [...actionArgs.args]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["invokeGlobalAction"] != null &&
+                            typeof $steps["invokeGlobalAction"] === "object" &&
+                            typeof $steps["invokeGlobalAction"].then ===
+                              "function"
+                          ) {
+                            $steps["invokeGlobalAction"] = await $steps[
+                              "invokeGlobalAction"
+                            ];
+                          }
+                        }}
+                      >
+                        <Input
+                          data-plasmic-name={"fragmentInput3"}
+                          data-plasmic-override={overrides.fragmentInput3}
+                          attributes={{ dir: "ltr", readOnly: true }}
+                          className={classNames(
+                            "__wab_instance",
+                            sty.fragmentInput3
+                          )}
+                          disabled={false}
+                          onChange={async (...eventArgs: any) => {
+                            generateStateOnChangeProp($state, [
+                              "fragmentInput3",
+                              "value"
+                            ]).apply(null, eventArgs);
+                          }}
+                          type={"text"}
+                          value={generateStateValueProp($state, [
+                            "fragmentInput3",
+                            "value"
+                          ])}
+                        />
+
+                        <Icon24Icon
+                          className={classNames(projectcss.all, sty.svg__oWjCr)}
+                          role={"img"}
+                        />
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__iCzUk)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__mrgjS
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__zwPnv
+                          )}
+                        >
+                          <Icon19Icon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__sMxN
+                            )}
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__s2ToM
+                            )}
+                          >
+                            {"Client Secret"}
+                          </div>
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__vWhj4
+                          )}
+                        >
+                          {
+                            "\u0628\u0627\u06cc\u062f \u062f\u0631 \u0647\u0646\u06af\u0627\u0645 \u062f\u0631\u062e\u0648\u0627\u0633\u062a access token \u062f\u0631 \u067e\u0627\u0631\u0627\u0645\u062a\u0631 client_secret \u0628\u0641\u0631\u0633\u062a\u06cc\u062f. "
+                          }
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__dp5Sf
+                          )}
+                        >
+                          <React.Fragment>
+                            <React.Fragment>
+                              {
+                                "\u0644\u0637\u0641\u0627\u064b \u062f\u0631 \u062d\u0641\u0638 \u0648 \u0646\u06af\u0647\u062f\u0627\u0631\u06cc \u0622\u0646 \u062f\u0642\u062a \u06a9\u0646\u06cc\u062f\u060c \u0632\u06cc\u0631\u0627 \u0627\u06cc\u0646 \u06a9\u0644\u06cc\u062f"
                               }
-                            })()}
+                            </React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{ color: "var(--token-YAl0V-Ojahwz)" }}
+                            >
+                              {" "}
+                            </span>
+                            <React.Fragment>{""}</React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{
+                                color: "var(--token-YAl0V-Ojahwz)",
+                                fontWeight: 700
+                              }}
+                            >
+                              {"\u0645\u062d\u0631\u0645\u0627\u0646\u0647 "}
+                            </span>
+                            <React.Fragment>{""}</React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{ fontWeight: 700 }}
+                            >
+                              {"\u00a0"}
+                            </span>
+                            <React.Fragment>
+                              {"\u0627\u0633\u062a."}
+                            </React.Fragment>
+                          </React.Fragment>
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__zGWb
+                        )}
+                        onClick={async event => {
+                          const $steps = {};
+
+                          $steps["runCode"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  customFunction: async () => {
+                                    return $$.copyToClipboard(
+                                      $state.apiRequest.data?.client_secret
+                                    );
+                                  }
+                                };
+                                return (({ customFunction }) => {
+                                  return customFunction();
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["runCode"] != null &&
+                            typeof $steps["runCode"] === "object" &&
+                            typeof $steps["runCode"].then === "function"
+                          ) {
+                            $steps["runCode"] = await $steps["runCode"];
+                          }
+
+                          $steps["invokeGlobalAction"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  args: [
+                                    "success",
+                                    "\u06a9\u067e\u06cc \u0634\u062f.",
+                                    "top-center"
+                                  ]
+                                };
+                                return $globalActions[
+                                  "Fragment.showToast"
+                                ]?.apply(null, [...actionArgs.args]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["invokeGlobalAction"] != null &&
+                            typeof $steps["invokeGlobalAction"] === "object" &&
+                            typeof $steps["invokeGlobalAction"].then ===
+                              "function"
+                          ) {
+                            $steps["invokeGlobalAction"] = await $steps[
+                              "invokeGlobalAction"
+                            ];
+                          }
+                        }}
+                      >
+                        <Input
+                          data-plasmic-name={"fragmentInput4"}
+                          data-plasmic-override={overrides.fragmentInput4}
+                          attributes={{ dir: "ltr", readOnly: true }}
+                          className={classNames(
+                            "__wab_instance",
+                            sty.fragmentInput4
+                          )}
+                          disabled={false}
+                          onChange={async (...eventArgs: any) => {
+                            generateStateOnChangeProp($state, [
+                              "fragmentInput4",
+                              "value"
+                            ]).apply(null, eventArgs);
+                          }}
+                          type={"password"}
+                          value={generateStateValueProp($state, [
+                            "fragmentInput4",
+                            "value"
+                          ])}
+                        />
+
+                        <Icon24Icon
+                          className={classNames(projectcss.all, sty.svg__jSvBh)}
+                          role={"img"}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__cphCs)}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__rxrEw)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__ba9C2
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__hqJhc
+                          )}
+                        >
+                          <Icon44Icon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__g99Yk
+                            )}
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__j44Pp
+                            )}
+                          >
+                            {
+                              "\u0622\u062f\u0631\u0633\u200c\u0647\u0627\u06cc \u0645\u062c\u0627\u0632 \u0628\u0631\u0627\u06cc \u0647\u062f\u0627\u06cc\u062a \u0627\u0632 OAuth\r"
+                            }
+                          </div>
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__i8Mr7
+                          )}
+                        >
+                          {
+                            "\u0645\u0642\u062f\u0627\u0631\u06cc \u06a9\u0647 \u062f\u0631 \u067e\u0627\u0631\u0627\u0645\u062a\u0631 redirect_uri \u062f\u0631 \u0641\u0631\u0627\u06cc\u0646\u062f OAuth \u0645\u06cc\u200c\u0641\u0631\u0633\u062a\u06cc\u062f\u060c \u0628\u0627\u06cc\u062f \u0639\u06cc\u0646\u0627\u064b \u0645\u0634\u0627\u0628\u0647 \u06cc\u06a9\u06cc \u0627\u0632 \u0622\u062f\u0631\u0633\u200c\u0647\u0627\u06cc \u0632\u06cc\u0631 \u0628\u0627\u0634\u062f.\r"
+                          }
+                        </div>
+                      </div>
+                    </div>
+                    {(_par =>
+                      !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                      (() => {
+                        try {
+                          return $state.redirectUris;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return [];
+                          }
+                          throw e;
+                        }
+                      })()
+                    ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                      const currentItem = __plasmic_item_0;
+                      const currentIndex = __plasmic_idx_0;
+                      return (
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__tyYbW
+                          )}
+                          key={(() => {
+                            try {
+                              return currentItem.id;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()}
+                        >
+                          <Icon41Icon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__oEcm2
+                            )}
+                            onClick={async event => {
+                              const $steps = {};
+
+                              $steps["updateRedirectUris"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["redirectUris"]
+                                      },
+                                      operation: 6,
+                                      startIndex: (() => {
+                                        try {
+                                          return currentIndex;
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return undefined;
+                                          }
+                                          throw e;
+                                        }
+                                      })(),
+                                      deleteCount: (() => {
+                                        try {
+                                          return currentIndex + 1;
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return 2;
+                                          }
+                                          throw e;
+                                        }
+                                      })()
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      const arr = $stateGet(
+                                        objRoot,
+                                        variablePath
+                                      );
+                                      arr.splice(startIndex, deleteCount);
+                                      return arr;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateRedirectUris"] != null &&
+                                typeof $steps["updateRedirectUris"] ===
+                                  "object" &&
+                                typeof $steps["updateRedirectUris"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateRedirectUris"] = await $steps[
+                                  "updateRedirectUris"
+                                ];
+                              }
+                            }}
+                            role={"img"}
+                          />
+
+                          {(() => {
+                            const child$Props = {
+                              attributes: { dir: "ltr" },
+                              className: classNames(
+                                "__wab_instance",
+                                sty.fragmentInput5
+                              ),
+                              disabled: false,
+                              onChange: async (...eventArgs: any) => {
+                                generateStateOnChangeProp($state, [
+                                  "fragmentInput5",
+                                  __plasmic_idx_0,
+                                  "value"
+                                ]).apply(null, eventArgs);
+
+                                (async value => {
+                                  const $steps = {};
+
+                                  $steps["updateRedirectUris"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: ["redirectUris"]
+                                          },
+                                          operation: 0,
+                                          value: $state.redirectUris.map(item =>
+                                            item.id === currentItem.id
+                                              ? { ...item, value: value }
+                                              : item
+                                          )
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["updateRedirectUris"] != null &&
+                                    typeof $steps["updateRedirectUris"] ===
+                                      "object" &&
+                                    typeof $steps["updateRedirectUris"].then ===
+                                      "function"
+                                  ) {
+                                    $steps["updateRedirectUris"] = await $steps[
+                                      "updateRedirectUris"
+                                    ];
+                                  }
+                                }).apply(null, eventArgs);
+                              },
+                              placeholder: "https://...",
+                              type: "text",
+                              value: generateStateValueProp($state, [
+                                "fragmentInput5",
+                                __plasmic_idx_0,
+                                "value"
+                              ])
+                            };
+                            initializeCodeComponentStates(
+                              $state,
+                              [
+                                {
+                                  name: "value",
+                                  plasmicStateName: "fragmentInput5[].value"
+                                }
+                              ],
+                              [__plasmic_idx_0],
+                              undefined ?? {},
+                              child$Props
+                            );
+                            initializePlasmicStates(
+                              $state,
+                              [
+                                {
+                                  name: "fragmentInput5[].value",
+                                  initFunc: ({ $props, $state, $queries }) =>
+                                    (() => {
+                                      try {
+                                        return currentItem.value;
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return undefined;
+                                        }
+                                        throw e;
+                                      }
+                                    })()
+                                }
+                              ],
+                              [__plasmic_idx_0]
+                            );
+                            return (
+                              <Input
+                                data-plasmic-name={"fragmentInput5"}
+                                data-plasmic-override={overrides.fragmentInput5}
+                                {...child$Props}
+                              />
+                            );
+                          })()}
+                        </div>
+                      );
+                    })}
+                    <Paziresh24Button
+                      children2={
+                        "\u0622\u062f\u0631\u0633 \u062c\u062f\u06cc\u062f"
+                      }
+                      className={classNames(
+                        "__wab_instance",
+                        sty.paziresh24Button__ls7R
+                      )}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["updateRedirectUris"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["redirectUris"]
+                                },
+                                operation: 5,
+                                value: {
+                                  id:
+                                    $state.redirectUris.length > 0
+                                      ? $state.redirectUris.length + 1
+                                      : 1,
+                                  value: ""
+                                }
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                const arr = $stateGet(objRoot, variablePath);
+                                arr.push(value);
+                                return arr;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateRedirectUris"] != null &&
+                          typeof $steps["updateRedirectUris"] === "object" &&
+                          typeof $steps["updateRedirectUris"].then ===
+                            "function"
+                        ) {
+                          $steps["updateRedirectUris"] = await $steps[
+                            "updateRedirectUris"
+                          ];
+                        }
+                      }}
+                      outline={true}
+                      showStartIcon={true}
+                      size={"compact"}
+                      startIcon={
+                        <Icon21Icon
+                          className={classNames(projectcss.all, sty.svg__fp4Bu)}
+                          role={"img"}
+                        />
+                      }
+                    />
+
+                    <Paziresh24Button
+                      children2={
+                        "\u062b\u0628\u062a \u062a\u063a\u06cc\u06cc\u0631\u0627\u062a"
+                      }
+                      className={classNames(
+                        "__wab_instance",
+                        sty.paziresh24Button__qXvWl
+                      )}
+                      loading={(() => {
+                        try {
+                          return $state.redirectUriButtonLoading;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return [];
+                          }
+                          throw e;
+                        }
+                      })()}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["startLoading"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["redirectUriButtonLoading"]
+                                },
+                                operation: 0,
+                                value: true
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["startLoading"] != null &&
+                          typeof $steps["startLoading"] === "object" &&
+                          typeof $steps["startLoading"].then === "function"
+                        ) {
+                          $steps["startLoading"] = await $steps["startLoading"];
+                        }
+
+                        $steps["invokeGlobalAction"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  "PATCH",
+                                  (() => {
+                                    try {
+                                      return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/oauth/`;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })(),
+                                  undefined,
+                                  (() => {
+                                    try {
+                                      return {
+                                        redirect_uris: $state.redirectUris
+                                          .filter(item => !!item.value)
+                                          .map(item => item.value)
+                                      };
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })()
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.apiRequest"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["invokeGlobalAction"] != null &&
+                          typeof $steps["invokeGlobalAction"] === "object" &&
+                          typeof $steps["invokeGlobalAction"].then ===
+                            "function"
+                        ) {
+                          $steps["invokeGlobalAction"] = await $steps[
+                            "invokeGlobalAction"
+                          ];
+                        }
+
+                        $steps["finishLoading"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["redirectUriButtonLoading"]
+                                },
+                                operation: 0,
+                                value: false
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["finishLoading"] != null &&
+                          typeof $steps["finishLoading"] === "object" &&
+                          typeof $steps["finishLoading"].then === "function"
+                        ) {
+                          $steps["finishLoading"] = await $steps[
+                            "finishLoading"
+                          ];
+                        }
+
+                        $steps["invokeGlobalAction2"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  undefined,
+                                  "\u062a\u063a\u06cc\u06cc\u0631\u0627\u062a \u0630\u062e\u06cc\u0631\u0647 \u0634\u062f.",
+                                  "top-center"
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.showToast"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["invokeGlobalAction2"] != null &&
+                          typeof $steps["invokeGlobalAction2"] === "object" &&
+                          typeof $steps["invokeGlobalAction2"].then ===
+                            "function"
+                        ) {
+                          $steps["invokeGlobalAction2"] = await $steps[
+                            "invokeGlobalAction2"
+                          ];
+                        }
+                      }}
+                      startIcon={
+                        <Icon21Icon
+                          className={classNames(
+                            projectcss.all,
+                            sty.svg___34TxI
+                          )}
+                          role={"img"}
+                        />
+                      }
+                    />
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__t9DQr)}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__t1EOk)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__vqXdD
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__nwt1A
+                          )}
+                        >
+                          <Icon45Icon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__lygW0
+                            )}
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__r9J4K
+                            )}
+                          >
+                            {
+                              "\u0645\u062f\u06cc\u0631\u06cc\u062a \u062f\u0633\u062a\u0631\u0633\u06cc\u200c\u0647\u0627\r\n\r"
+                            }
+                          </div>
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__rKKvE
+                          )}
+                        >
+                          {
+                            "\u062f\u0633\u062a\u0631\u0633\u06cc \u0647\u0627\u06cc\u06cc \u06a9\u0647 \u0646\u06cc\u0627\u0632 \u062f\u0627\u0631\u06cc\u062f \u0631\u0627 \u0641\u0639\u0627\u0644 \u06a9\u0646\u06cc\u062f."
+                          }
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__ry0Tn)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__iivWw
+                        )}
+                      >
+                        {"\u067e\u0632\u0634\u06a9\u0627\u0646"}
+                      </div>
+                      {(_par =>
+                        !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                        (() => {
+                          try {
+                            return [
+                              {
+                                id: "9766071d-5dcd-41e8-bc61-ced0450960ee",
+                                permission: "provider.profile.read",
+                                description:
+                                  "دسترسی مشاهده اطلاعات پزشک، تخصص ها و مراکز درمانی..."
+                              },
+                              {
+                                id: "cf323c7a-917c-4570-8892-d4c73ecda1b7",
+                                permission: "provider.profile.write",
+                                description:
+                                  "دسترسی ویرایش اطلاعات پزشک، تخصص ها و مراکز درمانی..."
+                              },
+                              {
+                                permission: "provider.appointment.read",
+                                description: "دسترسی مشاهده نوبت های پزشک"
+                              },
+                              {
+                                permission: "provider.appointment.write",
+                                description: "دسترسی حذف نوبت های پزشک"
+                              },
+                              {
+                                permission: "provider.management.read",
+                                description:
+                                  "دسترسی مشاهده ساعت کاری و مرخصی های پزشک"
+                              },
+                              {
+                                permission: "provider.management.write",
+                                description:
+                                  "دسترسی تنظیم ساعت کاری و مرخصی های پزشک"
+                              }
+                            ];
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                      ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                        const currentItem = __plasmic_item_0;
+                        const currentIndex = __plasmic_idx_0;
+                        return (
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__ijX9
+                            )}
+                            key={currentIndex}
                           >
                             <div
                               className={classNames(
                                 projectcss.all,
-                                sty.freeBox___0TjGm
+                                sty.freeBox__raWL
                               )}
-                            >
-                              <Paziresh24Avatar
-                                data-plasmic-name={"paziresh24Avatar"}
-                                data-plasmic-override={
-                                  overrides.paziresh24Avatar
-                                }
-                                className={classNames(
-                                  "__wab_instance",
-                                  sty.paziresh24Avatar
-                                )}
-                                src={(() => {
-                                  try {
-                                    return (
-                                      "https://cdn.paziresh24.com" +
-                                      $state.apiRequest2.data.data.image
-                                    );
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return undefined;
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                              />
-
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.freeBox__ym0AL
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__i7YEt
-                                  )}
-                                >
-                                  <React.Fragment>
-                                    {(() => {
-                                      try {
-                                        return $state.apiRequest2.data.data
-                                          .display_name;
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return "-";
-                                        }
-                                        throw e;
-                                      }
-                                    })()}
-                                  </React.Fragment>
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__yNoNw
-                                  )}
-                                >
-                                  <React.Fragment>
-                                    {(() => {
-                                      try {
-                                        return (
-                                          $state.apiRequest2.data.data
-                                            .expertises[0].alias_title ??
-                                          `${
-                                            $state.apiRequest2.data.data
-                                              .expertises[0].degree.name ?? ""
-                                          } ${
-                                            $state.apiRequest2.data.data
-                                              .expertises[0].expertise.name
-                                          }`
-                                        );
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return "-";
-                                        }
-                                        throw e;
-                                      }
-                                    })()}
-                                  </React.Fragment>
-                                </div>
-                              </div>
-                            </div>
-                          </ApiRequest>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__oAcyL
-                            )}
-                          >
-                            <Paziresh24Button
-                              children2={
-                                "\u0645\u0634\u0627\u0647\u062f\u0647 \u067e\u0631\u0648\u0641\u0627\u06cc\u0644 \u0639\u0645\u0648\u0645\u06cc"
-                              }
-                              className={classNames(
-                                "__wab_instance",
-                                sty.paziresh24Button__nc0F3
-                              )}
-                              link={(() => {
+                              style={(() => {
                                 try {
-                                  return $state.apiRequest.data.profile_url;
+                                  return {
+                                    opacity: !currentItem?.id ? 0.5 : 1
+                                  };
                                 } catch (e) {
                                   if (
                                     e instanceof TypeError ||
@@ -755,114 +1509,190 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                                   throw e;
                                 }
                               })()}
-                              showStartIcon={true}
-                              startIcon={
-                                <Icon40Icon
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.svg__zk75W
-                                  )}
-                                  role={"img"}
-                                />
-                              }
-                              target={true}
-                            />
-
-                            <Paziresh24Button
-                              children2={
-                                "\u0648\u06cc\u0631\u0627\u06cc\u0634 \u067e\u0631\u0648\u0641\u0627\u06cc\u0644"
-                              }
-                              className={classNames(
-                                "__wab_instance",
-                                sty.paziresh24Button__j8W1K
-                              )}
-                              link={
-                                "https://www.paziresh24.com/dashboard/profile/"
-                              }
-                              outline={true}
-                              showStartIcon={true}
-                              startIcon={
-                                <IconIcon
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.svg__uJiP
-                                  )}
-                                  role={"img"}
-                                />
-                              }
-                              target={true}
-                            />
-                          </div>
-                        </div>
-                        <Paziresh24Button
-                          children2={
-                            "\u063a\u06cc\u0631\u0641\u0639\u0627\u0644\u200c\u0633\u0627\u0632\u06cc \u0633\u0646\u062f\u0628\u0627\u06a9\u0633 \u067e\u0632\u0634\u06a9"
-                          }
-                          className={classNames(
-                            "__wab_instance",
-                            sty.paziresh24Button__kkRvb
-                          )}
-                          color={"red"}
-                          loading={(() => {
-                            try {
-                              return $state.loading;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return [];
-                              }
-                              throw e;
-                            }
-                          })()}
-                          onClick={async event => {
-                            const $steps = {};
-
-                            $steps["updateLoading"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["loading"]
-                                    },
-                                    operation: 0,
-                                    value: true
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__hpeOg
+                                )}
+                              >
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return currentItem.permission;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "-";
+                                      }
+                                      throw e;
                                     }
-                                    const { objRoot, variablePath } = variable;
+                                  })()}
+                                </React.Fragment>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text___2Ttjl
+                                )}
+                              >
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return currentItem.description;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "-";
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                </React.Fragment>
+                              </div>
+                            </div>
+                            {(() => {
+                              const child$Props = {
+                                checked: generateStateValueProp($state, [
+                                  "_switch",
+                                  __plasmic_idx_0,
+                                  "checked"
+                                ]),
+                                className: classNames(
+                                  "__wab_instance",
+                                  sty._switch
+                                ),
+                                disabled: (() => {
+                                  try {
+                                    return !currentItem?.id;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })(),
+                                onCheckedChange: async (...eventArgs: any) => {
+                                  generateStateOnChangeProp($state, [
+                                    "_switch",
+                                    __plasmic_idx_0,
+                                    "checked"
+                                  ]).apply(null, eventArgs);
 
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["updateLoading"] != null &&
-                              typeof $steps["updateLoading"] === "object" &&
-                              typeof $steps["updateLoading"].then === "function"
-                            ) {
-                              $steps["updateLoading"] = await $steps[
-                                "updateLoading"
-                              ];
-                            }
+                                  (async checked => {
+                                    const $steps = {};
 
-                            $steps["deactiveSandbox"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    args: [
-                                      "DELETE",
+                                    $steps["invokeGlobalAction"] = !!checked
+                                      ? (() => {
+                                          const actionArgs = {
+                                            args: [
+                                              "PATCH",
+                                              (() => {
+                                                try {
+                                                  return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/oauth/scope/${currentItem.id}/`;
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return undefined;
+                                                  }
+                                                  throw e;
+                                                }
+                                              })()
+                                            ]
+                                          };
+                                          return $globalActions[
+                                            "Fragment.apiRequest"
+                                          ]?.apply(null, [...actionArgs.args]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["invokeGlobalAction"] != null &&
+                                      typeof $steps["invokeGlobalAction"] ===
+                                        "object" &&
+                                      typeof $steps["invokeGlobalAction"]
+                                        .then === "function"
+                                    ) {
+                                      $steps["invokeGlobalAction"] =
+                                        await $steps["invokeGlobalAction"];
+                                    }
+
+                                    $steps["invokeGlobalAction2"] = !checked
+                                      ? (() => {
+                                          const actionArgs = {
+                                            args: [
+                                              "DELETE",
+                                              (() => {
+                                                try {
+                                                  return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/oauth/scope/${currentItem.id}/`;
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return undefined;
+                                                  }
+                                                  throw e;
+                                                }
+                                              })()
+                                            ]
+                                          };
+                                          return $globalActions[
+                                            "Fragment.apiRequest"
+                                          ]?.apply(null, [...actionArgs.args]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["invokeGlobalAction2"] != null &&
+                                      typeof $steps["invokeGlobalAction2"] ===
+                                        "object" &&
+                                      typeof $steps["invokeGlobalAction2"]
+                                        .then === "function"
+                                    ) {
+                                      $steps["invokeGlobalAction2"] =
+                                        await $steps["invokeGlobalAction2"];
+                                    }
+                                  }).apply(null, eventArgs);
+                                }
+                              };
+                              initializeCodeComponentStates(
+                                $state,
+                                [
+                                  {
+                                    name: "checked",
+                                    plasmicStateName: "_switch[].checked"
+                                  }
+                                ],
+                                [__plasmic_idx_0],
+                                undefined ?? {},
+                                child$Props
+                              );
+                              initializePlasmicStates(
+                                $state,
+                                [
+                                  {
+                                    name: "_switch[].checked",
+                                    initFunc: ({ $props, $state, $queries }) =>
                                       (() => {
                                         try {
-                                          return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/sandbox/`;
+                                          return $state.apiRequest.data.scopes.includes(
+                                            currentItem.permission
+                                          );
                                         } catch (e) {
                                           if (
                                             e instanceof TypeError ||
@@ -874,207 +1704,254 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                                           throw e;
                                         }
                                       })()
-                                    ]
-                                  };
-                                  return $globalActions[
-                                    "Fragment.apiRequest"
-                                  ]?.apply(null, [...actionArgs.args]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["deactiveSandbox"] != null &&
-                              typeof $steps["deactiveSandbox"] === "object" &&
-                              typeof $steps["deactiveSandbox"].then ===
-                                "function"
-                            ) {
-                              $steps["deactiveSandbox"] = await $steps[
-                                "deactiveSandbox"
-                              ];
-                            }
-
-                            $steps["updateLoading2"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["loading"]
-                                    },
-                                    operation: 4
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    const oldValue = $stateGet(
-                                      objRoot,
-                                      variablePath
-                                    );
-                                    $stateSet(objRoot, variablePath, !oldValue);
-                                    return !oldValue;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["updateLoading2"] != null &&
-                              typeof $steps["updateLoading2"] === "object" &&
-                              typeof $steps["updateLoading2"].then ===
-                                "function"
-                            ) {
-                              $steps["updateLoading2"] = await $steps[
-                                "updateLoading2"
-                              ];
-                            }
-
-                            $steps["updateLoading3"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    args: [
-                                      undefined,
-                                      "\u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0634\u0645\u0627 \u062b\u0628\u062a \u0634\u062f. \u0633\u0646\u062f\u0628\u0627\u06a9\u0633 \u067e\u0632\u0634\u06a9 \u062d\u062f\u0627\u06a9\u062b\u0631 \u062a\u0627 \u06cc\u06a9 \u0633\u0627\u0639\u062a \u062f\u06cc\u06af\u0631 \u063a\u06cc\u0631\u0641\u0639\u0627\u0644 \u062e\u0648\u0627\u0647\u062f \u0634\u062f \u0648 \u0645\u06cc\u062a\u0648\u0627\u0646\u06cc\u062f \u0628\u0627 \u0631\u0641\u0631\u0634 \u0627\u06cc\u0646 \u0635\u0641\u062d\u0647 \u0627\u0632 \u0648\u0636\u0639\u06cc\u062a \u0622\u0646 \u0645\u0637\u0644\u0639 \u0634\u0648\u06cc\u062f.",
-                                      "top-center",
-                                      15000
-                                    ]
-                                  };
-                                  return $globalActions[
-                                    "Fragment.showToast"
-                                  ]?.apply(null, [...actionArgs.args]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["updateLoading3"] != null &&
-                              typeof $steps["updateLoading3"] === "object" &&
-                              typeof $steps["updateLoading3"].then ===
-                                "function"
-                            ) {
-                              $steps["updateLoading3"] = await $steps[
-                                "updateLoading3"
-                              ];
-                            }
-                          }}
-                          startIcon={
-                            <Icon40Icon
-                              className={classNames(
-                                projectcss.all,
-                                sty.svg__bbUv7
-                              )}
-                              role={"img"}
-                            />
-                          }
-                        />
-                      </div>
-                    ) : null}
-                    {(() => {
-                      try {
-                        return !$state.apiRequest.data.slug;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return false;
-                        }
-                        throw e;
-                      }
-                    })() ? (
+                                  }
+                                ],
+                                [__plasmic_idx_0]
+                              );
+                              return (
+                                <Switch
+                                  data-plasmic-name={"_switch"}
+                                  data-plasmic-override={overrides._switch}
+                                  {...child$Props}
+                                />
+                              );
+                            })()}
+                          </div>
+                        );
+                      })}
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__vHfYv)}
+                    >
                       <div
                         className={classNames(
                           projectcss.all,
-                          sty.freeBox__b20Zj
+                          projectcss.__wab_text,
+                          sty.text__xMkzt
                         )}
                       >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__p2Ojo
-                          )}
-                        >
+                        {
+                          "\u06a9\u0627\u0631\u0628\u0631 (\u0646\u0642\u0634 \u0628\u06cc\u0645\u0627\u0631)\r"
+                        }
+                      </div>
+                      {(_par =>
+                        !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                        (() => {
+                          try {
+                            return [
+                              {
+                                id: "d6b32220-2360-4aaf-aaeb-f60db811b078",
+                                permission: "user.profile.read",
+                                description: "دسترسی مشاهده اطلاعات کاربر"
+                              },
+                              {
+                                permission: "user.profile.write",
+                                description: "دسترسی ویرایش اطلاعات کاربر"
+                              },
+                              {
+                                id: "43b0c566-a076-4d6f-ac91-f3b61e912702",
+                                permission: "user.appointment.read",
+                                description: "دسترسی مشاهده نوبت های کاربر"
+                              },
+                              {
+                                permission: "user.appointment.write",
+                                description: "دسترسی حذف نوبت های کاربر"
+                              }
+                            ];
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                      ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                        const currentItem = __plasmic_item_0;
+                        const currentIndex = __plasmic_idx_0;
+                        return (
                           <div
                             className={classNames(
                               projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__miJuW
+                              sty.freeBox__eV5EU
                             )}
+                            key={currentIndex}
                           >
-                            {
-                              "\u0628\u0627 \u0641\u0639\u0627\u0644\u200c\u0633\u0627\u0632\u06cc \u0633\u0646\u062f\u0628\u0627\u06a9\u0633 \u067e\u0632\u0634\u06a9\u060c \u062d\u0633\u0627\u0628 \u0641\u0639\u0644\u06cc \u0634\u0645\u0627 \u0628\u0647 \u0639\u0646\u0648\u0627\u0646 \u067e\u0632\u0634\u06a9 \u062a\u0639\u0631\u06cc\u0641 \u062e\u0648\u0627\u0647\u062f \u0634\u062f \u0648 \u0645\u0645\u06a9\u0646 \u0627\u0633\u062a \u0628\u0631\u062e\u06cc \u0627\u0632 \u0627\u0645\u06a9\u0627\u0646\u0627\u062a \u0633\u0627\u06cc\u062a \u0628\u0647 \u0637\u0648\u0631 \u0645\u062a\u0641\u0627\u0648\u062a\u06cc \u06a9\u0627\u0631 \u06cc\u0627 \u0646\u0645\u0627\u06cc\u0634 \u062f\u0627\u062f\u0647 \u0634\u0648\u0646\u062f."
-                            }
-                          </div>
-                        </div>
-                        <Paziresh24Button
-                          children2={
-                            "\u0641\u0639\u0627\u0644\u200c\u0633\u0627\u0632\u06cc \u0633\u0646\u062f\u0628\u0627\u06a9\u0633 \u067e\u0632\u0634\u06a9"
-                          }
-                          className={classNames(
-                            "__wab_instance",
-                            sty.paziresh24Button___08Ka0
-                          )}
-                          loading={(() => {
-                            try {
-                              return $state.loading;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return [];
-                              }
-                              throw e;
-                            }
-                          })()}
-                          onClick={async event => {
-                            const $steps = {};
-
-                            $steps["updateLoading"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["loading"]
-                                    },
-                                    operation: 0,
-                                    value: true
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__n6LvL
+                              )}
+                              style={(() => {
+                                try {
+                                  return {
+                                    opacity: !currentItem?.id ? 0.5 : 1
                                   };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__lCdY0
+                                )}
+                              >
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return currentItem.permission;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "-";
+                                      }
+                                      throw e;
                                     }
-                                    const { objRoot, variablePath } = variable;
+                                  })()}
+                                </React.Fragment>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text___2Q9W
+                                )}
+                              >
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return currentItem.description;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "-";
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                </React.Fragment>
+                              </div>
+                            </div>
+                            {(() => {
+                              const child$Props = {
+                                checked: generateStateValueProp($state, [
+                                  "switch2",
+                                  __plasmic_idx_0,
+                                  "checked"
+                                ]),
+                                className: classNames(
+                                  "__wab_instance",
+                                  sty.switch2
+                                ),
+                                disabled: (() => {
+                                  try {
+                                    return !currentItem?.id;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })(),
+                                onCheckedChange: async (...eventArgs: any) => {
+                                  generateStateOnChangeProp($state, [
+                                    "switch2",
+                                    __plasmic_idx_0,
+                                    "checked"
+                                  ]).apply(null, eventArgs);
 
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["updateLoading"] != null &&
-                              typeof $steps["updateLoading"] === "object" &&
-                              typeof $steps["updateLoading"].then === "function"
-                            ) {
-                              $steps["updateLoading"] = await $steps[
-                                "updateLoading"
-                              ];
-                            }
+                                  (async checked => {
+                                    const $steps = {};
 
-                            $steps["activeSandbox"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    args: [
-                                      "PATCH",
+                                    $steps["updateLoading"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: ["loading"]
+                                            },
+                                            operation: 0
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
+
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              value
+                                            );
+                                            return value;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["updateLoading"] != null &&
+                                      typeof $steps["updateLoading"] ===
+                                        "object" &&
+                                      typeof $steps["updateLoading"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["updateLoading"] = await $steps[
+                                        "updateLoading"
+                                      ];
+                                    }
+                                  }).apply(null, eventArgs);
+                                }
+                              };
+                              initializeCodeComponentStates(
+                                $state,
+                                [
+                                  {
+                                    name: "checked",
+                                    plasmicStateName: "switch2[].checked"
+                                  }
+                                ],
+                                [__plasmic_idx_0],
+                                undefined ?? {},
+                                child$Props
+                              );
+                              initializePlasmicStates(
+                                $state,
+                                [
+                                  {
+                                    name: "switch2[].checked",
+                                    initFunc: ({ $props, $state, $queries }) =>
                                       (() => {
                                         try {
-                                          return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/sandbox/`;
+                                          return $state.apiRequest.data.scopes.includes(
+                                            currentItem.permission
+                                          );
                                         } catch (e) {
                                           if (
                                             e instanceof TypeError ||
@@ -1086,101 +1963,22 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                                           throw e;
                                         }
                                       })()
-                                    ]
-                                  };
-                                  return $globalActions[
-                                    "Fragment.apiRequest"
-                                  ]?.apply(null, [...actionArgs.args]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["activeSandbox"] != null &&
-                              typeof $steps["activeSandbox"] === "object" &&
-                              typeof $steps["activeSandbox"].then === "function"
-                            ) {
-                              $steps["activeSandbox"] = await $steps[
-                                "activeSandbox"
-                              ];
-                            }
-
-                            $steps["updateLoading2"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["loading"]
-                                    },
-                                    operation: 4
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    const oldValue = $stateGet(
-                                      objRoot,
-                                      variablePath
-                                    );
-                                    $stateSet(objRoot, variablePath, !oldValue);
-                                    return !oldValue;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["updateLoading2"] != null &&
-                              typeof $steps["updateLoading2"] === "object" &&
-                              typeof $steps["updateLoading2"].then ===
-                                "function"
-                            ) {
-                              $steps["updateLoading2"] = await $steps[
-                                "updateLoading2"
-                              ];
-                            }
-
-                            $steps["updateLoading3"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    args: [
-                                      undefined,
-                                      "\u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0634\u0645\u0627 \u062b\u0628\u062a \u0634\u062f. \u0633\u0646\u062f\u0628\u0627\u06a9\u0633 \u067e\u0632\u0634\u06a9 \u062d\u062f\u0627\u06a9\u062b\u0631 \u062a\u0627 \u06cc\u06a9 \u0633\u0627\u0639\u062a \u062f\u06cc\u06af\u0631 \u0641\u0639\u0627\u0644 \u062e\u0648\u0627\u0647\u062f \u0634\u062f \u0648 \u0645\u06cc\u062a\u0648\u0627\u0646\u06cc\u062f \u0628\u0627 \u0631\u0641\u0631\u0634 \u0627\u06cc\u0646 \u0635\u0641\u062d\u0647 \u0627\u0632 \u0648\u0636\u0639\u06cc\u062a \u0622\u0646 \u0645\u0637\u0644\u0639 \u0634\u0648\u06cc\u062f.",
-                                      "top-center",
-                                      15000
-                                    ]
-                                  };
-                                  return $globalActions[
-                                    "Fragment.showToast"
-                                  ]?.apply(null, [...actionArgs.args]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["updateLoading3"] != null &&
-                              typeof $steps["updateLoading3"] === "object" &&
-                              typeof $steps["updateLoading3"].then ===
-                                "function"
-                            ) {
-                              $steps["updateLoading3"] = await $steps[
-                                "updateLoading3"
-                              ];
-                            }
-                          }}
-                          startIcon={
-                            <Icon40Icon
-                              className={classNames(
-                                projectcss.all,
-                                sty.svg__tbiug
-                              )}
-                              role={"img"}
-                            />
-                          }
-                        />
-                      </div>
-                    ) : null}
+                                  }
+                                ],
+                                [__plasmic_idx_0]
+                              );
+                              return (
+                                <Switch
+                                  data-plasmic-name={"switch2"}
+                                  data-plasmic-override={overrides.switch2}
+                                  {...child$Props}
+                                />
+                              );
+                            })()}
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
                 </ApiRequest>
               </div>
@@ -1199,24 +1997,45 @@ const PlasmicDescendants = {
     "authProvider",
     "layout",
     "apiRequest",
-    "ul",
-    "apiRequest2",
-    "paziresh24Avatar"
+    "fragmentInput3",
+    "fragmentInput4",
+    "fragmentInput5",
+    "_switch",
+    "switch2"
   ],
   embedHtml: ["embedHtml"],
   authProvider: [
     "authProvider",
     "layout",
     "apiRequest",
-    "ul",
-    "apiRequest2",
-    "paziresh24Avatar"
+    "fragmentInput3",
+    "fragmentInput4",
+    "fragmentInput5",
+    "_switch",
+    "switch2"
   ],
-  layout: ["layout", "apiRequest", "ul", "apiRequest2", "paziresh24Avatar"],
-  apiRequest: ["apiRequest", "ul", "apiRequest2", "paziresh24Avatar"],
-  ul: ["ul"],
-  apiRequest2: ["apiRequest2", "paziresh24Avatar"],
-  paziresh24Avatar: ["paziresh24Avatar"]
+  layout: [
+    "layout",
+    "apiRequest",
+    "fragmentInput3",
+    "fragmentInput4",
+    "fragmentInput5",
+    "_switch",
+    "switch2"
+  ],
+  apiRequest: [
+    "apiRequest",
+    "fragmentInput3",
+    "fragmentInput4",
+    "fragmentInput5",
+    "_switch",
+    "switch2"
+  ],
+  fragmentInput3: ["fragmentInput3"],
+  fragmentInput4: ["fragmentInput4"],
+  fragmentInput5: ["fragmentInput5"],
+  _switch: ["_switch"],
+  switch2: ["switch2"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1227,9 +2046,11 @@ type NodeDefaultElementType = {
   authProvider: typeof AuthProvider;
   layout: typeof Layout;
   apiRequest: typeof ApiRequest;
-  ul: "ul";
-  apiRequest2: typeof ApiRequest;
-  paziresh24Avatar: typeof Paziresh24Avatar;
+  fragmentInput3: typeof Input;
+  fragmentInput4: typeof Input;
+  fragmentInput5: typeof Input;
+  _switch: typeof Switch;
+  switch2: typeof Switch;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1296,9 +2117,11 @@ export const PlasmicBuildAuthorization = Object.assign(
     authProvider: makeNodeComponent("authProvider"),
     layout: makeNodeComponent("layout"),
     apiRequest: makeNodeComponent("apiRequest"),
-    ul: makeNodeComponent("ul"),
-    apiRequest2: makeNodeComponent("apiRequest2"),
-    paziresh24Avatar: makeNodeComponent("paziresh24Avatar"),
+    fragmentInput3: makeNodeComponent("fragmentInput3"),
+    fragmentInput4: makeNodeComponent("fragmentInput4"),
+    fragmentInput5: makeNodeComponent("fragmentInput5"),
+    _switch: makeNodeComponent("_switch"),
+    switch2: makeNodeComponent("switch2"),
 
     // Metadata about props expected for PlasmicBuildAuthorization
     internalVariantProps: PlasmicBuildAuthorization__VariantProps,
