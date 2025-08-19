@@ -100,6 +100,7 @@ export type PlasmicTransactions__OverridesType = {
   layout?: Flex__<typeof Layout>;
   fragmentApiRequest2?: Flex__<typeof ApiRequest>;
   fragmentApiRequest3?: Flex__<typeof ApiRequest>;
+  fragmentApiRequest4?: Flex__<typeof ApiRequest>;
   paziresh24Button?: Flex__<typeof Paziresh24Button>;
   apiRequest?: Flex__<typeof ApiRequest>;
   transactionCard?: Flex__<typeof TransactionCard>;
@@ -237,6 +238,30 @@ function PlasmicTransactions__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
 
         refName: "fragmentApiRequest3"
+      },
+      {
+        path: "fragmentApiRequest4.data",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "fragmentApiRequest4"
+      },
+      {
+        path: "fragmentApiRequest4.error",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "fragmentApiRequest4"
+      },
+      {
+        path: "fragmentApiRequest4.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "fragmentApiRequest4"
       }
     ],
     [$props, $ctx, $refs]
@@ -509,6 +534,17 @@ function PlasmicTransactions__RenderFunc(props: {
                               {"\u062a\u0648\u0645\u0627\u0646"}
                             </div>
                           </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__aHeWv
+                            )}
+                          >
+                            {
+                              "\u0645\u06cc\u0632\u0627\u0646 \u0641\u0631\u0648\u0634 \u0627\u0632 \u0627\u0648\u0644 \u062a\u0627 \u0628\u0647 \u0627\u0644\u0627\u0646"
+                            }
+                          </div>
                         </div>
                       </div>
                     }
@@ -563,6 +599,17 @@ function PlasmicTransactions__RenderFunc(props: {
                               {"\u062a\u0648\u0645\u0627\u0646"}
                             </div>
                           </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__ebIsW
+                            )}
+                          >
+                            {
+                              "\u0645\u06cc\u0632\u0627\u0646 \u0641\u0631\u0648\u0634 \u0627\u0632 \u0627\u0648\u0644 \u062a\u0627 \u0628\u0647 \u0627\u0644\u0627\u0646"
+                            }
+                          </div>
                         </div>
                       </div>
                     }
@@ -590,7 +637,7 @@ function PlasmicTransactions__RenderFunc(props: {
                     }}
                     url={(() => {
                       try {
-                        return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/monetization/transactions/income`;
+                        return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/incomes`;
                       } catch (e) {
                         if (
                           e instanceof TypeError ||
@@ -623,19 +670,21 @@ function PlasmicTransactions__RenderFunc(props: {
                             sty.text__spBo3
                           )}
                         >
-                          {"\u062f\u0631\u0622\u0645\u062f"}
+                          {
+                            "\u0645\u06cc\u0632\u0627\u0646 \u0641\u0631\u0648\u0634"
+                          }
                         </div>
                         <div
                           className={classNames(
                             projectcss.all,
-                            sty.freeBox__tktVb
+                            sty.freeBox__qQhVf
                           )}
                         >
                           <div
                             className={classNames(
                               projectcss.all,
                               projectcss.__wab_text,
-                              sty.text__oD7Hy
+                              sty.text__lYc0K
                             )}
                           >
                             <React.Fragment>
@@ -643,8 +692,8 @@ function PlasmicTransactions__RenderFunc(props: {
                                 try {
                                   return new Intl.NumberFormat("fa-IR").format(
                                     (
-                                      $state.fragmentApiRequest2.data
-                                        ?.balance ?? 0
+                                      $state.fragmentApiRequest2.data?.amount ??
+                                      0
                                     )
                                       .toString()
                                       .slice(0, -1)
@@ -666,11 +715,22 @@ function PlasmicTransactions__RenderFunc(props: {
                             className={classNames(
                               projectcss.all,
                               projectcss.__wab_text,
-                              sty.text__lp1SI
+                              sty.text__rY3WF
                             )}
                           >
                             {"\u062a\u0648\u0645\u0627\u0646"}
                           </div>
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___2QmCz
+                          )}
+                        >
+                          {
+                            "\u0645\u06cc\u0632\u0627\u0646 \u0641\u0631\u0648\u0634 \u0627\u0632 \u0627\u0648\u0644 \u062a\u0627 \u0628\u0647 \u0627\u0644\u0627\u0646"
+                          }
                         </div>
                       </div>
                     </div>
@@ -766,6 +826,29 @@ function PlasmicTransactions__RenderFunc(props: {
                               </React.Fragment>
                             </React.Fragment>
                           </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__feXi9
+                            )}
+                          >
+                            <React.Fragment>
+                              <span
+                                className={
+                                  "plasmic_default__all plasmic_default__span"
+                                }
+                                style={{ fontWeight: 700 }}
+                              >
+                                {"\u06f3\u06f0\u066a"}
+                              </span>
+                              <React.Fragment>
+                                {
+                                  " \u0628\u0627\u0628\u062a \u06a9\u0627\u0631\u0645\u0632\u062f \u062e\u062f\u0645\u0627\u062a \u0647\u0645\u200c\u062f\u0633\u062a \u06a9\u0645 \u0634\u062f\u0647 \u0627\u0633\u062a."
+                                }
+                              </React.Fragment>
+                            </React.Fragment>
+                          </div>
                         </div>
                       </div>
                     }
@@ -849,6 +932,29 @@ function PlasmicTransactions__RenderFunc(props: {
                               <React.Fragment>
                                 {
                                   " \u0627\u0632 \u0632\u0645\u0627\u0646\u200c\u0634\u0627\u0646 \u06af\u0630\u0634\u062a\u0647 \u0627\u0634\u062a."
+                                }
+                              </React.Fragment>
+                            </React.Fragment>
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__mjlMf
+                            )}
+                          >
+                            <React.Fragment>
+                              <span
+                                className={
+                                  "plasmic_default__all plasmic_default__span"
+                                }
+                                style={{ fontWeight: 700 }}
+                              >
+                                {"\u06f3\u06f0\u066a"}
+                              </span>
+                              <React.Fragment>
+                                {
+                                  " \u0628\u0627\u0628\u062a \u06a9\u0627\u0631\u0645\u0632\u062f \u062e\u062f\u0645\u0627\u062a \u0647\u0645\u200c\u062f\u0633\u062a \u06a9\u0645 \u0634\u062f\u0647 \u0627\u0633\u062a."
                                 }
                               </React.Fragment>
                             </React.Fragment>
@@ -963,6 +1069,129 @@ function PlasmicTransactions__RenderFunc(props: {
                           >
                             {"\u062a\u0648\u0645\u0627\u0646"}
                           </div>
+                          <ApiRequest
+                            data-plasmic-name={"fragmentApiRequest4"}
+                            data-plasmic-override={
+                              overrides.fragmentApiRequest4
+                            }
+                            className={classNames(
+                              "__wab_instance",
+                              sty.fragmentApiRequest4
+                            )}
+                            errorDisplay={null}
+                            loadingDisplay={
+                              <Icon15Icon
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.svg__uaqbN
+                                )}
+                                role={"img"}
+                              />
+                            }
+                            method={"GET"}
+                            onError={async (...eventArgs: any) => {
+                              generateStateOnChangeProp($state, [
+                                "fragmentApiRequest4",
+                                "error"
+                              ]).apply(null, eventArgs);
+                            }}
+                            onLoading={async (...eventArgs: any) => {
+                              generateStateOnChangeProp($state, [
+                                "fragmentApiRequest4",
+                                "loading"
+                              ]).apply(null, eventArgs);
+                            }}
+                            onSuccess={async (...eventArgs: any) => {
+                              generateStateOnChangeProp($state, [
+                                "fragmentApiRequest4",
+                                "data"
+                              ]).apply(null, eventArgs);
+                            }}
+                            ref={ref => {
+                              $refs["fragmentApiRequest4"] = ref;
+                            }}
+                            url={(() => {
+                              try {
+                                return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/monetization/transactions/income`;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
+                              }
+                            })()}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__qOqQx
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text___5Aram
+                                )}
+                              >
+                                {
+                                  "\u062f\u0631 \u0627\u0646\u062a\u0638\u0627\u0631"
+                                }
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__tktVb
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__oD7Hy
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return new Intl.NumberFormat(
+                                          "fa-IR"
+                                        ).format(
+                                          (
+                                            $state.fragmentApiRequest4.data
+                                              ?.balance ?? 0
+                                          )
+                                            .toString()
+                                            .slice(0, -1)
+                                        );
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "\u06f0";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__lp1SI
+                                  )}
+                                >
+                                  {"\u062a\u0648\u0645\u0627\u0646"}
+                                </div>
+                              </div>
+                            </div>
+                          </ApiRequest>
                         </div>
                         <div
                           className={classNames(
@@ -988,6 +1217,29 @@ function PlasmicTransactions__RenderFunc(props: {
                             <React.Fragment>
                               {
                                 " \u0627\u0632 \u0632\u0645\u0627\u0646\u200c\u0634\u0627\u0646 \u06af\u0630\u0634\u062a\u0647 \u0627\u0633\u062a."
+                              }
+                            </React.Fragment>
+                          </React.Fragment>
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___6Kwcy
+                          )}
+                        >
+                          <React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{ fontWeight: 700 }}
+                            >
+                              {"\u06f3\u06f0\u066a"}
+                            </span>
+                            <React.Fragment>
+                              {
+                                " \u0628\u0627\u0628\u062a \u06a9\u0627\u0631\u0645\u0632\u062f \u062e\u062f\u0645\u0627\u062a \u0647\u0645\u200c\u062f\u0633\u062a \u06a9\u0645 \u0634\u062f\u0647 \u0627\u0633\u062a."
                               }
                             </React.Fragment>
                           </React.Fragment>
@@ -1419,6 +1671,7 @@ const PlasmicDescendants = {
     "layout",
     "fragmentApiRequest2",
     "fragmentApiRequest3",
+    "fragmentApiRequest4",
     "paziresh24Button",
     "apiRequest",
     "transactionCard"
@@ -1429,6 +1682,7 @@ const PlasmicDescendants = {
     "layout",
     "fragmentApiRequest2",
     "fragmentApiRequest3",
+    "fragmentApiRequest4",
     "paziresh24Button",
     "apiRequest",
     "transactionCard"
@@ -1437,12 +1691,14 @@ const PlasmicDescendants = {
     "layout",
     "fragmentApiRequest2",
     "fragmentApiRequest3",
+    "fragmentApiRequest4",
     "paziresh24Button",
     "apiRequest",
     "transactionCard"
   ],
   fragmentApiRequest2: ["fragmentApiRequest2"],
-  fragmentApiRequest3: ["fragmentApiRequest3"],
+  fragmentApiRequest3: ["fragmentApiRequest3", "fragmentApiRequest4"],
+  fragmentApiRequest4: ["fragmentApiRequest4"],
   paziresh24Button: ["paziresh24Button"],
   apiRequest: ["apiRequest", "transactionCard"],
   transactionCard: ["transactionCard"]
@@ -1457,6 +1713,7 @@ type NodeDefaultElementType = {
   layout: typeof Layout;
   fragmentApiRequest2: typeof ApiRequest;
   fragmentApiRequest3: typeof ApiRequest;
+  fragmentApiRequest4: typeof ApiRequest;
   paziresh24Button: typeof Paziresh24Button;
   apiRequest: typeof ApiRequest;
   transactionCard: typeof TransactionCard;
@@ -1527,6 +1784,7 @@ export const PlasmicTransactions = Object.assign(
     layout: makeNodeComponent("layout"),
     fragmentApiRequest2: makeNodeComponent("fragmentApiRequest2"),
     fragmentApiRequest3: makeNodeComponent("fragmentApiRequest3"),
+    fragmentApiRequest4: makeNodeComponent("fragmentApiRequest4"),
     paziresh24Button: makeNodeComponent("paziresh24Button"),
     apiRequest: makeNodeComponent("apiRequest"),
     transactionCard: makeNodeComponent("transactionCard"),

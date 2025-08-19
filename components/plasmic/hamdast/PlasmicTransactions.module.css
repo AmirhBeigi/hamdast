@@ -85,7 +85,7 @@
   display: flex;
   position: relative;
   flex-direction: row;
-  width: 210px;
+  width: 220px;
   height: auto;
   max-width: 100%;
   justify-content: flex-start;
@@ -147,11 +147,19 @@
   font-size: 12px;
   opacity: 0.5;
 }
+.text__ebIsW {
+  position: relative;
+  height: auto;
+  max-width: 100%;
+  font-weight: 400;
+  font-size: 11px;
+  opacity: 0.5;
+}
 .freeBox__dvOz {
   display: flex;
   position: relative;
   flex-direction: row;
-  width: 210px;
+  width: 220px;
   height: auto;
   max-width: 100%;
   justify-content: flex-start;
@@ -213,11 +221,19 @@
   font-size: 12px;
   opacity: 0.5;
 }
+.text__aHeWv {
+  position: relative;
+  height: auto;
+  max-width: 100%;
+  font-weight: 400;
+  font-size: 11px;
+  opacity: 0.5;
+}
 .freeBox__v1IWt {
   display: flex;
   position: relative;
   flex-direction: row;
-  width: 210px;
+  width: 220px;
   height: auto;
   max-width: 100%;
   justify-content: flex-start;
@@ -253,7 +269,7 @@
   font-weight: 600;
   font-size: 13px;
 }
-.freeBox__tktVb {
+.freeBox__qQhVf {
   display: flex;
   position: relative;
   flex-direction: row;
@@ -262,21 +278,29 @@
   width: auto;
   height: auto;
   max-width: 100%;
-  column-gap: 6px;
+  column-gap: 2px;
 }
-.text__oD7Hy {
+.text__lYc0K {
   position: relative;
   height: auto;
   max-width: 100%;
   font-weight: 600;
   font-size: 16px;
 }
-.text__lp1SI {
+.text__rY3WF {
   position: relative;
   height: auto;
   max-width: 100%;
   font-weight: 600;
   font-size: 12px;
+  opacity: 0.5;
+}
+.text___2QmCz {
+  position: relative;
+  height: auto;
+  max-width: 100%;
+  font-weight: 400;
+  font-size: 11px;
   opacity: 0.5;
 }
 .fragmentApiRequest3:global(.__wab_instance) {
@@ -351,6 +375,14 @@
   opacity: 0.5;
 }
 .text___94Xv {
+  position: relative;
+  height: auto;
+  max-width: 100%;
+  font-weight: 400;
+  font-size: 11px;
+  opacity: 0.5;
+}
+.text__mjlMf {
   position: relative;
   height: auto;
   max-width: 100%;
@@ -433,6 +465,14 @@
   font-size: 11px;
   opacity: 0.5;
 }
+.text__feXi9 {
+  position: relative;
+  height: auto;
+  max-width: 100%;
+  font-weight: 400;
+  font-size: 11px;
+  opacity: 0.5;
+}
 .freeBox__rRgx7 {
   display: flex;
   position: relative;
@@ -483,7 +523,7 @@
   width: auto;
   height: auto;
   max-width: 100%;
-  column-gap: 6px;
+  column-gap: 2px;
 }
 .text__s1NwH {
   position: relative;
@@ -500,7 +540,73 @@
   font-size: 12px;
   opacity: 0.5;
 }
+.fragmentApiRequest4:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
+.svg__uaqbN {
+  object-fit: cover;
+  max-width: 100%;
+  width: 18px;
+  height: 18px;
+}
+.freeBox__qOqQx {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  column-gap: 4px;
+  margin-right: 5px;
+  padding-right: 7px;
+  min-width: 0;
+  border-right: 1px solid var(--token-4iQ-8GWBqX6X);
+}
+.text___5Aram {
+  position: relative;
+  height: auto;
+  max-width: 100%;
+  font-weight: 600;
+  font-size: 8px;
+  opacity: 0.5;
+}
+.freeBox__tktVb {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  column-gap: 2px;
+}
+.text__oD7Hy {
+  position: relative;
+  height: auto;
+  max-width: 100%;
+  font-weight: 600;
+  font-size: 9px;
+}
+.text__lp1SI {
+  position: relative;
+  height: auto;
+  max-width: 100%;
+  font-weight: 600;
+  font-size: 8px;
+  opacity: 0.5;
+}
 .text___6EMt {
+  position: relative;
+  height: auto;
+  max-width: 100%;
+  font-weight: 400;
+  font-size: 11px;
+  opacity: 0.5;
+}
+.text___6Kwcy {
   position: relative;
   height: auto;
   max-width: 100%;
