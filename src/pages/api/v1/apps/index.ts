@@ -64,7 +64,10 @@ export default async function handler(
     return res.status(200).json(
       apps.map((app) => ({
         id: app.id,
-        collaborators: app.collaborators,
+        collaborators: app.expand?.collaborators?.map((item: any) => ({
+          id: item?.id,
+          paziresh24_user_id: item?.paziresh24_user_id,
+        })),
         key: app.key,
         name_en: app.name_en,
         name_fa: app.name_fa,
