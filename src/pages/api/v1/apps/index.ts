@@ -95,6 +95,8 @@ export default async function handler(
       key,
     });
 
+    let client = null;
+
     try {
       const gozarToken = await axios.post(
         "https://user.paziresh24.com/realms/paziresh24/protocol/openid-connect/token",
@@ -129,11 +131,42 @@ export default async function handler(
           consentRequired: true,
         },
       };
-      await axios.request(options);
+      client = await axios.request(options);
+    } catch (error) {
+      await pb.collection("apps").delete(app.id);
+      return res.status(502).json({});
+    }
+
+    try {
+      var productOption = {
+        method: "POST",
+        url: "https://apigw.paziresh24.com/katibe/v1/products/hamdast",
+        headers: {
+          Authorization: `Bearer ${process.env.KATIBE_TOKEN}`,
+          "Content-Type": "application/json",
+        },
+        data: {
+          name: name_fa,
+          code_name: `hamdast-${key}`,
+          site_address: `https://hamdast.paziresh24.com/katibe/redirect`,
+        },
+      };
+      const katibeData = await axios.request(productOption);
       await pb.collection("apps").update(app.id, {
         gozargah_client: `hamdast-${key}`,
+        tokens: {
+          katibe: katibeData?.data?.data?.token,
+        },
+        redirects: {
+          katibe: "https://hamdast.paziresh24.com/katibe/redirect",
+        },
+        katibe_id: `hamdast-${key}`,
       });
     } catch (error) {
+      const clientId = client?.data?.id;
+      await axios.delete(
+        `https://user.paziresh24.com/admin/realms/paziresh24/clients/${clientId}`
+      );
       await pb.collection("apps").delete(app.id);
       return res.status(502).json({});
     }
