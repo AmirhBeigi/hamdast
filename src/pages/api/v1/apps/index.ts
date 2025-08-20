@@ -89,115 +89,126 @@ export default async function handler(
     if (!name_fa && !key) {
       return res.status(400).json({});
     }
-    const app = await pb.collection("apps").create({
-      name_fa,
-      collaborators: [record.id],
-      key,
-    });
-
-    let client = null;
-    let gozarToken = null;
-
     try {
-      gozarToken = await axios.post(
-        "https://user.paziresh24.com/realms/paziresh24/protocol/openid-connect/token",
-        {
-          grant_type: "client_credentials",
-          client_id: process.env.GOZARGAH_CLIENT_ID,
-          client_secret: process.env.GOZARGAH_CLIENT_SECRET,
-        },
-        {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-        }
-      );
-
-      var options = {
-        method: "POST",
-        url: "https://user.paziresh24.com/admin/realms/paziresh24/clients/",
-        headers: {
-          Authorization: `Bearer ${gozarToken.data?.access_token}`,
-          "Content-Type": "application/json",
-        },
-        data: {
-          clientId: `hamdast-${key}`,
-          name: name_fa,
-          enabled: true,
-          protocol: "openid-connect",
-          publicClient: false,
-          standardFlowEnabled: true,
-          directAccessGrantsEnabled: true,
-          serviceAccountsEnabled: false,
-          consentRequired: true,
-        },
-      };
-      client = await axios.request(options);
-    } catch (error) {
-      await pb.collection("apps").delete(app.id);
-      return res.status(502).json({});
-    }
-
-    try {
-      var productOption = {
-        method: "POST",
-        url: "https://apigw.paziresh24.com/katibe/v1/products/hamdast/",
-        headers: {
-          Authorization: `Bearer ${process.env.KATIBE_TOKEN}`,
-          "Content-Type": "application/json",
-        },
-        data: {
-          name: name_fa,
-          code_name: `hamdast-${key}`,
-          site_address: `https://hamdast.paziresh24.com/katibe/redirect`,
-        },
-      };
-      const katibeData = await axios.request(productOption);
-      await pb.collection("apps").update(app.id, {
-        gozargah_client: `hamdast-${key}`,
-        tokens: {
-          katibe: katibeData?.data?.data?.token,
-        },
-        redirects: {
-          katibe: "https://hamdast.paziresh24.com/katibe/redirect",
-        },
-        katibe_id: `hamdast-${key}`,
+      const app = await pb.collection("apps").create({
+        name_fa,
+        collaborators: [record.id],
+        key,
       });
-    } catch (error) {
-      if (axios.isAxiosError(error) && error.response?.status == 409) {
+
+      let client = null;
+      let gozarToken = null;
+
+      try {
+        gozarToken = await axios.post(
+          "https://user.paziresh24.com/realms/paziresh24/protocol/openid-connect/token",
+          {
+            grant_type: "client_credentials",
+            client_id: process.env.GOZARGAH_CLIENT_ID,
+            client_secret: process.env.GOZARGAH_CLIENT_SECRET,
+          },
+          {
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          }
+        );
+
+        var options = {
+          method: "POST",
+          url: "https://user.paziresh24.com/admin/realms/paziresh24/clients/",
+          headers: {
+            Authorization: `Bearer ${gozarToken.data?.access_token}`,
+            "Content-Type": "application/json",
+          },
+          data: {
+            clientId: `hamdast-${key}`,
+            name: name_fa,
+            enabled: true,
+            protocol: "openid-connect",
+            publicClient: false,
+            standardFlowEnabled: true,
+            directAccessGrantsEnabled: true,
+            serviceAccountsEnabled: false,
+            consentRequired: true,
+          },
+        };
+        client = await axios.request(options);
+      } catch (error) {
+        await pb.collection("apps").delete(app.id);
+        return res.status(502).json({
+          message: "کلاینت oauth از قبل ساخته شده است.",
+        });
+      }
+
+      try {
+        var productOption = {
+          method: "POST",
+          url: "https://apigw.paziresh24.com/katibe/v1/products/hamdast",
+          headers: {
+            token: `${process.env.KATIBE_TOKEN}`,
+            "Content-Type": "application/json",
+          },
+          data: {
+            name: name_fa,
+            code_name: `hamdast-${key}`,
+            site_address: `https://hamdast.paziresh24.com/katibe/redirect`,
+          },
+        };
+        const katibeData = await axios.request(productOption);
         await pb.collection("apps").update(app.id, {
           gozargah_client: `hamdast-${key}`,
           tokens: {
-            katibe: error?.response?.data?.data?.token,
+            katibe: katibeData?.data?.data?.token,
           },
           redirects: {
             katibe: "https://hamdast.paziresh24.com/katibe/redirect",
           },
           katibe_id: `hamdast-${key}`,
         });
-        return;
-      }
-      const clientId = client?.data?.id;
-      await axios.delete(
-        `https://user.paziresh24.com/admin/realms/paziresh24/clients/${clientId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${gozarToken.data?.access_token}`,
-          },
+      } catch (error) {
+        if (axios.isAxiosError(error) && error.response?.status == 409) {
+          await pb.collection("apps").update(app.id, {
+            gozargah_client: `hamdast-${key}`,
+            tokens: {
+              katibe: error?.response?.data?.data?.token,
+            },
+            redirects: {
+              katibe: "https://hamdast.paziresh24.com/katibe/redirect",
+            },
+            katibe_id: `hamdast-${key}`,
+          });
+          return res.status(200).json({
+            id: app.id,
+            collaborators: app.collaborators,
+            key: app.key,
+            name_en: app.name_en,
+            name_fa: app.name_fa,
+            client_key: app.client_key,
+            permissions: app.permissions,
+          });
+          return;
         }
-      );
-      await pb.collection("apps").delete(app.id);
-      return res.status(502).json({});
-    }
 
-    return res.status(200).json({
-      id: app.id,
-      collaborators: app.collaborators,
-      key: app.key,
-      name_en: app.name_en,
-      name_fa: app.name_fa,
-      client_key: app.client_key,
-      permissions: app.permissions,
-    });
+        await pb.collection("apps").delete(app.id);
+        return res.status(502).json({
+          message: "مشکل در ساخت کلاینت کتیبه.",
+        });
+      }
+
+      return res.status(200).json({
+        id: app.id,
+        collaborators: app.collaborators,
+        key: app.key,
+        name_en: app.name_en,
+        name_fa: app.name_fa,
+        client_key: app.client_key,
+        permissions: app.permissions,
+      });
+    } catch (error) {
+      return res.status(502).json({
+        message: "ابزارک قبلا ساخته شده است.",
+      });
+    }
   }
 }
