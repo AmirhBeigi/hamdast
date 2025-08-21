@@ -3,7 +3,6 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { pb } from "../../../../../../../pocketbase";
 import config from "next/config";
 import { ClientResponseError } from "pocketbase";
-import { Trophy } from "lucide-react";
 const { publicRuntimeConfig } = config();
 
 export default async function handler(
@@ -42,86 +41,75 @@ export default async function handler(
 
   if (req.method == "GET") {
     try {
-      const page = await pb
-        .collection("pages")
-        .getFirstListItem(`app="${app_id}" && key="launcher"`);
+      const landing = await pb
+        .collection("landings")
+        .getFirstListItem(`app="${app_id}"`);
 
       return res.status(200).json({
-        embed_src: page.embed_src,
-        display_name_fa: app?.display_name_fa,
-        description: app?.description,
+        ...landing,
       });
     } catch (error) {
-      return res.status(200).json({
-        embed_src: "",
-        display_name_fa: "",
-        description: "",
-      });
+      return res.status(200).json({});
     }
   }
 
   if (req.method == "POST") {
-    const { embed_src, display_name_fa, description } = req.body;
+    const { ...rest } = req.body;
 
     try {
-      await pb.collection("apps").update(app.id, {
-        display_name_fa: display_name_fa,
-        description: description,
-        published: true,
-      });
-
+      let page: any;
       try {
-        const page = await pb
+        page = await pb
           .collection("pages")
           .getFirstListItem(`app="${app_id}" && key="launcher"`);
+      } catch (error) {}
 
-        if (page?.id) {
-          await pb.collection("pages").update(page.id, {
-            key: "launcher",
-            name_fa: display_name_fa,
-            embed_src: embed_src,
-            app: app_id,
-            layout: {
-              show_appbar: true,
-              show_bottom_navigation: true,
-              show_footer: false,
-              show_header: false,
-            },
-            parameters: [],
-            is_protected_route: true,
-          });
-        } else {
-          await pb.collection("pages").create({
-            key: "launcher",
-            name_fa: display_name_fa,
-            embed_src: embed_src,
-            app: app_id,
-            layout: {
-              show_appbar: true,
-              show_bottom_navigation: true,
-              show_footer: false,
-              show_header: false,
-            },
-            parameters: [],
-            is_protected_route: true,
+      let landing;
+      try {
+        landing = await pb
+          .collection("landings")
+          .getFirstListItem(`app="${app_id}" && key="launcher"`);
+
+        if (landing?.id) {
+          await pb.collection("landings").update(landing.id, {
+            ...rest,
           });
         }
+        if (!landing?.id) {
+          await pb.collection("landings").create({
+            ...rest,
+            app: app.id,
+          });
+          if (page?.id) {
+            await pb.collection("pages").update(page?.id, {
+              layout: {
+                show_appbar: true,
+                show_bottom_navigation: true,
+                show_footer: false,
+                show_header: false,
+                show_landing: true,
+              },
+            });
+          }
+        }
       } catch (error) {
-        await pb.collection("pages").create({
-          key: "launcher",
-          name_fa: display_name_fa,
-          embed_src: embed_src,
-          app: app_id,
-          layout: {
-            show_appbar: true,
-            show_bottom_navigation: true,
-            show_footer: false,
-            show_header: false,
-          },
-          parameters: [],
-          is_protected_route: true,
+        await pb.collection("landings").create({
+          ...rest,
+          app: app.id,
         });
+        if (page?.id) {
+          await pb.collection("pages").update(page?.id, {
+            layout: {
+              show_appbar: true,
+              show_bottom_navigation: true,
+              show_footer: false,
+              show_header: false,
+              show_landing: true,
+            },
+          });
+        }
       }
+
       res.status(200).json({});
     } catch (error) {
       const err = error as ClientResponseError;
