@@ -35,22 +35,29 @@ export default async function handler(
       expand: "role",
     });
 
+  console.log(record);
   const app = await pb
     .collection("apps")
-    .getFirstListItem(`collaborators~'${record.id}' && id = '${app_id}'`);
+    .getFirstListItem(`collaborators~'${record.id}' && id="${app_id}"`);
 
   if (req.method == "GET") {
-    const page = await pb
-      .collection("pages")
-      .getFirstListItem(`app="${app_id}" && key="launcher"`);
+    try {
+      const page = await pb
+        .collection("pages")
+        .getFirstListItem(`app="${app_id}" && key="launcher"`);
 
-    res.status(200).json({
-      id: page.id,
-      key: page.key,
-      embed_src: page.embed_src,
-      display_name_fa: app?.display_name_fa,
-      description: app?.description,
-    });
+      return res.status(200).json({
+        embed_src: page.embed_src,
+        display_name_fa: app?.display_name_fa,
+        description: app?.description,
+      });
+    } catch (error) {
+      return res.status(200).json({
+        embed_src: "",
+        display_name_fa: "",
+        description: "",
+      });
+    }
   }
 
   if (req.method == "POST") {
@@ -60,6 +67,7 @@ export default async function handler(
       await pb.collection("apps").update(app.id, {
         display_name_fa: display_name_fa,
         description: description,
+        published: true,
       });
 
       const page = await pb
