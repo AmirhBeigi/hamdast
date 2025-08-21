@@ -769,7 +769,8 @@ function PlasmicNewApp__RenderFunc(props: {
                                 /[\u0600-\u06FF]/
                               ) ||
                                 $state.keyInput.value.length < 4 ||
-                                $state.keyInput.value.includes("/"))
+                                $state.keyInput.value.includes("/") ||
+                                $state.keyInput.value.includes("-"))
                             );
                           } catch (e) {
                             if (
@@ -920,7 +921,8 @@ function PlasmicNewApp__RenderFunc(props: {
                             !!$state.validateKey.error &&
                             !!$state.nameInput.value &&
                             !!$state.keyInput.value &&
-                            ($state.keyInput.value.length < 4 ||
+                            ($state.keyInput.value.includes("-") ||
+                              $state.keyInput.value.length < 4 ||
                               !/^[a-zA-Z0-9_]*$/.test($state.keyInput.value) ||
                               !!$state.validateKey.error)
                               ? (() => {
@@ -949,6 +951,7 @@ function PlasmicNewApp__RenderFunc(props: {
 
                           $steps["updateLoading"] =
                             !!$state.nameInput.value &&
+                            !$state.keyInput.value.includes("-") &&
                             !!$state.keyInput.value &&
                             $state.keyInput.value.length >= 4 &&
                             /^[a-zA-Z0-9_]*$/.test($state.keyInput.value) &&
@@ -990,6 +993,7 @@ function PlasmicNewApp__RenderFunc(props: {
 
                           $steps["createApp"] =
                             !!$state.nameInput.value &&
+                            !$state.keyInput.value.includes("-") &&
                             !!$state.keyInput.value &&
                             $state.keyInput.value.length >= 4 &&
                             /^[a-zA-Z0-9_]*$/.test($state.keyInput.value) &&
@@ -1040,7 +1044,22 @@ function PlasmicNewApp__RenderFunc(props: {
                             !$state.validateKey.error &&
                             $steps.createApp?.status == 200
                               ? (() => {
-                                  const actionArgs = {};
+                                  const actionArgs = {
+                                    destination: `/apps/${(() => {
+                                      try {
+                                        return $steps.createApp?.data?.id;
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return undefined;
+                                        }
+                                        throw e;
+                                      }
+                                    })()}/build/features`
+                                  };
                                   return (({ destination }) => {
                                     if (
                                       typeof destination === "string" &&

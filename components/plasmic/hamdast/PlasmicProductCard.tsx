@@ -60,7 +60,7 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import Paziresh24LineClamp from "../../Paziresh24LineClamp"; // plasmic-import: xFfrwlkCaWS8/component
-import Paziresh24Dialog from "../../Paziresh24Dialog"; // plasmic-import: ZGdhyEBPJSmH/component
+import Paziresh24Modal from "../../Paziresh24Modal"; // plasmic-import: ZGdhyEBPJSmH/component
 import Paziresh24Button from "../../Paziresh24Button"; // plasmic-import: YOhw5fIQJQgB/component
 import { Input } from "@/fragment/components/input"; // plasmic-import: AWE69UKwmIyg/codeComponent
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectModule
@@ -102,7 +102,7 @@ export const PlasmicProductCard__ArgProps = new Array<ArgPropType>(
 export type PlasmicProductCard__OverridesType = {
   root?: Flex__<"div">;
   paziresh24LineClamp?: Flex__<typeof Paziresh24LineClamp>;
-  dialog?: Flex__<typeof Paziresh24Dialog>;
+  dialog?: Flex__<typeof Paziresh24Modal>;
   input?: Flex__<typeof Input>;
   input2?: Flex__<typeof Input>;
 };
@@ -351,7 +351,7 @@ function PlasmicProductCard__RenderFunc(props: {
         />
       </div>
       <div className={classNames(projectcss.all, sty.freeBox__ipntl)}>
-        <Paziresh24Dialog
+        <Paziresh24Modal
           data-plasmic-name={"dialog"}
           data-plasmic-override={overrides.dialog}
           body={
@@ -938,7 +938,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   paziresh24LineClamp: typeof Paziresh24LineClamp;
-  dialog: typeof Paziresh24Dialog;
+  dialog: typeof Paziresh24Modal;
   input: typeof Input;
   input2: typeof Input;
 };

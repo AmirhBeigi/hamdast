@@ -206,7 +206,7 @@ function PlasmicRaviUser__RenderFunc(props: {
                   const actionArgs = {
                     destination: (() => {
                       try {
-                        return `/ravi/${$props.userId}`;
+                        return `/_/ravi/profile/${$props.userId}`;
                       } catch (e) {
                         if (
                           e instanceof TypeError ||
@@ -367,7 +367,7 @@ function PlasmicRaviUser__RenderFunc(props: {
                 )}
                 color={"blue"}
                 content={
-                  "\u0642\u0627\u0628\u0644 \u0646\u0645\u0627\u06cc\u0634 \u0641\u0642\u0637 \u0628\u0631\u0627\u06cc \u062e\u0648\u062f \u062f\u0631\u0645\u0627\u0646\u06af\u0631"
+                  "\u0646\u0645\u0627\u06cc\u0634 \u0641\u0642\u0637 \u0628\u0631\u0627\u06cc \u062f\u0631\u0645\u0627\u0646\u06af\u0631"
                 }
                 rounded={true}
                 size={"xSmall"}

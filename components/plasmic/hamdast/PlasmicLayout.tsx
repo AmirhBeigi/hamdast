@@ -698,7 +698,22 @@ function PlasmicLayout__RenderFunc(props: {
 
                         $steps["updateMenu2"] = true
                           ? (() => {
-                              const actionArgs = {};
+                              const actionArgs = {
+                                destination: `/apps/${(() => {
+                                  try {
+                                    return $props.selectedApp;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()}/build/features`
+                              };
                               return (({ destination }) => {
                                 if (
                                   typeof destination === "string" &&

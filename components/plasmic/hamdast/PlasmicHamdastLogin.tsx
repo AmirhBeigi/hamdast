@@ -261,7 +261,7 @@ function PlasmicHamdastLogin__RenderFunc(props: {
             onMount={async () => {
               const $steps = {};
 
-              $steps["goToStatistics"] =
+              $steps["goToBuildFeatures"] =
                 Array.isArray($state.authProvider.apps) &&
                 $state.authProvider.apps?.length > 0
                   ? (() => {
@@ -278,7 +278,7 @@ function PlasmicHamdastLogin__RenderFunc(props: {
                             }
                             throw e;
                           }
-                        })()}/statistics`
+                        })()}/build/features`
                       };
                       return (({ destination }) => {
                         if (
@@ -295,11 +295,11 @@ function PlasmicHamdastLogin__RenderFunc(props: {
                     })()
                   : undefined;
               if (
-                $steps["goToStatistics"] != null &&
-                typeof $steps["goToStatistics"] === "object" &&
-                typeof $steps["goToStatistics"].then === "function"
+                $steps["goToBuildFeatures"] != null &&
+                typeof $steps["goToBuildFeatures"] === "object" &&
+                typeof $steps["goToBuildFeatures"].then === "function"
               ) {
-                $steps["goToStatistics"] = await $steps["goToStatistics"];
+                $steps["goToBuildFeatures"] = await $steps["goToBuildFeatures"];
               }
             }}
           />

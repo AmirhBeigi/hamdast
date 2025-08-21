@@ -62,7 +62,7 @@ import {
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
 import { AntdAvatar } from "@plasmicpkgs/antd5/skinny/registerAvatar";
 import FragmentLineClamp from "../../FragmentLineClamp"; // plasmic-import: UrqY_XZuYhn2/component
-import Paziresh24Dialog from "../../Paziresh24Dialog"; // plasmic-import: ZGdhyEBPJSmH/component
+import Paziresh24Modal from "../../Paziresh24Modal"; // plasmic-import: ZGdhyEBPJSmH/component
 import Paziresh24Button from "../../Paziresh24Button"; // plasmic-import: YOhw5fIQJQgB/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/styleTokensProvider
@@ -110,7 +110,7 @@ export type PlasmicTransactionCard__OverridesType = {
   apiRequest?: Flex__<typeof ApiRequest>;
   link?: Flex__<"a"> & Partial<LinkProps>;
   fragmentLineClamp?: Flex__<typeof FragmentLineClamp>;
-  dialog?: Flex__<typeof Paziresh24Dialog>;
+  dialog?: Flex__<typeof Paziresh24Modal>;
 };
 
 export interface DefaultTransactionCardProps {
@@ -544,7 +544,7 @@ function PlasmicTransactionCard__RenderFunc(props: {
       </div>
       <div className={classNames(projectcss.all, sty.freeBox__fqvXr)}>
         {(hasVariant($state, "hideButton", "hideButton") ? false : true) ? (
-          <Paziresh24Dialog
+          <Paziresh24Modal
             data-plasmic-name={"dialog"}
             data-plasmic-override={overrides.dialog}
             body={
@@ -880,7 +880,7 @@ type NodeDefaultElementType = {
   apiRequest: typeof ApiRequest;
   link: "a";
   fragmentLineClamp: typeof FragmentLineClamp;
-  dialog: typeof Paziresh24Dialog;
+  dialog: typeof Paziresh24Modal;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";

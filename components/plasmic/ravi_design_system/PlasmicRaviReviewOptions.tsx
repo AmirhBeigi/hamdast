@@ -60,7 +60,7 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import { Popover } from "@plasmicpkgs/radix-ui";
-import Paziresh24Dialog from "../../Paziresh24Dialog"; // plasmic-import: ZGdhyEBPJSmH/component
+import Paziresh24Modal from "../../Paziresh24Modal"; // plasmic-import: ZGdhyEBPJSmH/component
 import RaviOption from "../../RaviOption"; // plasmic-import: 7P-1fooJZx0C/component
 import Paziresh24Button from "../../Paziresh24Button"; // plasmic-import: YOhw5fIQJQgB/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectModule
@@ -112,11 +112,11 @@ export const PlasmicRaviReviewOptions__ArgProps = new Array<ArgPropType>(
 export type PlasmicRaviReviewOptions__OverridesType = {
   root?: Flex__<"div">;
   popoverCore?: Flex__<typeof Popover>;
-  reportDialog?: Flex__<typeof Paziresh24Dialog>;
+  reportDialog?: Flex__<typeof Paziresh24Modal>;
   raviOption?: Flex__<typeof RaviOption>;
   textarea?: Flex__<"textarea">;
-  deleteDialog?: Flex__<typeof Paziresh24Dialog>;
-  editDialog?: Flex__<typeof Paziresh24Dialog>;
+  deleteDialog?: Flex__<typeof Paziresh24Modal>;
+  editDialog?: Flex__<typeof Paziresh24Modal>;
   editComment?: Flex__<"textarea">;
 };
 
@@ -552,7 +552,7 @@ function PlasmicRaviReviewOptions__RenderFunc(props: {
           />
         </div>
       </Popover>
-      <Paziresh24Dialog
+      <Paziresh24Modal
         data-plasmic-name={"reportDialog"}
         data-plasmic-override={overrides.reportDialog}
         body={
@@ -1106,7 +1106,7 @@ function PlasmicRaviReviewOptions__RenderFunc(props: {
         trigger={null}
       />
 
-      <Paziresh24Dialog
+      <Paziresh24Modal
         data-plasmic-name={"deleteDialog"}
         data-plasmic-override={overrides.deleteDialog}
         body={
@@ -1333,7 +1333,7 @@ function PlasmicRaviReviewOptions__RenderFunc(props: {
         trigger={null}
       />
 
-      <Paziresh24Dialog
+      <Paziresh24Modal
         data-plasmic-name={"editDialog"}
         data-plasmic-override={overrides.editDialog}
         body={
@@ -1594,11 +1594,11 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   popoverCore: typeof Popover;
-  reportDialog: typeof Paziresh24Dialog;
+  reportDialog: typeof Paziresh24Modal;
   raviOption: typeof RaviOption;
   textarea: "textarea";
-  deleteDialog: typeof Paziresh24Dialog;
-  editDialog: typeof Paziresh24Dialog;
+  deleteDialog: typeof Paziresh24Modal;
+  editDialog: typeof Paziresh24Modal;
   editComment: "textarea";
 };
 

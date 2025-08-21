@@ -63,7 +63,7 @@ import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import AuthProvider from "../../AuthProvider"; // plasmic-import: KTPu1eZupEdG/component
 import Layout from "../../Layout"; // plasmic-import: ve2FygUyzJYe/component
 import Paziresh24Button from "../../Paziresh24Button"; // plasmic-import: YOhw5fIQJQgB/component
-import Paziresh24Dialog from "../../Paziresh24Dialog"; // plasmic-import: ZGdhyEBPJSmH/component
+import Paziresh24Modal from "../../Paziresh24Modal"; // plasmic-import: ZGdhyEBPJSmH/component
 import { Input } from "@/fragment/components/input"; // plasmic-import: AWE69UKwmIyg/codeComponent
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
 import ProductCard2 from "../../ProductCard2"; // plasmic-import: JTTV7mRsMr5W/component
@@ -100,7 +100,7 @@ export type PlasmicCredentialsSettings__OverridesType = {
   embedHtml?: Flex__<typeof Embed>;
   authProvider?: Flex__<typeof AuthProvider>;
   layout?: Flex__<typeof Layout>;
-  newApiKeyDialog?: Flex__<typeof Paziresh24Dialog>;
+  newApiKeyDialog?: Flex__<typeof Paziresh24Modal>;
   apiKeyNameField?: Flex__<typeof Input>;
   apiRequest?: Flex__<typeof ApiRequest>;
   productCard2?: Flex__<typeof ProductCard2>;
@@ -526,7 +526,7 @@ function PlasmicCredentialsSettings__RenderFunc(props: {
                       }
                     />
 
-                    <Paziresh24Dialog
+                    <Paziresh24Modal
                       data-plasmic-name={"newApiKeyDialog"}
                       data-plasmic-override={overrides.newApiKeyDialog}
                       body={
@@ -1007,7 +1007,7 @@ type NodeDefaultElementType = {
   embedHtml: typeof Embed;
   authProvider: typeof AuthProvider;
   layout: typeof Layout;
-  newApiKeyDialog: typeof Paziresh24Dialog;
+  newApiKeyDialog: typeof Paziresh24Modal;
   apiKeyNameField: typeof Input;
   apiRequest: typeof ApiRequest;
   productCard2: typeof ProductCard2;

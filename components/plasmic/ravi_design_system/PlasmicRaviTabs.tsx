@@ -241,9 +241,7 @@ function PlasmicRaviTabs__RenderFunc(props: {
               }
             })()}
           >
-            {
-              "\u0628\u0627\u0632\u062e\u0648\u0631\u062f \u0645\u062b\u0628\u062a"
-            }
+            {"\u0646\u06a9\u0627\u062a \u0645\u062b\u0628\u062a"}
           </div>
         </div>
         <div className={classNames(projectcss.all, sty.freeBox__jtfgz)} />
@@ -303,9 +301,7 @@ function PlasmicRaviTabs__RenderFunc(props: {
               }
             })()}
           >
-            {
-              "\u0628\u0627\u0632\u062e\u0648\u0631\u062f \u0645\u0646\u0641\u06cc"
-            }
+            {"\u0646\u06a9\u0627\u062a \u0645\u0646\u0641\u06cc"}
           </div>
         </div>
       </div>

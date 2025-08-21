@@ -23,6 +23,7 @@
   max-width: 100%;
   min-height: var(--token-QMEhwYzwsf71);
   font-size: var(--token-KUiXUfHPkqkm);
+  color: var(--token-aWDgJo5BrkPj);
   min-width: 0;
   flex-shrink: 0;
   border-radius: 6px;
@@ -32,8 +33,4 @@
 .root .textarea:focus {
   outline: none;
   border-color: var(--token-s_XuzePAGmOh);
-}
-.root .textarea::placeholder {
-  opacity: 1;
-  color: var(--token-4iQ-8GWBqX6X);
 }

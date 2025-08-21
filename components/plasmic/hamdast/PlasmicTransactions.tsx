@@ -64,7 +64,7 @@ import AuthProvider from "../../AuthProvider"; // plasmic-import: KTPu1eZupEdG/c
 import Layout from "../../Layout"; // plasmic-import: ve2FygUyzJYe/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
 import Filter from "../../Filter"; // plasmic-import: YY41SIghQUgw/component
-import Paziresh24Dialog from "../../Paziresh24Dialog"; // plasmic-import: ZGdhyEBPJSmH/component
+import Paziresh24Modal from "../../Paziresh24Modal"; // plasmic-import: ZGdhyEBPJSmH/component
 import Paziresh24Button from "../../Paziresh24Button"; // plasmic-import: YOhw5fIQJQgB/component
 import { Input } from "@/fragment/components/input"; // plasmic-import: AWE69UKwmIyg/codeComponent
 import TransactionCard from "../../TransactionCard"; // plasmic-import: hnKe0-Td8nYz/component
@@ -106,7 +106,7 @@ export type PlasmicTransactions__OverridesType = {
   fragmentApiRequest2?: Flex__<typeof ApiRequest>;
   fragmentApiRequest3?: Flex__<typeof ApiRequest>;
   fragmentApiRequest4?: Flex__<typeof ApiRequest>;
-  dialog?: Flex__<typeof Paziresh24Dialog>;
+  dialog?: Flex__<typeof Paziresh24Modal>;
   apiRequest2?: Flex__<typeof ApiRequest>;
   input?: Flex__<typeof Input>;
   apiRequest3?: Flex__<typeof ApiRequest>;
@@ -1585,7 +1585,7 @@ function PlasmicTransactions__RenderFunc(props: {
                   <div
                     className={classNames(projectcss.all, sty.freeBox__v2PS4)}
                   >
-                    <Paziresh24Dialog
+                    <Paziresh24Modal
                       data-plasmic-name={"dialog"}
                       data-plasmic-override={overrides.dialog}
                       body={
@@ -2758,7 +2758,7 @@ type NodeDefaultElementType = {
   fragmentApiRequest2: typeof ApiRequest;
   fragmentApiRequest3: typeof ApiRequest;
   fragmentApiRequest4: typeof ApiRequest;
-  dialog: typeof Paziresh24Dialog;
+  dialog: typeof Paziresh24Modal;
   apiRequest2: typeof ApiRequest;
   input: typeof Input;
   apiRequest3: typeof ApiRequest;

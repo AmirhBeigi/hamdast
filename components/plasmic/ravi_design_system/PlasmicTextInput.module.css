@@ -57,42 +57,6 @@
   width: auto;
   height: 1em;
 }
-.input {
-  width: 100%;
-  left: auto;
-  top: auto;
-  background: #ffffff00;
-  min-width: 0;
-  padding: 0px;
-  border-width: 0px;
-}
-.inputisDisabled {
-  cursor: not-allowed;
-}
-.inputcolor_dark {
-  color: #ffffff;
-}
-.root .input___focusVisibleWithin {
-  outline: none;
-}
-.root:focus-within .input {
-  outline: none;
-}
-.root .input:focus {
-  outline: none;
-}
-.root .input::placeholder {
-  color: #706f6c;
-}
-.rootcolor_dark .inputcolor_dark::placeholder {
-  color: #c8c7c1;
-}
-.root:focus-within .input:focus {
-  outline: none;
-}
-.root:focus-within .input::placeholder {
-  outline: none;
-}
 .endIconContainer {
   position: relative;
   flex-direction: row;

@@ -64,7 +64,7 @@ import Paziresh24Button from "../../Paziresh24Button"; // plasmic-import: YOhw5f
 import { Popover } from "@plasmicpkgs/radix-ui";
 import RaviRateStar from "../../RaviRateStar"; // plasmic-import: e1uyHZLgwx11/component
 import Paziresh24MultilineTextInput from "../../Paziresh24MultilineTextInput"; // plasmic-import: 5O8XqcSJJk6J/component
-import Paziresh24Dialog from "../../Paziresh24Dialog"; // plasmic-import: ZGdhyEBPJSmH/component
+import Paziresh24Modal from "../../Paziresh24Modal"; // plasmic-import: ZGdhyEBPJSmH/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/styleTokensProvider
 import { _useStyleTokens as useStyleTokens_paziresh_24_design_system } from "../paziresh_24_design_system/PlasmicStyleTokensProvider"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/styleTokensProvider
@@ -151,8 +151,8 @@ export type PlasmicRaviReviewCard__OverridesType = {
   popoverCore?: Flex__<typeof Popover>;
   raviRateStar?: Flex__<typeof RaviRateStar>;
   multilineTextInput?: Flex__<typeof Paziresh24MultilineTextInput>;
-  repliesDialog?: Flex__<typeof Paziresh24Dialog>;
-  shareDialog?: Flex__<typeof Paziresh24Dialog>;
+  repliesDialog?: Flex__<typeof Paziresh24Modal>;
+  shareDialog?: Flex__<typeof Paziresh24Modal>;
 };
 
 export interface DefaultRaviReviewCardProps {
@@ -1102,7 +1102,7 @@ function PlasmicRaviReviewCard__RenderFunc(props: {
           value: args.replyCard
         })}
       </div>
-      <Paziresh24Dialog
+      <Paziresh24Modal
         data-plasmic-name={"repliesDialog"}
         data-plasmic-override={overrides.repliesDialog}
         body={
@@ -1134,7 +1134,7 @@ function PlasmicRaviReviewCard__RenderFunc(props: {
         trigger={null}
       />
 
-      <Paziresh24Dialog
+      <Paziresh24Modal
         data-plasmic-name={"shareDialog"}
         data-plasmic-override={overrides.shareDialog}
         body={renderPlasmicSlot({
@@ -1196,8 +1196,8 @@ type NodeDefaultElementType = {
   popoverCore: typeof Popover;
   raviRateStar: typeof RaviRateStar;
   multilineTextInput: typeof Paziresh24MultilineTextInput;
-  repliesDialog: typeof Paziresh24Dialog;
-  shareDialog: typeof Paziresh24Dialog;
+  repliesDialog: typeof Paziresh24Modal;
+  shareDialog: typeof Paziresh24Modal;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";

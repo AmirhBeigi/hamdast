@@ -1315,6 +1315,31 @@
           "id": "RQYF77Lo96ru",
           "name": "Icon45Icon",
           "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon45.tsx"
+        },
+        {
+          "id": "Xk8YvYWkFI4c",
+          "name": "Icon46Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon46.tsx"
+        },
+        {
+          "id": "YMCrtcU6nV3I",
+          "name": "Icon47Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon47.tsx"
+        },
+        {
+          "id": "LAq9m_Cnv9ai",
+          "name": "Icon48Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon48.tsx"
+        },
+        {
+          "id": "uOAzx9LtQ5_I",
+          "name": "Icon49Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon49.tsx"
+        },
+        {
+          "id": "a4lIWfBgKdmS",
+          "name": "Icon50Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon50.tsx"
         }
       ],
       "images": [
@@ -2396,19 +2421,6 @@
           "plumeType": "button"
         },
         {
-          "id": "ZGdhyEBPJSmH",
-          "name": "Paziresh24Dialog",
-          "type": "managed",
-          "projectId": "6HBcNwr8dz9LuS1Qe36xa5",
-          "renderModuleFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24Dialog.tsx",
-          "importSpec": {
-            "modulePath": "Paziresh24Dialog.tsx"
-          },
-          "cssFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24Dialog.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
           "id": "df-BFL5jhiFc",
           "name": "Paziresh24Chip",
           "type": "managed",
@@ -2457,6 +2469,84 @@
             "modulePath": "Paziresh24Collapsible.tsx"
           },
           "cssFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24Collapsible.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "ZGdhyEBPJSmH",
+          "name": "Paziresh24Modal",
+          "type": "managed",
+          "projectId": "6HBcNwr8dz9LuS1Qe36xa5",
+          "renderModuleFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24Modal.tsx",
+          "importSpec": {
+            "modulePath": "Paziresh24Modal.tsx"
+          },
+          "cssFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24Modal.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "pOApINRkmgnb",
+          "name": "Paziresh24AtomsLabel",
+          "type": "managed",
+          "projectId": "6HBcNwr8dz9LuS1Qe36xa5",
+          "renderModuleFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24AtomsLabel.tsx",
+          "importSpec": {
+            "modulePath": "Paziresh24AtomsLabel.tsx"
+          },
+          "cssFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24AtomsLabel.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "PTeLKP71vIWx",
+          "name": "Paziresh24AtomsTextInput",
+          "type": "managed",
+          "projectId": "6HBcNwr8dz9LuS1Qe36xa5",
+          "renderModuleFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24AtomsTextInput.tsx",
+          "importSpec": {
+            "modulePath": "Paziresh24AtomsTextInput.tsx"
+          },
+          "cssFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24AtomsTextInput.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "HOBObNXYC7Oc",
+          "name": "Paziresh24AtomsTextAreaInput",
+          "type": "managed",
+          "projectId": "6HBcNwr8dz9LuS1Qe36xa5",
+          "renderModuleFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24AtomsTextAreaInput.tsx",
+          "importSpec": {
+            "modulePath": "Paziresh24AtomsTextAreaInput.tsx"
+          },
+          "cssFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24AtomsTextAreaInput.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "54F0s7A58MP4",
+          "name": "Paziresh24AtomsDescription",
+          "type": "managed",
+          "projectId": "6HBcNwr8dz9LuS1Qe36xa5",
+          "renderModuleFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24AtomsDescription.tsx",
+          "importSpec": {
+            "modulePath": "Paziresh24AtomsDescription.tsx"
+          },
+          "cssFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24AtomsDescription.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "hp93_av_kmlL",
+          "name": "Paziresh24TextField",
+          "type": "managed",
+          "projectId": "6HBcNwr8dz9LuS1Qe36xa5",
+          "renderModuleFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24TextField.tsx",
+          "importSpec": {
+            "modulePath": "Paziresh24TextField.tsx"
+          },
+          "cssFilePath": "plasmic/paziresh_24_design_system/PlasmicPaziresh24TextField.module.css",
           "scheme": "blackbox",
           "componentType": "component"
         }
@@ -2511,6 +2601,11 @@
           "id": "3hBkBVfsYtbt",
           "name": "InfoIcon",
           "moduleFilePath": "plasmic/paziresh_24_design_system/icons/PlasmicIcon__Info.tsx"
+        },
+        {
+          "id": "jRmZqHMZZXGp",
+          "name": "CircleIcon",
+          "moduleFilePath": "plasmic/paziresh_24_design_system/icons/PlasmicIcon__Circle.tsx"
         }
       ],
       "images": [],
@@ -3041,6 +3136,11 @@
           "id": "1kxXou6RzU4u",
           "name": "MinusIcon",
           "moduleFilePath": "plasmic/ravi_design_system/icons/PlasmicIcon__Minus.tsx"
+        },
+        {
+          "id": "HUy94jfPsBu1",
+          "name": "Icon4Icon",
+          "moduleFilePath": "plasmic/ravi_design_system/icons/PlasmicIcon__Icon4.tsx"
         }
       ],
       "images": [],
@@ -3064,6 +3164,114 @@
       "customFunctions": [],
       "styleTokensProviderFilePath": "plasmic/ravi_design_system/PlasmicStyleTokensProvider.tsx",
       "projectModuleFilePath": "plasmic/ravi_design_system/plasmic.tsx"
+    },
+    {
+      "projectId": "q8iq2J191QypeBqVSHzb6M",
+      "projectApiToken": "IZie2ZvFtL4oV9n5Mc14Cq86AS7zpZC0vbA5CGeU9h6Mi9YrnVTuGLd6nTz6JZTgkAb49v1rwr3xHYaY0aQ",
+      "projectName": "tiptap",
+      "version": ">0.0.0",
+      "cssFilePath": "plasmic/tiptap/plasmic.module.css",
+      "components": [],
+      "icons": [],
+      "images": [],
+      "indirect": true,
+      "globalContextsFilePath": "",
+      "splitsProviderFilePath": "",
+      "styleTokensProviderFilePath": "plasmic/tiptap/PlasmicStyleTokensProvider.tsx",
+      "projectModuleFilePath": "plasmic/tiptap/plasmic.tsx",
+      "codeComponents": [
+        {
+          "id": "WhqnWjQgXjAx",
+          "name": "Bold",
+          "displayName": "hostless-tiptap-extension-bold",
+          "componentImportPath": "@plasmicpkgs/tiptap/skinny/registerBold"
+        },
+        {
+          "id": "EHC0R-wWOI0Z",
+          "name": "Code",
+          "displayName": "hostless-tiptap-extension-code",
+          "componentImportPath": "@plasmicpkgs/tiptap/skinny/registerCode"
+        },
+        {
+          "id": "Y895zND_YNth",
+          "name": "Italic",
+          "displayName": "hostless-tiptap-extension-italic",
+          "componentImportPath": "@plasmicpkgs/tiptap/skinny/registerItalic"
+        },
+        {
+          "id": "J8XPnq41IRbF",
+          "name": "Link",
+          "displayName": "hostless-tiptap-extension-link",
+          "componentImportPath": "@plasmicpkgs/tiptap/skinny/registerLink"
+        },
+        {
+          "id": "VHaYjWq_ZYUZ",
+          "name": "Mention",
+          "displayName": "hostless-tiptap-extension-mention",
+          "componentImportPath": "@plasmicpkgs/tiptap/skinny/registerMention"
+        },
+        {
+          "id": "NobWeKqsgk5L",
+          "name": "Strike",
+          "displayName": "hostless-tiptap-extension-strike",
+          "componentImportPath": "@plasmicpkgs/tiptap/skinny/registerStrike"
+        },
+        {
+          "id": "xTprkxspH4MZ",
+          "name": "TiptapWrapper",
+          "displayName": "hostless-tiptap",
+          "componentImportPath": "@plasmicpkgs/tiptap/skinny/registerTiptap"
+        },
+        {
+          "id": "CcQonxRGl6eE",
+          "name": "Underline",
+          "displayName": "hostless-tiptap-extension-underline",
+          "componentImportPath": "@plasmicpkgs/tiptap/skinny/registerUnderline"
+        },
+        {
+          "id": "VsRY3FpbhGS5",
+          "name": "ToolbarBold",
+          "displayName": "hostless-tiptap-toolbar-bold",
+          "componentImportPath": "@plasmicpkgs/tiptap/skinny/registerToolbarBold"
+        },
+        {
+          "id": "wtaTJrVCgUNe",
+          "name": "ToolbarCode",
+          "displayName": "hostless-tiptap-toolbar-code",
+          "componentImportPath": "@plasmicpkgs/tiptap/skinny/registerToolbarCode"
+        },
+        {
+          "id": "NyB3qBzCfU3j",
+          "name": "ToolbarItalic",
+          "displayName": "hostless-tiptap-toolbar-italic",
+          "componentImportPath": "@plasmicpkgs/tiptap/skinny/registerToolbarItalic"
+        },
+        {
+          "id": "-WlHZ-FR5Q-f",
+          "name": "ToolbarLink",
+          "displayName": "hostless-tiptap-toolbar-link",
+          "componentImportPath": "@plasmicpkgs/tiptap/skinny/registerToolbarLink"
+        },
+        {
+          "id": "kMpnDu2MpaMS",
+          "name": "ToolbarMention",
+          "displayName": "hostless-tiptap-toolbar-mention",
+          "componentImportPath": "@plasmicpkgs/tiptap/skinny/registerToolbarMention"
+        },
+        {
+          "id": "zNLtmNzK8sgS",
+          "name": "ToolbarStrike",
+          "displayName": "hostless-tiptap-toolbar-strike",
+          "componentImportPath": "@plasmicpkgs/tiptap/skinny/registerToolbarStrike"
+        },
+        {
+          "id": "5OrGvEJP9ty6",
+          "name": "ToolbarUnderline",
+          "displayName": "hostless-tiptap-toolbar-underline",
+          "componentImportPath": "@plasmicpkgs/tiptap/skinny/registerToolbarUnderline"
+        }
+      ],
+      "customFunctions": []
     }
   ],
   "globalVariants": {

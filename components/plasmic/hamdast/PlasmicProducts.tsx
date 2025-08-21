@@ -62,7 +62,7 @@ import {
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import AuthProvider from "../../AuthProvider"; // plasmic-import: KTPu1eZupEdG/component
 import Layout from "../../Layout"; // plasmic-import: ve2FygUyzJYe/component
-import Paziresh24Dialog from "../../Paziresh24Dialog"; // plasmic-import: ZGdhyEBPJSmH/component
+import Paziresh24Modal from "../../Paziresh24Modal"; // plasmic-import: ZGdhyEBPJSmH/component
 import Paziresh24Button from "../../Paziresh24Button"; // plasmic-import: YOhw5fIQJQgB/component
 import { Input } from "@/fragment/components/input"; // plasmic-import: AWE69UKwmIyg/codeComponent
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
@@ -99,7 +99,7 @@ export type PlasmicProducts__OverridesType = {
   embedHtml?: Flex__<typeof Embed>;
   authProvider?: Flex__<typeof AuthProvider>;
   layout?: Flex__<typeof Layout>;
-  dialog?: Flex__<typeof Paziresh24Dialog>;
+  dialog?: Flex__<typeof Paziresh24Modal>;
   input?: Flex__<typeof Input>;
   input2?: Flex__<typeof Input>;
   apiRequest?: Flex__<typeof ApiRequest>;
@@ -455,7 +455,7 @@ function PlasmicProducts__RenderFunc(props: {
                     >
                       {""}
                     </div>
-                    <Paziresh24Dialog
+                    <Paziresh24Modal
                       data-plasmic-name={"dialog"}
                       data-plasmic-override={overrides.dialog}
                       body={
@@ -1226,7 +1226,7 @@ type NodeDefaultElementType = {
   embedHtml: typeof Embed;
   authProvider: typeof AuthProvider;
   layout: typeof Layout;
-  dialog: typeof Paziresh24Dialog;
+  dialog: typeof Paziresh24Modal;
   input: typeof Input;
   input2: typeof Input;
   apiRequest: typeof ApiRequest;

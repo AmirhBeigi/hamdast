@@ -593,24 +593,32 @@ function PlasmicPaziresh24Button__RenderFunc(props: {
             PlasmicIconType={
               hasVariant($state, "loading", "loading") ? Icon2Icon : Icon17Icon
             }
-            className={classNames(projectcss.all, sty.svg, "loader", {
-              [sty.svgcolor_clear]: hasVariant($state, "color", "clear"),
-              [sty.svgcolor_red_outline_loading]:
-                hasVariant($state, "loading", "loading") &&
-                hasVariant($state, "color", "red") &&
-                hasVariant($state, "outline", "outline"),
-              [sty.svgloading]: hasVariant($state, "loading", "loading"),
-              [sty.svgloading_color_link]:
-                hasVariant($state, "loading", "loading") &&
-                hasVariant($state, "color", "link"),
-              [sty.svgoutline_loading]:
-                hasVariant($state, "loading", "loading") &&
-                hasVariant($state, "outline", "outline"),
-              [sty.svgoutline_loading_color_link]:
-                hasVariant($state, "loading", "loading") &&
-                hasVariant($state, "outline", "outline") &&
-                hasVariant($state, "color", "link")
-            })}
+            className={classNames(
+              projectcss.all,
+              sty.svg,
+              hasVariant($state, "loading", "loading") ? `` : "loader",
+              {
+                [sty.svgcolor_clear]: hasVariant($state, "color", "clear"),
+                [sty.svgcolor_red_outline_loading]:
+                  hasVariant($state, "loading", "loading") &&
+                  hasVariant($state, "color", "red") &&
+                  hasVariant($state, "outline", "outline"),
+                [sty.svgcolor_softSand_loading]:
+                  hasVariant($state, "color", "softSand") &&
+                  hasVariant($state, "loading", "loading"),
+                [sty.svgloading]: hasVariant($state, "loading", "loading"),
+                [sty.svgloading_color_link]:
+                  hasVariant($state, "loading", "loading") &&
+                  hasVariant($state, "color", "link"),
+                [sty.svgoutline_loading]:
+                  hasVariant($state, "loading", "loading") &&
+                  hasVariant($state, "outline", "outline"),
+                [sty.svgoutline_loading_color_link]:
+                  hasVariant($state, "loading", "loading") &&
+                  hasVariant($state, "outline", "outline") &&
+                  hasVariant($state, "color", "link")
+              }
+            )}
             role={"img"}
           />
 

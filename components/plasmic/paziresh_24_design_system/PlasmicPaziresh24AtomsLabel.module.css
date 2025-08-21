@@ -1,0 +1,33 @@
+.root:global(.__wab_instance) {
+  position: relative;
+  color: #030712;
+  font-size: var(--token-KUiXUfHPkqkm);
+  line-height: 1.25;
+}
+.freeBox {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  column-gap: 0.25rem;
+}
+.slotTargetChildrensize_sm {
+  font-size: 0.75rem;
+  line-height: 1;
+}
+.slotTargetChildrensize_lg {
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+.text {
+  position: relative;
+  display: none;
+}
+.textrequirementIndicator_optional {
+  color: #6b7280;
+  display: block;
+}
+.textrequirementIndicator_required {
+  color: #dc2626;
+  display: block;
+}
