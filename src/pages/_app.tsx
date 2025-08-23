@@ -6,6 +6,7 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import localFont from "next/font/local";
 import { useEffect } from "react";
+import Script from "next/script";
 
 const iransansFont = localFont({
   src: "../../public/fonts/IRANSansXV.woff2",
@@ -20,6 +21,12 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   }, []);
   return (
     <PlasmicRootProvider Head={Head}>
+      <Script id="clarity">{`(function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "4zn9fqioi8");
+            `}</Script>
       <Component {...pageProps} />
     </PlasmicRootProvider>
   );
