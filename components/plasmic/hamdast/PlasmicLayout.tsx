@@ -352,22 +352,27 @@ function PlasmicLayout__RenderFunc(props: {
               (async value => {
                 const $steps = {};
 
-                $steps["goToStatistics"] = true
+                $steps["goToPage"] = true
                   ? (() => {
                       const actionArgs = {
-                        destination: `/apps/${(() => {
+                        destination: (() => {
                           try {
-                            return value;
+                            return globalThis.location.pathname
+                              .split("/")
+                              .map((item, index) =>
+                                index == 2 ? $state.fragmentSelect.value : item
+                              )
+                              .join("/");
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
                               e?.plasmicType === "PlasmicUndefinedDataError"
                             ) {
-                              return undefined;
+                              return `/apps/${""}/build/features`;
                             }
                             throw e;
                           }
-                        })()}/statistics`
+                        })()
                       };
                       return (({ destination }) => {
                         if (
@@ -384,11 +389,11 @@ function PlasmicLayout__RenderFunc(props: {
                     })()
                   : undefined;
                 if (
-                  $steps["goToStatistics"] != null &&
-                  typeof $steps["goToStatistics"] === "object" &&
-                  typeof $steps["goToStatistics"].then === "function"
+                  $steps["goToPage"] != null &&
+                  typeof $steps["goToPage"] === "object" &&
+                  typeof $steps["goToPage"].then === "function"
                 ) {
-                  $steps["goToStatistics"] = await $steps["goToStatistics"];
+                  $steps["goToPage"] = await $steps["goToPage"];
                 }
               }).apply(null, eventArgs);
             }}

@@ -1895,46 +1895,41 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                                   (async checked => {
                                     const $steps = {};
 
-                                    $steps["updateLoading"] = true
+                                    $steps["invokeGlobalAction"] = true
                                       ? (() => {
                                           const actionArgs = {
-                                            variable: {
-                                              objRoot: $state,
-                                              variablePath: ["loading"]
-                                            },
-                                            operation: 0
+                                            args: [
+                                              "PATCH",
+                                              (() => {
+                                                try {
+                                                  return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/oauth/scope/${currentItem.id}/`;
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return undefined;
+                                                  }
+                                                  throw e;
+                                                }
+                                              })()
+                                            ]
                                           };
-                                          return (({
-                                            variable,
-                                            value,
-                                            startIndex,
-                                            deleteCount
-                                          }) => {
-                                            if (!variable) {
-                                              return;
-                                            }
-                                            const { objRoot, variablePath } =
-                                              variable;
-
-                                            $stateSet(
-                                              objRoot,
-                                              variablePath,
-                                              value
-                                            );
-                                            return value;
-                                          })?.apply(null, [actionArgs]);
+                                          return $globalActions[
+                                            "Fragment.apiRequest"
+                                          ]?.apply(null, [...actionArgs.args]);
                                         })()
                                       : undefined;
                                     if (
-                                      $steps["updateLoading"] != null &&
-                                      typeof $steps["updateLoading"] ===
+                                      $steps["invokeGlobalAction"] != null &&
+                                      typeof $steps["invokeGlobalAction"] ===
                                         "object" &&
-                                      typeof $steps["updateLoading"].then ===
-                                        "function"
+                                      typeof $steps["invokeGlobalAction"]
+                                        .then === "function"
                                     ) {
-                                      $steps["updateLoading"] = await $steps[
-                                        "updateLoading"
-                                      ];
+                                      $steps["invokeGlobalAction"] =
+                                        await $steps["invokeGlobalAction"];
                                     }
                                   }).apply(null, eventArgs);
                                 }
