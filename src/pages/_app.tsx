@@ -21,12 +21,19 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   }, []);
   return (
     <PlasmicRootProvider Head={Head}>
-      <Script id="clarity">{`(function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "4zn9fqioi8");
-            `}</Script>
+      <Script id="clarity">{`(function (a, e, b, f, g, c, d) {
+  a[b] =
+    a[b] ||
+    function () {
+      (a[b].q = a[b].q || []).push(arguments);
+    };
+  c = e.createElement(f);
+  c.async = 1;
+  c.src = "https://www.clarity.ms/tag/" + g;
+  d = e.getElementsByTagName(f)[0];
+  d.parentNode.insertBefore(c, d);
+})(window, document, "clarity", "script", "4zn9fqioi8");
+`}</Script>
       <Component {...pageProps} />
     </PlasmicRootProvider>
   );
