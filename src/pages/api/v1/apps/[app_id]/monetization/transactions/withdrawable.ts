@@ -75,7 +75,7 @@ export default async function handler(
     );
 
     return res.status(200).json({
-      balance: wallet.data?.data?.balance,
+      balance: wallet.data?.data?.balance * 0.7,
     });
   }
 }
