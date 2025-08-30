@@ -76,7 +76,7 @@ export default async function handler(
     );
 
     return res.status(200).json({
-      balance: escrow.data?.data?.balance,
+      balance: escrow.data?.data?.balance * 0.7,
     });
   }
 }
