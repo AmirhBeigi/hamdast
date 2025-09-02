@@ -21,7 +21,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   }, []);
   return (
     <PlasmicRootProvider Head={Head}>
-      <Script id="clarity">{`(function (a, e, b, f, g, c, d) {
+      <Script id="ms_clarity">{`(function (a, e, b, f, g, c, d) {
   a[b] =
     a[b] ||
     function () {
