@@ -57,6 +57,8 @@ export default async function handler(
             ? item?.placement
             : item?.expand?.widget?.placement,
         placements_metadata: item?.placements_metadata ?? {},
+        script: item?.expand?.widget?.script,
+        iframe_src: item?.expand?.widget?.iframe_src,
         display_conditions:
           item?.display_conditions?.length > 0
             ? item?.display_conditions
