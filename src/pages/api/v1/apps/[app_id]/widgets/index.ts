@@ -86,19 +86,20 @@ export default async function handler(
   }
 
   if (req.method == "GET") {
-    const widget = await pb
-      .collection("widgets")
-      .getFirstListItem(`app = "${app.id}"`, {
-        headers: {
-          x_token: publicRuntimeConfig.HAMDAST_TOKEN,
-        },
-      });
+    const widgets = await pb.collection("widgets").getFullList({
+      filter: `app = "${app.id}"`,
+      headers: {
+        x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+      },
+    });
 
     try {
       const profileWidgets = await pb
         .collection("profile_widgets")
         .getFullList({
-          filter: `widget = "${widget.id}"`,
+          filter: widgets
+            ?.map((widget) => `widget = "${widget.id}"`)
+            .join(" || "),
           headers: {
             x_token: publicRuntimeConfig.HAMDAST_TOKEN,
           },
@@ -108,7 +109,9 @@ export default async function handler(
         profileWidgets?.map((item) => ({
           user_id: item?.user_id,
           placements:
-            item?.placement?.length > 0 ? item?.placement : widget?.placement,
+            item?.placement?.length > 0
+              ? item?.placement
+              : widgets?.find((w) => w.id == item?.widget)?.placement,
           placements_metadata: item.placements_metadata ?? {},
         }))
       );

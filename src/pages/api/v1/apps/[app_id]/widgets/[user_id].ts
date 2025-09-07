@@ -89,31 +89,35 @@ export default async function handler(
   if (req.method == "GET") {
     const { user_id } = req.query;
 
-    const widget = await pb
-      .collection("widgets")
-      .getFirstListItem(`app = "${app.id}"`, {
-        headers: {
-          x_token: publicRuntimeConfig.HAMDAST_TOKEN,
-        },
-      });
+    const widgets = await pb.collection("widgets").getFullList({
+      filter: `app = "${app.id}"`,
+      headers: {
+        x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+      },
+    });
 
     try {
-      const profileWidget = await pb
+      const profileWidgets = await pb
         .collection("profile_widgets")
-        .getFirstListItem(`user_id = "${user_id}" && widget = "${widget.id}"`, {
+        .getFullList({
+          filter: `user_id = "${user_id}" && ${widgets
+            ?.map((widget) => `widget = "${widget.id}"`)
+            .join(" || ")}`,
           headers: {
             x_token: publicRuntimeConfig.HAMDAST_TOKEN,
           },
         });
 
-      return res.status(200).json({
-        user_id: profileWidget?.user_id,
-        placements:
-          profileWidget?.placement?.length > 0
-            ? profileWidget?.placement
-            : widget?.placement,
-        placements_metadata: profileWidget?.placements_metadata ?? {},
-      });
+      return res.status(200).json(
+        profileWidgets?.map((item) => ({
+          user_id: item?.user_id,
+          placements:
+            item?.placement?.length > 0
+              ? item?.placement
+              : widgets?.find((w) => w.id == item?.widget)?.placement,
+          placements_metadata: item.placements_metadata ?? {},
+        }))
+      );
     } catch (error) {
       return res.status(404).json({
         message: "Widget not found",
@@ -125,26 +129,30 @@ export default async function handler(
     const { user_id } = req.query;
 
     try {
-      const widget = await pb
-        .collection("widgets")
-        .getFirstListItem(`app = "${app.id}"`, {
-          headers: {
-            x_token: publicRuntimeConfig.HAMDAST_TOKEN,
-          },
-        });
-
-      const profileWidget = await pb
-        .collection("profile_widgets")
-        .getFirstListItem(`user_id = "${user_id}" && widget = "${widget.id}"`, {
-          headers: {
-            x_token: publicRuntimeConfig.HAMDAST_TOKEN,
-          },
-        });
-
-      await pb.collection("profile_widgets").delete(profileWidget.id, {
+      const widgets = await pb.collection("widgets").getFullList({
+        filter: `app = "${app.id}"`,
         headers: {
           x_token: publicRuntimeConfig.HAMDAST_TOKEN,
         },
+      });
+
+      const profileWidgets = await pb
+        .collection("profile_widgets")
+        .getFullList({
+          filter: `user_id = "${user_id}" && ${widgets
+            ?.map((widget) => `widget = "${widget.id}"`)
+            .join(" || ")}`,
+          headers: {
+            x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+          },
+        });
+
+      await profileWidgets?.forEach(async (profileWidget) => {
+        await pb.collection("profile_widgets").delete(profileWidget.id, {
+          headers: {
+            x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+          },
+        });
       });
 
       const { data: slugData } = await axios.get(
@@ -228,63 +236,64 @@ export default async function handler(
       });
     }
 
-    const widget = await pb
-      .collection("widgets")
-      .getFirstListItem(`app = "${app.id}"`, {
-        headers: {
-          x_token: publicRuntimeConfig.HAMDAST_TOKEN,
-        },
-      });
+    const widgets = await pb.collection("widgets").getFullList(10, {
+      filter: `app = "${app.id}"`,
+      headers: {
+        x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+      },
+    });
 
     try {
-      let profileWidgets;
-      try {
-        profileWidgets = await pb
-          .collection("profile_widgets")
-          .getFirstListItem(
-            `user_id = "${user_id}" && widget = "${widget.id}"`,
-            {
-              headers: {
-                x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+      await widgets?.forEach(async (widget) => {
+        let profileWidgets;
+        try {
+          profileWidgets = await pb
+            .collection("profile_widgets")
+            .getFirstListItem(
+              `user_id = "${user_id}" && widget = "${widget.id}"`,
+              {
+                headers: {
+                  x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+                },
+              }
+            );
+          if (profileWidgets) {
+            await pb.collection("profile_widgets").update(
+              profileWidgets.id,
+              {
+                placement: placements,
+                placements_metadata,
               },
-            }
-          );
-        if (profileWidgets) {
-          await pb.collection("profile_widgets").update(
-            profileWidgets.id,
-            {
-              placement: placements,
-              placements_metadata,
-            },
-            {
-              headers: {
-                x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+              {
+                headers: {
+                  x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+                },
+              }
+            );
+          }
+        } catch (error: any) {
+          if (!profileWidgets) {
+            await pb.collection("profile_widgets").create(
+              {
+                user_id: user_id,
+                widget: widget.id,
+                placement: placements,
+                placements_metadata,
               },
-            }
-          );
+              {
+                headers: {
+                  x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+                },
+              }
+            );
+            return;
+          }
+          console.log(error);
+          return res.status(400).json({
+            ...error?.response?.data?.placement,
+          });
         }
-      } catch (error: any) {
-        if (!profileWidgets) {
-          await pb.collection("profile_widgets").create(
-            {
-              user_id: user_id,
-              widget: widget.id,
-              placement: placements,
-              placements_metadata,
-            },
-            {
-              headers: {
-                x_token: publicRuntimeConfig.HAMDAST_TOKEN,
-              },
-            }
-          );
-          return;
-        }
-        console.log(error);
-        return res.status(400).json({
-          ...error?.response?.data?.placement,
-        });
-      }
+      });
 
       try {
         await axios.post(
