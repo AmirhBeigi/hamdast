@@ -41,7 +41,7 @@ export default async function handler(
 
     const data = await pb.collection("profile_widgets").getFullList({
       filter: `user_id ="${user_id}"`,
-      expand: "widget",
+      expand: "widget, widget.app",
       headers: {
         x_token: publicRuntimeConfig.HAMDAST_TOKEN,
       },
@@ -50,20 +50,21 @@ export default async function handler(
     return res.status(200).json(
       data?.map((item) => ({
         id: item?.widget,
-        plasmic_component_id: item.expand?.widget?.plasmic_component_id,
-        plasmic_project_id: item?.expand?.widget?.plasmic_project_id,
+        app: item?.expand?.widget?.expand?.app?.key,
         placement:
           item?.placement?.length > 0
             ? item?.placement
             : item?.expand?.widget?.placement,
         placements_metadata: item?.placements_metadata ?? {},
-        script: item?.expand?.widget?.script,
-        iframe_src: item?.expand?.widget?.iframe_src,
         display_conditions:
           item?.display_conditions?.length > 0
             ? item?.display_conditions
             : item?.expand?.widget?.display_conditions,
         data_endpoint: item?.expand?.widget?.data_endpoint ?? null,
+        script: item?.expand?.widget?.script,
+        iframe_src: item?.expand?.widget?.iframe_src,
+        plasmic_component_id: item.expand?.widget?.plasmic_component_id,
+        plasmic_project_id: item?.expand?.widget?.plasmic_project_id,
       }))
     );
   }
