@@ -1,0 +1,26 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 40px;
+  height: 40px;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+  background: var(--token-CLN8EitO07Ao);
+  position: relative;
+  border-radius: 80px;
+  padding: 8px;
+}
+.rootactive {
+  background: var(--token-s_XuzePAGmOh);
+}
+.text {
+  position: relative;
+  height: auto;
+  max-width: 100%;
+  font-weight: 600;
+  color: var(--token-azHduLBqoiGZ);
+}
+.textactive {
+  color: #ffffff;
+}

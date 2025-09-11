@@ -1038,6 +1038,32 @@
           "cssFilePath": "plasmic/hamdast/PlasmicProductCard2.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "okFwmoO5wft_",
+          "name": "StepsStep",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicStepsStep.tsx",
+          "importSpec": {
+            "modulePath": "StepsStep.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicStepsStep.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "7HfoWBpGiHw6",
+          "name": "StepsLine",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicStepsLine.tsx",
+          "importSpec": {
+            "modulePath": "StepsLine.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicStepsLine.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [

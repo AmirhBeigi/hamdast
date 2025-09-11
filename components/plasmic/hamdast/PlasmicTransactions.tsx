@@ -2272,7 +2272,7 @@ function PlasmicTransactions__RenderFunc(props: {
                                             return {
                                               amount:
                                                 $state?.fragmentApiRequest3
-                                                  ?.data?.balance,
+                                                  ?.data?.withdrawable,
                                               userid:
                                                 $state?.selectedUserForWithdraw
                                                   ? $state?.selectedUserForWithdraw
