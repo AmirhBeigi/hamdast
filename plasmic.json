@@ -1366,6 +1366,11 @@
           "id": "a4lIWfBgKdmS",
           "name": "Icon50Icon",
           "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon50.tsx"
+        },
+        {
+          "id": "wMmAYe1Ji-cY",
+          "name": "Icon51Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon51.tsx"
         }
       ],
       "images": [
@@ -1398,6 +1403,51 @@
           "id": "Fkkt6KPDSbof",
           "name": "Frame 74.png",
           "filePath": "../public/plasmic/hamdast/images/frame74Png.png"
+        },
+        {
+          "id": "O3Z7Jtnhz3gb",
+          "name": "image",
+          "filePath": "../public/plasmic/hamdast/images/image.png"
+        },
+        {
+          "id": "7AZ9DK7dHW2E",
+          "name": "image 2",
+          "filePath": "../public/plasmic/hamdast/images/image2.png"
+        },
+        {
+          "id": "WP0163u6fA60",
+          "name": "image 3",
+          "filePath": "../public/plasmic/hamdast/images/image3.png"
+        },
+        {
+          "id": "W71PQbFPOr3B",
+          "name": "image 4",
+          "filePath": "../public/plasmic/hamdast/images/image4.png"
+        },
+        {
+          "id": "wS_x8mfpj-xD",
+          "name": "image 5",
+          "filePath": "../public/plasmic/hamdast/images/image5.png"
+        },
+        {
+          "id": "slxxdb719ygD",
+          "name": "image 6",
+          "filePath": "../public/plasmic/hamdast/images/image6.png"
+        },
+        {
+          "id": "8tLOoA4qi1dU",
+          "name": "image 7",
+          "filePath": "../public/plasmic/hamdast/images/image7.png"
+        },
+        {
+          "id": "jI2I6MEPVXMu",
+          "name": "image 8",
+          "filePath": "../public/plasmic/hamdast/images/image8.png"
+        },
+        {
+          "id": "D68xZj7V_sxO",
+          "name": "image 9",
+          "filePath": "../public/plasmic/hamdast/images/image9.svg"
         }
       ],
       "indirect": false,
@@ -3350,6 +3400,6 @@
   "nextjsConfig": {
     "pagesDir": "../src/pages"
   },
-  "cliVersion": "0.1.342",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.342/dist/plasmic.schema.json"
+  "cliVersion": "0.1.344",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.344/dist/plasmic.schema.json"
 }

@@ -68,9 +68,6 @@ import Filter from "../../Filter"; // plasmic-import: YY41SIghQUgw/component
 import RecordCard from "../../RecordCard"; // plasmic-import: 07VZfuNk1JDL/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_paziresh_24_design_system } from "../paziresh_24_design_system/PlasmicStyleTokensProvider"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_ravi_design_system } from "../ravi_design_system/PlasmicStyleTokensProvider"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -218,12 +215,6 @@ function PlasmicSessionReplay__RenderFunc(props: {
   });
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_antd_5_hostless =
-    useStyleTokens_antd_5_hostless();
-  const styleTokensClassNames_paziresh_24_design_system =
-    useStyleTokens_paziresh_24_design_system();
-  const styleTokensClassNames_ravi_design_system =
-    useStyleTokens_ravi_design_system();
 
   return (
     <React.Fragment>
@@ -260,9 +251,6 @@ function PlasmicSessionReplay__RenderFunc(props: {
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
             styleTokensClassNames,
-            styleTokensClassNames_antd_5_hostless,
-            styleTokensClassNames_paziresh_24_design_system,
-            styleTokensClassNames_ravi_design_system,
             sty.root
           )}
           dir={"rtl"}

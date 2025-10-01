@@ -60,20 +60,19 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import Button from "../../Button"; // plasmic-import: _T6T2fNvkUfo/component
+import { Reveal } from "@plasmicpkgs/react-awesome-reveal";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_paziresh_24_design_system } from "../paziresh_24_design_system/PlasmicStyleTokensProvider"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_ravi_design_system } from "../ravi_design_system/PlasmicStyleTokensProvider"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectcss
 import sty from "./PlasmicLanding.module.css"; // plasmic-import: S7QID4Zn_0WI/css
 
-import Icon27Icon from "./icons/PlasmicIcon__Icon27"; // plasmic-import: 0E0-Td2sxrpd/icon
+import Icon51Icon from "./icons/PlasmicIcon__Icon51"; // plasmic-import: wMmAYe1Ji-cY/icon
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: VepSFu0Y3Pyk/icon
 import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: CmW94FEF71d7/icon
+import Icon21Icon from "./icons/PlasmicIcon__Icon21"; // plasmic-import: UuDHOUXMn1lI/icon
 
 createPlasmicElementProxy;
 
@@ -88,7 +87,6 @@ export const PlasmicLanding__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicLanding__OverridesType = {
   root?: Flex__<"div">;
-  svg?: Flex__<"svg">;
 };
 
 export interface DefaultLandingProps {}
@@ -132,13 +130,27 @@ function PlasmicLanding__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const globalVariants = _useGlobalVariants();
+
+  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
+    () => [
+      {
+        path: "features",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      }
+    ],
+    [$props, $ctx, $refs]
+  );
+  const $state = useDollarState(stateSpecs, {
+    $props,
+    $ctx,
+    $queries: {},
+    $refs
+  });
+
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_antd_5_hostless =
-    useStyleTokens_antd_5_hostless();
-  const styleTokensClassNames_paziresh_24_design_system =
-    useStyleTokens_paziresh_24_design_system();
-  const styleTokensClassNames_ravi_design_system =
-    useStyleTokens_ravi_design_system();
 
   return (
     <React.Fragment>
@@ -175,9 +187,6 @@ function PlasmicLanding__RenderFunc(props: {
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
             styleTokensClassNames,
-            styleTokensClassNames_antd_5_hostless,
-            styleTokensClassNames_paziresh_24_design_system,
-            styleTokensClassNames_ravi_design_system,
             sty.root
           )}
         >
@@ -185,203 +194,804 @@ function PlasmicLanding__RenderFunc(props: {
             className={classNames(projectcss.all, sty.freeBox__pr2Qf)}
             dir={"rtl"}
           >
-            <div className={classNames(projectcss.all, sty.freeBox__la0Sl)}>
-              <PlasmicLink__
-                className={classNames(
-                  projectcss.all,
-                  projectcss.a,
-                  sty.link__ypiuh
-                )}
-                component={Link}
-                href={`/`}
-                platform={"nextjs"}
-              >
-                <Icon27Icon
-                  data-plasmic-name={"svg"}
-                  data-plasmic-override={overrides.svg}
-                  className={classNames(projectcss.all, sty.svg)}
-                  role={"img"}
-                />
+            <div className={classNames(projectcss.all, sty.freeBox__bDspl)}>
+              <div className={classNames(projectcss.all, sty.freeBox__w6NcI)}>
+                <div className={classNames(projectcss.all, sty.freeBox__la0Sl)}>
+                  <PlasmicLink__
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.a,
+                      sty.link__ypiuh
+                    )}
+                    component={Link}
+                    href={`/`}
+                    platform={"nextjs"}
+                  >
+                    <Icon51Icon
+                      className={classNames(projectcss.all, sty.svg___1B5M5)}
+                      role={"img"}
+                    />
 
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__s4X6O
-                  )}
-                >
-                  {"\u0647\u0645\u062f\u0633\u062a"}
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__s4X6O
+                      )}
+                    >
+                      {"\u0647\u0645\u062f\u0633\u062a"}
+                    </div>
+                  </PlasmicLink__>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__rdoli)}
+                  >
+                    <PlasmicLink__
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.a,
+                        projectcss.__wab_text,
+                        sty.link__uLgo0
+                      )}
+                      component={Link}
+                      href={"https://developers.paziresh24.com/apps"}
+                      platform={"nextjs"}
+                      target={"_blank"}
+                    >
+                      {"\u0645\u0633\u062a\u0646\u062f\u0627\u062a"}
+                    </PlasmicLink__>
+                    <PlasmicLink__
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.a,
+                        projectcss.__wab_text,
+                        sty.link__enRrO
+                      )}
+                      component={Link}
+                      href={"https://developers.paziresh24.com/apps"}
+                      platform={"nextjs"}
+                      target={"_blank"}
+                    >
+                      {
+                        "\u0646\u06cc\u0627\u0632 \u0628\u0647 \u0631\u0627\u0647\u200c\u0646\u0645\u0627\u06cc\u06cc \u062f\u0627\u0631\u06cc\u062f\u061f"
+                      }
+                    </PlasmicLink__>
+                  </div>
+                  <Button
+                    className={classNames("__wab_instance", sty.button___3EXjU)}
+                    color={"white"}
+                    link={`/login`}
+                    shape={"rounded"}
+                    size={"compact"}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__sg2Xr
+                      )}
+                    >
+                      {
+                        "\u067e\u0646\u0644 \u062a\u0648\u0633\u0639\u0647 \u062f\u0647\u0646\u062f\u06af\u0627\u0646"
+                      }
+                    </div>
+                  </Button>
                 </div>
-              </PlasmicLink__>
-              <div className={classNames(projectcss.all, sty.freeBox__rdoli)}>
-                <PlasmicLink__
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.a,
-                    projectcss.__wab_text,
-                    sty.link__uLgo0
-                  )}
-                  component={Link}
-                  href={"https://developers.paziresh24.com/apps"}
-                  platform={"nextjs"}
-                  target={"_blank"}
-                >
-                  {"\u0645\u0633\u062a\u0646\u062f\u0627\u062a"}
-                </PlasmicLink__>
-                <PlasmicLink__
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.a,
-                    projectcss.__wab_text,
-                    sty.link___0SG2
-                  )}
-                  component={Link}
-                  href={`/integrations`}
-                  platform={"nextjs"}
-                >
-                  {"\u0627\u062f\u063a\u0627\u0645 \u0647\u0627"}
-                </PlasmicLink__>
+                <div className={classNames(projectcss.all, sty.freeBox__lBXie)}>
+                  <Reveal
+                    className={classNames("__wab_instance", sty.reveal__oqWxR)}
+                    direction={"up"}
+                    triggerOnce={true}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__wysfY)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__dn4Ue
+                        )}
+                      >
+                        {
+                          "\u0633\u0627\u062e\u062a \u0645\u062d\u0635\u0648\u0644\u0627\u062a \u062f\u0631 \u062d\u0648\u0632\u0647 \u0633\u0644\u0627\u0645\u062a"
+                        }
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__paAyx
+                        )}
+                      >
+                        {
+                          "\u062c\u0627\u06cc\u06cc \u06a9\u0647 \u0628\u0627 \u062d\u0644 \u0645\u0634\u06a9\u0644\u0627\u062a \u0634\u0645\u0627 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0633\u0644\u0627\u0645\u062a \u0645\u06cc\u0644\u06cc\u0648\u0646\u200c\u0647\u0627 \u0646\u0641\u0631 \u0631\u0627 \u0645\u062a\u062d\u0648\u0644 \u06a9\u0646\u06cc\u062f.\r"
+                        }
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___72XQz
+                        )}
+                      >
+                        <Button
+                          className={classNames(
+                            "__wab_instance",
+                            sty.button__d2DuQ
+                          )}
+                          color={"white"}
+                          link={
+                            "https://developers.paziresh24.com/apps/getting-started"
+                          }
+                          shape={"rounded"}
+                          size={"compact"}
+                          target={false}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__bqKvk
+                            )}
+                          >
+                            {
+                              "\u0634\u0631\u0648\u0639 \u0633\u0627\u062e\u062a\u0646"
+                            }
+                          </div>
+                        </Button>
+                      </div>
+                    </div>
+                  </Reveal>
+                  <Reveal
+                    className={classNames("__wab_instance", sty.reveal__m6Bdl)}
+                    direction={"up"}
+                    triggerOnce={true}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__vhHiw)}
+                    >
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__rOcrt)}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"auto"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/hamdast/images/image8.png",
+                          fullWidth: 1536,
+                          fullHeight: 1024,
+                          aspectRatio: undefined
+                        }}
+                      />
+                    </div>
+                  </Reveal>
+                </div>
               </div>
-              <Button
-                className={classNames("__wab_instance", sty.button___3EXjU)}
-                link={`/login`}
-                shape={"rounded"}
-                size={"compact"}
-              >
+            </div>
+            <Reveal
+              className={classNames("__wab_instance", sty.reveal__aiwYy)}
+              direction={"up"}
+              effect={"fade"}
+              triggerOnce={true}
+            >
+              <div className={classNames(projectcss.all, sty.freeBox___2Azhv)}>
                 <div
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__sg2Xr
+                    sty.text___2QaW7
                   )}
                 >
                   {
-                    "\u067e\u0646\u0644 \u062a\u0648\u0633\u0639\u0647 \u062f\u0647\u0646\u062f\u06af\u0627\u0646"
+                    "\u0647\u0645\u062f\u0633\u062a \u0686\u0647 \u06a9\u0645\u06a9\u06cc \u0628\u0647 \u0645\u0646 \u0645\u06cc\u200c\u06a9\u0646\u062f\u061f"
                   }
                 </div>
-              </Button>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__wysfY)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__dn4Ue
-                )}
-              >
-                {
-                  "\u062c\u0627\u06cc\u06cc \u06a9\u0647 \u0627\u06cc\u062f\u0647\u200c\u0647\u0627\u06cc \u0634\u0645\u0627 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u062f \u0633\u0644\u0627\u0645\u062a \u0645\u06cc\u0644\u06cc\u0648\u0646\u200c\u0647\u0627 \u0646\u0641\u0631 \u0631\u0627 \u0645\u062a\u062d\u0648\u0644 \u06a9\u0646\u062f"
-                }
-              </div>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__paAyx
-                )}
-              >
-                {
-                  "\u067e\u0630\u06cc\u0631\u0634\u06f2\u06f4 \u06cc\u06a9 \u0647\u062f\u0641 \u0645\u0647\u0645 \u062f\u0627\u0631\u062f: \u0628\u06cc\u0645\u0627\u0631\u0647\u0627 \u0628\u0647 \u062c\u0632 \u062f\u0631\u062f \u0628\u06cc\u0645\u0627\u0631\u06cc\u200c\u0634\u0627\u0646 \u0631\u0646\u062c \u062f\u06cc\u06af\u0631\u06cc \u062a\u062d\u0645\u0644 \u0646\u06a9\u0646\u0646\u062f. \u0627\u06af\u0631 \u0627\u06cc\u0646 \u0647\u062f\u0641 \u0628\u0631\u0627\u06cc \u0634\u0645\u0627 \u0647\u0645 \u0645\u0647\u0645 \u0627\u0633\u062a\u060c \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0627\u0628\u0632\u0627\u0631\u06a9 \u0628\u0646\u0648\u06cc\u0633\u06cc\u062f \u0648 \u067e\u0630\u06cc\u0631\u0634\u06f2\u06f4 \u0631\u0627 \u0628\u0647\u0628\u0648\u062f \u0628\u062f\u0647\u06cc\u062f."
-                }
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox___72XQz)}>
-                <Button
-                  className={classNames("__wab_instance", sty.button__d2DuQ)}
-                  link={`/login`}
-                  shape={"rounded"}
-                  size={"compact"}
-                >
+                <div className={classNames(projectcss.all, sty.freeBox__igNzo)}>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__bqKvk
-                    )}
+                    className={classNames(projectcss.all, sty.freeBox__eyBrG)}
                   >
-                    {
-                      "\u067e\u0646\u0644 \u062a\u0648\u0633\u0639\u0647 \u062f\u0647\u0646\u062f\u06af\u0627\u0646"
-                    }
+                    {(_par =>
+                      !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                      (() => {
+                        try {
+                          return [
+                            {
+                              name: "دسترسی به داده‌ها",
+                              key: 0
+                            },
+                            {
+                              name: "درگاه پرداخت",
+                              key: 1
+                            },
+                            {
+                              name: "سفارشی سازی پروفایل پزشک",
+                              key: 2
+                            },
+                            {
+                              name: "انتشار به کاربران",
+                              key: 3
+                            }
+                          ];
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return [];
+                          }
+                          throw e;
+                        }
+                      })()
+                    ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                      const currentItem = __plasmic_item_0;
+                      const currentIndex = __plasmic_idx_0;
+                      return (
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__jbnIv
+                          )}
+                          key={currentIndex}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__eXh10
+                            )}
+                            style={(() => {
+                              try {
+                                return $state.features == currentItem.key
+                                  ? {
+                                      background: "#3861FB"
+                                    }
+                                  : {};
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
+                              }
+                            })()}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__estve
+                            )}
+                            onClick={async event => {
+                              const $steps = {};
+
+                              $steps["updateFeatures"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["features"]
+                                      },
+                                      operation: 0,
+                                      value: currentItem.key
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateFeatures"] != null &&
+                                typeof $steps["updateFeatures"] === "object" &&
+                                typeof $steps["updateFeatures"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateFeatures"] = await $steps[
+                                  "updateFeatures"
+                                ];
+                              }
+                            }}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__vtl0P
+                              )}
+                              style={(() => {
+                                try {
+                                  return $state.features == currentItem.key
+                                    ? {
+                                        color: "#3861FB"
+                                      }
+                                    : {};
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return currentItem.name;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "\u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u062f\u0627\u062f\u0647 \u0647\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631\u0627\u0646";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
-                </Button>
-                <Button
-                  className={classNames("__wab_instance", sty.button__hygpo)}
-                  color={"softSand"}
-                  link={"https://developers.paziresh24.com/apps"}
-                  shape={"rounded"}
-                  size={"compact"}
-                  target={true}
-                >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__mYFyr
-                    )}
+                    className={classNames(projectcss.all, sty.freeBox__wDq9P)}
                   >
-                    {"\u0645\u0633\u062a\u0646\u062f\u0627\u062a"}
-                  </div>
-                </Button>
-              </div>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox___2Azhv)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text___2QaW7
-                )}
-              >
-                {
-                  "\u067e\u0630\u06cc\u0631\u0634\u06f2\u06f4\u060c \u062f\u0631 \u062d\u0627\u0644 \u06af\u0633\u062a\u0631\u0634 \u0648 \u0634\u0645\u0627 \u0647\u0645 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0628\u062e\u0634\u06cc \u0627\u0632 \u0627\u06cc\u0646 \u0631\u0634\u062f \u0628\u0627\u0634\u06cc\u062f"
-                }
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__igNzo)}>
-                <div className={classNames(projectcss.all, sty.freeBox__eyBrG)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__vtl0P
-                    )}
-                  >
-                    {"+\u06f1\u06f7 \u0645\u06cc\u0644\u06cc\u0648\u0646"}
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__wsR
-                    )}
-                  >
-                    {
-                      "\u06a9\u0627\u0631\u0628\u0631 \u067e\u0630\u06cc\u0631\u0634\u06f2\u06f4"
-                    }
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__jbzqY)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___7JntB
+                        )}
+                      >
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return [
+                                "دسترسی به داده های بیماران و پزشکان",
+
+                                "پرداخت ساده از طریق کیف پول پذیرش۲۴",
+                                "افزودن بخش جدید به پروفایل عمومی پزشک",
+                                "انتشار محصول خود برای کاربران پذیرش۲۴"
+                              ][$state.features];
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "\u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u062f\u0627\u062f\u0647 \u0647\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631\u0627\u0646";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </React.Fragment>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___7WJtB
+                        )}
+                      >
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return [
+                                "از داده های پزشکان و بیماران در محصول خود استفاده کنید یا داده های آن ها را گسترش دهید.",
+                                "درگاه پرداخت پذیرش۲۴ تمام مراحل صدور صورتحساب و پردازش پرداخت‌ها را برای شما مدیریت می‌کند. این موضوع موجب کاهش پیچیدگی‌ها و دردسرهای مربوط به این فرآیندها می‌شود و به شما فرصت می‌دهد تا بیشتر روی ساخت و بهبود محصول خود تمرکز کنید.\nیکی از مزیت‌های مهم این سرویس، ارتباط مستقیم آن با کیف پول کاربران است، که روند پرداخت را سریع و راحت می‌سازد.",
+                                "سفارشی سازی بخش های مختلف وب سایت مانند پروفایل عمومی پزشک و پنل پزشکان",
+                                "انتشار ابزارک برای پزشکان پذیرش۲۴ و شروع سریع کسب درآمد"
+                              ][$state.features];
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "\u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u062f\u0627\u062f\u0647 \u0647\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631\u0627\u0646";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </React.Fragment>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__l8V4
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__x6VSl
+                          )}
+                        >
+                          {
+                            "\u0628\u06cc\u0634\u062a\u0631 \u0628\u062f\u0627\u0646\u06cc\u062f"
+                          }
+                        </div>
+                        <Icon2Icon
+                          className={classNames(projectcss.all, sty.svg__pW8A3)}
+                          role={"img"}
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__pUqY)}>
+              </div>
+            </Reveal>
+            <Reveal
+              className={classNames("__wab_instance", sty.reveal__acYn4)}
+              direction={"up"}
+              triggerOnce={true}
+            >
+              <div className={classNames(projectcss.all, sty.freeBox___3Orxe)}>
+                <div className={classNames(projectcss.all, sty.freeBox__vOehZ)}>
                   <div
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text___7Er3
-                    )}
-                  >
-                    {"+\u06f3\u06f4\u06f0 \u0647\u0632\u0627\u0631"}
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__sGqv8
+                      sty.text__d8TPb
                     )}
                   >
                     {
-                      "\u0633\u0631\u0648\u06cc\u0633 \u062f\u0647\u0646\u062f\u0647 \u067e\u0630\u06cc\u0631\u0634\u06f2\u06f4"
+                      "\u0627\u0628\u0632\u0627\u0631\u06a9\u200c\u0647\u0627\u06cc \u0633\u0627\u062e\u062a\u0647 \u0634\u062f\u0647"
                     }
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox___8NTyo)}
+                  >
+                    {(_par =>
+                      !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                      (() => {
+                        try {
+                          return [
+                            {
+                              image:
+                                "https://hamdast.s3.ir-thr-at1.arvanstorage.ir/apps%2Fcywoc24.png?versionId=",
+                              name: "پروفایل اینستاگرام",
+                              description:
+                                "افزودن پست های اینستاگرام به پروفایل پزشک",
+                              app: "cywoc24"
+                            },
+                            {
+                              image:
+                                "https://hamdast.s3.ir-thr-at1.arvanstorage.ir/apps%2Fbimehnama.png?versionId=",
+                              name: "بیمه‌نما",
+                              description:
+                                "افزودن بیمه های پایه و تکمیلی به پروفایل",
+                              app: "bimehnama"
+                            },
+                            {
+                              image:
+                                "https://hamdast.s3.ir-thr-at1.arvanstorage.ir/apps%2Fcheragh.png?versionId=",
+                              name: "چراغ",
+                              description:
+                                "ثبت و نمایش وضعیت امکانات مطب از جمله جای پارک، پله، آسانسور و سایر دسترسی‌ها",
+                              app: "cheragh"
+                            },
+                            {
+                              image:
+                                "https://hamdast.s3.ir-thr-at1.arvanstorage.ir/apps%2Fhamyar.png?versionId=",
+                              name: "همیار",
+                              description:
+                                "بیماران قادر هستند در زمان فعال بودن ابزارک، بدون مشاهده شماره منشی با منشی تماس امن بگیرند",
+                              app: "hamyar"
+                            },
+                            {
+                              image:
+                                "https://hamdast.s3.ir-thr-at1.arvanstorage.ir/apps%2Frahnama.png?versionId=",
+                              name: "راه‌نما",
+                              description:
+                                "لینک شبکه‌های اجتماعی‌تان (اینستاگرام، ایکس، اپارات) را به سادگی در پروفایل‌تان قرار دهید",
+                              app: "rahnama"
+                            },
+                            {
+                              image:
+                                "https://hamdast.s3.ir-thr-at1.arvanstorage.ir/apps%2Fnotification.png?versionId=",
+                              name: "ارسال پیامک",
+                              description:
+                                "ارسال اطلاع رسانی ها براساس رویدادهای مخلتف",
+                              app: "notification"
+                            },
+                            {
+                              image:
+                                "https://hamdast.s3.ir-thr-at1.arvanstorage.ir/apps%2Fgooglefastindex.png?versionId=",
+                              name: "گوگلم آپدیت نیست!",
+                              description:
+                                "ابزارک درخواست آپدیت پروفایل به گوگل",
+                              app: "googlefastindex"
+                            }
+                          ];
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return [];
+                          }
+                          throw e;
+                        }
+                      })()
+                    ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                      const currentItem = __plasmic_item_0;
+                      const currentIndex = __plasmic_idx_0;
+                      return (
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__ouvdb
+                          )}
+                          key={currentIndex}
+                        >
+                          <PlasmicImg__
+                            alt={""}
+                            className={classNames(sty.img__kvJkg)}
+                            displayHeight={"50px"}
+                            displayMaxHeight={"none"}
+                            displayMaxWidth={"100%"}
+                            displayMinHeight={"0"}
+                            displayMinWidth={"0"}
+                            displayWidth={"50px"}
+                            loading={"lazy"}
+                            src={(() => {
+                              try {
+                                return currentItem.image;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
+                              }
+                            })()}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox___6Ber
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__y5JbF
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return currentItem.name;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "\u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u062f\u0627\u062f\u0647 \u0647\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631\u0627\u0646";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___9KghR
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return currentItem.description;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "\u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u062f\u0627\u062f\u0647 \u0647\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631\u0627\u0646";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__dfM3F)}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps[
+                          "goToHttpsDevelopersPaziresh24ComAppsGettingStarted"
+                        ] = true
+                          ? (() => {
+                              const actionArgs = {
+                                destination:
+                                  "https://developers.paziresh24.com/apps/getting-started"
+                              };
+                              return (({ destination }) => {
+                                if (
+                                  typeof destination === "string" &&
+                                  destination.startsWith("#")
+                                ) {
+                                  document
+                                    .getElementById(destination.substr(1))
+                                    .scrollIntoView({ behavior: "smooth" });
+                                } else {
+                                  __nextRouter?.push(destination);
+                                }
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps[
+                            "goToHttpsDevelopersPaziresh24ComAppsGettingStarted"
+                          ] != null &&
+                          typeof $steps[
+                            "goToHttpsDevelopersPaziresh24ComAppsGettingStarted"
+                          ] === "object" &&
+                          typeof $steps[
+                            "goToHttpsDevelopersPaziresh24ComAppsGettingStarted"
+                          ].then === "function"
+                        ) {
+                          $steps[
+                            "goToHttpsDevelopersPaziresh24ComAppsGettingStarted"
+                          ] = await $steps[
+                            "goToHttpsDevelopersPaziresh24ComAppsGettingStarted"
+                          ];
+                        }
+                      }}
+                    >
+                      <Icon21Icon
+                        className={classNames(projectcss.all, sty.svg__bITZ)}
+                        role={"img"}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__k589
+                        )}
+                      >
+                        {
+                          "\u0627\u0628\u0632\u0627\u0631\u06a9 \u0634\u0645\u0627"
+                        }
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
+            <Reveal
+              className={classNames("__wab_instance", sty.reveal___4Baqk)}
+              direction={"up"}
+              triggerOnce={true}
+            >
+              <div className={classNames(projectcss.all, sty.freeBox__hy0D)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__ph753
+                  )}
+                >
+                  {
+                    "\u067e\u0630\u06cc\u0631\u0634\u06f2\u06f4\u060c \u062f\u0631 \u062d\u0627\u0644 \u06af\u0633\u062a\u0631\u0634 \u0648 \u0634\u0645\u0627 \u0647\u0645 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0628\u062e\u0634\u06cc \u0627\u0632 \u0627\u06cc\u0646 \u0631\u0634\u062f \u0628\u0627\u0634\u06cc\u062f"
+                  }
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__t4GaP)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__ycb5M)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__ycrDk
+                      )}
+                    >
+                      {"+\u06f1\u06f7 \u0645\u06cc\u0644\u06cc\u0648\u0646"}
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__gHdzp
+                      )}
+                    >
+                      {
+                        "\u06a9\u0627\u0631\u0628\u0631 \u067e\u0630\u06cc\u0631\u0634\u06f2\u06f4"
+                      }
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__luVcJ)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___6NYZs
+                      )}
+                    >
+                      {"+\u06f3\u06f4\u06f0 \u0647\u0632\u0627\u0631"}
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__dw1Gc
+                      )}
+                    >
+                      {
+                        "\u0633\u0631\u0648\u06cc\u0633 \u062f\u0647\u0646\u062f\u0647 \u067e\u0630\u06cc\u0631\u0634\u06f2\u06f4"
+                      }
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+            <Reveal
+              className={classNames("__wab_instance", sty.reveal__bXkJl)}
+              direction={"up"}
+              triggerOnce={true}
+            >
+              <div className={classNames(projectcss.all, sty.freeBox__h117M)}>
+                <PlasmicImg__
+                  alt={""}
+                  className={classNames(sty.img__vqiyG)}
+                  displayHeight={"auto"}
+                  displayMaxHeight={"none"}
+                  displayMaxWidth={"100%"}
+                  displayMinHeight={"0"}
+                  displayMinWidth={"0"}
+                  displayWidth={"40px"}
+                  loading={"lazy"}
+                  src={{
+                    src: "/plasmic/hamdast/images/image9.svg",
+                    fullWidth: 102.473,
+                    fullHeight: 108.85,
+                    aspectRatio: 0.941415
+                  }}
+                />
+              </div>
+            </Reveal>
             <div className={classNames(projectcss.all, sty.freeBox__hbzZs)}>
               <div className={classNames(projectcss.all, sty.freeBox__trY8L)}>
                 <PlasmicImg__
@@ -592,15 +1202,13 @@ function PlasmicLanding__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "svg"],
-  svg: ["svg"]
+  root: ["root"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  svg: "svg";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -663,7 +1271,6 @@ export const PlasmicLanding = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    svg: makeNodeComponent("svg"),
 
     // Metadata about props expected for PlasmicLanding
     internalVariantProps: PlasmicLanding__VariantProps,
