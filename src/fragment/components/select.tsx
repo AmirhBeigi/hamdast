@@ -108,19 +108,20 @@ export const selectMeta: CodeComponentMeta<SelectType> = {
             advanced: true,
           },
         },
-        defaultValue: [
-          {
-            label: "Option 1",
-            value: "option1",
-          },
-          {
-            label: "Option 2",
-            value: "option2",
-          },
-        ],
-        exprHint:
-          'An array of items, like `["Option1", "Option2"]`, or an array of objects with `value`, `label`, or `disabled`, like `[{value: "usa", label: "United States"}, {value: "bra", label: "Brazil"}]`',
+      
       },
+      defaultValue: [
+        {
+          label: "Option 1",
+          value: "option1",
+        },
+        {
+          label: "Option 2",
+          value: "option2",
+        },
+      ],
+      exprHint:
+        'An array of items, like `["Option1", "Option2"]`, or an array of objects with `value`, `label`, or `disabled`, like `[{value: "usa", label: "United States"}, {value: "bra", label: "Brazil"}]`',
     },
     disabled: "boolean",
     name: {
