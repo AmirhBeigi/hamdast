@@ -62,8 +62,8 @@ export default function GlobalContextsProvider(
         fragmentProps && "primaryColor" in fragmentProps
           ? fragmentProps.primaryColor!
           : true
-          ? "#3861FB"
-          : undefined
+            ? "#3861FB"
+            : undefined
       }
       rtl={fragmentProps && "rtl" in fragmentProps ? fragmentProps.rtl! : true}
     >
@@ -184,15 +184,15 @@ export default function GlobalContextsProvider(
               "themeStyles" in antdConfigProviderProps
                 ? antdConfigProviderProps.themeStyles!
                 : true
-                ? {
-                    fontFamily: "Vazirmatn",
-                    fontSize: "16px",
-                    fontWeight: "400",
-                    lineHeight: "1.5",
-                    color: "#000000",
-                    letterSpacing: "normal"
-                  }
-                : undefined
+                  ? {
+                      fontFamily: "Vazirmatn",
+                      fontSize: "16px",
+                      fontWeight: "400",
+                      lineHeight: "1.5",
+                      color: "#000000",
+                      letterSpacing: "normal"
+                    }
+                  : undefined
             }
             wireframe={
               antdConfigProviderProps && "wireframe" in antdConfigProviderProps

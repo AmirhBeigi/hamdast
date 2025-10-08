@@ -612,9 +612,8 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                             typeof $steps["invokeGlobalAction"].then ===
                               "function"
                           ) {
-                            $steps["invokeGlobalAction"] = await $steps[
-                              "invokeGlobalAction"
-                            ];
+                            $steps["invokeGlobalAction"] =
+                              await $steps["invokeGlobalAction"];
                           }
                         }}
                       >
@@ -788,9 +787,8 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                             typeof $steps["invokeGlobalAction"].then ===
                               "function"
                           ) {
-                            $steps["invokeGlobalAction"] = await $steps[
-                              "invokeGlobalAction"
-                            ];
+                            $steps["invokeGlobalAction"] =
+                              await $steps["invokeGlobalAction"];
                           }
                         }}
                       >
@@ -985,9 +983,8 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                                 typeof $steps["updateRedirectUris"].then ===
                                   "function"
                               ) {
-                                $steps["updateRedirectUris"] = await $steps[
-                                  "updateRedirectUris"
-                                ];
+                                $steps["updateRedirectUris"] =
+                                  await $steps["updateRedirectUris"];
                               }
                             }}
                             role={"img"}
@@ -1019,10 +1016,11 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                                             variablePath: ["redirectUris"]
                                           },
                                           operation: 0,
-                                          value: $state.redirectUris.map(item =>
-                                            item.id === currentItem.id
-                                              ? { ...item, value: value }
-                                              : item
+                                          value: $state.redirectUris.map(
+                                            item =>
+                                              item.id === currentItem.id
+                                                ? { ...item, value: value }
+                                                : item
                                           )
                                         };
                                         return (({
@@ -1053,9 +1051,8 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                                     typeof $steps["updateRedirectUris"].then ===
                                       "function"
                                   ) {
-                                    $steps["updateRedirectUris"] = await $steps[
-                                      "updateRedirectUris"
-                                    ];
+                                    $steps["updateRedirectUris"] =
+                                      await $steps["updateRedirectUris"];
                                   }
                                 }).apply(null, eventArgs);
                               },
@@ -1164,9 +1161,8 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                           typeof $steps["updateRedirectUris"].then ===
                             "function"
                         ) {
-                          $steps["updateRedirectUris"] = await $steps[
-                            "updateRedirectUris"
-                          ];
+                          $steps["updateRedirectUris"] =
+                            await $steps["updateRedirectUris"];
                         }
                       }}
                       outline={true}
@@ -1289,9 +1285,8 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                           typeof $steps["invokeGlobalAction"].then ===
                             "function"
                         ) {
-                          $steps["invokeGlobalAction"] = await $steps[
-                            "invokeGlobalAction"
-                          ];
+                          $steps["invokeGlobalAction"] =
+                            await $steps["invokeGlobalAction"];
                         }
 
                         $steps["finishLoading"] = true
@@ -1325,9 +1320,8 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                           typeof $steps["finishLoading"] === "object" &&
                           typeof $steps["finishLoading"].then === "function"
                         ) {
-                          $steps["finishLoading"] = await $steps[
-                            "finishLoading"
-                          ];
+                          $steps["finishLoading"] =
+                            await $steps["finishLoading"];
                         }
 
                         $steps["invokeGlobalAction2"] = true
@@ -1350,9 +1344,8 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                           typeof $steps["invokeGlobalAction2"].then ===
                             "function"
                         ) {
-                          $steps["invokeGlobalAction2"] = await $steps[
-                            "invokeGlobalAction2"
-                          ];
+                          $steps["invokeGlobalAction2"] =
+                            await $steps["invokeGlobalAction2"];
                         }
                       }}
                       startIcon={
@@ -1447,19 +1440,23 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                                   "دسترسی ویرایش اطلاعات پزشک، تخصص ها و مراکز درمانی..."
                               },
                               {
+                                id: "d541bc9a-b8d1-46fd-96a0-2f518aeedca1",
                                 permission: "provider.appointment.read",
                                 description: "دسترسی مشاهده نوبت های پزشک"
                               },
                               {
+                                id: "1a4f3f6b-4a90-4bc2-bec6-80d6b3c215c8",
                                 permission: "provider.appointment.write",
                                 description: "دسترسی حذف نوبت های پزشک"
                               },
                               {
+                                id: "2862b30e-8cfc-41ad-b963-bfff7398f8ea",
                                 permission: "provider.management.read",
                                 description:
                                   "دسترسی مشاهده ساعت کاری و مرخصی های پزشک"
                               },
                               {
+                                id: "835d4b08-dcc0-47ba-a0ab-58b30218ce6b",
                                 permission: "provider.management.write",
                                 description:
                                   "دسترسی تنظیم ساعت کاری و مرخصی های پزشک"
@@ -2057,7 +2054,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicBuildAuthorization__VariantsArgs;
     args?: PlasmicBuildAuthorization__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicBuildAuthorization__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicBuildAuthorization__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicBuildAuthorization__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props
