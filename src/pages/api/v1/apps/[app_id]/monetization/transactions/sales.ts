@@ -80,7 +80,7 @@ export default async function handler(
       `https://apigw.paziresh24.com/katibe/v1/transactions/balance`,
       {
         params: {
-          userid: app.key,
+          userid: app?.katibe_id ?? app.key,
           account: "escrow",
         },
         headers: {
