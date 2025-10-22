@@ -63,15 +63,11 @@ export default async function handler(
     }
 
     const queryData = await axios.get(
-      `https://apigw.paziresh24.com/katibe/v1/productStatistics?codename=${
-        app?.katibe_id ?? app.key
-      }`,
+      `https://apigw.paziresh24.com/katibe/v1/productStatistics`,
       {
-        params: {
-          productid: app?.katibe_id ?? app.key,
-        },
         headers: {
           "x-api-key": process.env.KATIBE_API_KEY,
+          token: app.tokens?.katibe,
         },
       }
     );
