@@ -326,40 +326,6 @@ function PlasmicCredentialsSettings__RenderFunc(props: {
                 }
               })()}
               className={classNames("__wab_instance", sty.layout)}
-              hideAppsSidebar={true}
-              selectedApp={(() => {
-                try {
-                  return $ctx.params.id;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return undefined;
-                  }
-                  throw e;
-                }
-              })()}
-              selectedMenu={(() => {
-                try {
-                  return (
-                    $ctx.pageRoute
-                      .split("/")
-                      [$ctx.pageRoute.split("/")?.length - 1][0].toUpperCase() +
-                    $ctx.pageRoute
-                      .split("/")
-                      [$ctx.pageRoute.split("/")?.length - 1].slice(1)
-                  );
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return undefined;
-                  }
-                  throw e;
-                }
-              })()}
               user={(() => {
                 try {
                   return $state.authProvider.user;
@@ -388,19 +354,9 @@ function PlasmicCredentialsSettings__RenderFunc(props: {
                     sty.text__cq8K8
                   )}
                 >
-                  <React.Fragment>
-                    <span
-                      className={"plasmic_default__all plasmic_default__span"}
-                      style={{ color: "#0000003D" }}
-                    >
-                      {
-                        "\u0648\u0628 \u0633\u0631\u0648\u06cc\u0633\u200c\u0647\u0627 / "
-                      }
-                    </span>
-                    <React.Fragment>
-                      {"\u06a9\u0644\u06cc\u062f API"}
-                    </React.Fragment>
-                  </React.Fragment>
+                  {
+                    "\u062a\u0648\u06a9\u0646 \u062f\u0633\u062a\u0631\u0633\u06cc \u0634\u062e\u0635\u06cc"
+                  }
                 </div>
                 <div className={classNames(projectcss.all, sty.freeBox__kWxwe)}>
                   <div
@@ -664,9 +620,8 @@ function PlasmicCredentialsSettings__RenderFunc(props: {
                                 typeof $steps["invokeGlobalAction"].then ===
                                   "function"
                               ) {
-                                $steps["invokeGlobalAction"] = await $steps[
-                                  "invokeGlobalAction"
-                                ];
+                                $steps["invokeGlobalAction"] =
+                                  await $steps["invokeGlobalAction"];
                               }
 
                               $steps["updateLoading2"] = true
@@ -702,9 +657,8 @@ function PlasmicCredentialsSettings__RenderFunc(props: {
                                 typeof $steps["updateLoading2"].then ===
                                   "function"
                               ) {
-                                $steps["updateLoading2"] = await $steps[
-                                  "updateLoading2"
-                                ];
+                                $steps["updateLoading2"] =
+                                  await $steps["updateLoading2"];
                               }
 
                               $steps["updateLoading3"] = true
@@ -743,9 +697,8 @@ function PlasmicCredentialsSettings__RenderFunc(props: {
                                 typeof $steps["updateLoading3"].then ===
                                   "function"
                               ) {
-                                $steps["updateLoading3"] = await $steps[
-                                  "updateLoading3"
-                                ];
+                                $steps["updateLoading3"] =
+                                  await $steps["updateLoading3"];
                               }
 
                               $steps["updateLoading4"] = true
@@ -767,9 +720,8 @@ function PlasmicCredentialsSettings__RenderFunc(props: {
                                 typeof $steps["updateLoading4"].then ===
                                   "function"
                               ) {
-                                $steps["updateLoading4"] = await $steps[
-                                  "updateLoading4"
-                                ];
+                                $steps["updateLoading4"] =
+                                  await $steps["updateLoading4"];
                               }
                             }}
                           />
@@ -937,9 +889,8 @@ function PlasmicCredentialsSettings__RenderFunc(props: {
                             typeof $steps["runActionOnApiRequest"].then ===
                               "function"
                           ) {
-                            $steps["runActionOnApiRequest"] = await $steps[
-                              "runActionOnApiRequest"
-                            ];
+                            $steps["runActionOnApiRequest"] =
+                              await $steps["runActionOnApiRequest"];
                           }
                         }}
                       />
@@ -1012,7 +963,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicCredentialsSettings__VariantsArgs;
     args?: PlasmicCredentialsSettings__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicCredentialsSettings__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicCredentialsSettings__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicCredentialsSettings__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

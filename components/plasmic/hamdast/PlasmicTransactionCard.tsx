@@ -262,15 +262,11 @@ function PlasmicTransactionCard__RenderFunc(props: {
         config={{ headers: {} }}
         errorDisplay={
           <div className={classNames(projectcss.all, sty.freeBox___2N0G1)}>
-            <div className={classNames(projectcss.all, sty.freeBox__no0Ef)} />
-
             <div className={classNames(projectcss.all, sty.freeBox__ervX1)} />
           </div>
         }
         loadingDisplay={
           <div className={classNames(projectcss.all, sty.freeBox__uNeyn)}>
-            <div className={classNames(projectcss.all, sty.freeBox__zUuIe)} />
-
             <div className={classNames(projectcss.all, sty.freeBox__muf6M)} />
           </div>
         }
@@ -653,9 +649,8 @@ function PlasmicTransactionCard__RenderFunc(props: {
                         typeof $steps["invokeGlobalAction"] === "object" &&
                         typeof $steps["invokeGlobalAction"].then === "function"
                       ) {
-                        $steps["invokeGlobalAction"] = await $steps[
-                          "invokeGlobalAction"
-                        ];
+                        $steps["invokeGlobalAction"] =
+                          await $steps["invokeGlobalAction"];
                       }
 
                       $steps["refresh"] = true
@@ -786,9 +781,8 @@ function PlasmicTransactionCard__RenderFunc(props: {
                         typeof $steps["updateDialogOpen"] === "object" &&
                         typeof $steps["updateDialogOpen"].then === "function"
                       ) {
-                        $steps["updateDialogOpen"] = await $steps[
-                          "updateDialogOpen"
-                        ];
+                        $steps["updateDialogOpen"] =
+                          await $steps["updateDialogOpen"];
                       }
                     }}
                     outline={true}
@@ -882,7 +876,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicTransactionCard__VariantsArgs;
     args?: PlasmicTransactionCard__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicTransactionCard__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicTransactionCard__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicTransactionCard__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

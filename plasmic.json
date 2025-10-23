@@ -935,7 +935,7 @@
           "projectId": "bE9NMB942w5e6uFrcCxfJN",
           "renderModuleFilePath": "plasmic/hamdast/PlasmicBuildSandbox.tsx",
           "importSpec": {
-            "modulePath": "../src/pages/apps/[id]/build/sandbox.tsx"
+            "modulePath": "../src/pages/sandbox.tsx"
           },
           "cssFilePath": "plasmic/hamdast/PlasmicBuildSandbox.module.css",
           "scheme": "blackbox",
@@ -963,7 +963,7 @@
           "projectId": "bE9NMB942w5e6uFrcCxfJN",
           "renderModuleFilePath": "plasmic/hamdast/PlasmicBuildAuthorization.tsx",
           "importSpec": {
-            "modulePath": "../src/pages/apps/[id]/build/authorization.tsx"
+            "modulePath": "../src/pages/apps/[id]/authorization.tsx"
           },
           "cssFilePath": "plasmic/hamdast/PlasmicBuildAuthorization.module.css",
           "scheme": "blackbox",
@@ -1062,6 +1062,60 @@
             "modulePath": "StepsLine.tsx"
           },
           "cssFilePath": "plasmic/hamdast/PlasmicStepsLine.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "LqoNlpDpfLJ-",
+          "name": "Apps",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicApps.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/apps.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicApps.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/apps"
+        },
+        {
+          "id": "8skzm3Rea5nX",
+          "name": "AppsApp",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicAppsApp.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/apps/[id].tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicAppsApp.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/apps/[id]"
+        },
+        {
+          "id": "HxWq9_T7tKVb",
+          "name": "AppForm",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicAppForm.tsx",
+          "importSpec": {
+            "modulePath": "AppForm.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicAppForm.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "LgcOSQnaSwvf",
+          "name": "Breadcrumb",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicBreadcrumb.tsx",
+          "importSpec": {
+            "modulePath": "Breadcrumb.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicBreadcrumb.module.css",
           "scheme": "blackbox",
           "componentType": "component"
         }
@@ -1371,6 +1425,16 @@
           "id": "wMmAYe1Ji-cY",
           "name": "Icon51Icon",
           "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon51.tsx"
+        },
+        {
+          "id": "16m4dtwFNROO",
+          "name": "Icon52Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon52.tsx"
+        },
+        {
+          "id": "wcdseQLB5YAk",
+          "name": "Icon53Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon53.tsx"
         }
       ],
       "images": [
@@ -3401,6 +3465,6 @@
   "nextjsConfig": {
     "pagesDir": "../src/pages"
   },
-  "cliVersion": "0.1.347",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.347/dist/plasmic.schema.json"
+  "cliVersion": "0.1.348",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.348/dist/plasmic.schema.json"
 }

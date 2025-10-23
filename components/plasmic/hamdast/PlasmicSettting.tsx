@@ -535,6 +535,7 @@ function PlasmicSettting__RenderFunc(props: {
                   throw e;
                 }
               })()}
+              showAppSidebar={true}
               user={(() => {
                 try {
                   return $state.authProvider.user;
@@ -554,15 +555,6 @@ function PlasmicSettting__RenderFunc(props: {
                   <div
                     className={classNames(projectcss.all, sty.freeBox__tFyjQ)}
                   >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__yl7Vx
-                      )}
-                    >
-                      {"\u0639\u0645\u0648\u0645\u06cc"}
-                    </div>
                     <Menu
                       active={(() => {
                         try {
@@ -1006,9 +998,8 @@ function PlasmicSettting__RenderFunc(props: {
                               typeof $steps["invokeGlobalAction"].then ===
                                 "function"
                             ) {
-                              $steps["invokeGlobalAction"] = await $steps[
-                                "invokeGlobalAction"
-                              ];
+                              $steps["invokeGlobalAction"] =
+                                await $steps["invokeGlobalAction"];
                             }
                           }}
                         >
@@ -1150,9 +1141,8 @@ function PlasmicSettting__RenderFunc(props: {
                               typeof $steps["invokeGlobalAction"].then ===
                                 "function"
                             ) {
-                              $steps["invokeGlobalAction"] = await $steps[
-                                "invokeGlobalAction"
-                              ];
+                              $steps["invokeGlobalAction"] =
+                                await $steps["invokeGlobalAction"];
                             }
                           }}
                         >
@@ -1564,9 +1554,8 @@ function PlasmicSettting__RenderFunc(props: {
                               typeof $steps["invokeGlobalAction"].then ===
                                 "function"
                             ) {
-                              $steps["invokeGlobalAction"] = await $steps[
-                                "invokeGlobalAction"
-                              ];
+                              $steps["invokeGlobalAction"] =
+                                await $steps["invokeGlobalAction"];
                             }
                           }}
                         >
@@ -1742,9 +1731,8 @@ function PlasmicSettting__RenderFunc(props: {
                               typeof $steps["invokeGlobalAction"].then ===
                                 "function"
                             ) {
-                              $steps["invokeGlobalAction"] = await $steps[
-                                "invokeGlobalAction"
-                              ];
+                              $steps["invokeGlobalAction"] =
+                                await $steps["invokeGlobalAction"];
                             }
                           }}
                         >
@@ -1908,9 +1896,8 @@ function PlasmicSettting__RenderFunc(props: {
                               typeof $steps["invokeGlobalAction"].then ===
                                 "function"
                             ) {
-                              $steps["invokeGlobalAction"] = await $steps[
-                                "invokeGlobalAction"
-                              ];
+                              $steps["invokeGlobalAction"] =
+                                await $steps["invokeGlobalAction"];
                             }
                           }}
                         >
@@ -2111,9 +2098,8 @@ function PlasmicSettting__RenderFunc(props: {
                             typeof $steps["invokeGlobalAction"].then ===
                               "function"
                           ) {
-                            $steps["invokeGlobalAction"] = await $steps[
-                              "invokeGlobalAction"
-                            ];
+                            $steps["invokeGlobalAction"] =
+                              await $steps["invokeGlobalAction"];
                           }
 
                           $steps["updateAppInformationLoadingButton2"] = true
@@ -2179,9 +2165,8 @@ function PlasmicSettting__RenderFunc(props: {
                             typeof $steps["invokeGlobalAction2"].then ===
                               "function"
                           ) {
-                            $steps["invokeGlobalAction2"] = await $steps[
-                              "invokeGlobalAction2"
-                            ];
+                            $steps["invokeGlobalAction2"] =
+                              await $steps["invokeGlobalAction2"];
                           }
                         }}
                       />
@@ -2657,9 +2642,8 @@ function PlasmicSettting__RenderFunc(props: {
                                 typeof $steps["updatePagesItems"].then ===
                                   "function"
                               ) {
-                                $steps["updatePagesItems"] = await $steps[
-                                  "updatePagesItems"
-                                ];
+                                $steps["updatePagesItems"] =
+                                  await $steps["updatePagesItems"];
                               }
                             }}
                             onSave={async (id, data) => {
@@ -2705,9 +2689,8 @@ function PlasmicSettting__RenderFunc(props: {
                                 typeof $steps["updatePagesItems"].then ===
                                   "function"
                               ) {
-                                $steps["updatePagesItems"] = await $steps[
-                                  "updatePagesItems"
-                                ];
+                                $steps["updatePagesItems"] =
+                                  await $steps["updatePagesItems"];
                               }
 
                               $steps["updateItemOpenPage"] = true
@@ -2747,9 +2730,8 @@ function PlasmicSettting__RenderFunc(props: {
                                 typeof $steps["updateItemOpenPage"].then ===
                                   "function"
                               ) {
-                                $steps["updateItemOpenPage"] = await $steps[
-                                  "updateItemOpenPage"
-                                ];
+                                $steps["updateItemOpenPage"] =
+                                  await $steps["updateItemOpenPage"];
                               }
                             }}
                             onSelect={async () => {
@@ -2766,7 +2748,8 @@ function PlasmicSettting__RenderFunc(props: {
                                       value:
                                         (currentItem?.id ?? currentIndex + 1) !=
                                         $state.itemOpenPage
-                                          ? currentItem?.id ?? currentIndex + 1
+                                          ? (currentItem?.id ??
+                                            currentIndex + 1)
                                           : ""
                                     };
                                     return (({
@@ -2793,9 +2776,8 @@ function PlasmicSettting__RenderFunc(props: {
                                 typeof $steps["updateItemOpenPage"].then ===
                                   "function"
                               ) {
-                                $steps["updateItemOpenPage"] = await $steps[
-                                  "updateItemOpenPage"
-                                ];
+                                $steps["updateItemOpenPage"] =
+                                  await $steps["updateItemOpenPage"];
                               }
                             }}
                             pageId={(() => {
@@ -2831,9 +2813,7 @@ function PlasmicSettting__RenderFunc(props: {
                                   },
                                   operation: 5,
                                   value: {
-                                    name: `برگه ${
-                                      $state.pagesItems?.length + 1
-                                    }`,
+                                    name: `برگه ${$state.pagesItems?.length + 1}`,
                                     key: `page${$state.pagesItems?.length + 1}`,
                                     parameters: [],
                                     embed_src: "",
@@ -2868,9 +2848,8 @@ function PlasmicSettting__RenderFunc(props: {
                             typeof $steps["updatePagesItems"].then ===
                               "function"
                           ) {
-                            $steps["updatePagesItems"] = await $steps[
-                              "updatePagesItems"
-                            ];
+                            $steps["updatePagesItems"] =
+                              await $steps["updatePagesItems"];
                           }
 
                           $steps["updateItemOpenPage"] = true
@@ -2905,9 +2884,8 @@ function PlasmicSettting__RenderFunc(props: {
                             typeof $steps["updateItemOpenPage"].then ===
                               "function"
                           ) {
-                            $steps["updateItemOpenPage"] = await $steps[
-                              "updateItemOpenPage"
-                            ];
+                            $steps["updateItemOpenPage"] =
+                              await $steps["updateItemOpenPage"];
                           }
                         }}
                         showStartIcon={true}
@@ -3195,9 +3173,8 @@ function PlasmicSettting__RenderFunc(props: {
                                 typeof $steps["updateMenuItems"].then ===
                                   "function"
                               ) {
-                                $steps["updateMenuItems"] = await $steps[
-                                  "updateMenuItems"
-                                ];
+                                $steps["updateMenuItems"] =
+                                  await $steps["updateMenuItems"];
                               }
                             }}
                             onSave={async (id, data) => {
@@ -3249,9 +3226,8 @@ function PlasmicSettting__RenderFunc(props: {
                                 typeof $steps["updateMenuItems"].then ===
                                   "function"
                               ) {
-                                $steps["updateMenuItems"] = await $steps[
-                                  "updateMenuItems"
-                                ];
+                                $steps["updateMenuItems"] =
+                                  await $steps["updateMenuItems"];
                               }
 
                               $steps["updateItemOpenPage"] = true
@@ -3291,9 +3267,8 @@ function PlasmicSettting__RenderFunc(props: {
                                 typeof $steps["updateItemOpenPage"].then ===
                                   "function"
                               ) {
-                                $steps["updateItemOpenPage"] = await $steps[
-                                  "updateItemOpenPage"
-                                ];
+                                $steps["updateItemOpenPage"] =
+                                  await $steps["updateItemOpenPage"];
                               }
                             }}
                             onSelect={async () => {
@@ -3310,7 +3285,8 @@ function PlasmicSettting__RenderFunc(props: {
                                       value:
                                         (currentItem?.id ?? currentIndex + 1) !=
                                         $state.itemOpenPage
-                                          ? currentItem?.id ?? currentIndex + 1
+                                          ? (currentItem?.id ??
+                                            currentIndex + 1)
                                           : ""
                                     };
                                     return (({
@@ -3337,9 +3313,8 @@ function PlasmicSettting__RenderFunc(props: {
                                 typeof $steps["updateItemOpenPage"].then ===
                                   "function"
                               ) {
-                                $steps["updateItemOpenPage"] = await $steps[
-                                  "updateItemOpenPage"
-                                ];
+                                $steps["updateItemOpenPage"] =
+                                  await $steps["updateItemOpenPage"];
                               }
                             }}
                             pageId={(() => {
@@ -3402,9 +3377,8 @@ function PlasmicSettting__RenderFunc(props: {
                             typeof $steps["updateMenuItems"] === "object" &&
                             typeof $steps["updateMenuItems"].then === "function"
                           ) {
-                            $steps["updateMenuItems"] = await $steps[
-                              "updateMenuItems"
-                            ];
+                            $steps["updateMenuItems"] =
+                              await $steps["updateMenuItems"];
                           }
 
                           $steps["updateItemOpenPage"] = true
@@ -3439,9 +3413,8 @@ function PlasmicSettting__RenderFunc(props: {
                             typeof $steps["updateItemOpenPage"].then ===
                               "function"
                           ) {
-                            $steps["updateItemOpenPage"] = await $steps[
-                              "updateItemOpenPage"
-                            ];
+                            $steps["updateItemOpenPage"] =
+                              await $steps["updateItemOpenPage"];
                           }
                         }}
                         showStartIcon={true}
@@ -3564,7 +3537,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicSettting__VariantsArgs;
     args?: PlasmicSettting__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicSettting__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicSettting__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicSettting__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props
