@@ -842,7 +842,7 @@ function PlasmicBuildSandbox__RenderFunc(props: {
                                       "DELETE",
                                       (() => {
                                         try {
-                                          return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/sandbox/`;
+                                          return `https://hamdast.paziresh24.com/api/v1/sandbox/`;
                                         } catch (e) {
                                           if (
                                             e instanceof TypeError ||
@@ -1050,7 +1050,7 @@ function PlasmicBuildSandbox__RenderFunc(props: {
                                       "PATCH",
                                       (() => {
                                         try {
-                                          return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/sandbox/`;
+                                          return `https://hamdast.paziresh24.com/api/v1/sandbox/`;
                                         } catch (e) {
                                           if (
                                             e instanceof TypeError ||

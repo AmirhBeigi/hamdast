@@ -270,6 +270,56 @@
 .freeBoxshowAppSidebar___97HyfCdiP {
   display: flex;
 }
+.freeBox__qqFCz {
+  animation: none;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  column-gap: 5px;
+}
+.paziresh24Avatar:global(.__wab_instance) {
+  animation: none;
+  max-width: 100%;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+.freeBox__bndZ {
+  animation: none;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 8px;
+}
+.text__wq5Hm {
+  animation: none;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-weight: 500;
+  min-width: 0;
+}
+.text__dC7F {
+  animation: none;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.7;
+  min-width: 0;
+}
 .freeBox__ijxMc {
   display: flex;
   position: relative;

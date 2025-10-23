@@ -60,6 +60,7 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import Menu from "../../Menu"; // plasmic-import: 73TqujunaOu5/component
+import Paziresh24Avatar from "../../Paziresh24Avatar"; // plasmic-import: zljt-TXjec48/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/styleTokensProvider
 
@@ -117,6 +118,7 @@ export const PlasmicLayout__ArgProps = new Array<ArgPropType>(
 export type PlasmicLayout__OverridesType = {
   root?: Flex__<"div">;
   link?: Flex__<"a"> & Partial<LinkProps>;
+  paziresh24Avatar?: Flex__<typeof Paziresh24Avatar>;
 };
 
 export interface DefaultLayoutProps {
@@ -718,6 +720,96 @@ function PlasmicLayout__RenderFunc(props: {
               )
             })}
           >
+            <div
+              className={classNames(projectcss.all, sty.freeBox__qqFCz, {
+                [sty.freeBoxshowAppSidebar__qqFCzCdiP]: hasVariant(
+                  $state,
+                  "showAppSidebar",
+                  "showAppSidebar"
+                )
+              })}
+            >
+              <Paziresh24Avatar
+                data-plasmic-name={"paziresh24Avatar"}
+                data-plasmic-override={overrides.paziresh24Avatar}
+                className={classNames("__wab_instance", sty.paziresh24Avatar)}
+                name={(() => {
+                  try {
+                    return currentItem.name_fa;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return undefined;
+                    }
+                    throw e;
+                  }
+                })()}
+                src={(() => {
+                  try {
+                    return currentItem.icon;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return undefined;
+                    }
+                    throw e;
+                  }
+                })()}
+              />
+
+              <div className={classNames(projectcss.all, sty.freeBox__bndZ)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__wq5Hm
+                  )}
+                >
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return currentItem.name_fa;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__dC7F
+                  )}
+                >
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return currentItem.key;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
+                </div>
+              </div>
+            </div>
             <div className={classNames(projectcss.all, sty.freeBox__ijxMc)}>
               <Menu
                 active={(() => {
@@ -1345,8 +1437,9 @@ function PlasmicLayout__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "link"],
-  link: ["link"]
+  root: ["root", "link", "paziresh24Avatar"],
+  link: ["link"],
+  paziresh24Avatar: ["paziresh24Avatar"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1354,6 +1447,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   link: "a";
+  paziresh24Avatar: typeof Paziresh24Avatar;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1419,6 +1513,7 @@ export const PlasmicLayout = Object.assign(
   {
     // Helper components rendering sub-elements
     link: makeNodeComponent("link"),
+    paziresh24Avatar: makeNodeComponent("paziresh24Avatar"),
 
     // Metadata about props expected for PlasmicLayout
     internalVariantProps: PlasmicLayout__VariantProps,
