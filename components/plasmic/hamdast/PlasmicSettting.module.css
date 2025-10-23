@@ -61,7 +61,7 @@
   width: 16rem;
   height: auto;
   max-width: 100%;
-  background: #dfdfdf0d;
+  background: #c5c5c50d;
   row-gap: 14px;
   flex-shrink: 0;
   padding: 25px 1rem 8px;
@@ -78,17 +78,6 @@
   max-width: 100%;
   background: none;
   row-gap: 4px;
-}
-.text__yl7Vx {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  font-weight: 500;
-  font-size: 14px;
-  opacity: 0.8;
-  margin-bottom: 12px;
-  min-width: 0;
 }
 .menu__sm1Zy:global(.__wab_instance) {
   max-width: 100%;

@@ -62,6 +62,7 @@ import {
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import AuthProvider from "../../AuthProvider"; // plasmic-import: KTPu1eZupEdG/component
 import Layout from "../../Layout"; // plasmic-import: ve2FygUyzJYe/component
+import Breadcrumb from "../../Breadcrumb"; // plasmic-import: LgcOSQnaSwvf/component
 import Paziresh24Modal from "../../Paziresh24Modal"; // plasmic-import: ZGdhyEBPJSmH/component
 import Paziresh24Button from "../../Paziresh24Button"; // plasmic-import: YOhw5fIQJQgB/component
 import { Input } from "@/fragment/components/input"; // plasmic-import: AWE69UKwmIyg/codeComponent
@@ -96,6 +97,7 @@ export type PlasmicProducts__OverridesType = {
   embedHtml?: Flex__<typeof Embed>;
   authProvider?: Flex__<typeof AuthProvider>;
   layout?: Flex__<typeof Layout>;
+  breadcrumb?: Flex__<typeof Breadcrumb>;
   dialog?: Flex__<typeof Paziresh24Modal>;
   input?: Flex__<typeof Input>;
   input2?: Flex__<typeof Input>;
@@ -351,6 +353,7 @@ function PlasmicProducts__RenderFunc(props: {
                   throw e;
                 }
               })()}
+              showAppSidebar={true}
               user={(() => {
                 try {
                   return $state.authProvider.user;
@@ -372,25 +375,41 @@ function PlasmicProducts__RenderFunc(props: {
                   "no-scroll"
                 )}
               >
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__loyaT
-                  )}
-                >
-                  <React.Fragment>
-                    <span
-                      className={"plasmic_default__all plasmic_default__span"}
-                      style={{ color: "#0000003D" }}
-                    >
-                      {"\u06a9\u0633\u0628 \u062f\u0631\u0622\u0645\u062f / "}
-                    </span>
-                    <React.Fragment>
-                      {"\u0645\u062d\u0635\u0648\u0644\u0627\u062a"}
-                    </React.Fragment>
-                  </React.Fragment>
-                </div>
+                <Breadcrumb
+                  data-plasmic-name={"breadcrumb"}
+                  data-plasmic-override={overrides.breadcrumb}
+                  apps={(() => {
+                    try {
+                      return $state.authProvider.apps;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()}
+                  className={classNames("__wab_instance", sty.breadcrumb)}
+                  menuTitle={
+                    "\u06a9\u0633\u0628 \u062f\u0631\u0622\u0645\u062f / \u0645\u062d\u0635\u0648\u0644\u0627\u062a"
+                  }
+                  selectedApp={(() => {
+                    try {
+                      return $ctx.params.id;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()}
+                />
+
                 <div className={classNames(projectcss.all, sty.freeBox__asGfH)}>
                   <div
                     className={classNames(projectcss.all, sty.freeBox__qfb04)}
@@ -812,9 +831,8 @@ function PlasmicProducts__RenderFunc(props: {
                                 typeof $steps["updateDialogOpen2"].then ===
                                   "function"
                               ) {
-                                $steps["updateDialogOpen2"] = await $steps[
-                                  "updateDialogOpen2"
-                                ];
+                                $steps["updateDialogOpen2"] =
+                                  await $steps["updateDialogOpen2"];
                               }
 
                               $steps["invokeGlobalAction"] = true
@@ -868,9 +886,8 @@ function PlasmicProducts__RenderFunc(props: {
                                 typeof $steps["invokeGlobalAction"].then ===
                                   "function"
                               ) {
-                                $steps["invokeGlobalAction"] = await $steps[
-                                  "invokeGlobalAction"
-                                ];
+                                $steps["invokeGlobalAction"] =
+                                  await $steps["invokeGlobalAction"];
                               }
 
                               $steps["runActionOnApiRequest"] = true
@@ -893,9 +910,8 @@ function PlasmicProducts__RenderFunc(props: {
                                 typeof $steps["runActionOnApiRequest"].then ===
                                   "function"
                               ) {
-                                $steps["runActionOnApiRequest"] = await $steps[
-                                  "runActionOnApiRequest"
-                                ];
+                                $steps["runActionOnApiRequest"] =
+                                  await $steps["runActionOnApiRequest"];
                               }
 
                               $steps["updateDialogOpen"] = true
@@ -939,9 +955,8 @@ function PlasmicProducts__RenderFunc(props: {
                                 typeof $steps["updateDialogOpen"].then ===
                                   "function"
                               ) {
-                                $steps["updateDialogOpen"] = await $steps[
-                                  "updateDialogOpen"
-                                ];
+                                $steps["updateDialogOpen"] =
+                                  await $steps["updateDialogOpen"];
                               }
 
                               $steps["updateDialogOpen3"] = true
@@ -985,9 +1000,8 @@ function PlasmicProducts__RenderFunc(props: {
                                 typeof $steps["updateDialogOpen3"].then ===
                                   "function"
                               ) {
-                                $steps["updateDialogOpen3"] = await $steps[
-                                  "updateDialogOpen3"
-                                ];
+                                $steps["updateDialogOpen3"] =
+                                  await $steps["updateDialogOpen3"];
                               }
                             }}
                           />
@@ -1159,9 +1173,8 @@ function PlasmicProducts__RenderFunc(props: {
                             typeof $steps["runActionOnApiRequest"].then ===
                               "function"
                           ) {
-                            $steps["runActionOnApiRequest"] = await $steps[
-                              "runActionOnApiRequest"
-                            ];
+                            $steps["runActionOnApiRequest"] =
+                              await $steps["runActionOnApiRequest"];
                           }
                         }}
                       />
@@ -1183,6 +1196,7 @@ const PlasmicDescendants = {
     "embedHtml",
     "authProvider",
     "layout",
+    "breadcrumb",
     "dialog",
     "input",
     "input2",
@@ -1193,13 +1207,23 @@ const PlasmicDescendants = {
   authProvider: [
     "authProvider",
     "layout",
+    "breadcrumb",
     "dialog",
     "input",
     "input2",
     "apiRequest",
     "productCard"
   ],
-  layout: ["layout", "dialog", "input", "input2", "apiRequest", "productCard"],
+  layout: [
+    "layout",
+    "breadcrumb",
+    "dialog",
+    "input",
+    "input2",
+    "apiRequest",
+    "productCard"
+  ],
+  breadcrumb: ["breadcrumb"],
   dialog: ["dialog", "input", "input2"],
   input: ["input"],
   input2: ["input2"],
@@ -1214,6 +1238,7 @@ type NodeDefaultElementType = {
   embedHtml: typeof Embed;
   authProvider: typeof AuthProvider;
   layout: typeof Layout;
+  breadcrumb: typeof Breadcrumb;
   dialog: typeof Paziresh24Modal;
   input: typeof Input;
   input2: typeof Input;
@@ -1232,7 +1257,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicProducts__VariantsArgs;
     args?: PlasmicProducts__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicProducts__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicProducts__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicProducts__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props
@@ -1284,6 +1311,7 @@ export const PlasmicProducts = Object.assign(
     embedHtml: makeNodeComponent("embedHtml"),
     authProvider: makeNodeComponent("authProvider"),
     layout: makeNodeComponent("layout"),
+    breadcrumb: makeNodeComponent("breadcrumb"),
     dialog: makeNodeComponent("dialog"),
     input: makeNodeComponent("input"),
     input2: makeNodeComponent("input2"),

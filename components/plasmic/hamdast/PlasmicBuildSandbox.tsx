@@ -382,17 +382,9 @@ function PlasmicBuildSandbox__RenderFunc(props: {
                     sty.text__kcUw0
                   )}
                 >
-                  <React.Fragment>
-                    <span
-                      className={"plasmic_default__all plasmic_default__span"}
-                      style={{ color: "#0000003D" }}
-                    >
-                      {"\u0633\u0627\u062e\u062a / "}
-                    </span>
-                    <React.Fragment>
-                      {"\u0633\u0646\u062f\u0628\u0627\u06a9\u0633"}
-                    </React.Fragment>
-                  </React.Fragment>
+                  {
+                    "\u0633\u0646\u062f\u0628\u0627\u06a9\u0633 \u067e\u0632\u0634\u06a9"
+                  }
                 </div>
                 <ApiRequest
                   data-plasmic-name={"apiRequest"}
@@ -429,7 +421,7 @@ function PlasmicBuildSandbox__RenderFunc(props: {
                   }}
                   url={(() => {
                     try {
-                      return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/sandbox/`;
+                      return `https://hamdast.paziresh24.com/api/v1/sandbox/`;
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
@@ -698,13 +690,7 @@ function PlasmicBuildSandbox__RenderFunc(props: {
                                         return (
                                           $state.apiRequest2.data.data
                                             .expertises[0].alias_title ??
-                                          `${
-                                            $state.apiRequest2.data.data
-                                              .expertises[0].degree.name ?? ""
-                                          } ${
-                                            $state.apiRequest2.data.data
-                                              .expertises[0].expertise.name
-                                          }`
+                                          `${$state.apiRequest2.data.data.expertises[0].degree.name ?? ""} ${$state.apiRequest2.data.data.expertises[0].expertise.name}`
                                         );
                                       } catch (e) {
                                         if (
@@ -845,9 +831,8 @@ function PlasmicBuildSandbox__RenderFunc(props: {
                               typeof $steps["updateLoading"] === "object" &&
                               typeof $steps["updateLoading"].then === "function"
                             ) {
-                              $steps["updateLoading"] = await $steps[
-                                "updateLoading"
-                              ];
+                              $steps["updateLoading"] =
+                                await $steps["updateLoading"];
                             }
 
                             $steps["deactiveSandbox"] = true
@@ -882,9 +867,8 @@ function PlasmicBuildSandbox__RenderFunc(props: {
                               typeof $steps["deactiveSandbox"].then ===
                                 "function"
                             ) {
-                              $steps["deactiveSandbox"] = await $steps[
-                                "deactiveSandbox"
-                              ];
+                              $steps["deactiveSandbox"] =
+                                await $steps["deactiveSandbox"];
                             }
 
                             $steps["updateLoading2"] = true
@@ -922,9 +906,8 @@ function PlasmicBuildSandbox__RenderFunc(props: {
                               typeof $steps["updateLoading2"].then ===
                                 "function"
                             ) {
-                              $steps["updateLoading2"] = await $steps[
-                                "updateLoading2"
-                              ];
+                              $steps["updateLoading2"] =
+                                await $steps["updateLoading2"];
                             }
 
                             $steps["updateLoading3"] = true
@@ -948,9 +931,8 @@ function PlasmicBuildSandbox__RenderFunc(props: {
                               typeof $steps["updateLoading3"].then ===
                                 "function"
                             ) {
-                              $steps["updateLoading3"] = await $steps[
-                                "updateLoading3"
-                              ];
+                              $steps["updateLoading3"] =
+                                await $steps["updateLoading3"];
                             }
                           }}
                           startIcon={
@@ -1057,9 +1039,8 @@ function PlasmicBuildSandbox__RenderFunc(props: {
                               typeof $steps["updateLoading"] === "object" &&
                               typeof $steps["updateLoading"].then === "function"
                             ) {
-                              $steps["updateLoading"] = await $steps[
-                                "updateLoading"
-                              ];
+                              $steps["updateLoading"] =
+                                await $steps["updateLoading"];
                             }
 
                             $steps["activeSandbox"] = true
@@ -1093,9 +1074,8 @@ function PlasmicBuildSandbox__RenderFunc(props: {
                               typeof $steps["activeSandbox"] === "object" &&
                               typeof $steps["activeSandbox"].then === "function"
                             ) {
-                              $steps["activeSandbox"] = await $steps[
-                                "activeSandbox"
-                              ];
+                              $steps["activeSandbox"] =
+                                await $steps["activeSandbox"];
                             }
 
                             $steps["updateLoading2"] = true
@@ -1133,9 +1113,8 @@ function PlasmicBuildSandbox__RenderFunc(props: {
                               typeof $steps["updateLoading2"].then ===
                                 "function"
                             ) {
-                              $steps["updateLoading2"] = await $steps[
-                                "updateLoading2"
-                              ];
+                              $steps["updateLoading2"] =
+                                await $steps["updateLoading2"];
                             }
 
                             $steps["updateLoading3"] = true
@@ -1159,9 +1138,8 @@ function PlasmicBuildSandbox__RenderFunc(props: {
                               typeof $steps["updateLoading3"].then ===
                                 "function"
                             ) {
-                              $steps["updateLoading3"] = await $steps[
-                                "updateLoading3"
-                              ];
+                              $steps["updateLoading3"] =
+                                await $steps["updateLoading3"];
                             }
                           }}
                           startIcon={
@@ -1238,7 +1216,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicBuildSandbox__VariantsArgs;
     args?: PlasmicBuildSandbox__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicBuildSandbox__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicBuildSandbox__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicBuildSandbox__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

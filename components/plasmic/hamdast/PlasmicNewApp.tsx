@@ -712,22 +712,6 @@ function PlasmicNewApp__RenderFunc(props: {
                                   "data"
                                 ]).apply(null, eventArgs);
                               }}
-                              params={(() => {
-                                try {
-                                  return {
-                                    key: $state.keyInput.value
-                                  };
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return undefined;
-                                  }
-                                  throw e;
-                                }
-                              })()}
                               ref={ref => {
                                 $refs["validateKey"] = ref;
                               }}
@@ -873,8 +857,8 @@ function PlasmicNewApp__RenderFunc(props: {
                                             "" && $state.keyInput.value === ""
                                             ? "نام و کلید نمی تواند خالی باشد"
                                             : $state.nameInput.value === ""
-                                            ? "نام نمی تواند خالی باشد"
-                                            : "شناسه یکتا نمی تواند خالی باشد";
+                                              ? "نام نمی تواند خالی باشد"
+                                              : "شناسه یکتا نمی تواند خالی باشد";
                                         } catch (e) {
                                           if (
                                             e instanceof TypeError ||
@@ -900,9 +884,8 @@ function PlasmicNewApp__RenderFunc(props: {
                             typeof $steps["invokeGlobalAction"].then ===
                               "function"
                           ) {
-                            $steps["invokeGlobalAction"] = await $steps[
-                              "invokeGlobalAction"
-                            ];
+                            $steps["invokeGlobalAction"] =
+                              await $steps["invokeGlobalAction"];
                           }
 
                           $steps["invokeGlobalAction2"] =
@@ -932,9 +915,8 @@ function PlasmicNewApp__RenderFunc(props: {
                             typeof $steps["invokeGlobalAction2"].then ===
                               "function"
                           ) {
-                            $steps["invokeGlobalAction2"] = await $steps[
-                              "invokeGlobalAction2"
-                            ];
+                            $steps["invokeGlobalAction2"] =
+                              await $steps["invokeGlobalAction2"];
                           }
 
                           $steps["updateLoading"] =
@@ -974,9 +956,8 @@ function PlasmicNewApp__RenderFunc(props: {
                             typeof $steps["updateLoading"] === "object" &&
                             typeof $steps["updateLoading"].then === "function"
                           ) {
-                            $steps["updateLoading"] = await $steps[
-                              "updateLoading"
-                            ];
+                            $steps["updateLoading"] =
+                              await $steps["updateLoading"];
                           }
 
                           $steps["createApp"] =
@@ -1068,9 +1049,8 @@ function PlasmicNewApp__RenderFunc(props: {
                             typeof $steps["goToBuildFeatures"].then ===
                               "function"
                           ) {
-                            $steps["goToBuildFeatures"] = await $steps[
-                              "goToBuildFeatures"
-                            ];
+                            $steps["goToBuildFeatures"] =
+                              await $steps["goToBuildFeatures"];
                           }
 
                           $steps["updateLoading2"] =
@@ -1109,9 +1089,8 @@ function PlasmicNewApp__RenderFunc(props: {
                             typeof $steps["updateLoading2"] === "object" &&
                             typeof $steps["updateLoading2"].then === "function"
                           ) {
-                            $steps["updateLoading2"] = await $steps[
-                              "updateLoading2"
-                            ];
+                            $steps["updateLoading2"] =
+                              await $steps["updateLoading2"];
                           }
 
                           $steps["runCode"] = true
@@ -1208,7 +1187,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicNewApp__VariantsArgs;
     args?: PlasmicNewApp__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicNewApp__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicNewApp__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicNewApp__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

@@ -62,6 +62,7 @@ import {
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import AuthProvider from "../../AuthProvider"; // plasmic-import: KTPu1eZupEdG/component
 import Layout from "../../Layout"; // plasmic-import: ve2FygUyzJYe/component
+import Breadcrumb from "../../Breadcrumb"; // plasmic-import: LgcOSQnaSwvf/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
 import Filter from "../../Filter"; // plasmic-import: YY41SIghQUgw/component
 import Paziresh24Modal from "../../Paziresh24Modal"; // plasmic-import: ZGdhyEBPJSmH/component
@@ -100,6 +101,7 @@ export type PlasmicTransactions__OverridesType = {
   embedHtml?: Flex__<typeof Embed>;
   authProvider?: Flex__<typeof AuthProvider>;
   layout?: Flex__<typeof Layout>;
+  breadcrumb?: Flex__<typeof Breadcrumb>;
   fragmentApiRequest2?: Flex__<typeof ApiRequest>;
   fragmentApiRequest3?: Flex__<typeof ApiRequest>;
   fragmentApiRequest4?: Flex__<typeof ApiRequest>;
@@ -506,6 +508,7 @@ function PlasmicTransactions__RenderFunc(props: {
                   throw e;
                 }
               })()}
+              showAppSidebar={true}
               user={(() => {
                 try {
                   return $state.authProvider.user;
@@ -527,27 +530,41 @@ function PlasmicTransactions__RenderFunc(props: {
                   "no-scroll"
                 )}
               >
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___6KWmF
-                  )}
-                >
-                  <React.Fragment>
-                    <span
-                      className={"plasmic_default__all plasmic_default__span"}
-                      style={{ color: "#0000003D" }}
-                    >
-                      {"\u06a9\u0633\u0628 \u062f\u0631\u0622\u0645\u062f / "}
-                    </span>
-                    <React.Fragment>
-                      {
-                        "\u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627\u06cc \u0645\u0627\u0644\u06cc"
+                <Breadcrumb
+                  data-plasmic-name={"breadcrumb"}
+                  data-plasmic-override={overrides.breadcrumb}
+                  apps={(() => {
+                    try {
+                      return $state.authProvider.apps;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
                       }
-                    </React.Fragment>
-                  </React.Fragment>
-                </div>
+                      throw e;
+                    }
+                  })()}
+                  className={classNames("__wab_instance", sty.breadcrumb)}
+                  menuTitle={
+                    "\u06a9\u0633\u0628 \u062f\u0631\u0622\u0645\u062f / \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627\u06cc \u0645\u0627\u0644\u06cc"
+                  }
+                  selectedApp={(() => {
+                    try {
+                      return $ctx.params.id;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()}
+                />
+
                 <div
                   className={classNames(projectcss.all, sty.freeBox___6DFfd)}
                 >
@@ -1391,9 +1408,8 @@ function PlasmicTransactions__RenderFunc(props: {
                         typeof $steps["updateStatusFilter"] === "object" &&
                         typeof $steps["updateStatusFilter"].then === "function"
                       ) {
-                        $steps["updateStatusFilter"] = await $steps[
-                          "updateStatusFilter"
-                        ];
+                        $steps["updateStatusFilter"] =
+                          await $steps["updateStatusFilter"];
                       }
                     }}
                     text={"\u0627\u0646\u062c\u0627\u0645 \u0634\u062f\u0647"}
@@ -1448,9 +1464,8 @@ function PlasmicTransactions__RenderFunc(props: {
                         typeof $steps["updateStatusFilter"] === "object" &&
                         typeof $steps["updateStatusFilter"].then === "function"
                       ) {
-                        $steps["updateStatusFilter"] = await $steps[
-                          "updateStatusFilter"
-                        ];
+                        $steps["updateStatusFilter"] =
+                          await $steps["updateStatusFilter"];
                       }
                     }}
                     text={
@@ -1507,9 +1522,8 @@ function PlasmicTransactions__RenderFunc(props: {
                         typeof $steps["updateStatusFilter"] === "object" &&
                         typeof $steps["updateStatusFilter"].then === "function"
                       ) {
-                        $steps["updateStatusFilter"] = await $steps[
-                          "updateStatusFilter"
-                        ];
+                        $steps["updateStatusFilter"] =
+                          await $steps["updateStatusFilter"];
                       }
                     }}
                     text={
@@ -1616,8 +1630,8 @@ function PlasmicTransactions__RenderFunc(props: {
                                 !_par
                                   ? []
                                   : Array.isArray(_par)
-                                  ? _par
-                                  : [_par])(
+                                    ? _par
+                                    : [_par])(
                                 (() => {
                                   try {
                                     return $state.authProvider.apps
@@ -1708,9 +1722,10 @@ function PlasmicTransactions__RenderFunc(props: {
                                       ) {
                                         $steps[
                                           "updateSelectedUserForWithdraw"
-                                        ] = await $steps[
-                                          "updateSelectedUserForWithdraw"
-                                        ];
+                                        ] =
+                                          await $steps[
+                                            "updateSelectedUserForWithdraw"
+                                          ];
                                       }
 
                                       $steps["updateInputValue"] = true
@@ -2230,9 +2245,8 @@ function PlasmicTransactions__RenderFunc(props: {
                                 typeof $steps["updateWithdrawLoading"].then ===
                                   "function"
                               ) {
-                                $steps["updateWithdrawLoading"] = await $steps[
-                                  "updateWithdrawLoading"
-                                ];
+                                $steps["updateWithdrawLoading"] =
+                                  await $steps["updateWithdrawLoading"];
                               }
 
                               $steps["invokeGlobalAction"] = true
@@ -2292,9 +2306,8 @@ function PlasmicTransactions__RenderFunc(props: {
                                 typeof $steps["invokeGlobalAction"].then ===
                                   "function"
                               ) {
-                                $steps["invokeGlobalAction"] = await $steps[
-                                  "invokeGlobalAction"
-                                ];
+                                $steps["invokeGlobalAction"] =
+                                  await $steps["invokeGlobalAction"];
                               }
 
                               $steps["updateWithdrawLoading2"] = true
@@ -2331,9 +2344,8 @@ function PlasmicTransactions__RenderFunc(props: {
                                 typeof $steps["updateWithdrawLoading2"].then ===
                                   "function"
                               ) {
-                                $steps["updateWithdrawLoading2"] = await $steps[
-                                  "updateWithdrawLoading2"
-                                ];
+                                $steps["updateWithdrawLoading2"] =
+                                  await $steps["updateWithdrawLoading2"];
                               }
 
                               $steps["invokeGlobalAction2"] = true
@@ -2358,9 +2370,8 @@ function PlasmicTransactions__RenderFunc(props: {
                                 typeof $steps["invokeGlobalAction2"].then ===
                                   "function"
                               ) {
-                                $steps["invokeGlobalAction2"] = await $steps[
-                                  "invokeGlobalAction2"
-                                ];
+                                $steps["invokeGlobalAction2"] =
+                                  await $steps["invokeGlobalAction2"];
                               }
 
                               $steps["updateDialogOpen"] = true
@@ -2397,9 +2408,8 @@ function PlasmicTransactions__RenderFunc(props: {
                                 typeof $steps["updateDialogOpen"].then ===
                                   "function"
                               ) {
-                                $steps["updateDialogOpen"] = await $steps[
-                                  "updateDialogOpen"
-                                ];
+                                $steps["updateDialogOpen"] =
+                                  await $steps["updateDialogOpen"];
                               }
 
                               $steps["runActionOnFragmentApiRequest3"] = true
@@ -2689,6 +2699,7 @@ const PlasmicDescendants = {
     "embedHtml",
     "authProvider",
     "layout",
+    "breadcrumb",
     "fragmentApiRequest2",
     "fragmentApiRequest3",
     "fragmentApiRequest4",
@@ -2703,6 +2714,7 @@ const PlasmicDescendants = {
   authProvider: [
     "authProvider",
     "layout",
+    "breadcrumb",
     "fragmentApiRequest2",
     "fragmentApiRequest3",
     "fragmentApiRequest4",
@@ -2715,6 +2727,7 @@ const PlasmicDescendants = {
   ],
   layout: [
     "layout",
+    "breadcrumb",
     "fragmentApiRequest2",
     "fragmentApiRequest3",
     "fragmentApiRequest4",
@@ -2725,6 +2738,7 @@ const PlasmicDescendants = {
     "apiRequest",
     "transactionCard"
   ],
+  breadcrumb: ["breadcrumb"],
   fragmentApiRequest2: ["fragmentApiRequest2"],
   fragmentApiRequest3: ["fragmentApiRequest3", "fragmentApiRequest4"],
   fragmentApiRequest4: ["fragmentApiRequest4"],
@@ -2743,6 +2757,7 @@ type NodeDefaultElementType = {
   embedHtml: typeof Embed;
   authProvider: typeof AuthProvider;
   layout: typeof Layout;
+  breadcrumb: typeof Breadcrumb;
   fragmentApiRequest2: typeof ApiRequest;
   fragmentApiRequest3: typeof ApiRequest;
   fragmentApiRequest4: typeof ApiRequest;
@@ -2765,7 +2780,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicTransactions__VariantsArgs;
     args?: PlasmicTransactions__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicTransactions__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicTransactions__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicTransactions__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props
@@ -2817,6 +2834,7 @@ export const PlasmicTransactions = Object.assign(
     embedHtml: makeNodeComponent("embedHtml"),
     authProvider: makeNodeComponent("authProvider"),
     layout: makeNodeComponent("layout"),
+    breadcrumb: makeNodeComponent("breadcrumb"),
     fragmentApiRequest2: makeNodeComponent("fragmentApiRequest2"),
     fragmentApiRequest3: makeNodeComponent("fragmentApiRequest3"),
     fragmentApiRequest4: makeNodeComponent("fragmentApiRequest4"),

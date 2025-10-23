@@ -93,18 +93,20 @@ export type PlasmicMenu__ArgsType = {
   name?: string;
   icon?: boolean;
   onClick?: () => void;
+  description?: string;
 };
 type ArgPropType = keyof PlasmicMenu__ArgsType;
 export const PlasmicMenu__ArgProps = new Array<ArgPropType>(
   "iconWrapper",
   "name",
   "icon",
-  "onClick"
+  "onClick",
+  "description"
 );
 
 export type PlasmicMenu__OverridesType = {
   root?: Flex__<"div">;
-  text?: Flex__<"div">;
+  freeBox?: Flex__<"div">;
 };
 
 export interface DefaultMenuProps {
@@ -112,6 +114,7 @@ export interface DefaultMenuProps {
   name?: string;
   icon?: boolean;
   onClick?: () => void;
+  description?: string;
   active?: SingleBooleanChoiceArg<"active">;
   compact?: SingleBooleanChoiceArg<"compact">;
   disabled?: SingleBooleanChoiceArg<"disabled">;
@@ -259,50 +262,117 @@ function PlasmicMenu__RenderFunc(props: {
           })
         : null}
       <div
-        data-plasmic-name={"text"}
-        data-plasmic-override={overrides.text}
-        className={classNames(projectcss.all, projectcss.__wab_text, sty.text, {
-          [sty.textactive]: hasVariant($state, "active", "active"),
-          [sty.textactive_compact]:
-            hasVariant($state, "active", "active") &&
-            hasVariant($state, "compact", "compact"),
-          [sty.textcompact]: hasVariant($state, "compact", "compact"),
-          [sty.textdisabled]: hasVariant($state, "disabled", "disabled"),
-          [sty.textdisabled_compact]:
-            hasVariant($state, "disabled", "disabled") &&
-            hasVariant($state, "compact", "compact")
-        })}
+        data-plasmic-name={"freeBox"}
+        data-plasmic-override={overrides.freeBox}
+        className={classNames(projectcss.all, sty.freeBox)}
       >
-        <React.Fragment>
-          {(() => {
-            try {
-              return $props.name;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return "";
-              }
-              throw e;
+        <div
+          className={classNames(
+            projectcss.all,
+            projectcss.__wab_text,
+            sty.text__rXnwv,
+            {
+              [sty.textactive__rXnwvEmr3O]: hasVariant(
+                $state,
+                "active",
+                "active"
+              ),
+              [sty.textactive_compact__rXnwvEmr3OVMEwR]:
+                hasVariant($state, "active", "active") &&
+                hasVariant($state, "compact", "compact"),
+              [sty.textcompact__rXnwVvMEwR]: hasVariant(
+                $state,
+                "compact",
+                "compact"
+              ),
+              [sty.textdisabled__rXnwVg8CZ]: hasVariant(
+                $state,
+                "disabled",
+                "disabled"
+              ),
+              [sty.textdisabled_compact__rXnwVg8CZVMEwR]:
+                hasVariant($state, "disabled", "disabled") &&
+                hasVariant($state, "compact", "compact")
             }
-          })()}
-        </React.Fragment>
+          )}
+        >
+          <React.Fragment>
+            {(() => {
+              try {
+                return $props.name;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return "";
+                }
+                throw e;
+              }
+            })()}
+          </React.Fragment>
+        </div>
+        <div
+          className={classNames(
+            projectcss.all,
+            projectcss.__wab_text,
+            sty.text__huio,
+            {
+              [sty.textactive__huioEmr3O]: hasVariant(
+                $state,
+                "active",
+                "active"
+              ),
+              [sty.textactive_compact__huioEmr3OVMEwR]:
+                hasVariant($state, "active", "active") &&
+                hasVariant($state, "compact", "compact"),
+              [sty.textcompact__huioVMEwR]: hasVariant(
+                $state,
+                "compact",
+                "compact"
+              ),
+              [sty.textdisabled__huioG8CZ]: hasVariant(
+                $state,
+                "disabled",
+                "disabled"
+              ),
+              [sty.textdisabled_compact__huioG8CZVMEwR]:
+                hasVariant($state, "disabled", "disabled") &&
+                hasVariant($state, "compact", "compact")
+            }
+          )}
+        >
+          <React.Fragment>
+            {(() => {
+              try {
+                return $props.description;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return "";
+                }
+                throw e;
+              }
+            })()}
+          </React.Fragment>
+        </div>
       </div>
     </div>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root", "text"],
-  text: ["text"]
+  root: ["root", "freeBox"],
+  freeBox: ["freeBox"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  text: "div";
+  freeBox: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -316,7 +386,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicMenu__VariantsArgs;
     args?: PlasmicMenu__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicMenu__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicMenu__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicMenu__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props
@@ -365,7 +437,7 @@ export const PlasmicMenu = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    text: makeNodeComponent("text"),
+    freeBox: makeNodeComponent("freeBox"),
 
     // Metadata about props expected for PlasmicMenu
     internalVariantProps: PlasmicMenu__VariantProps,
