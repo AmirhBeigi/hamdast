@@ -80,6 +80,8 @@ export const PlasmicAuthProvider__VariantProps = new Array<VariantPropType>();
 export type PlasmicAuthProvider__ArgsType = {
   onUserChange?: (val: string) => void;
   onAppsChange?: (val: string) => void;
+  onErrorChange?: (val: string) => void;
+  onLoadingChange?: (val: string) => void;
   children?: React.ReactNode;
   withOutUser?: boolean;
 };
@@ -87,6 +89,8 @@ type ArgPropType = keyof PlasmicAuthProvider__ArgsType;
 export const PlasmicAuthProvider__ArgProps = new Array<ArgPropType>(
   "onUserChange",
   "onAppsChange",
+  "onErrorChange",
+  "onLoadingChange",
   "children",
   "withOutUser"
 );
@@ -101,6 +105,8 @@ export type PlasmicAuthProvider__OverridesType = {
 export interface DefaultAuthProviderProps {
   onUserChange?: (val: string) => void;
   onAppsChange?: (val: string) => void;
+  onErrorChange?: (val: string) => void;
+  onLoadingChange?: (val: string) => void;
   children?: React.ReactNode;
   withOutUser?: boolean;
   className?: string;
@@ -171,13 +177,15 @@ function PlasmicAuthProvider__RenderFunc(props: {
       },
       {
         path: "error",
-        type: "private",
+        type: "readonly",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $ctx }) => false,
+
+        onChangeProp: "onErrorChange"
       },
       {
         path: "loading",
-        type: "private",
+        type: "readonly",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
@@ -192,7 +200,9 @@ function PlasmicAuthProvider__RenderFunc(props: {
               }
               throw e;
             }
-          })()
+          })(),
+
+        onChangeProp: "onLoadingChange"
       }
     ],
     [$props, $ctx, $refs]
@@ -383,6 +393,7 @@ function PlasmicAuthProvider__RenderFunc(props: {
                             );
                           }
                           if ($steps.getProfile?.status == "403") {
+                            $state.error = true;
                             if ($props.withOutUser) {
                               return ($state.user = {});
                             }
@@ -628,7 +639,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicAuthProvider__VariantsArgs;
     args?: PlasmicAuthProvider__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicAuthProvider__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicAuthProvider__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicAuthProvider__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

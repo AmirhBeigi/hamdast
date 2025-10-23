@@ -809,7 +809,7 @@ function PlasmicAppForm__RenderFunc(props: {
                           name_fa: $state.appNameInput.value,
                           display_name_fa: $state.appNameInput.value,
                           short_description: $state.subTitleInput.value,
-                          descirption: $state.descriptionInput.value,
+                          description: $state.descriptionInput.value,
                           app_link: $state.appLinkInput.value,
                           key: $state.appKeyInput.value
                         };
@@ -838,44 +838,26 @@ function PlasmicAppForm__RenderFunc(props: {
             $steps["createApp"] = await $steps["createApp"];
           }
 
-          $steps["goToBuildAuthorization"] = !!$steps.createApp?.data?.id
+          $steps["runCode"] = !!$steps.createApp?.data?.id
             ? (() => {
                 const actionArgs = {
-                  destination: `/apps/${(() => {
-                    try {
-                      return $steps.createApp?.data?.id;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return undefined;
-                      }
-                      throw e;
-                    }
-                  })()}/authorization`
-                };
-                return (({ destination }) => {
-                  if (
-                    typeof destination === "string" &&
-                    destination.startsWith("#")
-                  ) {
-                    document
-                      .getElementById(destination.substr(1))
-                      .scrollIntoView({ behavior: "smooth" });
-                  } else {
-                    __nextRouter?.push(destination);
+                  customFunction: async () => {
+                    return globalThis.location.assign(
+                      `/apps/${$steps?.createApp?.data?.id}/authorization/`
+                    );
                   }
+                };
+                return (({ customFunction }) => {
+                  return customFunction();
                 })?.apply(null, [actionArgs]);
               })()
             : undefined;
           if (
-            $steps["goToBuildAuthorization"] != null &&
-            typeof $steps["goToBuildAuthorization"] === "object" &&
-            typeof $steps["goToBuildAuthorization"].then === "function"
+            $steps["runCode"] != null &&
+            typeof $steps["runCode"] === "object" &&
+            typeof $steps["runCode"].then === "function"
           ) {
-            $steps["goToBuildAuthorization"] =
-              await $steps["goToBuildAuthorization"];
+            $steps["runCode"] = await $steps["runCode"];
           }
 
           $steps["updateLoading2"] = !$steps.createApp?.data?.id

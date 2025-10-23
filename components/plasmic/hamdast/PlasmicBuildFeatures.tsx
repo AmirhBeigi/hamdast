@@ -407,6 +407,18 @@ function PlasmicBuildFeatures__RenderFunc(props: {
               throw e;
             }
           })()
+      },
+      {
+        path: "authProvider.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "authProvider.error",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -477,6 +489,34 @@ function PlasmicBuildFeatures__RenderFunc(props: {
                 null,
                 eventArgs
               );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onErrorChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "authProvider",
+                "error"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onLoadingChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "authProvider",
+                "loading"
+              ]).apply(null, eventArgs);
 
               if (
                 eventArgs.length > 1 &&
@@ -798,12 +838,7 @@ function PlasmicBuildFeatures__RenderFunc(props: {
                                       const actionArgs = {
                                         customFunction: async () => {
                                           return globalThis.open(
-                                            `https://www.paziresh24.com/_/${
-                                              $state.authProvider.apps?.find(
-                                                item =>
-                                                  item.id == $ctx.params.id
-                                              )?.key
-                                            }/launcher/`
+                                            `https://www.paziresh24.com/_/${$state.authProvider.apps?.find(item => item.id == $ctx.params.id)?.key}/launcher/`
                                           );
                                         }
                                       };
@@ -842,9 +877,8 @@ function PlasmicBuildFeatures__RenderFunc(props: {
                                   typeof $steps["invokeGlobalAction"].then ===
                                     "function"
                                 ) {
-                                  $steps["invokeGlobalAction"] = await $steps[
-                                    "invokeGlobalAction"
-                                  ];
+                                  $steps["invokeGlobalAction"] =
+                                    await $steps["invokeGlobalAction"];
                                 }
                               }}
                             >
@@ -2382,9 +2416,8 @@ function PlasmicBuildFeatures__RenderFunc(props: {
                                       typeof $steps["updateDialogOpen"].then ===
                                         "function"
                                     ) {
-                                      $steps["updateDialogOpen"] = await $steps[
-                                        "updateDialogOpen"
-                                      ];
+                                      $steps["updateDialogOpen"] =
+                                        await $steps["updateDialogOpen"];
                                     }
 
                                     $steps["updateDialogOpen2"] = true
@@ -3181,9 +3214,8 @@ function PlasmicBuildFeatures__RenderFunc(props: {
                                       typeof $steps["updateDialogOpen"].then ===
                                         "function"
                                     ) {
-                                      $steps["updateDialogOpen"] = await $steps[
-                                        "updateDialogOpen"
-                                      ];
+                                      $steps["updateDialogOpen"] =
+                                        await $steps["updateDialogOpen"];
                                     }
 
                                     $steps["updateDialogOpen2"] = true
@@ -3477,9 +3509,8 @@ function PlasmicBuildFeatures__RenderFunc(props: {
                         typeof $steps["updateIntialData"] === "object" &&
                         typeof $steps["updateIntialData"].then === "function"
                       ) {
-                        $steps["updateIntialData"] = await $steps[
-                          "updateIntialData"
-                        ];
+                        $steps["updateIntialData"] =
+                          await $steps["updateIntialData"];
                       }
                     }).apply(null, eventArgs);
                   }}
@@ -3711,7 +3742,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicBuildFeatures__VariantsArgs;
     args?: PlasmicBuildFeatures__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicBuildFeatures__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicBuildFeatures__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicBuildFeatures__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

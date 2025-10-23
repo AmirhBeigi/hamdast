@@ -203,6 +203,18 @@ function PlasmicSessionReplay__RenderFunc(props: {
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 1
+      },
+      {
+        path: "authProvider.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "authProvider.error",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -273,6 +285,34 @@ function PlasmicSessionReplay__RenderFunc(props: {
                 null,
                 eventArgs
               );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onErrorChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "authProvider",
+                "error"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onLoadingChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "authProvider",
+                "loading"
+              ]).apply(null, eventArgs);
 
               if (
                 eventArgs.length > 1 &&
@@ -548,9 +588,8 @@ function PlasmicSessionReplay__RenderFunc(props: {
                                 typeof $steps["updateMenu"] === "object" &&
                                 typeof $steps["updateMenu"].then === "function"
                               ) {
-                                $steps["updateMenu"] = await $steps[
-                                  "updateMenu"
-                                ];
+                                $steps["updateMenu"] =
+                                  await $steps["updateMenu"];
                               }
                             }}
                           />
@@ -929,8 +968,8 @@ function PlasmicSessionReplay__RenderFunc(props: {
                       return Array.isArray($state.fetchData2?.data)
                         ? $state.fetchData2.data?.length == 0
                         : $state.fetchData2?.loading
-                        ? false
-                        : true;
+                          ? false
+                          : true;
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
@@ -1027,7 +1066,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicSessionReplay__VariantsArgs;
     args?: PlasmicSessionReplay__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicSessionReplay__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicSessionReplay__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicSessionReplay__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

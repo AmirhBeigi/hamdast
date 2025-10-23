@@ -131,6 +131,8 @@ function PlasmicHamdastLogin__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const $globalActions = useGlobalActions?.();
+
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
@@ -174,6 +176,18 @@ function PlasmicHamdastLogin__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "authProvider.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "authProvider.error",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -232,7 +246,7 @@ function PlasmicHamdastLogin__RenderFunc(props: {
             className={classNames("__wab_instance", sty.sideEffect)}
             deps={(() => {
               try {
-                return [$state.authProvider.user];
+                return [$state.authProvider.user, $state.authProvider?.error];
               } catch (e) {
                 if (
                   e instanceof TypeError ||
@@ -270,6 +284,48 @@ function PlasmicHamdastLogin__RenderFunc(props: {
               ) {
                 $steps["goToApps"] = await $steps["goToApps"];
               }
+
+              $steps["createUser"] = $state.authProvider.error
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        "POST",
+                        "https://hamdast.paziresh24.com/api/v1/profile"
+                      ]
+                    };
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
+              if (
+                $steps["createUser"] != null &&
+                typeof $steps["createUser"] === "object" &&
+                typeof $steps["createUser"].then === "function"
+              ) {
+                $steps["createUser"] = await $steps["createUser"];
+              }
+
+              $steps["runCode"] =
+                $state.authProvider.error && $steps?.createUser?.data
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return globalThis.location.reload();
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["runCode"] != null &&
+                typeof $steps["runCode"] === "object" &&
+                typeof $steps["runCode"].then === "function"
+              ) {
+                $steps["runCode"] = await $steps["runCode"];
+              }
             }}
           />
 
@@ -282,6 +338,34 @@ function PlasmicHamdastLogin__RenderFunc(props: {
                 null,
                 eventArgs
               );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onErrorChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "authProvider",
+                "error"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onLoadingChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "authProvider",
+                "loading"
+              ]).apply(null, eventArgs);
 
               if (
                 eventArgs.length > 1 &&

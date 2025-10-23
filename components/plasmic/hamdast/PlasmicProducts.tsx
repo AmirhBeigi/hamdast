@@ -207,6 +207,18 @@ function PlasmicProducts__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "authProvider.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "authProvider.error",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -277,6 +289,34 @@ function PlasmicProducts__RenderFunc(props: {
                 null,
                 eventArgs
               );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onErrorChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "authProvider",
+                "error"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onLoadingChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "authProvider",
+                "loading"
+              ]).apply(null, eventArgs);
 
               if (
                 eventArgs.length > 1 &&

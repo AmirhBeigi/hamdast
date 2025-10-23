@@ -418,6 +418,18 @@ function PlasmicStatistics__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
 
         refName: "activeUserApi7"
+      },
+      {
+        path: "authProvider.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "authProvider.error",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -488,6 +500,34 @@ function PlasmicStatistics__RenderFunc(props: {
                 null,
                 eventArgs
               );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onErrorChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "authProvider",
+                "error"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onLoadingChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "authProvider",
+                "loading"
+              ]).apply(null, eventArgs);
 
               if (
                 eventArgs.length > 1 &&
@@ -737,9 +777,8 @@ function PlasmicStatistics__RenderFunc(props: {
                                   typeof $steps["updateDay"] === "object" &&
                                   typeof $steps["updateDay"].then === "function"
                                 ) {
-                                  $steps["updateDay"] = await $steps[
-                                    "updateDay"
-                                  ];
+                                  $steps["updateDay"] =
+                                    await $steps["updateDay"];
                                 }
 
                                 $steps["updateMenu"] = true
@@ -775,9 +814,8 @@ function PlasmicStatistics__RenderFunc(props: {
                                   typeof $steps["updateMenu"].then ===
                                     "function"
                                 ) {
-                                  $steps["updateMenu"] = await $steps[
-                                    "updateMenu"
-                                  ];
+                                  $steps["updateMenu"] =
+                                    await $steps["updateMenu"];
                                 }
                               }}
                             />
@@ -1075,9 +1113,8 @@ function PlasmicStatistics__RenderFunc(props: {
                                       typeof $steps["runCode"].then ===
                                         "function"
                                     ) {
-                                      $steps["runCode"] = await $steps[
-                                        "runCode"
-                                      ];
+                                      $steps["runCode"] =
+                                        await $steps["runCode"];
                                     }
                                   }}
                                 />
@@ -1348,9 +1385,8 @@ function PlasmicStatistics__RenderFunc(props: {
                                     typeof $steps["updateDay"].then ===
                                       "function"
                                   ) {
-                                    $steps["updateDay"] = await $steps[
-                                      "updateDay"
-                                    ];
+                                    $steps["updateDay"] =
+                                      await $steps["updateDay"];
                                   }
                                 }}
                                 text={(() => {
@@ -2230,8 +2266,8 @@ function PlasmicStatistics__RenderFunc(props: {
                                     !_par
                                       ? []
                                       : Array.isArray(_par)
-                                      ? _par
-                                      : [_par])(
+                                        ? _par
+                                        : [_par])(
                                     (() => {
                                       try {
                                         return $state.fetchData2.data;
@@ -2332,9 +2368,8 @@ function PlasmicStatistics__RenderFunc(props: {
                                             typeof $steps["updateDay"].then ===
                                               "function"
                                           ) {
-                                            $steps["updateDay"] = await $steps[
-                                              "updateDay"
-                                            ];
+                                            $steps["updateDay"] =
+                                              await $steps["updateDay"];
                                           }
 
                                           $steps["updateMenu"] = true
@@ -2377,9 +2412,8 @@ function PlasmicStatistics__RenderFunc(props: {
                                             typeof $steps["updateMenu"].then ===
                                               "function"
                                           ) {
-                                            $steps["updateMenu"] = await $steps[
-                                              "updateMenu"
-                                            ];
+                                            $steps["updateMenu"] =
+                                              await $steps["updateMenu"];
                                           }
 
                                           $steps["updateMenu3"] = true
@@ -2584,9 +2618,8 @@ function PlasmicStatistics__RenderFunc(props: {
                                     typeof $steps["updateDay"].then ===
                                       "function"
                                   ) {
-                                    $steps["updateDay"] = await $steps[
-                                      "updateDay"
-                                    ];
+                                    $steps["updateDay"] =
+                                      await $steps["updateDay"];
                                   }
                                 }}
                                 text={(() => {
@@ -3148,9 +3181,8 @@ function PlasmicStatistics__RenderFunc(props: {
                 typeof $steps["updateDatePicker2Values"] === "object" &&
                 typeof $steps["updateDatePicker2Values"].then === "function"
               ) {
-                $steps["updateDatePicker2Values"] = await $steps[
-                  "updateDatePicker2Values"
-                ];
+                $steps["updateDatePicker2Values"] =
+                  await $steps["updateDatePicker2Values"];
               }
             }}
           />
@@ -3255,7 +3287,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicStatistics__VariantsArgs;
     args?: PlasmicStatistics__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicStatistics__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicStatistics__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicStatistics__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props
