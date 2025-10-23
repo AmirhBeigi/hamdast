@@ -67,7 +67,6 @@ import StepsLine from "../../StepsLine"; // plasmic-import: 7HfoWBpGiHw6/compone
 import Paziresh24Modal from "../../Paziresh24Modal"; // plasmic-import: ZGdhyEBPJSmH/component
 import Paziresh24Button from "../../Paziresh24Button"; // plasmic-import: YOhw5fIQJQgB/component
 import { Input } from "@/fragment/components/input"; // plasmic-import: AWE69UKwmIyg/codeComponent
-import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
 import { TiptapWrapper } from "@plasmicpkgs/tiptap/skinny/registerTiptap";
 import { Bold } from "@plasmicpkgs/tiptap/skinny/registerBold";
 import { Italic } from "@plasmicpkgs/tiptap/skinny/registerItalic";
@@ -77,6 +76,7 @@ import { ToolbarBold } from "@plasmicpkgs/tiptap/skinny/registerToolbarBold";
 import { ToolbarItalic } from "@plasmicpkgs/tiptap/skinny/registerToolbarItalic";
 import { ToolbarUnderline } from "@plasmicpkgs/tiptap/skinny/registerToolbarUnderline";
 import { ToolbarStrike } from "@plasmicpkgs/tiptap/skinny/registerToolbarStrike";
+import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/styleTokensProvider
 
@@ -1191,64 +1191,8 @@ function PlasmicBuildFeatures__RenderFunc(props: {
                                         throw e;
                                       }
                                     })()}
-                                    loading={(() => {
-                                      try {
-                                        return $state.loadingButton;
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return [];
-                                        }
-                                        throw e;
-                                      }
-                                    })()}
                                     onClick={async event => {
                                       const $steps = {};
-
-                                      $steps["updateLoadingButton"] = true
-                                        ? (() => {
-                                            const actionArgs = {
-                                              variable: {
-                                                objRoot: $state,
-                                                variablePath: ["loadingButton"]
-                                              },
-                                              operation: 0,
-                                              value: true
-                                            };
-                                            return (({
-                                              variable,
-                                              value,
-                                              startIndex,
-                                              deleteCount
-                                            }) => {
-                                              if (!variable) {
-                                                return;
-                                              }
-                                              const { objRoot, variablePath } =
-                                                variable;
-
-                                              $stateSet(
-                                                objRoot,
-                                                variablePath,
-                                                value
-                                              );
-                                              return value;
-                                            })?.apply(null, [actionArgs]);
-                                          })()
-                                        : undefined;
-                                      if (
-                                        $steps["updateLoadingButton"] != null &&
-                                        typeof $steps["updateLoadingButton"] ===
-                                          "object" &&
-                                        typeof $steps["updateLoadingButton"]
-                                          .then === "function"
-                                      ) {
-                                        $steps["updateLoadingButton"] =
-                                          await $steps["updateLoadingButton"];
-                                      }
 
                                       $steps["invokeGlobalAction"] = true
                                         ? (() => {
@@ -1311,125 +1255,6 @@ function PlasmicBuildFeatures__RenderFunc(props: {
                                       ) {
                                         $steps["invokeGlobalAction"] =
                                           await $steps["invokeGlobalAction"];
-                                      }
-
-                                      $steps["updateLoadingButton3"] = true
-                                        ? (() => {
-                                            const actionArgs = {
-                                              tplRef: "userPageRequest",
-                                              action: "refresh"
-                                            };
-                                            return (({
-                                              tplRef,
-                                              action,
-                                              args
-                                            }) => {
-                                              return $refs?.[tplRef]?.[
-                                                action
-                                              ]?.(...(args ?? []));
-                                            })?.apply(null, [actionArgs]);
-                                          })()
-                                        : undefined;
-                                      if (
-                                        $steps["updateLoadingButton3"] !=
-                                          null &&
-                                        typeof $steps[
-                                          "updateLoadingButton3"
-                                        ] === "object" &&
-                                        typeof $steps["updateLoadingButton3"]
-                                          .then === "function"
-                                      ) {
-                                        $steps["updateLoadingButton3"] =
-                                          await $steps["updateLoadingButton3"];
-                                      }
-
-                                      $steps["updateLoadingButton2"] = true
-                                        ? (() => {
-                                            const actionArgs = {
-                                              variable: {
-                                                objRoot: $state,
-                                                variablePath: ["loadingButton"]
-                                              },
-                                              operation: 0,
-                                              value: false
-                                            };
-                                            return (({
-                                              variable,
-                                              value,
-                                              startIndex,
-                                              deleteCount
-                                            }) => {
-                                              if (!variable) {
-                                                return;
-                                              }
-                                              const { objRoot, variablePath } =
-                                                variable;
-
-                                              $stateSet(
-                                                objRoot,
-                                                variablePath,
-                                                value
-                                              );
-                                              return value;
-                                            })?.apply(null, [actionArgs]);
-                                          })()
-                                        : undefined;
-                                      if (
-                                        $steps["updateLoadingButton2"] !=
-                                          null &&
-                                        typeof $steps[
-                                          "updateLoadingButton2"
-                                        ] === "object" &&
-                                        typeof $steps["updateLoadingButton2"]
-                                          .then === "function"
-                                      ) {
-                                        $steps["updateLoadingButton2"] =
-                                          await $steps["updateLoadingButton2"];
-                                      }
-
-                                      $steps["updateDialogOpen"] = true
-                                        ? (() => {
-                                            const actionArgs = {
-                                              variable: {
-                                                objRoot: $state,
-                                                variablePath: [
-                                                  "dialog3",
-                                                  "open"
-                                                ]
-                                              },
-                                              operation: 0,
-                                              value: false
-                                            };
-                                            return (({
-                                              variable,
-                                              value,
-                                              startIndex,
-                                              deleteCount
-                                            }) => {
-                                              if (!variable) {
-                                                return;
-                                              }
-                                              const { objRoot, variablePath } =
-                                                variable;
-
-                                              $stateSet(
-                                                objRoot,
-                                                variablePath,
-                                                value
-                                              );
-                                              return value;
-                                            })?.apply(null, [actionArgs]);
-                                          })()
-                                        : undefined;
-                                      if (
-                                        $steps["updateDialogOpen"] != null &&
-                                        typeof $steps["updateDialogOpen"] ===
-                                          "object" &&
-                                        typeof $steps["updateDialogOpen"]
-                                          .then === "function"
-                                      ) {
-                                        $steps["updateDialogOpen"] =
-                                          await $steps["updateDialogOpen"];
                                       }
 
                                       $steps["updateDialogOpen2"] = true
@@ -3476,42 +3301,6 @@ function PlasmicBuildFeatures__RenderFunc(props: {
 
                     (async data => {
                       const $steps = {};
-
-                      $steps["updateIntialData"] =
-                        Object.keys($state.userPageRequest.data)?.length > 0
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["intialData"]
-                                },
-                                operation: 0,
-                                value: true
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                      if (
-                        $steps["updateIntialData"] != null &&
-                        typeof $steps["updateIntialData"] === "object" &&
-                        typeof $steps["updateIntialData"].then === "function"
-                      ) {
-                        $steps["updateIntialData"] =
-                          await $steps["updateIntialData"];
-                      }
                     }).apply(null, eventArgs);
                   }}
                   ref={ref => {
