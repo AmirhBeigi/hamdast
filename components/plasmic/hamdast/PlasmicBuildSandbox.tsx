@@ -375,17 +375,6 @@ function PlasmicBuildSandbox__RenderFunc(props: {
                   "no-scroll"
                 )}
               >
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__kcUw0
-                  )}
-                >
-                  {
-                    "\u0633\u0646\u062f\u0628\u0627\u06a9\u0633 \u067e\u0632\u0634\u06a9"
-                  }
-                </div>
                 <ApiRequest
                   data-plasmic-name={"apiRequest"}
                   data-plasmic-override={overrides.apiRequest}

@@ -347,17 +347,6 @@ function PlasmicCredentialsSettings__RenderFunc(props: {
                   "no-scroll"
                 )}
               >
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__cq8K8
-                  )}
-                >
-                  {
-                    "\u062a\u0648\u06a9\u0646 \u062f\u0633\u062a\u0631\u0633\u06cc \u0634\u062e\u0635\u06cc"
-                  }
-                </div>
                 <div className={classNames(projectcss.all, sty.freeBox__kWxwe)}>
                   <div
                     className={classNames(projectcss.all, sty.freeBox__ouCv)}

@@ -53,9 +53,6 @@
   min-width: 0;
   padding: 38px;
 }
-.breadcrumb:global(.__wab_instance) {
-  max-width: 100%;
-}
 .freeBox___6DFfd {
   display: flex;
   flex-direction: row;

@@ -19,6 +19,7 @@
   max-width: 100%;
   padding-right: 1rem;
   padding-left: 1rem;
+  background: #c5c5c50d;
   min-width: 0;
   flex-shrink: 0;
   border-bottom: 1px solid #f1f1f1;
@@ -259,7 +260,7 @@
   width: 16rem;
   height: 100%;
   max-width: 100%;
-  background: #fdfdfd;
+  background: #c5c5c50d;
   min-width: 16rem;
   row-gap: 10px;
   flex-shrink: 0;

@@ -489,7 +489,7 @@ function PlasmicLayout__RenderFunc(props: {
 
                   $steps["goToApps"] = true
                     ? (() => {
-                        const actionArgs = { destination: "apps" };
+                        const actionArgs = { destination: `/apps` };
                         return (({ destination }) => {
                           if (
                             typeof destination === "string" &&

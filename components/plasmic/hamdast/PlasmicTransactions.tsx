@@ -62,7 +62,6 @@ import {
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import AuthProvider from "../../AuthProvider"; // plasmic-import: KTPu1eZupEdG/component
 import Layout from "../../Layout"; // plasmic-import: ve2FygUyzJYe/component
-import Breadcrumb from "../../Breadcrumb"; // plasmic-import: LgcOSQnaSwvf/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
 import Filter from "../../Filter"; // plasmic-import: YY41SIghQUgw/component
 import Paziresh24Modal from "../../Paziresh24Modal"; // plasmic-import: ZGdhyEBPJSmH/component
@@ -101,7 +100,6 @@ export type PlasmicTransactions__OverridesType = {
   embedHtml?: Flex__<typeof Embed>;
   authProvider?: Flex__<typeof AuthProvider>;
   layout?: Flex__<typeof Layout>;
-  breadcrumb?: Flex__<typeof Breadcrumb>;
   fragmentApiRequest2?: Flex__<typeof ApiRequest>;
   fragmentApiRequest3?: Flex__<typeof ApiRequest>;
   fragmentApiRequest4?: Flex__<typeof ApiRequest>;
@@ -530,41 +528,6 @@ function PlasmicTransactions__RenderFunc(props: {
                   "no-scroll"
                 )}
               >
-                <Breadcrumb
-                  data-plasmic-name={"breadcrumb"}
-                  data-plasmic-override={overrides.breadcrumb}
-                  apps={(() => {
-                    try {
-                      return $state.authProvider.apps;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return undefined;
-                      }
-                      throw e;
-                    }
-                  })()}
-                  className={classNames("__wab_instance", sty.breadcrumb)}
-                  menuTitle={
-                    "\u06a9\u0633\u0628 \u062f\u0631\u0622\u0645\u062f / \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627\u06cc \u0645\u0627\u0644\u06cc"
-                  }
-                  selectedApp={(() => {
-                    try {
-                      return $ctx.params.id;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return undefined;
-                      }
-                      throw e;
-                    }
-                  })()}
-                />
-
                 <div
                   className={classNames(projectcss.all, sty.freeBox___6DFfd)}
                 >
@@ -2699,7 +2662,6 @@ const PlasmicDescendants = {
     "embedHtml",
     "authProvider",
     "layout",
-    "breadcrumb",
     "fragmentApiRequest2",
     "fragmentApiRequest3",
     "fragmentApiRequest4",
@@ -2714,7 +2676,6 @@ const PlasmicDescendants = {
   authProvider: [
     "authProvider",
     "layout",
-    "breadcrumb",
     "fragmentApiRequest2",
     "fragmentApiRequest3",
     "fragmentApiRequest4",
@@ -2727,7 +2688,6 @@ const PlasmicDescendants = {
   ],
   layout: [
     "layout",
-    "breadcrumb",
     "fragmentApiRequest2",
     "fragmentApiRequest3",
     "fragmentApiRequest4",
@@ -2738,7 +2698,6 @@ const PlasmicDescendants = {
     "apiRequest",
     "transactionCard"
   ],
-  breadcrumb: ["breadcrumb"],
   fragmentApiRequest2: ["fragmentApiRequest2"],
   fragmentApiRequest3: ["fragmentApiRequest3", "fragmentApiRequest4"],
   fragmentApiRequest4: ["fragmentApiRequest4"],
@@ -2757,7 +2716,6 @@ type NodeDefaultElementType = {
   embedHtml: typeof Embed;
   authProvider: typeof AuthProvider;
   layout: typeof Layout;
-  breadcrumb: typeof Breadcrumb;
   fragmentApiRequest2: typeof ApiRequest;
   fragmentApiRequest3: typeof ApiRequest;
   fragmentApiRequest4: typeof ApiRequest;
@@ -2834,7 +2792,6 @@ export const PlasmicTransactions = Object.assign(
     embedHtml: makeNodeComponent("embedHtml"),
     authProvider: makeNodeComponent("authProvider"),
     layout: makeNodeComponent("layout"),
-    breadcrumb: makeNodeComponent("breadcrumb"),
     fragmentApiRequest2: makeNodeComponent("fragmentApiRequest2"),
     fragmentApiRequest3: makeNodeComponent("fragmentApiRequest3"),
     fragmentApiRequest4: makeNodeComponent("fragmentApiRequest4"),

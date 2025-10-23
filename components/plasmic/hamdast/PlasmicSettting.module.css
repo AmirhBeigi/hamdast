@@ -131,18 +131,6 @@
   min-width: 0;
   padding: 3rem 3rem 8px;
 }
-.text__dCbqe {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  font-weight: 500;
-  font-size: 12px;
-  opacity: 0.9;
-  margin-bottom: 12px;
-  padding-right: 0px;
-  min-width: 0;
-}
 .freeBox__sshHq {
   display: flex;
   position: relative;
@@ -575,18 +563,6 @@
   row-gap: 5px;
   min-width: 0;
   padding: 3rem 3rem 8px;
-}
-.text__tsIot {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  font-weight: 500;
-  font-size: 12px;
-  opacity: 0.9;
-  margin-bottom: 12px;
-  padding-right: 0px;
-  min-width: 0;
 }
 .freeBox__p1Vjl {
   display: flex;

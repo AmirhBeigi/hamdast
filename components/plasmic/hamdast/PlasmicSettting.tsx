@@ -861,15 +861,6 @@ function PlasmicSettting__RenderFunc(props: {
                     className={classNames(projectcss.all, sty.freeBox__esqEs)}
                   >
                     <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__dCbqe
-                      )}
-                    >
-                      {"\u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 API"}
-                    </div>
-                    <div
                       className={classNames(projectcss.all, sty.freeBox__sshHq)}
                     >
                       <div
@@ -1437,17 +1428,6 @@ function PlasmicSettting__RenderFunc(props: {
                   <div
                     className={classNames(projectcss.all, sty.freeBox__xNu7S)}
                   >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__tsIot
-                      )}
-                    >
-                      {
-                        "\u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0627\u0628\u0632\u0627\u0631\u06a9"
-                      }
-                    </div>
                     <div
                       className={classNames(projectcss.all, sty.freeBox__p1Vjl)}
                     >

@@ -62,7 +62,6 @@ import {
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import AuthProvider from "../../AuthProvider"; // plasmic-import: KTPu1eZupEdG/component
 import Layout from "../../Layout"; // plasmic-import: ve2FygUyzJYe/component
-import Breadcrumb from "../../Breadcrumb"; // plasmic-import: LgcOSQnaSwvf/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
 import { Input } from "@/fragment/components/input"; // plasmic-import: AWE69UKwmIyg/codeComponent
 import Paziresh24Button from "../../Paziresh24Button"; // plasmic-import: YOhw5fIQJQgB/component
@@ -104,7 +103,6 @@ export type PlasmicBuildAuthorization__OverridesType = {
   embedHtml?: Flex__<typeof Embed>;
   authProvider?: Flex__<typeof AuthProvider>;
   layout?: Flex__<typeof Layout>;
-  breadcrumb?: Flex__<typeof Breadcrumb>;
   apiRequest?: Flex__<typeof ApiRequest>;
   fragmentInput3?: Flex__<typeof Input>;
   fragmentInput4?: Flex__<typeof Input>;
@@ -449,29 +447,6 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                   "no-scroll"
                 )}
               >
-                <Breadcrumb
-                  data-plasmic-name={"breadcrumb"}
-                  data-plasmic-override={overrides.breadcrumb}
-                  apps={$state.authProvider.apps}
-                  className={classNames("__wab_instance", sty.breadcrumb)}
-                  menuTitle={
-                    "OAuth \u0648 \u062f\u0633\u062a\u0631\u0633\u06cc\u200c\u0647\u0627"
-                  }
-                  selectedApp={(() => {
-                    try {
-                      return $ctx.params.id;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return undefined;
-                      }
-                      throw e;
-                    }
-                  })()}
-                />
-
                 <ApiRequest
                   data-plasmic-name={"apiRequest"}
                   data-plasmic-override={overrides.apiRequest}
@@ -1991,7 +1966,6 @@ const PlasmicDescendants = {
     "embedHtml",
     "authProvider",
     "layout",
-    "breadcrumb",
     "apiRequest",
     "fragmentInput3",
     "fragmentInput4",
@@ -2003,7 +1977,6 @@ const PlasmicDescendants = {
   authProvider: [
     "authProvider",
     "layout",
-    "breadcrumb",
     "apiRequest",
     "fragmentInput3",
     "fragmentInput4",
@@ -2013,7 +1986,6 @@ const PlasmicDescendants = {
   ],
   layout: [
     "layout",
-    "breadcrumb",
     "apiRequest",
     "fragmentInput3",
     "fragmentInput4",
@@ -2021,7 +1993,6 @@ const PlasmicDescendants = {
     "_switch",
     "switch2"
   ],
-  breadcrumb: ["breadcrumb"],
   apiRequest: [
     "apiRequest",
     "fragmentInput3",
@@ -2044,7 +2015,6 @@ type NodeDefaultElementType = {
   embedHtml: typeof Embed;
   authProvider: typeof AuthProvider;
   layout: typeof Layout;
-  breadcrumb: typeof Breadcrumb;
   apiRequest: typeof ApiRequest;
   fragmentInput3: typeof Input;
   fragmentInput4: typeof Input;
@@ -2118,7 +2088,6 @@ export const PlasmicBuildAuthorization = Object.assign(
     embedHtml: makeNodeComponent("embedHtml"),
     authProvider: makeNodeComponent("authProvider"),
     layout: makeNodeComponent("layout"),
-    breadcrumb: makeNodeComponent("breadcrumb"),
     apiRequest: makeNodeComponent("apiRequest"),
     fragmentInput3: makeNodeComponent("fragmentInput3"),
     fragmentInput4: makeNodeComponent("fragmentInput4"),

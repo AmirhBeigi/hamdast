@@ -62,7 +62,6 @@ import {
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import AuthProvider from "../../AuthProvider"; // plasmic-import: KTPu1eZupEdG/component
 import Layout from "../../Layout"; // plasmic-import: ve2FygUyzJYe/component
-import Breadcrumb from "../../Breadcrumb"; // plasmic-import: LgcOSQnaSwvf/component
 import Paziresh24Modal from "../../Paziresh24Modal"; // plasmic-import: ZGdhyEBPJSmH/component
 import Paziresh24Button from "../../Paziresh24Button"; // plasmic-import: YOhw5fIQJQgB/component
 import { Input } from "@/fragment/components/input"; // plasmic-import: AWE69UKwmIyg/codeComponent
@@ -97,7 +96,6 @@ export type PlasmicProducts__OverridesType = {
   embedHtml?: Flex__<typeof Embed>;
   authProvider?: Flex__<typeof AuthProvider>;
   layout?: Flex__<typeof Layout>;
-  breadcrumb?: Flex__<typeof Breadcrumb>;
   dialog?: Flex__<typeof Paziresh24Modal>;
   input?: Flex__<typeof Input>;
   input2?: Flex__<typeof Input>;
@@ -375,41 +373,6 @@ function PlasmicProducts__RenderFunc(props: {
                   "no-scroll"
                 )}
               >
-                <Breadcrumb
-                  data-plasmic-name={"breadcrumb"}
-                  data-plasmic-override={overrides.breadcrumb}
-                  apps={(() => {
-                    try {
-                      return $state.authProvider.apps;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return undefined;
-                      }
-                      throw e;
-                    }
-                  })()}
-                  className={classNames("__wab_instance", sty.breadcrumb)}
-                  menuTitle={
-                    "\u06a9\u0633\u0628 \u062f\u0631\u0622\u0645\u062f / \u0645\u062d\u0635\u0648\u0644\u0627\u062a"
-                  }
-                  selectedApp={(() => {
-                    try {
-                      return $ctx.params.id;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return undefined;
-                      }
-                      throw e;
-                    }
-                  })()}
-                />
-
                 <div className={classNames(projectcss.all, sty.freeBox__asGfH)}>
                   <div
                     className={classNames(projectcss.all, sty.freeBox__qfb04)}
@@ -1196,7 +1159,6 @@ const PlasmicDescendants = {
     "embedHtml",
     "authProvider",
     "layout",
-    "breadcrumb",
     "dialog",
     "input",
     "input2",
@@ -1207,23 +1169,13 @@ const PlasmicDescendants = {
   authProvider: [
     "authProvider",
     "layout",
-    "breadcrumb",
     "dialog",
     "input",
     "input2",
     "apiRequest",
     "productCard"
   ],
-  layout: [
-    "layout",
-    "breadcrumb",
-    "dialog",
-    "input",
-    "input2",
-    "apiRequest",
-    "productCard"
-  ],
-  breadcrumb: ["breadcrumb"],
+  layout: ["layout", "dialog", "input", "input2", "apiRequest", "productCard"],
   dialog: ["dialog", "input", "input2"],
   input: ["input"],
   input2: ["input2"],
@@ -1238,7 +1190,6 @@ type NodeDefaultElementType = {
   embedHtml: typeof Embed;
   authProvider: typeof AuthProvider;
   layout: typeof Layout;
-  breadcrumb: typeof Breadcrumb;
   dialog: typeof Paziresh24Modal;
   input: typeof Input;
   input2: typeof Input;
@@ -1311,7 +1262,6 @@ export const PlasmicProducts = Object.assign(
     embedHtml: makeNodeComponent("embedHtml"),
     authProvider: makeNodeComponent("authProvider"),
     layout: makeNodeComponent("layout"),
-    breadcrumb: makeNodeComponent("breadcrumb"),
     dialog: makeNodeComponent("dialog"),
     input: makeNodeComponent("input"),
     input2: makeNodeComponent("input2"),
