@@ -85,8 +85,8 @@ export default async function handler(
   }
 
   if (req.method === "POST") {
-    const { name_fa, key } = req.body;
-    if (!name_fa && !key) {
+    const { name_fa, key, short_description, description, app_link } = req.body;
+    if (!name_fa && !key && !short_description && !description && !app_link) {
       return res.status(400).json({});
     }
     try {
@@ -94,6 +94,29 @@ export default async function handler(
         name_fa,
         collaborators: [record.id],
         key,
+        description: short_description,
+        display_name_fa: name_fa,
+      });
+
+      await pb.collection("pages").create({
+        key: "launcher",
+        name_fa: name_fa,
+        embed_src: app_link,
+        app: app?.id,
+        layout: {
+          show_appbar: true,
+          show_bottom_navigation: true,
+          show_footer: false,
+          show_header: false,
+        },
+        parameters: [],
+        is_protected_route: true,
+      });
+
+      await pb.collection("landings").create({
+        title: name_fa,
+        description: description,
+        app: app.id,
       });
 
       let client = null;
@@ -122,7 +145,7 @@ export default async function handler(
             "Content-Type": "application/json",
           },
           data: {
-            clientId: `hamdast-${key}`,
+            clientId: app?.id,
             name: name_fa,
             enabled: true,
             protocol: "openid-connect",
@@ -151,20 +174,20 @@ export default async function handler(
           },
           data: {
             name: name_fa,
-            code_name: `hamdast-${key}`,
+            code_name: app?.id,
             site_address: `https://hamdast.paziresh24.com/katibe/redirect`,
           },
         };
         const katibeData = await axios.request(productOption);
         await pb.collection("apps").update(app.id, {
-          gozargah_client: `hamdast-${key}`,
+          gozargah_client: app?.id,
           tokens: {
             katibe: katibeData?.data?.data?.token,
           },
           redirects: {
             katibe: "https://hamdast.paziresh24.com/katibe/redirect",
           },
-          katibe_id: `hamdast-${key}`,
+          katibe_id: app?.id,
         });
       } catch (error) {
         if (axios.isAxiosError(error) && error.response?.status == 409) {

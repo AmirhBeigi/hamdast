@@ -2,7 +2,7 @@ import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
 import config from "next/config";
 import NextCors from "nextjs-cors";
-import { pb } from "../../../../../../../pocketbase";
+import { pb } from "../../../../../pocketbase";
 const { publicRuntimeConfig } = config();
 
 export default async function handler(
@@ -20,7 +20,6 @@ export default async function handler(
     optionsSuccessStatus: 200,
     credentials: true,
   });
-  const { app_id } = req.query;
   const cookieStore = req.cookies;
   const token =
     (cookieStore["token"] as string) ||
@@ -49,20 +48,6 @@ export default async function handler(
     });
 
   if (!record) {
-    return res.status(401).json({
-      message: "Authentication credentials were not provided.",
-    });
-  }
-
-  try {
-    const app = await pb
-      .collection("apps")
-      .getFirstListItem(`collaborators~'${record.id}' && id = '${app_id}'`);
-
-    if (!app) {
-      return res.status(401).json({});
-    }
-  } catch (error) {
     return res.status(401).json({
       message: "Authentication credentials were not provided.",
     });
