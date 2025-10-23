@@ -735,7 +735,9 @@ function PlasmicLayout__RenderFunc(props: {
                 className={classNames("__wab_instance", sty.paziresh24Avatar)}
                 name={(() => {
                   try {
-                    return currentItem.name_fa;
+                    return $props.apps?.find(
+                      item => item.id == $props.selectedApp
+                    )?.name_fa;
                   } catch (e) {
                     if (
                       e instanceof TypeError ||
@@ -748,7 +750,9 @@ function PlasmicLayout__RenderFunc(props: {
                 })()}
                 src={(() => {
                   try {
-                    return currentItem.icon;
+                    return $props.apps?.find(
+                      item => item.id == $props.selectedApp
+                    )?.icon;
                   } catch (e) {
                     if (
                       e instanceof TypeError ||
@@ -772,7 +776,9 @@ function PlasmicLayout__RenderFunc(props: {
                   <React.Fragment>
                     {(() => {
                       try {
-                        return currentItem.name_fa;
+                        return $props.apps?.find(
+                          item => item.id == $props.selectedApp
+                        )?.name_fa;
                       } catch (e) {
                         if (
                           e instanceof TypeError ||
@@ -795,7 +801,9 @@ function PlasmicLayout__RenderFunc(props: {
                   <React.Fragment>
                     {(() => {
                       try {
-                        return currentItem.key;
+                        return $props.apps?.find(
+                          item => item.id == $props.selectedApp
+                        )?.key;
                       } catch (e) {
                         if (
                           e instanceof TypeError ||

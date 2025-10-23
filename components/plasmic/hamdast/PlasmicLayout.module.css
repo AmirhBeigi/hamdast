@@ -255,13 +255,13 @@
   position: relative;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 16rem;
   height: 100%;
   max-width: 100%;
   background: #fdfdfd;
   min-width: 16rem;
-  row-gap: 0px;
+  row-gap: 10px;
   flex-shrink: 0;
   min-height: 0;
   padding: 0.7rem 0.7rem 25px;
@@ -277,10 +277,14 @@
   position: relative;
   align-items: center;
   justify-content: flex-start;
-  width: auto;
+  width: 100%;
   height: auto;
   max-width: 100%;
-  column-gap: 5px;
+  column-gap: 10px;
+  background: #f5f5f5;
+  min-width: 0;
+  border-radius: 10px;
+  padding: 10px 12px;
 }
 .paziresh24Avatar:global(.__wab_instance) {
   animation: none;
@@ -299,7 +303,6 @@
   max-width: 100%;
   justify-content: flex-start;
   align-items: center;
-  padding: 8px;
 }
 .text__wq5Hm {
   animation: none;
