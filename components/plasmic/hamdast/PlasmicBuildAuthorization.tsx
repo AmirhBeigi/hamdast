@@ -75,8 +75,9 @@ import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6u
 import sty from "./PlasmicBuildAuthorization.module.css"; // plasmic-import: 01z6Jy-KWQkM/css
 
 import Icon15Icon from "./icons/PlasmicIcon__Icon15"; // plasmic-import: rQsx35tf_bcf/icon
-import Icon35Icon from "./icons/PlasmicIcon__Icon35"; // plasmic-import: m-5uHwTYBv5w/icon
+import Icon54Icon from "./icons/PlasmicIcon__Icon54"; // plasmic-import: sZwWcCLWj_Lj/icon
 import Icon24Icon from "./icons/PlasmicIcon__Icon24"; // plasmic-import: 3P4kCztjZFA7/icon
+import Icon35Icon from "./icons/PlasmicIcon__Icon35"; // plasmic-import: m-5uHwTYBv5w/icon
 import Icon19Icon from "./icons/PlasmicIcon__Icon19"; // plasmic-import: 09kUgGvbipjq/icon
 import Icon44Icon from "./icons/PlasmicIcon__Icon44"; // plasmic-import: c8EwO1fm8dRF/icon
 import Icon41Icon from "./icons/PlasmicIcon__Icon41"; // plasmic-import: DoezJRNgA6sA/icon
@@ -104,6 +105,8 @@ export type PlasmicBuildAuthorization__OverridesType = {
   authProvider?: Flex__<typeof AuthProvider>;
   layout?: Flex__<typeof Layout>;
   apiRequest?: Flex__<typeof ApiRequest>;
+  link?: Flex__<"a"> & Partial<LinkProps>;
+  fragmentInput7?: Flex__<typeof Input>;
   fragmentInput3?: Flex__<typeof Input>;
   fragmentInput4?: Flex__<typeof Input>;
   fragmentInput5?: Flex__<typeof Input>;
@@ -291,6 +294,45 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "fragmentInput7.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return `https://user.paziresh24.com/realms/paziresh24/protocol/openid-connect/auth?client_id=${$state.apiRequest.data.client_id}&response_type=code&scope=${$state?.scopes?.join(" ")}&redirect_uri=${$state.redirectUris?.[0]?.value}&kc_idp_hint=gozar&skip_prompt=true
+`;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "scopes",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.apiRequest.data.scopes?.map((item, index) => item);
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return [];
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -534,6 +576,206 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                     }
                   })()}
                 >
+                  {(() => {
+                    try {
+                      return (
+                        $state.redirectUris?.length > 0 &&
+                        $state?.scopes?.length > 0
+                      );
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })() ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___2QphT
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__dwWb
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__cjXc8
+                          )}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__p08Eo
+                            )}
+                          >
+                            <Icon54Icon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg___6XnuS
+                              )}
+                              role={"img"}
+                            />
+
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__nGW2
+                              )}
+                            >
+                              {
+                                "\u0646\u0645\u0648\u0646\u0647 \u0644\u06cc\u0646\u06a9 \u062f\u0631\u06cc\u0627\u0641\u062a \u062f\u0633\u062a\u0631\u0633\u06cc"
+                              }
+                            </div>
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__cZzn2
+                            )}
+                          >
+                            {
+                              "\u0628\u0631\u0627\u06cc \u062f\u0631\u06cc\u0627\u0641\u062a \u062a\u0648\u06a9\u0646 \u062f\u0633\u062a\u0631\u0633\u06cc \u06a9\u0627\u0631\u0628\u0631 \u0628\u0627\u06cc\u062f \u06a9\u0627\u0631\u0628\u0631 \u0631\u0627 \u0628\u0647 \u0627\u06cc\u0646 \u0644\u06cc\u0646\u06a9 \u0646\u0645\u0648\u0646\u0647 \u0647\u062f\u0627\u06cc\u062a \u06a9\u0646\u06cc\u062f."
+                            }
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__tcnWu
+                            )}
+                          >
+                            <React.Fragment>
+                              <React.Fragment>
+                                {
+                                  "\u0628\u0631\u0627\u06cc \u062f\u0631\u06cc\u0627\u0641\u062a \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0628\u06cc\u0634\u062a\u0631 \u0628\u0647 "
+                                }
+                              </React.Fragment>
+                              {
+                                <PlasmicLink__
+                                  data-plasmic-name={"link"}
+                                  data-plasmic-override={overrides.link}
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.a,
+                                    projectcss.__wab_text,
+                                    projectcss.plasmic_default__inline,
+                                    sty.link
+                                  )}
+                                  component={Link}
+                                  href={
+                                    "https://developers.paziresh24.com/authorization"
+                                  }
+                                  platform={"nextjs"}
+                                >
+                                  {"\u0645\u0633\u062a\u0646\u062f\u0627\u062a"}
+                                </PlasmicLink__>
+                              }
+                              <React.Fragment>
+                                {
+                                  " \u0645\u0631\u0627\u062c\u0639\u0647 \u06a9\u0646\u06cc\u062f."
+                                }
+                              </React.Fragment>
+                            </React.Fragment>
+                          </div>
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__mbmQx
+                          )}
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["runCode"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    customFunction: async () => {
+                                      return $$.copyToClipboard(`https://user.paziresh24.com/realms/paziresh24/protocol/openid-connect/auth?client_id=${$state.apiRequest.data.client_id}&response_type=code&scope=${$state?.scopes?.join(" ")}&redirect_uri=${$state.redirectUris?.[0]?.value}&kc_idp_hint=gozar&skip_prompt=true
+`);
+                                    }
+                                  };
+                                  return (({ customFunction }) => {
+                                    return customFunction();
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["runCode"] != null &&
+                              typeof $steps["runCode"] === "object" &&
+                              typeof $steps["runCode"].then === "function"
+                            ) {
+                              $steps["runCode"] = await $steps["runCode"];
+                            }
+
+                            $steps["invokeGlobalAction"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    args: [
+                                      "success",
+                                      "\u06a9\u067e\u06cc \u0634\u062f.",
+                                      "top-center"
+                                    ]
+                                  };
+                                  return $globalActions[
+                                    "Fragment.showToast"
+                                  ]?.apply(null, [...actionArgs.args]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["invokeGlobalAction"] != null &&
+                              typeof $steps["invokeGlobalAction"] ===
+                                "object" &&
+                              typeof $steps["invokeGlobalAction"].then ===
+                                "function"
+                            ) {
+                              $steps["invokeGlobalAction"] =
+                                await $steps["invokeGlobalAction"];
+                            }
+                          }}
+                        >
+                          <Input
+                            data-plasmic-name={"fragmentInput7"}
+                            data-plasmic-override={overrides.fragmentInput7}
+                            attributes={{ dir: "ltr", readOnly: true }}
+                            className={classNames(
+                              "__wab_instance",
+                              sty.fragmentInput7
+                            )}
+                            disabled={false}
+                            onChange={async (...eventArgs: any) => {
+                              generateStateOnChangeProp($state, [
+                                "fragmentInput7",
+                                "value"
+                              ]).apply(null, eventArgs);
+                            }}
+                            type={"text"}
+                            value={generateStateValueProp($state, [
+                              "fragmentInput7",
+                              "value"
+                            ])}
+                          />
+
+                          <Icon24Icon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__w4L4O
+                            )}
+                            role={"img"}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ) : null}
                   <div
                     className={classNames(projectcss.all, sty.freeBox__emdJp)}
                   >
@@ -1599,6 +1841,20 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                                     throw e;
                                   }
                                 })(),
+                                name: (() => {
+                                  try {
+                                    return currentItem.permission;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })(),
                                 onCheckedChange: async (...eventArgs: any) => {
                                   generateStateOnChangeProp($state, [
                                     "_switch",
@@ -1608,6 +1864,57 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
 
                                   (async checked => {
                                     const $steps = {};
+
+                                    $steps["updateScopes"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: ["scopes"]
+                                            },
+                                            operation: 0,
+                                            value: checked
+                                              ? [
+                                                  ...$state.scopes,
+                                                  currentItem?.permission
+                                                ]
+                                              : $state.scopes?.filter(
+                                                  scope =>
+                                                    scope !=
+                                                    currentItem.permission
+                                                )
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
+
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              value
+                                            );
+                                            return value;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["updateScopes"] != null &&
+                                      typeof $steps["updateScopes"] ===
+                                        "object" &&
+                                      typeof $steps["updateScopes"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["updateScopes"] =
+                                        await $steps["updateScopes"];
+                                    }
 
                                     $steps["invokeGlobalAction"] = !!checked
                                       ? (() => {
@@ -1705,7 +2012,7 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                                     initFunc: ({ $props, $state, $queries }) =>
                                       (() => {
                                         try {
-                                          return $state.apiRequest.data.scopes.includes(
+                                          return $state.scopes.includes(
                                             currentItem.permission
                                           );
                                         } catch (e) {
@@ -1900,7 +2207,58 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                                   (async checked => {
                                     const $steps = {};
 
-                                    $steps["invokeGlobalAction"] = true
+                                    $steps["updateScopes"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: ["scopes"]
+                                            },
+                                            operation: 0,
+                                            value: checked
+                                              ? [
+                                                  ...$state.scopes,
+                                                  currentItem?.permission
+                                                ]
+                                              : $state.scopes?.filter(
+                                                  scope =>
+                                                    scope !=
+                                                    currentItem.permission
+                                                )
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
+
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              value
+                                            );
+                                            return value;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["updateScopes"] != null &&
+                                      typeof $steps["updateScopes"] ===
+                                        "object" &&
+                                      typeof $steps["updateScopes"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["updateScopes"] =
+                                        await $steps["updateScopes"];
+                                    }
+
+                                    $steps["invokeGlobalAction"] = !!checked
                                       ? (() => {
                                           const actionArgs = {
                                             args: [
@@ -1936,6 +2294,43 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                                       $steps["invokeGlobalAction"] =
                                         await $steps["invokeGlobalAction"];
                                     }
+
+                                    $steps["invokeGlobalAction2"] = !checked
+                                      ? (() => {
+                                          const actionArgs = {
+                                            args: [
+                                              "DELETE",
+                                              (() => {
+                                                try {
+                                                  return `https://hamdast.paziresh24.com/api/v1/apps/${$ctx.params.id}/oauth/scope/${currentItem.id}/`;
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return undefined;
+                                                  }
+                                                  throw e;
+                                                }
+                                              })()
+                                            ]
+                                          };
+                                          return $globalActions[
+                                            "Fragment.apiRequest"
+                                          ]?.apply(null, [...actionArgs.args]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["invokeGlobalAction2"] != null &&
+                                      typeof $steps["invokeGlobalAction2"] ===
+                                        "object" &&
+                                      typeof $steps["invokeGlobalAction2"]
+                                        .then === "function"
+                                    ) {
+                                      $steps["invokeGlobalAction2"] =
+                                        await $steps["invokeGlobalAction2"];
+                                    }
                                   }).apply(null, eventArgs);
                                 }
                               };
@@ -1959,7 +2354,7 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                                     initFunc: ({ $props, $state, $queries }) =>
                                       (() => {
                                         try {
-                                          return $state.apiRequest.data.scopes.includes(
+                                          return $state.scopes.includes(
                                             currentItem.permission
                                           );
                                         } catch (e) {
@@ -2007,6 +2402,8 @@ const PlasmicDescendants = {
     "authProvider",
     "layout",
     "apiRequest",
+    "link",
+    "fragmentInput7",
     "fragmentInput3",
     "fragmentInput4",
     "fragmentInput5",
@@ -2018,6 +2415,8 @@ const PlasmicDescendants = {
     "authProvider",
     "layout",
     "apiRequest",
+    "link",
+    "fragmentInput7",
     "fragmentInput3",
     "fragmentInput4",
     "fragmentInput5",
@@ -2027,6 +2426,8 @@ const PlasmicDescendants = {
   layout: [
     "layout",
     "apiRequest",
+    "link",
+    "fragmentInput7",
     "fragmentInput3",
     "fragmentInput4",
     "fragmentInput5",
@@ -2035,12 +2436,16 @@ const PlasmicDescendants = {
   ],
   apiRequest: [
     "apiRequest",
+    "link",
+    "fragmentInput7",
     "fragmentInput3",
     "fragmentInput4",
     "fragmentInput5",
     "_switch",
     "switch2"
   ],
+  link: ["link"],
+  fragmentInput7: ["fragmentInput7"],
   fragmentInput3: ["fragmentInput3"],
   fragmentInput4: ["fragmentInput4"],
   fragmentInput5: ["fragmentInput5"],
@@ -2056,6 +2461,8 @@ type NodeDefaultElementType = {
   authProvider: typeof AuthProvider;
   layout: typeof Layout;
   apiRequest: typeof ApiRequest;
+  link: "a";
+  fragmentInput7: typeof Input;
   fragmentInput3: typeof Input;
   fragmentInput4: typeof Input;
   fragmentInput5: typeof Input;
@@ -2129,6 +2536,8 @@ export const PlasmicBuildAuthorization = Object.assign(
     authProvider: makeNodeComponent("authProvider"),
     layout: makeNodeComponent("layout"),
     apiRequest: makeNodeComponent("apiRequest"),
+    link: makeNodeComponent("link"),
+    fragmentInput7: makeNodeComponent("fragmentInput7"),
     fragmentInput3: makeNodeComponent("fragmentInput3"),
     fragmentInput4: makeNodeComponent("fragmentInput4"),
     fragmentInput5: makeNodeComponent("fragmentInput5"),

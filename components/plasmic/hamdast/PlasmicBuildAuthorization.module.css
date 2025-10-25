@@ -64,6 +64,134 @@
   height: 52px;
   margin-top: 40px;
 }
+.freeBox___2QphT {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  background: var(--token-KrBMMqlPClZi);
+  margin-bottom: 12px;
+  row-gap: 20px;
+  min-width: 0;
+  border-radius: 8px;
+  padding: 13px;
+  border: 1px solid #dfdfdfcc;
+}
+.freeBox__dwWb {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  column-gap: 60px;
+  min-width: 0;
+}
+.freeBox__cjXc8 {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.freeBox__p08Eo {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  margin-bottom: 5px;
+  column-gap: 5px;
+  min-width: 0;
+}
+.svg___6XnuS {
+  position: relative;
+  object-fit: cover;
+  max-width: 100%;
+  opacity: 1;
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+}
+.text__nGW2 {
+  position: relative;
+  height: auto;
+  max-width: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 1;
+  text-align: right;
+  margin-top: 2px;
+}
+.text__cZzn2 {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.8;
+  text-align: right;
+  padding-right: 0px;
+  min-width: 0;
+}
+.text__tcnWu {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.8;
+  text-align: right;
+  padding-right: 0px;
+  min-width: 0;
+}
+.freeBox__mbmQx {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  cursor: pointer;
+  min-width: 0;
+}
+.fragmentInput7:global(.__wab_instance) {
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  position: relative;
+  cursor: pointer;
+  background: var(--token-KrBMMqlPClZi);
+  padding-right: 40px;
+  min-width: 0;
+}
+.svg__w4L4O {
+  object-fit: cover;
+  max-width: 100%;
+  position: absolute;
+  top: auto;
+  width: auto;
+  right: 10px;
+  cursor: pointer;
+  height: 1em;
+}
 .freeBox__emdJp {
   display: flex;
   position: relative;

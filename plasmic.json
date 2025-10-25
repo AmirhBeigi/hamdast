@@ -1435,6 +1435,11 @@
           "id": "wcdseQLB5YAk",
           "name": "Icon53Icon",
           "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon53.tsx"
+        },
+        {
+          "id": "sZwWcCLWj_Lj",
+          "name": "Icon54Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon54.tsx"
         }
       ],
       "images": [
