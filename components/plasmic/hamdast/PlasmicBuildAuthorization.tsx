@@ -302,7 +302,7 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
             try {
-              return `https://user.paziresh24.com/realms/paziresh24/protocol/openid-connect/auth?client_id=${$state.apiRequest.data.client_id}&response_type=code&scope=${$state?.scopes?.join(" ")}&redirect_uri=${$state.redirectUris?.[0]?.value}&kc_idp_hint=gozar&skip_prompt=true
+              return `https://user.paziresh24.com/realms/paziresh24/protocol/openid-connect/auth?client_id=${$state.apiRequest.data.client_id}&response_type=code&scope=${$state?.scopes?.join("+")}&redirect_uri=${$state.redirectUris?.[0]?.value}&kc_idp_hint=gozar&skip_prompt=true
 `;
             } catch (e) {
               if (

@@ -495,12 +495,8 @@
 .svg__pW8A3 {
   object-fit: cover;
   max-width: 100%;
-  transform: rotateX(0deg) rotateY(-173deg) rotateZ(0deg);
-  transform-style: preserve-3d;
+  transform: rotate3d(0, 1, 0, -173deg);
   height: 1em;
-}
-.svg__pW8A3 * {
-  transform-style: preserve-3d;
 }
 .reveal__acYn4:global(.__wab_instance) {
   max-width: 100%;

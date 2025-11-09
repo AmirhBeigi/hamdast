@@ -501,9 +501,8 @@ function PlasmicLanding__RenderFunc(props: {
                                 typeof $steps["updateFeatures"].then ===
                                   "function"
                               ) {
-                                $steps["updateFeatures"] = await $steps[
-                                  "updateFeatures"
-                                ];
+                                $steps["updateFeatures"] =
+                                  await $steps["updateFeatures"];
                               }
                             }}
                           >
@@ -871,9 +870,10 @@ function PlasmicLanding__RenderFunc(props: {
                         ) {
                           $steps[
                             "goToHttpsDevelopersPaziresh24ComAppsGettingStarted"
-                          ] = await $steps[
-                            "goToHttpsDevelopersPaziresh24ComAppsGettingStarted"
-                          ];
+                          ] =
+                            await $steps[
+                              "goToHttpsDevelopersPaziresh24ComAppsGettingStarted"
+                            ];
                         }
                       }}
                     >
@@ -1222,7 +1222,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicLanding__VariantsArgs;
     args?: PlasmicLanding__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicLanding__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicLanding__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicLanding__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props
