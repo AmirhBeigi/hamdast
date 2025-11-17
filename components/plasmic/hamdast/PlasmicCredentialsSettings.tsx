@@ -754,6 +754,7 @@ function PlasmicCredentialsSettings__RenderFunc(props: {
                                   await $steps["updateLoading4"];
                               }
                             }}
+                            shape={"sharp"}
                           />
                         </div>
                       }

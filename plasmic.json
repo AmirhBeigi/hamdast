@@ -1118,6 +1118,33 @@
           "cssFilePath": "plasmic/hamdast/PlasmicBreadcrumb.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "0-v_8tqEs-67",
+          "name": "Rfs",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicRfs.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/rfs.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicRfs.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/rfs"
+        },
+        {
+          "id": "m6cGRpgqLc_S",
+          "name": "RfsRow",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicRfsRow.tsx",
+          "importSpec": {
+            "modulePath": "RfsRow.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicRfsRow.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [

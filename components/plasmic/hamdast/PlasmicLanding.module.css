@@ -271,6 +271,17 @@
   width: auto;
   height: 1em;
 }
+.text__h7EX {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  font-weight: 400;
+  font-size: 12px;
+  align-self: auto;
+  opacity: 0.6;
+  text-align: center;
+}
 .reveal__aiwYy:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;

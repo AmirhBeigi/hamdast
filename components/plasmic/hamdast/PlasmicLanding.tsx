@@ -335,6 +335,66 @@ function PlasmicLanding__RenderFunc(props: {
                           shape={"sharp"}
                         />
                       </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__h7EX
+                        )}
+                      >
+                        <React.Fragment>
+                          <React.Fragment>
+                            {
+                              "\u0627\u06cc\u062f\u0647 \u0628\u0631\u0627\u06cc \u0633\u0627\u062e\u062a \u0627\u067e \u0646\u062f\u0627\u0631\u06cc\u061f \u0635\u0641\u062d\u0647 "
+                            }
+                          </React.Fragment>
+                          {
+                            <PlasmicLink__
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.a,
+                                projectcss.__wab_text,
+                                projectcss.plasmic_default__inline,
+                                sty.link___0PwRp
+                              )}
+                              component={Link}
+                              href={"/rfs"}
+                              platform={"nextjs"}
+                            >
+                              <React.Fragment>
+                                <span
+                                  className={
+                                    "plasmic_default__all plasmic_default__span"
+                                  }
+                                  style={{
+                                    textDecorationLine: "underline",
+                                    fontWeight: 500,
+                                    color: "#000000"
+                                  }}
+                                >
+                                  {
+                                    "\u062f\u0631\u062e\u0648\u0627\u0633\u062a\u200c\u0647\u0627"
+                                  }
+                                </span>
+                              </React.Fragment>
+                            </PlasmicLink__>
+                          }
+                          <React.Fragment>{""}</React.Fragment>
+                          <span
+                            className={
+                              "plasmic_default__all plasmic_default__span"
+                            }
+                            style={{ color: "#000000" }}
+                          >
+                            {" \u0631\u0627 "}
+                          </span>
+                          <React.Fragment>
+                            {
+                              "\u0645\u0634\u0627\u0647\u062f\u0647 \u06a9\u0646"
+                            }
+                          </React.Fragment>
+                        </React.Fragment>
+                      </div>
                     </div>
                   </Reveal>
                 </div>
