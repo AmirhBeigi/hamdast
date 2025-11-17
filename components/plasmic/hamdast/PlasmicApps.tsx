@@ -454,6 +454,7 @@ function PlasmicApps__RenderFunc(props: {
                           "__wab_instance",
                           sty.paziresh24Button
                         )}
+                        shape={"sharp"}
                         showStartIcon={true}
                         size={"compact"}
                         startIcon={

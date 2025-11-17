@@ -1007,6 +1007,7 @@ function PlasmicProducts__RenderFunc(props: {
                                   await $steps["updateDialogOpen3"];
                               }
                             }}
+                            shape={"sharp"}
                           />
                         </div>
                       }
@@ -1038,6 +1039,7 @@ function PlasmicProducts__RenderFunc(props: {
                             "__wab_instance",
                             sty.paziresh24Button__tiLEb
                           )}
+                          shape={"sharp"}
                           showStartIcon={true}
                           size={"compact"}
                           startIcon={

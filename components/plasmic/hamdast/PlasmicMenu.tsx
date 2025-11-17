@@ -258,7 +258,14 @@ function PlasmicMenu__RenderFunc(props: {
               />
             ),
 
-            value: args.iconWrapper
+            value: args.iconWrapper,
+            className: classNames(sty.slotTargetIconWrapper, {
+              [sty.slotTargetIconWrapperactive]: hasVariant(
+                $state,
+                "active",
+                "active"
+              )
+            })
           })
         : null}
       <div

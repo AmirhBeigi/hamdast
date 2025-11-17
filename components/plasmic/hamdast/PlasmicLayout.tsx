@@ -69,7 +69,7 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectcss
 import sty from "./PlasmicLayout.module.css"; // plasmic-import: ve2FygUyzJYe/css
 
-import Icon27Icon from "./icons/PlasmicIcon__Icon27"; // plasmic-import: 0E0-Td2sxrpd/icon
+import Icon51Icon from "./icons/PlasmicIcon__Icon51"; // plasmic-import: wMmAYe1Ji-cY/icon
 import Icon12Icon from "./icons/PlasmicIcon__Icon12"; // plasmic-import: uNpsRe8HBlEO/icon
 import Icon7Icon from "./icons/PlasmicIcon__Icon7"; // plasmic-import: 1XPNabWn6mUI/icon
 import Icon49Icon from "./icons/PlasmicIcon__Icon49"; // plasmic-import: uOAzx9LtQ5_I/icon
@@ -284,7 +284,7 @@ function PlasmicLayout__RenderFunc(props: {
     >
       <div className={classNames(projectcss.all, sty.freeBox__fVnc)}>
         <div className={classNames(projectcss.all, sty.freeBox__evUk)}>
-          <Icon27Icon
+          <Icon51Icon
             className={classNames(projectcss.all, sty.svg___8AjrW)}
             role={"img"}
           />
@@ -530,7 +530,7 @@ function PlasmicLayout__RenderFunc(props: {
                 })()}
                 className={classNames("__wab_instance", sty.menu__jDoQa)}
                 description={
-                  "\u0645\u0634\u0627\u0647\u062f\u0647 \u0648 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0632 \u067e\u0646\u0644 \u0627\u0632 \u067e\u0632\u0634\u06a9\u0627\u0646"
+                  "\u0645\u0634\u0627\u0647\u062f\u0647 \u0648 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0632 \u067e\u0646\u0644 \u067e\u0632\u0634\u06a9\u0627\u0646"
                 }
                 iconWrapper={
                   <Icon39Icon

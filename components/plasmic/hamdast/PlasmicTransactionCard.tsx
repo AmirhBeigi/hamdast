@@ -555,7 +555,7 @@ function PlasmicTransactionCard__RenderFunc(props: {
                       try {
                         return (
                           new Date($props.currentItem.register_date) <
-                          new Date(Date.now() - 15 * 24 * 60 * 60 * 1000)
+                          new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
                         );
                       } catch (e) {
                         if (
@@ -739,6 +739,7 @@ function PlasmicTransactionCard__RenderFunc(props: {
                         $steps["updateLoading"] = await $steps["updateLoading"];
                       }
                     }}
+                    shape={"sharp"}
                   />
 
                   <Paziresh24Button
@@ -786,6 +787,7 @@ function PlasmicTransactionCard__RenderFunc(props: {
                       }
                     }}
                     outline={true}
+                    shape={"sharp"}
                   />
                 </div>
               </div>
@@ -825,6 +827,7 @@ function PlasmicTransactionCard__RenderFunc(props: {
                   sty.paziresh24Button__p2DWw
                 )}
                 outline={true}
+                shape={"sharp"}
                 size={"compact"}
               />
             }

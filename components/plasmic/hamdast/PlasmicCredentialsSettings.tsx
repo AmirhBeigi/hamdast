@@ -489,6 +489,7 @@ function PlasmicCredentialsSettings__RenderFunc(props: {
                           $steps["runCode"] = await $steps["runCode"];
                         }
                       }}
+                      shape={"sharp"}
                       showStartIcon={true}
                       size={"compact"}
                       startIcon={

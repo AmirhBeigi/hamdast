@@ -77,7 +77,7 @@
   margin-bottom: 12px;
   row-gap: 20px;
   min-width: 0;
-  border-radius: 8px;
+  border-radius: 0px;
   padding: 13px;
   border: 1px solid #dfdfdfcc;
 }
@@ -201,13 +201,12 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  background: none;
+  background: #f5f5f5;
   margin-bottom: 12px;
   row-gap: 20px;
   min-width: 0;
-  border-radius: 8px;
+  border-radius: 0px;
   padding: 13px;
-  border: 1px solid #dfdfdfcc;
 }
 .freeBox__gj7O0 {
   display: flex;
@@ -293,6 +292,7 @@
   object-fit: cover;
   position: relative;
   cursor: pointer;
+  background: #f5f5f5;
   min-width: 0;
 }
 .svg__oWjCr {
@@ -402,6 +402,7 @@
   object-fit: cover;
   position: relative;
   cursor: pointer;
+  background: #f5f5f5;
   min-width: 0;
 }
 .svg__jSvBh {
@@ -427,7 +428,7 @@
   margin-bottom: 12px;
   row-gap: 20px;
   min-width: 0;
-  border-radius: 8px;
+  border-radius: 0px;
   padding: 13px;
   border: 1px solid #dfdfdfcc;
 }
@@ -577,7 +578,7 @@
   margin-bottom: 12px;
   row-gap: 20px;
   min-width: 0;
-  border-radius: 8px;
+  border-radius: 0px;
   padding: 13px;
   border: 1px solid #dfdfdfcc;
 }

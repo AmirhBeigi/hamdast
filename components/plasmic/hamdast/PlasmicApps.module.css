@@ -46,6 +46,7 @@
   align-items: center;
   overflow: auto;
   row-gap: var(--token-3WxvfyIdJppy);
+  background: none;
   min-width: 0;
   padding: 38px;
 }
@@ -153,10 +154,9 @@
   align-items: center;
   column-gap: 10px;
   cursor: pointer;
+  background: #f5f5f5;
   min-width: 0;
-  border-radius: 10px;
   padding: 0.7rem;
-  border: 1px solid var(--token-M8SHDPuEHkX2);
 }
 .freeBox__wMrC {
   display: flex;

@@ -699,64 +699,6 @@ function PlasmicSettting__RenderFunc(props: {
                     <Menu
                       active={(() => {
                         try {
-                          return "Realese" === $state.menu;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return [];
-                          }
-                          throw e;
-                        }
-                      })()}
-                      className={classNames("__wab_instance", sty.menu__xfWsC)}
-                      compact={true}
-                      icon={false}
-                      iconWrapper={null}
-                      name={"\u0627\u0646\u062a\u0634\u0627\u0631 "}
-                      onClick={async () => {
-                        const $steps = {};
-
-                        $steps["updateMenu"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["menu"]
-                                },
-                                operation: 0,
-                                value: "App"
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateMenu"] != null &&
-                          typeof $steps["updateMenu"] === "object" &&
-                          typeof $steps["updateMenu"].then === "function"
-                        ) {
-                          $steps["updateMenu"] = await $steps["updateMenu"];
-                        }
-                      }}
-                    />
-
-                    <Menu
-                      active={(() => {
-                        try {
                           return "API Key" === $state.menu;
                         } catch (e) {
                           if (
@@ -2228,6 +2170,7 @@ function PlasmicSettting__RenderFunc(props: {
                                   await $steps["runActionOnUserPageRequest"];
                               }
                             }}
+                            shape={"sharp"}
                           />
                         </div>
                       </ApiRequest>

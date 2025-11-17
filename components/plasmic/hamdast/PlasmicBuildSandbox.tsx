@@ -765,6 +765,7 @@ function PlasmicBuildSandbox__RenderFunc(props: {
                                   throw e;
                                 }
                               })()}
+                              shape={"sharp"}
                               showStartIcon={true}
                               startIcon={
                                 <Icon40Icon
@@ -790,6 +791,7 @@ function PlasmicBuildSandbox__RenderFunc(props: {
                                 "https://www.paziresh24.com/dashboard/profile/"
                               }
                               outline={true}
+                              shape={"sharp"}
                               showStartIcon={true}
                               startIcon={
                                 <IconIcon
@@ -964,6 +966,8 @@ function PlasmicBuildSandbox__RenderFunc(props: {
                                 await $steps["updateLoading3"];
                             }
                           }}
+                          outline={true}
+                          shape={"sharp"}
                           startIcon={
                             <Icon40Icon
                               className={classNames(
@@ -1171,6 +1175,7 @@ function PlasmicBuildSandbox__RenderFunc(props: {
                                 await $steps["updateLoading3"];
                             }
                           }}
+                          shape={"sharp"}
                           startIcon={
                             <Icon40Icon
                               className={classNames(

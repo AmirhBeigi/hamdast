@@ -171,13 +171,39 @@ function PlasmicProductCard__RenderFunc(props: {
         path: "input.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $props.currentItem.title;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       },
       {
         path: "input2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $props.currentItem.price / 10;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -424,26 +450,160 @@ function PlasmicProductCard__RenderFunc(props: {
                       {"\u062a\u0648\u0645\u0627\u0646"}
                     </div>
                   </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___4Wuh
-                    )}
-                  >
-                    {
-                      "\u0645\u062b\u0644\u0627 \u0635\u062f \u0647\u0632\u0627\u0631 \u062a\u0648\u0645\u0627\u0646"
+                  {(() => {
+                    try {
+                      return !$state.input2.value;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
                     }
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__pB2Gt
-                    )}
-                  >
-                    {""}
-                  </div>
+                  })() ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___4Wuh
+                      )}
+                    >
+                      {
+                        "\u0645\u062b\u0644\u0627 \u0635\u062f \u0647\u0632\u0627\u0631 \u062a\u0648\u0645\u0627\u0646"
+                      }
+                    </div>
+                  ) : null}
+                  {(() => {
+                    try {
+                      return !!$state.input2.value;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })() ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__n8Xmn
+                      )}
+                    >
+                      <React.Fragment>
+                        {(() => {
+                          try {
+                            return (() => {
+                              function numberToWords(num) {
+                                const ones = [
+                                  "",
+                                  "یک",
+                                  "دو",
+                                  "سه",
+                                  "چهار",
+                                  "پنج",
+                                  "شش",
+                                  "هفت",
+                                  "هشت",
+                                  "نه"
+                                ];
+
+                                const tens = [
+                                  "",
+                                  "ده",
+                                  "بیست",
+                                  "سی",
+                                  "چهل",
+                                  "پنجاه",
+                                  "شصت",
+                                  "هفتاد",
+                                  "هشتاد",
+                                  "نود"
+                                ];
+
+                                const hundreds = [
+                                  "",
+                                  "صد",
+                                  "دویست",
+                                  "سیصد",
+                                  "چهارصد",
+                                  "پانصد",
+                                  "ششصد",
+                                  "هفتصد",
+                                  "هشتصد",
+                                  "نهصد"
+                                ];
+
+                                const thousands = [
+                                  "",
+                                  "هزار",
+                                  "میلیون",
+                                  "میلیارد"
+                                ];
+
+                                if (num === 0) return "صفر";
+                                let words = "";
+                                let thousandIndex = 0;
+                                while (num > 0) {
+                                  let section = num % 1000;
+                                  if (section !== 0) {
+                                    let sectionWords = "";
+                                    let hundred = Math.floor(section / 100);
+                                    let ten = Math.floor((section % 100) / 10);
+                                    let one = section % 10;
+                                    if (hundred > 0) {
+                                      sectionWords += hundreds[hundred] + " ";
+                                    }
+                                    if (ten > 1) {
+                                      sectionWords += tens[ten] + " ";
+                                      sectionWords += ones[one];
+                                    } else if (ten === 1) {
+                                      if (one === 0) {
+                                        sectionWords += "ده";
+                                      } else if (one === 1) {
+                                        sectionWords += "یازده";
+                                      } else if (one === 2) {
+                                        sectionWords += "دوازده";
+                                      } else {
+                                        sectionWords +=
+                                          tens[ten] + " و " + ones[one];
+                                      }
+                                    } else {
+                                      sectionWords += ones[one];
+                                    }
+                                    if (thousands[thousandIndex]) {
+                                      sectionWords +=
+                                        " " + thousands[thousandIndex];
+                                    }
+                                    words = sectionWords + " " + words;
+                                  }
+                                  num = Math.floor(num / 1000);
+                                  thousandIndex++;
+                                }
+                                return words.trim();
+                              }
+                              return (
+                                numberToWords($state.input2.value) + " تومان"
+                              );
+                            })();
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "\u0645\u062b\u0644\u0627 \u0635\u062f \u0647\u0632\u0627\u0631 \u062a\u0648\u0645\u0627\u0646";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      </React.Fragment>
+                    </div>
+                  ) : null}
                 </div>
               </div>
               <div className={classNames(projectcss.all, sty.freeBox___6KFvQ)}>
@@ -655,6 +815,7 @@ function PlasmicProductCard__RenderFunc(props: {
                       $steps["updateLoading5"] = await $steps["updateLoading5"];
                     }
                   }}
+                  shape={"sharp"}
                 />
 
                 <Paziresh24Button
@@ -836,6 +997,7 @@ function PlasmicProductCard__RenderFunc(props: {
                     }
                   }}
                   outline={true}
+                  shape={"sharp"}
                   showStartIcon={true}
                   startIcon={
                     <Icon3Icon
@@ -897,6 +1059,7 @@ function PlasmicProductCard__RenderFunc(props: {
                 }
               })()}
               outline={true}
+              shape={"sharp"}
               showStartIcon={true}
               size={"compact"}
               startIcon={

@@ -12,14 +12,14 @@
   cursor: pointer;
   column-gap: 8px;
   min-width: 0;
-  border-radius: 10px;
+  border-radius: 0px;
   padding: 10px 14px 10px 8px;
 }
 .rootactive {
   width: 100%;
   height: auto;
   max-width: 100%;
-  background: #efefef;
+  background: #f5f5f5;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
@@ -27,7 +27,7 @@
   column-gap: 8px;
   row-gap: 0px;
   min-width: 0;
-  border-radius: 10px;
+  border-radius: 0px;
   padding: 10px 14px 10px 8px;
 }
 .rootcompact {
@@ -40,7 +40,7 @@
   align-items: center;
   row-gap: 0px;
   min-width: 0;
-  border-radius: 8px;
+  border-radius: 0px;
   padding: 8px 12px 8px 8px;
 }
 .rootdisabled {
@@ -48,7 +48,10 @@
   cursor: default;
 }
 .rootactive_compact {
-  background: #efefef;
+  background: #f5f5f5;
+}
+.slotTargetIconWrapperactive {
+  color: var(--token-s_XuzePAGmOh);
 }
 .svg__a4Zd6 {
   position: relative;
@@ -57,6 +60,7 @@
   width: 18px;
   height: 18px;
   min-width: 18px;
+  color: var(--token-s_XuzePAGmOh);
   flex-shrink: 0;
 }
 .freeBox {
@@ -78,6 +82,11 @@
   font-weight: 600;
   font-size: 14px;
 }
+.textactive__rXnwvEmr3O {
+  background: none;
+  color: var(--token-s_XuzePAGmOh);
+  font-weight: 700;
+}
 .textcompact__rXnwVvMEwR {
   width: 100%;
   height: auto;
@@ -92,9 +101,12 @@
   height: auto;
   max-width: 100%;
   text-align: right;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 12px;
   color: #000000bd;
+}
+.textactive__huioEmr3O {
+  opacity: 1;
 }
 .textcompact__huioVMEwR {
   width: 100%;

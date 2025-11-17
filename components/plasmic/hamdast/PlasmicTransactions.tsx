@@ -2471,6 +2471,7 @@ function PlasmicTransactions__RenderFunc(props: {
                                   ];
                               }
                             }}
+                            shape={"sharp"}
                           />
                         </React.Fragment>
                       }
@@ -2515,6 +2516,7 @@ function PlasmicTransactions__RenderFunc(props: {
                           isDisabled={(() => {
                             try {
                               return (
+                                !$state.fragmentApiRequest3.data.balance ||
                                 $state.fragmentApiRequest3.data.balance == 0
                               );
                             } catch (e) {
@@ -2550,6 +2552,7 @@ function PlasmicTransactions__RenderFunc(props: {
                               $steps["runCode"] = await $steps["runCode"];
                             }
                           }}
+                          shape={"sharp"}
                         />
                       }
                     />

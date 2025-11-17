@@ -889,6 +889,7 @@ function PlasmicAppForm__RenderFunc(props: {
             $steps["updateLoading2"] = await $steps["updateLoading2"];
           }
         }}
+        shape={"sharp"}
       />
     </div>
   ) as React.ReactElement | null;

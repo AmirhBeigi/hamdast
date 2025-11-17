@@ -420,6 +420,7 @@ function PlasmicProductCard2__RenderFunc(props: {
             }
           }}
           outline={true}
+          shape={"sharp"}
           showStartIcon={true}
           size={"compact"}
           startIcon={
@@ -459,7 +460,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicProductCard2__VariantsArgs;
     args?: PlasmicProductCard2__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicProductCard2__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicProductCard2__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicProductCard2__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

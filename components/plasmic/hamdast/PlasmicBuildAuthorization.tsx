@@ -1428,6 +1428,7 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                         }
                       }}
                       outline={true}
+                      shape={"sharp"}
                       showStartIcon={true}
                       size={"compact"}
                       startIcon={
@@ -1610,6 +1611,7 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                             await $steps["invokeGlobalAction2"];
                         }
                       }}
+                      shape={"sharp"}
                       startIcon={
                         <Icon21Icon
                           className={classNames(
