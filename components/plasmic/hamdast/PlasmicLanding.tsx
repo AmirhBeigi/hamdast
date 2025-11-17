@@ -59,8 +59,9 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import Button from "../../Button"; // plasmic-import: _T6T2fNvkUfo/component
 import { Reveal } from "@plasmicpkgs/react-awesome-reveal";
+import Paziresh24Button from "../../Paziresh24Button"; // plasmic-import: YOhw5fIQJQgB/component
+import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/styleTokensProvider
 
@@ -70,8 +71,8 @@ import projectcss from "./plasmic.module.css"; // plasmic-import: bE9NMB942w5e6u
 import sty from "./PlasmicLanding.module.css"; // plasmic-import: S7QID4Zn_0WI/css
 
 import Icon51Icon from "./icons/PlasmicIcon__Icon51"; // plasmic-import: wMmAYe1Ji-cY/icon
-import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: VepSFu0Y3Pyk/icon
-import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: CmW94FEF71d7/icon
+import ChevronRightIcon from "../paziresh_24_design_system/icons/PlasmicIcon__ChevronRight"; // plasmic-import: 0359howWu0cr/icon
+import ChevronLeftIcon from "../paziresh_24_design_system/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: jS0YlkKPLO7U/icon
 import Icon21Icon from "./icons/PlasmicIcon__Icon21"; // plasmic-import: UuDHOUXMn1lI/icon
 
 createPlasmicElementProxy;
@@ -87,6 +88,8 @@ export const PlasmicLanding__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicLanding__OverridesType = {
   root?: Flex__<"div">;
+  paziresh24Button?: Flex__<typeof Paziresh24Button>;
+  apiRequest?: Flex__<typeof ApiRequest>;
 };
 
 export interface DefaultLandingProps {}
@@ -139,6 +142,30 @@ function PlasmicLanding__RenderFunc(props: {
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "apiRequest.data",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "apiRequest"
+      },
+      {
+        path: "apiRequest.error",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "apiRequest"
+      },
+      {
+        path: "apiRequest.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "apiRequest"
       }
     ],
     [$props, $ctx, $refs]
@@ -247,7 +274,7 @@ function PlasmicLanding__RenderFunc(props: {
                         sty.link__enRrO
                       )}
                       component={Link}
-                      href={"https://developers.paziresh24.com/apps"}
+                      href={"https://cal.com/amirhbeigi/hamdast"}
                       platform={"nextjs"}
                       target={"_blank"}
                     >
@@ -256,25 +283,6 @@ function PlasmicLanding__RenderFunc(props: {
                       }
                     </PlasmicLink__>
                   </div>
-                  <Button
-                    className={classNames("__wab_instance", sty.button___3EXjU)}
-                    color={"white"}
-                    link={`/login`}
-                    shape={"rounded"}
-                    size={"compact"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__sg2Xr
-                      )}
-                    >
-                      {
-                        "\u067e\u0646\u0644 \u062a\u0648\u0633\u0639\u0647 \u062f\u0647\u0646\u062f\u06af\u0627\u0646"
-                      }
-                    </div>
-                  </Button>
                 </div>
                 <div className={classNames(projectcss.all, sty.freeBox__lBXie)}>
                   <Reveal
@@ -293,7 +301,7 @@ function PlasmicLanding__RenderFunc(props: {
                         )}
                       >
                         {
-                          "\u0633\u0627\u062e\u062a \u0645\u062d\u0635\u0648\u0644\u0627\u062a \u062f\u0631 \u062d\u0648\u0632\u0647 \u0633\u0644\u0627\u0645\u062a"
+                          "\u0631\u0634\u062f \u0627\u067e \u0634\u0645\u0627 \u062f\u0631 \u067e\u0630\u06cc\u0631\u0634\u06f2\u06f4"
                         }
                       </div>
                       <div
@@ -304,7 +312,7 @@ function PlasmicLanding__RenderFunc(props: {
                         )}
                       >
                         {
-                          "\u062c\u0627\u06cc\u06cc \u06a9\u0647 \u0628\u0627 \u062d\u0644 \u0645\u0634\u06a9\u0644\u0627\u062a \u0634\u0645\u0627 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0633\u0644\u0627\u0645\u062a \u0645\u06cc\u0644\u06cc\u0648\u0646\u200c\u0647\u0627 \u0646\u0641\u0631 \u0631\u0627 \u0645\u062a\u062d\u0648\u0644 \u06a9\u0646\u06cc\u062f.\r"
+                          "\u062f\u0631 \u067e\u0630\u06cc\u0631\u0634\u06f2\u06f4 \u0646\u0645\u0627\u06cc\u0634 \u062f\u0627\u062f\u0647 \u0634\u0648\u06cc\u062f\u060c \u062f\u0631\u0622\u0645\u062f \u06a9\u0633\u0628 \u06a9\u0646\u06cc\u062f \u0648 \u0628\u0627 \u062d\u0644 \u0645\u0634\u06a9\u0644\u0627\u062a\u060c \u0633\u0644\u0627\u0645\u062a \u0645\u06cc\u0644\u06cc\u0648\u0646\u200c\u0647\u0627 \u0646\u0641\u0631 \u0631\u0627 \u0645\u062a\u062d\u0648\u0644 \u06a9\u0646\u06cc\u062f.\r"
                         }
                       </div>
                       <div
@@ -313,59 +321,20 @@ function PlasmicLanding__RenderFunc(props: {
                           sty.freeBox___72XQz
                         )}
                       >
-                        <Button
+                        <Paziresh24Button
+                          data-plasmic-name={"paziresh24Button"}
+                          data-plasmic-override={overrides.paziresh24Button}
+                          children2={
+                            "\u0634\u0631\u0648\u0639 \u0633\u0627\u062e\u062a\u0646"
+                          }
                           className={classNames(
                             "__wab_instance",
-                            sty.button__d2DuQ
+                            sty.paziresh24Button
                           )}
-                          color={"white"}
-                          link={
-                            "https://developers.paziresh24.com/apps/getting-started"
-                          }
-                          shape={"rounded"}
-                          size={"compact"}
-                          target={false}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__bqKvk
-                            )}
-                          >
-                            {
-                              "\u0634\u0631\u0648\u0639 \u0633\u0627\u062e\u062a\u0646"
-                            }
-                          </div>
-                        </Button>
+                          link={`/login`}
+                          shape={"sharp"}
+                        />
                       </div>
-                    </div>
-                  </Reveal>
-                  <Reveal
-                    className={classNames("__wab_instance", sty.reveal__m6Bdl)}
-                    direction={"up"}
-                    triggerOnce={true}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__vhHiw)}
-                    >
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__rOcrt)}
-                        displayHeight={"auto"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"auto"}
-                        loading={"lazy"}
-                        src={{
-                          src: "/plasmic/hamdast/images/image8.png",
-                          fullWidth: 1536,
-                          fullHeight: 1024,
-                          aspectRatio: undefined
-                        }}
-                      />
                     </div>
                   </Reveal>
                 </div>
@@ -377,268 +346,265 @@ function PlasmicLanding__RenderFunc(props: {
               effect={"fade"}
               triggerOnce={true}
             >
-              <div className={classNames(projectcss.all, sty.freeBox___2Azhv)}>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___2QaW7
-                  )}
-                >
-                  {
-                    "\u0647\u0645\u062f\u0633\u062a \u0686\u0647 \u06a9\u0645\u06a9\u06cc \u0628\u0647 \u0645\u0646 \u0645\u06cc\u200c\u06a9\u0646\u062f\u061f"
-                  }
+              <div className={classNames(projectcss.all, sty.freeBox___8GrB)}>
+                <div className={classNames(projectcss.all, sty.freeBox__lqwj8)}>
+                  <PlasmicImg__
+                    alt={""}
+                    className={classNames(sty.img___4LGfg)}
+                    displayHeight={"auto"}
+                    displayMaxHeight={"none"}
+                    displayMaxWidth={"100%"}
+                    displayMinHeight={"0"}
+                    displayMinWidth={"0"}
+                    displayWidth={"310px"}
+                    loading={"lazy"}
+                    src={{
+                      src: "/plasmic/hamdast/images/monetizationPng2.png",
+                      fullWidth: 2598,
+                      fullHeight: 1642,
+                      aspectRatio: undefined
+                    }}
+                  />
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__igNzo)}>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox___835Vc)}
+                >
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__eyBrG)}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___4WJdx
+                    )}
                   >
-                    {(_par =>
-                      !_par ? [] : Array.isArray(_par) ? _par : [_par])(
-                      (() => {
-                        try {
-                          return [
-                            {
-                              name: "دسترسی به داده‌ها",
-                              key: 0
-                            },
-                            {
-                              name: "درگاه پرداخت",
-                              key: 1
-                            },
-                            {
-                              name: "سفارشی سازی پروفایل پزشک",
-                              key: 2
-                            },
-                            {
-                              name: "انتشار به کاربران",
-                              key: 3
-                            }
-                          ];
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return [];
-                          }
-                          throw e;
-                        }
-                      })()
-                    ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                      const currentItem = __plasmic_item_0;
-                      const currentIndex = __plasmic_idx_0;
-                      return (
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__jbnIv
-                          )}
-                          key={currentIndex}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__eXh10
-                            )}
-                            style={(() => {
-                              try {
-                                return $state.features == currentItem.key
-                                  ? {
-                                      background: "#3861FB"
-                                    }
-                                  : {};
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return undefined;
-                                }
-                                throw e;
-                              }
-                            })()}
-                          />
-
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__estve
-                            )}
-                            onClick={async event => {
-                              const $steps = {};
-
-                              $steps["updateFeatures"] = true
-                                ? (() => {
-                                    const actionArgs = {
-                                      variable: {
-                                        objRoot: $state,
-                                        variablePath: ["features"]
-                                      },
-                                      operation: 0,
-                                      value: currentItem.key
-                                    };
-                                    return (({
-                                      variable,
-                                      value,
-                                      startIndex,
-                                      deleteCount
-                                    }) => {
-                                      if (!variable) {
-                                        return;
-                                      }
-                                      const { objRoot, variablePath } =
-                                        variable;
-
-                                      $stateSet(objRoot, variablePath, value);
-                                      return value;
-                                    })?.apply(null, [actionArgs]);
-                                  })()
-                                : undefined;
-                              if (
-                                $steps["updateFeatures"] != null &&
-                                typeof $steps["updateFeatures"] === "object" &&
-                                typeof $steps["updateFeatures"].then ===
-                                  "function"
-                              ) {
-                                $steps["updateFeatures"] =
-                                  await $steps["updateFeatures"];
-                              }
-                            }}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__vtl0P
-                              )}
-                              style={(() => {
-                                try {
-                                  return $state.features == currentItem.key
-                                    ? {
-                                        color: "#3861FB"
-                                      }
-                                    : {};
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return undefined;
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            >
-                              <React.Fragment>
-                                {(() => {
-                                  try {
-                                    return currentItem.name;
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return "\u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u062f\u0627\u062f\u0647 \u0647\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631\u0627\u0646";
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                              </React.Fragment>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
+                    {
+                      "\u0627\u0632 \u0686\u06cc\u0632\u06cc \u06a9\u0647 \u0645\u06cc\u200c\u0633\u0627\u0632\u06cc\u062f \u062f\u0631\u0622\u0645\u062f \u06a9\u0633\u0628 \u06a9\u0646\u06cc\u062f"
+                    }
                   </div>
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__wDq9P)}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__rrkLm
+                    )}
                   >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__jbzqY)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___7JntB
-                        )}
-                      >
-                        <React.Fragment>
-                          {(() => {
-                            try {
-                              return [
-                                "دسترسی به داده های بیماران و پزشکان",
-
-                                "پرداخت ساده از طریق کیف پول پذیرش۲۴",
-                                "افزودن بخش جدید به پروفایل عمومی پزشک",
-                                "انتشار محصول خود برای کاربران پذیرش۲۴"
-                              ][$state.features];
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return "\u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u062f\u0627\u062f\u0647 \u0647\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631\u0627\u0646";
-                              }
-                              throw e;
-                            }
-                          })()}
-                        </React.Fragment>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___7WJtB
-                        )}
-                      >
-                        <React.Fragment>
-                          {(() => {
-                            try {
-                              return [
-                                "از داده های پزشکان و بیماران در محصول خود استفاده کنید یا داده های آن ها را گسترش دهید.",
-                                "درگاه پرداخت پذیرش۲۴ تمام مراحل صدور صورتحساب و پردازش پرداخت‌ها را برای شما مدیریت می‌کند. این موضوع موجب کاهش پیچیدگی‌ها و دردسرهای مربوط به این فرآیندها می‌شود و به شما فرصت می‌دهد تا بیشتر روی ساخت و بهبود محصول خود تمرکز کنید.\nیکی از مزیت‌های مهم این سرویس، ارتباط مستقیم آن با کیف پول کاربران است، که روند پرداخت را سریع و راحت می‌سازد.",
-                                "سفارشی سازی بخش های مختلف وب سایت مانند پروفایل عمومی پزشک و پنل پزشکان",
-                                "انتشار ابزارک برای پزشکان پذیرش۲۴ و شروع سریع کسب درآمد"
-                              ][$state.features];
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return "\u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u062f\u0627\u062f\u0647 \u0647\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631\u0627\u0646";
-                              }
-                              throw e;
-                            }
-                          })()}
-                        </React.Fragment>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__l8V4
-                        )}
-                      >
-                        <div
+                    {
+                      "\u0628\u0627 \u00ab\u067e\u0631\u062f\u0627\u062e\u062a \u067e\u0630\u06cc\u0631\u0634\u06f2\u06f4\u00bb \u0628\u0647 \u0635\u0648\u0631\u062a \u0645\u0633\u062a\u0642\u06cc\u0645 \u0627\u0632 \u06a9\u0627\u0631\u0628\u0631 \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u067e\u0648\u0644 \u06a9\u0646\u06cc\u062f."
+                    }
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__gtoU
+                    )}
+                  >
+                    <React.Fragment>
+                      <React.Fragment>
+                        {
+                          "\u0628\u0631\u0627\u06cc \u062e\u0648\u0627\u0646\u062f\u0646 \u0634\u0631\u0627\u06cc\u0637 \u0648 \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0628\u06cc\u0634\u062a\u0631 "
+                        }
+                      </React.Fragment>
+                      {
+                        <PlasmicLink__
                           className={classNames(
                             projectcss.all,
+                            projectcss.a,
                             projectcss.__wab_text,
-                            sty.text__x6VSl
+                            projectcss.plasmic_default__inline,
+                            sty.link__sn4Sf
                           )}
-                        >
-                          {
-                            "\u0628\u06cc\u0634\u062a\u0631 \u0628\u062f\u0627\u0646\u06cc\u062f"
+                          component={Link}
+                          href={
+                            "https://developers.paziresh24.com/apps/about-monetization"
                           }
-                        </div>
-                        <Icon2Icon
-                          className={classNames(projectcss.all, sty.svg__pW8A3)}
-                          role={"img"}
-                        />
-                      </div>
-                    </div>
+                          platform={"nextjs"}
+                        >
+                          <React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{
+                                textDecorationLine: "underline",
+                                fontWeight: 500,
+                                color: "#000000"
+                              }}
+                            >
+                              {
+                                "\u0631\u0627\u0647\u0646\u0645\u0627\u06cc \u06a9\u0633\u0628 \u062f\u0631\u0622\u0645\u062f"
+                              }
+                            </span>
+                          </React.Fragment>
+                        </PlasmicLink__>
+                      }
+                      <React.Fragment>
+                        {
+                          " \u0631\u0627 \u0628\u062e\u0648\u0627\u0646\u06cc\u062f."
+                        }
+                      </React.Fragment>
+                    </React.Fragment>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+            <Reveal
+              className={classNames("__wab_instance", sty.reveal___1Avvn)}
+              direction={"up"}
+              effect={"fade"}
+              triggerOnce={true}
+            >
+              <div className={classNames(projectcss.all, sty.freeBox__v0WDu)}>
+                <div className={classNames(projectcss.all, sty.freeBox__kOkX8)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__qd78U
+                    )}
+                  >
+                    {
+                      "\u062f\u0631 \u067e\u0630\u06cc\u0631\u0634\u06f2\u06f4 \u0646\u0645\u0627\u06cc\u0634 \u062f\u0627\u062f\u0647 \u0634\u0648\u06cc\u062f"
+                    }
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___3Cuzl
+                    )}
+                  >
+                    {
+                      "\u062f\u0631 \u062c\u0627\u06cc\u06cc \u06a9\u0647 \u0645\u0646\u0634\u06cc \u0648 \u067e\u0632\u0634\u06a9\u0627\u0646 \u0631\u0648\u0632\u0627\u0646\u0647 \u062f\u0631\u062d\u0627\u0644 \u0641\u0639\u0627\u0644\u06cc\u062a \u0647\u0633\u062a\u0646\u062f \u0646\u0645\u0627\u06cc\u0634 \u062f\u0627\u062f\u0647 \u0634\u0648\u06cc\u062f \u0648 \u0631\u0634\u062f \u06a9\u0646\u06cc\u062f."
+                    }
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__teKuj)}>
+                  <PlasmicImg__
+                    alt={""}
+                    className={classNames(sty.img___4APb)}
+                    displayHeight={"auto"}
+                    displayMaxHeight={"none"}
+                    displayMaxWidth={"100%"}
+                    displayMinHeight={"0"}
+                    displayMinWidth={"0"}
+                    displayWidth={"280px"}
+                    loading={"lazy"}
+                    src={{
+                      src: "/plasmic/hamdast/images/storePng.png",
+                      fullWidth: 2598,
+                      fullHeight: 2363,
+                      aspectRatio: undefined
+                    }}
+                  />
+                </div>
+              </div>
+            </Reveal>
+            <Reveal
+              className={classNames("__wab_instance", sty.reveal___3GzS)}
+              direction={"up"}
+              effect={"fade"}
+              triggerOnce={true}
+            >
+              <div className={classNames(projectcss.all, sty.freeBox__rAZut)}>
+                <div className={classNames(projectcss.all, sty.freeBox__urYX)}>
+                  <PlasmicImg__
+                    alt={""}
+                    className={classNames(sty.img__wmFLe)}
+                    displayHeight={"auto"}
+                    displayMaxHeight={"none"}
+                    displayMaxWidth={"100%"}
+                    displayMinHeight={"0"}
+                    displayMinWidth={"0"}
+                    displayWidth={"310px"}
+                    loading={"lazy"}
+                    src={{
+                      src: "/plasmic/hamdast/images/apisPng.png",
+                      fullWidth: 2598,
+                      fullHeight: 1616,
+                      aspectRatio: undefined
+                    }}
+                  />
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__yIOdd)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__bxEUj
+                    )}
+                  >
+                    {
+                      "\u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u062f\u0627\u062f\u0647 \u0647\u0627\u06cc \u0646\u0648\u0628\u062a \u0647\u0627 \u0648 \u067e\u0632\u0634\u06a9\u0627\u0646"
+                    }
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__hf2QP
+                    )}
+                  >
+                    {
+                      "\u0627\u0632 \u062f\u0627\u062f\u0647 \u0647\u0627\u06cc \u067e\u0630\u06cc\u0631\u0634\u06f2\u06f4 \u0628\u0627 \u062f\u0633\u062a\u0631\u0633\u06cc \u067e\u0632\u0634\u06a9 \u062f\u0631 \u0627\u067e \u062e\u0648\u062f \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u06a9\u0646\u06cc\u062f \u06cc\u0627 \u062f\u0627\u062f\u0647 \u0647\u0627\u06cc \u0622\u0646 \u0647\u0627 \u0631\u0627 \u06af\u0633\u062a\u0631\u0634 \u062f\u0647\u06cc\u062f.\r"
+                    }
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___3OSwy
+                    )}
+                  >
+                    <React.Fragment>
+                      <React.Fragment>
+                        {
+                          "\u062f\u0627\u062f\u0647 \u067e\u0630\u06cc\u0631\u0634\u06f2\u06f4 \u0628\u0647 \u0635\u0648\u0631\u062a API \u062f\u0631"
+                        }
+                      </React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ color: "#000000" }}
+                      >
+                        {" "}
+                      </span>
+                      <React.Fragment>{""}</React.Fragment>
+                      {
+                        <PlasmicLink__
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.a,
+                            projectcss.__wab_text,
+                            projectcss.plasmic_default__inline,
+                            sty.link__xDy6A
+                          )}
+                          component={Link}
+                          href={"https://developers.paziresh24.com/apis"}
+                          platform={"nextjs"}
+                        >
+                          <React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{
+                                textDecorationLine: "underline",
+                                fontWeight: 500,
+                                color: "#000000"
+                              }}
+                            >
+                              {
+                                "\u0635\u0641\u062d\u0647 \u0633\u0631\u0648\u06cc\u0633 \u0647\u0627"
+                              }
+                            </span>
+                          </React.Fragment>
+                        </PlasmicLink__>
+                      }
+                      <React.Fragment>
+                        {
+                          " \u0642\u0627\u0628\u0644 \u0645\u0634\u0627\u0647\u062f\u0647 \u0627\u0633\u062a."
+                        }
+                      </React.Fragment>
+                    </React.Fragment>
                   </div>
                 </div>
               </div>
@@ -835,14 +801,9 @@ function PlasmicLanding__RenderFunc(props: {
                       onClick={async event => {
                         const $steps = {};
 
-                        $steps[
-                          "goToHttpsDevelopersPaziresh24ComAppsGettingStarted"
-                        ] = true
+                        $steps["goToHamdastLogin"] = true
                           ? (() => {
-                              const actionArgs = {
-                                destination:
-                                  "https://developers.paziresh24.com/apps/getting-started"
-                              };
+                              const actionArgs = { destination: `/login` };
                               return (({ destination }) => {
                                 if (
                                   typeof destination === "string" &&
@@ -858,22 +819,12 @@ function PlasmicLanding__RenderFunc(props: {
                             })()
                           : undefined;
                         if (
-                          $steps[
-                            "goToHttpsDevelopersPaziresh24ComAppsGettingStarted"
-                          ] != null &&
-                          typeof $steps[
-                            "goToHttpsDevelopersPaziresh24ComAppsGettingStarted"
-                          ] === "object" &&
-                          typeof $steps[
-                            "goToHttpsDevelopersPaziresh24ComAppsGettingStarted"
-                          ].then === "function"
+                          $steps["goToHamdastLogin"] != null &&
+                          typeof $steps["goToHamdastLogin"] === "object" &&
+                          typeof $steps["goToHamdastLogin"].then === "function"
                         ) {
-                          $steps[
-                            "goToHttpsDevelopersPaziresh24ComAppsGettingStarted"
-                          ] =
-                            await $steps[
-                              "goToHttpsDevelopersPaziresh24ComAppsGettingStarted"
-                            ];
+                          $steps["goToHamdastLogin"] =
+                            await $steps["goToHamdastLogin"];
                         }
                       }}
                     >
@@ -1194,6 +1145,65 @@ function PlasmicLanding__RenderFunc(props: {
                 />
               </div>
             </div>
+            <ApiRequest
+              data-plasmic-name={"apiRequest"}
+              data-plasmic-override={overrides.apiRequest}
+              className={classNames("__wab_instance", sty.apiRequest)}
+              errorDisplay={null}
+              loadingDisplay={null}
+              method={"GET"}
+              onError={async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, [
+                  "apiRequest",
+                  "error"
+                ]).apply(null, eventArgs);
+              }}
+              onLoading={async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, [
+                  "apiRequest",
+                  "loading"
+                ]).apply(null, eventArgs);
+              }}
+              onSuccess={async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, ["apiRequest", "data"]).apply(
+                  null,
+                  eventArgs
+                );
+
+                (async data => {
+                  const $steps = {};
+
+                  $steps["goToApps"] = $state.apiRequest.data?.id
+                    ? (() => {
+                        const actionArgs = { destination: `/apps` };
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
+                          }
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["goToApps"] != null &&
+                    typeof $steps["goToApps"] === "object" &&
+                    typeof $steps["goToApps"].then === "function"
+                  ) {
+                    $steps["goToApps"] = await $steps["goToApps"];
+                  }
+                }).apply(null, eventArgs);
+              }}
+              ref={ref => {
+                $refs["apiRequest"] = ref;
+              }}
+              url={"https://hamdast.paziresh24.com/api/v1/profile/"}
+            />
           </div>
         </div>
       </div>
@@ -1202,13 +1212,17 @@ function PlasmicLanding__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root"]
+  root: ["root", "paziresh24Button", "apiRequest"],
+  paziresh24Button: ["paziresh24Button"],
+  apiRequest: ["apiRequest"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  paziresh24Button: typeof Paziresh24Button;
+  apiRequest: typeof ApiRequest;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1273,6 +1287,8 @@ export const PlasmicLanding = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    paziresh24Button: makeNodeComponent("paziresh24Button"),
+    apiRequest: makeNodeComponent("apiRequest"),
 
     // Metadata about props expected for PlasmicLanding
     internalVariantProps: PlasmicLanding__VariantProps,

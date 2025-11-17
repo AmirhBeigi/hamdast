@@ -1517,6 +1517,26 @@
           "id": "D68xZj7V_sxO",
           "name": "image 9",
           "filePath": "../public/plasmic/hamdast/images/image9.svg"
+        },
+        {
+          "id": "J9SpG27z8atZ",
+          "name": "monetization.png",
+          "filePath": "../public/plasmic/hamdast/images/monetizationPng.png"
+        },
+        {
+          "id": "XZGTewfP11B6",
+          "name": "monetization.png 2",
+          "filePath": "../public/plasmic/hamdast/images/monetizationPng2.png"
+        },
+        {
+          "id": "o3xQulVCXxfY",
+          "name": "store.png",
+          "filePath": "../public/plasmic/hamdast/images/storePng.png"
+        },
+        {
+          "id": "GdcQy1BA6mP7",
+          "name": "apis.png",
+          "filePath": "../public/plasmic/hamdast/images/apisPng.png"
         }
       ],
       "indirect": false,
