@@ -125,7 +125,6 @@
   min-width: 0;
 }
 .freeBox__mdAbN {
-  display: flex;
   flex-direction: row;
   position: relative;
   align-items: center;
@@ -135,6 +134,7 @@
   max-width: 100%;
   column-gap: 5px;
   min-width: 0;
+  display: none;
 }
 .freeBox___7Ibgk {
   display: flex;
@@ -164,4 +164,5 @@
   max-width: 100%;
   font-size: var(--token-KUiXUfHPkqkm);
   min-width: 0;
+  display: none;
 }

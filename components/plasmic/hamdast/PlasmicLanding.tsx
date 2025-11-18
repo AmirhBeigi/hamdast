@@ -358,7 +358,7 @@ function PlasmicLanding__RenderFunc(props: {
                                 sty.link___0PwRp
                               )}
                               component={Link}
-                              href={"/rfs"}
+                              href={"/rfa"}
                               platform={"nextjs"}
                             >
                               <React.Fragment>
