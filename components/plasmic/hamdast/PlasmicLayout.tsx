@@ -80,6 +80,7 @@ import Icon13Icon from "./icons/PlasmicIcon__Icon13"; // plasmic-import: SeV8a-S
 import Icon35Icon from "./icons/PlasmicIcon__Icon35"; // plasmic-import: m-5uHwTYBv5w/icon
 import Icon33Icon from "./icons/PlasmicIcon__Icon33"; // plasmic-import: 5jr5YwKHRzM_/icon
 import Icon30Icon from "./icons/PlasmicIcon__Icon30"; // plasmic-import: lj0OYAqPaiqC/icon
+import Icon55Icon from "./icons/PlasmicIcon__Icon55"; // plasmic-import: V1ZWWRo6HmAC/icon
 import Icon25Icon from "./icons/PlasmicIcon__Icon25"; // plasmic-import: AGSEC-pNDNUM/icon
 import Icon36Icon from "./icons/PlasmicIcon__Icon36"; // plasmic-import: GNR7bffuY0r7/icon
 import Icon9Icon from "./icons/PlasmicIcon__Icon9"; // plasmic-import: ly5Yl8idG7m1/icon
@@ -1228,6 +1229,110 @@ function PlasmicLayout__RenderFunc(props: {
                     <Menu
                       active={(() => {
                         try {
+                          return $state.menu === "Plans";
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return [];
+                          }
+                          throw e;
+                        }
+                      })()}
+                      className={classNames("__wab_instance", sty.menu__tHz5T)}
+                      compact={true}
+                      iconWrapper={
+                        <Icon55Icon
+                          className={classNames(projectcss.all, sty.svg__zz83C)}
+                          role={"img"}
+                        />
+                      }
+                      name={
+                        "\u067e\u0644\u0646 \u0647\u0627\u06cc \u0627\u0634\u062a\u0631\u0627\u06a9"
+                      }
+                      onClick={async () => {
+                        const $steps = {};
+
+                        $steps["updateMenu"] = false
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["menu"]
+                                },
+                                operation: 0,
+                                value: "Plans"
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateMenu"] != null &&
+                          typeof $steps["updateMenu"] === "object" &&
+                          typeof $steps["updateMenu"].then === "function"
+                        ) {
+                          $steps["updateMenu"] = await $steps["updateMenu"];
+                        }
+
+                        $steps["updateMenu2"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                destination: `/apps/${(() => {
+                                  try {
+                                    return $props.selectedApp;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()}/monetization/plans`
+                              };
+                              return (({ destination }) => {
+                                if (
+                                  typeof destination === "string" &&
+                                  destination.startsWith("#")
+                                ) {
+                                  document
+                                    .getElementById(destination.substr(1))
+                                    .scrollIntoView({ behavior: "smooth" });
+                                } else {
+                                  __nextRouter?.push(destination);
+                                }
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateMenu2"] != null &&
+                          typeof $steps["updateMenu2"] === "object" &&
+                          typeof $steps["updateMenu2"].then === "function"
+                        ) {
+                          $steps["updateMenu2"] = await $steps["updateMenu2"];
+                        }
+                      }}
+                    />
+
+                    <Menu
+                      active={(() => {
+                        try {
                           return $state.menu === "Transactions";
                         } catch (e) {
                           if (
@@ -1334,7 +1439,7 @@ function PlasmicLayout__RenderFunc(props: {
               <Menu
                 active={(() => {
                   try {
-                    return $state.menu === "webhook";
+                    return $state.menu === "Webhooks";
                   } catch (e) {
                     if (
                       e instanceof TypeError ||
@@ -1355,6 +1460,40 @@ function PlasmicLayout__RenderFunc(props: {
                 name={"\u0648\u0628\u200c\u0647\u0648\u06a9 \u0647\u0627"}
                 onClick={async () => {
                   const $steps = {};
+
+                  $steps["updateMenu"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["menu"]
+                          },
+                          operation: 0,
+                          value: "Webhooks"
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateMenu"] != null &&
+                    typeof $steps["updateMenu"] === "object" &&
+                    typeof $steps["updateMenu"].then === "function"
+                  ) {
+                    $steps["updateMenu"] = await $steps["updateMenu"];
+                  }
 
                   $steps["goToWebhooks"] = true
                     ? (() => {
@@ -1393,40 +1532,6 @@ function PlasmicLayout__RenderFunc(props: {
                     typeof $steps["goToWebhooks"].then === "function"
                   ) {
                     $steps["goToWebhooks"] = await $steps["goToWebhooks"];
-                  }
-
-                  $steps["updateMenu"] = true
-                    ? (() => {
-                        const actionArgs = {
-                          variable: {
-                            objRoot: $state,
-                            variablePath: ["menu"]
-                          },
-                          operation: 0,
-                          value: "webhook"
-                        };
-                        return (({
-                          variable,
-                          value,
-                          startIndex,
-                          deleteCount
-                        }) => {
-                          if (!variable) {
-                            return;
-                          }
-                          const { objRoot, variablePath } = variable;
-
-                          $stateSet(objRoot, variablePath, value);
-                          return value;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["updateMenu"] != null &&
-                    typeof $steps["updateMenu"] === "object" &&
-                    typeof $steps["updateMenu"].then === "function"
-                  ) {
-                    $steps["updateMenu"] = await $steps["updateMenu"];
                   }
                 }}
               />

@@ -1172,6 +1172,46 @@
           "cssFilePath": "plasmic/hamdast/PlasmicWebhookCard.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "2hWleW6gfafw",
+          "name": "Plans",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicPlans.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/apps/[id]/monetization/plans.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicPlans.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/apps/[id]/monetization/plans"
+        },
+        {
+          "id": "ZHuPkRDeQgyK",
+          "name": "PlanCard",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicPlanCard.tsx",
+          "importSpec": {
+            "modulePath": "PlanCard.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicPlanCard.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "f7fOrAClVFZA",
+          "name": "PlanForm",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicPlanForm.tsx",
+          "importSpec": {
+            "modulePath": "PlanForm.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicPlanForm.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -1494,6 +1534,11 @@
           "id": "sZwWcCLWj_Lj",
           "name": "Icon54Icon",
           "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon54.tsx"
+        },
+        {
+          "id": "V1ZWWRo6HmAC",
+          "name": "Icon55Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon55.tsx"
         }
       ],
       "images": [
