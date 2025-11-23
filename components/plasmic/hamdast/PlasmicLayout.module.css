@@ -421,6 +421,17 @@
   width: 22px;
   height: 22px;
 }
+.menu__xVtVp:global(.__wab_instance) {
+  max-width: 100%;
+  position: relative;
+}
+.svg__upplA {
+  position: relative;
+  object-fit: cover;
+  max-width: 100%;
+  width: 22px;
+  height: 22px;
+}
 .menu__z0FV:global(.__wab_instance) {
   max-width: 100%;
   position: relative;

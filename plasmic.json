@@ -1145,6 +1145,33 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/rfa"
+        },
+        {
+          "id": "qxSFoB0gpuxc",
+          "name": "Webhooks",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicWebhooks.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/apps/[id]/webhooks.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicWebhooks.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/apps/[id]/webhooks"
+        },
+        {
+          "id": "OpfjC8Ncgqxa",
+          "name": "WebhookCard",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicWebhookCard.tsx",
+          "importSpec": {
+            "modulePath": "WebhookCard.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicWebhookCard.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
