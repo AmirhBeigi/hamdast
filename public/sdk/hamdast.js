@@ -91,6 +91,18 @@ window.hamdast = {
         promise: true,
       });
     },
+    subscribe: function (obj) {
+      return hamdastCommunication({
+        clientKey: window.hamdast.clientKey,
+        event: "HAMDAST_PAYMENT_SUBSCRIBE",
+        data: {
+          plan_key: obj.plan_key,
+          payload: obj.payload,
+          receipt_id: obj.receipt_id,
+        },
+        promise: true,
+      });
+    },
   },
   widget: {
     addToProfile: function () {
