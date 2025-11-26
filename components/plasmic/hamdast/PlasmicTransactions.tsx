@@ -103,6 +103,7 @@ export type PlasmicTransactions__OverridesType = {
   fragmentApiRequest2?: Flex__<typeof ApiRequest>;
   fragmentApiRequest3?: Flex__<typeof ApiRequest>;
   fragmentApiRequest4?: Flex__<typeof ApiRequest>;
+  span?: Flex__<"span">;
   dialog?: Flex__<typeof Paziresh24Modal>;
   apiRequest2?: Flex__<typeof ApiRequest>;
   input?: Flex__<typeof Input>;
@@ -1324,13 +1325,36 @@ function PlasmicTransactions__RenderFunc(props: {
                           )}
                         >
                           <React.Fragment>
+                            <React.Fragment>{""}</React.Fragment>
+                            {
+                              <span
+                                data-plasmic-name={"span"}
+                                data-plasmic-override={overrides.span}
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.span,
+                                  projectcss.__wab_text,
+                                  projectcss.plasmic_default__inline,
+                                  sty.span
+                                )}
+                              >
+                                <React.Fragment>
+                                  {
+                                    $state.authProvider.apps?.find(
+                                      item => item.id == $ctx.params.id
+                                    ).commission_percent
+                                  }
+                                </React.Fragment>
+                              </span>
+                            }
+                            <React.Fragment>{""}</React.Fragment>
                             <span
                               className={
                                 "plasmic_default__all plasmic_default__span"
                               }
                               style={{ fontWeight: 700 }}
                             >
-                              {"\u06f3\u06f0\u066a"}
+                              {"\u066a"}
                             </span>
                             <React.Fragment>
                               {
@@ -2708,6 +2732,7 @@ const PlasmicDescendants = {
     "fragmentApiRequest2",
     "fragmentApiRequest3",
     "fragmentApiRequest4",
+    "span",
     "dialog",
     "apiRequest2",
     "input",
@@ -2722,6 +2747,7 @@ const PlasmicDescendants = {
     "fragmentApiRequest2",
     "fragmentApiRequest3",
     "fragmentApiRequest4",
+    "span",
     "dialog",
     "apiRequest2",
     "input",
@@ -2734,6 +2760,7 @@ const PlasmicDescendants = {
     "fragmentApiRequest2",
     "fragmentApiRequest3",
     "fragmentApiRequest4",
+    "span",
     "dialog",
     "apiRequest2",
     "input",
@@ -2742,8 +2769,9 @@ const PlasmicDescendants = {
     "transactionCard"
   ],
   fragmentApiRequest2: ["fragmentApiRequest2"],
-  fragmentApiRequest3: ["fragmentApiRequest3", "fragmentApiRequest4"],
+  fragmentApiRequest3: ["fragmentApiRequest3", "fragmentApiRequest4", "span"],
   fragmentApiRequest4: ["fragmentApiRequest4"],
+  span: ["span"],
   dialog: ["dialog", "apiRequest2", "input", "apiRequest3"],
   apiRequest2: ["apiRequest2"],
   input: ["input"],
@@ -2762,6 +2790,7 @@ type NodeDefaultElementType = {
   fragmentApiRequest2: typeof ApiRequest;
   fragmentApiRequest3: typeof ApiRequest;
   fragmentApiRequest4: typeof ApiRequest;
+  span: "span";
   dialog: typeof Paziresh24Modal;
   apiRequest2: typeof ApiRequest;
   input: typeof Input;
@@ -2838,6 +2867,7 @@ export const PlasmicTransactions = Object.assign(
     fragmentApiRequest2: makeNodeComponent("fragmentApiRequest2"),
     fragmentApiRequest3: makeNodeComponent("fragmentApiRequest3"),
     fragmentApiRequest4: makeNodeComponent("fragmentApiRequest4"),
+    span: makeNodeComponent("span"),
     dialog: makeNodeComponent("dialog"),
     apiRequest2: makeNodeComponent("apiRequest2"),
     input: makeNodeComponent("input"),
