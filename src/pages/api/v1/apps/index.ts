@@ -80,6 +80,7 @@ export default async function handler(
         client_key: app.client_key,
         katibe_id: app.katibe_id,
         permissions: app.permissions,
+        commission_percent: app.commission_percent,
       }))
     );
   }

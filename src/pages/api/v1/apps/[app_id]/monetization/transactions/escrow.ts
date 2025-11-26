@@ -76,7 +76,10 @@ export default async function handler(
     );
 
     return res.status(200).json({
-      balance: +(escrow.data?.data?.balance * 0.7).toFixed(0),
+      balance: +(
+        escrow.data?.data?.balance *
+        ((100 - app?.commission_percent) / 100)
+      ).toFixed(0),
     });
   }
 }

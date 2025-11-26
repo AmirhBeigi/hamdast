@@ -75,7 +75,10 @@ export default async function handler(
     );
 
     return res.status(200).json({
-      balance: (wallet.data?.data?.balance * 0.7).toFixed(0),
+      balance: (
+        wallet.data?.data?.balance *
+        ((100 - app?.commission_percent) / 100)
+      ).toFixed(0),
       withdrawable: wallet.data?.data?.balance,
     });
   }

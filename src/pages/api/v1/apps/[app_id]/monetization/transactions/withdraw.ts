@@ -68,7 +68,7 @@ export default async function handler(
       {
         userid: userid,
         amount: amount,
-        commission_percent: 30,
+        commission_percent: app?.commission_percent ?? 30,
         title: `درآمد حاصل از فروش ابزارک ${app.name_fa}`,
       },
       {
