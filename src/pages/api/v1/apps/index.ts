@@ -97,6 +97,7 @@ export default async function handler(
         key,
         description: short_description,
         display_name_fa: name_fa,
+        commission_percent: 30,
       });
 
       await pb.collection("pages").create({
