@@ -68,13 +68,14 @@ export default async function handler(
   }
 
   if (req.method === "POST") {
-    const { product_key, payload } = req.body;
+    const { product_key, plan_key, payload } = req.body;
 
     try {
       const queryData = await axios.post(
         `https://hamdast-workflow.paziresh24.com/webhook/d21ff781-d40d-47dd-8c73-ccd6c36f357c/v1/${app_id}/payment`,
         {
           product_key: product_key,
+          plan_key: plan_key,
           payload: payload,
         },
         {
