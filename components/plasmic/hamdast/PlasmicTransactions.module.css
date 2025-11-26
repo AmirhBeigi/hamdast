@@ -601,6 +601,9 @@
   font-size: 11px;
   opacity: 0.5;
 }
+.span {
+  font-weight: 600;
+}
 .freeBox__rggxG {
   display: flex;
   flex-direction: row;
