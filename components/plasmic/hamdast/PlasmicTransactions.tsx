@@ -1340,9 +1340,9 @@ function PlasmicTransactions__RenderFunc(props: {
                               >
                                 <React.Fragment>
                                   {
-                                    $state.authProvider.apps?.find(
+                                    $state.authProvider?.apps?.find?.(
                                       item => item.id == $ctx.params.id
-                                    ).commission_percent
+                                    )?.commission_percent
                                   }
                                 </React.Fragment>
                               </span>
