@@ -15,6 +15,7 @@ const nextConfig = {
     SIB_ZAMINI_API_KEY: process.env.SIB_ZAMINI_API_KEY,
     ARVAN: process.env.ARVAN,
     PANEL_TOKEN: process.env.PANEL_TOKEN,
+    POCKETBASE_URL: process.env.POCKETBASE_URL,
   },
 };
 
