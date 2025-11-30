@@ -80,7 +80,7 @@ export default async function handler(
 
     try {
       const queryData = await axios.post(
-        `https://hamdast-workflow.paziresh24.com/webhook/d21ff781-d40d-47dd-8c73-ccd6c36f357c/v1/${app_id}/receipt`,
+        `https://hamdast-workflow.darkube.app/webhook/d21ff781-d40d-47dd-8c73-ccd6c36f357c/v1/${app_id}/receipt`,
         {
           title,
           amount,
