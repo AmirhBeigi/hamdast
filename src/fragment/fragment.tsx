@@ -59,17 +59,8 @@ export const Fragment = ({
               ...previewApiConfig,
               ...config,
             });
-          } else if (method === "DELETE") {
-            result = await axios.delete(url, {
-              params,
-              data: {
-                ...body,
-              },
-              ...apiConfig,
-              ...previewApiConfig,
-              ...config,
-            });
-          } else {
+          }
+          if (method !== "GET") {
             result = await axios[
               method.toLowerCase() as "post" | "delete" | "put" | "patch"
             ](url, body, {
