@@ -111,15 +111,6 @@ export const ApiRequest = forwardRef((props: ApiRequestType, ref) => {
         ...config,
       });
     }
-    if (method === "DELETE") {
-      return await axios.delete(url, {
-        params,
-        data: {
-          ...body,
-        },
-        ...config,
-      });
-    }
     return await axios[
       method.toLowerCase() as "post" | "delete" | "put" | "patch"
     ](url, body, {
