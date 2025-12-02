@@ -235,6 +235,37 @@
   opacity: 0.7;
   height: auto;
 }
+.providerAppointmentCheck:global(.__wab_instance) {
+  animation: none;
+  max-width: 100%;
+  object-fit: cover;
+  width: 100%;
+  min-width: 0;
+}
+.freeBox___5Ow3V {
+  animation: none;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.text__hv4Ta {
+  animation: none;
+  font-size: var(--token-KUiXUfHPkqkm);
+  font-weight: 500;
+}
+.text__eFtmN {
+  animation: none;
+  font-size: var(--token-P2saABvfDCPH);
+  font-weight: 500;
+  opacity: 0.7;
+  height: auto;
+}
 .freeBox__kzfy {
   display: flex;
   flex-direction: row;
@@ -313,6 +344,7 @@
   height: auto;
   max-width: 100%;
   flex-wrap: wrap;
+  column-gap: var(--token-omrXvBNBcWTN);
 }
 .text__e6Lqs {
   position: relative;
