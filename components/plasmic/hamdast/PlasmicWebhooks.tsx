@@ -100,6 +100,7 @@ export type PlasmicWebhooks__OverridesType = {
   dialog?: Flex__<typeof Paziresh24Modal>;
   input?: Flex__<typeof Input>;
   subscriptionCheck?: Flex__<typeof AntdCheckbox>;
+  providerAppointmentCheck?: Flex__<typeof AntdCheckbox>;
   apiRequest?: Flex__<typeof ApiRequest>;
   webhookCard?: Flex__<typeof WebhookCard>;
 };
@@ -217,6 +218,12 @@ function PlasmicWebhooks__RenderFunc(props: {
       },
       {
         path: "subscriptionCheck.checked",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "providerAppointmentCheck.checked",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
@@ -589,6 +596,55 @@ function PlasmicWebhooks__RenderFunc(props: {
                                     </div>
                                   </div>
                                 </AntdCheckbox>
+                                <AntdCheckbox
+                                  data-plasmic-name={"providerAppointmentCheck"}
+                                  data-plasmic-override={
+                                    overrides.providerAppointmentCheck
+                                  }
+                                  checked={generateStateValueProp($state, [
+                                    "providerAppointmentCheck",
+                                    "checked"
+                                  ])}
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.providerAppointmentCheck
+                                  )}
+                                  indeterminate={false}
+                                  onChange={async (...eventArgs: any) => {
+                                    generateStateOnChangeProp($state, [
+                                      "providerAppointmentCheck",
+                                      "checked"
+                                    ]).apply(null, eventArgs);
+                                  }}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__trZa1
+                                    )}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__pyY9S
+                                      )}
+                                    >
+                                      {
+                                        "\u062b\u0628\u062a \u0646\u0648\u0628\u062a \u062c\u062f\u06cc\u062f"
+                                      }
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__hpI
+                                      )}
+                                    >
+                                      {"provider.appointment"}
+                                    </div>
+                                  </div>
+                                </AntdCheckbox>
                               </div>
                             </div>
                           </div>
@@ -604,7 +660,8 @@ function PlasmicWebhooks__RenderFunc(props: {
                               try {
                                 return (
                                   !$state.input.value ||
-                                  !$state?.subscriptionCheck.checked
+                                  (!$state?.subscriptionCheck.checked &&
+                                    !$state?.providerAppointmentCheck.checked)
                                 );
                               } catch (e) {
                                 if (
@@ -697,6 +754,10 @@ function PlasmicWebhooks__RenderFunc(props: {
                                                 $state.subscriptionCheck
                                                   ?.checked
                                                   ? "subscription"
+                                                  : false,
+                                                $state.providerAppointmentCheck
+                                                  ?.checked
+                                                  ? "provider.appointment"
                                                   : false
                                               ].filter(Boolean)
                                             };
@@ -1052,6 +1113,7 @@ const PlasmicDescendants = {
     "dialog",
     "input",
     "subscriptionCheck",
+    "providerAppointmentCheck",
     "apiRequest",
     "webhookCard"
   ],
@@ -1062,6 +1124,7 @@ const PlasmicDescendants = {
     "dialog",
     "input",
     "subscriptionCheck",
+    "providerAppointmentCheck",
     "apiRequest",
     "webhookCard"
   ],
@@ -1070,12 +1133,14 @@ const PlasmicDescendants = {
     "dialog",
     "input",
     "subscriptionCheck",
+    "providerAppointmentCheck",
     "apiRequest",
     "webhookCard"
   ],
-  dialog: ["dialog", "input", "subscriptionCheck"],
+  dialog: ["dialog", "input", "subscriptionCheck", "providerAppointmentCheck"],
   input: ["input"],
   subscriptionCheck: ["subscriptionCheck"],
+  providerAppointmentCheck: ["providerAppointmentCheck"],
   apiRequest: ["apiRequest", "webhookCard"],
   webhookCard: ["webhookCard"]
 } as const;
@@ -1090,6 +1155,7 @@ type NodeDefaultElementType = {
   dialog: typeof Paziresh24Modal;
   input: typeof Input;
   subscriptionCheck: typeof AntdCheckbox;
+  providerAppointmentCheck: typeof AntdCheckbox;
   apiRequest: typeof ApiRequest;
   webhookCard: typeof WebhookCard;
 };
@@ -1162,6 +1228,7 @@ export const PlasmicWebhooks = Object.assign(
     dialog: makeNodeComponent("dialog"),
     input: makeNodeComponent("input"),
     subscriptionCheck: makeNodeComponent("subscriptionCheck"),
+    providerAppointmentCheck: makeNodeComponent("providerAppointmentCheck"),
     apiRequest: makeNodeComponent("apiRequest"),
     webhookCard: makeNodeComponent("webhookCard"),
 
