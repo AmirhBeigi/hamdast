@@ -783,7 +783,7 @@ function PlasmicPlanForm__RenderFunc(props: {
                       "POST",
                       (() => {
                         try {
-                          return `https://apigw.paziresh24.com/v1/hamdast/apps/${$props.appKey}/plans/`;
+                          return `https://apigw.paziresh24.com/v1/hamdast/admin/apps/${$props.appKey}/plans/`;
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
@@ -837,7 +837,7 @@ function PlasmicPlanForm__RenderFunc(props: {
                       "PATCH",
                       (() => {
                         try {
-                          return `https://apigw.paziresh24.com/v1/hamdast/apps/${$props.appKey}/plans/${$props.planId}`;
+                          return `https://apigw.paziresh24.com/v1/hamdast/admin/apps/${$props.appKey}/plans/${$props.planId}`;
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
@@ -1005,7 +1005,7 @@ function PlasmicPlanForm__RenderFunc(props: {
                         "DELETE",
                         (() => {
                           try {
-                            return `https://apigw.paziresh24.com/v1/hamdast/apps/${$props.appKey}/plans/${$props.planId}`;
+                            return `https://apigw.paziresh24.com/v1/hamdast/admin/apps/${$props.appKey}/plans/${$props.planId}`;
                           } catch (e) {
                             if (
                               e instanceof TypeError ||

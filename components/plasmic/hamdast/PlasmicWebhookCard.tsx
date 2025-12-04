@@ -102,6 +102,7 @@ export type PlasmicWebhookCard__OverridesType = {
   dialog?: Flex__<typeof Paziresh24Modal>;
   input?: Flex__<typeof Input>;
   subscriptionCheck?: Flex__<typeof AntdCheckbox>;
+  providerAppointmentCheck?: Flex__<typeof AntdCheckbox>;
 };
 
 export interface DefaultWebhookCardProps {
@@ -193,6 +194,27 @@ function PlasmicWebhookCard__RenderFunc(props: {
           (() => {
             try {
               return $props.currentItem.filterTypes?.includes("subscription");
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "providerAppointmentCheck.checked",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $props.currentItem.filterTypes?.includes(
+                "provider.appointment"
+              );
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -459,6 +481,70 @@ function PlasmicWebhookCard__RenderFunc(props: {
                           </div>
                         </div>
                       </AntdCheckbox>
+                      <AntdCheckbox
+                        data-plasmic-name={"providerAppointmentCheck"}
+                        data-plasmic-override={
+                          overrides.providerAppointmentCheck
+                        }
+                        checked={generateStateValueProp($state, [
+                          "providerAppointmentCheck",
+                          "checked"
+                        ])}
+                        className={classNames(
+                          "__wab_instance",
+                          sty.providerAppointmentCheck
+                        )}
+                        defaultChecked={(() => {
+                          try {
+                            return $props.currentItem.filterTypes?.includes(
+                              "provider.appointment"
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()}
+                        indeterminate={false}
+                        onChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "providerAppointmentCheck",
+                            "checked"
+                          ]).apply(null, eventArgs);
+                        }}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox___5Ow3V
+                          )}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__hv4Ta
+                            )}
+                          >
+                            {
+                              "\u062b\u0628\u062a \u0646\u0648\u0628\u062a \u062c\u062f\u06cc\u062f"
+                            }
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__eFtmN
+                            )}
+                          >
+                            {"provider.appointment"}
+                          </div>
+                        </div>
+                      </AntdCheckbox>
                     </div>
                   </div>
                 </div>
@@ -475,7 +561,8 @@ function PlasmicWebhookCard__RenderFunc(props: {
                       try {
                         return (
                           !$state.input.value ||
-                          !$state?.subscriptionCheck.checked
+                          (!$state?.subscriptionCheck.checked &&
+                            !$state.providerAppointmentCheck.checked)
                         );
                       } catch (e) {
                         if (
@@ -564,6 +651,9 @@ function PlasmicWebhookCard__RenderFunc(props: {
                                       filter_types: [
                                         $state.subscriptionCheck?.checked
                                           ? "subscription"
+                                          : false,
+                                        $state.providerAppointmentCheck?.checked
+                                          ? "provider.appointment"
                                           : false
                                       ].filter(Boolean)
                                     };
@@ -982,13 +1072,15 @@ const PlasmicDescendants = {
     "svg",
     "dialog",
     "input",
-    "subscriptionCheck"
+    "subscriptionCheck",
+    "providerAppointmentCheck"
   ],
   paziresh24LineClamp: ["paziresh24LineClamp"],
   svg: ["svg"],
-  dialog: ["dialog", "input", "subscriptionCheck"],
+  dialog: ["dialog", "input", "subscriptionCheck", "providerAppointmentCheck"],
   input: ["input"],
-  subscriptionCheck: ["subscriptionCheck"]
+  subscriptionCheck: ["subscriptionCheck"],
+  providerAppointmentCheck: ["providerAppointmentCheck"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1000,6 +1092,7 @@ type NodeDefaultElementType = {
   dialog: typeof Paziresh24Modal;
   input: typeof Input;
   subscriptionCheck: typeof AntdCheckbox;
+  providerAppointmentCheck: typeof AntdCheckbox;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1069,6 +1162,7 @@ export const PlasmicWebhookCard = Object.assign(
     dialog: makeNodeComponent("dialog"),
     input: makeNodeComponent("input"),
     subscriptionCheck: makeNodeComponent("subscriptionCheck"),
+    providerAppointmentCheck: makeNodeComponent("providerAppointmentCheck"),
 
     // Metadata about props expected for PlasmicWebhookCard
     internalVariantProps: PlasmicWebhookCard__VariantProps,

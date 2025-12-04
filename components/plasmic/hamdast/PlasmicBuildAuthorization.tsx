@@ -65,6 +65,7 @@ import Layout from "../../Layout"; // plasmic-import: ve2FygUyzJYe/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: WP6AANBbVJxr/codeComponent
 import { Input } from "@/fragment/components/input"; // plasmic-import: AWE69UKwmIyg/codeComponent
 import Paziresh24Button from "../../Paziresh24Button"; // plasmic-import: YOhw5fIQJQgB/component
+import { AntdTooltip } from "@plasmicpkgs/antd5/skinny/registerTooltip";
 import { Switch } from "@/fragment/components/switch"; // plasmic-import: Zc1MrGUtH5nc/codeComponent
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: bE9NMB942w5e6uFrcCxfJN/styleTokensProvider
@@ -84,6 +85,7 @@ import Icon41Icon from "./icons/PlasmicIcon__Icon41"; // plasmic-import: DoezJRN
 import Icon21Icon from "./icons/PlasmicIcon__Icon21"; // plasmic-import: UuDHOUXMn1lI/icon
 import ChevronLeftIcon from "../paziresh_24_design_system/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: jS0YlkKPLO7U/icon
 import Icon45Icon from "./icons/PlasmicIcon__Icon45"; // plasmic-import: RQYF77Lo96ru/icon
+import Icon20Icon from "./icons/PlasmicIcon__Icon20"; // plasmic-import: B2THoaAEIn8y/icon
 
 import __lib_copyToClipboard from "copy-to-clipboard";
 
@@ -110,6 +112,7 @@ export type PlasmicBuildAuthorization__OverridesType = {
   fragmentInput3?: Flex__<typeof Input>;
   fragmentInput4?: Flex__<typeof Input>;
   fragmentInput5?: Flex__<typeof Input>;
+  tooltip?: Flex__<typeof AntdTooltip>;
   _switch?: Flex__<typeof Switch>;
   switch2?: Flex__<typeof Switch>;
 };
@@ -302,7 +305,7 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
             try {
-              return `https://user.paziresh24.com/realms/paziresh24/protocol/openid-connect/auth?client_id=${$state.apiRequest.data.client_id}&response_type=code&scope=${$state?.scopes?.join("+")}&redirect_uri=${$state.redirectUris?.[0]?.value}&kc_idp_hint=gozar&skip_prompt=true
+              return `https://user.paziresh24.com/realms/paziresh24/protocol/openid-connect/auth?client_id=${$state.apiRequest.data.client_id}&response_type=code&scope=${$state.scopes.join("+")}&redirect_uri=${$state.redirectUris?.[0]?.value}&kc_idp_hint=gozar&skip_prompt=true
 `;
             } catch (e) {
               if (
@@ -1714,6 +1717,12 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                                 description: "دسترسی حذف نوبت های پزشک"
                               },
                               {
+                                id: "53775657-d816-40e5-8357-c689d4cab102",
+                                permission: "provider.appointment.webhook",
+                                description: "دسترسی اطلاع از ثبت نوبت‌ها",
+                                is_webhook: true
+                              },
+                              {
                                 id: "2862b30e-8cfc-41ad-b963-bfff7398f8ea",
                                 permission: "provider.management.read",
                                 description:
@@ -1724,6 +1733,16 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                                 permission: "provider.management.write",
                                 description:
                                   "دسترسی تنظیم ساعت کاری و مرخصی های پزشک"
+                              },
+                              {
+                                id: "fe696832-2316-4957-b51a-bfea31deae4a",
+                                permission: "provider.review.read",
+                                description: "دسترسی مشاهده نظرات پزشک"
+                              },
+                              {
+                                id: "9d79d7f2-bb3a-420f-8c30-a1ef14cf7419",
+                                permission: "provider.review.write",
+                                description: "دسترسی ثبت/حذف/ویرایش پاسخ پزشک"
                               }
                             ];
                           } catch (e) {
@@ -1772,26 +1791,67 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                               <div
                                 className={classNames(
                                   projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__hpeOg
+                                  sty.freeBox__v3UCt
                                 )}
                               >
-                                <React.Fragment>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__hpeOg
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return currentItem.permission;
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "-";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </div>
+                                <AntdTooltip
+                                  data-plasmic-name={"tooltip"}
+                                  data-plasmic-override={overrides.tooltip}
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.tooltip
+                                  )}
+                                  titleText={
+                                    "\u0627\u06cc\u0646 \u062f\u0633\u062a\u0631\u0633\u06cc \u0645\u0631\u0628\u0648\u0637 \u0628\u0647 \u0648\u0628 \u0647\u0648\u06a9 \u062b\u0628\u062a \u0646\u0648\u0628\u062a \u0627\u0633\u062a."
+                                  }
+                                >
                                   {(() => {
                                     try {
-                                      return currentItem.permission;
+                                      return currentItem.is_webhook;
                                     } catch (e) {
                                       if (
                                         e instanceof TypeError ||
                                         e?.plasmicType ===
                                           "PlasmicUndefinedDataError"
                                       ) {
-                                        return "-";
+                                        return true;
                                       }
                                       throw e;
                                     }
-                                  })()}
-                                </React.Fragment>
+                                  })() ? (
+                                    <Icon20Icon
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.svg__y0Hwn
+                                      )}
+                                      role={"img"}
+                                    />
+                                  ) : null}
+                                </AntdTooltip>
                               </div>
                               <div
                                 className={classNames(
@@ -2409,6 +2469,7 @@ const PlasmicDescendants = {
     "fragmentInput3",
     "fragmentInput4",
     "fragmentInput5",
+    "tooltip",
     "_switch",
     "switch2"
   ],
@@ -2422,6 +2483,7 @@ const PlasmicDescendants = {
     "fragmentInput3",
     "fragmentInput4",
     "fragmentInput5",
+    "tooltip",
     "_switch",
     "switch2"
   ],
@@ -2433,6 +2495,7 @@ const PlasmicDescendants = {
     "fragmentInput3",
     "fragmentInput4",
     "fragmentInput5",
+    "tooltip",
     "_switch",
     "switch2"
   ],
@@ -2443,6 +2506,7 @@ const PlasmicDescendants = {
     "fragmentInput3",
     "fragmentInput4",
     "fragmentInput5",
+    "tooltip",
     "_switch",
     "switch2"
   ],
@@ -2451,6 +2515,7 @@ const PlasmicDescendants = {
   fragmentInput3: ["fragmentInput3"],
   fragmentInput4: ["fragmentInput4"],
   fragmentInput5: ["fragmentInput5"],
+  tooltip: ["tooltip"],
   _switch: ["_switch"],
   switch2: ["switch2"]
 } as const;
@@ -2468,6 +2533,7 @@ type NodeDefaultElementType = {
   fragmentInput3: typeof Input;
   fragmentInput4: typeof Input;
   fragmentInput5: typeof Input;
+  tooltip: typeof AntdTooltip;
   _switch: typeof Switch;
   switch2: typeof Switch;
 };
@@ -2543,6 +2609,7 @@ export const PlasmicBuildAuthorization = Object.assign(
     fragmentInput3: makeNodeComponent("fragmentInput3"),
     fragmentInput4: makeNodeComponent("fragmentInput4"),
     fragmentInput5: makeNodeComponent("fragmentInput5"),
+    tooltip: makeNodeComponent("tooltip"),
     _switch: makeNodeComponent("_switch"),
     switch2: makeNodeComponent("switch2"),
 

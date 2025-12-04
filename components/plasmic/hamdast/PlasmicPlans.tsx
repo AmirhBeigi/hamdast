@@ -623,7 +623,7 @@ function PlasmicPlans__RenderFunc(props: {
                   }}
                   url={(() => {
                     try {
-                      return `https://apigw.paziresh24.com/v1/hamdast/apps/${$state.authProvider?.apps?.find(item => item.id === $ctx.params?.id).key}/plans/`;
+                      return `https://apigw.paziresh24.com/v1/hamdast/admin/apps/${$state.authProvider?.apps?.find(item => item.id === $ctx.params?.id).key}/plans/`;
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
