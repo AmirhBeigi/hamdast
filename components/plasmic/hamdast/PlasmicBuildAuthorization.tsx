@@ -1733,6 +1733,16 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                                 permission: "provider.management.write",
                                 description:
                                   "دسترسی تنظیم ساعت کاری و مرخصی های پزشک"
+                              },
+                              {
+                                id: "fe696832-2316-4957-b51a-bfea31deae4a",
+                                permission: "provider.review.read",
+                                description: "دسترسی مشاهده نظرات پزشک"
+                              },
+                              {
+                                id: "9d79d7f2-bb3a-420f-8c30-a1ef14cf7419",
+                                permission: "provider.review.write",
+                                description: "دسترسی ثبت/حذف/ویرایش پاسخ پزشک"
                               }
                             ];
                           } catch (e) {
