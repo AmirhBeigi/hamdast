@@ -96,9 +96,9 @@ window.hamdast = {
         clientKey: window.hamdast.clientKey,
         event: "HAMDAST_PAYMENT_SUBSCRIBE",
         data: {
-          plan_key: obj.plan_key,
-          payload: obj.payload,
-          receipt_id: obj.receipt_id,
+          plan_key: obj?.plan_key,
+          payload: obj?.payload,
+          receipt_id: obj?.receipt_id,
         },
         promise: true,
       });
