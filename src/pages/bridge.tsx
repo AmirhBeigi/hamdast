@@ -59,6 +59,23 @@ function Bridge() {
       startTime.current = Date.now();
       activeUsersLog({ app, menu, page });
       window.addEventListener("message", (messageEvent) => {
+        if (messageEvent.data?.hamdast?.event === "HAMDAST_OPEN_LINK") {
+          if (messageEvent.data?.hamdast?.data?.path) {
+            if (messageEvent.data?.hamdast?.data?.newContext) {
+              window?.open(
+                `https://www.paziresh24.com` +
+                  messageEvent.data?.hamdast?.data?.path,
+                "_blank"
+              );
+            } else {
+              window.parent.location.href =
+                `https://www.paziresh24.com` +
+                messageEvent.data?.hamdast?.data?.path;
+            }
+          }
+          window.parent.location.href = messageEvent.data?.hamdast?.data?.url;
+        }
+
         if (
           messageEvent.data?.hamdast?.event?.startsWith("HAMDAST_") &&
           messageEvent.data?.hamdast?.action !== "forwardToApp"
@@ -79,23 +96,6 @@ function Bridge() {
 
         if (messageEvent.data?.hamdast?.event === "HAMDAST_GET_SESSION_TOKEN") {
           sendSessionToken(messageEvent.data?.hamdast);
-        }
-
-        if (messageEvent.data?.hamdast?.event === "HAMDAST_OPEN_LINK") {
-          if (messageEvent.data?.hamdast?.data?.path) {
-            if (messageEvent.data?.hamdast?.data?.newContext) {
-              window?.open(
-                `https://www.paziresh24.com` +
-                  messageEvent.data?.hamdast?.data?.path,
-                "_blank"
-              );
-            } else {
-              window.parent.location.href =
-                `https://www.paziresh24.com` +
-                messageEvent.data?.hamdast?.data?.path;
-            }
-          }
-          window.parent.location.href = messageEvent.data?.hamdast?.data?.url;
         }
 
         if (
