@@ -82,6 +82,19 @@ function Bridge() {
         }
 
         if (messageEvent.data?.hamdast?.event === "HAMDAST_OPEN_LINK") {
+          if (messageEvent.data?.hamdast?.data?.path) {
+            if (messageEvent.data?.hamdast?.data?.newContext) {
+              window?.open(
+                `https://www.paziresh24.com` +
+                  messageEvent.data?.hamdast?.data?.path,
+                "_blank"
+              );
+            } else {
+              window.parent.location.href =
+                `https://www.paziresh24.com` +
+                messageEvent.data?.hamdast?.data?.path;
+            }
+          }
           window.parent.location.href = messageEvent.data?.hamdast?.data?.url;
         }
 

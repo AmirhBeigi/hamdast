@@ -78,6 +78,18 @@ window.hamdast = {
     }
     return location.assign(url);
   },
+  redirect: {
+    dispatch: function (obj) {
+      return hamdastCommunication({
+        clientKey: window.hamdast.clientKey,
+        event: "HAMDAST_OPEN_LINK",
+        data: {
+          url: obj?.path,
+          newContext: obj?.newContext,
+        },
+      });
+    },
+  },
   payment: {
     pay: function (obj) {
       return hamdastCommunication({
