@@ -84,7 +84,7 @@ window.hamdast = {
         clientKey: window.hamdast.clientKey,
         event: "HAMDAST_OPEN_LINK",
         data: {
-          url: obj?.path,
+          path: obj?.path,
           newContext: obj?.newContext,
         },
       });
