@@ -67,13 +67,16 @@ function Bridge() {
                   messageEvent.data?.hamdast?.data?.path,
                 "_blank"
               );
+              return;
             } else {
               window.parent.location.href =
                 `https://www.paziresh24.com` +
                 messageEvent.data?.hamdast?.data?.path;
+              return;
             }
           }
           window.parent.location.href = messageEvent.data?.hamdast?.data?.url;
+          return;
         }
 
         if (
