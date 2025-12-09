@@ -37,10 +37,19 @@ export default async function handler(
   }
 
   if (req.method == "GET") {
-    const { user_id } = req.query;
+    const { user_id, slug } = req.query;
+
+    let userId = slug ? null : user_id;
+
+    if (slug && !user_id) {
+      const provider = await axios.get(
+        `https://drprofile.paziresh24.com/api/doctors/${slug}`
+      );
+      userId = provider?.data?.user_id;
+    }
 
     const data = await pb.collection("profile_widgets").getFullList({
-      filter: `user_id ="${user_id}"`,
+      filter: `user_id ="${userId}"`,
       expand: "widget, widget.app",
       headers: {
         x_token: publicRuntimeConfig.HAMDAST_TOKEN,
