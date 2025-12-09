@@ -79,6 +79,10 @@ function Bridge() {
           return;
         }
 
+        if (messageEvent.data?.hamdast?.event === "HAMDAST_GET_STATE") {
+          sendEvent(messageEvent.data?.hamdast);
+        }
+
         if (
           messageEvent.data?.hamdast?.event?.startsWith("HAMDAST_") &&
           messageEvent.data?.hamdast?.action !== "forwardToApp"
@@ -91,28 +95,6 @@ function Bridge() {
           messageEvent.data?.hamdast?.action === "forwardToApp"
         ) {
           iframe.current?.contentWindow?.postMessage(messageEvent.data, "*");
-        }
-
-        if (messageEvent.data?.hamdast?.event === "HAMDAST_GET_STATE") {
-          sendEvent(messageEvent.data?.hamdast);
-        }
-
-        if (messageEvent.data?.hamdast?.event === "HAMDAST_GET_SESSION_TOKEN") {
-          sendSessionToken(messageEvent.data?.hamdast);
-        }
-
-        if (
-          messageEvent.data?.hamdast?.event === "HAMDAST_REPLAY_SAVE" &&
-          app &&
-          (menu || page)
-        ) {
-          saveReplay({
-            menu,
-            page,
-            app,
-            uniqueId: uniqueId.current,
-            events: messageEvent.data?.hamdast?.data?.events,
-          });
         }
       });
     }

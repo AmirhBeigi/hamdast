@@ -90,6 +90,18 @@ window.hamdast = {
       });
     },
   },
+  flow: {
+    dispatch: function (flowKey, options = {}) {
+      return hamdastCommunication({
+        clientKey: window.hamdast.clientKey,
+        event: "HAMDAST_FLOW",
+        data: {
+          flow_key: flowKey,
+          options: options,
+        },
+      });
+    },
+  },
   payment: {
     pay: function (obj) {
       return hamdastCommunication({
