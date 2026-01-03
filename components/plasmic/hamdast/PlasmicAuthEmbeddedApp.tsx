@@ -245,7 +245,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicAuthEmbeddedApp__VariantsArgs;
     args?: PlasmicAuthEmbeddedApp__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicAuthEmbeddedApp__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicAuthEmbeddedApp__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicAuthEmbeddedApp__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

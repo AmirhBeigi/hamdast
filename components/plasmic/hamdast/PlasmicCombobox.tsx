@@ -226,7 +226,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicCombobox__VariantsArgs;
     args?: PlasmicCombobox__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicCombobox__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicCombobox__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicCombobox__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

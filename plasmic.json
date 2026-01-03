@@ -1212,6 +1212,33 @@
           "cssFilePath": "plasmic/hamdast/PlasmicPlanForm.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "RTuNGs-UPsjZ",
+          "name": "Subscribers",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicSubscribers.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/apps/[id]/monetization/subscribers.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicSubscribers.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/apps/[id]/monetization/subscribers"
+        },
+        {
+          "id": "yqeORM0cDS2Z",
+          "name": "SubscriberCard",
+          "type": "managed",
+          "projectId": "bE9NMB942w5e6uFrcCxfJN",
+          "renderModuleFilePath": "plasmic/hamdast/PlasmicSubscriberCard.tsx",
+          "importSpec": {
+            "modulePath": "SubscriberCard.tsx"
+          },
+          "cssFilePath": "plasmic/hamdast/PlasmicSubscriberCard.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -1539,6 +1566,11 @@
           "id": "V1ZWWRo6HmAC",
           "name": "Icon55Icon",
           "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon55.tsx"
+        },
+        {
+          "id": "g48VvcpzBLip",
+          "name": "Icon56Icon",
+          "moduleFilePath": "plasmic/hamdast/icons/PlasmicIcon__Icon56.tsx"
         }
       ],
       "images": [
@@ -3589,6 +3621,6 @@
   "nextjsConfig": {
     "pagesDir": "../src/pages"
   },
-  "cliVersion": "0.1.348",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.348/dist/plasmic.schema.json"
+  "cliVersion": "0.1.349",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.349/dist/plasmic.schema.json"
 }

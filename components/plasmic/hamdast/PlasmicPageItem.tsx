@@ -793,9 +793,8 @@ function PlasmicPageItem__RenderFunc(props: {
                           typeof $steps["updateParametersList"].then ===
                             "function"
                         ) {
-                          $steps["updateParametersList"] = await $steps[
-                            "updateParametersList"
-                          ];
+                          $steps["updateParametersList"] =
+                            await $steps["updateParametersList"];
                         }
 
                         $steps["updatePathParameterInput"] = true
@@ -848,9 +847,8 @@ function PlasmicPageItem__RenderFunc(props: {
                           typeof $steps["updatePathParameterInput"].then ===
                             "function"
                         ) {
-                          $steps["updatePathParameterInput"] = await $steps[
-                            "updatePathParameterInput"
-                          ];
+                          $steps["updatePathParameterInput"] =
+                            await $steps["updatePathParameterInput"];
                         }
                       }}
                     >
@@ -910,9 +908,8 @@ function PlasmicPageItem__RenderFunc(props: {
                         typeof $steps["updateParametersList"].then ===
                           "function"
                       ) {
-                        $steps["updateParametersList"] = await $steps[
-                          "updateParametersList"
-                        ];
+                        $steps["updateParametersList"] =
+                          await $steps["updateParametersList"];
                       }
                     }}
                   >
@@ -1427,9 +1424,8 @@ function PlasmicPageItem__RenderFunc(props: {
                   typeof $steps["updateDeleteLoading"] === "object" &&
                   typeof $steps["updateDeleteLoading"].then === "function"
                 ) {
-                  $steps["updateDeleteLoading"] = await $steps[
-                    "updateDeleteLoading"
-                  ];
+                  $steps["updateDeleteLoading"] =
+                    await $steps["updateDeleteLoading"];
                 }
 
                 $steps["create"] = !$props.notSave
@@ -1956,7 +1952,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicPageItem__VariantsArgs;
     args?: PlasmicPageItem__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicPageItem__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicPageItem__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicPageItem__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

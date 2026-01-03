@@ -186,7 +186,7 @@ function PlasmicPlanForm__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
             try {
-              return $props.defaultValue?.amount;
+              return $props.defaultValue?.amount / 10;
             } catch (e) {
               if (
                 e instanceof TypeError ||

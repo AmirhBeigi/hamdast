@@ -81,6 +81,7 @@ import Icon35Icon from "./icons/PlasmicIcon__Icon35"; // plasmic-import: m-5uHwT
 import Icon33Icon from "./icons/PlasmicIcon__Icon33"; // plasmic-import: 5jr5YwKHRzM_/icon
 import Icon30Icon from "./icons/PlasmicIcon__Icon30"; // plasmic-import: lj0OYAqPaiqC/icon
 import Icon55Icon from "./icons/PlasmicIcon__Icon55"; // plasmic-import: V1ZWWRo6HmAC/icon
+import Icon56Icon from "./icons/PlasmicIcon__Icon56"; // plasmic-import: g48VvcpzBLip/icon
 import Icon25Icon from "./icons/PlasmicIcon__Icon25"; // plasmic-import: AGSEC-pNDNUM/icon
 import Icon36Icon from "./icons/PlasmicIcon__Icon36"; // plasmic-import: GNR7bffuY0r7/icon
 import Icon9Icon from "./icons/PlasmicIcon__Icon9"; // plasmic-import: ly5Yl8idG7m1/icon
@@ -329,7 +330,7 @@ function PlasmicLayout__RenderFunc(props: {
               <React.Fragment>
                 {(() => {
                   try {
-                    return `${$props.user.name} ${$props.user.family}`;
+                    return `${$props.user?.name ?? "کاربر"} ${$props.user?.family ?? "بدون نام"}`;
                   } catch (e) {
                     if (
                       e instanceof TypeError ||
@@ -1305,6 +1306,113 @@ function PlasmicLayout__RenderFunc(props: {
                                     throw e;
                                   }
                                 })()}/monetization/plans`
+                              };
+                              return (({ destination }) => {
+                                if (
+                                  typeof destination === "string" &&
+                                  destination.startsWith("#")
+                                ) {
+                                  document
+                                    .getElementById(destination.substr(1))
+                                    .scrollIntoView({ behavior: "smooth" });
+                                } else {
+                                  __nextRouter?.push(destination);
+                                }
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateMenu2"] != null &&
+                          typeof $steps["updateMenu2"] === "object" &&
+                          typeof $steps["updateMenu2"].then === "function"
+                        ) {
+                          $steps["updateMenu2"] = await $steps["updateMenu2"];
+                        }
+                      }}
+                    />
+
+                    <Menu
+                      active={(() => {
+                        try {
+                          return $state.menu === "Subscribers";
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return [];
+                          }
+                          throw e;
+                        }
+                      })()}
+                      className={classNames("__wab_instance", sty.menu__moJ6)}
+                      compact={true}
+                      iconWrapper={
+                        <Icon56Icon
+                          className={classNames(
+                            projectcss.all,
+                            sty.svg___4BadM
+                          )}
+                          role={"img"}
+                        />
+                      }
+                      name={
+                        "\u0627\u0634\u062a\u0631\u0627\u06a9\u200c\u0647\u0627"
+                      }
+                      onClick={async () => {
+                        const $steps = {};
+
+                        $steps["updateMenu"] = false
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["menu"]
+                                },
+                                operation: 0,
+                                value: "Subscribers"
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateMenu"] != null &&
+                          typeof $steps["updateMenu"] === "object" &&
+                          typeof $steps["updateMenu"].then === "function"
+                        ) {
+                          $steps["updateMenu"] = await $steps["updateMenu"];
+                        }
+
+                        $steps["updateMenu2"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                destination: `/apps/${(() => {
+                                  try {
+                                    return $props.selectedApp;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()}/monetization/subscribers`
                               };
                               return (({ destination }) => {
                                 if (
