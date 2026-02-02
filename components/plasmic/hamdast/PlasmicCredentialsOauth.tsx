@@ -233,7 +233,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicCredentialsOauth__VariantsArgs;
     args?: PlasmicCredentialsOauth__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicCredentialsOauth__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicCredentialsOauth__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicCredentialsOauth__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

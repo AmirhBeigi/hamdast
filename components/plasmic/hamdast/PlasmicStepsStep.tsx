@@ -222,7 +222,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicStepsStep__VariantsArgs;
     args?: PlasmicStepsStep__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicStepsStep__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicStepsStep__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicStepsStep__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

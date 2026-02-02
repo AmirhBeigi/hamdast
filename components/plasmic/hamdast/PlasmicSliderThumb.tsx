@@ -174,7 +174,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicSliderThumb__VariantsArgs;
     args?: PlasmicSliderThumb__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicSliderThumb__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicSliderThumb__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicSliderThumb__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

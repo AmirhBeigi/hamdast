@@ -207,7 +207,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicRangeSlider__VariantsArgs;
     args?: PlasmicRangeSlider__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicRangeSlider__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicRangeSlider__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicRangeSlider__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

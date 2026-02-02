@@ -192,7 +192,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicTooltip__VariantsArgs;
     args?: PlasmicTooltip__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicTooltip__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicTooltip__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicTooltip__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

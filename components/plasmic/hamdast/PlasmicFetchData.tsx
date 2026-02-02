@@ -402,7 +402,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicFetchData__VariantsArgs;
     args?: PlasmicFetchData__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicFetchData__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicFetchData__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicFetchData__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

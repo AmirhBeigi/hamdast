@@ -819,9 +819,8 @@ function PlasmicMenuItem__RenderFunc(props: {
                   typeof $steps["updateDeleteLoading"] === "object" &&
                   typeof $steps["updateDeleteLoading"].then === "function"
                 ) {
-                  $steps["updateDeleteLoading"] = await $steps[
-                    "updateDeleteLoading"
-                  ];
+                  $steps["updateDeleteLoading"] =
+                    await $steps["updateDeleteLoading"];
                 }
 
                 $steps["invokeGlobalAction"] = !$props.notSave
@@ -855,9 +854,8 @@ function PlasmicMenuItem__RenderFunc(props: {
                   typeof $steps["invokeGlobalAction"] === "object" &&
                   typeof $steps["invokeGlobalAction"].then === "function"
                 ) {
-                  $steps["invokeGlobalAction"] = await $steps[
-                    "invokeGlobalAction"
-                  ];
+                  $steps["invokeGlobalAction"] =
+                    await $steps["invokeGlobalAction"];
                 }
 
                 $steps["runOnDelete"] = true
@@ -924,9 +922,8 @@ function PlasmicMenuItem__RenderFunc(props: {
                   typeof $steps["updateDeleteLoading2"] === "object" &&
                   typeof $steps["updateDeleteLoading2"].then === "function"
                 ) {
-                  $steps["updateDeleteLoading2"] = await $steps[
-                    "updateDeleteLoading2"
-                  ];
+                  $steps["updateDeleteLoading2"] =
+                    await $steps["updateDeleteLoading2"];
                 }
               }}
               size={"compact"}
@@ -1264,7 +1261,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicMenuItem__VariantsArgs;
     args?: PlasmicMenuItem__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicMenuItem__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicMenuItem__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicMenuItem__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

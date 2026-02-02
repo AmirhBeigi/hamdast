@@ -180,7 +180,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicRadio__VariantsArgs;
     args?: PlasmicRadio__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicRadio__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicRadio__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicRadio__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props
