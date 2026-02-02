@@ -12,7 +12,7 @@ export default async function handler(
   pb.autoCancellation(false);
   await NextCors(req, res, {
     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE", "OPTIONS"],
-    origin: new RegExp(".paziresh24."),
+    origin: "*",
     preflightContinue: true,
     optionsSuccessStatus: 200,
     credentials: true,
@@ -149,7 +149,7 @@ export default async function handler(
             },
           }
         );
-      } catch (error) {}
+      } catch (error) { }
 
       return res.status(200).json({});
     } catch (error) {
@@ -228,7 +228,7 @@ export default async function handler(
             },
           }
         );
-      } catch (error) {}
+      } catch (error) { }
 
       return res.status(200).json({});
     } catch (error) {
