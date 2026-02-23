@@ -149,7 +149,7 @@ export default function FeatureCardsPage() {
 
   const contentRef = React.useRef<HTMLDivElement>(null);
 
-  /** گزارش ارتفاع محتوا به parent و مشاهده تغییرات با ResizeObserver */
+  /** در هر لحظه ارتفاع محتوا را به parent می‌فرستد (ResizeObserver + بازهٔ زمانی) */
   React.useEffect(() => {
     const el = contentRef.current;
     if (!el || typeof window === "undefined" || window.parent === window) return;
@@ -162,12 +162,22 @@ export default function FeatureCardsPage() {
     report();
     const resizeObserver = new ResizeObserver(report);
     resizeObserver.observe(el);
-    return () => resizeObserver.disconnect();
+
+    const interval = setInterval(() => {
+      if (contentRef.current) {
+        reportHeightToParent(contentRef.current.scrollHeight);
+      }
+    }, 150);
+
+    return () => {
+      resizeObserver.disconnect();
+      clearInterval(interval);
+    };
   }, [loading, error, cards.length]);
 
   if (loading) {
     return (
-      <div ref={contentRef} dir="rtl" className="min-h-[200px] w-full bg-white flex items-center justify-center py-12 px-4" style={{ direction: "rtl" }}>
+      <div ref={contentRef} dir="rtl" className="min-h-[200px] w-full bg-white flex items-center justify-center" style={{ direction: "rtl" }}>
         <div className="flex flex-col items-center gap-3">
           <div className="relative h-8 w-8">
             <div className="absolute inset-0 rounded-full border-2 border-gray-200" />
@@ -181,15 +191,15 @@ export default function FeatureCardsPage() {
 
   if (error) {
     return (
-      <div ref={contentRef} dir="rtl" className="min-h-[120px] w-full bg-white flex items-center justify-center py-8 px-4" style={{ direction: "rtl", textAlign: "right" }}>
+      <div ref={contentRef} dir="rtl" className="min-h-[120px] w-full bg-white flex items-center justify-center" style={{ direction: "rtl", textAlign: "right" }}>
         <p className="text-[13px] text-red-500">{error}</p>
       </div>
     );
   }
 
   return (
-    <div ref={contentRef} dir="rtl" className="min-h-0 w-full bg-white py-3 px-3 sm:px-4" style={{ direction: "rtl", textAlign: "right" }}>
-      <div className="mx-auto max-w-full sm:max-w-md space-y-3">
+    <div ref={contentRef} dir="rtl" className="min-h-0 w-full bg-white" style={{ direction: "rtl", textAlign: "right" }}>
+      <div className="w-full space-y-3">
         {cards.length === 0 ? (
           <p className="text-[13px] text-gray-500 text-center py-8">موردی یافت نشد.</p>
         ) : (
