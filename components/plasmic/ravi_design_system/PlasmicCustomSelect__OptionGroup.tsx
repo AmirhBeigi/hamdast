@@ -63,7 +63,6 @@ import * as pp from "@plasmicapp/react-web";
 import CustomSelect__Option from "../../CustomSelect__Option"; // plasmic-import: aMYhgsV1eA0k/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_paziresh_24_design_system } from "../paziresh_24_design_system/PlasmicStyleTokensProvider"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -152,13 +151,13 @@ function PlasmicCustomSelect__OptionGroup__RenderFunc(props: {
         path: "noTitle",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.noTitle
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.noTitle
       },
       {
         path: "isFirst",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.isFirst
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.isFirst
       }
     ],
     [$props, $ctx, $refs]
@@ -167,6 +166,7 @@ function PlasmicCustomSelect__OptionGroup__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -175,8 +175,6 @@ function PlasmicCustomSelect__OptionGroup__RenderFunc(props: {
   };
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_paziresh_24_design_system =
-    useStyleTokens_paziresh_24_design_system();
 
   return (
     <div
@@ -190,7 +188,6 @@ function PlasmicCustomSelect__OptionGroup__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         styleTokensClassNames,
-        styleTokensClassNames_paziresh_24_design_system,
         sty.root
       )}
     >
@@ -292,7 +289,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicCustomSelect__OptionGroup__VariantsArgs;
     args?: PlasmicCustomSelect__OptionGroup__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicCustomSelect__OptionGroup__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicCustomSelect__OptionGroup__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicCustomSelect__OptionGroup__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

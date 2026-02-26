@@ -65,7 +65,6 @@ import RaviOption from "../../RaviOption"; // plasmic-import: 7P-1fooJZx0C/compo
 import Paziresh24Button from "../../Paziresh24Button"; // plasmic-import: YOhw5fIQJQgB/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_paziresh_24_design_system } from "../paziresh_24_design_system/PlasmicStyleTokensProvider"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -178,19 +177,19 @@ function PlasmicRaviReviewOptions__RenderFunc(props: {
         path: "popoverCore.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "reportDialog.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "textarea.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ``
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ``
       },
       {
         path: "isOther",
@@ -204,7 +203,7 @@ function PlasmicRaviReviewOptions__RenderFunc(props: {
         path: "reports",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => [
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => [
           {
             title: "\u0646\u0627\u0645\u0631\u062a\u0628\u0637",
             description:
@@ -238,31 +237,31 @@ function PlasmicRaviReviewOptions__RenderFunc(props: {
         path: "selectedReport",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "isLoading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "deleteDialog.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "editDialog.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "editComment.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $props.commentText;
@@ -281,13 +280,13 @@ function PlasmicRaviReviewOptions__RenderFunc(props: {
         path: "isLoadingEdit",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "isLoadingDelete",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -296,12 +295,11 @@ function PlasmicRaviReviewOptions__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_paziresh_24_design_system =
-    useStyleTokens_paziresh_24_design_system();
 
   return (
     <div
@@ -315,7 +313,6 @@ function PlasmicRaviReviewOptions__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         styleTokensClassNames,
-        styleTokensClassNames_paziresh_24_design_system,
         sty.root
       )}
       dir={"rtl"}
@@ -385,9 +382,8 @@ function PlasmicRaviReviewOptions__RenderFunc(props: {
                     typeof $steps["updateEditDialogOpen"] === "object" &&
                     typeof $steps["updateEditDialogOpen"].then === "function"
                   ) {
-                    $steps["updateEditDialogOpen"] = await $steps[
-                      "updateEditDialogOpen"
-                    ];
+                    $steps["updateEditDialogOpen"] =
+                      await $steps["updateEditDialogOpen"];
                   }
                 }}
               >
@@ -456,9 +452,8 @@ function PlasmicRaviReviewOptions__RenderFunc(props: {
                     typeof $steps["updateDeleteDialogOpen"] === "object" &&
                     typeof $steps["updateDeleteDialogOpen"].then === "function"
                   ) {
-                    $steps["updateDeleteDialogOpen"] = await $steps[
-                      "updateDeleteDialogOpen"
-                    ];
+                    $steps["updateDeleteDialogOpen"] =
+                      await $steps["updateDeleteDialogOpen"];
                   }
                 }}
               >
@@ -514,9 +509,8 @@ function PlasmicRaviReviewOptions__RenderFunc(props: {
                   typeof $steps["updateReportDialogOpen"] === "object" &&
                   typeof $steps["updateReportDialogOpen"].then === "function"
                 ) {
-                  $steps["updateReportDialogOpen"] = await $steps[
-                    "updateReportDialogOpen"
-                  ];
+                  $steps["updateReportDialogOpen"] =
+                    await $steps["updateReportDialogOpen"];
                 }
               }}
             >
@@ -541,8 +535,7 @@ function PlasmicRaviReviewOptions__RenderFunc(props: {
           projectcss.root_reset,
           projectcss.plasmic_default_styles,
           projectcss.plasmic_mixins,
-          styleTokensClassNames,
-          styleTokensClassNames_paziresh_24_design_system
+          styleTokensClassNames
         )}
       >
         <div className={classNames(projectcss.all, sty.freeBox__jp5SJ)}>
@@ -657,9 +650,8 @@ function PlasmicRaviReviewOptions__RenderFunc(props: {
                             typeof $steps["updateSelectedReport"].then ===
                               "function"
                           ) {
-                            $steps["updateSelectedReport"] = await $steps[
-                              "updateSelectedReport"
-                            ];
+                            $steps["updateSelectedReport"] =
+                              await $steps["updateSelectedReport"];
                           }
                         }}
                         title={(() => {
@@ -825,9 +817,8 @@ function PlasmicRaviReviewOptions__RenderFunc(props: {
                       typeof $steps["updateTextareaValue"] === "object" &&
                       typeof $steps["updateTextareaValue"].then === "function"
                     ) {
-                      $steps["updateTextareaValue"] = await $steps[
-                        "updateTextareaValue"
-                      ];
+                      $steps["updateTextareaValue"] =
+                        await $steps["updateTextareaValue"];
                     }
 
                     $steps["updateSelectedReport"] = true
@@ -860,9 +851,8 @@ function PlasmicRaviReviewOptions__RenderFunc(props: {
                       typeof $steps["updateSelectedReport"] === "object" &&
                       typeof $steps["updateSelectedReport"].then === "function"
                     ) {
-                      $steps["updateSelectedReport"] = await $steps[
-                        "updateSelectedReport"
-                      ];
+                      $steps["updateSelectedReport"] =
+                        await $steps["updateSelectedReport"];
                     }
                   }}
                   showEndIcon={(() => {
@@ -1003,9 +993,8 @@ function PlasmicRaviReviewOptions__RenderFunc(props: {
                   typeof $steps["runOnClickSendReport"] === "object" &&
                   typeof $steps["runOnClickSendReport"].then === "function"
                 ) {
-                  $steps["runOnClickSendReport"] = await $steps[
-                    "runOnClickSendReport"
-                  ];
+                  $steps["runOnClickSendReport"] =
+                    await $steps["runOnClickSendReport"];
                 }
 
                 $steps["endLoading"] = true
@@ -1077,9 +1066,8 @@ function PlasmicRaviReviewOptions__RenderFunc(props: {
                   typeof $steps["updateReportDialogOpen"] === "object" &&
                   typeof $steps["updateReportDialogOpen"].then === "function"
                 ) {
-                  $steps["updateReportDialogOpen"] = await $steps[
-                    "updateReportDialogOpen"
-                  ];
+                  $steps["updateReportDialogOpen"] =
+                    await $steps["updateReportDialogOpen"];
                 }
               }}
             />
@@ -1165,9 +1153,8 @@ function PlasmicRaviReviewOptions__RenderFunc(props: {
                   typeof $steps["updateIsLoadingDelete"] === "object" &&
                   typeof $steps["updateIsLoadingDelete"].then === "function"
                 ) {
-                  $steps["updateIsLoadingDelete"] = await $steps[
-                    "updateIsLoadingDelete"
-                  ];
+                  $steps["updateIsLoadingDelete"] =
+                    await $steps["updateIsLoadingDelete"];
                 }
 
                 $steps["runOnClickDelete"] = true
@@ -1217,9 +1204,8 @@ function PlasmicRaviReviewOptions__RenderFunc(props: {
                   typeof $steps["updateIsLoadingDelete2"] === "object" &&
                   typeof $steps["updateIsLoadingDelete2"].then === "function"
                 ) {
-                  $steps["updateIsLoadingDelete2"] = await $steps[
-                    "updateIsLoadingDelete2"
-                  ];
+                  $steps["updateIsLoadingDelete2"] =
+                    await $steps["updateIsLoadingDelete2"];
                 }
 
                 $steps["updateDeleteDialogOpen"] = true
@@ -1253,9 +1239,8 @@ function PlasmicRaviReviewOptions__RenderFunc(props: {
                   typeof $steps["updateDeleteDialogOpen"] === "object" &&
                   typeof $steps["updateDeleteDialogOpen"].then === "function"
                 ) {
-                  $steps["updateDeleteDialogOpen"] = await $steps[
-                    "updateDeleteDialogOpen"
-                  ];
+                  $steps["updateDeleteDialogOpen"] =
+                    await $steps["updateDeleteDialogOpen"];
                 }
               }}
             />
@@ -1301,9 +1286,8 @@ function PlasmicRaviReviewOptions__RenderFunc(props: {
                   typeof $steps["updateDeleteDialogOpen"] === "object" &&
                   typeof $steps["updateDeleteDialogOpen"].then === "function"
                 ) {
-                  $steps["updateDeleteDialogOpen"] = await $steps[
-                    "updateDeleteDialogOpen"
-                  ];
+                  $steps["updateDeleteDialogOpen"] =
+                    await $steps["updateDeleteDialogOpen"];
                 }
               }}
               outline={true}
@@ -1430,9 +1414,8 @@ function PlasmicRaviReviewOptions__RenderFunc(props: {
                   typeof $steps["updateIsLoadingEdit"] === "object" &&
                   typeof $steps["updateIsLoadingEdit"].then === "function"
                 ) {
-                  $steps["updateIsLoadingEdit"] = await $steps[
-                    "updateIsLoadingEdit"
-                  ];
+                  $steps["updateIsLoadingEdit"] =
+                    await $steps["updateIsLoadingEdit"];
                 }
 
                 $steps["runOnClickEdit"] = true
@@ -1499,9 +1482,8 @@ function PlasmicRaviReviewOptions__RenderFunc(props: {
                   typeof $steps["updateIsLoadingEdit2"] === "object" &&
                   typeof $steps["updateIsLoadingEdit2"].then === "function"
                 ) {
-                  $steps["updateIsLoadingEdit2"] = await $steps[
-                    "updateIsLoadingEdit2"
-                  ];
+                  $steps["updateIsLoadingEdit2"] =
+                    await $steps["updateIsLoadingEdit2"];
                 }
 
                 $steps["updateEditDialogOpen"] = (
@@ -1537,9 +1519,8 @@ function PlasmicRaviReviewOptions__RenderFunc(props: {
                   typeof $steps["updateEditDialogOpen"] === "object" &&
                   typeof $steps["updateEditDialogOpen"].then === "function"
                 ) {
-                  $steps["updateEditDialogOpen"] = await $steps[
-                    "updateEditDialogOpen"
-                  ];
+                  $steps["updateEditDialogOpen"] =
+                    await $steps["updateEditDialogOpen"];
                 }
               }}
             />
@@ -1613,7 +1594,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicRaviReviewOptions__VariantsArgs;
     args?: PlasmicRaviReviewOptions__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicRaviReviewOptions__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicRaviReviewOptions__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicRaviReviewOptions__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

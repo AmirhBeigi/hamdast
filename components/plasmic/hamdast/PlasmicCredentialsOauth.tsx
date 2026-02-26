@@ -69,6 +69,35 @@ import sty from "./PlasmicCredentialsOauth.module.css"; // plasmic-import: rG2Q-
 
 import Icon15Icon from "./icons/PlasmicIcon__Icon15"; // plasmic-import: rQsx35tf_bcf/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "کلید api",
+
+    openGraph: {
+      title: "کلید api"
+    },
+    twitter: {
+      card: "summary",
+      title: "کلید api"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicCredentialsOauth__VariantMembers = {};
@@ -133,19 +162,19 @@ function PlasmicCredentialsOauth__RenderFunc(props: {
         path: "loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "oauthCode",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "newApikeyButtonLoading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -154,8 +183,14 @@ function PlasmicCredentialsOauth__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -163,16 +198,12 @@ function PlasmicCredentialsOauth__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicCredentialsOauth.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicCredentialsOauth.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
-          name="twitter:title"
-          content={PlasmicCredentialsOauth.pageMetadata.title}
+          property="twitter:title"
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -290,13 +321,11 @@ export const PlasmicCredentialsOauth = Object.assign(
     internalVariantProps: PlasmicCredentialsOauth__VariantProps,
     internalArgProps: PlasmicCredentialsOauth__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "کلید api",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/credentials/oauth",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

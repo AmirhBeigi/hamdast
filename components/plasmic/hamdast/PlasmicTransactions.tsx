@@ -84,6 +84,35 @@ import Icon43Icon from "./icons/PlasmicIcon__Icon43"; // plasmic-import: TmLWglG
 import ChevronRightIcon from "../paziresh_24_design_system/icons/PlasmicIcon__ChevronRight"; // plasmic-import: 0359howWu0cr/icon
 import ChevronLeftIcon from "../paziresh_24_design_system/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: jS0YlkKPLO7U/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "تراکنش‌های مالی",
+
+    openGraph: {
+      title: "تراکنش‌های مالی"
+    },
+    twitter: {
+      card: "summary",
+      title: "تراکنش‌های مالی"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicTransactions__VariantMembers = {};
@@ -161,19 +190,19 @@ function PlasmicTransactions__RenderFunc(props: {
         path: "authProvider.user",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "authProvider.apps",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "apiRequest.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest"
       },
@@ -181,7 +210,7 @@ function PlasmicTransactions__RenderFunc(props: {
         path: "apiRequest.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest"
       },
@@ -189,7 +218,7 @@ function PlasmicTransactions__RenderFunc(props: {
         path: "apiRequest.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest"
       },
@@ -197,7 +226,7 @@ function PlasmicTransactions__RenderFunc(props: {
         path: "fragmentApiRequest2.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "fragmentApiRequest2"
       },
@@ -205,7 +234,7 @@ function PlasmicTransactions__RenderFunc(props: {
         path: "fragmentApiRequest2.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "fragmentApiRequest2"
       },
@@ -213,7 +242,7 @@ function PlasmicTransactions__RenderFunc(props: {
         path: "fragmentApiRequest2.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "fragmentApiRequest2"
       },
@@ -221,13 +250,13 @@ function PlasmicTransactions__RenderFunc(props: {
         path: "statusFilter",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "done"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "done"
       },
       {
         path: "fragmentApiRequest3.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "fragmentApiRequest3"
       },
@@ -235,7 +264,7 @@ function PlasmicTransactions__RenderFunc(props: {
         path: "fragmentApiRequest3.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "fragmentApiRequest3"
       },
@@ -243,7 +272,7 @@ function PlasmicTransactions__RenderFunc(props: {
         path: "fragmentApiRequest3.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "fragmentApiRequest3"
       },
@@ -251,7 +280,7 @@ function PlasmicTransactions__RenderFunc(props: {
         path: "fragmentApiRequest4.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "fragmentApiRequest4"
       },
@@ -259,7 +288,7 @@ function PlasmicTransactions__RenderFunc(props: {
         path: "fragmentApiRequest4.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "fragmentApiRequest4"
       },
@@ -267,7 +296,7 @@ function PlasmicTransactions__RenderFunc(props: {
         path: "fragmentApiRequest4.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "fragmentApiRequest4"
       },
@@ -275,13 +304,13 @@ function PlasmicTransactions__RenderFunc(props: {
         path: "dialog.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "input.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "apiRequest2[].data",
@@ -308,13 +337,13 @@ function PlasmicTransactions__RenderFunc(props: {
         path: "selectedUserForWithdraw",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "apiRequest3.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest3"
       },
@@ -322,7 +351,7 @@ function PlasmicTransactions__RenderFunc(props: {
         path: "apiRequest3.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest3"
       },
@@ -330,7 +359,7 @@ function PlasmicTransactions__RenderFunc(props: {
         path: "apiRequest3.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest3"
       },
@@ -338,19 +367,19 @@ function PlasmicTransactions__RenderFunc(props: {
         path: "withdrawLoading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "authProvider.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "authProvider.error",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -359,8 +388,14 @@ function PlasmicTransactions__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -368,16 +403,12 @@ function PlasmicTransactions__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicTransactions.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicTransactions.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
-          name="twitter:title"
-          content={PlasmicTransactions.pageMetadata.title}
+          property="twitter:title"
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -2879,13 +2910,11 @@ export const PlasmicTransactions = Object.assign(
     internalVariantProps: PlasmicTransactions__VariantProps,
     internalArgProps: PlasmicTransactions__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "تراکنش‌های مالی",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/apps/[id]/monetization/transactions",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

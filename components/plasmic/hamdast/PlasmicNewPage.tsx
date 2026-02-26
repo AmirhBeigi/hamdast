@@ -74,6 +74,30 @@ import Icon32Icon from "./icons/PlasmicIcon__Icon32"; // plasmic-import: s6ZdUpI
 import ChevronRightIcon from "../paziresh_24_design_system/icons/PlasmicIcon__ChevronRight"; // plasmic-import: 0359howWu0cr/icon
 import ChevronLeftIcon from "../paziresh_24_design_system/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: jS0YlkKPLO7U/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    openGraph: {},
+    twitter: {
+      card: "summary"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicNewPage__VariantMembers = {};
@@ -147,8 +171,14 @@ function PlasmicNewPage__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -799,7 +829,7 @@ function PlasmicNewPage__RenderFunc(props: {
                     [
                       {
                         name: "card[].rate",
-                        initFunc: ({ $props, $state, $queries }) => 0
+                        initFunc: ({ $props, $state, $queries, $q }) => 0
                       }
                     ],
                     [__plasmic_idx_0]
@@ -907,13 +937,11 @@ export const PlasmicNewPage = Object.assign(
     internalVariantProps: PlasmicNewPage__VariantProps,
     internalArgProps: PlasmicNewPage__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/apps/liom",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

@@ -77,6 +77,35 @@ import Icon12Icon from "./icons/PlasmicIcon__Icon12"; // plasmic-import: uNpsRe8
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: VepSFu0Y3Pyk/icon
 import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: CmW94FEF71d7/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "ساخت اَبزارک جدید",
+
+    openGraph: {
+      title: "ساخت اَبزارک جدید"
+    },
+    twitter: {
+      card: "summary",
+      title: "ساخت اَبزارک جدید"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicSetAppIcon__VariantMembers = {};
@@ -145,49 +174,49 @@ function PlasmicSetAppIcon__RenderFunc(props: {
         path: "authProvider.user",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "authProvider.apps",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "type",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "svg"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "svg"
       },
       {
         path: "loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "fragmentTextarea.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "fragmentInput.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "authProvider.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "authProvider.error",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -196,8 +225,14 @@ function PlasmicSetAppIcon__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -205,16 +240,12 @@ function PlasmicSetAppIcon__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicSetAppIcon.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicSetAppIcon.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
-          name="twitter:title"
-          content={PlasmicSetAppIcon.pageMetadata.title}
+          property="twitter:title"
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -894,13 +925,11 @@ export const PlasmicSetAppIcon = Object.assign(
     internalVariantProps: PlasmicSetAppIcon__VariantProps,
     internalArgProps: PlasmicSetAppIcon__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "ساخت اَبزارک جدید",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/apps/[id]/icon",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

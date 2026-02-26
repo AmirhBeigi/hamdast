@@ -151,13 +151,13 @@ function PlasmicFragmentLongPress__RenderFunc(props: {
         path: "active",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "start",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       }
     ],
     [$props, $ctx, $refs]
@@ -166,6 +166,7 @@ function PlasmicFragmentLongPress__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -385,7 +386,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicFragmentLongPress__VariantsArgs;
     args?: PlasmicFragmentLongPress__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicFragmentLongPress__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicFragmentLongPress__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicFragmentLongPress__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

@@ -95,6 +95,35 @@ import Icon49Icon from "./icons/PlasmicIcon__Icon49"; // plasmic-import: uOAzx9L
 import Icon48Icon from "./icons/PlasmicIcon__Icon48"; // plasmic-import: LAq9m_Cnv9ai/icon
 import Icon15Icon from "./icons/PlasmicIcon__Icon15"; // plasmic-import: rQsx35tf_bcf/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "ویژگی ها",
+
+    openGraph: {
+      title: "ویژگی ها"
+    },
+    twitter: {
+      card: "summary",
+      title: "ویژگی ها"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicBuildFeatures__VariantMembers = {};
@@ -178,25 +207,25 @@ function PlasmicBuildFeatures__RenderFunc(props: {
         path: "authProvider.user",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "authProvider.apps",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "loadingButton",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "userPageRequest.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "userPageRequest"
       },
@@ -204,7 +233,7 @@ function PlasmicBuildFeatures__RenderFunc(props: {
         path: "userPageRequest.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "userPageRequest"
       },
@@ -212,7 +241,7 @@ function PlasmicBuildFeatures__RenderFunc(props: {
         path: "userPageRequest.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "userPageRequest"
       },
@@ -220,13 +249,13 @@ function PlasmicBuildFeatures__RenderFunc(props: {
         path: "dialog2.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "landingTitle.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.landingPageRequest.data?.title;
@@ -245,7 +274,7 @@ function PlasmicBuildFeatures__RenderFunc(props: {
         path: "landingFeatures.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.landingPageRequest.data?.features?.join(" | ");
@@ -264,7 +293,7 @@ function PlasmicBuildFeatures__RenderFunc(props: {
         path: "landingButtonText.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.landingPageRequest.data?.button_text;
@@ -283,13 +312,13 @@ function PlasmicBuildFeatures__RenderFunc(props: {
         path: "landingDescription.content",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "landingPageRequest.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "landingPageRequest"
       },
@@ -297,7 +326,7 @@ function PlasmicBuildFeatures__RenderFunc(props: {
         path: "landingPageRequest.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "landingPageRequest"
       },
@@ -305,7 +334,7 @@ function PlasmicBuildFeatures__RenderFunc(props: {
         path: "landingPageRequest.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "landingPageRequest"
       },
@@ -313,43 +342,43 @@ function PlasmicBuildFeatures__RenderFunc(props: {
         path: "dialog3.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "displayNameFa2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ``
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ``
       },
       {
         path: "description2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "embedSrc2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "intialData",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "dialog4.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "landingTitle2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.landingPageRequest.data?.title;
@@ -368,13 +397,13 @@ function PlasmicBuildFeatures__RenderFunc(props: {
         path: "landingDescription2.content",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "landingFeatures2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.landingPageRequest.data?.features?.join(" | ");
@@ -393,7 +422,7 @@ function PlasmicBuildFeatures__RenderFunc(props: {
         path: "landingButtonText2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.landingPageRequest.data?.button_text;
@@ -412,13 +441,13 @@ function PlasmicBuildFeatures__RenderFunc(props: {
         path: "authProvider.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "authProvider.error",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -427,8 +456,14 @@ function PlasmicBuildFeatures__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -436,16 +471,12 @@ function PlasmicBuildFeatures__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicBuildFeatures.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicBuildFeatures.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
-          name="twitter:title"
-          content={PlasmicBuildFeatures.pageMetadata.title}
+          property="twitter:title"
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -3606,13 +3637,11 @@ export const PlasmicBuildFeatures = Object.assign(
     internalVariantProps: PlasmicBuildFeatures__VariantProps,
     internalArgProps: PlasmicBuildFeatures__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "ویژگی ها",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/apps/[id]/build/features",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

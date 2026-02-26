@@ -153,13 +153,13 @@ function PlasmicFragmentCollapsible__RenderFunc(props: {
         path: "openStatus",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "noLayout",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.noLayout
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.noLayout
       }
     ],
     [$props, $ctx, $refs]
@@ -168,6 +168,7 @@ function PlasmicFragmentCollapsible__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -452,7 +453,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicFragmentCollapsible__VariantsArgs;
     args?: PlasmicFragmentCollapsible__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicFragmentCollapsible__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicFragmentCollapsible__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicFragmentCollapsible__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

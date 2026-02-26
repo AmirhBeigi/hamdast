@@ -63,7 +63,6 @@ import * as pp from "@plasmicapp/react-web";
 
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_paziresh_24_design_system } from "../paziresh_24_design_system/PlasmicStyleTokensProvider"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -207,25 +206,26 @@ function PlasmicTextInput__RenderFunc(props: {
         path: "showStartIcon",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.showStartIcon
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.showStartIcon
       },
       {
         path: "showEndIcon",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.showEndIcon
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.showEndIcon
       },
       {
         path: "isDisabled",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.isDisabled
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.isDisabled
       },
       {
         path: "color",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.color
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.color
       },
       {
         path: "value",
@@ -242,6 +242,7 @@ function PlasmicTextInput__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -254,8 +255,6 @@ function PlasmicTextInput__RenderFunc(props: {
   };
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_paziresh_24_design_system =
-    useStyleTokens_paziresh_24_design_system();
 
   return (
     <div
@@ -269,7 +268,6 @@ function PlasmicTextInput__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         styleTokensClassNames,
-        styleTokensClassNames_paziresh_24_design_system,
         sty.root,
         {
           [sty.root___focusVisibleWithin]: triggers.focusVisibleWithin_root,
@@ -417,7 +415,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicTextInput__VariantsArgs;
     args?: PlasmicTextInput__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicTextInput__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicTextInput__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicTextInput__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

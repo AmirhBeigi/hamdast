@@ -168,19 +168,19 @@ function PlasmicMenu__RenderFunc(props: {
         path: "active",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.active
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.active
       },
       {
         path: "compact",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.compact
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.compact
       },
       {
         path: "disabled",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.disabled
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.disabled
       }
     ],
     [$props, $ctx, $refs]
@@ -189,6 +189,7 @@ function PlasmicMenu__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 

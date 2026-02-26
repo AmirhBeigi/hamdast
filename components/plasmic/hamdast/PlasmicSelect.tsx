@@ -218,25 +218,26 @@ function PlasmicSelect__RenderFunc(props: {
         path: "showPlaceholder",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.showPlaceholder
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.showPlaceholder
       },
       {
         path: "isOpen",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.isOpen
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.isOpen
       },
       {
         path: "isDisabled",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.isDisabled
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.isDisabled
       },
       {
         path: "color",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.color
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.color
       },
       {
         path: "value",
@@ -253,6 +254,7 @@ function PlasmicSelect__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 

@@ -86,6 +86,35 @@ import Icon9Icon from "./icons/PlasmicIcon__Icon9"; // plasmic-import: ly5Yl8idG
 
 import __lib_dayjs from "dayjs";
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "آمار ابزارک",
+
+    openGraph: {
+      title: "آمار ابزارک"
+    },
+    twitter: {
+      card: "summary",
+      title: "آمار ابزارک"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicStatistics__VariantMembers = {};
@@ -165,31 +194,31 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "authProvider.user",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "authProvider.apps",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "fetchData.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "fetchData.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "menu",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.fetchData.data[0].id;
@@ -208,13 +237,13 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "day",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 1
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 1
       },
       {
         path: "fragmentApiRequest2.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "fragmentApiRequest2"
       },
@@ -222,7 +251,7 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "fragmentApiRequest2.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "fragmentApiRequest2"
       },
@@ -230,7 +259,7 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "fragmentApiRequest2.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "fragmentApiRequest2"
       },
@@ -238,13 +267,13 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "datePicker2.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "datePicker2.values",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return undefined;
@@ -263,19 +292,19 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "datePicker2.month",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "datePicker2.year",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "activeUserApi3.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "activeUserApi3"
       },
@@ -283,7 +312,7 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "activeUserApi3.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "activeUserApi3"
       },
@@ -291,7 +320,7 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "activeUserApi3.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "activeUserApi3"
       },
@@ -299,7 +328,7 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "activeUserApi4.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "activeUserApi4"
       },
@@ -307,7 +336,7 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "activeUserApi4.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "activeUserApi4"
       },
@@ -315,7 +344,7 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "activeUserApi4.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "activeUserApi4"
       },
@@ -323,7 +352,7 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "popover2.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false,
 
         refName: "popover2"
       },
@@ -331,7 +360,7 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "popover3.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false,
 
         refName: "popover3"
       },
@@ -339,19 +368,19 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "fetchData2.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "fetchData2.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "activeUserApi5.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "activeUserApi5"
       },
@@ -359,7 +388,7 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "activeUserApi5.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "activeUserApi5"
       },
@@ -367,7 +396,7 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "activeUserApi5.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "activeUserApi5"
       },
@@ -375,7 +404,7 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "activeUserApi6.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "activeUserApi6"
       },
@@ -383,7 +412,7 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "activeUserApi6.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "activeUserApi6"
       },
@@ -391,7 +420,7 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "activeUserApi6.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "activeUserApi6"
       },
@@ -399,7 +428,7 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "activeUserApi7.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "activeUserApi7"
       },
@@ -407,7 +436,7 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "activeUserApi7.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "activeUserApi7"
       },
@@ -415,7 +444,7 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "activeUserApi7.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "activeUserApi7"
       },
@@ -423,13 +452,13 @@ function PlasmicStatistics__RenderFunc(props: {
         path: "authProvider.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "authProvider.error",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -438,8 +467,14 @@ function PlasmicStatistics__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -447,16 +482,12 @@ function PlasmicStatistics__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicStatistics.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicStatistics.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
-          name="twitter:title"
-          content={PlasmicStatistics.pageMetadata.title}
+          property="twitter:title"
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -3358,13 +3389,11 @@ export const PlasmicStatistics = Object.assign(
     internalVariantProps: PlasmicStatistics__VariantProps,
     internalArgProps: PlasmicStatistics__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "آمار ابزارک",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/apps/[id]/statistics",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

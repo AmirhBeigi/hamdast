@@ -7,12 +7,8 @@
 
 import { createUseGlobalVariants } from "@plasmicapp/react-web";
 
-import { useScreenVariants as useScreenVariantszgH4FvLeLd4 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: zgH4FVLe-ld4/globalVariant
 import { useScreenVariants as useScreenVariantsqiBuxNlixBgQ } from "../paziresh_24_design_system/PlasmicGlobalVariant__Screen"; // plasmic-import: QiBUXNlixBgQ/globalVariant
-import { useScreenVariants as useScreenVariantsbr2UhI7UlpvR } from "../fragment_icons/PlasmicGlobalVariant__Screen"; // plasmic-import: BR2UhI7ulpvR/globalVariant
 
 export const _useGlobalVariants = createUseGlobalVariants({
-  screen: useScreenVariantszgH4FvLeLd4,
-  screen: useScreenVariantsqiBuxNlixBgQ,
-  screen: useScreenVariantsbr2UhI7UlpvR
+  screen: useScreenVariantsqiBuxNlixBgQ
 });

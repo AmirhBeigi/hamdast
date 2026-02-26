@@ -142,13 +142,13 @@ function PlasmicStepsLine__RenderFunc(props: {
         path: "active",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.active
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.active
       },
       {
         path: "dashed",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.dashed
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.dashed
       }
     ],
     [$props, $ctx, $refs]
@@ -157,6 +157,7 @@ function PlasmicStepsLine__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 

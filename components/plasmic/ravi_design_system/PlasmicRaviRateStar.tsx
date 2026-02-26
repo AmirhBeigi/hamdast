@@ -61,7 +61,6 @@ import {
 
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_paziresh_24_design_system } from "../paziresh_24_design_system/PlasmicStyleTokensProvider"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -146,13 +145,13 @@ function PlasmicRaviRateStar__RenderFunc(props: {
         path: "isSelected",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.isSelected
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.isSelected
       },
       {
         path: "isLarge",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.isLarge
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.isLarge
       }
     ],
     [$props, $ctx, $refs]
@@ -161,12 +160,11 @@ function PlasmicRaviRateStar__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_paziresh_24_design_system =
-    useStyleTokens_paziresh_24_design_system();
 
   return (
     <div
@@ -180,7 +178,6 @@ function PlasmicRaviRateStar__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         styleTokensClassNames,
-        styleTokensClassNames_paziresh_24_design_system,
         sty.root,
         {
           [sty.rootisLarge]: hasVariant($state, "isLarge", "isLarge"),
@@ -246,7 +243,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicRaviRateStar__VariantsArgs;
     args?: PlasmicRaviRateStar__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicRaviRateStar__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicRaviRateStar__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicRaviRateStar__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

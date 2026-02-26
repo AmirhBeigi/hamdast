@@ -164,7 +164,7 @@ function PlasmicPlanForm__RenderFunc(props: {
         path: "title.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $props.defaultValue?.title;
@@ -183,7 +183,7 @@ function PlasmicPlanForm__RenderFunc(props: {
         path: "amount.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $props.defaultValue?.amount / 10;
@@ -202,7 +202,7 @@ function PlasmicPlanForm__RenderFunc(props: {
         path: "interval",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $props.defaultValue?.interval ?? "monthly";
@@ -221,7 +221,7 @@ function PlasmicPlanForm__RenderFunc(props: {
         path: "trialPeriod.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $props.defaultValue?.trial_period;
@@ -240,7 +240,7 @@ function PlasmicPlanForm__RenderFunc(props: {
         path: "_switch.checked",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $props.defaultValue?.trial_period > 0;
@@ -259,7 +259,7 @@ function PlasmicPlanForm__RenderFunc(props: {
         path: "isLoading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -268,6 +268,7 @@ function PlasmicPlanForm__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 

@@ -78,6 +78,35 @@ import Icon40Icon from "./icons/PlasmicIcon__Icon40"; // plasmic-import: RLm5CHq
 import ChevronLeftIcon from "../paziresh_24_design_system/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: jS0YlkKPLO7U/icon
 import IconIcon from "../ravi_design_system/icons/PlasmicIcon__Icon"; // plasmic-import: 2uzLLHig1Vpp/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "سندباکس",
+
+    openGraph: {
+      title: "سندباکس"
+    },
+    twitter: {
+      card: "summary",
+      title: "سندباکس"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicBuildSandbox__VariantMembers = {};
@@ -149,19 +178,19 @@ function PlasmicBuildSandbox__RenderFunc(props: {
         path: "authProvider.user",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "authProvider.apps",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "apiRequest.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest"
       },
@@ -169,7 +198,7 @@ function PlasmicBuildSandbox__RenderFunc(props: {
         path: "apiRequest.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest"
       },
@@ -177,7 +206,7 @@ function PlasmicBuildSandbox__RenderFunc(props: {
         path: "apiRequest.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest"
       },
@@ -185,13 +214,13 @@ function PlasmicBuildSandbox__RenderFunc(props: {
         path: "loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "apiRequest2.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest2"
       },
@@ -199,7 +228,7 @@ function PlasmicBuildSandbox__RenderFunc(props: {
         path: "apiRequest2.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest2"
       },
@@ -207,7 +236,7 @@ function PlasmicBuildSandbox__RenderFunc(props: {
         path: "apiRequest2.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest2"
       },
@@ -215,13 +244,13 @@ function PlasmicBuildSandbox__RenderFunc(props: {
         path: "authProvider.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "authProvider.error",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -230,8 +259,14 @@ function PlasmicBuildSandbox__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -239,16 +274,12 @@ function PlasmicBuildSandbox__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicBuildSandbox.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicBuildSandbox.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
-          name="twitter:title"
-          content={PlasmicBuildSandbox.pageMetadata.title}
+          property="twitter:title"
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -1313,13 +1344,11 @@ export const PlasmicBuildSandbox = Object.assign(
     internalVariantProps: PlasmicBuildSandbox__VariantProps,
     internalArgProps: PlasmicBuildSandbox__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "سندباکس",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/sandbox",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

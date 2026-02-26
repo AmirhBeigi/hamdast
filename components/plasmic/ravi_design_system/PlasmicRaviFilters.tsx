@@ -63,7 +63,6 @@ import CustomSelect from "../../CustomSelect"; // plasmic-import: _-4ghU5Xu-FB/c
 import TextInput from "../../TextInput"; // plasmic-import: OSr_35iNKRP7/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_paziresh_24_design_system } from "../paziresh_24_design_system/PlasmicStyleTokensProvider"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -163,7 +162,7 @@ function PlasmicRaviFilters__RenderFunc(props: {
         path: "filters.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $props.filterList?.[0]?.value;
@@ -182,7 +181,7 @@ function PlasmicRaviFilters__RenderFunc(props: {
         path: "select.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $props.sortList?.[0]?.value;
@@ -212,12 +211,11 @@ function PlasmicRaviFilters__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_paziresh_24_design_system =
-    useStyleTokens_paziresh_24_design_system();
 
   return (
     <div
@@ -231,7 +229,6 @@ function PlasmicRaviFilters__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         styleTokensClassNames,
-        styleTokensClassNames_paziresh_24_design_system,
         sty.root
       )}
       dir={"rtl"}
@@ -490,7 +487,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicRaviFilters__VariantsArgs;
     args?: PlasmicRaviFilters__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicRaviFilters__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicRaviFilters__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicRaviFilters__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

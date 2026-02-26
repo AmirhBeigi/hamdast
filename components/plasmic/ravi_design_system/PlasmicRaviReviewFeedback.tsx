@@ -67,7 +67,6 @@ import Paziresh24MultilineTextInput from "../../Paziresh24MultilineTextInput"; /
 import Checkbox from "../../Checkbox"; // plasmic-import: 3y7pc6cf4L1a/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_paziresh_24_design_system } from "../paziresh_24_design_system/PlasmicStyleTokensProvider"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -160,61 +159,63 @@ function PlasmicRaviReviewFeedback__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const globalVariants = _useGlobalVariants();
+
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "isPositiveTab",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => true
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => true
       },
       {
         path: "selected",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => []
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => []
       },
       {
         path: "rate",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "commentDialog.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "selectedTime",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "checkbox.isSelected",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "multilineTextInput.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "isLoadingComment",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "isLoading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -223,13 +224,11 @@ function PlasmicRaviReviewFeedback__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
-  const globalVariants = _useGlobalVariants();
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_paziresh_24_design_system =
-    useStyleTokens_paziresh_24_design_system();
 
   return (
     <div
@@ -243,7 +242,6 @@ function PlasmicRaviReviewFeedback__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         styleTokensClassNames,
-        styleTokensClassNames_paziresh_24_design_system,
         sty.root
       )}
     >
@@ -363,9 +361,8 @@ function PlasmicRaviReviewFeedback__RenderFunc(props: {
                       typeof $steps["updateIsPositiveTab"] === "object" &&
                       typeof $steps["updateIsPositiveTab"].then === "function"
                     ) {
-                      $steps["updateIsPositiveTab"] = await $steps[
-                        "updateIsPositiveTab"
-                      ];
+                      $steps["updateIsPositiveTab"] =
+                        await $steps["updateIsPositiveTab"];
                     }
 
                     $steps["updateIsPositiveTab2"] =
@@ -400,9 +397,8 @@ function PlasmicRaviReviewFeedback__RenderFunc(props: {
                       typeof $steps["updateIsPositiveTab2"] === "object" &&
                       typeof $steps["updateIsPositiveTab2"].then === "function"
                     ) {
-                      $steps["updateIsPositiveTab2"] = await $steps[
-                        "updateIsPositiveTab2"
-                      ];
+                      $steps["updateIsPositiveTab2"] =
+                        await $steps["updateIsPositiveTab2"];
                     }
                   }}
                 >
@@ -511,9 +507,8 @@ function PlasmicRaviReviewFeedback__RenderFunc(props: {
                     typeof $steps["updateIsPositiveTab"] === "object" &&
                     typeof $steps["updateIsPositiveTab"].then === "function"
                   ) {
-                    $steps["updateIsPositiveTab"] = await $steps[
-                      "updateIsPositiveTab"
-                    ];
+                    $steps["updateIsPositiveTab"] =
+                      await $steps["updateIsPositiveTab"];
                   }
                 }}
               />
@@ -561,9 +556,8 @@ function PlasmicRaviReviewFeedback__RenderFunc(props: {
                     typeof $steps["updateIsPositiveTab"] === "object" &&
                     typeof $steps["updateIsPositiveTab"].then === "function"
                   ) {
-                    $steps["updateIsPositiveTab"] = await $steps[
-                      "updateIsPositiveTab"
-                    ];
+                    $steps["updateIsPositiveTab"] =
+                      await $steps["updateIsPositiveTab"];
                   }
                 }}
               />
@@ -620,9 +614,8 @@ function PlasmicRaviReviewFeedback__RenderFunc(props: {
                     typeof $steps["updateIsPositiveTab"] === "object" &&
                     typeof $steps["updateIsPositiveTab"].then === "function"
                   ) {
-                    $steps["updateIsPositiveTab"] = await $steps[
-                      "updateIsPositiveTab"
-                    ];
+                    $steps["updateIsPositiveTab"] =
+                      await $steps["updateIsPositiveTab"];
                   }
                 }}
               />
@@ -756,9 +749,8 @@ function PlasmicRaviReviewFeedback__RenderFunc(props: {
                           typeof $steps["updateSelected"] === "object" &&
                           typeof $steps["updateSelected"].then === "function"
                         ) {
-                          $steps["updateSelected"] = await $steps[
-                            "updateSelected"
-                          ];
+                          $steps["updateSelected"] =
+                            await $steps["updateSelected"];
                         }
                       }}
                       outline={(() => {
@@ -936,9 +928,8 @@ function PlasmicRaviReviewFeedback__RenderFunc(props: {
                         typeof $steps["updateSelectedTime"] === "object" &&
                         typeof $steps["updateSelectedTime"].then === "function"
                       ) {
-                        $steps["updateSelectedTime"] = await $steps[
-                          "updateSelectedTime"
-                        ];
+                        $steps["updateSelectedTime"] =
+                          await $steps["updateSelectedTime"];
                       }
                     }}
                     outline={(() => {
@@ -1006,9 +997,8 @@ function PlasmicRaviReviewFeedback__RenderFunc(props: {
                   typeof $steps["updateCommentDialogOpen"] === "object" &&
                   typeof $steps["updateCommentDialogOpen"].then === "function"
                 ) {
-                  $steps["updateCommentDialogOpen"] = await $steps[
-                    "updateCommentDialogOpen"
-                  ];
+                  $steps["updateCommentDialogOpen"] =
+                    await $steps["updateCommentDialogOpen"];
                 }
               }}
             >
@@ -1322,9 +1312,8 @@ function PlasmicRaviReviewFeedback__RenderFunc(props: {
                   typeof $steps["updateCommentDialogOpen"] === "object" &&
                   typeof $steps["updateCommentDialogOpen"].then === "function"
                 ) {
-                  $steps["updateCommentDialogOpen"] = await $steps[
-                    "updateCommentDialogOpen"
-                  ];
+                  $steps["updateCommentDialogOpen"] =
+                    await $steps["updateCommentDialogOpen"];
                 }
               }}
             />
@@ -1398,7 +1387,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicRaviReviewFeedback__VariantsArgs;
     args?: PlasmicRaviReviewFeedback__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicRaviReviewFeedback__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicRaviReviewFeedback__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicRaviReviewFeedback__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

@@ -180,7 +180,7 @@ function PlasmicLayout__RenderFunc(props: {
         path: "menu",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $props.selectedMenu;
@@ -199,7 +199,7 @@ function PlasmicLayout__RenderFunc(props: {
         path: "monetization",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return ["Products", "Transactions"].includes($props.selectedMenu);
@@ -218,7 +218,7 @@ function PlasmicLayout__RenderFunc(props: {
         path: "build",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return ["Features", "OAuth"].includes($props.selectedMenu);
@@ -237,13 +237,15 @@ function PlasmicLayout__RenderFunc(props: {
         path: "hideAppsSidebar",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.hideAppsSidebar
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.hideAppsSidebar
       },
       {
         path: "showAppSidebar",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.showAppSidebar
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.showAppSidebar
       }
     ],
     [$props, $ctx, $refs]
@@ -252,6 +254,7 @@ function PlasmicLayout__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -681,6 +684,7 @@ function PlasmicLayout__RenderFunc(props: {
                 className={classNames(projectcss.all, projectcss.a, sty.link)}
                 component={Link}
                 href={"https://t.me/amirhbeigi"}
+                legacyBehavior={false}
                 platform={"nextjs"}
                 target={"_blank"}
               >

@@ -320,19 +320,19 @@ function PlasmicTextField__RenderFunc(props: {
         path: "multiLine",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.multiLine
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.multiLine
       },
       {
         path: "iconStart",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.iconStart
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.iconStart
       },
       {
         path: "iconEnd",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.iconEnd
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.iconEnd
       }
     ],
     [$props, $ctx, $refs]
@@ -341,6 +341,7 @@ function PlasmicTextField__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 

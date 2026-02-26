@@ -65,7 +65,6 @@ import CustomSelect__Option from "../../CustomSelect__Option"; // plasmic-import
 import CustomSelect__OptionGroup from "../../CustomSelect__OptionGroup"; // plasmic-import: 1a9LJZTYyJSj/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_paziresh_24_design_system } from "../paziresh_24_design_system/PlasmicStyleTokensProvider"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -222,25 +221,26 @@ function PlasmicCustomSelect__RenderFunc(props: {
         path: "showPlaceholder",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.showPlaceholder
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.showPlaceholder
       },
       {
         path: "isOpen",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.isOpen
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.isOpen
       },
       {
         path: "isDisabled",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.isDisabled
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.isDisabled
       },
       {
         path: "color",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.color
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.color
       },
       {
         path: "value",
@@ -257,6 +257,7 @@ function PlasmicCustomSelect__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -269,8 +270,6 @@ function PlasmicCustomSelect__RenderFunc(props: {
   };
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_paziresh_24_design_system =
-    useStyleTokens_paziresh_24_design_system();
 
   return (
     <PlasmicCustomSelectContext.Provider value={{ variants, args }}>
@@ -285,7 +284,6 @@ function PlasmicCustomSelect__RenderFunc(props: {
           projectcss.plasmic_default_styles,
           projectcss.plasmic_mixins,
           styleTokensClassNames,
-          styleTokensClassNames_paziresh_24_design_system,
           sty.root,
           {
             [sty.root___focusVisibleWithin]: triggers.focusVisibleWithin_root,
@@ -722,7 +720,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicCustomSelect__VariantsArgs;
     args?: PlasmicCustomSelect__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicCustomSelect__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicCustomSelect__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicCustomSelect__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

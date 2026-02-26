@@ -150,7 +150,7 @@ function PlasmicSelect__Overlay__RenderFunc(props: {
         path: "relativePlacement",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           $props.relativePlacement
       }
     ],
@@ -160,6 +160,7 @@ function PlasmicSelect__Overlay__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 

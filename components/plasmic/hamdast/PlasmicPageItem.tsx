@@ -199,7 +199,7 @@ function PlasmicPageItem__RenderFunc(props: {
         path: "nameInput.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $props.defaultValues?.name;
@@ -218,7 +218,7 @@ function PlasmicPageItem__RenderFunc(props: {
         path: "keyInput.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $props.defaultValues?.key;
@@ -237,7 +237,7 @@ function PlasmicPageItem__RenderFunc(props: {
         path: "parametersList",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $props.defaultValues.parameters;
@@ -261,7 +261,7 @@ function PlasmicPageItem__RenderFunc(props: {
         path: "embedInput.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $props.defaultValues.embed_src;
@@ -280,7 +280,7 @@ function PlasmicPageItem__RenderFunc(props: {
         path: "fragmentSwitch.checked",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $props.defaultValues.layout.show_header;
@@ -299,7 +299,7 @@ function PlasmicPageItem__RenderFunc(props: {
         path: "fragmentSwitch2.checked",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $props.defaultValues.layout.show_footer;
@@ -318,7 +318,7 @@ function PlasmicPageItem__RenderFunc(props: {
         path: "fragmentSwitch3.checked",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $props.defaultValues.layout.show_bottom_navigation;
@@ -337,7 +337,7 @@ function PlasmicPageItem__RenderFunc(props: {
         path: "fragmentSwitch4.checked",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $props.defaultValues.is_protected_route;
@@ -356,13 +356,13 @@ function PlasmicPageItem__RenderFunc(props: {
         path: "isLoading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "deleteLoading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -371,6 +371,7 @@ function PlasmicPageItem__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -1094,7 +1095,7 @@ function PlasmicPageItem__RenderFunc(props: {
                             [
                               {
                                 name: "pathParameterInput[].value",
-                                initFunc: ({ $props, $state, $queries }) =>
+                                initFunc: ({ $props, $state, $queries, $q }) =>
                                   (() => {
                                     try {
                                       return currentItem;

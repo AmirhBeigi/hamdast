@@ -63,7 +63,7 @@
   transition-property: all;
   transition-duration: 0.1s;
   transition-timing-function: ease-out;
-  transform: translateX(0px) translateY(0px) translateZ(0px);
+  transform: skew(0deg, 0deg);
   box-shadow: 0px 0px 3px 0px #00000040;
   flex-shrink: 0;
   -webkit-transition-property: all;
@@ -72,7 +72,7 @@
   border-radius: 99px;
 }
 .ariaSwitch[data-selected] .thumb {
-  transform: translateX(12px) translateY(0px) translateZ(0px);
+  transform: translate3d(12px, 0px, 0px);
 }
 .description:global(.__wab_instance):global(.__wab_instance) {
   max-width: 100%;

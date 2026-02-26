@@ -89,6 +89,35 @@ import Icon21Icon from "./icons/PlasmicIcon__Icon21"; // plasmic-import: UuDHOUX
 
 import __lib_copyToClipboard from "copy-to-clipboard";
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "تنظیمات اَبزارک",
+
+    openGraph: {
+      title: "تنظیمات اَبزارک"
+    },
+    twitter: {
+      card: "summary",
+      title: "تنظیمات اَبزارک"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicSettting__VariantMembers = {};
@@ -170,19 +199,19 @@ function PlasmicSettting__RenderFunc(props: {
         path: "authProvider.user",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "authProvider.apps",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "menu",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return "App";
@@ -201,7 +230,7 @@ function PlasmicSettting__RenderFunc(props: {
         path: "fragmentInput.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.authProvider.user.api_key;
@@ -220,7 +249,7 @@ function PlasmicSettting__RenderFunc(props: {
         path: "fragmentInput2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.authProvider.apps?.find(
@@ -241,13 +270,13 @@ function PlasmicSettting__RenderFunc(props: {
         path: "itemOpenPage",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "fragmentApiRequest.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "fragmentApiRequest"
       },
@@ -255,7 +284,7 @@ function PlasmicSettting__RenderFunc(props: {
         path: "fragmentApiRequest.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "fragmentApiRequest"
       },
@@ -263,7 +292,7 @@ function PlasmicSettting__RenderFunc(props: {
         path: "fragmentApiRequest.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "fragmentApiRequest"
       },
@@ -271,7 +300,7 @@ function PlasmicSettting__RenderFunc(props: {
         path: "pagesItems",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return [...$state.fragmentApiRequest.data];
@@ -290,7 +319,7 @@ function PlasmicSettting__RenderFunc(props: {
         path: "fragmentGetMenus.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "fragmentGetMenus"
       },
@@ -298,7 +327,7 @@ function PlasmicSettting__RenderFunc(props: {
         path: "fragmentGetMenus.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "fragmentGetMenus"
       },
@@ -306,7 +335,7 @@ function PlasmicSettting__RenderFunc(props: {
         path: "fragmentGetMenus.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "fragmentGetMenus"
       },
@@ -314,7 +343,7 @@ function PlasmicSettting__RenderFunc(props: {
         path: "menuItems",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return [...$state.fragmentGetMenus.data];
@@ -333,7 +362,7 @@ function PlasmicSettting__RenderFunc(props: {
         path: "fragmentInput4.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.authProvider.apps?.find(
@@ -354,25 +383,25 @@ function PlasmicSettting__RenderFunc(props: {
         path: "appInformationLoadingButton",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "authProvider.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "authProvider.error",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "userPageRequest.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "userPageRequest"
       },
@@ -380,7 +409,7 @@ function PlasmicSettting__RenderFunc(props: {
         path: "userPageRequest.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "userPageRequest"
       },
@@ -388,7 +417,7 @@ function PlasmicSettting__RenderFunc(props: {
         path: "userPageRequest.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "userPageRequest"
       },
@@ -396,7 +425,7 @@ function PlasmicSettting__RenderFunc(props: {
         path: "displayNameFa2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.userPageRequest.data.display_name_fa;
@@ -415,7 +444,7 @@ function PlasmicSettting__RenderFunc(props: {
         path: "description2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.userPageRequest.data.description;
@@ -434,7 +463,7 @@ function PlasmicSettting__RenderFunc(props: {
         path: "embedSrc2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.userPageRequest.data.embed_src;
@@ -456,8 +485,14 @@ function PlasmicSettting__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -465,16 +500,12 @@ function PlasmicSettting__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicSettting.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicSettting.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
-          name="twitter:title"
-          content={PlasmicSettting.pageMetadata.title}
+          property="twitter:title"
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -1255,7 +1286,12 @@ function PlasmicSettting__RenderFunc(props: {
                               [
                                 {
                                   name: "fragmentInput2.value",
-                                  initFunc: ({ $props, $state, $queries }) =>
+                                  initFunc: ({
+                                    $props,
+                                    $state,
+                                    $queries,
+                                    $q
+                                  }) =>
                                     (() => {
                                       try {
                                         return $state.authProvider.apps?.find(
@@ -1657,7 +1693,12 @@ function PlasmicSettting__RenderFunc(props: {
                               [
                                 {
                                   name: "fragmentInput4.value",
-                                  initFunc: ({ $props, $state, $queries }) =>
+                                  initFunc: ({
+                                    $props,
+                                    $state,
+                                    $queries,
+                                    $q
+                                  }) =>
                                     (() => {
                                       try {
                                         return $state.authProvider.apps?.find(
@@ -3628,13 +3669,11 @@ export const PlasmicSettting = Object.assign(
     internalVariantProps: PlasmicSettting__VariantProps,
     internalArgProps: PlasmicSettting__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "تنظیمات اَبزارک",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/apps/[id]/setting",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

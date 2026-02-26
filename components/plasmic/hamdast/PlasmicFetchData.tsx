@@ -157,7 +157,7 @@ function PlasmicFetchData__RenderFunc(props: {
         path: "data",
         type: "readonly",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({}),
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({}),
 
         onChangeProp: "onDataChange"
       },
@@ -165,7 +165,7 @@ function PlasmicFetchData__RenderFunc(props: {
         path: "loading",
         type: "readonly",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false,
 
         onChangeProp: "onLoadingChange"
       }
@@ -176,6 +176,7 @@ function PlasmicFetchData__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 

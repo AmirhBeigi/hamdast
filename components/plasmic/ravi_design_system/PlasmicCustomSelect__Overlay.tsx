@@ -63,7 +63,6 @@ import * as pp from "@plasmicapp/react-web";
 
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_paziresh_24_design_system } from "../paziresh_24_design_system/PlasmicStyleTokensProvider"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -152,7 +151,7 @@ function PlasmicCustomSelect__Overlay__RenderFunc(props: {
         path: "relativePlacement",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           $props.relativePlacement
       }
     ],
@@ -162,6 +161,7 @@ function PlasmicCustomSelect__Overlay__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -170,8 +170,6 @@ function PlasmicCustomSelect__Overlay__RenderFunc(props: {
   };
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_paziresh_24_design_system =
-    useStyleTokens_paziresh_24_design_system();
 
   return (
     <div
@@ -185,7 +183,6 @@ function PlasmicCustomSelect__Overlay__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         styleTokensClassNames,
-        styleTokensClassNames_paziresh_24_design_system,
         sty.root
       )}
     >
@@ -313,7 +310,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicCustomSelect__Overlay__VariantsArgs;
     args?: PlasmicCustomSelect__Overlay__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicCustomSelect__Overlay__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicCustomSelect__Overlay__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicCustomSelect__Overlay__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

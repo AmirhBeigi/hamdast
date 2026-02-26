@@ -67,7 +67,6 @@ import Paziresh24MultilineTextInput from "../../Paziresh24MultilineTextInput"; /
 import Paziresh24Modal from "../../Paziresh24Modal"; // plasmic-import: ZGdhyEBPJSmH/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_paziresh_24_design_system } from "../paziresh_24_design_system/PlasmicStyleTokensProvider"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -238,31 +237,31 @@ function PlasmicRaviReviewCard__RenderFunc(props: {
         path: "shareDialog.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "popoverCore.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "repliesDialog.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "isOpenReportDialog",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "multilineTextInput.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "rate",
@@ -276,7 +275,7 @@ function PlasmicRaviReviewCard__RenderFunc(props: {
         path: "isLoadingReply",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -285,12 +284,11 @@ function PlasmicRaviReviewCard__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_paziresh_24_design_system =
-    useStyleTokens_paziresh_24_design_system();
 
   return (
     <div
@@ -304,7 +302,6 @@ function PlasmicRaviReviewCard__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         styleTokensClassNames,
-        styleTokensClassNames_paziresh_24_design_system,
         sty.root
       )}
     >
@@ -571,9 +568,8 @@ function PlasmicRaviReviewCard__RenderFunc(props: {
                       typeof $steps["updateRepliesDialogOpen"].then ===
                         "function"
                     ) {
-                      $steps["updateRepliesDialogOpen"] = await $steps[
-                        "updateRepliesDialogOpen"
-                      ];
+                      $steps["updateRepliesDialogOpen"] =
+                        await $steps["updateRepliesDialogOpen"];
                     }
                   }}
                   showStartIcon={true}
@@ -667,9 +663,8 @@ function PlasmicRaviReviewCard__RenderFunc(props: {
                               typeof $steps["runOnClickLike"].then ===
                                 "function"
                             ) {
-                              $steps["runOnClickLike"] = await $steps[
-                                "runOnClickLike"
-                              ];
+                              $steps["runOnClickLike"] =
+                                await $steps["runOnClickLike"];
                             }
                           }}
                         >
@@ -703,8 +698,7 @@ function PlasmicRaviReviewCard__RenderFunc(props: {
                   projectcss.root_reset,
                   projectcss.plasmic_default_styles,
                   projectcss.plasmic_mixins,
-                  styleTokensClassNames,
-                  styleTokensClassNames_paziresh_24_design_system
+                  styleTokensClassNames
                 )}
               >
                 <div
@@ -847,9 +841,8 @@ function PlasmicRaviReviewCard__RenderFunc(props: {
                     typeof $steps["updateShareDialogOpen"] === "object" &&
                     typeof $steps["updateShareDialogOpen"].then === "function"
                   ) {
-                    $steps["updateShareDialogOpen"] = await $steps[
-                      "updateShareDialogOpen"
-                    ];
+                    $steps["updateShareDialogOpen"] =
+                      await $steps["updateShareDialogOpen"];
                   }
                 }}
                 showStartIcon={true}
@@ -958,9 +951,8 @@ function PlasmicRaviReviewCard__RenderFunc(props: {
                       typeof $steps["updateIsLoadingReply"] === "object" &&
                       typeof $steps["updateIsLoadingReply"].then === "function"
                     ) {
-                      $steps["updateIsLoadingReply"] = await $steps[
-                        "updateIsLoadingReply"
-                      ];
+                      $steps["updateIsLoadingReply"] =
+                        await $steps["updateIsLoadingReply"];
                     }
 
                     $steps["runOnReplySend"] = true
@@ -1028,9 +1020,8 @@ function PlasmicRaviReviewCard__RenderFunc(props: {
                       typeof $steps["updateIsLoadingReply2"] === "object" &&
                       typeof $steps["updateIsLoadingReply2"].then === "function"
                     ) {
-                      $steps["updateIsLoadingReply2"] = await $steps[
-                        "updateIsLoadingReply2"
-                      ];
+                      $steps["updateIsLoadingReply2"] =
+                        await $steps["updateIsLoadingReply2"];
                     }
 
                     $steps["updateMultilineTextInputValue"] = true
@@ -1065,9 +1056,8 @@ function PlasmicRaviReviewCard__RenderFunc(props: {
                       typeof $steps["updateMultilineTextInputValue"].then ===
                         "function"
                     ) {
-                      $steps["updateMultilineTextInputValue"] = await $steps[
-                        "updateMultilineTextInputValue"
-                      ];
+                      $steps["updateMultilineTextInputValue"] =
+                        await $steps["updateMultilineTextInputValue"];
                     }
                   }}
                 >
@@ -1211,7 +1201,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicRaviReviewCard__VariantsArgs;
     args?: PlasmicRaviReviewCard__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicRaviReviewCard__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicRaviReviewCard__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicRaviReviewCard__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

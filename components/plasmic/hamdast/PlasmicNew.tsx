@@ -76,6 +76,35 @@ import Icon12Icon from "./icons/PlasmicIcon__Icon12"; // plasmic-import: uNpsRe8
 import ChevronRightIcon from "../paziresh_24_design_system/icons/PlasmicIcon__ChevronRight"; // plasmic-import: 0359howWu0cr/icon
 import ChevronLeftIcon from "../paziresh_24_design_system/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: jS0YlkKPLO7U/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "جدید",
+
+    openGraph: {
+      title: "جدید"
+    },
+    twitter: {
+      card: "summary",
+      title: "جدید"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicNew__VariantMembers = {};
@@ -144,37 +173,37 @@ function PlasmicNew__RenderFunc(props: {
         path: "authProvider.user",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "authProvider.apps",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "type",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 1
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 1
       },
       {
         path: "loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "authProvider.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "authProvider.error",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -183,8 +212,14 @@ function PlasmicNew__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -192,16 +227,12 @@ function PlasmicNew__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicNew.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicNew.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
-          name="twitter:title"
-          content={PlasmicNew.pageMetadata.title}
+          property="twitter:title"
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -506,6 +537,7 @@ function PlasmicNew__RenderFunc(props: {
                               )}
                               component={Link}
                               href={"https://t.me/AmirhBeigi"}
+                              legacyBehavior={false}
                               platform={"nextjs"}
                             >
                               <React.Fragment>
@@ -884,13 +916,11 @@ export const PlasmicNew = Object.assign(
     internalVariantProps: PlasmicNew__VariantProps,
     internalArgProps: PlasmicNew__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "جدید",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/new",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

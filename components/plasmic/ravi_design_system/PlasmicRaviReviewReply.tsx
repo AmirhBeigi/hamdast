@@ -62,7 +62,6 @@ import {
 import RaviUser from "../../RaviUser"; // plasmic-import: LGI_uX8bDUNt/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_paziresh_24_design_system } from "../paziresh_24_design_system/PlasmicStyleTokensProvider"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -150,8 +149,6 @@ function PlasmicRaviReviewReply__RenderFunc(props: {
   const $refs = refsRef.current;
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_paziresh_24_design_system =
-    useStyleTokens_paziresh_24_design_system();
 
   return (
     <div
@@ -165,7 +162,6 @@ function PlasmicRaviReviewReply__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         styleTokensClassNames,
-        styleTokensClassNames_paziresh_24_design_system,
         sty.root
       )}
     >
@@ -281,7 +277,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicRaviReviewReply__VariantsArgs;
     args?: PlasmicRaviReviewReply__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicRaviReviewReply__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicRaviReviewReply__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicRaviReviewReply__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

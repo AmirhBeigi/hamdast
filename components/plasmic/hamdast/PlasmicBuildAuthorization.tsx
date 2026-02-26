@@ -89,6 +89,35 @@ import Icon20Icon from "./icons/PlasmicIcon__Icon20"; // plasmic-import: B2THoaA
 
 import __lib_copyToClipboard from "copy-to-clipboard";
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "OAuth و دسترسی‌ها",
+
+    openGraph: {
+      title: "OAuth و دسترسی‌ها"
+    },
+    twitter: {
+      card: "summary",
+      title: "OAuth و دسترسی‌ها"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicBuildAuthorization__VariantMembers = {};
@@ -168,19 +197,19 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
         path: "authProvider.user",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "authProvider.apps",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "apiRequest.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest"
       },
@@ -188,7 +217,7 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
         path: "apiRequest.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest"
       },
@@ -196,7 +225,7 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
         path: "apiRequest.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest"
       },
@@ -204,13 +233,13 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
         path: "loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "fragmentInput3.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.apiRequest.data.client_id;
@@ -229,7 +258,7 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
         path: "fragmentInput4.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.apiRequest.data.client_secret;
@@ -253,7 +282,7 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
         path: "redirectUris",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.apiRequest.data.redirect_uris?.map(
@@ -274,7 +303,7 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
         path: "redirectUriButtonLoading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "_switch[].checked",
@@ -290,19 +319,19 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
         path: "authProvider.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "authProvider.error",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "fragmentInput7.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return `https://user.paziresh24.com/realms/paziresh24/protocol/openid-connect/auth?client_id=${$state.apiRequest.data.client_id}&response_type=code&scope=${$state.scopes.join("+")}&redirect_uri=${$state.redirectUris?.[0]?.value}&kc_idp_hint=gozar&skip_prompt=true
@@ -322,7 +351,7 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
         path: "scopes",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.apiRequest.data.scopes?.map((item, index) => item);
@@ -344,8 +373,14 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -353,18 +388,12 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">
-          {PlasmicBuildAuthorization.pageMetadata.title}
-        </title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicBuildAuthorization.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
-          name="twitter:title"
-          content={PlasmicBuildAuthorization.pageMetadata.title}
+          property="twitter:title"
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -678,6 +707,7 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                                   href={
                                     "https://developers.paziresh24.com/authorization"
                                   }
+                                  legacyBehavior={false}
                                   platform={"nextjs"}
                                 >
                                   {"\u0645\u0633\u062a\u0646\u062f\u0627\u062a"}
@@ -1346,7 +1376,12 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                               [
                                 {
                                   name: "fragmentInput5[].value",
-                                  initFunc: ({ $props, $state, $queries }) =>
+                                  initFunc: ({
+                                    $props,
+                                    $state,
+                                    $queries,
+                                    $q
+                                  }) =>
                                     (() => {
                                       try {
                                         return currentItem.value;
@@ -2071,7 +2106,12 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                                 [
                                   {
                                     name: "_switch[].checked",
-                                    initFunc: ({ $props, $state, $queries }) =>
+                                    initFunc: ({
+                                      $props,
+                                      $state,
+                                      $queries,
+                                      $q
+                                    }) =>
                                       (() => {
                                         try {
                                           return $state.scopes.includes(
@@ -2413,7 +2453,12 @@ function PlasmicBuildAuthorization__RenderFunc(props: {
                                 [
                                   {
                                     name: "switch2[].checked",
-                                    initFunc: ({ $props, $state, $queries }) =>
+                                    initFunc: ({
+                                      $props,
+                                      $state,
+                                      $queries,
+                                      $q
+                                    }) =>
                                       (() => {
                                         try {
                                           return $state.scopes.includes(
@@ -2617,13 +2662,11 @@ export const PlasmicBuildAuthorization = Object.assign(
     internalVariantProps: PlasmicBuildAuthorization__VariantProps,
     internalArgProps: PlasmicBuildAuthorization__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "OAuth و دسترسی‌ها",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/apps/[id]/authorization",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

@@ -149,7 +149,7 @@ function PlasmicAppType__RenderFunc(props: {
         path: "selected",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.selected
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.selected
       }
     ],
     [$props, $ctx, $refs]
@@ -158,6 +158,7 @@ function PlasmicAppType__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 

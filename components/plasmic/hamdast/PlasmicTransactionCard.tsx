@@ -165,7 +165,7 @@ function PlasmicTransactionCard__RenderFunc(props: {
         path: "apiRequest2.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest2"
       },
@@ -173,7 +173,7 @@ function PlasmicTransactionCard__RenderFunc(props: {
         path: "apiRequest2.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest2"
       },
@@ -181,7 +181,7 @@ function PlasmicTransactionCard__RenderFunc(props: {
         path: "apiRequest2.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest2"
       },
@@ -189,19 +189,19 @@ function PlasmicTransactionCard__RenderFunc(props: {
         path: "dialog.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "apiRequest.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest"
       },
@@ -209,7 +209,7 @@ function PlasmicTransactionCard__RenderFunc(props: {
         path: "apiRequest.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest"
       },
@@ -217,7 +217,7 @@ function PlasmicTransactionCard__RenderFunc(props: {
         path: "apiRequest.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest"
       },
@@ -225,7 +225,7 @@ function PlasmicTransactionCard__RenderFunc(props: {
         path: "hideButton",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.hideButton
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.hideButton
       }
     ],
     [$props, $ctx, $refs]
@@ -234,6 +234,7 @@ function PlasmicTransactionCard__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -423,6 +424,7 @@ function PlasmicTransactionCard__RenderFunc(props: {
                       throw e;
                     }
                   })()}
+                  legacyBehavior={false}
                   platform={"nextjs"}
                   target={"_blank"}
                 >

@@ -137,6 +137,9 @@
   flex-shrink: 0;
   padding: 8px;
 }
+.freeBoxhideButton__mdXx23KXe7 {
+  display: none;
+}
 .paziresh24LineClamp:global(.__wab_instance) {
   max-width: 100%;
   width: 100%;
@@ -201,7 +204,7 @@
   position: relative;
   align-items: center;
   justify-content: flex-end;
-  width: 110px;
+  width: 128px;
   height: auto;
   max-width: 100%;
   align-self: center;

@@ -63,7 +63,6 @@ import * as pp from "@plasmicapp/react-web";
 
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_paziresh_24_design_system } from "../paziresh_24_design_system/PlasmicStyleTokensProvider"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -153,19 +152,20 @@ function PlasmicCustomSelect__Option__RenderFunc(props: {
         path: "isSelected",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.isSelected
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.isSelected
       },
       {
         path: "isHighlighted",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.isHighlighted
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.isHighlighted
       },
       {
         path: "isDisabled",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.isDisabled
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.isDisabled
       }
     ],
     [$props, $ctx, $refs]
@@ -174,6 +174,7 @@ function PlasmicCustomSelect__Option__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -182,8 +183,6 @@ function PlasmicCustomSelect__Option__RenderFunc(props: {
   };
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_paziresh_24_design_system =
-    useStyleTokens_paziresh_24_design_system();
 
   return (
     <div
@@ -197,7 +196,6 @@ function PlasmicCustomSelect__Option__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         styleTokensClassNames,
-        styleTokensClassNames_paziresh_24_design_system,
         sty.root,
         {
           [sty.rootisDisabled]: hasVariant($state, "isDisabled", "isDisabled"),
@@ -286,7 +284,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicCustomSelect__Option__VariantsArgs;
     args?: PlasmicCustomSelect__Option__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicCustomSelect__Option__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicCustomSelect__Option__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicCustomSelect__Option__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

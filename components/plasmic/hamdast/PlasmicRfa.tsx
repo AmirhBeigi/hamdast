@@ -70,6 +70,35 @@ import sty from "./PlasmicRfa.module.css"; // plasmic-import: 0-v_8tqEs-67/css
 
 import Icon51Icon from "./icons/PlasmicIcon__Icon51"; // plasmic-import: wMmAYe1Ji-cY/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "درخواست‌های مربوط به ابزارک",
+
+    openGraph: {
+      title: "درخواست‌های مربوط به ابزارک"
+    },
+    twitter: {
+      card: "summary",
+      title: "درخواست‌های مربوط به ابزارک"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicRfa__VariantMembers = {};
@@ -135,7 +164,7 @@ function PlasmicRfa__RenderFunc(props: {
         path: "features",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       }
     ],
     [$props, $ctx, $refs]
@@ -144,8 +173,14 @@ function PlasmicRfa__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -153,16 +188,12 @@ function PlasmicRfa__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicRfa.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicRfa.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
-          name="twitter:title"
-          content={PlasmicRfa.pageMetadata.title}
+          property="twitter:title"
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -202,6 +233,7 @@ function PlasmicRfa__RenderFunc(props: {
                     )}
                     component={Link}
                     href={`/`}
+                    legacyBehavior={false}
                     platform={"nextjs"}
                   >
                     <Icon51Icon
@@ -233,6 +265,7 @@ function PlasmicRfa__RenderFunc(props: {
                       )}
                       component={Link}
                       href={"https://developers.paziresh24.com/apps"}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                       target={"_blank"}
                     >
@@ -247,6 +280,7 @@ function PlasmicRfa__RenderFunc(props: {
                       )}
                       component={Link}
                       href={"https://cal.com/amirhbeigi/hamdast"}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                       target={"_blank"}
                     >
@@ -468,13 +502,11 @@ export const PlasmicRfa = Object.assign(
     internalVariantProps: PlasmicRfa__VariantProps,
     internalArgProps: PlasmicRfa__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "درخواست‌های مربوط به ابزارک",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/rfa",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

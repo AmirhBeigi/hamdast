@@ -212,7 +212,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicFragmentLineClamp__VariantsArgs;
     args?: PlasmicFragmentLineClamp__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicFragmentLineClamp__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicFragmentLineClamp__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicFragmentLineClamp__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

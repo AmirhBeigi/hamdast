@@ -63,7 +63,6 @@ import RaviAlert from "../../RaviAlert"; // plasmic-import: 22UkaHSSFOEU/compone
 import { Popover } from "@plasmicpkgs/radix-ui";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_paziresh_24_design_system } from "../paziresh_24_design_system/PlasmicStyleTokensProvider"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -153,7 +152,7 @@ function PlasmicRaviRateAndCommentCount__RenderFunc(props: {
         path: "popoverCore.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -162,12 +161,11 @@ function PlasmicRaviRateAndCommentCount__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_paziresh_24_design_system =
-    useStyleTokens_paziresh_24_design_system();
 
   return (
     (() => {
@@ -194,7 +192,6 @@ function PlasmicRaviRateAndCommentCount__RenderFunc(props: {
           projectcss.plasmic_default_styles,
           projectcss.plasmic_mixins,
           styleTokensClassNames,
-          styleTokensClassNames_paziresh_24_design_system,
           sty.root
         )}
       >
@@ -375,8 +372,7 @@ function PlasmicRaviRateAndCommentCount__RenderFunc(props: {
                 projectcss.root_reset,
                 projectcss.plasmic_default_styles,
                 projectcss.plasmic_mixins,
-                styleTokensClassNames,
-                styleTokensClassNames_paziresh_24_design_system
+                styleTokensClassNames
               )}
             >
               <div
@@ -443,7 +439,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicRaviRateAndCommentCount__VariantsArgs;
     args?: PlasmicRaviRateAndCommentCount__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicRaviRateAndCommentCount__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicRaviRateAndCommentCount__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicRaviRateAndCommentCount__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

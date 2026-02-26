@@ -187,7 +187,7 @@ function PlasmicMenuItem__RenderFunc(props: {
         path: "nameInput.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $props.defaultValues?.name;
@@ -206,7 +206,7 @@ function PlasmicMenuItem__RenderFunc(props: {
         path: "keyInput.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $props.defaultValues?.key;
@@ -225,7 +225,7 @@ function PlasmicMenuItem__RenderFunc(props: {
         path: "parametersList",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $props.defaultValues.parameters;
@@ -244,7 +244,7 @@ function PlasmicMenuItem__RenderFunc(props: {
         path: "embedInput.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $props.defaultValues.embed_src;
@@ -263,19 +263,19 @@ function PlasmicMenuItem__RenderFunc(props: {
         path: "isLoading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "deleteLoading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "unreadInput.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $props.defaultValues.unread_endpoint;
@@ -297,6 +297,7 @@ function PlasmicMenuItem__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -747,6 +748,7 @@ function PlasmicMenuItem__RenderFunc(props: {
                     )}
                     component={Link}
                     href={"https://developers.paziresh24.com/apps/unread"}
+                    legacyBehavior={false}
                     platform={"nextjs"}
                     target={"_blank"}
                   >

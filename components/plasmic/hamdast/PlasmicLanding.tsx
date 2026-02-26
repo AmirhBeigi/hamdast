@@ -75,6 +75,35 @@ import ChevronRightIcon from "../paziresh_24_design_system/icons/PlasmicIcon__Ch
 import ChevronLeftIcon from "../paziresh_24_design_system/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: jS0YlkKPLO7U/icon
 import Icon21Icon from "./icons/PlasmicIcon__Icon21"; // plasmic-import: UuDHOUXMn1lI/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "همدست - توسعه و یکپارچه سازی کسب و کار با پذیرش۲۴",
+
+    openGraph: {
+      title: "همدست - توسعه و یکپارچه سازی کسب و کار با پذیرش۲۴"
+    },
+    twitter: {
+      card: "summary",
+      title: "همدست - توسعه و یکپارچه سازی کسب و کار با پذیرش۲۴"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicLanding__VariantMembers = {};
@@ -141,13 +170,13 @@ function PlasmicLanding__RenderFunc(props: {
         path: "features",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "apiRequest.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest"
       },
@@ -155,7 +184,7 @@ function PlasmicLanding__RenderFunc(props: {
         path: "apiRequest.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest"
       },
@@ -163,7 +192,7 @@ function PlasmicLanding__RenderFunc(props: {
         path: "apiRequest.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest"
       }
@@ -174,8 +203,14 @@ function PlasmicLanding__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -183,16 +218,12 @@ function PlasmicLanding__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicLanding.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicLanding.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
-          name="twitter:title"
-          content={PlasmicLanding.pageMetadata.title}
+          property="twitter:title"
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -232,6 +263,7 @@ function PlasmicLanding__RenderFunc(props: {
                     )}
                     component={Link}
                     href={`/`}
+                    legacyBehavior={false}
                     platform={"nextjs"}
                   >
                     <Icon51Icon
@@ -261,6 +293,7 @@ function PlasmicLanding__RenderFunc(props: {
                       )}
                       component={Link}
                       href={"https://developers.paziresh24.com/apps"}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                       target={"_blank"}
                     >
@@ -275,6 +308,7 @@ function PlasmicLanding__RenderFunc(props: {
                       )}
                       component={Link}
                       href={"https://cal.com/amirhbeigi/hamdast"}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                       target={"_blank"}
                     >
@@ -359,6 +393,7 @@ function PlasmicLanding__RenderFunc(props: {
                               )}
                               component={Link}
                               href={"/rfa"}
+                              legacyBehavior={false}
                               platform={"nextjs"}
                             >
                               <React.Fragment>
@@ -477,6 +512,7 @@ function PlasmicLanding__RenderFunc(props: {
                           href={
                             "https://developers.paziresh24.com/apps/about-monetization"
                           }
+                          legacyBehavior={false}
                           platform={"nextjs"}
                         >
                           <React.Fragment>
@@ -639,6 +675,7 @@ function PlasmicLanding__RenderFunc(props: {
                           )}
                           component={Link}
                           href={"https://developers.paziresh24.com/apis"}
+                          legacyBehavior={false}
                           platform={"nextjs"}
                         >
                           <React.Fragment>
@@ -1354,13 +1391,11 @@ export const PlasmicLanding = Object.assign(
     internalVariantProps: PlasmicLanding__VariantProps,
     internalArgProps: PlasmicLanding__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "همدست - توسعه و یکپارچه سازی کسب و کار با پذیرش۲۴",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

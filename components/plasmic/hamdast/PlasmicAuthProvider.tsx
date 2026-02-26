@@ -163,7 +163,7 @@ function PlasmicAuthProvider__RenderFunc(props: {
         path: "user",
         type: "readonly",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({}),
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({}),
 
         onChangeProp: "onUserChange"
       },
@@ -171,7 +171,7 @@ function PlasmicAuthProvider__RenderFunc(props: {
         path: "apps",
         type: "readonly",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => [],
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => [],
 
         onChangeProp: "onAppsChange"
       },
@@ -179,7 +179,7 @@ function PlasmicAuthProvider__RenderFunc(props: {
         path: "error",
         type: "readonly",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false,
 
         onChangeProp: "onErrorChange"
       },
@@ -187,7 +187,7 @@ function PlasmicAuthProvider__RenderFunc(props: {
         path: "loading",
         type: "readonly",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return typeof window !== "undefined" ? !window.data?.user : true;
@@ -211,6 +211,7 @@ function PlasmicAuthProvider__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 

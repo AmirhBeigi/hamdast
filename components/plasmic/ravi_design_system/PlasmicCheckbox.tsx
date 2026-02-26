@@ -62,7 +62,6 @@ import {
 import { BaseCheckbox } from "@plasmicpkgs/react-aria/skinny/registerCheckbox";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_paziresh_24_design_system } from "../paziresh_24_design_system/PlasmicStyleTokensProvider"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -163,7 +162,7 @@ function PlasmicCheckbox__RenderFunc(props: {
         path: "ariaCheckbox.isSelected",
         type: "readonly",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           $props["defaultSelected"],
 
         onChangeProp: "onChange"
@@ -175,12 +174,11 @@ function PlasmicCheckbox__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_paziresh_24_design_system =
-    useStyleTokens_paziresh_24_design_system();
 
   const [$ccVariants, setDollarCcVariants] = React.useState<
     Record<string, boolean>
@@ -220,7 +218,6 @@ function PlasmicCheckbox__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         styleTokensClassNames,
-        styleTokensClassNames_paziresh_24_design_system,
         sty.ariaCheckbox
       )}
       defaultSelected={args.defaultSelected}
@@ -286,7 +283,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicCheckbox__VariantsArgs;
     args?: PlasmicCheckbox__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicCheckbox__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicCheckbox__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicCheckbox__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

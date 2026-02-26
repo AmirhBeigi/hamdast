@@ -63,7 +63,6 @@ import Paziresh24Avatar from "../../Paziresh24Avatar"; // plasmic-import: zljt-T
 import Paziresh24Chip from "../../Paziresh24Chip"; // plasmic-import: df-BFL5jhiFc/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: pkMLinFwM9pzwv5S5KpiAu/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_paziresh_24_design_system } from "../paziresh_24_design_system/PlasmicStyleTokensProvider"; // plasmic-import: 6HBcNwr8dz9LuS1Qe36xa5/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -171,8 +170,6 @@ function PlasmicRaviUser__RenderFunc(props: {
   const $refs = refsRef.current;
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_paziresh_24_design_system =
-    useStyleTokens_paziresh_24_design_system();
 
   return (
     <div
@@ -186,7 +183,6 @@ function PlasmicRaviUser__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         styleTokensClassNames,
-        styleTokensClassNames_paziresh_24_design_system,
         sty.root
       )}
     >
@@ -198,6 +194,7 @@ function PlasmicRaviUser__RenderFunc(props: {
           className={classNames(projectcss.all, projectcss.a, sty.link__tY3G)}
           component={Link}
           href={undefined}
+          legacyBehavior={false}
           onClick={async event => {
             const $steps = {};
 
@@ -492,6 +489,7 @@ function PlasmicRaviUser__RenderFunc(props: {
                     throw e;
                   }
                 })()}
+                legacyBehavior={false}
                 onClick={async event => {
                   const $steps = {};
 
@@ -525,9 +523,8 @@ function PlasmicRaviUser__RenderFunc(props: {
                     typeof $steps["runOnClickDoctorLink"] === "object" &&
                     typeof $steps["runOnClickDoctorLink"].then === "function"
                   ) {
-                    $steps["runOnClickDoctorLink"] = await $steps[
-                      "runOnClickDoctorLink"
-                    ];
+                    $steps["runOnClickDoctorLink"] =
+                      await $steps["runOnClickDoctorLink"];
                   }
                 }}
                 platform={"nextjs"}
@@ -580,7 +577,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicRaviUser__VariantsArgs;
     args?: PlasmicRaviUser__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicRaviUser__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicRaviUser__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicRaviUser__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

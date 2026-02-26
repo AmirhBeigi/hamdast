@@ -72,6 +72,35 @@ import Icon27Icon from "./icons/PlasmicIcon__Icon27"; // plasmic-import: 0E0-Td2
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: VepSFu0Y3Pyk/icon
 import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: CmW94FEF71d7/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "یکپارچه سازی ها",
+
+    openGraph: {
+      title: "یکپارچه سازی ها"
+    },
+    twitter: {
+      card: "summary",
+      title: "یکپارچه سازی ها"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicSingleIntegrationPage__VariantMembers = {};
@@ -130,24 +159,23 @@ function PlasmicSingleIntegrationPage__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
+
   const styleTokensClassNames = _useStyleTokens();
 
   return (
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">
-          {PlasmicSingleIntegrationPage.pageMetadata.title}
-        </title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicSingleIntegrationPage.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
-          name="twitter:title"
-          content={PlasmicSingleIntegrationPage.pageMetadata.title}
+          property="twitter:title"
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -205,6 +233,7 @@ function PlasmicSingleIntegrationPage__RenderFunc(props: {
               )}
               component={Link}
               href={`/`}
+              legacyBehavior={false}
               platform={"nextjs"}
             >
               <Icon27Icon
@@ -234,6 +263,7 @@ function PlasmicSingleIntegrationPage__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://developers.paziresh24.com/apps"}
+                legacyBehavior={false}
                 platform={"nextjs"}
                 target={"_blank"}
               >
@@ -248,6 +278,7 @@ function PlasmicSingleIntegrationPage__RenderFunc(props: {
                 )}
                 component={Link}
                 href={`/integrations`}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"\u0627\u062f\u063a\u0627\u0645 \u0647\u0627"}
@@ -398,13 +429,11 @@ export const PlasmicSingleIntegrationPage = Object.assign(
     internalVariantProps: PlasmicSingleIntegrationPage__VariantProps,
     internalArgProps: PlasmicSingleIntegrationPage__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "یکپارچه سازی ها",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/integrations/[name]",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

@@ -168,7 +168,7 @@ function PlasmicSubscriberCard__RenderFunc(props: {
         path: "apiRequest2.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest2"
       },
@@ -176,7 +176,7 @@ function PlasmicSubscriberCard__RenderFunc(props: {
         path: "apiRequest2.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest2"
       },
@@ -184,7 +184,7 @@ function PlasmicSubscriberCard__RenderFunc(props: {
         path: "apiRequest2.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest2"
       },
@@ -192,19 +192,19 @@ function PlasmicSubscriberCard__RenderFunc(props: {
         path: "dialog.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "apiRequest.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest"
       },
@@ -212,7 +212,7 @@ function PlasmicSubscriberCard__RenderFunc(props: {
         path: "apiRequest.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest"
       },
@@ -220,7 +220,7 @@ function PlasmicSubscriberCard__RenderFunc(props: {
         path: "apiRequest.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiRequest"
       },
@@ -228,7 +228,7 @@ function PlasmicSubscriberCard__RenderFunc(props: {
         path: "hideButton",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.hideButton
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.hideButton
       }
     ],
     [$props, $ctx, $refs]
@@ -237,6 +237,7 @@ function PlasmicSubscriberCard__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -426,6 +427,7 @@ function PlasmicSubscriberCard__RenderFunc(props: {
                       throw e;
                     }
                   })()}
+                  legacyBehavior={false}
                   platform={"nextjs"}
                   target={"_blank"}
                 >
@@ -438,7 +440,15 @@ function PlasmicSubscriberCard__RenderFunc(props: {
           </div>
         </div>
       </ApiRequest>
-      <div className={classNames(projectcss.all, sty.freeBox__mdXx2)}>
+      <div
+        className={classNames(projectcss.all, sty.freeBox__mdXx2, {
+          [sty.freeBoxhideButton__mdXx23KXe7]: hasVariant(
+            $state,
+            "hideButton",
+            "hideButton"
+          )
+        })}
+      >
         <Paziresh24LineClamp
           data-plasmic-name={"paziresh24LineClamp"}
           data-plasmic-override={overrides.paziresh24LineClamp}
@@ -449,7 +459,14 @@ function PlasmicSubscriberCard__RenderFunc(props: {
             className={classNames(
               projectcss.all,
               projectcss.__wab_text,
-              sty.text__p8Ddh
+              sty.text__p8Ddh,
+              {
+                [sty.texthideButton__p8Ddh3KXe7]: hasVariant(
+                  $state,
+                  "hideButton",
+                  "hideButton"
+                )
+              }
             )}
           >
             <React.Fragment>
