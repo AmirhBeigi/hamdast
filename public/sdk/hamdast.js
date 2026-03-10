@@ -32,7 +32,7 @@ function hamdastPostMessagePromise(message) {
         hash_id: hash_id,
       },
     },
-    "*"
+    "*",
   );
 
   return new Promise(function (resolve, reject) {
@@ -41,9 +41,12 @@ function hamdastPostMessagePromise(message) {
         resolve(e.data.hamdast.data);
       }
     });
-    setTimeout(function () {
-      reject();
-    }, 60 * 60 * 1000);
+    setTimeout(
+      function () {
+        reject();
+      },
+      60 * 60 * 1000,
+    );
   });
 }
 
@@ -141,6 +144,13 @@ window.hamdast = {
         clientKey: window.hamdast.clientKey,
         event: "HAMDAST_WIDGET_REMOVE_FROM_PROFILE",
         promise: true,
+      });
+    },
+    refreshPorifle: function () {
+      return hamdastCommunication({
+        clientKey: window.hamdast.clientKey,
+        event: "HAMDAST_WIDGET_REFRESH_PROFILE",
+        promise: false,
       });
     },
   },
