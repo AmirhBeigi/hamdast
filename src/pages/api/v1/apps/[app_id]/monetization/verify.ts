@@ -99,9 +99,11 @@ export default async function handler(
 
     const releaseAt = products.release_at
       ? moment()
-          .add(products.release_at?.[0], products.release_at?.[1])
-          .format("YYYY-MM-DD HH:mm:ss")
-      : undefined;
+        .add(products.release_at?.[0], products.release_at?.[1])
+        .format("YYYY-MM-DD HH:mm:ss")
+      : moment()
+        .add(7, 'day')
+        .format("YYYY-MM-DD HH:mm:ss");
 
     if (!receipt_id) {
       return res.status(400).json({
