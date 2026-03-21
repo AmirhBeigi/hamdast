@@ -19,6 +19,66 @@ function hamdastCommunication(obj) {
   window.parent.postMessage(message, "*");
 }
 
+var hamdastAutoResizeIntervalId = null;
+var hamdastAutoResizeObserver = null;
+
+function hamdastSendHeight() {
+  try {
+    var height =
+      (document.documentElement && document.documentElement.scrollHeight) ||
+      (document.body && document.body.scrollHeight) ||
+      window.innerHeight;
+
+    hamdastCommunication({
+      clientKey: window.hamdast && window.hamdast.clientKey,
+      event: "HAMDAST_FRAME_RESIZE",
+      data: {
+        height: height,
+      },
+    });
+  } catch (e) {}
+}
+
+function hamdastStartAutoResize(options) {
+  options = options || {};
+  var interval = typeof options.interval === "number" ? options.interval : 300;
+
+  hamdastStopAutoResize();
+
+  if (typeof window !== "undefined" && window.ResizeObserver) {
+    hamdastAutoResizeObserver = new ResizeObserver(function () {
+      hamdastSendHeight();
+    });
+    hamdastAutoResizeObserver.observe(
+      document.documentElement || document.body,
+    );
+  } else {
+    hamdastAutoResizeIntervalId = window.setInterval(function () {
+      hamdastSendHeight();
+    }, interval);
+  }
+
+  window.addEventListener("load", hamdastSendHeight);
+  window.addEventListener("resize", hamdastSendHeight);
+  window.addEventListener("orientationchange", hamdastSendHeight);
+}
+
+function hamdastStopAutoResize() {
+  if (hamdastAutoResizeIntervalId) {
+    window.clearInterval(hamdastAutoResizeIntervalId);
+    hamdastAutoResizeIntervalId = null;
+  }
+  if (hamdastAutoResizeObserver) {
+    try {
+      hamdastAutoResizeObserver.disconnect();
+    } catch (e) {}
+    hamdastAutoResizeObserver = null;
+  }
+  window.removeEventListener("load", hamdastSendHeight);
+  window.removeEventListener("resize", hamdastSendHeight);
+  window.removeEventListener("orientationchange", hamdastSendHeight);
+}
+
 function hamdastPostMessagePromise(message) {
   var hash_id = Date.now();
 
@@ -155,3 +215,4 @@ window.hamdast = {
     },
   },
 };
+hamdastStartAutoResize();
