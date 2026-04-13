@@ -177,7 +177,13 @@ export default async function handler(
             },
           }
         );
-      } catch (error) {}
+      } catch (error) { }
+
+      await axios.post("https://hamdast-workflow.paziresh24.com/webhook/addons/history", {
+        app_key: app.key,
+        user_id: user_id,
+        action: "inactive",
+      })
 
       return res.status(200).json({
         message: "Provider Widget updated successfully",
@@ -311,7 +317,15 @@ export default async function handler(
             },
           }
         );
-      } catch (error) {}
+      } catch (error) { }
+
+      await axios.post("https://hamdast-workflow.paziresh24.com/webhook/addons/history", {
+        app_key: app.key,
+        user_id: user_id,
+        action: "active",
+        placement: placements,
+        placements_metadata,
+      })
 
       return res.status(200).json({
         message: "Widget updated successfully",
