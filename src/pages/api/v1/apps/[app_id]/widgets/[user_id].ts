@@ -162,7 +162,7 @@ export default async function handler(
       const slug = slugData?.providers[0]?.slug;
 
       try {
-        await axios.post(
+        axios.post(
           "https://napi.arvancloud.ir/cdn/4.0/domains/paziresh24.com/caching/purge",
           {
             purge: "individual",
@@ -179,7 +179,7 @@ export default async function handler(
         );
       } catch (error) { }
 
-      await axios.post("https://hamdast-workflow.paziresh24.com/webhook/addons/history", {
+      axios.post("https://hamdast-workflow.paziresh24.com/webhook/addons/history", {
         app_key: app.key,
         user_id: user_id,
         action: "inactive",
