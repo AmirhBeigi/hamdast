@@ -136,7 +136,7 @@ export default async function handler(
       );
 
       try {
-        await Promise.allSettled([
+        Promise.allSettled([
           clearProfileCache({
             ownerId:
               providerInfo?.owner_id,
@@ -211,7 +211,7 @@ export default async function handler(
       });
 
       try {
-        await Promise.allSettled([
+        Promise.allSettled([
           clearProfileCache({
             ownerId:
               providerInfo?.owner_id,

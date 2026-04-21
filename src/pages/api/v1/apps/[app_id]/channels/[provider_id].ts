@@ -155,7 +155,7 @@ export default async function handler(
       const provider = providerData?.providers?.[0];
 
       try {
-        await Promise.allSettled([
+        Promise.allSettled([
           clearProfileCache({
             ownerId:
               provider?.owner_id ??
@@ -168,7 +168,7 @@ export default async function handler(
             `https://hamdast.paziresh24.com/api/v1/widgets/?provider_id=${provider_id}`
           ),
         ]);
-      } catch (error) {}
+      } catch (error) { }
 
       return res.status(200).json({
         message: "Widget deleted successfully",
@@ -287,7 +287,7 @@ export default async function handler(
       }
 
       try {
-        await Promise.allSettled([
+        Promise.allSettled([
           clearProfileCache({
             ownerId:
               provider?.owner_id ??
@@ -300,7 +300,7 @@ export default async function handler(
             `https://hamdast.paziresh24.com/api/v1/widgets/?provider_id=${provider_id}`
           ),
         ]);
-      } catch (error) {}
+      } catch (error) { }
 
       return res.status(200).json({
         message: "Widget updated successfully",

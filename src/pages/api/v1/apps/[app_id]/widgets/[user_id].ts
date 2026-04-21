@@ -163,7 +163,7 @@ export default async function handler(
       const provider = providerData?.providers?.[0];
 
       try {
-        await Promise.allSettled([
+        Promise.allSettled([
           clearProfileCache({
             ownerId:
               provider?.owner_id,
@@ -299,7 +299,7 @@ export default async function handler(
       });
 
       try {
-        await Promise.allSettled([
+        Promise.allSettled([
           clearProfileCache({
             ownerId:
               provider?.owner_id,
@@ -311,7 +311,7 @@ export default async function handler(
         ]);
       } catch (error) { }
 
-      await axios.post("https://hamdast-workflow.paziresh24.com/webhook/addons/history", {
+      axios.post("https://hamdast-workflow.paziresh24.com/webhook/addons/history", {
         app_key: app.key,
         user_id: user_id,
         action: "active",
