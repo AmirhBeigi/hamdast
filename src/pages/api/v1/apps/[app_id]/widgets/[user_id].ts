@@ -4,6 +4,7 @@ import config from "next/config";
 import axios from "axios";
 import NextCors from "nextjs-cors";
 import { isUUID } from "@/lib/utils";
+import { clearOtherCache, clearProfileCache } from "@/lib/cache-clear";
 const { publicRuntimeConfig } = config();
 
 export default async function handler(
@@ -155,28 +156,23 @@ export default async function handler(
         });
       });
 
-      const { data: slugData } = await axios.get(
+      const { data: providerData } = await axios.get(
         `https://apigw.paziresh24.com/v1/providers?user_id=${user_id}`
       );
 
-      const slug = slugData?.providers[0]?.slug;
+      const provider = providerData?.providers?.[0];
 
       try {
-        axios.post(
-          "https://napi.arvancloud.ir/cdn/4.0/domains/paziresh24.com/caching/purge",
-          {
-            purge: "individual",
-            purge_urls: [
-              `https://hamdast.paziresh24.com/api/v1/widgets/?user_id=${user_id}`,
-              `https://www.paziresh24.com/dr/${slug}/`,
-            ],
-          },
-          {
-            headers: {
-              authorization: publicRuntimeConfig.ARVAN,
-            },
-          }
-        );
+        await Promise.allSettled([
+          clearProfileCache({
+            ownerId:
+              provider?.owner_id,
+            serverId: provider?.server_id,
+          }),
+          clearOtherCache(
+            `https://hamdast.paziresh24.com/api/v1/widgets/?user_id=${user_id}`
+          ),
+        ]);
       } catch (error) { }
 
       axios.post("https://hamdast-workflow.paziresh24.com/webhook/addons/history", {
@@ -222,14 +218,15 @@ export default async function handler(
       }
     }
 
-    let slug;
+    let provider: any;
 
     try {
-      const { data: slugData } = await axios.get(
+      const { data: providerData } = await axios.get(
         `https://apigw.paziresh24.com/v1/providers?user_id=${user_id}`
       );
 
-      slug = slugData?.providers[0]?.slug;
+      provider = providerData?.providers?.[0];
+      const slug = provider?.slug;
 
       if (!slug) {
         return res.status(404).json({
@@ -302,21 +299,16 @@ export default async function handler(
       });
 
       try {
-        await axios.post(
-          "https://napi.arvancloud.ir/cdn/4.0/domains/paziresh24.com/caching/purge",
-          {
-            purge: "individual",
-            purge_urls: [
-              `https://hamdast.paziresh24.com/api/v1/widgets/?user_id=${user_id}`,
-              `https://www.paziresh24.com/dr/${slug}/`,
-            ],
-          },
-          {
-            headers: {
-              authorization: publicRuntimeConfig.ARVAN,
-            },
-          }
-        );
+        await Promise.allSettled([
+          clearProfileCache({
+            ownerId:
+              provider?.owner_id,
+            serverId: provider?.server_id,
+          }),
+          clearOtherCache(
+            `https://hamdast.paziresh24.com/api/v1/widgets/?user_id=${user_id}`
+          ),
+        ]);
       } catch (error) { }
 
       await axios.post("https://hamdast-workflow.paziresh24.com/webhook/addons/history", {

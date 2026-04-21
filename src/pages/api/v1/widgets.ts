@@ -3,6 +3,7 @@ import { pb } from "../../../../pocketbase";
 import config from "next/config";
 import axios from "axios";
 import NextCors from "nextjs-cors";
+import { clearOtherCache, clearProfileCache } from "@/lib/cache-clear";
 const { publicRuntimeConfig } = config();
 
 export default async function handler(
@@ -109,7 +110,8 @@ export default async function handler(
       }
     );
 
-    const slug = provider?.data?.providers?.[0]?.slug;
+    const providerInfo = provider?.data?.providers?.[0];
+    const slug = providerInfo?.slug;
 
     const widget = await pb
       .collection("widgets")
@@ -134,21 +136,16 @@ export default async function handler(
       );
 
       try {
-        await axios.post(
-          "https://napi.arvancloud.ir/cdn/4.0/domains/paziresh24.com/caching/purge",
-          {
-            purge: "individual",
-            purge_urls: [
-              `https://hamdast.paziresh24.com/api/v1/widgets/?user_id=${user_id}`,
-              `https://www.paziresh24.com/dr/${slug}/`,
-            ],
-          },
-          {
-            headers: {
-              authorization: publicRuntimeConfig.ARVAN,
-            },
-          }
-        );
+        await Promise.allSettled([
+          clearProfileCache({
+            ownerId:
+              providerInfo?.owner_id,
+            serverId: providerInfo?.server_id,
+          }),
+          clearOtherCache(
+            `https://hamdast.paziresh24.com/api/v1/widgets/?user_id=${user_id}`
+          ),
+        ]);
       } catch (error) { }
 
       return res.status(200).json({});
@@ -188,7 +185,8 @@ export default async function handler(
       }
     );
 
-    const slug = provider?.data?.providers?.[0]?.slug;
+    const providerInfo = provider?.data?.providers?.[0];
+    const slug = providerInfo?.slug;
 
     try {
       const widget = await pb
@@ -213,21 +211,16 @@ export default async function handler(
       });
 
       try {
-        await axios.post(
-          "https://napi.arvancloud.ir/cdn/4.0/domains/paziresh24.com/caching/purge",
-          {
-            purge: "individual",
-            purge_urls: [
-              `https://hamdast.paziresh24.com/api/v1/widgets/?user_id=${user_id}`,
-              `https://www.paziresh24.com/dr/${slug}/`,
-            ],
-          },
-          {
-            headers: {
-              authorization: publicRuntimeConfig.ARVAN,
-            },
-          }
-        );
+        await Promise.allSettled([
+          clearProfileCache({
+            ownerId:
+              providerInfo?.owner_id,
+            serverId: providerInfo?.server_id,
+          }),
+          clearOtherCache(
+            `https://hamdast.paziresh24.com/api/v1/widgets/?user_id=${user_id}`
+          ),
+        ]);
       } catch (error) { }
 
       return res.status(200).json({});
