@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import NextCors from "nextjs-cors";
 import { pb } from "../../../../../../../pocketbase";
 import config from "next/config";
-const { publicRuntimeConfig } = config();
+const { publicRuntimeConfig, serverRuntimeConfig } = config();
 
 
 const SESSION_TTL_MS = 1 * 60 * 1000;
@@ -127,8 +127,7 @@ export default async function handler(
 
   const now = Date.now();
   const expiresAt = now + SESSION_TTL_MS;
-  const jwtSecret =
-    process.env.HAMDAST_SESSION_JWT_SECRET;
+  const jwtSecret = serverRuntimeConfig.HAMDAST_SESSION_JWT_SECRET;
 
   if (!jwtSecret) {
     return res.status(500).json({

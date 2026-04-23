@@ -3,7 +3,7 @@ import { pb } from "../../../../../../../pocketbase";
 import { createHmac, timingSafeEqual } from "crypto";
 import config from "next/config";
 
-const { publicRuntimeConfig } = config();
+const { publicRuntimeConfig, serverRuntimeConfig } = config();
 const JWT_ALGORITHM = "HS256";
 
 const encodeBase64Url = (value: string) =>
@@ -114,7 +114,7 @@ export default async function handler(
       });
     }
 
-    const sessionSecret = process.env.HAMDAST_SESSION_JWT_SECRET || "";
+    const sessionSecret = serverRuntimeConfig.HAMDAST_SESSION_JWT_SECRET || "";
     const sessionPayload = sessionSecret
       ? verifySessionToken(sessionToken, sessionSecret)
       : null;
@@ -125,7 +125,7 @@ export default async function handler(
       });
     }
 
-    const accessSecret = process.env.HAMDAST_ACCESS_JWT_SECRET || sessionSecret;
+    const accessSecret = serverRuntimeConfig.HAMDAST_ACCESS_JWT_SECRET || sessionSecret;
     if (!accessSecret) {
       return res.status(500).json({
         message: "Access token secret is not configured.",
