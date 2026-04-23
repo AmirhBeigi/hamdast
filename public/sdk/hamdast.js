@@ -21,6 +21,7 @@ function hamdastCommunication(obj) {
 
 var hamdastAutoResizeIntervalId = null;
 var hamdastAutoResizeObserver = null;
+var HAMDAST_SESSION_TOKEN_RESPONSE_EVENT = "HAMDAST_SDK_SESSION_TOKEN_RESPONSE";
 
 function hamdastSendHeight() {
   try {
@@ -110,6 +111,121 @@ function hamdastPostMessagePromise(message) {
   });
 }
 
+function hamdastGenerateHashId() {
+  return Date.now().toString(36) + "_" + Math.random().toString(36).slice(2);
+}
+
+function hamdastNormalizeScopes(scopeInput) {
+  if (Array.isArray(scopeInput)) {
+    return scopeInput
+      .map(function (scope) {
+        return String(scope).trim();
+      })
+      .filter(Boolean);
+  }
+
+  if (typeof scopeInput === "string") {
+    return scopeInput
+      .split(" ")
+      .map(function (scope) {
+        return scope.trim();
+      })
+      .filter(Boolean);
+  }
+
+  return [];
+}
+
+function hamdastExtractSessionToken(payload) {
+  if (typeof payload === "string") return payload;
+  if (payload && typeof payload.session_token === "string") {
+    return payload.session_token;
+  }
+  if (payload && payload.data && typeof payload.data.session_token === "string") {
+    return payload.data.session_token;
+  }
+  return "";
+}
+
+function hamdastGetSessionTokenViaHiddenIframe(options) {
+  var appId = options.appId;
+  var scope = options.scope || [];
+  var timeout = options.timeout || 30000;
+  var hashId = hamdastGenerateHashId();
+  var iframe = document.createElement("iframe");
+  var query = new URLSearchParams();
+
+  query.set("app_id", appId);
+  query.set("hash_id", hashId);
+  query.set("response_event", HAMDAST_SESSION_TOKEN_RESPONSE_EVENT);
+  if (scope.length) {
+    query.set("scope", scope.join(","));
+  }
+
+  iframe.setAttribute(
+    "style",
+    "position:absolute;width:0;height:0;border:0;opacity:0;pointer-events:none;"
+  );
+  iframe.setAttribute("aria-hidden", "true");
+  iframe.src = "/session-token.html?" + query.toString();
+
+  return new Promise(function (resolve, reject) {
+    var done = false;
+    var timeoutId;
+
+    function cleanup() {
+      window.removeEventListener("message", onMessage);
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+      if (iframe && iframe.parentNode) {
+        iframe.parentNode.removeChild(iframe);
+      }
+    }
+
+    function finalize(callback) {
+      if (done) return;
+      done = true;
+      cleanup();
+      callback();
+    }
+
+    function onMessage(event) {
+      var data = event && event.data && event.data.hamdast;
+      if (!data) return;
+      if (data.event !== HAMDAST_SESSION_TOKEN_RESPONSE_EVENT) return;
+      if (String(data.hash_id || "") !== hashId) return;
+
+      var token = hamdastExtractSessionToken(data.data);
+      if (!token) {
+        finalize(function () {
+          reject(new Error((data.data && data.data.error) || "Invalid session token response."));
+        });
+        return;
+      }
+
+      finalize(function () {
+        resolve(token);
+      });
+    }
+
+    window.addEventListener("message", onMessage);
+    timeoutId = setTimeout(function () {
+      finalize(function () {
+        reject(new Error("getSessionToken timed out."));
+      });
+    }, timeout);
+
+    if (document.body && document.body.firstChild) {
+      document.body.insertBefore(iframe, document.body.firstChild);
+    } else if (document.body) {
+      document.body.appendChild(iframe);
+    } else {
+      document.documentElement.appendChild(iframe);
+    }
+  });
+}
+
 window.hamdast = {
   initialize: function (options) {
     options = options || {};
@@ -126,6 +242,39 @@ window.hamdast = {
       data: {
         state: state,
       },
+    });
+  },
+  getSessionToken: function (options) {
+    options = options || {};
+    var timeout = typeof options.timeout === "number" ? options.timeout : 30000;
+    var scope = hamdastNormalizeScopes(options.scope);
+
+    if (window.self !== window.top) {
+      return hamdastCommunication({
+        clientKey: window.hamdast.clientKey,
+        promise: true,
+        event: "HAMDAST_GET_SESSION_TOKEN",
+        data: {
+          scope: scope,
+        },
+      }).then(function (payload) {
+        var token = hamdastExtractSessionToken(payload);
+        if (!token) {
+          throw new Error("Invalid session token response.");
+        }
+        return token;
+      });
+    }
+
+    var appId = String(options.appId || window.hamdast.clientKey || "").trim();
+    if (!appId) {
+      return Promise.reject(new Error("app_id is required to create session token."));
+    }
+
+    return hamdastGetSessionTokenViaHiddenIframe({
+      appId: appId,
+      scope: scope,
+      timeout: timeout,
     });
   },
   openLink: function (obj) {

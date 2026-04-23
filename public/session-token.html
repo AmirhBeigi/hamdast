@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hamdast Session Token</title>
+  </head>
+  <body>
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search || "");
+        var appId = (params.get("app_id") || "").trim();
+        var hashId = (params.get("hash_id") || "").trim();
+        var scopeParam = (params.get("scope") || "").trim();
+        var eventName = "HAMDAST_SDK_SESSION_TOKEN_RESPONSE";
+        var responseEventName = params.get("response_event") || eventName;
+
+        function sendToParent(payload) {
+          window.parent.postMessage(
+            {
+              hamdast: {
+                event: responseEventName,
+                hash_id: hashId,
+                data: payload,
+              },
+            },
+            "*"
+          );
+        }
+
+        if (!appId || !hashId) {
+          sendToParent({
+            ok: false,
+            error: "app_id and hash_id are required.",
+          });
+          return;
+        }
+
+        var body = {};
+        if (scopeParam) {
+          body.scope = scopeParam
+            .split(",")
+            .map(function (item) {
+              return item.trim();
+            })
+            .filter(Boolean);
+        }
+
+        fetch("/api/v1/apps/" + encodeURIComponent(appId) + "/oauth/session_token", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify(body),
+        })
+          .then(function (res) {
+            return res.json().then(function (data) {
+              return { status: res.status, data: data };
+            });
+          })
+          .then(function (result) {
+            if (result.status >= 400 || !result.data?.session_token) {
+              sendToParent({
+                ok: false,
+                error: result.data?.message || "Failed to create session token.",
+              });
+              return;
+            }
+            sendToParent({
+              ok: true,
+              session_token: result.data.session_token,
+              expires_at: result.data.expires_at,
+            });
+          })
+          .catch(function () {
+            sendToParent({
+              ok: false,
+              error: "Request failed while creating session token.",
+            });
+          });
+      })();
+    </script>
+  </body>
+</html>
