@@ -141,7 +141,11 @@ function hamdastExtractSessionToken(payload) {
   if (payload && typeof payload.session_token === "string") {
     return payload.session_token;
   }
-  if (payload && payload.data && typeof payload.data.session_token === "string") {
+  if (
+    payload &&
+    payload.data &&
+    typeof payload.data.session_token === "string"
+  ) {
     return payload.data.session_token;
   }
   return "";
@@ -164,10 +168,11 @@ function hamdastGetSessionTokenViaHiddenIframe(options) {
 
   iframe.setAttribute(
     "style",
-    "position:absolute;width:0;height:0;border:0;opacity:0;pointer-events:none;"
+    "position:absolute;width:0;height:0;border:0;opacity:0;pointer-events:none;",
   );
   iframe.setAttribute("aria-hidden", "true");
-  iframe.src = "/session-token.html?" + query.toString();
+  iframe.src =
+    "https://hamdast.paziresh24.com/session-token.html?" + query.toString();
 
   return new Promise(function (resolve, reject) {
     var done = false;
@@ -199,7 +204,12 @@ function hamdastGetSessionTokenViaHiddenIframe(options) {
       var token = hamdastExtractSessionToken(data.data);
       if (!token) {
         finalize(function () {
-          reject(new Error((data.data && data.data.error) || "Invalid session token response."));
+          reject(
+            new Error(
+              (data.data && data.data.error) ||
+                "Invalid session token response.",
+            ),
+          );
         });
         return;
       }
@@ -268,7 +278,9 @@ window.hamdast = {
 
     var appId = String(options.appId || window.hamdast.clientKey || "").trim();
     if (!appId) {
-      return Promise.reject(new Error("app_id is required to create session token."));
+      return Promise.reject(
+        new Error("app_id is required to create session token."),
+      );
     }
 
     return hamdastGetSessionTokenViaHiddenIframe({
