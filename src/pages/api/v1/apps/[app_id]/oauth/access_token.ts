@@ -5,6 +5,7 @@ import config from "next/config";
 
 const { publicRuntimeConfig, serverRuntimeConfig } = config();
 const JWT_ALGORITHM = "HS256";
+const JWT_ISSUER = "hamdast";
 
 const encodeBase64Url = (value: string) =>
   Buffer.from(value)
@@ -19,14 +20,52 @@ const decodeBase64Url = (value: string): string => {
   return Buffer.from(padded, "base64").toString("utf8");
 };
 
+const createRequestId = () =>
+  `${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 10)}`;
+
+const logInfo = (requestId: string, message: string, data?: Record<string, unknown>) => {
+  console.info("[oauth/access_token]", {
+    requestId,
+    message,
+    ...(data || {}),
+  });
+};
+
+const logError = (requestId: string, message: string, data?: Record<string, unknown>) => {
+  console.error("[oauth/access_token]", {
+    requestId,
+    message,
+    ...(data || {}),
+  });
+};
+
+const sendError = (
+  res: NextApiResponse<any>,
+  requestId: string,
+  status: number,
+  code: string,
+  message: string,
+  details?: Record<string, unknown>
+) =>
+  res.status(status).json({
+    success: false,
+    error: {
+      code,
+      message,
+      details: details || null,
+      request_id: requestId,
+    },
+  });
+
 const createJwtToken = (payload: Record<string, unknown>, secret: string): string => {
   const header = encodeBase64Url(JSON.stringify({ alg: JWT_ALGORITHM, typ: "JWT" }));
   const body = encodeBase64Url(JSON.stringify(payload));
-  const signature = encodeBase64Url(
-    createHmac("sha256", secret)
-      .update(`${header}.${body}`)
-      .digest("base64")
-  );
+  const signature = createHmac("sha256", secret)
+    .update(`${header}.${body}`)
+    .digest("base64")
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/g, "");
 
   return `${header}.${body}.${signature}`;
 };
@@ -38,22 +77,38 @@ const verifySessionToken = (
   const [headerPart, payloadPart, signaturePart] = token.split(".");
   if (!headerPart || !payloadPart || !signaturePart) return null;
 
-  const expectedSignature = Buffer.from(
-    createHmac("sha256", secret).update(`${headerPart}.${payloadPart}`).digest("base64")
-      .replace(/\+/g, "-")
-      .replace(/\//g, "_")
-      .replace(/=+$/g, "")
-  );
-  const providedSignature = Buffer.from(signaturePart);
+  const expectedSignature = createHmac("sha256", secret)
+    .update(`${headerPart}.${payloadPart}`)
+    .digest("base64")
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/g, "");
+  const expectedSignatureBuffer = Buffer.from(expectedSignature, "utf8");
+  const providedSignatureBuffer = Buffer.from(signaturePart, "utf8");
 
   if (
-    expectedSignature.length !== providedSignature.length ||
-    !timingSafeEqual(Uint8Array.from(expectedSignature), Uint8Array.from(providedSignature))
+    expectedSignatureBuffer.length !== providedSignatureBuffer.length ||
+    !timingSafeEqual(
+      Uint8Array.from(expectedSignatureBuffer),
+      Uint8Array.from(providedSignatureBuffer)
+    )
   ) {
     return null;
   }
 
-  const payload = JSON.parse(decodeBase64Url(payloadPart));
+  let header: any;
+  let payload: any;
+
+  try {
+    header = JSON.parse(decodeBase64Url(headerPart));
+    payload = JSON.parse(decodeBase64Url(payloadPart));
+  } catch {
+    return null;
+  }
+
+  if (header?.alg !== JWT_ALGORITHM || header?.typ !== "JWT") return null;
+  if (payload?.iss && payload.iss !== JWT_ISSUER) return null;
+
   const exp = Number(payload?.exp);
   if (!exp || Date.now() >= exp * 1000) return null;
 
@@ -73,29 +128,43 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
+  const requestId = createRequestId();
+  logInfo(requestId, "request_received", { method: req.method });
+
   if (req.method !== "POST") {
-    return res.status(405).json({
-      message: "Method Not Allowed",
+    return sendError(res, requestId, 405, "METHOD_NOT_ALLOWED", "Method Not Allowed", {
+      allowed_methods: ["POST"],
     });
   }
-
-  pb.autoCancellation(false);
-  await pb.admins.authWithPassword(
-    publicRuntimeConfig.POCKETBASE_USER_NAME,
-    publicRuntimeConfig.POCKETBASE_PASSWORD
-  );
 
   const apiKey = String(req.body?.api_key || "").trim();
   const sessionToken = String(req.body?.session_token || "").trim();
   const appKey = String(req.query?.app_id || "").trim();
 
   if (!apiKey || !sessionToken || !appKey) {
-    return res.status(400).json({
-      message: "api_key, session_token and app_id are required.",
-    });
+    return sendError(
+      res,
+      requestId,
+      400,
+      "INVALID_INPUT",
+      "api_key, session_token and app_id are required.",
+      {
+        has_api_key: Boolean(apiKey),
+        has_session_token: Boolean(sessionToken),
+        has_app_id: Boolean(appKey),
+      }
+    );
   }
 
   try {
+    pb.autoCancellation(false);
+    await pb.admins.authWithPassword(
+      publicRuntimeConfig.POCKETBASE_USER_NAME,
+      publicRuntimeConfig.POCKETBASE_PASSWORD
+    );
+
+    logInfo(requestId, "admin_authenticated", { app_id: appKey });
+
     const developer = await pb.collection("users").getFirstListItem(`api_key="${apiKey}"`, {
       expand: "role",
       cache: "force-cache",
@@ -109,31 +178,60 @@ export default async function handler(
       .getFirstListItem(`collaborators~'${developer.id}' && key='${appKey}'`);
 
     if (!app) {
-      return res.status(403).json({
-        message: "Developer is not authorized for this app.",
-      });
+      return sendError(
+        res,
+        requestId,
+        403,
+        "DEVELOPER_NOT_AUTHORIZED",
+        "Developer is not authorized for this app.",
+        { app_id: appKey }
+      );
     }
 
     const sessionSecret = serverRuntimeConfig.HAMDAST_SESSION_JWT_SECRET || "";
+    if (!sessionSecret) {
+      return sendError(
+        res,
+        requestId,
+        500,
+        "SESSION_SECRET_MISSING",
+        "Session token secret is not configured."
+      );
+    }
+
     const sessionPayload = sessionSecret
       ? verifySessionToken(sessionToken, sessionSecret)
       : null;
 
     if (!sessionPayload?.sub || sessionPayload.aud !== app.id) {
-      return res.status(403).json({
-        message: "Invalid session token.",
-      });
+      return sendError(
+        res,
+        requestId,
+        403,
+        "INVALID_SESSION_TOKEN",
+        "Session token is invalid, expired, or audience does not match the app.",
+        {
+          expected_aud: app.id,
+          actual_aud: sessionPayload?.aud || null,
+          has_sub: Boolean(sessionPayload?.sub),
+        }
+      );
     }
 
     const accessSecret = serverRuntimeConfig.HAMDAST_ACCESS_JWT_SECRET || sessionSecret;
     if (!accessSecret) {
-      return res.status(500).json({
-        message: "Access token secret is not configured.",
-      });
+      return sendError(
+        res,
+        requestId,
+        500,
+        "ACCESS_SECRET_MISSING",
+        "Access token secret is not configured."
+      );
     }
 
     const accessToken = createJwtToken(
       {
+        iss: JWT_ISSUER,
         sub: sessionPayload.sub,
         aud: app.id,
         scope: sessionPayload.scope || [],
@@ -142,13 +240,31 @@ export default async function handler(
       accessSecret
     );
 
+    logInfo(requestId, "access_token_created", {
+      app_id: appKey,
+      user_id: sessionPayload.sub,
+      scope_count: (sessionPayload.scope || []).length,
+    });
+
     return res.status(200).json({
+      success: true,
       access_token: accessToken,
       token_type: "Bearer",
+      request_id: requestId,
     });
-  } catch (_error) {
-    return res.status(401).json({
-      message: "Authentication credentials were not provided.",
+  } catch (error: any) {
+    logError(requestId, "access_token_generation_failed", {
+      reason: error?.message || "unknown_error",
     });
+    return sendError(
+      res,
+      requestId,
+      401,
+      "AUTHENTICATION_FAILED",
+      "Authentication credentials were not provided or are invalid.",
+      {
+        reason: error?.message || "unknown_error",
+      }
+    );
   }
 }
