@@ -70,6 +70,72 @@ const sendError = (
     },
   });
 
+const mapOperationalError = (error: any) => {
+  const causeCode = error?.originalError?.cause?.code || error?.cause?.code;
+  const upstreamStatus = Number(error?.status || error?.response?.status || 0) || undefined;
+  const upstreamMessage =
+    error?.response?.message || error?.response?.data?.message || error?.message;
+
+  if (causeCode === "ENOTFOUND" || causeCode === "UND_ERR_CONNECT_TIMEOUT") {
+    return {
+      status: 503,
+      code: "UPSTREAM_UNAVAILABLE",
+      message: "Service dependency is unavailable.",
+      details: {
+        cause_code: causeCode,
+        upstream_status: upstreamStatus || null,
+        upstream_message: upstreamMessage || null,
+      },
+    };
+  }
+
+  if (upstreamStatus === 400 && upstreamMessage === "Failed to authenticate.") {
+    return {
+      status: 500,
+      code: "POCKETBASE_ADMIN_AUTH_FAILED",
+      message: "Server authentication with PocketBase failed.",
+      details: {
+        upstream_status: upstreamStatus,
+        upstream_message: upstreamMessage,
+      },
+    };
+  }
+
+  if (upstreamStatus === 401) {
+    return {
+      status: 401,
+      code: "PAZIRESH24_AUTH_FAILED",
+      message: "Authentication with upstream provider failed.",
+      details: {
+        upstream_status: 401,
+      },
+    };
+  }
+
+  if (upstreamStatus === 0 && upstreamMessage) {
+    return {
+      status: 503,
+      code: "UPSTREAM_CONNECTION_ERROR",
+      message: "Could not connect to upstream service.",
+      details: {
+        upstream_status: 0,
+        upstream_message: upstreamMessage,
+      },
+    };
+  }
+
+  return {
+    status: 500,
+    code: "INTERNAL_ERROR",
+    message: "Something went wrong while processing your request.",
+    details: {
+      upstream_status: upstreamStatus || null,
+      upstream_message: upstreamMessage || null,
+      cause_code: causeCode || null,
+    },
+  };
+};
+
 const normalizeScopes = (scopeInput: unknown): string[] => {
   if (Array.isArray(scopeInput)) {
     return scopeInput
@@ -158,12 +224,7 @@ export default async function handler(
 
   try {
     pb.autoCancellation(false);
-    await pb.admins.authWithPassword(
-      publicRuntimeConfig.POCKETBASE_USER_NAME,
-      publicRuntimeConfig.POCKETBASE_PASSWORD
-    );
-
-    logInfo(requestId, "admin_authenticated");
+    logInfo(requestId, "pocketbase_query_started");
 
     const paziresh24User = await axios.get("https://apigw.paziresh24.com/v1/auth/me", {
       headers: {
@@ -177,7 +238,12 @@ export default async function handler(
       return sendError(res, requestId, 401, "USER_UNAUTHORIZED", "Unauthorized user.");
     }
 
-    const app = await pb.collection("apps").getFirstListItem(`key = '${appId}'`);
+    const app = await pb.collection("apps").getFirstListItem(`key = '${appId}'`, {
+      cache: "force-cache",
+      headers: {
+        x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+      },
+    });
 
     if (!app?.id) {
       return sendError(
@@ -229,33 +295,22 @@ export default async function handler(
       request_id: requestId,
     });
   } catch (error: any) {
-    const isAxiosError = axios.isAxiosError(error);
+    const operationalError = mapOperationalError(error);
     logError(requestId, "session_token_generation_failed", {
-      is_axios_error: isAxiosError,
-      status: isAxiosError ? error.response?.status : undefined,
-      detail: isAxiosError ? error.response?.data : error?.message,
+      reason: error?.message || "unknown_error",
+      mapped_code: operationalError.code,
+      mapped_status: operationalError.status,
+      details: operationalError.details,
+      is_axios_error: axios.isAxiosError(error),
     });
-
-    if (isAxiosError && error.response?.status === 401) {
-      return sendError(
-        res,
-        requestId,
-        401,
-        "PAZIRESH24_AUTH_FAILED",
-        "Authentication with upstream provider failed.",
-        { upstream_status: 401 }
-      );
-    }
 
     return sendError(
       res,
       requestId,
-      500,
-      "SESSION_TOKEN_INTERNAL_ERROR",
-      "Failed to create session token.",
-      {
-        reason: error?.message || "unknown_error",
-      }
+      operationalError.status,
+      operationalError.code,
+      operationalError.message,
+      operationalError.details
     );
   }
 }

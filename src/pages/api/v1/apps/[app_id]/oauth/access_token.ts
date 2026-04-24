@@ -57,6 +57,73 @@ const sendError = (
     },
   });
 
+const mapOperationalError = (error: any) => {
+  const causeCode = error?.originalError?.cause?.code || error?.cause?.code;
+  const upstreamStatus = Number(error?.status || error?.response?.status || 0) || undefined;
+  const upstreamMessage =
+    error?.response?.message || error?.response?.data?.message || error?.message;
+
+  if (causeCode === "ENOTFOUND" || causeCode === "UND_ERR_CONNECT_TIMEOUT") {
+    return {
+      status: 503,
+      code: "UPSTREAM_UNAVAILABLE",
+      message: "Service dependency is unavailable.",
+      details: {
+        cause_code: causeCode,
+        upstream_status: upstreamStatus || null,
+        upstream_message: upstreamMessage || null,
+      },
+    };
+  }
+
+  if (upstreamStatus === 400 && upstreamMessage === "Failed to authenticate.") {
+    return {
+      status: 500,
+      code: "POCKETBASE_ADMIN_AUTH_FAILED",
+      message: "Server authentication with PocketBase failed.",
+      details: {
+        upstream_status: upstreamStatus,
+        upstream_message: upstreamMessage,
+      },
+    };
+  }
+
+  if (upstreamStatus === 0 && upstreamMessage) {
+    return {
+      status: 503,
+      code: "UPSTREAM_CONNECTION_ERROR",
+      message: "Could not connect to upstream service.",
+      details: {
+        upstream_status: 0,
+        upstream_message: upstreamMessage,
+      },
+    };
+  }
+
+  return {
+    status: 500,
+    code: "INTERNAL_ERROR",
+    message: "Something went wrong while processing your request.",
+    details: {
+      upstream_status: upstreamStatus || null,
+      upstream_message: upstreamMessage || null,
+      cause_code: causeCode || null,
+    },
+  };
+};
+
+type VerifySessionTokenResult = {
+  valid: boolean;
+  reason?: string;
+  legacy_signature?: boolean;
+  payload?: {
+    sub?: string;
+    aud?: string;
+    scope?: string[];
+    exp?: number;
+  };
+};
+
 const createJwtToken = (payload: Record<string, unknown>, secret: string): string => {
   const header = encodeBase64Url(JSON.stringify({ alg: JWT_ALGORITHM, typ: "JWT" }));
   const body = encodeBase64Url(JSON.stringify(payload));
@@ -73,27 +140,37 @@ const createJwtToken = (payload: Record<string, unknown>, secret: string): strin
 const verifySessionToken = (
   token: string,
   secret: string
-): { sub?: string; aud?: string; scope?: string[]; exp?: number } | null => {
+): VerifySessionTokenResult => {
   const [headerPart, payloadPart, signaturePart] = token.split(".");
-  if (!headerPart || !payloadPart || !signaturePart) return null;
+  if (!headerPart || !payloadPart || !signaturePart) {
+    return { valid: false, reason: "invalid_format" };
+  }
 
-  const expectedSignature = createHmac("sha256", secret)
+  const rawSignatureBase64 = createHmac("sha256", secret)
     .update(`${headerPart}.${payloadPart}`)
-    .digest("base64")
+    .digest("base64");
+  const expectedSignature = rawSignatureBase64
     .replace(/\+/g, "-")
     .replace(/\//g, "_")
     .replace(/=+$/g, "");
-  const expectedSignatureBuffer = Buffer.from(expectedSignature, "utf8");
-  const providedSignatureBuffer = Buffer.from(signaturePart, "utf8");
+  // Backward compatibility for tokens generated with old bug:
+  // signature = base64url(base64(hmac)) instead of plain base64url(hmac).
+  const legacyExpectedSignature = encodeBase64Url(rawSignatureBase64);
 
-  if (
-    expectedSignatureBuffer.length !== providedSignatureBuffer.length ||
-    !timingSafeEqual(
-      Uint8Array.from(expectedSignatureBuffer),
-      Uint8Array.from(providedSignatureBuffer)
-    )
-  ) {
-    return null;
+  const safeEqualUtf8 = (a: string, b: string) => {
+    const aBuffer = Buffer.from(a, "utf8");
+    const bBuffer = Buffer.from(b, "utf8");
+    return (
+      aBuffer.length === bBuffer.length &&
+      timingSafeEqual(Uint8Array.from(aBuffer), Uint8Array.from(bBuffer))
+    );
+  };
+
+  const standardSignatureMatched = safeEqualUtf8(expectedSignature, signaturePart);
+  const legacySignatureMatched = safeEqualUtf8(legacyExpectedSignature, signaturePart);
+
+  if (!standardSignatureMatched && !legacySignatureMatched) {
+    return { valid: false, reason: "invalid_signature" };
   }
 
   let header: any;
@@ -103,24 +180,37 @@ const verifySessionToken = (
     header = JSON.parse(decodeBase64Url(headerPart));
     payload = JSON.parse(decodeBase64Url(payloadPart));
   } catch {
-    return null;
+    return { valid: false, reason: "invalid_json" };
   }
 
-  if (header?.alg !== JWT_ALGORITHM || header?.typ !== "JWT") return null;
-  if (payload?.iss && payload.iss !== JWT_ISSUER) return null;
+  if (header?.alg !== JWT_ALGORITHM || header?.typ !== "JWT") {
+    return { valid: false, reason: "invalid_header" };
+  }
+  if (payload?.iss && payload.iss !== JWT_ISSUER) {
+    return { valid: false, reason: "invalid_issuer" };
+  }
 
   const exp = Number(payload?.exp);
-  if (!exp || Date.now() >= exp * 1000) return null;
+  if (!exp) {
+    return { valid: false, reason: "missing_exp" };
+  }
+  if (Date.now() >= exp * 1000 + 15_000) {
+    return { valid: false, reason: "token_expired" };
+  }
 
   const scopes = Array.isArray(payload?.scope)
     ? payload.scope.map((scope: unknown) => String(scope).trim()).filter(Boolean)
     : [];
 
   return {
-    sub: payload?.sub?.toString(),
-    aud: payload?.aud?.toString(),
-    scope: scopes,
-    exp,
+    valid: true,
+    legacy_signature: legacySignatureMatched,
+    payload: {
+      sub: payload?.sub?.toString(),
+      aud: payload?.aud?.toString(),
+      scope: scopes,
+      exp,
+    },
   };
 };
 
@@ -137,8 +227,12 @@ export default async function handler(
     });
   }
 
-  const apiKey = String(req.body?.api_key || "").trim();
-  const sessionToken = String(req.body?.session_token || "").trim();
+  const apiKey = String(req.headers?.["x-api-key"] || "").trim();
+  const rawSessionToken =
+    typeof req.body?.session_token === "string"
+      ? req.body?.session_token
+      : req.body?.session_token?.session_token || "";
+  const sessionToken = String(rawSessionToken).replace(/^Bearer\s+/i, "").trim();
   const appKey = String(req.query?.app_id || "").trim();
 
   if (!apiKey || !sessionToken || !appKey) {
@@ -147,7 +241,7 @@ export default async function handler(
       requestId,
       400,
       "INVALID_INPUT",
-      "api_key, session_token and app_id are required.",
+      "x-api-key header, session_token and app_id are required.",
       {
         has_api_key: Boolean(apiKey),
         has_session_token: Boolean(sessionToken),
@@ -158,12 +252,7 @@ export default async function handler(
 
   try {
     pb.autoCancellation(false);
-    await pb.admins.authWithPassword(
-      publicRuntimeConfig.POCKETBASE_USER_NAME,
-      publicRuntimeConfig.POCKETBASE_PASSWORD
-    );
-
-    logInfo(requestId, "admin_authenticated", { app_id: appKey });
+    logInfo(requestId, "pocketbase_query_started", { app_id: appKey });
 
     const developer = await pb.collection("users").getFirstListItem(`api_key="${apiKey}"`, {
       expand: "role",
@@ -175,7 +264,12 @@ export default async function handler(
 
     const app = await pb
       .collection("apps")
-      .getFirstListItem(`collaborators~'${developer.id}' && key='${appKey}'`);
+      .getFirstListItem(`collaborators~'${developer.id}' && key='${appKey}'`, {
+        cache: "force-cache",
+        headers: {
+          x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+        },
+      });
 
     if (!app) {
       return sendError(
@@ -199,11 +293,14 @@ export default async function handler(
       );
     }
 
-    const sessionPayload = sessionSecret
-      ? verifySessionToken(sessionToken, sessionSecret)
-      : null;
+    const verifiedSession = verifySessionToken(sessionToken, sessionSecret);
+    const sessionPayload = verifiedSession.payload;
 
-    if (!sessionPayload?.sub || sessionPayload.aud !== app.id) {
+    if (
+      !verifiedSession.valid ||
+      !sessionPayload?.sub ||
+      sessionPayload.aud !== app.id
+    ) {
       return sendError(
         res,
         requestId,
@@ -214,6 +311,8 @@ export default async function handler(
           expected_aud: app.id,
           actual_aud: sessionPayload?.aud || null,
           has_sub: Boolean(sessionPayload?.sub),
+          verify_reason: verifiedSession.reason || null,
+          accepted_legacy_signature: verifiedSession.legacy_signature || false,
         }
       );
     }
@@ -244,6 +343,7 @@ export default async function handler(
       app_id: appKey,
       user_id: sessionPayload.sub,
       scope_count: (sessionPayload.scope || []).length,
+      legacy_signature_token: verifiedSession.legacy_signature || false,
     });
 
     return res.status(200).json({
@@ -253,18 +353,20 @@ export default async function handler(
       request_id: requestId,
     });
   } catch (error: any) {
+    const operationalError = mapOperationalError(error);
     logError(requestId, "access_token_generation_failed", {
       reason: error?.message || "unknown_error",
+      mapped_code: operationalError.code,
+      mapped_status: operationalError.status,
+      details: operationalError.details,
     });
     return sendError(
       res,
       requestId,
-      401,
-      "AUTHENTICATION_FAILED",
-      "Authentication credentials were not provided or are invalid.",
-      {
-        reason: error?.message || "unknown_error",
-      }
+      operationalError.status,
+      operationalError.code,
+      operationalError.message,
+      operationalError.details
     );
   }
 }
