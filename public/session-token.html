@@ -1,11 +1,107 @@
 <!doctype html>
-<html lang="en">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hamdast Session Token</title>
+    <title>یک لحظه صبر کنید</title>
+    <style>
+      @font-face {
+        font-family: "IRANSansXV";
+        src: url("/fonts/IRANSansXV.woff2") format("woff2");
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: swap;
+      }
+      body {
+        margin: 0;
+        font-family: "IRANSansXV", Tahoma, sans-serif;
+        font-variation-settings: "wght" 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: #f8fafc;
+        color: #111827;
+      }
+      .box {
+        text-align: center;
+        width: 320px;
+        max-width: calc(100vw - 32px);
+        padding: 8px 12px;
+      }
+      .text {
+        font-size: 14px;
+        line-height: 1.5;
+        color: #374151;
+        min-height: 42px;
+        font-weight: 550;
+      }
+      .dots {
+        display: inline-block;
+        margin-top: 8px;
+        color: #111111;
+      }
+      .loading-svg {
+        width: 58px;
+        height: 28px;
+        display: block;
+      }
+      .hint {
+        margin-top: 10px;
+        color: #6b7280;
+        font-size: 12px;
+        font-weight: 430;
+      }
+    </style>
   </head>
   <body>
+    <div class="box">
+      <div id="loading-dots" class="dots">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 200 200"
+          class="loading-svg"
+          role="img"
+          aria-label="در حال بارگذاری"
+        >
+          <circle fill="currentColor" stroke="currentColor" stroke-width="2" r="15" cx="40" cy="100">
+            <animate
+              attributeName="opacity"
+              calcMode="spline"
+              dur="2"
+              values="1;0;1;"
+              keySplines=".5 0 .5 1;.5 0 .5 1"
+              repeatCount="indefinite"
+              begin="-.4"
+            ></animate>
+          </circle>
+          <circle fill="currentColor" stroke="currentColor" stroke-width="2" r="15" cx="100" cy="100">
+            <animate
+              attributeName="opacity"
+              calcMode="spline"
+              dur="2"
+              values="1;0;1;"
+              keySplines=".5 0 .5 1;.5 0 .5 1"
+              repeatCount="indefinite"
+              begin="-.2"
+            ></animate>
+          </circle>
+          <circle fill="currentColor" stroke="currentColor" stroke-width="2" r="15" cx="160" cy="100">
+            <animate
+              attributeName="opacity"
+              calcMode="spline"
+              dur="2"
+              values="1;0;1;"
+              keySplines=".5 0 .5 1;.5 0 .5 1"
+              repeatCount="indefinite"
+              begin="0"
+            ></animate>
+          </circle>
+        </svg>
+      </div>
+      <div id="status-text" class="text">لطفاً چند لحظه صبر کنید...</div>
+      <div id="status-hint" class="hint">تا پایان این مرحله، لطفاً این صفحه را باز نگه دارید</div>
+    </div>
     <script>
       (function () {
         var params = new URLSearchParams(window.location.search || "");
@@ -16,6 +112,23 @@
         var responseEventName = params.get("response_event") || eventName;
         var targetOrigin = (params.get("origin") || "").trim() || "*";
         var targetWindow = window.opener || window.parent;
+        var loginGuardKey = "hamdast_session_login_redirected_" + hashId;
+        var loginBaseUrl = "https://www.paziresh24.com/login/?redirect_url=";
+        var statusText = document.getElementById("status-text");
+        var statusHint = document.getElementById("status-hint");
+        var loadingDots = document.getElementById("loading-dots");
+
+        function setStatus(text, stateClass, hintText) {
+          if (statusText) {
+            statusText.textContent = text;
+          }
+          if (loadingDots) {
+            loadingDots.style.display = stateClass === "state-success" ? "none" : "inline-flex";
+          }
+          if (statusHint && typeof hintText === "string") {
+            statusHint.textContent = hintText;
+          }
+        }
 
         function sendToParent(payload) {
           if (!targetWindow || !targetWindow.postMessage) {
@@ -42,7 +155,38 @@
           }, 100);
         }
 
+        function shouldRedirectToLogin(result) {
+          var code = result && result.data && result.data.error && result.data.error.code;
+          return (
+            result.status === 401 ||
+            code === "AUTH_TOKEN_MISSING" ||
+            code === "PAZIRESH24_AUTH_FAILED"
+          );
+        }
+
+        function redirectToLoginIfNeeded(result) {
+          if (!shouldRedirectToLogin(result)) return false;
+
+          if (sessionStorage.getItem(loginGuardKey) === "1") {
+            return false;
+          }
+
+          sessionStorage.setItem(loginGuardKey, "1");
+          setStatus(
+            "برای ادامه، لطفاً وارد حساب کاربری‌تان شوید...",
+            "state-login",
+            "پس از ورود، به‌صورت خودکار به همین صفحه برمی‌گردید"
+          );
+          window.location.assign(loginBaseUrl + encodeURIComponent(window.location.href));
+          return true;
+        }
+
         if (!appId || !hashId) {
+          setStatus(
+            "مشکلی پیش آمده است. لطفاً دوباره تلاش کنید.",
+            "state-error",
+            "می‌توانید این صفحه را ببندید و دوباره از برنامه اقدام کنید"
+          );
           sendAndClose({
             ok: false,
             error: "app_id and hash_id are required.",
@@ -76,6 +220,13 @@
           })
           .then(function (result) {
             if (result.status >= 400 || !result.data?.session_token) {
+              if (redirectToLoginIfNeeded(result)) return;
+
+              setStatus(
+                "متأسفانه الان نتوانستیم ادامه بدهیم. لطفاً دوباره تلاش کنید.",
+                "state-error",
+                "می‌توانید این صفحه را ببندید و چند لحظه بعد دوباره تلاش کنید"
+              );
               sendAndClose({
                 ok: false,
                 error:
@@ -88,6 +239,12 @@
               });
               return;
             }
+            sessionStorage.removeItem(loginGuardKey);
+            setStatus(
+              "خیلی خوب، در حال بازگشت به برنامه...",
+              "state-success",
+              "لطفاً کمی صبر کنید"
+            );
             sendAndClose({
               ok: true,
               session_token: result.data.session_token,
@@ -96,6 +253,11 @@
             });
           })
           .catch(function () {
+            setStatus(
+              "ارتباط برقرار نشد. لطفاً اینترنت خود را بررسی کرده و دوباره تلاش کنید.",
+              "state-network",
+              "می‌توانید این صفحه را ببندید و دوباره تلاش کنید"
+            );
             sendAndClose({
               ok: false,
               error: "Request failed while creating session token.",

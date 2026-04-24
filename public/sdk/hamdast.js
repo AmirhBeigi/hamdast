@@ -154,7 +154,6 @@ function hamdastExtractSessionToken(payload) {
 function hamdastGetSessionTokenViaPopup(options) {
   var appId = options.appId;
   var scope = options.scope || [];
-  var timeout = options.timeout || 30000;
   var hashId = hamdastGenerateHashId();
   var query = new URLSearchParams();
   var popup;
@@ -175,15 +174,11 @@ function hamdastGetSessionTokenViaPopup(options) {
 
   return new Promise(function (resolve, reject) {
     var done = false;
-    var timeoutId;
     var popupCloseIntervalId;
     var allowedOrigins = [popupOrigin, window.location.origin];
 
     function cleanup() {
       window.removeEventListener("message", onMessage);
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
       if (popupCloseIntervalId) {
         clearInterval(popupCloseIntervalId);
       }
@@ -240,16 +235,10 @@ function hamdastGetSessionTokenViaPopup(options) {
     popupCloseIntervalId = setInterval(function () {
       if (popup && popup.closed) {
         finalize(function () {
-          reject(new Error("Session token popup was closed before completion."));
+          reject(new Error("USER_CLOSED_POPUP"));
         });
       }
     }, 300);
-
-    timeoutId = setTimeout(function () {
-      finalize(function () {
-        reject(new Error("getSessionToken timed out."));
-      });
-    }, timeout);
   });
 }
 
@@ -273,7 +262,6 @@ window.hamdast = {
   },
   getSessionToken: function (options) {
     options = options || {};
-    var timeout = typeof options.timeout === "number" ? options.timeout : 30000;
     var scope = hamdastNormalizeScopes(options.scope);
 
     if (window.self !== window.top) {
@@ -303,7 +291,6 @@ window.hamdast = {
     return hamdastGetSessionTokenViaPopup({
       appId: appId,
       scope: scope,
-      timeout: timeout,
     });
   },
   openLink: function (obj) {

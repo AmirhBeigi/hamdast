@@ -235,7 +235,13 @@ export default async function handler(
     const user = paziresh24User.data?.users?.[0];
 
     if (!user?.id) {
-      return sendError(res, requestId, 401, "USER_UNAUTHORIZED", "Unauthorized user.");
+      return sendError(
+        res,
+        requestId,
+        401,
+        "PAZIRESH24_AUTH_FAILED",
+        "Authentication with upstream provider failed."
+      );
     }
 
     const app = await pb.collection("apps").getFirstListItem(`key = '${appId}'`, {
