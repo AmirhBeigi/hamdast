@@ -14,9 +14,14 @@
         var scopeParam = (params.get("scope") || "").trim();
         var eventName = "HAMDAST_SDK_SESSION_TOKEN_RESPONSE";
         var responseEventName = params.get("response_event") || eventName;
+        var targetOrigin = (params.get("origin") || "").trim() || "*";
+        var targetWindow = window.opener || window.parent;
 
         function sendToParent(payload) {
-          window.parent.postMessage(
+          if (!targetWindow || !targetWindow.postMessage) {
+            return;
+          }
+          targetWindow.postMessage(
             {
               hamdast: {
                 event: responseEventName,
@@ -24,14 +29,24 @@
                 data: payload,
               },
             },
-            "*"
+            targetOrigin
           );
         }
 
+        function sendAndClose(payload) {
+          sendToParent(payload);
+          setTimeout(function () {
+            if (window.opener && !window.opener.closed) {
+              window.close();
+            }
+          }, 100);
+        }
+
         if (!appId || !hashId) {
-          sendToParent({
+          sendAndClose({
             ok: false,
             error: "app_id and hash_id are required.",
+            error_code: "INVALID_INPUT",
           });
           return;
         }
@@ -61,22 +76,30 @@
           })
           .then(function (result) {
             if (result.status >= 400 || !result.data?.session_token) {
-              sendToParent({
+              sendAndClose({
                 ok: false,
-                error: result.data?.message || "Failed to create session token.",
+                error:
+                  result.data?.error?.message ||
+                  result.data?.message ||
+                  "Failed to create session token.",
+                error_code: result.data?.error?.code || "SESSION_TOKEN_FAILED",
+                request_id: result.data?.error?.request_id || result.data?.request_id,
+                details: result.data?.error?.details || null,
               });
               return;
             }
-            sendToParent({
+            sendAndClose({
               ok: true,
               session_token: result.data.session_token,
               expires_at: result.data.expires_at,
+              request_id: result.data.request_id || null,
             });
           })
           .catch(function () {
-            sendToParent({
+            sendAndClose({
               ok: false,
               error: "Request failed while creating session token.",
+              error_code: "NETWORK_ERROR",
             });
           });
       })();

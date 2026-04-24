@@ -151,40 +151,44 @@ function hamdastExtractSessionToken(payload) {
   return "";
 }
 
-function hamdastGetSessionTokenViaHiddenIframe(options) {
+function hamdastGetSessionTokenViaPopup(options) {
   var appId = options.appId;
   var scope = options.scope || [];
   var timeout = options.timeout || 30000;
   var hashId = hamdastGenerateHashId();
-  var iframe = document.createElement("iframe");
   var query = new URLSearchParams();
+  var popup;
+  var popupUrl;
+  var popupOrigin;
 
   query.set("app_id", appId);
   query.set("hash_id", hashId);
   query.set("response_event", HAMDAST_SESSION_TOKEN_RESPONSE_EVENT);
+  query.set("origin", window.location.origin);
   if (scope.length) {
     query.set("scope", scope.join(","));
   }
 
-  iframe.setAttribute(
-    "style",
-    "position:absolute;width:0;height:0;border:0;opacity:0;pointer-events:none;",
-  );
-  iframe.setAttribute("aria-hidden", "true");
-  iframe.src =
+  popupUrl =
     "https://hamdast.paziresh24.com/session-token.html?" + query.toString();
+  popupOrigin = new URL(popupUrl).origin;
 
   return new Promise(function (resolve, reject) {
     var done = false;
     var timeoutId;
+    var popupCloseIntervalId;
+    var allowedOrigins = [popupOrigin, window.location.origin];
 
     function cleanup() {
       window.removeEventListener("message", onMessage);
       if (timeoutId) {
         clearTimeout(timeoutId);
       }
-      if (iframe && iframe.parentNode) {
-        iframe.parentNode.removeChild(iframe);
+      if (popupCloseIntervalId) {
+        clearInterval(popupCloseIntervalId);
+      }
+      if (popup && !popup.closed) {
+        popup.close();
       }
     }
 
@@ -196,6 +200,7 @@ function hamdastGetSessionTokenViaHiddenIframe(options) {
     }
 
     function onMessage(event) {
+      if (allowedOrigins.indexOf(event.origin) === -1) return;
       var data = event && event.data && event.data.hamdast;
       if (!data) return;
       if (data.event !== HAMDAST_SESSION_TOKEN_RESPONSE_EVENT) return;
@@ -219,20 +224,32 @@ function hamdastGetSessionTokenViaHiddenIframe(options) {
       });
     }
 
+    popup = window.open(
+      popupUrl,
+      "hamdast_session_token_popup",
+      "popup=yes,width=520,height=700,menubar=no,toolbar=no,location=no,status=no,resizable=yes,scrollbars=yes"
+    );
+
+    if (!popup) {
+      return finalize(function () {
+        reject(new Error("Popup blocked while creating session token."));
+      });
+    }
+
     window.addEventListener("message", onMessage);
+    popupCloseIntervalId = setInterval(function () {
+      if (popup && popup.closed) {
+        finalize(function () {
+          reject(new Error("Session token popup was closed before completion."));
+        });
+      }
+    }, 300);
+
     timeoutId = setTimeout(function () {
       finalize(function () {
         reject(new Error("getSessionToken timed out."));
       });
     }, timeout);
-
-    if (document.body && document.body.firstChild) {
-      document.body.insertBefore(iframe, document.body.firstChild);
-    } else if (document.body) {
-      document.body.appendChild(iframe);
-    } else {
-      document.documentElement.appendChild(iframe);
-    }
   });
 }
 
@@ -283,7 +300,7 @@ window.hamdast = {
       );
     }
 
-    return hamdastGetSessionTokenViaHiddenIframe({
+    return hamdastGetSessionTokenViaPopup({
       appId: appId,
       scope: scope,
       timeout: timeout,
