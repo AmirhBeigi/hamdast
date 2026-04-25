@@ -1,12 +1,12 @@
 function hamdastCommunication(obj) {
-  var clientKey = obj.clientKey;
+  var appKey = obj.app_key;
   var event = obj.event;
   var data = obj.data;
   var promise = obj.promise || false;
 
   var message = {
     hamdast: {
-      clientKey: clientKey,
+      app_key: appKey,
       host: window.location.origin,
       event: event,
       data: data,
@@ -31,7 +31,7 @@ function hamdastSendHeight() {
       window.innerHeight;
 
     hamdastCommunication({
-      clientKey: window.hamdast && window.hamdast.clientKey,
+      app_key: window.hamdast && window.hamdast.app_key,
       event: "HAMDAST_FRAME_RESIZE",
       data: {
         height: height,
@@ -86,7 +86,7 @@ function hamdastPostMessagePromise(message) {
   window.parent.postMessage(
     {
       hamdast: {
-        clientKey: message.hamdast.clientKey,
+        app_key: message.hamdast.app_key,
         host: message.hamdast.host,
         event: message.hamdast.event,
         data: message.hamdast.data,
@@ -222,7 +222,7 @@ function hamdastGetSessionTokenViaPopup(options) {
     popup = window.open(
       popupUrl,
       "hamdast_session_token_popup",
-      "popup=yes,width=520,height=700,menubar=no,toolbar=no,location=no,status=no,resizable=yes,scrollbars=yes"
+      "popup=yes,width=520,height=700,menubar=no,toolbar=no,location=no,status=no,resizable=yes,scrollbars=yes",
     );
 
     if (!popup) {
@@ -245,14 +245,14 @@ function hamdastGetSessionTokenViaPopup(options) {
 window.hamdast = {
   initialize: function (options) {
     options = options || {};
-    var clientKey = options.clientKey || "";
-    window.hamdast.clientKey = clientKey;
-    hamdastCommunication({ clientKey: clientKey, event: "HAMDAST_INITIALIZE" });
+    var appKey = options.app_key || options.clientKey || "";
+    window.hamdast.app_key = appKey;
+    hamdastCommunication({ app_key: appKey, event: "HAMDAST_INITIALIZE" });
   },
-  clientKey: null,
+  app_key: null,
   getState: function (state) {
     return hamdastCommunication({
-      clientKey: window.hamdast.clientKey,
+      app_key: window.hamdast.app_key,
       promise: true,
       event: "HAMDAST_GET_STATE",
       data: {
@@ -266,7 +266,7 @@ window.hamdast = {
 
     if (window.self !== window.top) {
       return hamdastCommunication({
-        clientKey: window.hamdast.clientKey,
+        app_key: window.hamdast.app_key,
         promise: true,
         event: "HAMDAST_GET_SESSION_TOKEN",
         data: {
@@ -281,7 +281,7 @@ window.hamdast = {
       });
     }
 
-    var appId = String(options.appId || window.hamdast.clientKey || "").trim();
+    var appId = String(options.appId || window.hamdast.app_key || "").trim();
     if (!appId) {
       return Promise.reject(
         new Error("app_id is required to create session token."),
@@ -297,7 +297,7 @@ window.hamdast = {
     var url = obj.url;
     if (window.self !== window.top) {
       return hamdastCommunication({
-        clientKey: window.hamdast.clientKey,
+        app_key: window.hamdast.app_key,
         event: "HAMDAST_OPEN_LINK",
         data: {
           url: url,
@@ -309,7 +309,7 @@ window.hamdast = {
   redirect: {
     dispatch: function (obj) {
       return hamdastCommunication({
-        clientKey: window.hamdast.clientKey,
+        app_key: window.hamdast.app_key,
         event: "HAMDAST_OPEN_LINK",
         data: {
           path: obj?.path,
@@ -321,7 +321,7 @@ window.hamdast = {
   flow: {
     dispatch: function (flowKey, options = {}) {
       return hamdastCommunication({
-        clientKey: window.hamdast.clientKey,
+        app_key: window.hamdast.app_key,
         event: "HAMDAST_FLOW",
         data: {
           flow_key: flowKey,
@@ -333,7 +333,7 @@ window.hamdast = {
   payment: {
     pay: function (obj) {
       return hamdastCommunication({
-        clientKey: window.hamdast.clientKey,
+        app_key: window.hamdast.app_key,
         event: "HAMDAST_PAYMENT_PAY",
         data: {
           product_key: obj.product_key,
@@ -345,7 +345,7 @@ window.hamdast = {
     },
     subscribe: function (obj) {
       return hamdastCommunication({
-        clientKey: window.hamdast.clientKey,
+        app_key: window.hamdast.app_key,
         event: "HAMDAST_PAYMENT_SUBSCRIBE",
         data: {
           plan_key: obj?.plan_key,
@@ -359,21 +359,21 @@ window.hamdast = {
   widget: {
     addToProfile: function () {
       return hamdastCommunication({
-        clientKey: window.hamdast.clientKey,
+        app_key: window.hamdast.app_key,
         event: "HAMDAST_WIDGET_ADD_TO_PROFILE",
         promise: true,
       });
     },
     removeFromProfile: function () {
       return hamdastCommunication({
-        clientKey: window.hamdast.clientKey,
+        app_key: window.hamdast.app_key,
         event: "HAMDAST_WIDGET_REMOVE_FROM_PROFILE",
         promise: true,
       });
     },
     refreshPorifle: function () {
       return hamdastCommunication({
-        clientKey: window.hamdast.clientKey,
+        app_key: window.hamdast.app_key,
         event: "HAMDAST_WIDGET_REFRESH_PROFILE",
         promise: false,
       });
