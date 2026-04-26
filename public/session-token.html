@@ -156,7 +156,7 @@
         }
 
         function shouldRedirectToLogin(result) {
-          var code = result && result.data && result.data.error && result.data.error.code;
+          var code = result && result.data && result.data.code;
           return (
             result.status === 401 ||
             code === "AUTH_TOKEN_MISSING" ||
@@ -229,13 +229,9 @@
               );
               sendAndClose({
                 ok: false,
-                error:
-                  result.data?.error?.message ||
-                  result.data?.message ||
-                  "Failed to create session token.",
-                error_code: result.data?.error?.code || "SESSION_TOKEN_FAILED",
-                request_id: result.data?.error?.request_id || result.data?.request_id,
-                details: result.data?.error?.details || null,
+                error: result.data?.message || "Failed to create session token.",
+                error_code: result.data?.code || "SESSION_TOKEN_FAILED",
+                details: result.data?.details || null,
               });
               return;
             }
@@ -249,7 +245,6 @@
               ok: true,
               session_token: result.data.session_token,
               expires_at: result.data.expires_at,
-              request_id: result.data.request_id || null,
             });
           })
           .catch(function () {

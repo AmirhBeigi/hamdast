@@ -54,20 +54,15 @@ const logError = (requestId: string, message: string, data?: Record<string, unkn
 
 const sendError = (
   res: NextApiResponse<any>,
-  requestId: string,
   status: number,
   code: string,
   message: string,
   details?: Record<string, unknown>
 ) =>
   res.status(status).json({
-    success: false,
-    error: {
-      code,
-      message,
-      details: details || null,
-      request_id: requestId,
-    },
+    code,
+    message,
+    details: details || null,
   });
 
 const mapOperationalError = (error: any) => {
@@ -188,7 +183,7 @@ export default async function handler(
     return res.status(200).end();
   }
   if (req.method !== "POST") {
-    return sendError(res, requestId, 405, "METHOD_NOT_ALLOWED", "Method Not Allowed", {
+    return sendError(res, 405, "METHOD_NOT_ALLOWED", "Method Not Allowed", {
       allowed_methods: ["POST"],
     });
   }
@@ -205,7 +200,6 @@ export default async function handler(
   if (!appId) {
     return sendError(
       res,
-      requestId,
       400,
       "INVALID_APP_ID",
       "app_id is required in route params."
@@ -215,7 +209,6 @@ export default async function handler(
   if (!token) {
     return sendError(
       res,
-      requestId,
       401,
       "AUTH_TOKEN_MISSING",
       "Authentication credentials were not provided."
@@ -237,7 +230,6 @@ export default async function handler(
     if (!user?.id) {
       return sendError(
         res,
-        requestId,
         401,
         "PAZIRESH24_AUTH_FAILED",
         "Authentication with upstream provider failed."
@@ -254,7 +246,6 @@ export default async function handler(
     if (!app?.id) {
       return sendError(
         res,
-        requestId,
         404,
         "APP_NOT_FOUND",
         "Requested app was not found.",
@@ -266,7 +257,6 @@ export default async function handler(
     if (!jwtSecret) {
       return sendError(
         res,
-        requestId,
         500,
         "SESSION_SECRET_MISSING",
         "Session token secret is not configured."
@@ -295,10 +285,8 @@ export default async function handler(
     });
 
     return res.status(200).json({
-      success: true,
       session_token: sessionToken,
       expires_at: new Date(expiresAt).toISOString(),
-      request_id: requestId,
     });
   } catch (error: any) {
     const operationalError = mapOperationalError(error);
@@ -312,7 +300,6 @@ export default async function handler(
 
     return sendError(
       res,
-      requestId,
       operationalError.status,
       operationalError.code,
       operationalError.message,

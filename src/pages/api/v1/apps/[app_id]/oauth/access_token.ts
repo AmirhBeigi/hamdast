@@ -41,20 +41,15 @@ const logError = (requestId: string, message: string, data?: Record<string, unkn
 
 const sendError = (
   res: NextApiResponse<any>,
-  requestId: string,
   status: number,
   code: string,
   message: string,
   details?: Record<string, unknown>
 ) =>
   res.status(status).json({
-    success: false,
-    error: {
-      code,
-      message,
-      details: details || null,
-      request_id: requestId,
-    },
+    code,
+    message,
+    details: details || null,
   });
 
 const mapOperationalError = (error: any) => {
@@ -222,7 +217,7 @@ export default async function handler(
   logInfo(requestId, "request_received", { method: req.method });
 
   if (req.method !== "POST") {
-    return sendError(res, requestId, 405, "METHOD_NOT_ALLOWED", "Method Not Allowed", {
+    return sendError(res, 405, "METHOD_NOT_ALLOWED", "Method Not Allowed", {
       allowed_methods: ["POST"],
     });
   }
@@ -238,7 +233,6 @@ export default async function handler(
   if (!apiKey || !sessionToken || !appKey) {
     return sendError(
       res,
-      requestId,
       400,
       "INVALID_INPUT",
       "x-api-key header, session_token and app_id are required.",
@@ -274,7 +268,6 @@ export default async function handler(
     if (!app) {
       return sendError(
         res,
-        requestId,
         403,
         "DEVELOPER_NOT_AUTHORIZED",
         "Developer is not authorized for this app.",
@@ -286,7 +279,6 @@ export default async function handler(
     if (!sessionSecret) {
       return sendError(
         res,
-        requestId,
         500,
         "SESSION_SECRET_MISSING",
         "Session token secret is not configured."
@@ -303,7 +295,6 @@ export default async function handler(
     ) {
       return sendError(
         res,
-        requestId,
         403,
         "INVALID_SESSION_TOKEN",
         "Session token is invalid, expired, or audience does not match the app.",
@@ -321,7 +312,6 @@ export default async function handler(
     if (!accessSecret) {
       return sendError(
         res,
-        requestId,
         500,
         "ACCESS_SECRET_MISSING",
         "Access token secret is not configured."
@@ -347,10 +337,8 @@ export default async function handler(
     });
 
     return res.status(200).json({
-      success: true,
       access_token: accessToken,
       token_type: "Bearer",
-      request_id: requestId,
     });
   } catch (error: any) {
     const operationalError = mapOperationalError(error);
@@ -362,7 +350,6 @@ export default async function handler(
     });
     return sendError(
       res,
-      requestId,
       operationalError.status,
       operationalError.code,
       operationalError.message,
