@@ -3,6 +3,7 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  skipTrailingSlashRedirect: true,
   trailingSlash: true,
   publicRuntimeConfig: {
     POCKETBASE_USER_NAME: process.env.POCKETBASE_USER_NAME,

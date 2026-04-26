@@ -205,7 +205,7 @@
             .filter(Boolean);
         }
 
-        fetch("/api/v1/apps/" + encodeURIComponent(appId) + "/oauth/session_token", {
+        fetch("/api/v1/apps/" + encodeURIComponent(appId) + "/oauth/session_token/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
