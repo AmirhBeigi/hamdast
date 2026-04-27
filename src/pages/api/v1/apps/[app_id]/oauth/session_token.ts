@@ -1,37 +1,13 @@
 import axios from "axios";
-import { createHmac } from "crypto";
 import type { NextApiRequest, NextApiResponse } from "next";
 import NextCors from "nextjs-cors";
 import { pb } from "../../../../../../../pocketbase";
 import config from "next/config";
+import { SignJWT } from "jose";
 const { publicRuntimeConfig, serverRuntimeConfig } = config();
 
 const SESSION_TTL_MS = 1 * 60 * 1000;
-const JWT_ALGORITHM = "HS256";
 const JWT_ISSUER = "hamdast";
-
-const encodeBase64Url = (value: string) =>
-  Buffer.from(value)
-    .toString("base64")
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_")
-    .replace(/=+$/g, "");
-
-const createSessionToken = (
-  payload: Record<string, unknown>,
-  secret: string
-): string => {
-  const header = encodeBase64Url(JSON.stringify({ alg: JWT_ALGORITHM, typ: "JWT" }));
-  const body = encodeBase64Url(JSON.stringify(payload));
-  const signature = createHmac("sha256", secret)
-    .update(`${header}.${body}`)
-    .digest("base64")
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_")
-    .replace(/=+$/g, "");
-
-  return `${header}.${body}.${signature}`;
-};
 
 const createRequestId = () =>
   `${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 10)}`;
@@ -265,17 +241,16 @@ export default async function handler(
 
     const now = Date.now();
     const expiresAt = now + SESSION_TTL_MS;
-    const sessionToken = createSessionToken(
-      {
-        iss: JWT_ISSUER,
-        sub: user.id.toString(),
-        aud: app.id.toString(),
-        scope: scopes,
-        iat: Math.floor(now / 1000),
-        exp: Math.floor(expiresAt / 1000),
-      },
-      jwtSecret
-    );
+    const sessionToken = await new SignJWT({
+      scope: scopes,
+    })
+      .setProtectedHeader({ alg: "HS256", typ: "JWT" })
+      .setIssuer(JWT_ISSUER)
+      .setSubject(user.id.toString())
+      .setAudience(app.id.toString())
+      .setIssuedAt(Math.floor(now / 1000))
+      .setExpirationTime(Math.floor(expiresAt / 1000))
+      .sign(new TextEncoder().encode(jwtSecret));
 
     logInfo(requestId, "session_token_created", {
       app_id: appId,

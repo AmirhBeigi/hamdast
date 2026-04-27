@@ -1,24 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { pb } from "../../../../../../../pocketbase";
-import { createHmac, timingSafeEqual } from "crypto";
 import config from "next/config";
+import { jwtVerify, SignJWT } from "jose";
 
 const { publicRuntimeConfig, serverRuntimeConfig } = config();
-const JWT_ALGORITHM = "HS256";
 const JWT_ISSUER = "hamdast";
-
-const encodeBase64Url = (value: string) =>
-  Buffer.from(value)
-    .toString("base64")
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_")
-    .replace(/=+$/g, "");
-
-const decodeBase64Url = (value: string): string => {
-  const normalized = value.replace(/-/g, "+").replace(/_/g, "/");
-  const padded = normalized + "=".repeat((4 - (normalized.length % 4 || 4)) % 4);
-  return Buffer.from(padded, "base64").toString("utf8");
-};
 
 const createRequestId = () =>
   `${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 10)}`;
@@ -110,7 +96,6 @@ const mapOperationalError = (error: any) => {
 type VerifySessionTokenResult = {
   valid: boolean;
   reason?: string;
-  legacy_signature?: boolean;
   payload?: {
     sub?: string;
     aud?: string;
@@ -119,94 +104,33 @@ type VerifySessionTokenResult = {
   };
 };
 
-const createJwtToken = (payload: Record<string, unknown>, secret: string): string => {
-  const header = encodeBase64Url(JSON.stringify({ alg: JWT_ALGORITHM, typ: "JWT" }));
-  const body = encodeBase64Url(JSON.stringify(payload));
-  const signature = createHmac("sha256", secret)
-    .update(`${header}.${body}`)
-    .digest("base64")
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_")
-    .replace(/=+$/g, "");
-
-  return `${header}.${body}.${signature}`;
-};
-
-const verifySessionToken = (
+const verifySessionToken = async (
   token: string,
   secret: string
-): VerifySessionTokenResult => {
-  const [headerPart, payloadPart, signaturePart] = token.split(".");
-  if (!headerPart || !payloadPart || !signaturePart) {
-    return { valid: false, reason: "invalid_format" };
-  }
-
-  const rawSignatureBase64 = createHmac("sha256", secret)
-    .update(`${headerPart}.${payloadPart}`)
-    .digest("base64");
-  const expectedSignature = rawSignatureBase64
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_")
-    .replace(/=+$/g, "");
-  // Backward compatibility for tokens generated with old bug:
-  // signature = base64url(base64(hmac)) instead of plain base64url(hmac).
-  const legacyExpectedSignature = encodeBase64Url(rawSignatureBase64);
-
-  const safeEqualUtf8 = (a: string, b: string) => {
-    const aBuffer = Buffer.from(a, "utf8");
-    const bBuffer = Buffer.from(b, "utf8");
-    return (
-      aBuffer.length === bBuffer.length &&
-      timingSafeEqual(Uint8Array.from(aBuffer), Uint8Array.from(bBuffer))
-    );
-  };
-
-  const standardSignatureMatched = safeEqualUtf8(expectedSignature, signaturePart);
-  const legacySignatureMatched = safeEqualUtf8(legacyExpectedSignature, signaturePart);
-
-  if (!standardSignatureMatched && !legacySignatureMatched) {
-    return { valid: false, reason: "invalid_signature" };
-  }
-
-  let header: any;
-  let payload: any;
-
+): Promise<VerifySessionTokenResult> => {
   try {
-    header = JSON.parse(decodeBase64Url(headerPart));
-    payload = JSON.parse(decodeBase64Url(payloadPart));
+    const verified = await jwtVerify(token, new TextEncoder().encode(secret), {
+      algorithms: ["HS256"],
+      issuer: JWT_ISSUER,
+      clockTolerance: 15,
+    });
+    const payload = verified.payload as Record<string, unknown>;
+    const scopes = Array.isArray(payload?.scope)
+      ? payload.scope.map((scope: unknown) => String(scope).trim()).filter(Boolean)
+      : [];
+    const exp = Number(payload?.exp);
+    return {
+      valid: true,
+      payload: {
+        sub: payload?.sub?.toString(),
+        aud: payload?.aud?.toString(),
+        scope: scopes,
+        exp: exp || undefined,
+      },
+    };
   } catch {
-    return { valid: false, reason: "invalid_json" };
+    return { valid: false, reason: "invalid_token" };
   }
-
-  if (header?.alg !== JWT_ALGORITHM || header?.typ !== "JWT") {
-    return { valid: false, reason: "invalid_header" };
-  }
-  if (payload?.iss && payload.iss !== JWT_ISSUER) {
-    return { valid: false, reason: "invalid_issuer" };
-  }
-
-  const exp = Number(payload?.exp);
-  if (!exp) {
-    return { valid: false, reason: "missing_exp" };
-  }
-  if (Date.now() >= exp * 1000 + 15_000) {
-    return { valid: false, reason: "token_expired" };
-  }
-
-  const scopes = Array.isArray(payload?.scope)
-    ? payload.scope.map((scope: unknown) => String(scope).trim()).filter(Boolean)
-    : [];
-
-  return {
-    valid: true,
-    legacy_signature: legacySignatureMatched,
-    payload: {
-      sub: payload?.sub?.toString(),
-      aud: payload?.aud?.toString(),
-      scope: scopes,
-      exp,
-    },
-  };
 };
 
 export default async function handler(
@@ -285,7 +209,7 @@ export default async function handler(
       );
     }
 
-    const verifiedSession = verifySessionToken(sessionToken, sessionSecret);
+    const verifiedSession = await verifySessionToken(sessionToken, sessionSecret);
     const sessionPayload = verifiedSession.payload;
 
     if (
@@ -303,7 +227,6 @@ export default async function handler(
           actual_aud: sessionPayload?.aud || null,
           has_sub: Boolean(sessionPayload?.sub),
           verify_reason: verifiedSession.reason || null,
-          accepted_legacy_signature: verifiedSession.legacy_signature || false,
         }
       );
     }
@@ -318,22 +241,20 @@ export default async function handler(
       );
     }
 
-    const accessToken = createJwtToken(
-      {
-        iss: JWT_ISSUER,
-        sub: sessionPayload.sub,
-        aud: app.id,
-        scope: sessionPayload.scope || [],
-        iat: Math.floor(Date.now() / 1000),
-      },
-      accessSecret
-    );
+    const accessToken = await new SignJWT({
+      scope: sessionPayload.scope || [],
+    })
+      .setProtectedHeader({ alg: "HS256", typ: "JWT" })
+      .setIssuer(JWT_ISSUER)
+      .setSubject(String(sessionPayload.sub))
+      .setAudience(String(app.id))
+      .setIssuedAt()
+      .sign(new TextEncoder().encode(accessSecret));
 
     logInfo(requestId, "access_token_created", {
       app_id: appKey,
       user_id: sessionPayload.sub,
       scope_count: (sessionPayload.scope || []).length,
-      legacy_signature_token: verifiedSession.legacy_signature || false,
     });
 
     return res.status(200).json({
