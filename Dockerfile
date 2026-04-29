@@ -1,9 +1,6 @@
 #FROM docker.paziresh24.info/node:14.18.2-alpine
-FROM node:18-alpine AS base
-RUN apk add --no-cache libc6-compat
+FROM docker.devneeds.ir/node:18-alpine AS base
 WORKDIR /app
-ENV DOCKER_BUILDKIT 1
-ENV NEXT_TELEMETRY_DISABLED 1
 
 COPY package.json ./ 
 
