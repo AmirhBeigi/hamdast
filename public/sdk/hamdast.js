@@ -356,6 +356,13 @@ window.hamdast = {
       });
     },
   },
+  invite: function () {
+    return hamdastCommunication({
+      app_key: window.hamdast.app_key,
+      event: "HAMDAST_INVITE",
+      promise: true,
+    });
+  },
   widget: {
     addToProfile: function () {
       return hamdastCommunication({
