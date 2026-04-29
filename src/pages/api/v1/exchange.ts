@@ -115,7 +115,7 @@ export default async function handler(
       {
         user_id: userId,
         client_id: HAMDAST_AUTH_SERVICE_CLIENT_ID,
-        client_secret: "$2a$12$6neTnX7ZjGeyWkJ/AlhMhuF/FwSTF//nsQvY4ya62DezoOk.4mYiO",
+        client_secret: HAMDAST_AUTH_SERVICE_CLIENT_SECRET,
       },
       {
         proxy: false,
