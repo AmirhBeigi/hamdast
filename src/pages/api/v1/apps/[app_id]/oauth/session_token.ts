@@ -248,6 +248,7 @@ export default async function handler(
     }
 
     let verifiedScopes = scopes;
+    let verifiedScopeIds: string[] = [];
     if (scopes.length > 0) {
       const scopeFilter = scopes
         .map((scope) => `scope='${escapeFilterValue(scope)}'`)
@@ -262,6 +263,13 @@ export default async function handler(
         new Set(
           allowedScopes
             .map((record: Record<string, unknown>) => String(record?.scope || "").trim())
+            .filter(Boolean)
+        )
+      );
+      verifiedScopeIds = Array.from(
+        new Set(
+          allowedScopes
+            .map((record: Record<string, unknown>) => String(record?.id || "").trim())
             .filter(Boolean)
         )
       );
@@ -329,7 +337,7 @@ export default async function handler(
       await pb.collection("installations").update(
         existingInstallationId,
         {
-          permissions: verifiedScopes,
+          permissions: verifiedScopeIds,
         },
         {
           headers: {
@@ -342,7 +350,7 @@ export default async function handler(
         {
           user_id: userId,
           app: app.id,
-          permissions: verifiedScopes,
+          permissions: verifiedScopeIds,
         },
         {
           headers: {
