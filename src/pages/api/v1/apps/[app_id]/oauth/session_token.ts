@@ -108,21 +108,29 @@ const mapOperationalError = (error: any) => {
 };
 
 const normalizeScopes = (scopeInput: unknown): string[] => {
+  const sanitize = (items: string[]) => Array.from(new Set(items.filter(Boolean)));
+
   if (Array.isArray(scopeInput)) {
-    return scopeInput
-      .map((scope) => String(scope).trim())
-      .filter(Boolean);
+    return sanitize(
+      scopeInput
+        .map((scope) => String(scope).trim())
+        .filter(Boolean)
+    );
   }
 
   if (typeof scopeInput === "string") {
-    return scopeInput
-      .split(/[,\s]+/)
-      .map((scope) => scope.trim())
-      .filter(Boolean);
+    return sanitize(
+      scopeInput
+        .split(/[,\s]+/)
+        .map((scope) => scope.trim())
+        .filter(Boolean)
+    );
   }
 
   return [];
 };
+
+const escapeFilterValue = (value: string) => value.replace(/\\/g, "\\\\").replace(/'/g, "\\'");
 
 export default async function handler(
   req: NextApiRequest,
@@ -239,10 +247,45 @@ export default async function handler(
       );
     }
 
+    let verifiedScopes = scopes;
+    if (scopes.length > 0) {
+      const scopeFilter = scopes
+        .map((scope) => `scope='${escapeFilterValue(scope)}'`)
+        .join(" || ");
+      const allowedScopes = await pb.collection("scopes").getFullList({
+        filter: `app='${app.id}' && verify=true && (${scopeFilter})`,
+        headers: {
+          x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+        },
+      });
+      verifiedScopes = Array.from(
+        new Set(
+          allowedScopes
+            .map((record: Record<string, unknown>) => String(record?.scope || "").trim())
+            .filter(Boolean)
+        )
+      );
+
+      if (verifiedScopes.length !== scopes.length) {
+        const invalidScopes = scopes.filter((scope) => !verifiedScopes.includes(scope));
+        return sendError(
+          res,
+          403,
+          "INVALID_SCOPE",
+          "One or more requested scopes are invalid or unverified for this app.",
+          {
+            app_id: appId,
+            requested_scopes: scopes,
+            invalid_scopes: invalidScopes,
+          }
+        );
+      }
+    }
+
     const now = Date.now();
     const expiresAt = now + SESSION_TTL_MS;
     const sessionToken = await new SignJWT({
-      scope: scopes,
+      scope: verifiedScopes,
     })
       .setProtectedHeader({ alg: "HS256", typ: "JWT" })
       .setIssuer(JWT_ISSUER)
@@ -255,9 +298,59 @@ export default async function handler(
     logInfo(requestId, "session_token_created", {
       app_id: appId,
       user_id: user.id?.toString(),
-      scope_count: scopes.length,
+      scope_count: verifiedScopes.length,
       expires_at: new Date(expiresAt).toISOString(),
     });
+
+    const userId = String(user.id).trim();
+    let existingInstallation: Record<string, unknown> | null = null;
+    try {
+      existingInstallation = await pb.collection("installations").getFirstListItem(
+        `user_id='${escapeFilterValue(userId)}' && app='${app.id}'`,
+        {
+          cache: "no-store",
+          headers: {
+            x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+          },
+        }
+      );
+    } catch (error: any) {
+      if (Number(error?.status || 0) !== 404) {
+        throw error;
+      }
+    }
+
+    const existingInstallationId =
+      existingInstallation && typeof existingInstallation.id === "string"
+        ? existingInstallation.id
+        : null;
+
+    if (existingInstallationId) {
+      await pb.collection("installations").update(
+        existingInstallationId,
+        {
+          permissions: verifiedScopes,
+        },
+        {
+          headers: {
+            x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+          },
+        }
+      );
+    } else {
+      await pb.collection("installations").create(
+        {
+          user_id: userId,
+          app: app.id,
+          permissions: verifiedScopes,
+        },
+        {
+          headers: {
+            x_token: publicRuntimeConfig.HAMDAST_TOKEN,
+          },
+        }
+      );
+    }
 
     return res.status(200).json({
       session_token: sessionToken,
