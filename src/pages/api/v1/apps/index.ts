@@ -121,50 +121,6 @@ export default async function handler(
         app: app.id,
       });
 
-      let client = null;
-      let gozarToken = null;
-
-      try {
-        gozarToken = await axios.post(
-          "https://user.paziresh24.com/realms/paziresh24/protocol/openid-connect/token",
-          {
-            grant_type: "client_credentials",
-            client_id: process.env.GOZARGAH_CLIENT_ID,
-            client_secret: process.env.GOZARGAH_CLIENT_SECRET,
-          },
-          {
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
-            },
-          }
-        );
-
-        var options = {
-          method: "POST",
-          url: "https://user.paziresh24.com/admin/realms/paziresh24/clients/",
-          headers: {
-            Authorization: `Bearer ${gozarToken.data?.access_token}`,
-            "Content-Type": "application/json",
-          },
-          data: {
-            clientId: app?.id,
-            name: name_fa,
-            enabled: true,
-            protocol: "openid-connect",
-            publicClient: false,
-            standardFlowEnabled: true,
-            directAccessGrantsEnabled: true,
-            serviceAccountsEnabled: false,
-            consentRequired: true,
-          },
-        };
-        client = await axios.request(options);
-      } catch (error) {
-        await pb.collection("apps").delete(app.id);
-        return res.status(502).json({
-          message: "کلاینت oauth از قبل ساخته شده است.",
-        });
-      }
 
       try {
         var productOption = {
