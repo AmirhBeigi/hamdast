@@ -1,0 +1,15 @@
+services:
+  hamdast-apps:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: hamdast-portal:latest
+    container_name: hamdast-portal
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+    ports:
+      - "${PUBLISH_PORT:-3000}:3000"
+    env_file:
+      - .env
+    restart: unless-stopped
