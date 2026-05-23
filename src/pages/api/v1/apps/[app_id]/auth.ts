@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from "axios";
+import { PAZIRESH24_AUTH_ME_URL } from "@/lib/paziresh24";
 import type { NextApiRequest, NextApiResponse } from "next";
 import config from "next/config";
 import NextCors from "nextjs-cors";
@@ -48,7 +49,7 @@ export default async function handler(
     });
   }
   const paziresh24User = (await axios
-    .get("https://apigw.paziresh24.com/v1/auth/me", {
+    .get(PAZIRESH24_AUTH_ME_URL, {
       headers: {
         Authorization: `Bearer ${token?.trim()}`,
       },

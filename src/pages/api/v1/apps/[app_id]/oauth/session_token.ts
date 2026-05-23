@@ -1,4 +1,5 @@
 import axios from "axios";
+import { PAZIRESH24_AUTH_ME_URL } from "@/lib/paziresh24";
 import type { NextApiRequest, NextApiResponse } from "next";
 import NextCors from "nextjs-cors";
 import { pb } from "../../../../../../../pocketbase";
@@ -203,7 +204,7 @@ export default async function handler(
     pb.autoCancellation(false);
     logInfo(requestId, "pocketbase_query_started");
 
-    const paziresh24User = await axios.get("https://apigw.paziresh24.com/v1/auth/me", {
+    const paziresh24User = await axios.get(PAZIRESH24_AUTH_ME_URL, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

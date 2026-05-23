@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { PAZIRESH24_AUTH_ME_URL } from "@/lib/paziresh24";
 import { pb } from "../../../../pocketbase";
 import config from "next/config";
 import axios from "axios";
@@ -93,7 +94,7 @@ export default async function handler(
       });
     }
 
-    const user = await axios.get("https://apigw.paziresh24.com/v1/auth/me", {
+    const user = await axios.get(PAZIRESH24_AUTH_ME_URL, {
       headers: {
         authorization: `Bearer ${token}`,
       },
@@ -170,7 +171,7 @@ export default async function handler(
       });
     }
 
-    const user = await axios.get("https://apigw.paziresh24.com/v1/auth/me", {
+    const user = await axios.get(PAZIRESH24_AUTH_ME_URL, {
       headers: {
         authorization: `Bearer ${token}`,
       },

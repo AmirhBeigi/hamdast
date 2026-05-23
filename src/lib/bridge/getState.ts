@@ -1,4 +1,5 @@
 import axios from "axios";
+import { PAZIRESH24_AUTH_ME_URL } from "@/lib/paziresh24";
 let CACHE: any = {
   user: null,
   provider: null,
@@ -8,7 +9,7 @@ export const getState = {
     try {
       if (!CACHE.user?.id) {
         const userData = await axios.get(
-          "https://apigw.paziresh24.com/v1/auth/me",
+          PAZIRESH24_AUTH_ME_URL,
           {
             withCredentials: true,
           }

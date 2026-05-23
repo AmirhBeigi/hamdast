@@ -1,4 +1,5 @@
 import axios from "axios";
+import { PAZIRESH24_AUTH_ME_URL } from "@/lib/paziresh24";
 import type { NextApiRequest, NextApiResponse } from "next";
 import config from "next/config";
 import NextCors from "nextjs-cors";
@@ -24,7 +25,7 @@ export default async function handler(
   let user;
   try {
     const paziresh24User = await axios.get(
-      "https://apigw.paziresh24.com/v1/auth/me",
+      PAZIRESH24_AUTH_ME_URL,
       {
         headers: {
           Authorization: `Bearer ${token?.trim()}`,

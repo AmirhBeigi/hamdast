@@ -18,6 +18,9 @@ const nextConfig = {
     PROF_CACHE_BEARER_TOKEN: process.env.PROF_CACHE_BEARER_TOKEN,
     PANEL_TOKEN: process.env.PANEL_TOKEN,
     POCKETBASE_URL: process.env.POCKETBASE_URL,
+    PAZIRESH24_AUTH_ME_URL:
+      process.env.PAZIRESH24_AUTH_ME_URL ||
+      "https://apigw.paziresh24.com/v1/auth/me",
   },
   serverRuntimeConfig: {
     HAMDAST_SESSION_JWT_SECRET: process.env.HAMDAST_SESSION_JWT_SECRET,
