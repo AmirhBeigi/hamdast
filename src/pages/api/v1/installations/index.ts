@@ -108,6 +108,7 @@ export default async function handler(
     apiHost: "https://growthbook-api.paziresh24.com",
     clientKey: "sdk-St1dBftdp07geqtD",
   });
+  await growthbook.init({ timeout: 1000, skipCache: true });
 
   growthbook.setAttributes({
     user_id: Number(user?.id),
@@ -115,7 +116,6 @@ export default async function handler(
     ...attributes,
   });
 
-  await growthbook.init({ timeout: 1000 });
 
   const apps = await pb.collection("apps").getFullList({
     expand: "collaborators",
