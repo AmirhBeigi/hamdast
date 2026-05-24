@@ -49,7 +49,7 @@ export default async function handler(
     });
   }
 
-  let user = null;
+  let user = {};
   let isDoctor = false;
   let attributes = {};
   try {
@@ -64,16 +64,11 @@ export default async function handler(
     user = paziresh24User.data?.users?.[0];
     const [paziresh24Provider, katibeAttributes] = await Promise.allSettled([
       axios.get(
-        `https://drprofile.paziresh24.com/api/users/${user.id}/centers`,
-        {
-          headers: {
-            Authorization: `Bearer ${token.trim()}`,
-          },
-        }
+        `https://drprofile.paziresh24.com/api/users/${(user as any)?.id}/centers`
       ),
       axios.get("https://apigw.paziresh24.com/katibe/v1/p24/users/attributes", {
         params: {
-          user_id: user.id,
+          user_id: (user as any)?.id,
         },
         headers: {
           cookie: req.headers?.cookie,
@@ -111,7 +106,7 @@ export default async function handler(
   await growthbook.init({ timeout: 1000, skipCache: true });
 
   growthbook.setAttributes({
-    user_id: Number(user?.id),
+    user_id: Number((user as any)?.id),
     is_doctor: isDoctor,
     ...attributes,
   });
@@ -123,25 +118,28 @@ export default async function handler(
     headers: {
       x_token: publicRuntimeConfig.HAMDAST_TOKEN,
     },
+    cache: "no-cache"
   });
 
   const menus = await pb.collection("menus").getFullList({
     headers: {
       x_token: publicRuntimeConfig.HAMDAST_TOKEN,
     },
+    cache: "no-cache"
   });
 
   const pages = await pb.collection("pages").getFullList({
     headers: {
       x_token: publicRuntimeConfig.HAMDAST_TOKEN,
     },
+    cache: "no-cache"
   });
 
   const filteredApps = apps.filter((app) => {
     const collaborators = app.expand?.collaborators;
     return (
       collaborators?.some(
-        (collaborator: any) => collaborator.paziresh24_user_id == user.id
+        (collaborator: any) => collaborator.paziresh24_user_id == (user as any).id
       ) || app.published
     );
   });
