@@ -121,14 +121,14 @@ export type PlasmicLanding__OverridesType = {
   apiRequest?: Flex__<typeof ApiRequest>;
 };
 
-export interface DefaultLandingProps {}
+export interface DefaultLandingProps { }
 
 const $$ = {};
 
 function useNextRouter() {
   try {
     return useRouter();
-  } catch {}
+  } catch { }
   return undefined;
 }
 
@@ -365,7 +365,7 @@ function PlasmicLanding__RenderFunc(props: {
                             "__wab_instance",
                             sty.paziresh24Button
                           )}
-                          link={`/login`}
+                          link={`/console`}
                           shape={"sharp"}
                         />
                       </div>
@@ -729,170 +729,170 @@ function PlasmicLanding__RenderFunc(props: {
                   >
                     {(_par =>
                       !_par ? [] : Array.isArray(_par) ? _par : [_par])(
-                      (() => {
-                        try {
-                          return [
-                            {
-                              image:
-                                "https://hamdast.s3.ir-thr-at1.arvanstorage.ir/apps%2Fcywoc24.png?versionId=",
-                              name: "پروفایل اینستاگرام",
-                              description:
-                                "افزودن پست های اینستاگرام به پروفایل پزشک",
-                              app: "cywoc24"
-                            },
-                            {
-                              image:
-                                "https://hamdast.s3.ir-thr-at1.arvanstorage.ir/apps%2Fbimehnama.png?versionId=",
-                              name: "بیمه‌نما",
-                              description:
-                                "افزودن بیمه های پایه و تکمیلی به پروفایل",
-                              app: "bimehnama"
-                            },
-                            {
-                              image:
-                                "https://hamdast.s3.ir-thr-at1.arvanstorage.ir/apps%2Fcheragh.png?versionId=",
-                              name: "چراغ",
-                              description:
-                                "ثبت و نمایش وضعیت امکانات مطب از جمله جای پارک، پله، آسانسور و سایر دسترسی‌ها",
-                              app: "cheragh"
-                            },
-                            {
-                              image:
-                                "https://hamdast.s3.ir-thr-at1.arvanstorage.ir/apps%2Fhamyar.png?versionId=",
-                              name: "همیار",
-                              description:
-                                "بیماران قادر هستند در زمان فعال بودن ابزارک، بدون مشاهده شماره منشی با منشی تماس امن بگیرند",
-                              app: "hamyar"
-                            },
-                            {
-                              image:
-                                "https://hamdast.s3.ir-thr-at1.arvanstorage.ir/apps%2Frahnama.png?versionId=",
-                              name: "راه‌نما",
-                              description:
-                                "لینک شبکه‌های اجتماعی‌تان (اینستاگرام، ایکس، اپارات) را به سادگی در پروفایل‌تان قرار دهید",
-                              app: "rahnama"
-                            },
-                            {
-                              image:
-                                "https://hamdast.s3.ir-thr-at1.arvanstorage.ir/apps%2Fnotification.png?versionId=",
-                              name: "ارسال پیامک",
-                              description:
-                                "ارسال اطلاع رسانی ها براساس رویدادهای مخلتف",
-                              app: "notification"
-                            },
-                            {
-                              image:
-                                "https://hamdast.s3.ir-thr-at1.arvanstorage.ir/apps%2Fgooglefastindex.png?versionId=",
-                              name: "گوگلم آپدیت نیست!",
-                              description:
-                                "ابزارک درخواست آپدیت پروفایل به گوگل",
-                              app: "googlefastindex"
-                            }
-                          ];
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return [];
-                          }
-                          throw e;
-                        }
-                      })()
-                    ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                      const currentItem = __plasmic_item_0;
-                      const currentIndex = __plasmic_idx_0;
-                      return (
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__ouvdb
-                          )}
-                          key={currentIndex}
-                        >
-                          <PlasmicImg__
-                            alt={""}
-                            className={classNames(sty.img__kvJkg)}
-                            displayHeight={"50px"}
-                            displayMaxHeight={"none"}
-                            displayMaxWidth={"100%"}
-                            displayMinHeight={"0"}
-                            displayMinWidth={"0"}
-                            displayWidth={"50px"}
-                            loading={"lazy"}
-                            src={(() => {
-                              try {
-                                return currentItem.image;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return undefined;
-                                }
-                                throw e;
+                        (() => {
+                          try {
+                            return [
+                              {
+                                image:
+                                  "https://hamdast.s3.ir-thr-at1.arvanstorage.ir/apps%2Fcywoc24.png?versionId=",
+                                name: "پروفایل اینستاگرام",
+                                description:
+                                  "افزودن پست های اینستاگرام به پروفایل پزشک",
+                                app: "cywoc24"
+                              },
+                              {
+                                image:
+                                  "https://hamdast.s3.ir-thr-at1.arvanstorage.ir/apps%2Fbimehnama.png?versionId=",
+                                name: "بیمه‌نما",
+                                description:
+                                  "افزودن بیمه های پایه و تکمیلی به پروفایل",
+                                app: "bimehnama"
+                              },
+                              {
+                                image:
+                                  "https://hamdast.s3.ir-thr-at1.arvanstorage.ir/apps%2Fcheragh.png?versionId=",
+                                name: "چراغ",
+                                description:
+                                  "ثبت و نمایش وضعیت امکانات مطب از جمله جای پارک، پله، آسانسور و سایر دسترسی‌ها",
+                                app: "cheragh"
+                              },
+                              {
+                                image:
+                                  "https://hamdast.s3.ir-thr-at1.arvanstorage.ir/apps%2Fhamyar.png?versionId=",
+                                name: "همیار",
+                                description:
+                                  "بیماران قادر هستند در زمان فعال بودن ابزارک، بدون مشاهده شماره منشی با منشی تماس امن بگیرند",
+                                app: "hamyar"
+                              },
+                              {
+                                image:
+                                  "https://hamdast.s3.ir-thr-at1.arvanstorage.ir/apps%2Frahnama.png?versionId=",
+                                name: "راه‌نما",
+                                description:
+                                  "لینک شبکه‌های اجتماعی‌تان (اینستاگرام، ایکس، اپارات) را به سادگی در پروفایل‌تان قرار دهید",
+                                app: "rahnama"
+                              },
+                              {
+                                image:
+                                  "https://hamdast.s3.ir-thr-at1.arvanstorage.ir/apps%2Fnotification.png?versionId=",
+                                name: "ارسال پیامک",
+                                description:
+                                  "ارسال اطلاع رسانی ها براساس رویدادهای مخلتف",
+                                app: "notification"
+                              },
+                              {
+                                image:
+                                  "https://hamdast.s3.ir-thr-at1.arvanstorage.ir/apps%2Fgooglefastindex.png?versionId=",
+                                name: "گوگلم آپدیت نیست!",
+                                description:
+                                  "ابزارک درخواست آپدیت پروفایل به گوگل",
+                                app: "googlefastindex"
                               }
-                            })()}
-                          />
-
+                            ];
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                      ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                        const currentItem = __plasmic_item_0;
+                        const currentIndex = __plasmic_idx_0;
+                        return (
                           <div
                             className={classNames(
                               projectcss.all,
-                              sty.freeBox___6Ber
+                              sty.freeBox__ouvdb
                             )}
+                            key={currentIndex}
                           >
+                            <PlasmicImg__
+                              alt={""}
+                              className={classNames(sty.img__kvJkg)}
+                              displayHeight={"50px"}
+                              displayMaxHeight={"none"}
+                              displayMaxWidth={"100%"}
+                              displayMinHeight={"0"}
+                              displayMinWidth={"0"}
+                              displayWidth={"50px"}
+                              loading={"lazy"}
+                              src={(() => {
+                                try {
+                                  return currentItem.image;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType === "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            />
+
                             <div
                               className={classNames(
                                 projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__y5JbF
+                                sty.freeBox___6Ber
                               )}
                             >
-                              <React.Fragment>
-                                {(() => {
-                                  try {
-                                    return currentItem.name;
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__y5JbF
+                                )}
+                              >
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return currentItem.name;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
                                         "PlasmicUndefinedDataError"
-                                    ) {
-                                      return "\u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u062f\u0627\u062f\u0647 \u0647\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631\u0627\u0646";
+                                      ) {
+                                        return "\u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u062f\u0627\u062f\u0647 \u0647\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631\u0627\u0646";
+                                      }
+                                      throw e;
                                     }
-                                    throw e;
-                                  }
-                                })()}
-                              </React.Fragment>
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___9KghR
-                              )}
-                            >
-                              <React.Fragment>
-                                {(() => {
-                                  try {
-                                    return currentItem.description;
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
+                                  })()}
+                                </React.Fragment>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text___9KghR
+                                )}
+                              >
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return currentItem.description;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
                                         "PlasmicUndefinedDataError"
-                                    ) {
-                                      return "\u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u062f\u0627\u062f\u0647 \u0647\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631\u0627\u0646";
+                                      ) {
+                                        return "\u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u062f\u0627\u062f\u0647 \u0647\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631\u0627\u0646";
+                                      }
+                                      throw e;
                                     }
-                                    throw e;
-                                  }
-                                })()}
-                              </React.Fragment>
+                                  })()}
+                                </React.Fragment>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      );
-                    })}
+                        );
+                      })}
                     <div
                       className={classNames(projectcss.all, sty.freeBox__dfM3F)}
                       onClick={async event => {
@@ -900,20 +900,20 @@ function PlasmicLanding__RenderFunc(props: {
 
                         $steps["goToHamdastLogin"] = true
                           ? (() => {
-                              const actionArgs = { destination: `/login` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
+                            const actionArgs = { destination: `/console` };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
                           : undefined;
                         if (
                           $steps["goToHamdastLogin"] != null &&
@@ -1272,20 +1272,20 @@ function PlasmicLanding__RenderFunc(props: {
 
                   $steps["goToApps"] = $state.apiRequest.data?.id
                     ? (() => {
-                        const actionArgs = { destination: `/apps` };
-                        return (({ destination }) => {
-                          if (
-                            typeof destination === "string" &&
-                            destination.startsWith("#")
-                          ) {
-                            document
-                              .getElementById(destination.substr(1))
-                              .scrollIntoView({ behavior: "smooth" });
-                          } else {
-                            __nextRouter?.push(destination);
-                          }
-                        })?.apply(null, [actionArgs]);
-                      })()
+                      const actionArgs = { destination: `/console` };
+                      return (({ destination }) => {
+                        if (
+                          typeof destination === "string" &&
+                          destination.startsWith("#")
+                        ) {
+                          document
+                            .getElementById(destination.substr(1))
+                            .scrollIntoView({ behavior: "smooth" });
+                        } else {
+                          __nextRouter?.push(destination);
+                        }
+                      })?.apply(null, [actionArgs]);
+                    })()
                     : undefined;
                   if (
                     $steps["goToApps"] != null &&
@@ -1334,20 +1334,20 @@ type NodeComponentProps<T extends NodeNameType> =
     args?: PlasmicLanding__ArgsType;
     overrides?: NodeOverridesType<T>;
   } &
-    // Specify variants directly as props
-    Omit<PlasmicLanding__VariantsArgs, ReservedPropsType> &
-    // Specify args directly as props
-    Omit<PlasmicLanding__ArgsType, ReservedPropsType> &
-    // Specify overrides for each element directly as props
-    Omit<
-      NodeOverridesType<T>,
-      ReservedPropsType | VariantPropType | ArgPropType
-    > &
-    // Specify props for the root element
-    Omit<
-      Partial<React.ComponentProps<NodeDefaultElementType[T]>>,
-      ReservedPropsType | VariantPropType | ArgPropType | DescendantsType<T>
-    >;
+  // Specify variants directly as props
+  Omit<PlasmicLanding__VariantsArgs, ReservedPropsType> &
+  // Specify args directly as props
+  Omit<PlasmicLanding__ArgsType, ReservedPropsType> &
+  // Specify overrides for each element directly as props
+  Omit<
+    NodeOverridesType<T>,
+    ReservedPropsType | VariantPropType | ArgPropType
+  > &
+  // Specify props for the root element
+  Omit<
+    Partial<React.ComponentProps<NodeDefaultElementType[T]>>,
+    ReservedPropsType | VariantPropType | ArgPropType | DescendantsType<T>
+  >;
 
 function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
   type PropsType = NodeComponentProps<NodeName> & { key?: React.Key };
