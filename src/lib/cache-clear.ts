@@ -5,6 +5,9 @@ const { publicRuntimeConfig } = config();
 
 const PROF_CACHE_BASE_URL = "https://apigw.paziresh24.com/prof/v1";
 const PROF_CACHE_BEARER_TOKEN = publicRuntimeConfig.PROF_CACHE_BEARER_TOKEN;
+const ARVAN_API_KEY = publicRuntimeConfig.ARVAN;
+const ARVAN_PURGE_URL =
+  "https://napi.arvancloud.ir/cdn/4.0/domains/paziresh24.com/caching/purge";
 const DEFAULT_SERVER_ID = 1;
 
 type ProfileCachePayload = {
@@ -32,14 +35,18 @@ export async function clearProfileCache(payload: ProfileCachePayload) {
 }
 
 export async function clearOtherCache(url: string) {
-  if (!PROF_CACHE_BEARER_TOKEN) return;
+  if (!ARVAN_API_KEY) return;
   if (!url?.trim()) return;
 
-  await axios.get(
-    `${PROF_CACHE_BASE_URL}/other_clear_cache?url=${encodeURIComponent(url)}`,
+  await axios.post(
+    ARVAN_PURGE_URL,
+    {
+      purge: "individual",
+      purge_urls: [url.trim()],
+    },
     {
       headers: {
-        Authorization: `Bearer ${PROF_CACHE_BEARER_TOKEN}`,
+        authorization: `apikey ${ARVAN_API_KEY}`,
       },
     }
   );
