@@ -76,6 +76,7 @@ export default async function handler(
         iframe_src: item?.expand?.widget?.iframe_src,
         plasmic_component_id: item.expand?.widget?.plasmic_component_id,
         plasmic_project_id: item?.expand?.widget?.plasmic_project_id,
+        button: item?.expand?.widget?.button ?? {},
       }))
     );
   }
