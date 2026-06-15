@@ -80,11 +80,13 @@ export default async function handler(
   }
 
   let payload: Record<string, unknown>;
+  let isPaziresh24Token = false;
   try {
     const decoded = decodeJwt(incomingToken);
     const issuer = String(decoded.iss || "");
     if (issuer.includes("paziresh24") || issuer.includes("p24")) {
       payload = decoded as Record<string, unknown>;
+      isPaziresh24Token = true;
     } else {
       const verified = await jwtVerify(incomingToken, accessSecretBytes, {
         algorithms: ["HS256"],
@@ -98,19 +100,21 @@ export default async function handler(
   }
 
   const requestedScope = String(req.query.scope || req.body?.scope || "").trim();
-  const requestedScopes = requestedScope === "*" ? ["*"] : normalizeScopes(requestedScope);
-  const allowedScopes = normalizeScopes(payload.scope);
   const userId = String(payload.sub || "").trim();
   const sourceClientId = String(payload.aud || "").trim();
 
-  const hasScope =
-    requestedScope === "*" ||
-    requestedScopes.length === 0 ||
-    requestedScopes.some((scope) => allowedScopes.includes(scope));
-  if (!hasScope) {
-    return res
-      .status(403)
-      .json({ message: `permission denied to ${requestedScope}`, status: 403 });
+  if (!isPaziresh24Token) {
+    const requestedScopes = requestedScope === "*" ? ["*"] : normalizeScopes(requestedScope);
+    const allowedScopes = normalizeScopes(payload.scope);
+    const hasScope =
+      requestedScope === "*" ||
+      requestedScopes.length === 0 ||
+      requestedScopes.some((scope) => allowedScopes.includes(scope));
+    if (!hasScope) {
+      return res
+        .status(403)
+        .json({ message: `permission denied to ${requestedScope}`, status: 403 });
+    }
   }
 
   if (!userId) {
